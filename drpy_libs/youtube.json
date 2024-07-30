@@ -6,8 +6,16 @@
 			"type_name":"Youutbe Trends"
 		},
 		{
-			"type_id":"LIST:自媒體 We Media,老高與小茉 @laogao,脑洞乌托邦 @NDWTB,自说自话的总裁 @STBoss,纪实说 @C-Documentary,老肉雜談 @老肉雜談,李永樂老師 @TchLiyongle,滇西小哥 @dianxixiaoge,李子柒 Liziqi @cnliziqi,老饭骨 @LaoFanGu,小高姐的 Magic Ingredients @MagicIngredients,小穎美食 @XiaoYingFood,primitivetechnology9550 @primitivetechnology9550,Mr Beast@MrBeast,Airforceproud95 @Airforceproud95,TheGreatWar @TheGreatWar,Mark Rober @MarkRober,不良林,涌哥侃侃 @ygkkk,悟空的日常",
+			"type_id":"LIST:自媒體 We Media,李子柒 Liziqi @cnliziqi,老高與小茉 @laogao,李永樂老師 @TchLiyongle,滇西小哥 @dianxixiaoge,脑洞乌托邦 @NDWTB,自说自话的总裁 @STBoss,老肉雜談 @老肉雜談,老饭骨 @LaoFanGu,小高姐的 Magic Ingredients @MagicIngredients,小穎美食 @XiaoYingFood,primitivetechnology9550 @primitivetechnology9550,Mr Beast@MrBeast,Airforceproud95 @Airforceproud95,TheGreatWar @TheGreatWar,Mark Rober @MarkRober,不良林,涌哥侃侃 @ygkkk,悟空的日常",
 			"type_name":"自媒體"
+		},
+		{
+			"type_id":"短劇",
+			"type_name":"短劇"
+		},
+		{
+			"type_id":"動態漫",
+			"type_name":"動態漫"
 		},
 		{
 			"type_id":"LIST:HDR,Girls HDR,Landscape HDR,Walk HDR",
@@ -28,10 +36,6 @@
 		{
 			"type_id":"LIST:新闻 Live,体育直播,赛事直播",
 			"type_name":"新聞直播"
-		},
-		{
-			"type_id":"短劇",
-			"type_name":"短劇"
 		},
 		{
 			"type_id":"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB",
@@ -189,11 +193,15 @@
 					{"n":"穿越","v":"穿越 短劇"},
 					{"n":"喜剧","v":"喜剧 短劇"},
 					{"n":"奇幻","v":"奇幻 短劇"},
+					{"n":"神州劇場-華語熱播","v":"@TV-ng8em"},
+					{"n":"熊熊追剧—爽文版","v":"@AudioFictionLibrary"},
 					{"n":"九酱爱追剧","v":"@NineSauceDramaTV"},
 					{"n":"百万好剧场","v":"@1-pw5ox"},
+					{"n":"西瓜妹剧场","v":"@WatermelonTheater"},
 					{"n":"咖啡追剧","v":"@@coffeedrama605"},
 					{"n":"斗罗短剧","v":"@DouluoDrama123 斗羅短劇"},
 					{"n":"嘟嘟剧场","v":"@DUDUJUCHANG"},
+					{"n":"爽劇不斷","v":"@user-qx7gz6rk7d"},
 					{"n":"牛牛短剧","v":"@niuniuduanju"}
 				]
 			}
