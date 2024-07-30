@@ -1,22 +1,22 @@
 var rule = {
-	title:'4KHDR[磁]',
-	host:'https://www.4khdr.cn',
-        homeUrl: "/forum.php?mod=forumdisplay&fid=2&page=1",
-	url: '/forum.php?mod=forumdisplay&fid=2&filter=typeid&typeid=fyclass&page=fypage',
+	title:'MP4电影[磁]',
+	host:'https://www.mp4us.com',
+        homeUrl: '/',
+	url: '/list/fyclass-fypage.html?',
 	filter_url:'{{fl.class}}',
 	filter:{
 	},
-	searchUrl: '/search.php#searchsubmit=yes&srchtxt=**;post',
+	searchUrl: '/search/**-1.html',
 	searchable:2,
-	quickSearch:1,
+	quickSearch:0,
 	filterable:0,
 	headers:{
 		'User-Agent': 'PC_UA',
-         	'Cookie':'http://127.0.0.1:9978/file:///tvbox/JS/lib/4khdr.txt',
+         	'Cookie':''
 	},
 	timeout:5000,
-	class_name: "4K电影&4K美剧&4K华语&4K动画&4K纪录片&4K日韩印&蓝光电影&蓝光美剧&蓝光华语&蓝光动画&蓝光日韩印",
-	class_url:"3&8&15&6&11&4&29&31&33&32&34",
+	class_name: '动作片&科幻片&爱情片&喜剧片&恐怖片&战争片&剧情片&纪录片&动画片&电视剧',
+	class_url: '1&2&3&4&5&6&7&8&9&10',
 	play_parse:true,
 	play_json:[{
 		re:'*',
@@ -27,17 +27,17 @@ var rule = {
 	}],
 	lazy:'',
 	limit:6,
-	推荐:'ul#waterfall li;a&&title;img&&src;div.auth.cl&&Text;a&&href',
-	一级:'ul#waterfall li;a&&title;img&&src;div.auth.cl&&Text;a&&href',
+	推荐:'div.index_update ul li;a&&Text;;b&&Text;a&&href',
+	一级:'div#list_all ul li;img.lazy&&alt;img.lazy&&data-original;span.update_time&&Text;a&&href',
 	二级:{
-		title:"#thead_subject&&Text",
-		img:"img.zoom&&src",
-		desc:'td[id^="postmessage_"] font&&Text',
-		content:'td[id^="postmessage_"] font&&Text',
+		title:"div.article-header h1&&Text",
+		img:"div.article-header div.pic img&&src",
+		desc:'div.article-header div.text&&Text',
+		content:'div.article-related.info p&&Text',
 		tabs:`js:
 pdfh=jsp.pdfh;pdfa=jsp.pdfa;pd=jsp.pd;
 TABS=[]
-let d = pdfa(html, 'div.pcb table.t_table a');
+let d = pdfa(html, 'ul.down-list&&li a');
 let tabsa = [];
 let tabsq = [];
 let tabsm = false;
@@ -74,13 +74,13 @@ tabsq.forEach(function(it){
 	TABS.push(it + tmpIndex);
 	tmpIndex = tmpIndex + 1;
 });
-log('4khdr TABS >>>>>>>>>>>>>>>>>>' + TABS);
+log('mp4us TABS >>>>>>>>>>>>>>>>>>' + TABS);
 `,
 		lists:`js:
 log(TABS);
 pdfh=jsp.pdfh;pdfa=jsp.pdfa;pd=jsp.pd;
 LISTS = [];
-let d = pdfa(html, 'div.pcb table.t_table a');
+let d = pdfa(html, 'ul.down-list&&li a');
 let lista = [];
 let listq = [];
 let listm = [];
@@ -88,8 +88,8 @@ let liste = [];
 d.forEach(function(it){
 	let burl = pdfh(it, 'a&&href');
 	let title = pdfh(it, 'a&&Text');
-	log('4khdr title >>>>>>>>>>>>>>>>>>>>>>>>>>' + title);
-	log('4khdr burl >>>>>>>>>>>>>>>>>>>>>>>>>>' + burl);
+	log('dygang title >>>>>>>>>>>>>>>>>>>>>>>>>>' + title);
+	log('dygang burl >>>>>>>>>>>>>>>>>>>>>>>>>>' + burl);
 	let loopresult = title + '$' + burl;
 	if (burl.startsWith("https://www.aliyundrive.com/s/") || burl.startsWith("https://www.alipan.com/s/")){
 		if (true){
@@ -99,7 +99,7 @@ d.forEach(function(it){
 			burl = "http://127.0.0.1:9978/proxy?do=ali&type=push&url=" + encodeURIComponent(burl);
 		}
 		}else{
-			burl = 'push://' + burl;
+			burl = "push://" + burl;
 		}
 		loopresult = title + '$' + burl;
 		lista.push(loopresult);
@@ -111,8 +111,8 @@ d.forEach(function(it){
 			burl = "http://127.0.0.1:9978/proxy?do=quark&type=push&url=" + encodeURIComponent(burl);
 		}
 		}else{
-			burl = 'push://' + burl;
-		}
+                        burl = "push://" + burl;
+                }
 		loopresult = title + '$' + burl;
 		listq.push(loopresult);
 	}else if (burl.startsWith("magnet")){
@@ -122,10 +122,10 @@ d.forEach(function(it){
 	}
 });
 if (listm.length>0){
-	LISTS.push(listm);
+	LISTS.push(listm.reverse());
 }
 if (liste.length>0){
-	LISTS.push(liste);
+	LISTS.push(liste.reverse());
 }
 if (false && lista.length + listq.length > 1){
 	LISTS.push(["選擇右側綫路，或3秒後自動跳過$http://127.0.0.1:10079/delay/"]);
@@ -146,41 +146,33 @@ if (rule_fetch_params.headers.Cookie.startsWith("http")){
 	let cookie = rule_fetch_params.headers.Cookie;
 	setItem(RULE_CK, cookie);
 };
-log('4khdr search cookie>>>>>>>>>>>>>>>' + rule_fetch_params.headers.Cookie);
-let new_host= HOST + '/search.php';
-let new_html=request(new_host);
-let formhash = pdfh(new_html, 'input[name="formhash"]&&value');
-log("4khdr formhash>>>>>>>>>>>>>>>" + formhash);
-let params = 'formhash=' + formhash + '&searchsubmit=yes&srchtxt=' + encodeURIComponent(KEY);
+log('mp4us seach cookie>>>>>>>>>>>>>' + rule_fetch_params.headers.Cookie);
 let _fetch_params = JSON.parse(JSON.stringify(rule_fetch_params));
-let postData = {
-    body: params
-};
-Object.assign(_fetch_params, postData);
-log("4khdr search postData>>>>>>>>>>>>>>>" + JSON.stringify(_fetch_params));
-let search_html = post( HOST + '/search.php?mod=forum', _fetch_params)
-//log("4khdr search result>>>>>>>>>>>>>>>" + search_html);
+//log("mp4us search params>>>>>>>>>>>>>>>" + JSON.stringify(_fetch_params));
+let search_html = request( HOST + '/search/' + encodeURIComponent(KEY) + '-1.html', _fetch_params)
+//log("mp4us search result>>>>>>>>>>>>>>>" + search_html);
 let d=[];
-let dlist = pdfa(search_html, 'div#threadlist ul li');
+//'div#list_all li;img.lazy&&alt;img.lazy&&src;div.text_info h2&&Text;a&&href;p.info&&Text',
+let dlist = pdfa(search_html, 'div#list_all li');
 dlist.forEach(function(it){
-	let title = pdfh(it, 'h3&&Text');
-	if (searchObj.quick === true){
-		if (title.includes(KEY)){
+	let title = pdfh(it, 'img.lazy&&alt');
+	if (title.includes(KEY)){
+		if (searchObj.quick === true){
 			title = KEY;
 		}
+		let img = pd(it, 'img.lazy&&src', HOST);
+		let content = pdfh(it, 'div.text_info h2&&Text');
+		let desc = pdfh(it, 'p.info&&Text');
+		let url = pd(it, 'a&&href', HOST);
+		d.push({
+			title:title,
+			img:img,
+			content:content,
+			desc:desc,
+			url:url
+			})
 	}
-	let img = "";
-	let content = pdfh(it, 'p:eq(2)&&Text');
-	let desc = pdfh(it, 'p:eq(3)&&Text');
-	let url = pd(it, 'a&&href', HOST);
-	d.push({
-		title:title,
-		img:img,
-		content:content,
-		desc:desc,
-		url:url
-		})
 });
 setResult(d);
-	`,
+`,
 }
