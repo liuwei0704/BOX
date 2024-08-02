@@ -5,6 +5,10 @@
 新增奧運,http://159.75.85.63:35455/huya/16739452
 
 🌍巴黎奧運會,#genre#
+ELTA 体育-1,https://api.btbt.im/live?id=elta-sport1
+ELTA 体育-2,https://api.btbt.im/live?id=elta-sport2
+ELTA 体育-3,https://api.btbt.im/live?id=elta-sport3
+ELTA 体育-4,https://api.btbt.im/live?id=elta-sport4
 ELTA奧運1台,https://api.btbt.im/live?id=elta-oly1
 ELTA奧運2台,https://api.btbt.im/live?id=elta-oly2
 ELTA奧運3台,https://api.btbt.im/live?id=elta-oly3
