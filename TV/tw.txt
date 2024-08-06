@@ -4,6 +4,19 @@
 無法觀看請切換IJK或EXO,http://159.75.85.63:35455/huya/593667
 刪除失效源,http://159.75.85.63:35455/huya/16739452
 
+🌍體育台,#genre#
+ELTA體育1台,https://sxj.btjson.us.kg/histar?id=elta-sport1
+ELTA體育2台,https://sxj.btjson.us.kg/histar?id=elta-sport2
+ELTA體育3台,https://sxj.btjson.us.kg/histar?id=elta-sport3
+ELTA體育4台,https://sxj.btjson.us.kg/histar?id=elta-sport4
+ELTA奥运1台,https://sxj.btjson.us.kg/histar?id=elta-oly1
+ELTA奥运2台,https://sxj.btjson.us.kg/histar?id=elta-oly2
+ELTA奥运3台,https://sxj.btjson.us.kg/histar?id=elta-oly3
+ELTA奥运4台,https://sxj.btjson.us.kg/histar?id=elta-oly4
+ELTA奥运5台,https://sxj.btjson.us.kg/histar?id=elta-oly5
+ELTA奥运6台,https://sxj.btjson.us.kg/histar?id=elta-oly6
+ELTA奥运7台,https://sxj.btjson.us.kg/histar?id=elta-oly7
+
 🇹🇼台灣電視1️⃣,#genre#
 民視臺灣台,http://iptv543.com/litv.php?id=4gtv-4gtv001
 民視,http://iptv543.com/litv.php?id=4gtv-4gtv002
