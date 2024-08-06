@@ -1,43 +1,8 @@
 🍀更新說明🍀,#genre#
-更新日期8/1,http://159.75.85.63:35455/huya/13303478
+更新日期8/6,http://159.75.85.63:35455/huya/13303478
 來源由網路搜集,http://159.75.85.63:35455/huya/15152155
 無法觀看請切換IJK或EXO,http://159.75.85.63:35455/huya/593667
-新增奧運,http://159.75.85.63:35455/huya/16739452
-
-🌍巴黎奧運會,#genre#
-ELTA 体育-1,https://api.btbt.im/live?id=elta-sport1
-ELTA 体育-2,https://api.btbt.im/live?id=elta-sport2
-ELTA 体育-3,https://api.btbt.im/live?id=elta-sport3
-ELTA 体育-4,https://api.btbt.im/live?id=elta-sport4
-ELTA奧運1台,https://api.btbt.im/live?id=elta-oly1
-ELTA奧運2台,https://api.btbt.im/live?id=elta-oly2
-ELTA奧運3台,https://api.btbt.im/live?id=elta-oly3
-ELTA奧運4台,https://api.btbt.im/live?id=elta-oly4
-ELTA奧運5台,https://api.btbt.im/live?id=elta-oly5
-ELTA奧運6台,https://api.btbt.im/live?id=elta-oly6
-ELTA奧運7台,https://api.btbt.im/live?id=elta-oly7
-Astro OLY 1,https://api.btbt.im/live?id=astro-oly1
-Astro OLY 2,https://api.btbt.im/live?id=astro-oly2
-Astro OLY 3,https://api.btbt.im/live?id=astro-oly3
-Astro OLY 4,https://api.btbt.im/live?id=astro-oly4
-Astro OLY 5,https://api.btbt.im/live?id=astro-oly5
-MyTVSuper奧運801,https://api.btbt.im/live?id=mytvsuper-oly801
-MyTVSuper奧運802,https://api.btbt.im/live?id=mytvsuper-oly802
-MyTVSuper奧運803,https://api.btbt.im/live?id=mytvsuper-oly803
-MyTVSuper奧運804,https://api.btbt.im/live?id=mytvsuper-oly804
-MyTVSuper奧運805,https://api.btbt.im/live?id=mytvsuper-oly805
-MyTVSuper奧運806,https://api.btbt.im/live?id=mytvsuper-oly806
-MyTVSuper奧運807,https://api.btbt.im/live?id=mytvsuper-oly807
-MyTVSuper奧運808,https://api.btbt.im/live?id=mytvsuper-oly808
-MyTVSuper奧運809,https://api.btbt.im/live?id=mytvsuper-oly809
-MyTVSuper奧運810,https://api.btbt.im/live?id=mytvsuper-oly810
-MyTVSuper奧運811,https://api.btbt.im/live?id=mytvsuper-oly811
-MyTVSuper奧運812,https://api.btbt.im/live?id=mytvsuper-oly812
-MyTVSuper奧運813,https://api.btbt.im/live?id=mytvsuper-oly813
-MyTVSuper奧運814,https://api.btbt.im/live?id=mytvsuper-oly814
-MyTVSuper奧運815,https://api.btbt.im/live?id=mytvsuper-oly815
-MyTVSuper奧運816,https://api.btbt.im/live?id=mytvsuper-oly816
-MyTVSuper奧運817,https://api.btbt.im/live?id=mytvsuper-oly817
+刪除失效源,http://159.75.85.63:35455/huya/16739452
 
 🇹🇼台灣電視1️⃣,#genre#
 民視臺灣台,http://iptv543.com/litv.php?id=4gtv-4gtv001
