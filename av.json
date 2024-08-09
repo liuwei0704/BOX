@@ -9,8 +9,6 @@
 
 "sites":[
 {"key":"dr_script直播","name":"🔞script直播[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/script直播[飞].js"},
-{"key":"maiyoux_open","name":"🔞聚合直播(Cat)","type":3,"api":"https://ghproxy.net/https://git.886.be/https://raw.githubusercontent.com/13998394872/TVBox/main/Cat/maiyoux_open.js","searchable":1,"changeable":1,"timeout":60},
-{"key":"Pandalivetv","name":"💯韩国美女直播","type":3,"api":"csp_WexPandalivetv","jar":"https://github.com/n3rddd/N3RD/raw/master/JN/N3RD/J/wex.jar","searchable":0,"changeable":0},
 {"key":"av188","name":"Netflav|网盘","type":3,"api":"csp_Netflav","searchable":1,"changeable":0},
 
 {"key":"艾旦","name":"艾旦[採集]","type":1,"api":"https://lovedan.net/api.php/provide/vod/","playUrl":"json:http://127.0.0.1:10079/parse/?thread=0&proxy=&url=","searchable":1,"changeable":1,"categories":["三級倫理","福利視頻","網紅主播","海外抖音"]},
