@@ -1,6 +1,6 @@
 {
-"spider":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/jar/pg.jar",
-//"spider":"https://gitlab.com/lemon52030/BOX/-/raw/main/pg.jar",
+//"spider":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/jar/pg.jar",
+"spider":"https://gitlab.com/lemon52030/BOX/-/raw/main/pg.jar",
 
 "lives":[
 {"name":"檸檬","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
