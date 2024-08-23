@@ -1136,7 +1136,14 @@ Banana香蕉,http://125.227.210.55:8159/VideoInput/play.ts
 奧視2,http://125.227.210.55:55643/VideoInput/play.ts
 Sex Girl,http://125.227.210.55:62698/VideoInput/play.ts
 Mainu臺,http://125.227.210.55:51359/VideoInput/play.ts
+驚艷臺,https://18.svi-studio.com/live/565361330108/206277615704/1.m3u8
+潘朵拉完美,https://18.svi-studio.com/live/624372101145/418430465490/3.m3u8
+Banana香蕉,https://18.svi-studio.com/live/466400002871/769258274207/4.m3u8
+松视1台,http://18.svi-studio.com:8880/live/466400002871/769258274207/5.m3u8
+松视2台,https://18.svi-studio.com/live/466400002871/769258274207/6.m3u8
+松视3台,https://18.svi-studio.com/live/466400002871/769258274207/20205.m3u8
 
+🈲私密頻道_888,#genre#
 松視1,https://z88.ubtvfans.com/live/rx3/402/733039a795cd903623dd9c87385ee32b/index.m3u8
 松視2,https://z88.ubtvfans.com/live/rx3/403/9b7b6ffe613ab14cdcc993d8c28aa042/index.m3u8
 松視3,https://z88.ubtvfans.com/live/rx3/404/48745975c4b72ccc24ebd4d91afd641a/index.m3u8
