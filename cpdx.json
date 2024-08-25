@@ -46,7 +46,8 @@
 {"key":"櫻花","name":"🏙️櫻花[PG]","type":3,"api":"csp_Ying","searchable":1,"changeable":1},
 {"key":"巴士","name":"🏙️巴士[PG]","type":3,"api":"csp_Dm84","searchable":1,"changeable":1},
 
-{"key":"Panta","name":"弹幕 | 盘Ta[jar]","type":3,"api":"csp_Panta","quickSearch":1, "changeable":1, "filterable":1, "timeout":30, "ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://www.91panta.cn/$$$null$$$1"},
+{"key":"csp_Panta","name":"弹幕 | 盘Ta[jar]","type":3,"api":"csp_Panta","quickSearch":1, "changeable":1, "filterable":1, "timeout":30, "ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://www.91panta.cn/$$$null$$$1"},
+{"key":"csp_UpYun","name":"网盘 | UpYun[jar]","type":3,"api":"csp_UpYun","quickSearch":1, "changeable":1, "filterable":1, "timeout":30, "ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://www.91panta.cn/$$$null$$$1"},
 {"key":"csp_HunHePan","name":"网盘 | 混合盘[jar]","type":3,"api":"csp_HunHePan","searchable":1,"quickSearch":1, "changeable":1, "filterable":0, "timeout":60, "ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$null$$$1"},
 
 {"key":"dr_荐片[优]","name":"🎯荐片[优][JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"timeout":30,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/荐片[优].js"},
