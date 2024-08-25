@@ -22,7 +22,7 @@
 "thunder_is_vip":false,
 "thunder_vip_thread_limit":2,
 "thunder_flags":"4k|4kz|auto",
-"aliproxy":"./aliproxy.gz",
+"aliproxy":"",
 "aliproxy_url":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/aliproxy.gz",
 "proxy":"",
 "danmu":false,
