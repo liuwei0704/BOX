@@ -14,9 +14,6 @@
 {"key":"dr_爱看机器人","name":"🎥爱看机器人[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"changeable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/爱看机器人[虫].js"},
 {"key":"csp_Ikanbot","name":"🎥爱看机器人[PG]","type":3,"api":"csp_Ikanbot","searchable":1,"quickSearch":1,"changeable":1,"ext":"https://v.ikanbot.com"},
 
-{"key":"csp_P115Share","name":"搜索 | 💿115云盘分享(SP)","type":3,"api":"csp_P115Share","searchable":1,"quickSearch":1,"changeable":1,"filterable":1,"timeout":60,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://gitlab.com/lemon52030/BOX/-/raw/main/lib/115share.txt","style":{"type":"list","ratio":1.1}},
-{"key":"csp_AliShare","name":"搜索 | 💿阿里云盘分享(SP)","type":3,"api":"csp_AliShare","searchable":1,"quickSearch":1, "changeable":1,"filterable":0,"timeout":60,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://gitlab.com/lemon52030/BOX/-/raw/main/lib/alishare.txt"},
-
 {"key":"T4-黑狐","name":"🔅影视-黑狐[T4]","type":4,"api":"https://catbox.n13.club/t9/heihu.php"},
 {"key":"T4-jp","name":"🔅影视-荐片[T4]","type":4,"api":"https://catbox.n13.club/t9/jianpian.php"},
 {"key":"T4-南瓜","name":"🔅影视-南瓜[T4]","type":4,"api":"https://catbox.n13.club/t9/nangua.php"},
