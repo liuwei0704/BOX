@@ -4,6 +4,7 @@
 
 "lives":[
 {"name":"檸檬","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
+{"name":"三級片","type":0,"url":"https://mirror.ghproxy.com/raw.githubusercontent.com/bizhangjie/CatVodSpider/main/json/sjdy.txt","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
 {"name":"UB18","type":0,"url":"https://git.886.be/https://raw.githubusercontent.com/wolfcode9/d25d221074c7b34d/main/d3ef48d76c053b24/d919fe9602ad13f7","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
 {"name":"XTV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/xtv_1404.m3u","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
 "wallpaper":"http://饭.eu.org/深色壁纸/api.php",
@@ -25,9 +26,14 @@
 {"key":"kuaikan-ap","name":"快看(采集)","type":1,"searchable":1,"changeable":1,"api":"https://kuaikan-api.com/api.php/provide/vod/at/json","playUrl":"json:http://127.0.0.1:10079/parse/?thread=0&proxy=&url=","categories":["伦理片"]},
 {"key":"kuaiyunzy","name":"快云(采集)","type":1,"searchable":1,"changeable":1,"api":"https://www.kuaiyunzy.com/api.php/provide/vod/at/json","playUrl":"json:http://127.0.0.1:10079/parse/?thread=0&proxy=&url=","categories":["伦理片"]},
 
-{"key":"J91","name":"J91","type":3,"api":"csp_J91","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/yuanwangokk-1/TV-BOX/raw/main/TV/lib/spider.jar"},
-{"key":"51吃瓜","name":"51吃瓜","type":3,"api":"csp_Cg51","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/yuanwangokk-1/TV-BOX/raw/main/TV/lib/spider.jar"},
-{"key":"迷妹","name":"迷妹","type":3,"api":"csp_MiMei","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/yuanwangokk-1/TV-BOX/raw/main/TV/lib/spider.jar"},
+{"key":"J91","name":"J91","type":3,"api":"csp_J91","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"51吃瓜","name":"51吃瓜","type":3,"api":"csp_Cg51","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"迷妹","name":"迷妹","type":3,"api":"csp_MiMei","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"Rou223","name":"Rou223","type":3,"api":"csp_ROU223","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"嗨片","name":"嗨片","type":3,"api":"csp_HiPianZhiBo","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"久久爱片","name":"久久爱片","type":3,"api":"csp_JJAiPian","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"肉视频","name":"肉视频","type":3,"api":"csp_RouVideo","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
+{"key":"T4-麻豆","name":"麻豆[T4]","type":4,"api":"https://t4.doube.eu.org/madou.php"},
 
 {"key":"玩偶","name":"玩偶","type":3,"api":"csp_Doll","searchable":1,"style":{"type":"rect","ratio":1.309}},
 {"key":"Cable","name":"CableAV","type":3,"api":"csp_Cable","searchable":1,"quickSearch":1,"changeable":1,"filterable":0,"timeout":60},
