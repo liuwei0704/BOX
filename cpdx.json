@@ -27,6 +27,7 @@
 {"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable":1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/hwb.php","searchable":1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合[PHP]","type":1,"api":"http://zhangqun1818.serv00.net/cjjh.php","searchable":0,"changeable":1},
+{"key":"超級影視","name":"🔥超級影視[採集]","type":1,"api":"http://cjvip.free.hr/api.php/provide/vod/?ac=list","searchable":0,"changeable":1},
 
 {"key":"哔哩_PG","name":"🅱️Bili[PG]","type":3,"api":"csp_Bili","searchable":1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"沙雕动画#沙雕穿越#沙雕#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐","cookie":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/cookie.txt"}},
 {"key":"哔哩_CAT","name":"🅱️Bili[Cat]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bili_cat.js","ext":{"categories":"沙雕动画#沙雕穿越#沙雕#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐","cookie":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/cookie.txt"}},
