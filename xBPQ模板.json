@@ -75,6 +75,15 @@
 */
 "分类url": "https://fositv.com/vodshow/{cateId}-{area}-{by}------{catePg}---{year}.html",
 /**
+*分類Url使用說明
+{cateId}分類
+{area}地區
+{by}排序
+{class}類型
+{lang}語言
+{catePg}翻頁
+{year}年份
+*/
 *分类内置数字和拼音的四在类型，可用键$值的方式直接填写在分类中，用#分隔，例
 "分类": "电影$1#电视剧$2",
 *也可以用截取模式，截取模式同样可筛选和替换
