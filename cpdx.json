@@ -32,12 +32,6 @@
 {"key":"櫻花","name":"🏙️櫻花[PG]","type":3,"api":"csp_Ying","searchable":1,"changeable":1},
 {"key":"巴士","name":"🏙️巴士[PG]","type":3,"api":"csp_Dm84","searchable":1,"changeable":1},
 
-{"key":"T4-黑狐","name":"🔅影视-黑狐[T4]","type":4,"api":"https://catbox.n13.club/t9/heihu.php"},
-{"key":"T4-jp","name":"🔅影视-荐片[T4]","type":4,"api":"https://catbox.n13.club/t9/jianpian.php"},
-{"key":"T4-南瓜","name":"🔅影视-南瓜[T4]","type":4,"api":"https://catbox.n13.club/t9/nangua.php"},
-{"key":"T4-caiji","name":"🔅影视-采集[T4]","type":4,"api":"https://catbox.n13.club/t9/caiji.php"},
-{"key":"T4-saohuo","name":"🔅影视-骚火[T4]","type":4,"api":"https://catbox.n13.club/t9/saohuo.php"},
-{"key":"T4-mingri","name":"🔅影视-明日[T4]","type":4,"api":"https://catbox.n13.club/t9/mingri.php"},
 {"key": "T4-黑木耳","name": "🍑黑木耳[T4]","type": 4,"api": "https://tang.hz.cz/power/hme?token=8f5cf52a","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key": "T4-安博","name": "🍑安博[T4]","type": 4,"api": "https://tang.hz.cz/power/ub18?token=8f5cf52a","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key": "T4-歐樂","name": "🍑歐樂[T4]","type": 4,"api": "https://tang.hz.cz/power/olelive?token=8f5cf52a","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
@@ -352,6 +346,13 @@
 {"key":"dr1_7喜影院","name":"🎥7喜影院[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","ext":"https://jsdelivr.b-cdn.net/gh/hjdhnx/dr_py@main/js/7喜影院.js"},
 {"key":"dr1_中国人线上看","name":"🎥中国人线上看[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","ext":"https://jsdelivr.b-cdn.net/gh/hjdhnx/dr_py@main/js/中国人线上看.js"},
 {"key":"dr1_567电影院","name":"🎥567电影院[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","ext":"https://jsdelivr.b-cdn.net/gh/hjdhnx/dr_py@main/js/567电影院.js"},
+
+{"key":"T4-黑狐","name":"🔅影视-黑狐[T4]","type":4,"api":"https://catbox.n13.club/t9/heihu.php"},
+{"key":"T4-jp","name":"🔅影视-荐片[T4]","type":4,"api":"https://catbox.n13.club/t9/jianpian.php"},
+{"key":"T4-南瓜","name":"🔅影视-南瓜[T4]","type":4,"api":"https://catbox.n13.club/t9/nangua.php"},
+{"key":"T4-caiji","name":"🔅影视-采集[T4]","type":4,"api":"https://catbox.n13.club/t9/caiji.php"},
+{"key":"T4-saohuo","name":"🔅影视-骚火[T4]","type":4,"api":"https://catbox.n13.club/t9/saohuo.php"},
+{"key":"T4-mingri","name":"🔅影视-明日[T4]","type":4,"api":"https://catbox.n13.club/t9/mingri.php"},
 
 {"key":"T4-iktv","name":"🎧音乐-iktv[T4]","type":4,"api":"https://catbox.n13.club/t9/iktv.php"},
 {"key":"T4-tangdou","name":"🎧音乐-糖豆[T4]","type":4,"api":"https://catbox.n13.club/t9/tangdou.php"},
