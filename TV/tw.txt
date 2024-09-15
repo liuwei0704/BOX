@@ -1088,7 +1088,7 @@ DJ厅,http://43.138.170.29:35455/douyu/1770806
 💫其它直播,#genre#
 parse=1
 player=2
-虎牙624（遊戲）,http://159.75.85.63:35455/huya/402624#https://live.metshop.top/huya/402624
+虎牙624（遊戲）,http://159.75.85.63:35455/huya/402624#http://43.138.170.29:35455/huya/402624#https://live.metshop.top/huya/402624
 第五人格賽事（遊戲）,http://159.75.85.63:35455/huya/461698#https://live.metshop.top/huya/461698
 YY音乐991好歌不停,http://150.158.81.157/yy.php?id=54880976
 YY舞蹈993热舞不断,http://150.158.81.157/yy.php?id=22490906
