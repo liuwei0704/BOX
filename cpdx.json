@@ -32,9 +32,9 @@
 {"key":"櫻花","name":"🏙️櫻花[PG]","type":3,"api":"csp_Ying","searchable":1,"changeable":1},
 {"key":"巴士","name":"🏙️巴士[PG]","type":3,"api":"csp_Dm84","searchable":1,"changeable":1},
 
-{"key": "T4-黑木耳","name": "🍑黑木耳[T4]","type": 4,"api": "https://tang.hz.cz/power/hme?token=8f5cf52a","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key": "T4-安博","name": "🍑安博[T4]","type": 4,"api": "https://tang.hz.cz/power/ub18?token=8f5cf52a","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key": "T4-歐樂","name": "🍑歐樂[T4]","type": 4,"api": "https://tang.hz.cz/power/olelive?token=8f5cf52a","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key": "T4-黑木耳","name": "🍑黑木耳[T4]","type": 4,"api": "https://tang.hz.cz/power/hme?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key": "T4-安博","name": "🍑安博[T4]","type": 4,"api": "https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key": "T4-歐樂","name": "🍑歐樂[T4]","type": 4,"api": "https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
 
 {"key":"黑木耳克隆","name":"🔥黑木耳[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/225.php","searchable":1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable":1,"quickSearch":1,"filterable":0},
@@ -442,8 +442,8 @@
 "lives":[
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"安博TV","type":0,"url":"https://raw.staticdn.net/wolfcode9/d25d221074c7b34d/main/d3ef48d76c053b24/6df8af2d858ae0c4","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
-{"name":"安博(唐三)","url": "https://tang.hz.cz/zb/anbo?token=8f5cf52a","ua": "okhttp/4.12.0"},
-{"name":"ETH(JS)","api": "https://tang.hz.cz/js/ethtv.js","type": 3,"ua": "okhttp/4.12.0","ext": "8f5cf52a"},
+{"name":"安博(唐三)","url": "https://tang.hz.cz/zb/anbo?token=30b05f5f","ua": "okhttp/4.12.0"},
+{"name":"ETH(JS)","api": "https://tang.hz.cz/js/ethtv.js","type": 3,"ua": "okhttp/4.12.0","ext": "30b05f5f"},
 {"name":"STV","type":0,"url":"https://47.93.222.173/X2024/s2024/-/raw/S/S.bin","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"台灣TV1️⃣","type":0,"url":"https://raw.staticdn.net/linitfor/Open/main/6df8af2d858ae0c5","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"台灣TV2️⃣","type":0,"url":"https://raw.staticdn.net/linitfor/GetSource/main/app.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
