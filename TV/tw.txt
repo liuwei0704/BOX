@@ -1,6 +1,6 @@
-🍀20240913更新🍀,#genre#
+🍀20240920更新🍀,#genre#
 更新說明,http://159.75.85.63:35455/huya/13303478
-新增兩組台灣線路,http://159.75.85.63:35455/huya/15152155
+新增VIP,http://159.75.85.63:35455/huya/15152155
 無法觀看請切換IJK或EXO,http://159.75.85.63:35455/huya/593667
 無法觀看可切換其他線路,http://159.75.85.63:35455/huya/16739452
 
@@ -1088,7 +1088,7 @@ DJ厅,http://43.138.170.29:35455/douyu/1770806
 💫其它直播,#genre#
 parse=1
 player=2
-虎牙624（遊戲）,http://159.75.85.63:35455/huya/402624#http://43.138.170.29:35455/huya/402624#https://live.metshop.top/huya/402624
+虎牙624（遊戲）,http://43.138.170.29:35455/huya/402624#http://159.75.85.63:35455/huya/402624
 第五人格賽事（遊戲）,http://159.75.85.63:35455/huya/461698#https://live.metshop.top/huya/461698
 YY音乐991好歌不停,http://150.158.81.157/yy.php?id=54880976
 YY舞蹈993热舞不断,http://150.158.81.157/yy.php?id=22490906
@@ -1099,6 +1099,7 @@ YY舞蹈993热舞不断,http://150.158.81.157/yy.php?id=22490906
 👠Fashion TV_888,#genre#
 parse=1
 player=2
+FTV Midnight,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267427
 FashionTV Paris L'Original,https://www.fashiontv.com/watch/16891758
 FashionTV Singapore,https://www.fashiontv.com/watch/16891759
 FashionTV Johannesburg,https://www.fashiontv.com/watch/16891761
@@ -1149,8 +1150,21 @@ Banana香蕉,https://18.svi-studio.com/live/466400002871/769258274207/4.m3u8
 松视1台,http://18.svi-studio.com:8880/live/466400002871/769258274207/5.m3u8
 松视2台,https://18.svi-studio.com/live/466400002871/769258274207/6.m3u8
 松视3台,https://18.svi-studio.com/live/466400002871/769258274207/20205.m3u8
+PLAYHOUSE,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267469
+PLAYBOY USA,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267468
+PLAYBOY Latino,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267467
+PLAYBOY Brasil,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267466
+PLAYBOY,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267465
+IPPA +1,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267441
+IPPA,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267440
+ASIAN FOOTJOB,http://platin.live:8080/Andre1234/uYbLbjh2xz/488554
+Anastasia Knight,http://platin.live:8080/Andre1234/uYbLbjh2xz/531221
+X4 | Asian,http://platin.live:8080/Andre1234/uYbLbjh2xz/531216
+Japan HDV,http://defaultgen.com:3050/ecsdawson@gmail.com/rWJJRPaNvR/652414
+VIP Japanese,http://gametwo.ddns.net:8008/AlinaCioc/r7YaED5/251797
+Japan Uncensored,http://fortv.cc:8080/sh@ME@5638/R34tYn8LOpM/215583
 
-🈲私密頻道_888,#genre#
+🈲安博私密_888,#genre#
 松視1,https://z88.ubtvfans.com/live/rx3/402/733039a795cd903623dd9c87385ee32b/index.m3u8
 松視2,https://z88.ubtvfans.com/live/rx3/403/9b7b6ffe613ab14cdcc993d8c28aa042/index.m3u8
 松視3,https://z88.ubtvfans.com/live/rx3/404/48745975c4b72ccc24ebd4d91afd641a/index.m3u8
