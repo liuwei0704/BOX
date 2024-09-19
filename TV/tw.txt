@@ -1081,15 +1081,16 @@ YY剧场怀旧,https://live.metshop.top/yy/1382627144
 爱情公寓,http://43.138.170.29:35455/douyu/6863367
 
 💕•音樂時尚,#genre#
-周杰伦MV,http://43.138.170.29:35455/douyu/7537296
-KPOP TV,https://srv1.zcast.com.br/kpoptv/kpoptv/chunklist_w987955597.m3u8
-DJ厅,http://43.138.170.29:35455/douyu/1770806
+parse=1
+player=2
+周杰伦MVhttps://m.douyu.com/7537296?dyshid=0-ca0d7faddc2714ba75275eaa000717p1&dyshci=54
+MV,https://m.douyu.com/3186217?dyshid=0-ca0d7faddc2714ba75275eaa000717p1&dyshci=208
 
 💫其它直播,#genre#
 parse=1
 player=2
-虎牙624（遊戲）,http://43.138.170.29:35455/huya/402624#http://159.75.85.63:35455/huya/402624
-第五人格賽事（遊戲）,http://159.75.85.63:35455/huya/461698#https://live.metshop.top/huya/461698
+虎牙624（遊戲）,https://m.huya.com/402624
+第五人格賽事（遊戲）,https://m.huya.com/461698
 YY音乐991好歌不停,http://150.158.81.157/yy.php?id=54880976
 YY舞蹈993热舞不断,http://150.158.81.157/yy.php?id=22490906
 17經典台,https://17.live/zh-Hant/live/8494770
