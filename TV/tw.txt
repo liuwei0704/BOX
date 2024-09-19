@@ -1083,8 +1083,8 @@ YY剧场怀旧,https://live.metshop.top/yy/1382627144
 💕•音樂時尚,#genre#
 parse=1
 player=1
-周杰伦MV,https://m.douyu.com/7537296?dyshid=0-ca0d7faddc2714ba75275eaa000717p1&dyshci=54
-阿七點歌台,https://m.douyu.com/3186217?dyshid=0-ca0d7faddc2714ba75275eaa000717p1&dyshci=208
+周杰伦MV,https://openhls-tct.douyucdn2.cn/dyliveflv3a/7537296raZXPxeoE_900.m3u8?txSecret=b9df58675bb17e9cd3aec2c0991ace16&txTime=66ecbd0f&token=h5-douyu-0-7537296-5f3be342ebac5d0d1838afc4c20afcd2&did=ca0d7faddc2714ba75275eaa000717p1&origin=tct&vhost=play4&sid=400134423
+阿七點歌台,https://openhls-tct.douyucdn2.cn/dyliveflv3a/3186217rjKcySkOG_900.m3u8?txSecret=c9b1b639b5f18c3367e86cbddc71b61c&txTime=66ecbd42&token=h5-douyu-0-3186217-6120afc4951b3d0922bab4506fa26a22&did=ca0d7faddc2714ba75275eaa000717p1&origin=tct&vhost=play4&sid=399877344
 
 💫其它直播,#genre#
 parse=1
