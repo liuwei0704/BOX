@@ -31,7 +31,7 @@
 {"key":"Rou223","name":"Rou223","type":3,"api":"csp_ROU223","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
 {"key":"嗨片","name":"嗨片","type":3,"api":"csp_HiPianZhiBo","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
 {"key":"肉视频","name":"肉视频","type":3,"api":"csp_RouVideo","searchable":1,"style":{"type":"rect","ratio":1.309},"jar":"https://github.com/shichuanenhui/TvBox/raw/main/jar/jav.jar"},
-{"key":"T4-麻豆","name":"麻豆[T4]","type":4,"api":"https://json.doube.eu.org/madou.php"},
+{"key":"T4-麻豆","name":"麻豆[T4]","type":4,"api":"http://118.89.95.72/yydd/hipy/madou.php"},
 {"key":"T4-愛豆","name":"愛豆[T4]","type":4,"api":"https://py.doube.eu.org/api?site=aidouchuanmei"},
 
 {"key":"玩偶","name":"玩偶","type":3,"api":"csp_Doll","searchable":1,"style":{"type":"rect","ratio":1.309}},
