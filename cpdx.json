@@ -267,9 +267,6 @@
 {"key":"dr_电影天堂","name":"🎥电影天堂[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/电影天堂.js"},
 {"key":"dr_HDmoli","name":"🎥HDmoli[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/HDmoli.js"},
 
-{"key":"TGYunPanLocal","name":"TG搜索Local|网盘搜索","type":3,"api":"csp_TGYunPanLocal","timeout":60, "ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://t.me/$$$oneonefivewpfx,hao115,guaguale115,Channel_Shares_115,dianyingshare,XiangxiuNB,yunpanpan,kuakeyun,zaihuayun,Quark_Movies,vip115hot,yunpanshare,shareAliyun,ikiviyyp,alyp_1,quanziyuanshe$$$proxy$$$1"},
-{"key":"TGYunPan","name":"TG搜索|网盘搜索","type":3,"api":"csp_TGYunPan","timeout":60, "ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$http://127.0.0.1:10199/$$$alypzyhzq|1000,Mbox115|1000,shares_115|1000,Quark_Share_Channel|1000,Aliyundrive_Share_Channel|1000,wanwansubchat|1000$$$noproxy$$$1"},
-
 {"key":"T4-iktv","name":"🎧音乐-iktv[T4]","type":4,"api":"https://catbox.n13.club/t4/iktv.php"},
 {"key":"T4-tangdou","name":"🎧音乐-糖豆[T4]","type":4,"api":"https://catbox.n13.club/t4/tangdou.php"},
 {"key":"T4-tangdou2","name":"🎧音乐-糖豆2[T4]","type":4,"api":"https://catbox.n13.club/t4/tangdou2.php"},
