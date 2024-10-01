@@ -15,7 +15,6 @@
 {"key":"哔哩_CAT","name":"🅱️Bili[Cat]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bili_cat.js","ext":{"categories":"沙雕动画#沙雕穿越#沙雕#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐","cookie":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/cookie.txt"}},
 
 {"key":"Youtube1","name":"▶️Youtube[PG]","type":3,"api": "csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json","type":"動漫魔女#星芒漫画#球球说漫#星河劇社#神州劇場#爽劇不斷#天天剧工厂#嘟嘟剧场#熊熊追剧","keywords":"短劇,動態漫,完結","codecs":""},"style": {"type": "rect","ratio": 1.5}},
-
 {"key": "T4-Youtube","name": "▶️Youtube[T4]","type": 4,"api": "https://api.paoyun.eu.org/yt/yt001.php","searchable": 1,"changeable": 1,"ext": "動漫魔女#星芒漫画#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#七號動漫館"},
 {"key": "LB-Youtube","name": "▶️Youtube-列表[T4]","type": 4,"api": "https://api.paoyun.eu.org/ytlb.php","searchable": 1,"changeable": 1},
 
@@ -350,7 +349,7 @@
 
 "lives":[
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
-{"name":"安博TV","type":0,"url":"https://raw.staticdn.net/wolfcode9/d25d221074c7b34d/main/d3ef48d76c053b24/6df8af2d858ae0c4","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
+{"name":"安博TV","type":0,"url":"https://raw.githubusercontent.com/wolfcode9/d25d221074c7b34d/refs/heads/main/d3ef48d76c053b24/6df8af2d858ae0c4","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"安博(唐三)","url": "https://tang.hz.cz/zb/anbo?token=30b05f5f","ua": "okhttp/4.12.0"},
 {"name":"ETH(JS)","api": "https://tang.hz.cz/js/ethtv.js","type": 3,"ua": "okhttp/4.12.0","ext": "30b05f5f"},
 {"name":"STV","type":0,"url":"https://47.93.222.173/X2024/s2024/-/raw/S/S.bin","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
