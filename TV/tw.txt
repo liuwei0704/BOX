@@ -1,6 +1,6 @@
-🍀20241002更新🍀,#genre#
+🍀20241005更新🍀,#genre#
 更新說明,http://159.75.85.63:35455/huya/13303478
-增加YT頻道,http://159.75.85.63:35455/huya/15152155
+增加台灣線路,http://159.75.85.63:35455/huya/15152155
 本線路無法觀看,http://159.75.85.63:35455/huya/593667
 可切換其他線路,http://159.75.85.63:35455/huya/16739452
 
@@ -24,7 +24,7 @@ TVBS新聞,https://www.youtube.com/watch?v=m_dhMSvUCIc
 三國24H,https://www.youtube.com/watch?v=Njvo1ce2v90
 水滸傳24H,https://www.youtube.com/watch?v=hP4sQJikwCk
 
-🇹🇼台灣電視🌍🆙,#genre#
+🇹🇼台灣電視🆙1️⃣,#genre#
 AXN,http://50.7.234.10:8278/axn_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ef65538f6c01924d72c6a0e75f36e60d
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=d90050abd53d6edee6972da57757242a
 EYE戲劇,http://50.7.234.10:8278/eyetvxiju_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=79e67365d44bc09f217c353263327381
@@ -106,6 +106,127 @@ CN卡通,http://50.7.234.10:8278/momo1_twn/playlist.m3u8?tid=MF7F566558295665582
 龍華洋片,http://50.7.234.10:8278/lunghuawestern_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3c9ccd421d05ff4a3af2c02d56b4b3c6
 龍華經典,http://50.7.234.10:8278/lunghuajingdian_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=96207c471d439515e0067b333e3b5459
 龍華電影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=53153e05f428f28b65eb5559ae5b9dc0
+
+🇹🇼台灣電視🆙2️⃣,#genre#
+中天新聞台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQmBbYquY4oExk2niXClR2U/ts
+東森新聞台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcTHoYNoi7tElQYMMJty0Ky8/ts
+TVBS新聞台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfTArWknG0ij1O8sljRSpGQ/ts
+壹電視新聞台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbQC7ECAt27n-XFH-JYJsTA/ts
+三立新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcc2jGsVnP6UXlqWIPk_Fe2c/ts
+民視新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbYW3Csl7r79EckkRf4slVs/ts
+台視新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcW3pZ1997xMHg__wtd9wVx4/ts
+寰宇新聞台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfYIEA38TjIalHxyLwKh2QQ/ts
+寰宇新聞台灣台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQccvtwRfq40vkdvmRX6GY2uA/ts
+年代新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXeM7-2EwDuQPPi_kYMqlmg/ts
+非凡新聞台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbstcVSisJ4UApbLHrs3O5Q/ts
+鏡新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUeHjOQgPuOQngteWgCXaHE/ts
+東森財經新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQi4qIBkzVn02-fjq0YyNoo/ts
+寰宇財經,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZkUA5E_gnsr67cilt8rEBQ/ts
+東森超視,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUhZae_WofTxE5RtBL_cwdQ/ts
+台視財經,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQceUut0aKcmbezpYgcta1u0k/ts
+中視新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYWiUyvcj7HNQj2cnccQtxE/ts
+華視新聞,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaIUCJdqgukEqKXHAsU_Rmc/ts
+三立INEWS,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYdG0NNhUVotXGGj1CXyaQ0/ts
+民視,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXi23xfbsFvpiO0MNXEVqtk/ts
+台視,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbKzA0iTTwUoR5s7U8-rHtI/ts
+中視,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQ4x_igzrQDNi4ZPjwZFEoo/ts
+華視,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdriIPhoS8-e7ETHqVHsGp0/ts
+公視3,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcTnDCumJFcvPFAPjuNn5Ewc/ts
+公視戲劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdwUqCq3nO-483yO5-Dppbk/ts
+公視台語,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbJNWO6zW_ZBKdkZe2BIV0k/ts
+TVBS綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcRUNa-tuNePQmRCHbrDDuTQ/ts
+TVBS歡樂,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbA7-pRVtVVXfkUhAaPxZKA/ts
+TVBS精采,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbQedvaaVx9bPJ4ajRg9ms0/ts
+東森綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQalUxwD4DPNp56_iykVFb0/ts
+東森電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSlzdgTj8CzIFIumXrV5QLE/ts
+東森戲劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYNDi8JizyLdq5jpGefPP8c/ts
+東森洋片,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVFNavf_gV7E4u-wTCipTWQ/ts
+東森亞洲,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca8sHNMSUk1gbtxbLOvvXrc/ts
+中天綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfi9oHUkhYYH4EbXVpPm9ac/ts
+中天娛樂,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfsLR7EXdEqtLGhpLng885c/ts
+中天亞洲,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbk_gA6dpiegxZkMGlyAUFU/ts
+三立綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaPE4Ubg4qNIrh655JwSZqM/ts
+三立台灣,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcf09Jnr5JNk_1zqQ_qJLw1g/ts
+三立都會,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUjNIcCBqAOBBvDXVTEgTzQ/ts
+三立戲劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfYw1eO3tZUpU157CrJQBPo/ts
+三立國際,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQLlb2Gib54eAcJK86vfmr0/ts
+中視經典,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcTPQRi1YJzfK2HzmIDI3MYo/ts
+中視菁采,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaO0ASPT1ZdKONd6p81Y9Dc/ts
+民視旅遊,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdTcfw06Hp2HzZgr_LhBPNE/ts
+民視綜藝,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaz1FICKIv1decNGeGEXiG0/ts
+民視第一,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWxV94PjALHqN4g7DUhp27c/ts
+民視影劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbb3EUpo_91bWHk5SwgLjNs/ts
+民視台灣,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZnkBXQwJfPeZuLzeKrA-So/ts
+靖天電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQceKTJXNyvw8kZuUOCx4HlwU/ts
+靖天育樂,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbiqzJTs-SDXCPsxEUCjbz4/ts
+靖天歡樂,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVplsSBhNdTkQ2XPI-oBv-M/ts
+靖天綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWgS8EvHvS6f_veEJzSrPJU/ts
+靖天戲劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcW8YV0xdnD5B5zeAshKS05o/ts
+靖天國際,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYXm7sGvphMvOYBbyOdlSQI/ts
+靖天卡通,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaN9fUXWrSVepZNrSUhy81A/ts
+美亞電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQccP-581hI5zQbLAvDbmURg8/ts
+HBO,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQccEvH21dgw1gJdf1a1gEqRU/ts
+HBO Signature,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXgbzx5vdfIGez6DNa_0of0/ts
+HBO Family,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaIKoUwwIyx9MtuJCTG4A5U/ts
+HBO Hits,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdfGSAf0n-C4gZc23OV9A0Y/ts
+Cinemax,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQccp4ovHc_Azhp8UGKmuOEEw/ts
+AXN,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQ-owm34LOq38OkCYS1z_ow/ts
+CI 罪案偵查頻道,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWdkohyPLHrb3Yik_ekRTKQ/ts
+CATCHPLAY電影台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbYKFprDndL9aQ6XT4KJFNw/ts
+影迷數位電影台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcc6c59RW1SkgT1b7GECI5Cw/ts
+影迷數位紀實,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVFa4AT3QBJkJI4AgXu46mw/ts
+龍祥電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYO3kkM4Aml9V_sC0A0AiR4/ts
+好萊塢電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdj4Xnad6ZIXi4AqCI2pAXw/ts
+華納電視 warner,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcTuYYL_Du1Qd29UKi2IHfoA/ts
+My Cinema Europe,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQU-8xpgkomoA_aNGbspE1w/ts
+Cinema World,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQRb-tF-AQjSTpcFyBJhqJk/ts
+AMC最愛電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZV67jO8398u3G8l7lkzfQ0/ts
+視納華仁紀實,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdbNKDwXYGXXAPZpYQAw_KE/ts
+HITS頻道,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdykJsX4kniVefVaiyln29E/ts
+八大精彩,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdj8VdTcqTkzDEf5kowmEus/ts
+八大綜藝,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcRixP8SipMSMDVUvHhdFER0/ts
+八大綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcd3-Ind5dSExdFWUa4Cqlrw/ts
+八大戲劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQceFnJ_4DEoeWcbkY1ubDFXk/ts
+八大第一,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXsYCtHI2Ye_WPybTmkl3t0/ts
+八大娛樂,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdyEZcn9-VUJNZXzKkQRf58/ts
+緯來體育,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQyzzwBH9KJDPXlPS_0U4zA/ts
+緯來日本,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfSAEP09F2pFU2ruBNnUw1A/ts
+緯來育樂,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdVIFHFjWDTYmHvKXFp1J0E/ts
+緯來綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca8vbuoCy_xsvNNugXZhM4k/ts
+緯來戲劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcRTIQ0Wk0PolmqQiaEmeFMM/ts
+緯來電影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcfmWGKEnr3LfOhdIAWtbh4Q/ts
+愛爾達體育1台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZNtzjaRaQpLi4eKXUpMUJU/ts
+愛爾達體育2台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVat0QnxdC2fg5qlGW2ClpY/ts
+TW 愛爾達體育3,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUpAkEoGjDv2CKvVfUDZuRs/ts
+TW 愛爾達綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdnKjfoOZ2cMm0RFb50tO24/ts
+TW 愛爾達影劇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQccmuJ9vkkf5-Tgfw_acLFqA/ts
+TW ELEVEN體育 1,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcd428ZOoXIK3SOKFAppygtA/ts
+TW ELEVEN體育 2,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcRAkkr08b6oCYZdu4jbBk0k/ts
+TW JET綜合,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSXxfapF2a1jiEW0JTsZWjo/ts
+TW 亞洲美食,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSVXnVUzmwAJeBIXqKO8mAw/ts
+TW 動物星球,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZPctBoPIiMNFR9usZXeXWo/ts
+TW 亞洲旅遊,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSFb5qkaUxps_GDV_cIKmFw/ts
+TW BBC Lifestyle,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdZSPYg6ucHHLLlF5o9wAaA/ts
+TW 探索亞洲,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYhl7YAnQwjElKUozIZDj-k/ts
+TW 探索科學,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYKipPEdg4AE40zYStJgZSo/ts
+TW 探索頻道,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSZj6whJgd9AX6NEpfO_PJk/ts
+TW Discovery DMAX,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVYJZ2rARHsgQe-U63lqI_8/ts
+TW 美食星球,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdoUzEVmLNsy91H8XcNUqas/ts
+TW 歷史頻道 1,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcS_up59H6q5l0-y_jxk_pe4/ts
+TW Love Nature,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZqWYkGbMeYgbcXd4YZbQY8/ts
+TW BBC Earth,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVFsbCc1Uzi6-Usc0sYaqSI/ts
+TW Discovery EVE,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcV2FCDMf6o4HbKi4OgjPgGU/ts
+TW HGTV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUTXdK_4Xgxnp7fBjK5t1Hs/ts
+TW 幸福居家,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZt4dSi7HfC7BmPUHeVGC6w/ts
+TW Boomerang,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca8WTTVZYy3x4_JfyYrkZIc/ts
+TW Animax卡通,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVbm66_HBGa4d6sCOat-i2Y/ts
+TW MOMO親子,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdNsfgVxBulYQ1o7UC-iWFE/ts
+TW 尼克兒童,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQccNWZTV-RgPRIkpUeTdxQDU/ts
+TW Nick Jr. 尼克幼兒,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcax1OvtJN4CyzTixdDRz7p8/ts
+TW 東森幼幼,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYjLAh_gwEE-N25kYUrGdOU/ts
+TW CARTOON卡通,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcTizNITvaBx91UcfKVnOWJ0/ts
+TW 達芬奇,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaaTDk5mNV5ig6o4VFzoMuo/ts
+TW i-Fun動漫,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQceEa0qBJVgbQH8Afldxtif8/ts
 
 🇹🇼台灣電視🌍1️⃣,#genre#
 民視,https://kaytse4gtv.koyeb.app/litv/4gtv-4gtv002
@@ -871,7 +992,7 @@ player=2
 随机电影,http://aiyun.work.gd/sjdy.php
 刘公子随机,http://lzoq.hk3.345888.xyz/daili/sx.php
 
-🈲VIP頻道_888,#genre#
+🈲VIP頻道1️⃣_888,#genre#
 驚豔台,http://18.svi-studio.com:8880/live/908957700097/132663288386/1.m3u8
 潘朵拉完美,http://18.svi-studio.com:8880/live/624372101145/418430465490/3.m3u8
 香蕉台,http://18.svi-studio.com:8880/live/624372101145/418430465490/4.m3u8
@@ -884,3 +1005,34 @@ player=2
 奧視1台,http://125.227.210.55:8201/VideoInput/play.ts
 奧視2台,http://125.227.210.55:8203/VideoInput/play.ts
 奧視3台,http://125.227.210.55:8205/VideoInput/play.ts
+
+🈲VIP頻道2️⃣_888,#genre#
+潘朵拉完美台HD,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSq6A1oHxKnQ4WlmE90kZN0/ts
+Amazing 惊艳成人电影台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYDkhsDNuv8h4Ksj2vESTA4/ts
+Banana 香蕉台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcS2rLHOs1Y0h_rAr2RCT45M/ts
+松视1台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQceEzsleDsLx2s3KTY4TEHpE/ts
+松视2台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXeTqsIoi-PVg0ZEJLlWe30/ts
+彩虹E,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcc0cHqRWfXZNe5PAnvLgnAY/ts
+彩虹电影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbpFStid8ZvVdliZWC3ikYA/ts
+LOOK,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca4R6wgFkioEZv27-J94WQs/ts
+HAPPY 頻道,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVF25JseI6IdcwTEZb_vqjs/ts
+JStar 极限电影台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUrbcnCcF4NG1zYx5pH0sb4/ts
+彩虹K,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQym0BHDZ2B1R-5R0Hh7Bpk/ts
+Playboy,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdPM62fF5GylM_E7_nmSI3c/ts
+Vivid Red,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXzh7u7Xge0k0EPwg2L-RzI/ts
+Private,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQce5pLGx_gynKMMPWvCQgNeM/ts
+Dorcel,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWlVSJ5PLI1ns2pjNW-Mkc0/ts
+Dorcel XXX,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUo8WhpeV-XSxGzzqKN8wXM/ts
+Hustler TV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca1sZq6NHOIa4mUNofFPiDY/ts
+Penthouse Gold,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaZv1wveuLLSskCHQgpNmUU/ts
+Red Light,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQO2NRYYG7rt4mw2jnb-EtE/ts
+Brazzers TV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYLI8iGD8ljkTx4IHO8U2G4/ts
+Blue Hustler,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcb8yznp7ETmEl4w4Q5mCC0Y/ts
+Vivid Touch,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZyCrCJ-VlIHiZGfyhPqCVM/ts
+Erox,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQqzjkPmlTZpAsat6HtZurM/ts
+Penthouse Quickie,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYBkQnrJeuAhqzASilpJ9IU/ts
+RED LIPS,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcU3xVIZDUZ5vL7MKoABQpXA/ts
+VIXEN,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWPidoABZGK0Mx730oKmlO4/ts
+Babes XXX,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWNntJ2ER3NgfRDSfl8BEZ0/ts
+EXXOTICA,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcY1sGQv061ovAPhlQxeIDo4/ts
+Hustler XXX TV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaVvJwboNTZP_-srJottUJg/ts
