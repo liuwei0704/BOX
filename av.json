@@ -10,6 +10,7 @@
 "wallpaper":"http://饭.eu.org/深色壁纸/api.php",
 
 "sites":[
+{"key": "18insta","name": "18INSTA[XBPQ]","type": 3,"api": "csp_XBPQ","style": {"type": "rect","ratio": 1.77},"ext": {"数组二次截取": "models\":[&&]","数组": "{&&}","图片":"previewUrlThumbBig:\"https+://static-cdn.strpst.com/+https://static-cdn.strpst.com/&&\"","标题": "username\":\"&&\"","副标题": "id\":\"&&\"","链接": "hlsPlaylist\":\"&&_+_480p.m3u8","分类url": "https://zh.18insta.com/api/front/models?primaryTag=girls&sortBy=viewersRating&userRole=guest&groupId=6&limit=20&filterGroupTags=[[\"{cateId}\"]]&offset=0;;m","直接播放": 1,"播放请求头":"手机","分类": "中国$tagLanguageChinese#乌克兰$tagLanguageUkrainian#日本$tagLanguageJapanese#韩国$tagLanguageKorean#越南$tagLanguageVietnamese#哥伦比亚$tagLanguageColombian"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 {"key":"dr_script直播","name":"🔞script直播[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/script直播[飞].js"},
 {"key":"lf_js_p2p","name":"磁力|lf_p2p","type":3,"playerType":1,"searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/if_p2p.js","ext":"18+"},
 {"key":"lf_js_search","name":"搜索|lf_search","type":3,"searchable":0,"changeable":0,"quickSearch":0,"filterable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/lf_search1_min.js"},
