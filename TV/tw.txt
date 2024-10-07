@@ -13,7 +13,7 @@ YT直播請升級(2.5.8),https://live.metshop.top/douyu/9986305
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
-parse=1
+parse=2
 player=2
 TVBS新聞,https://www.youtube.com/watch?v=m_dhMSvUCIc
 東森新聞,https://www.youtube.com/watch?v=V1p33hqPrUk
@@ -29,7 +29,7 @@ TVBS新聞,https://www.youtube.com/watch?v=m_dhMSvUCIc
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
-parse=1
+parse=2
 player=2
 我們這一家,https://www.youtube.com/watch?v=UK81GCw1KE8
 新哆啦A夢,https://www.youtube.com/watch?v=hpXMNZFjWr8
@@ -43,7 +43,7 @@ player=2
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
-parse=1
+parse=2
 player=2
 AXN,http://50.7.234.10:8278/axn_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ef65538f6c01924d72c6a0e75f36e60d
 CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=d90050abd53d6edee6972da57757242a
@@ -131,7 +131,7 @@ CN卡通,http://50.7.234.10:8278/momo1_twn/playlist.m3u8?tid=MF7F566558295665582
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
-parse=1
+parse=2
 player=2
 TVBS News 新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tvbs_n
 TVBS 歡樂台 （備份）,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tvbshuanle_twn
