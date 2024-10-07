@@ -2,9 +2,9 @@ Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
 
-🍀20241004更新🍀,#genre#
+🍀20241007更新🍀,#genre#
 更新說明,http://159.75.85.63:35455/huya/13303478
-增加台灣🆙線路,http://159.75.85.63:35455/huya/15152155
+更新台灣🆙線路,http://159.75.85.63:35455/huya/15152155
 YT直播請升級(2.5.8),https://live.metshop.top/douyu/9986305
 本線路無法觀看,http://159.75.85.63:35455/huya/593667
 可切換其他線路,http://159.75.85.63:35455/huya/16739452
@@ -39,7 +39,7 @@ player=2
 三國24H,https://www.youtube.com/watch?v=Njvo1ce2v90
 水滸傳24H,https://www.youtube.com/watch?v=hP4sQJikwCk
 
-🇹🇼台灣電視🆙,#genre#
+🇹🇼台灣電視¹🆙,#genre#
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
@@ -126,6 +126,78 @@ CN卡通,http://50.7.234.10:8278/momo1_twn/playlist.m3u8?tid=MF7F566558295665582
 龍華洋片,http://50.7.234.10:8278/lunghuawestern_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3c9ccd421d05ff4a3af2c02d56b4b3c6
 龍華經典,http://50.7.234.10:8278/lunghuajingdian_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=96207c471d439515e0067b333e3b5459
 龍華電影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=53153e05f428f28b65eb5559ae5b9dc0
+
+🇹🇼台灣電視²🆙,#genre#
+公視 HD,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/j44fm83f/index.m3u8
+公視台語台,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/8x1bt2hg/index.m3u8
+華視,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/hmrmw2mj/index.m3u8
+台視 HD,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/c05pm3s2/index.m3u8
+中視,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/qx3hnnss/index.m3u8
+中視HD,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/0fjz7px1/index.m3u8
+民視,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/t6u5b1q4/7c4f853f/index.m3u8
+霹靂台,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/d1ffefce/index.m3u8
+民視台灣/台灣高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/bh0x57p4/index.m3u8
+中視新聞,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/bkrbn0pf/index.m3u8
+年代新聞,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/t6u5b1q4/67f088a8/index.m3u8
+非凡新聞,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/569f8eea/index.m3u8
+非凡商業,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/1b1653b5/index.m3u8
+東森幼幼,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/fchcah3u/31t5z7bp/index.m3u8
+東森洋片,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/fadh3ct5/0kxhqv8q/index.m3u8
+東森新聞高清bak,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/fchcah3u/94zf0c2v/index.m3u8
+東森財經新聞高清bak,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/fchcah3u/1cj0fxmv/index.m3u8
+東森戲劇,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/fchcah3u/g5n3j8kx/index.m3u8
+電影世界,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/wrn6wjz7/index.m3u8
+STAR世界,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/e8eddaf3/index.m3u8
+華視教育體育文化台,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/185781a1/index.m3u8
+福克斯體育1高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/e95cebf9/1a74fff3/index.m3u8
+福克斯體育2高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/e95cebf9/55de631b/index.m3u8
+歐洲體育/sports,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/jjf48w4x/index.m3u8
+ELEVEN體育,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/svs9236c/index.m3u8
+福克斯新聞,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/e95cebf9/39497075/index.m3u8
+SKY新聞高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/8vfjmcsj/index.m3u8
+美國有線電視新聞網,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/7w0tv28m/index.m3u8
+英國廣播公司,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/93n722x2/index.m3u8
+BBC地球高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/cbpz1qrf/index.m3u8
+BBC Lifestyle HD,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/wq2z42th/index.m3u8
+CNBC，http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/wnfjf1pn/index.m3u8
+法國24(英語),http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/4f17z4qv/index.m3u8
+TV5,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/9nk93b9c/index.m3u8
+DW-電視,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/5g2z36jg/index.m3u8
+JET綜合，http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/07t8z33z/index.m3u8
+高點電視台高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/fmqkc4bh/index.m3u8
+好訊息1,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/x4qgwt3s/index.m3u8
+Discovery HD,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/fvptsnk3/index.m3u8
+發現動力頻道高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/nvhgfr5c/index.m3u8
+探索科學頻道高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/0j9wgpsb/index.m3u8
+國家地理高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/nvhgfr5c/index.m3u8
+動物星球,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/e95cebf9/63f6f7c7/index.m3u8
+歷史高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/4m124k0n/index.m3u8
+歷史2高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/t6u5b1q4/hdfg61df/index.m3u8
+CI罪案偵緝,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/rw55z1xs/index.m3u8
+亞洲旅遊台高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/jhmt4rc8/index.m3u8
+亞洲美食,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/t6u5b1q4/2fdxafax/index.m3u8
+美食星球,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/45c2r1kr/index.m3u8
+時尚電視高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/7xkr4spr/index.m3u8
+FTV午夜秘密,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/8c33fa9b/91112251/index.m3u8
+COMEDY-CENTRAL,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/e95cebf9/3e8e3616/index.m3u8
+HBO家庭,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/61br3tqt/index.m3u8
+星衛娛樂台,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/sps6gxp6/index.m3u8
+MTV,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/a7939dbd/index.m3u8
+LIfetimeMovie,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/ed6089dd/index.m3u8
+加油!,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/e95cebf9/71f4470d/index.m3u8
+華納兄弟高清,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/t6u5b1q4/c8853895/index.m3u8
+旅遊頻道,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/059c6cgh/index.m3u8
+曼迪日本/日本台,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/fchcah3u/zhjnc3xr/index.m3u8
+TVN,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/8wk7r3sc/index.m3u8
+Z頻道,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/bcv2rznr/index.m3u8
+安利MAX,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/zmz9k2hc/index.m3u8
+迪士尼（迪士尼）,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/tnv75740/index.m3u8
+CN卡通,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/0jqsx5tg/index.m3u8
+MOMO親子台,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/877sd556/index.m3u8
+寶貝電視,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/0j9wgpsb/index.m3u8
+大愛一個 ,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/tcs89msv/index.m3u8
+國興衛視,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/6zb3p58j/index.m3u8
+好訊息2,http://yccloud.serv00.net/huanqiu.php?m3u8=/live/kwzq1rse/h8w5891c/index.m3u8
 
 🇹🇼台灣電視🌍1️⃣,#genre#
 民視,https://kaytse4gtv.koyeb.app/litv/4gtv-4gtv002
@@ -915,6 +987,7 @@ OL,http://free.xiptv.x10.bz/api/av.php?id=21
 絲襪,http://free.xiptv.x10.bz/api/av.php?id=31
 護士,http://free.xiptv.x10.bz/api/av.php?id=32
 過膝襪,http://free.xiptv.x10.bz/api/av.php?id=33
+
 🈲VIP頻道1️⃣_888,#genre#
 驚豔台,http://18.svi-studio.com:8880/live/908957700097/132663288386/1.m3u8
 潘朵拉完美,http://18.svi-studio.com:8880/live/624372101145/418430465490/3.m3u8
@@ -928,34 +1001,3 @@ OL,http://free.xiptv.x10.bz/api/av.php?id=21
 奧視1台,http://125.227.210.55:8201/VideoInput/play.ts
 奧視2台,http://125.227.210.55:8203/VideoInput/play.ts
 奧視3台,http://125.227.210.55:8205/VideoInput/play.ts
-
-🈲VIP頻道2️⃣_888,#genre#
-潘朵拉完美台HD,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcSq6A1oHxKnQ4WlmE90kZN0/ts
-Amazing 惊艳成人电影台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYDkhsDNuv8h4Ksj2vESTA4/ts
-Banana 香蕉台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcS2rLHOs1Y0h_rAr2RCT45M/ts
-松视1台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQceEzsleDsLx2s3KTY4TEHpE/ts
-松视2台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXeTqsIoi-PVg0ZEJLlWe30/ts
-彩虹E,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcc0cHqRWfXZNe5PAnvLgnAY/ts
-彩虹电影,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcbpFStid8ZvVdliZWC3ikYA/ts
-LOOK,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca4R6wgFkioEZv27-J94WQs/ts
-HAPPY 頻道,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcVF25JseI6IdcwTEZb_vqjs/ts
-JStar 极限电影台,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUrbcnCcF4NG1zYx5pH0sb4/ts
-彩虹K,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQym0BHDZ2B1R-5R0Hh7Bpk/ts
-Playboy,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcdPM62fF5GylM_E7_nmSI3c/ts
-Vivid Red,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcXzh7u7Xge0k0EPwg2L-RzI/ts
-Private,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQce5pLGx_gynKMMPWvCQgNeM/ts
-Dorcel,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWlVSJ5PLI1ns2pjNW-Mkc0/ts
-Dorcel XXX,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcUo8WhpeV-XSxGzzqKN8wXM/ts
-Hustler TV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQca1sZq6NHOIa4mUNofFPiDY/ts
-Penthouse Gold,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaZv1wveuLLSskCHQgpNmUU/ts
-Red Light,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQO2NRYYG7rt4mw2jnb-EtE/ts
-Brazzers TV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYLI8iGD8ljkTx4IHO8U2G4/ts
-Blue Hustler,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcb8yznp7ETmEl4w4Q5mCC0Y/ts
-Vivid Touch,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcZyCrCJ-VlIHiZGfyhPqCVM/ts
-Erox,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcQqzjkPmlTZpAsat6HtZurM/ts
-Penthouse Quickie,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcYBkQnrJeuAhqzASilpJ9IU/ts
-RED LIPS,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcU3xVIZDUZ5vL7MKoABQpXA/ts
-VIXEN,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWPidoABZGK0Mx730oKmlO4/ts
-Babes XXX,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcWNntJ2ER3NgfRDSfl8BEZ0/ts
-EXXOTICA,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcY1sGQv061ovAPhlQxeIDo4/ts
-Hustler XXX TV,http://iptvpro.pw:35451/play/zQa_YGfKuiPV806RD3jQcaVvJwboNTZP_-srJottUJg/ts
