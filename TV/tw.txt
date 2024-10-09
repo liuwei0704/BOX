@@ -2,7 +2,7 @@ Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
 
-🍀20241007更新🍀,#genre#
+🍀20241008更新🍀,#genre#
 更新說明,http://159.75.85.63:35455/huya/13303478
 更新台灣🆙線路,http://159.75.85.63:35455/huya/15152155
 YT直播請升級(2.5.8),https://live.metshop.top/douyu/9986305
@@ -15,15 +15,26 @@ ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gec
 Decoder=3
 parse=2
 player=2
+
 TVBS新聞,https://www.youtube.com/watch?v=m_dhMSvUCIc
-東森新聞,https://www.youtube.com/watch?v=V1p33hqPrUk
-民視新聞,https://www.youtube.com/watch?v=ylYJSBUgaMA
 中天新聞,https://www.youtube.com/watch?v=oIgbl7t0S_w
-三立財經,https://www.youtube.com/watch?v=oZdzzvxTfUY
-東森財經,https://www.youtube.com/watch?v=WHEPzbFA3hw
-華視新聞,https://www.youtube.com/watch?v=wM0g8EoUZ_E
+中文國際,https://www.youtube.com/watch?v=twhG7_jvA8g
 中視新聞,https://www.youtube.com/watch?v=TCnaIE_SAtM
+亞洲新聞,https://www.youtube.com/watch?v=XWq5kBlakcQ
+公視新聞,https://www.youtube.com/watch?v=quwqlazU-c8
 台視新聞,https://www.youtube.com/watch?v=xL0ch83RAK8
+寰宇新聞,https://www.youtube.com/watch?v=6IquAgfvYmc
+德國之聲,https://www.youtube.com/watch?v=tZT2MCYu6Zw
+日本新聞,https://www.youtube.com/watch?v=coYw-eVU0Ks
+東森新聞,https://www.youtube.com/watch?v=V1p33hqPrUk
+東森財經,https://www.youtube.com/watch?v=WHEPzbFA3hw
+歐洲新聞,https://www.youtube.com/watch?v=pykpO5kQJ98
+法國新聞,https://www.youtube.com/watch?v=Ap-UM1O9RBU
+美國新聞,https://www.youtube.com/watch?v=-mvUkiILTqI
+英國新聞,https://www.youtube.com/watch?v=oJUvTVdTMyY
+華視新聞,https://www.youtube.com/watch?v=wM0g8EoUZ_E
+韓國新聞,https://www.youtube.com/watch?v=FJfwehhzIhw
+鳳凰衛視,https://www.youtube.com/watch?v=HFib76ySpbU
 
 🇹🇼Youtube綜合,#genre#
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
