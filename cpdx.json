@@ -45,6 +45,13 @@
 {"key":"csp_FreeOK_FM","name":"️️👌OK[FM]","type":3,"api":"csp_FreeOK","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.freeok.lol","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
 {"key":"csp_Keke_FM","name":"😝可可[FM]","type":3,"playerType":2,"api":"csp_Keke","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.kkys02.com","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
 {"key":"csp_Xifan_FM","name":"🍚稀饭[FM]","type":3,"api":"csp_Xifan","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_Libvio","name":"🎉Libvio(SP)","type":3,"api":"csp_Libvio","searchable":1,"quickSearch":1,"filterable":1,"ext":{"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_Jpys","name":"💮文才(SP)","type":3,"api":"csp_Jpys","searchable":1,"quickSearch":1,"changeable":1,"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_Nmyswv","name":"🍓糯米(SP)","type":3,"api":"csp_Nmyswv","searchable":1,"quickSearch":1,"changeable":1,"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_LiteApple","name":"🍎小苹果(SP)","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"changeable":1,"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_YCyz","name":"☀原创(SP)","type":3,"api":"csp_YCyz","searchable":1,"quickSearch":1,"changeable":1,"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_AppTT_萌米","name":"🧿萌米(APP)","type":3,"api":"csp_AppTT","timeout":15,"playerType":1,"ext":"AO7TcBkd8Iifux0Y8Qze6tVlMg==","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
+{"key":"csp_AppTT_热播","name":"🧿热播(APP)","type":3,"api":"csp_AppTT","timeout":15,"playerType":2,"searchable":1,"quickSearch":1,"changeable":1,"ext":"AO7TcBkd8I/B5wQc4Qma+pU=","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lem1006.jar"},
 
 {"key":"T4-黑木耳","name":"🍑黑木耳[T4]","type": 4,"api":"https://tang.hz.cz/power/hme?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
