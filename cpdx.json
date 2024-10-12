@@ -21,7 +21,6 @@
 {"key":"LB-Youtube","name":"▶️Youtube[LB]","type": 4,"api":"https://api.paoyun.eu.org/ytlb.php","searchable": 1,"changeable": 1},
 
 {"key":"dr_爱看机器人","name":"🎥爱看机器人[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_libs/drpy2.min.js","searchable":1,"quickSearch":1,"changeable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/liust666/testbookt3/t3/drpy_js/爱看机器人[虫].js"},
-{"key":"csp_Ikanbot","name":"🎥爱看机器人[PG]","type":3,"api":"csp_Ikanbot","searchable":1,"quickSearch":1,"changeable":1,"ext":"https://v.ikanbot.com"},
 {"key":"Panta","name":" 💿盘Ta[jar]","type":3,"api":"csp_Panta","quickSearch":1,"changeable":1,"filterable":1,"timeout":30,"ext":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/lib/tokenm.json$$$https://www.91panta.cn/$$$null$$$1"},
 {"key":"荐片","name":"🎥荐片[PG]","type":3,"api":"csp_Jianpian","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/lib/jianpian.json$$$1","timeout":60},
 {"key":"欧乐","name":"🎥欧乐[PG]","type":3,"api":"csp_Olevod","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/lib/tokenm.json$$$null$$$1","timeout":60},
