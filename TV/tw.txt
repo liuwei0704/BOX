@@ -10,9 +10,6 @@ YT直播請升級(2.5.8),https://live.metshop.top/douyu/9986305
 可切換其他線路,http://159.75.85.63:35455/huya/16739452
 
 🇹🇼Youtube新聞,#genre#
-Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
-ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
-Decoder=3
 parse=2
 player=2
 
@@ -37,9 +34,6 @@ TVBS新聞,https://www.youtube.com/watch?v=m_dhMSvUCIc
 鳳凰衛視,https://www.youtube.com/watch?v=HFib76ySpbU
 
 🇹🇼Youtube綜合,#genre#
-Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
-ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
-Decoder=3
 parse=2
 player=2
 Beep Beep,https://www.youtube.com/watch?v=BK3uSeJaC58
@@ -63,9 +57,6 @@ YOYO TV,https://www.youtube.com/watch?v=IAGgSVzXIJM
 水滸傳24H,https://www.youtube.com/watch?v=hP4sQJikwCk
 
 🇹🇼台灣電視¹🆙,#genre#
-Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
-ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
-Decoder=3
 parse=2
 player=2
 AXN,http://50.7.234.10:8278/axn_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ef65538f6c01924d72c6a0e75f36e60d
@@ -151,9 +142,6 @@ CN卡通,http://50.7.234.10:8278/momo1_twn/playlist.m3u8?tid=MF7F566558295665582
 龍華電影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=53153e05f428f28b65eb5559ae5b9dc0
 
 🇹🇼台灣電視²🆙,#genre#
-Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
-ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
-Decoder=3
 parse=2
 player=2
 TVBS News 新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tvbs_n
@@ -239,6 +227,8 @@ EYETV 戲劇,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eye
 AFC 亞洲旅遊台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=asiatravel_twn
 
 🇹🇼台灣電視³🆙,#genre#
+parse=1
+player=1
 民视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv002110
 民视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv15516
 民视台湾台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv00116
