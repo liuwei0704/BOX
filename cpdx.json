@@ -32,6 +32,18 @@
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 1,"quickSearch": 1,"filterable": 1,"changeable": 0},
 
+{"key":"T4_CNTV","name":"🌀CNTV[T4]","type":4,"api":"https://azure.leuse.top/vod/cntv","searchable":0,"filterable":0},
+{"key":"T4_黑木","name":"🌀黑木[T4]","type":4,"api":"https://json.doube.eu.org/app/index.php?site=webheimuer","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"T4_海外","name":"🌀海外[T4]","type":4,"api":"https://json.doube.eu.org/app/index.php?site=webhuaweiba","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"T4_比特","name":"🌀比特[T4]","type":4,"api":"https://json.doube.eu.org/app/index.php?site=bttwoo","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"T4_欧乐","name":"🌀欧乐[T4]","type":4,"api":"https://py.doube.eu.org/api?site=OleVod","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"T4_木木","name":"🌀木木[T4]","type":4,"api":"http://zhangqun66.xyz/225.php","searchable":1,"quickSearch":1,"filterable":0},
+{"key":"T4_金鹰","name":"🌀金鹰[T4]","type":4,"api":"http://zhangqun66.xyz/jy.php","searchable":1,"quickSearch":1,"filterable":0},
+{"key":"T4_华为","name":"🌀华为[T4]","type":4,"api":"http://zhangqun66.xyz/hwb.php","searchable":1,"quickSearch":1,"filterable":0},
+{"key":"T4_索尼","name":"🌀索尼[T4]","type":4,"api":"http://zhangqun66.xyz/sn.php","searchable":1,"quickSearch":1,"filterable":0},
+{"key":"T4_合集","name":"🌀合集[T4]","type":1,"api":"http://zhangqun66.xyz/cjjh.php","searchable":1,"quickSearch":1,"changeable":1},
+{"key":"T4_克隆","name":"🌀克隆[T4]","type":4,"api":"https://api.paoyun.eu.org/klhj.php","searchable":1,"quickSearch":1,"filterable":1},
+
 {"key":"黑木耳克隆","name":"🔥黑木耳[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/225.php","searchable":1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable":1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧[PHP]","type":4,"api":"http://zhangqun1818.serv00.net/hwb.php","searchable":1,"quickSearch":1,"filterable":0},
