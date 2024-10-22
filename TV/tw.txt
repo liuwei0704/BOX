@@ -4,7 +4,7 @@ Decoder=3
 
 🍀20241022更新🍀,#genre#
 更新說明,http://159.75.85.63:35455/huya/13303478
-更新YT線路,http://159.75.85.63:35455/huya/15152155
+更新🆙線路,http://159.75.85.63:35455/huya/15152155
 YT直播請升級(2.5.8),https://live.metshop.top/douyu/9986305
 本線路無法觀看,http://159.75.85.63:35455/huya/593667
 可切換其他線路,http://159.75.85.63:35455/huya/16739452
@@ -63,6 +63,98 @@ YOYO TV,https://www.youtube.com/watch?v=IAGgSVzXIJM
 水滸傳24H,https://www.youtube.com/watch?v=hP4sQJikwCk
 
 🇹🇼台灣電視¹🆙,#genre#
+民视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv002110
+民视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv15516
+民视台湾台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv00116
+民视台湾台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv15616
+民视第一台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv00316
+民视新闻台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv1317
+民视旅游,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv0717
+民视影剧,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv0917
+民视综艺,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv00418
+台湾戏剧台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn2252
+龙华经典,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn2152
+龙华戏剧,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1856
+龙华电影,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0356
+龙华日韩,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1152
+龙华偶像,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1252
+龙华卡通,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0145
+靖天综合台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04618
+靖天日本台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04718
+靖天欢乐台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05418
+靖天映画,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05518
+靖天电影台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06117
+靖天育乐台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06218
+靖天国际台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06316
+靖天戏剧台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05818
+靖天资讯台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06518
+靖天卡通台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04418
+tvbs,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07312
+tvbs新闻台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07212
+tvbs精采台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06718
+tvbs欢乐台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06817
+台视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06616
+台视财经,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05612
+台视新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05116
+博斯魅力,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0452
+博斯高球1,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0552
+博斯高球2,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0652
+博斯运动1,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0752
+博斯运动2,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0852
+博斯网球,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn0952
+博斯无限,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1052
+博斯无限2,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1342
+中视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04016
+中视菁采,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv06418
+中视新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07412
+中视经典,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv08016
+猪哥亮歌厅秀,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv00619
+中天新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv00927
+中天亚洲台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv10917
+非凡新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01016
+非凡商业,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04812
+寰宇新闻台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1412
+寰宇新闻台湾台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1556
+八大精彩台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv03416
+八大综艺台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv03917
+国会频道1,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv08416
+国会频道2,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv08515
+好消息1,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv1616
+好消息2,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv1716
+靖洋戏剧台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04516
+靖洋卡通台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05718
+东森新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv15216
+东森财经新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv15316
+影迷數位電影台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01116
+視納華仁紀實頻道,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01316
+时尚运动X,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01415
+GLOBETROTTER,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01616
+amc电影台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01716
+达文西频道,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv01816
+华视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04116
+公视戏剧,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04216
+客家电视台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04316
+采昌影剧,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv04918
+华视新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05212
+GinxTV,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05318
+古典音乐台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv05916
+爱尔达娱乐,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07017
+镜新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07516
+CATCHPLAY电影台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07612
+TRACE SPORTS STARS,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07717
+阿里郎,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv07912
+TRACE URBAN,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv08216
+MEZZO LIVE,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv08316
+智林体育台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv10116
+第1商业台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv10417
+美国之音,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv0317
+半岛新闻,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv1017
+爱放,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-ftv1517
+亚洲旅游台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1752
+Smart知识台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn1956
+生活英语台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn2056
+
+🇹🇼台灣電視²🆙,#genre#
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
@@ -150,7 +242,7 @@ CN卡通,http://50.7.234.10:8278/momo1_twn/playlist.m3u8?tid=MF7F566558295665582
 龍華經典,http://50.7.234.10:8278/lunghuajingdian_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=96207c471d439515e0067b333e3b5459
 龍華電影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=53153e05f428f28b65eb5559ae5b9dc0
 
-🇹🇼台灣電視²🆙,#genre#
+🇹🇼台灣電視³🆙,#genre#
 Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
