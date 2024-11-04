@@ -18,6 +18,7 @@
 {"name":"🌐本地🌐","url":"file://Download/cpdx.json"},
 {"name":"🔞本地🔞","url":"file://Download/av.json"},
 {"name":"🔞LM🔞","url":"https://gitlab.com/lemon52030/BOX/-/raw/main/av.json"},
+{"name":"🔞LG🔞","url":"https://raw.githubusercontent.com/yuanwangokk-1/TV-BOX/refs/heads/main/TV/jsm.json"},
 {"name":"🔞FG🔞","url":"https://hyf888.eu.org/FG.json"}
 ]
 }
