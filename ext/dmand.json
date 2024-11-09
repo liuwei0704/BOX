@@ -8,6 +8,7 @@
 "播放标题": ">&&</",
 "线路数组": "class=\"arconix-toggle-title&&</span>",
 "线路标题": ">&&</font>",
+"影片状态":">&&</font>",
 "分类url": "http://www.dmand5.com/vod-list-id-{cateId}-pg-{catePg}-order--by--class-{class}-year-0-letter--area--lang-.html",
 "分类": "新番连载$1#热门国漫$4#完结日漫$3#剧场动漫$16"
 }
