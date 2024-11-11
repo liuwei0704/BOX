@@ -20,5 +20,5 @@
                 "跳转播放链接": "var player_*\"url\":\"&&\"",
                 "分类url": "http://mfgsjigv.ymhgj.cn/show/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html",
                 "分类": "电影$dianying#电视剧$dianshiju#综艺$zongyi#动漫$dongman#午夜剧场$lunlipian#爽文短剧$wenduan#电影解说$jieshuo",
-                "类型": "动作片$dongzuopian#喜剧片$xijupian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#剧情片$juqingpian#战争片$zhanzhengpian#犯罪片$fanzuipian国产剧$guochanju#香港剧$gangju#韩国剧$hanju#欧美剧$oumeiju#台湾剧$taiwanju#泰剧$taiju#日本剧$riju#其它剧$haiwaiju大陆综艺$daluzongyi#日韩综艺$rihanzongyi#港台综艺$gangtaizongyi#欧美综艺$oumeizongyi国产动漫$guochandongman#日本动漫$ribendongman#欧美动漫$oumeidongman#海外动漫$haiwaidongman空空空"
+                "类型": "动作片$dongzuopian#喜剧片$xijupian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#剧情片$juqingpian#战争片$zhanzhengpian#犯罪片$fanzuipian || 国产剧$guochanju#香港剧$gangju#韩国剧$hanju#欧美剧$oumeiju#台湾剧$taiwanju#泰剧$taiju#日本剧$riju#其它剧$haiwaiju || 大陆综艺$daluzongyi#日韩综艺$rihanzongyi#港台综艺$gangtaizongyi#欧美综艺$oumeizongyi || 国产动漫$guochandongman#日本动漫$ribendongman#欧美动漫$oumeidongman#海外动漫$haiwaidongman || 空 || 空 || 空"
             }
