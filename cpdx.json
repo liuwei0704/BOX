@@ -26,6 +26,14 @@
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 
+{"key":"T4_CNTV","name":"🌀CNTV[T4]","type":4,"api":"https://azure.leuse.top/vod/cntv","searchable":0,"filterable":0},
+
+{"key":"黑木耳克隆","name":"🔥黑木耳[PHP]","type":4,"api":"http://zhangqun66.com/225.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"华为吧克隆","name":"🔥华为吧[PHP]","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"采集集合","name":"🔥采集集合[PHP]","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
+{"key":"超級影視","name":"🔥超級影視[採集]","type":1,"api":"http://cjvip.free.hr/api.php/provide/vod/?ac=list","searchable":1,"changeable":1},
+
 {"key":"csp_XBPQ_短剧网¹","name":"🎭短剧¹[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://kanjuju.com/","数组":"lazyload\"&&</a>","标题":"title=\"&&\"","图片":"data-original=\"&&\"","副标题":"right\">&&<","链接":"href=\"&&\"","线路数组":"<h3 class=\"title&&h3>","线路标题":"\">&&</","播放数组":"playlist clearfix&&</ul>","倒序":"0","播放列表":"<a&&a>","播放标题":">&&</","播放链接":"href=\"&&\"","搜索模式":"1","跳转播放链接":"var player_*\"url\":\"&&\"","搜索url":"https://kanjuju.com/vodsearch/{wd}----------{pg}---/","分类url":"https://kanjuju.com/show/{cateId}--{by}------{catePg}---/","分类":"短剧$duanju#韩剧$hanju"},"jar":"https://www.fish2018.us.kg/p/lib/XBPQ.jar"},
 {"key":"csp_XBPQ_短剧网²","name":"🎭短剧²[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://www.zghhjt.com/","数组":"lazyload\"&&</a>","标题":"title=\"&&\"","图片":"data-original=\"&&\"","副标题":"right\">&&<","链接":"href=\"&&\"","线路数组":"<h3 class=\"title&&h3>","线路标题":"\">&&</","播放数组":"playlist clearfix\">&&</ul>","倒序":"0","播放列表":"<a&&/a>","播放标题":">&&<","播放链接":"href=\"&&\"","搜索模式":"1","搜索url":"https://www.zghhjt.com/htmlsearch/{wd}----------{pg}---.html","跳转播放链接":"var player_*\"url\":\"&&\"","分类url":"https://www.zghhjt.com/htmlshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html","分类":"电影$1#电视剧$2#综艺$3#动漫$4#短剧$26","筛选":"1","类型":"动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#纪录片$24||美剧$20#韩剧$13#日剧$14#泰剧$15#港剧$16#国产剧$25||空||空||空"},"jar":"https://www.fish2018.us.kg/p/lib/XBPQ.jar"},
 
