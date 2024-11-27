@@ -17,8 +17,10 @@
 
 {"key":"PG-Youtube1","name":"▶️YT短劇[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/pg/lib/tokenm.json","type":"短劇#劇瘋狂#堆糖剧场#嘟嘟剧场#玄幻剧场#花笙TV#劇熱門#下山追短劇#剧巨爽TV#指間看劇#GalaxyDrama銀河劇場#甜梦剧场#百万好剧场#追爽劇#星河劇社#咖啡追剧#神龍劇場#神州劇場#爽劇不斷#天天剧工厂#熊熊追剧","keywords":"短劇,動態漫,完結","codecs":""},"style": {"type":"rect","ratio": 1.5}},
 {"key":"PG-Youtube2","name":"▶️YT動漫[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/pg/lib/tokenm.json","type":"動漫魔女#星芒漫画#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫","keywords":"短劇,動態漫,完結","codecs":""},"style": {"type":"rect","ratio": 1.5}},
+
 {"key":"T4-Youtube1","name":"▶️YT短劇[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"短劇#劇瘋狂#堆糖剧场#嘟嘟剧场#玄幻剧场#花笙TV#劇熱門#下山追短劇#剧巨爽TV#指間看劇#GalaxyDrama銀河劇場#甜梦剧场#百万好剧场#追爽劇#星河劇社#咖啡追剧#神龍劇場#神州劇場#爽劇不斷#天天剧工厂#熊熊追剧"},
 {"key":"T4-Youtube2","name":"▶️YT動漫[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"動漫魔女#星芒漫画#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫"},
+{"key":"LB-Youtube","name":"▶️YT列表[T4]","type": 4,"api":"http://zhangqun66.com/ytlb.php","searchable": 1,"changeable": 1},
 
 {"key":"T4-黑木耳","name":"🍑黑木耳[T4]","type": 4,"api":"https://tang.hz.cz/power/hme?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
