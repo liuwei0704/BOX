@@ -16,10 +16,10 @@
 //{"key":"哔哩_CAT","name":"🅱️Bili[Cat]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bili_cat.js","ext":{"categories":"沙雕动画#沙雕穿越#沙雕#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐","cookie":"https://jihulab.com/ss3234741/sj/-/raw/main/bili/bili.txt"}},
 
 {"key":"PG-Youtube1","name":"▶️YT短劇[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/pg/lib/tokenm.json","type":"短劇#嘟嘟剧场#医神传奇#指間看劇#劇非凡#劇瘋狂#堆糖剧场#劇熱門#下山追短劇#剧巨爽TV#Aduo追劇#牛牛短剧#柑橘短剧社","keywords":"短劇,動態漫,完結,violet-egg","codecs":""},"style": {"type":"rect","ratio": 1.5}},
-{"key":"PG-Youtube2","name":"▶️YT動漫[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/pg/lib/tokenm.json","type":"動漫魔女#星芒漫画#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫","keywords":"短劇,動態漫,完結","codecs":""},"style": {"type":"rect","ratio": 1.5}},
+{"key":"PG-Youtube2","name":"▶️YT動漫[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://raw.githubusercontent.com/fikryxuuuu/xx/refs/heads/main/pg/lib/tokenm.json","type":"動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫","keywords":"短劇,動態漫,完結","codecs":""},"style": {"type":"rect","ratio": 1.5}},
 
 {"key":"T4-Youtube1","name":"▶️YT短劇[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"短劇#嘟嘟剧场#医神传奇#指間看劇#劇非凡#劇瘋狂#堆糖剧场#劇熱門#下山追短劇#剧巨爽TV#Aduo追劇#牛牛短剧#柑橘短剧社"},
-{"key":"T4-Youtube2","name":"▶️YT動漫[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"動漫魔女#星芒漫画#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫"},
+{"key":"T4-Youtube2","name":"▶️YT動漫[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫"},
 {"key":"LB-Youtube","name":"▶️YT列表[T4]","type": 4,"api":"http://zhangqun66.com/ytlb.php","searchable": 1,"changeable": 1},
 
 {"key":"T4-黑木耳","name":"🍑黑木耳[T4]","type": 4,"api":"https://tang.hz.cz/power/hme?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
@@ -33,7 +33,7 @@
 {"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧[PHP]","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合[PHP]","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
-
+  
 {"key":"csp_XBPQ_短剧网¹","name":"🎭短剧¹[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://kanjuju.com/","数组":"lazyload\"&&</a>","标题":"title=\"&&\"","图片":"data-original=\"&&\"","副标题":"right\">&&<","链接":"href=\"&&\"","线路数组":"<h3 class=\"title&&h3>","线路标题":"\">&&</","播放数组":"playlist clearfix&&</ul>","倒序":"0","播放列表":"<a&&a>","播放标题":">&&</","播放链接":"href=\"&&\"","搜索模式":"1","跳转播放链接":"var player_*\"url\":\"&&\"","搜索url":"https://kanjuju.com/vodsearch/{wd}----------{pg}---/","分类url":"https://kanjuju.com/show/{cateId}--{by}------{catePg}---/","分类":"短剧$duanju#韩剧$hanju"},"jar":"https://www.fish2018.us.kg/p/lib/XBPQ.jar"},
 {"key":"csp_XBPQ_短剧网²","name":"🎭短剧²[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://www.zghhjt.com/","数组":"lazyload\"&&</a>","标题":"title=\"&&\"","图片":"data-original=\"&&\"","副标题":"right\">&&<","链接":"href=\"&&\"","线路数组":"<h3 class=\"title&&h3>","线路标题":"\">&&</","播放数组":"playlist clearfix\">&&</ul>","倒序":"0","播放列表":"<a&&/a>","播放标题":">&&<","播放链接":"href=\"&&\"","搜索模式":"1","搜索url":"https://www.zghhjt.com/htmlsearch/{wd}----------{pg}---.html","跳转播放链接":"var player_*\"url\":\"&&\"","分类url":"https://www.zghhjt.com/htmlshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html","分类":"电影$1#电视剧$2#综艺$3#动漫$4#短剧$26","筛选":"1","类型":"动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#纪录片$24||美剧$20#韩剧$13#日剧$14#泰剧$15#港剧$16#国产剧$25||空||空||空"},"jar":"https://www.fish2018.us.kg/p/lib/XBPQ.jar"},
 
