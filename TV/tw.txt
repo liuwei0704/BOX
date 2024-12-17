@@ -2,11 +2,11 @@ Js=https://clonglii.serv00.net/user_data/youtube020.js?t=1719035247000
 ua=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
 Decoder=3
 
-🍀20241111更新🍀,#genre#
+🍀20241217更新🍀,#genre#
 更新說明,http://159.75.85.63:35455/huya/13303478
-日常更新,http://159.75.85.63:35455/huya/15152155
+刪除異常線路,http://159.75.85.63:35455/huya/15152155
 YT直播請升級(2.5.8),https://live.metshop.top/douyu/9986305
-本線路無法觀看,http://159.75.85.63:35455/huya/593667
+可切換至安博TV,http://159.75.85.63:35455/huya/593667
 可切換其他線路,http://159.75.85.63:35455/huya/16739452
 
 🇹🇼Youtube新聞,#genre#
@@ -33,200 +33,109 @@ TVBS新聞,https://www.youtube.com/watch?v=m_dhMSvUCIc
 韓國新聞,https://www.youtube.com/watch?v=FJfwehhzIhw
 鳳凰衛視,https://www.youtube.com/watch?v=HFib76ySpbU
 
-🇹🇼Youtube綜合,#genre#
-parse=2
-player=2
-Beep Beep,https://www.youtube.com/watch?v=BK3uSeJaC58
-MOMO親子台,https://www.youtube.com/watch?v=LvPgP4ARP3Y
-Muse木棉花-TW,https://www.youtube.com/watch?v=0p5JuRvmLHA
-Muse木棉花-闔家歡,https://www.youtube.com/watch?v=_jP5o1W3eW0
-YOYO TV,https://www.youtube.com/watch?v=IAGgSVzXIJM
-寶寶巴士,https://www.youtube.com/watch?v=rgWQ2mBzmdo
-小寶貝布姆,https://www.youtube.com/watch?v=uYv_HvA9pw4
-救援小英雄波力,https://www.youtube.com/watch?v=zGCU1qciPD4
-汪汪隊立大功,https://www.youtube.com/watch?v=gosmqSjMgV8
-碰碰狐,https://www.youtube.com/watch?v=k9whG6P74EU
-粉紅豬小妹,https://www.youtube.com/watch?v=bf0EVbSuFGs
-貝樂虎,https://www.youtube.com/watch?v=yfNbGTszDyw
-我們這一家,https://www.youtube.com/watch?v=UK81GCw1KE8
-新哆啦A夢,https://www.youtube.com/watch?v=hpXMNZFjWr8
-蠟筆小新TV版,https://www.youtube.com/watch?v=_jP5o1W3eW0
-中華一番,https://www.youtube.com/watch?v=2FJcu6qsM2k
-大陸尋奇24H,https://www.youtube.com/watch?v=h0mUy0edJK0
-三國24H,https://www.youtube.com/watch?v=Njvo1ce2v90
-水滸傳24H,https://www.youtube.com/watch?v=hP4sQJikwCk
-
 🇹🇼台灣電視¹🆙,#genre#
-parse=2
-player=2
-AXN,http://50.7.234.10:8278/axn_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ef65538f6c01924d72c6a0e75f36e60d
-CINEMAX,http://50.7.234.10:8278/cinemax_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=d90050abd53d6edee6972da57757242a
-EYE戲劇,http://50.7.234.10:8278/eyetvxiju_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=79e67365d44bc09f217c353263327381
-EYE旅遊,http://50.7.234.10:8278/eyetvtravel_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=75f890715380cf48c9a573bed26a3cab
-HBO,http://50.7.234.10:8278/hbohd_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=090dc9ce31b300b3055afbf7e2bcec02
-HBO Family,http://50.7.234.10:8278/fyi_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=bcc5206828852d871fb693e1424cb065
-好萊塢電影台,http://50.7.234.10:8278/hollywoodmovies_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=89b2d385d08fe9fbb4e008d59dc8f1b9
-MTV Live,http://50.7.234.10:8278/mtvhd_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=d3510fe75dcb784664888ca1027df288
-TLC旅遊生活,http://50.7.234.10:8278/tlc_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=46cf202b15551449e2c2cfdb0166d6f4
-東森新聞,http://50.7.234.10:8278/ettvnews/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=9a0731b42826903e465c2e3ded47b7b9
-TVBS HD,http://50.7.234.10:8278/tvbs/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=531ab38cdc576d36ab18039fcf944e65
-TVBS新聞台,http://50.7.234.10:8278/tvbs_n/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=e1329b1f962fe43ce502902f0cad209c
-TVBS歡樂台,http://50.7.234.10:8278/tvbshuanle_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=846d88a5b09c6665d486a53023447353
-三立台灣台,http://50.7.234.10:8278/sanlitaiwan/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=f4e9908d71d1930ce389430ef387712e
-三立戲劇台,http://50.7.234.10:8278/sanlixiju_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=7c12470a2fc50c9bbbe18bfde805ae1b
-三立綜合台,http://50.7.234.10:8278/sanlizhonghe/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=2cfec3b545ed1903e5bdaae8adffa38e
-中天亞洲台,http://50.7.234.10:8278/ctiasia_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=84d61389d34533bedec970a54355123d
-中天娱樂,http://50.7.234.10:8278/ctient/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=76fbbe1d6d1cf4a1fb2f79cdbdbdde06
-中天新聞HD,http://50.7.234.10:8278/ctinews/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=16e52c86a9b2c604c0a0f3907c9fc5cc
-中天綜合,http://50.7.234.10:8278/ctizhonghe/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=f3ca6d9c54c39e10cc095411e98c801d
-亞洲旅遊台,http://50.7.234.10:8278/asiatravel_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=c46bab3a6e1c86c707d19a14a693cf91
-亞洲美食,http://50.7.234.10:8278/afc_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=1795cc6e38ef7630e4e0371c6b0a2fbc
-八大戲劇,http://50.7.234.10:8278/badadrama/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=479e976dc2afb38ad318c4a3a46af6f9
-八大第一,http://50.7.234.10:8278/badafirst/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=b4a36d76017a30eaa9caadd8d222ec75
-八大綜合,http://50.7.234.10:8278/badazhonghe/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=aa3657f9c528d0d98b4bb366ea0e5e42
-公視,http://50.7.234.10:8278/ctv_taiwan/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=32c6b57d4790a3931ccb4df018cc34f9
-民視,http://50.7.234.10:8278/ftvhd_taiwan/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ec1ef7ad7098ca80720209ccbbb2ba93
-民視第一台,http://50.7.234.10:8278/lunghuajingdian_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=96207c471d439515e0067b333e3b5459
-民視台灣台,http://50.7.234.10:8278/ftvtaiwan_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=a5aec2ceecd83ad9bac0328844e8a3e6
-民視新聞台,http://50.7.234.10:8278/ftvnew_taiwan/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3869024dd3de0af582df4170d2b5edef
-台視,http://50.7.234.10:8278/ttv_taiwan	/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3f3f556a7c2a26b3273eaee8d1f95f91
-台視新聞台,http://50.7.234.10:8278/ttvnews_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=11d856fe3a6558587c6c4b25ca31b63b
-中視,http://50.7.234.10:8278/zhongshihd_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3a6edf84b1baf6f5fbf4a0f99e1c8bc8
-中視新聞台,http://50.7.234.10:8278/zhongshinews_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=a0303143be733a029de4cda96dc05bd8
-中視經典,http://50.7.234.10:8278/zhongshi_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=2638f568d1ffb04cb0e2aedd0e28b8aa
-華視,http://50.7.234.10:8278/ctshd_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=0ce6c8728099c0f803272b1e1ec8e592
-華藝綜合,http://50.7.234.10:8278/weishichinese_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=a8ff670bc28f630e1b82ee83506fc144
-大愛一台,http://50.7.234.10:8278/daai_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=51dfd0d5120386463954dd38e26f6c98
-寰宇新聞台,http://50.7.234.10:8278/huanyuxinwen_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3db965a62a2076260e55840cc2f47ff1
-寰宇財經台,http://50.7.234.10:8278/huanyutaiwan_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=9a69bce8aa8eba9a32b222af6133ec44
-年代新聞台,http://50.7.234.10:8278/niandainews_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=1f3586cbbd3cd7cd5ed3354329d9a8ae
-愛爾達影劇,http://50.7.234.10:8278/eltayingju_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=a1060310cb8c632efa0377fc73edbbd6
-愛爾達體育 1,http://50.7.234.10:8278/eltasport_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=0dfea104160af211344a2ac13d99d835
-愛爾達體育 2,http://50.7.234.10:8278/eltasport2_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=9438c004ee50fe57cca5098b0665703a
-愛爾達體育 3,http://50.7.234.10:8278/eltasport3_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=43f4550918b416f7235f49c98244b550
-ELEVEN 1,http://50.7.234.10:8278/golfchannel_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=00908bacc4690703612a441dda298714
-博斯網球,http://50.7.234.10:8278/bositennis_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=35eb6ffc546a67ad05c1e14a607ebc66
-博斯運動1,http://50.7.234.10:8278/bosisport1_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=cda1510e275ff715c2d1c418ce36092c
-博斯運動2,http://50.7.234.10:8278/bosisport2_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=af93b0e95263082debeea805688ebf62
-博斯高球1,http://50.7.234.10:8278/bosigolf1_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=c4b3b9cf7166b2ff36bd47765c83e86f
-博斯高球2,http://50.7.234.10:8278/bosigolf2_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=d172eeeb437535b064faeb6c757ef181
-探索亞洲,http://50.7.234.10:8278/discoverytwn_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=b95992141dc506f074e185e82f92bcf4
-探索動力,http://50.7.234.10:8278/discoveryturbo_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=b0766374c65a09ee5a66d8775fe08061
-國家地理,http://50.7.234.10:8278/natgeohd_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=867db716555b896151a4d06d3a4a231b
-野生動物,http://50.7.234.10:8278/natgeowild_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=c85dff4a2a0ca8fccc8f0fa62e03b9b3
-動物星球,http://50.7.234.10:8278/animalplanet_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=bbb3a4f20ea0459b71631bb4ad2ac03d
-時尚,http://50.7.234.10:8278/fashiontv_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=c6c25e309943a3524dce094977775dc7
-Discovery Asia,http://50.7.234.10:8278/discoverytwn_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=b95992141dc506f074e185e82f92bcf4
-Discovery HD,http://50.7.234.10:8278/discoveryhd_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=c045c78d690ff4e418a097771edaeb3d
-東森戲劇,http://50.7.234.10:8278/ettvdrama/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=b01cfaab625a5dbbb9d5413c2127d653
-東森洋片,http://50.7.234.10:8278/ettvwestern/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=2fac6b68e4fc0ec301eb1b84f8f20d61
-東森綜合,http://50.7.234.10:8278/ettvzhonghe/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=a811c16f7faa13d2e7a88bf3caeff307
-東森財經新聞,http://50.7.234.10:8278/ettvcaijing_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=e3aaf9229e2b08ab2962b7099a231532
-東森電影,http://50.7.234.10:8278/ettvmovie/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ab7064220193432a69f44979ec1cc69a
-緯來日本台,http://50.7.234.10:8278/videolandjapan/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ba1980dbadfca97778b0d4cc5334d007
-緯來體育台,http://50.7.234.10:8278/videolandsport/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=f8673f92d46823e172cc32d66c93b0f3
-美亞電影,http://50.7.234.10:8278/meiyamovie_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=03756d9cf12779e8f509fbeb6949f230
-BBC World News,http://50.7.234.10:8278/bbcnews_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=bd2772a88f50da7682a7c1ef77373a87
-Bloomberg News,http://50.7.234.10:8278/bloomberg_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=437e10670d228bfa01c17c4c9da25d2b
-Fox News,http://50.7.234.10:8278/foxnews_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=dbc31fe99aba509476ea2a48ab135ea9
-阿里郎,http://50.7.234.10:8278/arirang_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ce64ef8bc61140524339935d73ae5481
-CN卡通,http://50.7.234.10:8278/momo1_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=1bcf38de8605c061c98d5e5c55163725
-靖天卡通台,http://50.7.234.10:8278/jingtiancartoon_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=f5657d632cedda0ca11bac82e3168618
-靖天國際台,http://50.7.234.10:8278/jingtianintl_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=5bfb3aef7cf468e9b1377324fccbfc68
-非凡新聞台,http://50.7.234.10:8278/feifannews_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=ac14986110b0e75fe23edff90ab336b2
-龍祥時代,http://50.7.234.10:8278/lungxiangtime_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=97b5a1d6e0010c40e6d8781805a70ba2
-龍華偶像,http://50.7.234.10:8278/lunghuaidol_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=63132f0e4fd076cd4e6f5e89d801789b
-龍華戲劇,http://50.7.234.10:8278/lunghuaxiju_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=6e351c1cca8c4f6d4a8be9b8d774dc0a
-龍華洋片,http://50.7.234.10:8278/lunghuawestern_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=3c9ccd421d05ff4a3af2c02d56b4b3c6
-龍華經典,http://50.7.234.10:8278/lunghuajingdian_twn/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=96207c471d439515e0067b333e3b5459
-龍華電影,http://50.7.234.10:8278/xingwei_movie/playlist.m3u8?tid=MF7F5665582956655829&ct=19396&tsum=53153e05f428f28b65eb5559ae5b9dc0
+年代新聞,http://211.23.114.106:8517/http/60.251.39.91:8081/hls/67/809/ch27.m3u8
+公視,http://125.227.210.55:8164/VideoInput/play.ts
+美亞電影臺,https://tv.doube.eu.org/tv?pid=1
+天映頻道,https://tv.doube.eu.org/tv?pid=2
+緯來電影臺,https://tv.doube.eu.org/tv?pid=3
+東森電影臺,https://tv.doube.eu.org/tv?pid=4
+東森洋片臺,https://tv.doube.eu.org/tv?pid=5
+緯來日本臺,https://tv.doube.eu.org/tv?pid=6
+緯來體育臺,https://tv.doube.eu.org/tv?pid=7
+三立臺灣臺,http://125.227.210.55:8160/VideoInput/play.ts
+民視臺灣臺,http://tv543.cc/litv.php?id=4gtv-4gtv001
+民視,http://tv543.cc/litv.php?id=4gtv-4gtv002
+民視第一臺,http://tv543.cc/litv.php?id=4gtv-4gtv003
+民視綜藝,http://tv543.cc/litv.php?id=4gtv-4gtv004
+豬哥亮歌廳秀,http://tv543.cc/litv.php?id=4gtv-4gtv006
+中天新聞,http://tv543.cc/litv.php?id=4gtv-4gtv009
+非凡新聞,http://tv543.cc/litv.php?id=4gtv-4gtv010
+影迷數位電影臺,http://tv543.cc/litv.php?id=4gtv-4gtv011
+視納華仁紀實頻道,http://tv543.cc/litv.php?id=4gtv-4gtv013
+時尚運動X,http://tv543.cc/litv.php?id=4gtv-4gtv014
+GLOBETROTTER,http://tv543.cc/litv.php?id=4gtv-4gtv016
+amc電影臺,http://tv543.cc/litv.php?id=4gtv-4gtv017
+達文西頻道,http://tv543.cc/litv.php?id=4gtv-4gtv018
+八大精彩臺,http://tv543.cc/litv.php?id=4gtv-4gtv034
+八大綜藝臺,http://tv543.cc/litv.php?id=4gtv-4gtv039
+中視,http://tv543.cc/litv.php?id=4gtv-4gtv040
+華視,http://tv543.cc/litv.php?id=4gtv-4gtv041
+公視戲劇,http://tv543.cc/litv.php?id=4gtv-4gtv042
+客家電視臺,http://tv543.cc/litv.php?id=4gtv-4gtv043
+靖天卡通臺,http://tv543.cc/litv.php?id=4gtv-4gtv044
+靖洋戲劇臺,http://tv543.cc/litv.php?id=4gtv-4gtv045
+靖天綜合臺,http://tv543.cc/litv.php?id=4gtv-4gtv046
+靖天日本臺,http://tv543.cc/litv.php?id=4gtv-4gtv047
+非凡商業,http://tv543.cc/litv.php?id=4gtv-4gtv048
+采昌影劇,http://tv543.cc/litv.php?id=4gtv-4gtv049
+臺視新聞,http://tv543.cc/litv.php?id=4gtv-4gtv051
+華視新聞,http://tv543.cc/litv.php?id=4gtv-4gtv052
+GinxTV,http://tv543.cc/litv.php?id=4gtv-4gtv053
+靖天歡樂臺,http://tv543.cc/litv.php?id=4gtv-4gtv054
+靖天映畫,http://tv543.cc/litv.php?id=4gtv-4gtv055
+臺視財經,http://tv543.cc/litv.php?id=4gtv-4gtv056
+靖洋卡通臺,http://tv543.cc/litv.php?id=4gtv-4gtv057
+靖天戲劇臺,http://tv543.cc/litv.php?id=4gtv-4gtv058
+古典音樂臺,http://tv543.cc/litv.php?id=4gtv-4gtv059
+靖天電影臺,http://tv543.cc/litv.php?id=4gtv-4gtv061
+靖天育樂臺,http://tv543.cc/litv.php?id=4gtv-4gtv062
+靖天國際臺,http://tv543.cc/litv.php?id=4gtv-4gtv063
+中視菁采,http://tv543.cc/litv.php?id=4gtv-4gtv064
+靖天資訊臺,http://tv543.cc/litv.php?id=4gtv-4gtv065
+臺視,http://tv543.cc/litv.php?id=4gtv-4gtv066
+tvbs精采臺,http://tv543.cc/litv.php?id=4gtv-4gtv067
+tvbs歡樂臺,http://tv543.cc/litv.php?id=4gtv-4gtv068
+愛爾達娛樂,http://tv543.cc/litv.php?id=4gtv-4gtv070
+tvbs新聞臺,http://tv543.cc/litv.php?id=4gtv-4gtv072
+tvbs,http://tv543.cc/litv.php?id=4gtv-4gtv073
+中視新聞,http://tv543.cc/litv.php?id=4gtv-4gtv074
+鏡新聞,http://tv543.cc/litv.php?id=4gtv-4gtv075
+CATCHPLAY電影臺,http://tv543.cc/litv.php?id=4gtv-4gtv076
+TRACE,http://tv543.cc/litv.php?id=4gtv-4gtv077
+阿里郎,http://tv543.cc/litv.php?id=4gtv-4gtv079
+中視經典,http://tv543.cc/litv.php?id=4gtv-4gtv080
+TRACE,http://tv543.cc/litv.php?id=4gtv-4gtv082
+MEZZO,http://tv543.cc/litv.php?id=4gtv-4gtv083
+國會頻道1,http://tv543.cc/litv.php?id=4gtv-4gtv084
+國會頻道2,http://tv543.cc/litv.php?id=4gtv-4gtv085
+智林體育臺,http://tv543.cc/litv.php?id=4gtv-4gtv101
+國際財經,http://tv543.cc/litv.php?id=4gtv-4gtv104
+第1商業臺,http://tv543.cc/litv.php?id=4gtv-4gtv109
+東森新聞,http://tv543.cc/litv.php?id=4gtv-4gtv152
+東森財經新聞,http://tv543.cc/litv.php?id=4gtv-4gtv153
+民視,http://tv543.cc/litv.php?id=4gtv-4gtv155
+民視臺灣臺,http://tv543.cc/litv.php?id=4gtv-4gtv156
+美國之音,http://tv543.cc/litv.php?id=litv-ftv03
+民視旅遊,http://tv543.cc/litv.php?id=litv-ftv07
+民視影劇,http://tv543.cc/litv.php?id=litv-ftv09
+半島新聞,http://tv543.cc/litv.php?id=litv-ftv10
+民視新聞臺,http://tv543.cc/litv.php?id=litv-ftv13
+愛放動漫,http://tv543.cc/litv.php?id=litv-ftv15
+好訊息,http://tv543.cc/litv.php?id=litv-ftv16
+好訊息2臺,http://tv543.cc/litv.php?id=litv-ftv17
+龍華卡通,http://tv543.cc/litv.php?id=litv-longturn01
+龍華電影,http://tv543.cc/litv.php?id=litv-longturn03
+博斯魅力,http://tv543.cc/litv.php?id=litv-longturn04
+博斯高球1,http://tv543.cc/litv.php?id=litv-longturn05
+博斯高球2,http://tv543.cc/litv.php?id=litv-longturn06
+博斯運動1,http://tv543.cc/litv.php?id=litv-longturn07
+博斯運動2,http://tv543.cc/litv.php?id=litv-longturn08
+博斯網球,http://tv543.cc/litv.php?id=litv-longturn09
+博斯無限,http://tv543.cc/litv.php?id=litv-longturn10
+龍華日韓,http://tv543.cc/litv.php?id=litv-longturn11
+龍華偶像,http://tv543.cc/litv.php?id=litv-longturn12
+博斯無限2,http://tv543.cc/litv.php?id=litv-longturn13
+寰宇新聞臺,http://tv543.cc/litv.php?id=litv-longturn14
+寰宇新聞臺灣臺,http://tv543.cc/litv.php?id=litv-longturn15
+亞洲旅遊臺,http://tv543.cc/litv.php?id=litv-longturn17
+龍華戲劇,http://tv543.cc/litv.php?id=litv-longturn18
+Smart知識臺,http://tv543.cc/litv.php?id=litv-longturn19
+生活英語臺,http://tv543.cc/litv.php?id=litv-longturn20
+龍華經典,http://tv543.cc/litv.php?id=litv-longturn21
+臺灣戲劇臺,http://tv543.cc/litv.php?id=litv-longturn22
 
 🇹🇼台灣電視²🆙,#genre#
-parse=2
-player=2
-TVBS News 新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tvbs_n
-TVBS 歡樂台 （備份）,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tvbshuanle_twn
-TVBS HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tvbs
-中天新聞 HD,http://50.7.92.106:8278/ctinews
-中天娛樂 CTI Entertaiment,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ctient
-中天綜合 CTI Metro,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ctizhonghe
-中天亞洲台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ctiasia_twn
-台視 TTV HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ttv_taiwan
-台視新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ttvnews_twn
-台視綜合台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ttvzhonghe_twn
-中視 HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=zhongshihd_twn
-中視新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=zhongshinews_twn
-民視 HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ftvhd_taiwan
-民視新聞 FTV News,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ftvnew_taiwan
-民視台灣台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ftvtaiwan_twn
-華視 CTS HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ctshd_twn
-公視 CTV,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ctv_taiwan
-八大第一 GTV First,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=badafirst
-八大綜合 GTV Metro,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=badazhonghe
-八大戲劇 GTV Drama,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=badadrama
-八大娛樂 GTV Entertainment,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=badaentertain
-HBO_HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=hbohd_twn
-HBO_HITS,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=hbohits_twn
-Hollywood Movies,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=hollywoodmovies_twn
-三立台灣 Sanli Taiwan,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=sanlitaiwan
-三立戲劇台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=sanlixiju_twn
-三立綜合 Sanli Metro,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=sanlizhonghe
-三立都會台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=sanlidouhui
-東森新聞 ETTV News,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvnews
-CINEMAX,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=cinemax_twn
-東森綜合 ETTV Metro,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvzhonghe
-東森戲劇 ETTV Drama,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvdrama
-東森超視,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvsuper
-東森財經新聞 ETTV Business,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvcaijing_twn
-寰宇財經,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=huanyutaiwan_twn
-寰宇新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=huanyuxinwen_twn
-大愛1台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=daai_twn
-非凡新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=feifannews_twn
-龍華戲劇 Lunghua Drama,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=lunghuaxiju_twn
-龍華戲劇台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=lunghuaxiju_twn
-龍華經典台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=lunghuajingdian_twn
-龍華偶像,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=lunghuaidol_twn
-AXN Taiwan,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=axn_twn
-靖天國際台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=jingtianintl_twn
-年代新聞,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=niandainews_twn
-緯來日本台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=videolandjapan
-緯來電影台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=videolandmovie_twn
-緯來體育台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=videolandsport
-緯來綜合台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=videolandzonghe
-緯來育樂,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=videolandyule
-緯來精彩,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=videolandspecial_twn
-好訊息 2,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=goods_twn
-大愛2台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=catchplay_twn
-亞洲美食,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=afc_twn
-美食星球,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=foodplanet_twn
-亞洲旅遊 TLC Asia,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=tlc_twn
-東森電影 ETTV Movie,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvmovie
-阿里郎 Arirang,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=arirang_twn
-博斯運動 1,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=bosisport1_twn
-博斯運動 2,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=bosisport2_twn
-博斯高球2 HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=bosigolf2_twn
-博斯網球 HD,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=bositennis_twn
-東森洋片 ETTV Western,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=ettvwestern
-龍華洋片 Lunghua Western,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=lunghuawestern_twn
-博斯無限,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=bosiunlimited_twn
-MTV Live,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=mtvhd_twn
-龍詳時代,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=lungxiangtime_twn
-EYETV 旅遊,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eyetvtravel_twn
-靖天卡通台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=jingtiancartoon_twn
-EYETV 戲劇,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eyetvxiju_twn
-衛視中文台 Star Movies Chinese,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=weishichinese_twn
-東森幼幼 Yoyo TV,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=yoyo_twn
-衛視電影台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=weishimovie_twn
-美亞電影,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=meiyamovie_twn
-愛爾達影劇台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eltayingju_twn
-愛爾達綜合台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eltazonghe_twn
-星衛電影,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=xingwei_movie
-愛爾達影劇,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eltayingju_twn
-愛爾達體育2台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eltasport2_twn
-愛爾達體育3台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=eltasport3_twn
-AFC 亞洲旅遊台,http://cookies.elementfx.com/chaojidianshi/chaojidianshi.php?id=asiatravel_twn
-
-🇹🇼台灣電視³🆙,#genre#
 parse=2
 player=2
 民视,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv002,1,10
@@ -319,7 +228,6 @@ MEZZO LIVE,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=4gtv-4gtv083,1,6
 亚洲旅游台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn17,5,2
 Smart知识台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn19,5,6
 生活英语台,https://json.doube.eu.org/live/tw/litv.php/0.m3u8?id=litv-longturn20,5,6
-
 
 🇹🇼台灣電視🌍1️⃣,#genre#
 生活英語台,http://37.27.111.214:8080/live/56/hls.m3u8
@@ -508,8 +416,38 @@ Arirang TV,https://amdlive-ch01-ctnd-com.akamaized.net/arirang_1ch/smil:arirang_
 東森美洲2,http://38.64.72.148:80/hls/modn/list/2015/chunklist1.m3u8
 民視新聞,http://38.64.72.148:80/hls/modn/list/4012/chunklist1.m3u8
 
+🇹🇼體育頻道,#genre#
+博斯運動一臺,http://47.239.245.207:5050/litv/litv-longturn07
+博斯運動二臺,http://47.239.245.207:5050/litv/litv-longturn08
+博斯無限臺,http://47.239.245.207:5050/litv/litv-longturn10
+博斯無限二臺,http://47.239.245.207:5050/litv/litv-longturn13
+博斯網球檯,http://47.239.245.207:5050/litv/litv-longturn09
+博斯高球檯,http://47.239.245.207:5050/litv/litv-longturn05
+博斯高球二臺,http://47.239.245.207:5050/litv/litv-longturn06
+博斯魅力臺,http://47.239.245.207:5050/litv/litv-longturn04
+GINX Esports TV,http://47.239.245.207:5050/litv/4gtv-4gtv053
+TechStorm,http://47.239.245.207:5050/4gtv/181
+時尚運動X,http://47.239.245.207:5050/4gtv/277
+智林體育臺,http://47.239.245.207:5050/litv/4gtv-4gtv101
+TraceSports,http://47.239.245.207:5050/litv/4gtv-4gtv077
 
 🇹🇼卡通動漫,#genre#
+靖天映畫臺,http://47.239.245.207:5050/litv/4gtv-4gtv055
+靖天卡通臺,http://47.239.245.207:5050/litv/4gtv-4gtv044
+龍華卡通臺,http://47.239.245.207:5050/litv/litv-longturn01
+靖洋卡通 Nice Bingo,http://47.239.245.207:5050/litv/4gtv-4gtv057
+DreamWorks 夢工廠動畫,http://47.239.245.207:5050/4gtv/282
+Nickelodeon,http://47.239.245.207:5050/4gtv/185
+Nick Jr. 兒童頻道,http://47.239.245.207:5050/4gtv/219
+i-Fun 動漫臺,http://47.239.245.207:5050/litv/litv-ftv15
+兒童卡通臺,http://47.239.245.207:5050/4gtv/269
+精選動漫臺,http://47.239.245.207:5050/4gtv/204
+經典卡通臺,http://47.239.245.207:5050/4gtv/202
+達文西頻道,http://47.239.245.207:5050/litv/4gtv-4gtv018
+超人力霸王整套看,http://47.239.245.207:5050/4gtv/278
+MOMO 親子臺,http://47.239.245.207:5050/4gtv/231
+LiveABC 互動英語臺,http://47.239.245.207:5050/4gtv/188
+
 動漫輪播-柯南1,https://live.metshop.top/douyu/1487654
 動漫輪播-柯南2,https://live.metshop.top/douyu/11954507
 動漫輪播-海綿寶寶,https://live.metshop.top/douyu/3949681
