@@ -1,6 +1,7 @@
 {
 "spider":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1735370809906/fan.txt",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
+"logo":"https://www.iconfinder.com/icons/3202350/film_folder_interface_movie_play_video_icon",
 
 "sites":[
 {"key":"豆豆","name":"🌟豆瓣","type": 3, "api": "csp_DouDou","searchable": 0,"quickSearch": 0,"filterable": 0},
