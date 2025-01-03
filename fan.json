@@ -3,7 +3,7 @@
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 
 "sites":[
-{"key":"豆豆","name":"","type": 3, "api": "csp_DouDou","searchable": 0,"quickSearch": 0,"filterable": 0},
+{"key":"豆豆","name":"🌟豆瓣","type": 3, "api": "csp_DouDou","searchable": 0,"quickSearch": 0,"filterable": 0},
 {"key": "直播转点播","name": "📺綜合直播┃直播","type": 4,"api": "http://zhangqun66.com/zh/2241-2.php","searchable": 1,"changeable": 0,"ext": "1,2,3,4,5,6"},
 {"key":"哔哩_PG","name":"🅱️Bili┃綜合","type":3,"api":"csp_Bili","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"沙雕动画#沙雕穿越#沙雕#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐","cookie":"https://jihulab.com/ss3234741/sj/-/raw/main/bili/bili.txt"}},
 
