@@ -1,7 +1,8 @@
 {
 "urls":
 [
-{"name":"✨檸檬✨","url":"https://gitlab.com/lemon52030/BOX/-/raw/main/cpdx.json"},
+{"name":"✨檸檬PG✨","url":"https://gitlab.com/lemon52030/BOX/-/raw/main/cpdx.json"},
+{"name":"✨檸檬FAN✨","url":"https://gitlab.com/lemon52030/BOX/-/raw/main/fan.json"},
 {"name":"✨唐三✨","url":"https://tang.hz.cz/api/user?token=30b05f5f"},
 {"name":"✨騷零✨","url":"https://raw.githubusercontent.com/ls125781003/tvboxtg/main/骚零/api.json"},
 {"name":"✨真心✨","url":"http://tv.devopser.org/z/FongMi.json"},
