@@ -50,7 +50,7 @@
 
 {"key":"欢视","name":"👓欢视┃多线","type":3,"api":"csp_AppTT","playerType":2,"searchable":1,"quickSearch":1,"changeable":1,"ext":"AO7TcBkd8IPB+BwH4Qma+opv"},
 {"key":"可可","name":"👻可可┃多线","type":3,"api":"csp_Kekys","playerType":2,"searchable":1,"quickSearch":1,"changeable":1},
-{"key":"贱贱","name":"🐭贱贱┃P2P","type":3,"searchable":1,"quickSearch":1,"changeable":1,"playerType":"1","api":"https://notabug.org/fantaiying/ext/raw/main/drpy2.min.js","ext":"https://notabug.org/fantaiying/ext/raw/main/jp.js"},
+{"key":"贱贱","name":"🐭荐片┃P2P","type":3,"searchable":1,"quickSearch":1,"changeable":1,"playerType":"1","api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/荐片[优].js"},
 {"key":"Auete","name":"🏝奥特┃无广","type": 3,"api":"csp_Auete","timeout":15,"searchable":1,"quickSearch":1,"changeable":1,"ext":"https://auete.com/"}, 
 {"key":"新6V","name":"🧲新6V┃磁力","type":3,"api":"csp_SixV","searchable":1,"quickSearch":1,"changeable":0,"ext": "https://www.xb6v.com/"},
 {"key":"短剧","name":"🌈上头┃短剧","type":3,"api":"csp_Djtt","searchable":1,"quickSearch":1,"changeable":1},
