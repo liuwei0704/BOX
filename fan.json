@@ -86,6 +86,24 @@
 {"key":"push_agent","name":"🛴手机┃推送","type":3,"api":"csp_Push","searchable":0,"quickSearch":0,"ext": {"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto"}}
 ],
 
+"doh":[
+{"name":"Google","url":"https://dns.google/dns-query","ips": ["8.8.4.4","8.8.8.8","2001:4860:4860::8888","2001:4860:4860::8844"]},
+{"name":"CleanBrowsing","url":"https://doh.cleanbrowsing.org/doh/security-filter/","ips": ["185.228.168.9","185.228.169.9"]},
+{"name":"ArashiDNS","url":"https://arashi.eu.org/dns-query","ips": ["76.76.21.61","76.76.21.21"]},
+{"name":"WikimediaDNS","url":"https://wikimedia-dns.org/dns-query","ips": ["185.71.138.138"]},
+{"name":"YetiDNS","url":"https://dns.ipv6dns.com/dns-query","ips": ["111.7.223.98","2408:8756:f5f:4::6","240C::6666","240C::6644","240c:f:1:22::6","240e:d9:c200:14c:7472::19e0","240e:eb:8001:e01::53"]},
+{"name":"CanadianShield","url":"https://private.canadianshield.cira.ca/dns-query","ips": ["149.112.121.10"]},
+{"name":"DNS.SB-HK","url":"https://hk-hkg.doh.sb/dns-query","ips": ["185.222.222.222","45.11.45.11","2a09::","2a11::"]},
+{"name":"OneDNS","url":"http://doh-pure.onedns.net/dns-query","ips": ["117.50.10.10","52.80.52.52","2400:7fc0:849e:200::8","2404:c2c0:85d8:901::8"]},
+{"name":"GeekDNS","url":"https://i.233py.com/dns-query","ips": ["111.229.68.53"]},
+{"name":"Quad101","url":"https://dns.twnic.tw/dns-query","ips": ["101.101.101.101","101.102.103.104","2001:de4::101","2001:de4::102"]},
+{"name":"Cloudflare","url":"https://cloudflare-dns.com/dns-query","ips": ["1.1.1.1","1.0.0.1","2606:4700:4700::1111","2606:4700:4700::1001"]},
+{"name":"AdGuard","url":"https://dns.adguard.com/dns-query","ips": ["94.140.14.14","94.140.15.15","2a10:50c0::ad1:ff","2a10:50c0::ad2:ff"]},
+{"name":"YandexDNS","url":"https://common.dot.dns.yandex.net","ips": ["77.88.8.8","77.88.8.1","2a02:6b8::feed:0ff","2a02:6b8:0:1::feed:0ff"]},
+{"name":"OpenDNS","url":"https://doh.opendns.com/dns-query","ips": ["208.67.222.222","208.67.220.220","208.67.222.220","208.67.220.222","2620:119:35::35","2620:119:53::53"]},
+{"name":"DNSWatch","url":"https://resolver2.dns.watch/dns-query","ips": ["84.200.69.80","84.200.70.40"]},
+{"name":"Quad9","url":"https://dns.quad9.net/dns-quer","ips": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"]}],
+
 "lives":[
 {"name":"安博TV","type":0,"url":"https://raw.githubusercontent.com/wolfcode9/d25d221074c7b34d/refs/heads/main/d3ef48d76c053b24/6df8af2d858ae0c4","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
