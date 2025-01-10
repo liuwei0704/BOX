@@ -155,6 +155,7 @@
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"寶盒TV","type":0,"url":"https://ygbh.site/bh.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"港台TV","type":0,"url":"https://raw.githubusercontent.com/iamfang2019/AAAAA/refs/heads/main/TW.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
+{"name":"牛播TV","type":0,"url":"http://127.0.0.1:9978/proxy?do=饭太硬&type=liveList","playerType":1,"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}","logo":"https://epg.iill.top/logo/{name}.png"},
 {"name":"lalifeier","type":0,"url":"https://raw.githubusercontent.com/lalifeier/IPTV/refs/heads/main/m3u/IPTV.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"央视直播","type":0,"url":"https://json.doube.eu.org/live/tv/Sub.php","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"直播平台","type":0,"url":"https://tv.iill.top/m3u/Live","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
