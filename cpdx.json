@@ -21,7 +21,6 @@
 {"key":"T4-Youtube2","name":"▶️YT動漫[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"網文課代表#動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社#萌芽动画#南星动漫"},
 {"key":"LB-Youtube","name":"▶️YT列表[T4]","type": 4,"api":"http://zhangqun66.com/ytlb.php","searchable": 1,"changeable": 1},
 
-{"key":"T4-黑木耳","name":"🍑黑木耳[T4]","type": 4,"api":"https://tang.hz.cz/power/hme?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},

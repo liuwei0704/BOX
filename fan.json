@@ -18,7 +18,6 @@
 {"key":"dr_黑猪影视","name":"🎥黑猪影视[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/黑猪影视.js"},
 {"key":"dr_努努影院","name":"🎥努努影院[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/努努影院.js"},
 
-{"key":"T4-黑木耳","name":"🍑黑木耳[T4]","type": 4,"api":"https://tang.hz.cz/power/hme?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
