@@ -89,11 +89,7 @@ key为o0o0oo0oooo0o
 //數組
 "class=\"myui-vodlist__box\"&&</a>"
 //模板
-//1.直接播放
-{"key":"csp_XBPQ_1","name":"1[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头": "手机","分类url":"","搜索url":"","搜索模式": "1","直接播放": "1","图片": "data-original=\"&&\"","图片代理": "1","数组":"","分类":""},"jar":"http://www.fish2018.us.kg/p/lib/XBPQ.jar"},
-
-//2.播放數組
-{"key":"csp_XBPQ_2","name":"2[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头": "手机","分类url":"","搜索url":"","搜索模式": "1","直接播放": "0","图片": "data-original=\"&&\"","图片代理": "1","数组":"","播放数组": "class=\"&&</div>","分类":""},"jar":"https://www.fish2018.us.kg/p/lib/XBPQ.jar"}, 
+{"key":"csp_XBPQ_1","name":"1[XBPQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"","搜索url": "","搜索模式": "","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"&&</div>","分类":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 
 //以下为完整字段
 "主页url": "",//默认从分类页中提取，一般不填
