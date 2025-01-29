@@ -40,33 +40,26 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_Ysj","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1","searchable": 1,"quickSearch": 1,"changeable":1},
 
-{"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key":"T4-獨播庫","name":"🍑獨播庫┃T4","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key":"T4-安博","name":"🍑安博┃T4","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key":"T4-歐樂","name":"🍑歐樂┃T4","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 
-{"key":"T4_黑木","name":"🌀黑木[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=HeiMuEr","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"T4_海外","name":"🌀海外[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=HuaWeiBa","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_欧乐","name":"🌀欧乐[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=OleVod","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_嗨视","name":"🌀嗨视[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=UpFuHn","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_爱瓜","name":"🌀爱瓜[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=AiGuaTV","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_比特","name":"🌀比特[T4]","type":4,"api":"https://json.doube.eu.org/app/index.php?site=bttwoo","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
+{"key":"T4_黑木","name":"🌀黑木┃T4","type":4,"api":"https://spider.doube.eu.org/spider?site=HeiMuEr","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"T4_海外","name":"🌀海外┃T4","type":4,"api":"https://spider.doube.eu.org/spider?site=HuaWeiBa","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
+{"key":"T4_欧乐","name":"🌀欧乐┃T4","type":4,"api":"https://spider.doube.eu.org/spider?site=OleVod","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
+{"key":"T4_嗨视","name":"🌀嗨视┃T4","type":4,"api":"https://spider.doube.eu.org/spider?site=UpFuHn","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
+{"key":"T4_爱瓜","name":"🌀爱瓜┃T4","type":4,"api":"https://spider.doube.eu.org/spider?site=AiGuaTV","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
+{"key":"T4_比特","name":"🌀比特┃T4","type":4,"api":"https://json.doube.eu.org/app/index.php?site=bttwoo","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
 
-{"key":"黑木耳克隆","name":"🔥黑木耳[PHP]","type":4,"api":"http://zhangqun66.com/225.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"华为吧克隆","name":"🔥华为吧[PHP]","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"采集集合","name":"🔥采集集合[PHP]","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
+{"key":"黑木耳克隆","name":"🔥黑木耳┃T4","type":4,"api":"http://zhangqun66.com/225.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
 
-{"key":"旺旺短劇","name":"🔥旺旺短劇[PHP]","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
-{"key":"短劇GO","name":"🔥短劇GO[PHP]","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
-{"key":"短劇JG","name":"🔥短劇JG[PHP]","type":1,"api":"http://jg.zhangqun66.com:8080","searchable":1,"changeable":1},
-
-{"key":"csp_XBPQ_短剧网¹","name":"🎭短剧¹[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://kanjuju.com/","数组":"lazyload\"&&</a>","标题":"title=\"&&\"","图片":"data-original=\"&&\"","副标题":"right\">&&<","链接":"href=\"&&\"","线路数组":"<h3 class=\"title&&h3>","线路标题":"\">&&</","播放数组":"playlist clearfix&&</ul>","倒序":"0","播放列表":"<a&&a>","播放标题":">&&</","播放链接":"href=\"&&\"","搜索模式":"1","跳转播放链接":"var player_*\"url\":\"&&\"","搜索url":"https://kanjuju.com/vodsearch/{wd}----------{pg}---/","分类url":"http://kanjuju.com/show/{cateId}--{by}------{catePg}---/","分类":"短剧$duanju#韩剧$hanju"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
-{"key":"csp_XBPQ_短剧网²","name":"🎭短剧²[XBPQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://www.zghhjt.com/","数组":"lazyload\"&&</a>","标题":"title=\"&&\"","图片":"data-original=\"&&\"","副标题":"right\">&&<","链接":"href=\"&&\"","线路数组":"<h3 class=\"title&&h3>","线路标题":"\">&&</","播放数组":"playlist clearfix\">&&</ul>","倒序":"0","播放列表":"<a&&/a>","播放标题":">&&<","播放链接":"href=\"&&\"","搜索模式":"1","搜索url":"https://www.zghhjt.com/htmlsearch/{wd}----------{pg}---.html","跳转播放链接":"var player_*\"url\":\"&&\"","分类url":"https://www.zghhjt.com/htmlshow/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html","分类":"电影$1#电视剧$2#综艺$3#动漫$4#短剧$26","筛选":"1","类型":"动作片$6#喜剧片$7#爱情片$8#科幻片$9#恐怖片$10#剧情片$11#战争片$12#纪录片$24||美剧$20#韩剧$13#日剧$14#泰剧$15#港剧$16#国产剧$25||空||空||空"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
-{"key":"csp_XBPQ_短剧网³","name":"🎭短剧³[XBPQ]","type": 3,"api":"csp_XBPQ","searchable": 1,"quickSearch": 1,"filterable": 1,"ext": {"分类url":"https://www.duanju001.com/show/{cateId}--{by}-{class}-----{catePg}---{year}.html","搜索url": "https://www.duanju001.com/search/{wd}----------{pg}---.html","搜索模式":"1","分类":"短剧$duanju","副标题":"<div class=\"v-item-bottom\">&&</div>","嗅探词":"m3u8#.m3u8#.mp4#mp4#/obj/","导演":"导演:&&</div>","主演":"主演:&&</div>","简介":"<p>&&</p>"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
+{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
+{"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
 
 {"key":"dr_星牙短劇","name":"👀星牙短劇[JS]","type":3,"api":"https://ricolj.github.io/ziyong/mb/drpy2.min.js","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://raw.githubusercontent.com/lege0001/TVbox/refs/heads/main/TV/js/星芽短剧.js"},
-{"key":"csp_XBPQ_28短剧","name":"👀28短剧[XBPQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"http://www.fish2018.us.kg/p/lib/XBPQ.jar"},
-{"key":"csp_XBPQ_搬運工","name":"👀搬運工[XBPQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"http://www.hhshi.com/vodtype/{cateId}-{catePg}.html","搜索url": "http://www.hhshi.com/vodsearch/{wd}----------{pg}---.html","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"ewave-content__playlist&&</div>","分类":"女频恋爱$lianai#反转爽剧$shuangju#古装仙侠$xianxia#年代穿越$chuanyue#脑洞悬疑$xuanyi#现代都市$dushi"},"jar":"http://www.fish2018.us.kg/p/lib/XBPQ.jar"},
 
 {"key":"dr_小虎斑弹幕","name":"🎥小虎斑弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/小虎斑弹幕.js"},
 {"key":"dr_小熊弹幕","name":"🎥小熊弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/小熊弹幕.js"},
@@ -158,8 +151,8 @@
 {"name":"Quad9","url":"https://dns.quad9.net/dns-quer","ips": ["9.9.9.9","149.112.112.112","2620:fe::fe","2620:fe::9"]}],
 
 "lives":[
-{"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"安博TV","type":1,"url":"https://raw.githubusercontent.com/wolfcode9/d25d221074c7b34d/refs/heads/main/d3ef48d76c053b24/6df8af2d858ae0c4","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
+{"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"寶盒TV","type":0,"url":"https://ygbh.site/bh.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"港台TV","type":0,"url":"https://raw.githubusercontent.com/iamfang2019/AAAAA/refs/heads/main/TW.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"牛播TV","type":0,"url":"http://127.0.0.1:9978/proxy?do=饭太硬&type=liveList","playerType":1,"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}","logo":"https://epg.iill.top/logo/{name}.png"},
