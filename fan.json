@@ -38,6 +38,11 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_Ysj","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1","searchable": 1,"quickSearch": 1,"changeable":1},
 
+{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
+{"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
+{"key":"dr_星牙短劇","name":"👀星牙短劇[JS]","type":3,"api":"https://ricolj.github.io/ziyong/mb/drpy2.min.js","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://raw.githubusercontent.com/lege0001/TVbox/refs/heads/main/TV/js/星芽短剧.js"},
+{"key":"csp_XBPQ_28短剧","name":"👀28短剧[XBPQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
+
 {"key":"T4-獨播庫","name":"🍑獨播庫┃T4","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博┃T4","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂┃T4","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
@@ -53,11 +58,6 @@
 {"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
-
-{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
-{"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
-
-{"key":"dr_星牙短劇","name":"👀星牙短劇[JS]","type":3,"api":"https://ricolj.github.io/ziyong/mb/drpy2.min.js","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://raw.githubusercontent.com/lege0001/TVbox/refs/heads/main/TV/js/星芽短剧.js"},
 
 {"key":"dr_小虎斑弹幕","name":"🎥小虎斑弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/小虎斑弹幕.js"},
 {"key":"dr_小熊弹幕","name":"🎥小熊弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/小熊弹幕.js"},
