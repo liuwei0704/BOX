@@ -177,10 +177,7 @@
 {"key":"push_agent","name":"📎推送","type":3,"api":"csp_Push","searchable":0,"quickSearch":0,"changeable":0,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.jar","timeout":60}],
 
 "lives":[
-{"name":"檸檬","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
-{"name":"安博","type":1,"url":"https://git.886.be/https://raw.githubusercontent.com/wolfcode9/d25d221074c7b34d/main/d3ef48d76c053b24/d919fe9602ad13f7","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
-{"name":"國外","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/ADULTS_247_tv.m3u","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
-{"name":"綜合","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/18xx.m3u","ua":"okhttp/4.12.0","playerType":1,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
+{"name":"檸檬","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
 
 "doh":[
 {"name": "Google","url": "https://dns.google/dns-query","ips": ["8.8.4.4","8.8.8.8","2001:4860:4860::8888","2001:4860:4860::8844"]},
