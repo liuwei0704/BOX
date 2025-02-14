@@ -38,6 +38,11 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_Ysj","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1","searchable": 1,"quickSearch": 1,"changeable":1},
 
+{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+
 {"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
 {"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
 {"key":"dr_星牙短劇","name":"👀星牙短劇[JS]","type":3,"api":"https://ricolj.github.io/ziyong/mb/drpy2.min.js","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://raw.githubusercontent.com/lege0001/TVbox/refs/heads/main/TV/js/星芽短剧.js"},

@@ -19,6 +19,11 @@
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#擦邊短劇#爽劇不斷#盛世短剧#下山追短劇#牛牛短剧"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社"},
 
+{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+
 {"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
@@ -355,6 +360,7 @@
 
 "lives":[
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
+{"name":"RooTV","type":0,"url":"https://raw.githubusercontent.com/rootoooo/rootoooo.github.io/refs/heads/main/z.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"寶盒TV","type":0,"url":"https://ygbh.site/bh.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"港台TV","type":0,"url":"https://raw.githubusercontent.com/iamfang2019/AAAAA/refs/heads/main/TW.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"YY轮播","type":0,"url":"https://www.goodiptv.club/yylunbo.m3u?url=https://lunbo.freetv.top","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
