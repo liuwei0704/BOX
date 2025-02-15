@@ -22,6 +22,7 @@
 {"key":"色花堂","name":"色花堂","type":3,"api":"csp_SeHuaTang","searchable":0,"quickSearch":1,"changeable":1,"filterable":0,"timeout":60,"ext":"null$$$proxy","style":{"type":"rect","ratio":1.5}},
 {"key":"Taohuazu","name":"桃花族","type":3,"api":"csp_Taohuazu","searchable":0,"quickSearch":1,"changeable":1,"filterable":0,"timeout":60,"ext":"http://thzl.cc/forum.php"},
 
+{"key":"py_Phub","name":"🅿️Phub[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_Phub.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_lav","name":"🅿️LAV[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_lav.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_推特","name":"🅿️推特[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_推特.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_小红薯","name":"🅿️小红薯[PY]","type": 3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_小红薯.py","searchable":1,"quickSearch":1,"filterable":1},
