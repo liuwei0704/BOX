@@ -38,6 +38,7 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_Ysj","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1","searchable": 1,"quickSearch": 1,"changeable":1},
 
+{"key":"py_光速","name":"🅿️光速[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_光速.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
