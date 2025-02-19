@@ -184,7 +184,7 @@
 
 "lives":[
 {"name":"檸檬","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
-{"name":"大人","type":0,"url":"https://raw.githubusercontent.com/onyxplayott/OnyxPlayOTT-VODTV/refs/heads/IPTV-Leader/AmazingMovies.m3u","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
+{"name":"大人","type":0,"url":"https://raw.githubusercontent.com/onyxplayott/OnyxPlayOTT-VODTV/refs/heads/IPTV-Leader/TestChannel999.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
 
 "doh":[
 {"name": "Google","url": "https://dns.google/dns-query","ips": ["8.8.4.4","8.8.8.8","2001:4860:4860::8888","2001:4860:4860::8844"]},
