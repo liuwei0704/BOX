@@ -22,6 +22,8 @@
 {"key":"色花堂","name":"色花堂","type":3,"api":"csp_SeHuaTang","searchable":0,"quickSearch":1,"changeable":1,"filterable":0,"timeout":60,"ext":"null$$$proxy","style":{"type":"rect","ratio":1.5}},
 {"key":"Taohuazu","name":"桃花族","type":3,"api":"csp_Taohuazu","searchable":0,"quickSearch":1,"changeable":1,"filterable":0,"timeout":60,"ext":"http://thzl.cc/forum.php"},
 
+{"key":"drpyS_采王成人[密]","name":"🌍采王成人[密](DS)","type":4,"api":"https://drpys.6516789.xyz/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ2W/TT9W2xL+fOfNbQqAcSVjFUAQAd5YgpIQAAAA=="},
+
 {"key":"py_Xvd","name":"🅿️Xvd[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_Xvd.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_Xhm","name":"🅿️Xhm[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_Xhm.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_Phb","name":"🅿️Phb[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_Phb.py","searchable":1,"quickSearch":1,"filterable":1},
