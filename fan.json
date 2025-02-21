@@ -16,6 +16,7 @@
 {"key":"drpyS_瓜子H5","name":"🌍瓜子H5(DS)","type":4,"api":"https://drpys.6516789.xyz/api/瓜子H5","searchable":2,"filterable":1,"quickSearch":0,"ext":""},
 {"key":"drpyS_麦田影院","name":"🌍麦田影院(DS)","type":4,"api":"https://drpys.6516789.xyz/api/麦田影院","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_专享影视","name":"🌍专享影视(DS)","type":4,"api":"https://drpys.6516789.xyz/api/专享影视","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
+{"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧(DS)","type":4,"api":"https://drpys.6516789.xyz/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 
 {"key":"YGP","name":"🚀叨观荐影┃预告片","type":3,"api":"csp_YGP","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_Alllive","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},

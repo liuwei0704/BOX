@@ -30,6 +30,7 @@
 {"key":"drpyS_瓜子H5","name":"🌍瓜子H5(DS)","type":4,"api":"https://drpys.6516789.xyz/api/瓜子H5","searchable":2,"filterable":1,"quickSearch":0,"ext":""},
 {"key":"drpyS_麦田影院","name":"🌍麦田影院(DS)","type":4,"api":"https://drpys.6516789.xyz/api/麦田影院","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_专享影视","name":"🌍专享影视(DS)","type":4,"api":"https://drpys.6516789.xyz/api/专享影视","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
+{"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧(DS)","type":4,"api":"https://drpys.6516789.xyz/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 
 {"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
