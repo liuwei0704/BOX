@@ -46,12 +46,12 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_Ysj","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1","searchable": 1,"quickSearch": 1,"changeable":1},
 
-{"key":"py_lemonlive","name":"🅿️直播[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_lemonlive.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_光速","name":"🅿️光速[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_光速.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_lemonlive","name":"🅿️直播[PY]","type": 3,"api":"https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_lemonlive.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_光速","name":"🅿️光速[PY]","type": 3,"api":"https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_光速.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"dr_星牙短劇","name":"👀星牙短劇[JS]","type":3,"api":"https://ricolj.github.io/ziyong/mb/drpy2.min.js","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://raw.githubusercontent.com/lege0001/TVbox/refs/heads/main/TV/js/星芽短剧.js"},
 {"key":"csp_XBPQ_28短剧","name":"👀28短剧[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 
