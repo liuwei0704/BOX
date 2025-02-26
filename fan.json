@@ -4,7 +4,7 @@
 "logo":"https://cdn1.iconfinder.com/data/icons/interface-travel-and-environment/64/folder-film-movie-interface-video-play-1024.png",
 
 "sites":[
-{"key":"豆豆","name":"🌟豆瓣","type": 3, "api": "csp_DouDou","searchable": 0,"quickSearch": 0,"filterable": 0},
+{"key":"豆","name":"✨豆瓣","type": 3, "api": "csp_DouDouGuard","indexs":1,"searchable": 0,"quickSearch": 0,"filterable": 0},
 {"key": "直播转点播","name": "📺綜合直播┃直播","type": 4,"api": "http://zhangqun66.com/zh/2241-2.php","searchable": 1,"changeable": 0,"ext": "1,2,3,4,5,6"},
 {"key":"Bili¹","name":"🅱哔哔合集¹┃弹幕","type": 3,"api": "csp_Bili","style":{"type":"rect","ratio":1.597},"searchable":1,"quickSearch":0,"changeable":0,"ext":{"json":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bilibili.json"}},
 {"key":"Bili²","name":"🅱哔哔合集²┃弹幕","type":3,"api":"csp_Bili","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"沙雕动画#逍遥动画君#小小七沙雕#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐"}},
@@ -20,7 +20,7 @@
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧(DS)","type":4,"api":"https://drpys.6516789.xyz/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 
 {"key":"YGP","name":"🚀叨观荐影┃预告片","type":3,"api":"csp_YGP","searchable":0,"quickSearch":0,"changeable":0},
-{"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_Alllive","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
+{"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_AllliveGuard","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
 {"key":"原创","name":"☀原创┃不卡","type":3,"api":"csp_YCyzGuard","timeout":15,"playerType":1,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"苹果","name":"🍎苹果┃不卡","type":3,"api":"csp_LiteAppleGuard","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"厂长","name":"📔厂长┃不卡","type":3,"api":"csp_NewCzGuard","playerType":2,"searchable":1,"quickSearch":1,"changeable":1,"ext": "https://www.czzyvideo.com/"},
