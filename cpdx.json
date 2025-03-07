@@ -16,7 +16,7 @@
 
 {"key":"PG-Youtube1","name":"▶️YT短劇[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json","type":"短劇#爽劇不斷#盛世短剧#下山追短劇#牛牛短剧#月光看剧#神云爽剧#蜜糖短剧#医神传奇#指間看劇#劇非凡#劇瘋狂#堆糖剧场#劇熱門#剧巨爽TV","keywords":"短劇,動態漫,完結,violet-egg","codecs":""},"style": {"type":"rect","ratio": 1.5}},
 {"key":"PG-Youtube2","name":"▶️YT動漫[PG]","type":3,"api":"csp_Youtube","searchable": 1,"quickSearch": 0,"changeable": 0,"ext":{"token":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json","type":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社","keywords":"短劇,動態漫,完結","codecs":""},"style": {"type":"rect","ratio": 1.5}},
-{"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#擦邊短劇#爽劇不斷#盛世短剧#下山追短劇#牛牛短剧"},
+{"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#擦邊短劇#指間看劇#爽劇不斷#盛世短剧#下山追短劇#牛牛短剧"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社"},
 
 {"key":"py_lemonlive","name":"🅿️直播[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_lemonlive.py","searchable":1,"quickSearch":1,"filterable":1},
