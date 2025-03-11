@@ -6,6 +6,9 @@
 "sites":[
 {"key":"豆","name":"✨豆瓣","type": 3, "api": "csp_DouDouGuard","indexs":1,"searchable": 0,"quickSearch": 0,"filterable": 0},
 {"key": "直播转点播","name": "📺綜合直播┃直播","type": 4,"api": "http://zhangqun66.com/zh/2241-2.php","searchable": 1,"changeable": 0,"ext": "1,2,3,4,5,6"},
+{"key":"py_lemonlive","name":"🅿️直播[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_lemonlive.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_AllliveGuard","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
+
 {"key":"Bili¹","name":"🅱哔哔合集¹┃弹幕","type": 3,"api": "csp_BiliGuard","style":{"type":"rect","ratio":1.597},"searchable":1,"quickSearch":0,"changeable":0,"ext":{"json":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bilibili.json"}},
 {"key":"Bili²","name":"🅱哔哔合集²┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐"}},
 
@@ -23,15 +26,26 @@
 {"key":"drpyS_全民追剧","name":"🌍全民追剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/全民追剧","searchable":1,"filterable":1,"quickSearch":1,"ext":""},
 {"key":"drpyS_麦田影院","name":"🌍麦田影院(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/麦田影院","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_专享影视","name":"🌍专享影视(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/专享影视","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
+
 {"key":"drpyS_樱漫动漫","name":"🌍樱漫动漫(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/樱漫[漫]","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_集百动漫","name":"🌍集百动漫(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_Nyafun","name":"🌍Nyafun(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/Nyafun[漫]","searchable":1,"filterable":0,"quickSearch":1,"ext":""},
+
+{"key":"py_光速","name":"🅿️光速[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_光速.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
 {"key":"drpyS_短剧库","name":"🌍短剧库(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧库","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 
+{"key":"csp_XBPQ_28短剧","name":"🔥28短剧[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
+{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
+{"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
+
 {"key":"YGP","name":"🚀叨观荐影┃预告片","type":3,"api":"csp_YGPGuard","searchable":0,"quickSearch":0,"changeable":0},
-{"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_AllliveGuard","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
 {"key":"原创","name":"☀原创┃不卡","type":3,"api":"csp_YCyzGuard","timeout":15,"playerType":1,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"苹果","name":"🍎苹果┃不卡","type":3,"api":"csp_LiteAppleGuard","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"厂长","name":"📔厂长┃不卡","type":3,"api":"csp_NewCzGuard","playerType":2,"searchable":1,"quickSearch":1,"changeable":1,"ext": "https://www.czzyvideo.com/"},
@@ -57,18 +71,6 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_YsjGuard","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1Guard","searchable": 1,"quickSearch": 1,"changeable":1},
 
-{"key":"py_lemonlive","name":"🅿️直播[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_lemonlive.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_光速","name":"🅿️光速[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_光速.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/aowuplugin/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
-
-{"key":"csp_XBPQ_28短剧","name":"👀28短剧[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
-
-{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
-{"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
-
 {"key":"T4-獨播庫","name":"🍑獨播庫┃T4","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-安博","name":"🍑安博┃T4","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂┃T4","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
@@ -84,12 +86,6 @@
 {"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
-
-{"key":"dr_小虎斑弹幕","name":"🎥小虎斑弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/小虎斑弹幕.js"},
-{"key":"dr_小熊弹幕","name":"🎥小熊弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/小熊弹幕.js"},
-{"key":"dr_巨人弹幕","name":"🎥巨人弹幕[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/巨人弹幕.js"},
-{"key":"dr_黑猪影视","name":"🎥黑猪影视[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/黑猪影视.js"},
-{"key":"dr_努努影院","name":"🎥努努影院[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/努努影院.js"},
 
 {"key":"csp_XBPQ_傻傻","name":"📹傻傻[XQ]","type": 3,"api":"csp_XBPQ","ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","主页url":"https://shasha.one/","分类url":"https://shasha.one/p/{cateId}?page={catePg}","搜索url": "https://shasha.one/q/{wd}?page={pg}","搜索模式": "","图片":"src=\"&&\"","数组":"embed-responsive embed-responsive-16by9-rotating position-relative\">&&</div","播放数组":"class=\"seqs mb-4&&</div>","分类":"动漫$4#短剧$66"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 {"key":"csp_XBPQ_吃瓜","name":"📹吃瓜[XQ]","type":3,"api":"csp_XBPQ","searchable":0,"quickSearch":1,"filterable":1,"ext":{"站名": "吃瓜影视","主页url": "https://www.chiguafilm.com/","链接": "/index.php/vod/play/+/detail/&&.html+/sid/1/nid/1.html","分类": "电影$1#连续剧$2#综艺$3#动漫$4","分类url": "https://www.chiguafilm.com/index.php/vod/show/area/{area}/by/{by}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
