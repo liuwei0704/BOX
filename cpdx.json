@@ -50,13 +50,6 @@
 {"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 {"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
 
-{"key":"T4_黑木","name":"🌀黑木[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=HeiMuEr","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"T4_海外","name":"🌀海外[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=HuaWeiBa","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_欧乐","name":"🌀欧乐[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=OleVod","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_嗨视","name":"🌀嗨视[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=UpFuHn","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_爱瓜","name":"🌀爱瓜[T4]","type":4,"api":"https://spider.doube.eu.org/spider?site=AiGuaTV","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-{"key":"T4_比特","name":"🌀比特[T4]","type":4,"api":"https://json.doube.eu.org/app/index.php?site=bttwoo","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
-
 {"key":"黑木耳克隆","name":"🔥黑木耳[PHP]","type":4,"api":"http://zhangqun66.com/225.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧[PHP]","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
