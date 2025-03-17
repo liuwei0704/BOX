@@ -21,9 +21,7 @@
 {"key":"drpyS_采王道长[合]","name":"🌍采王道长[合](DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ228u5M581NOqBRFQMAcGPDNobAAAA"},
 {"key":"drpyS_凡客TV","name":"🌍凡客TV(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_瓜子H5","name":"🌍瓜子H5(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/瓜子H5","searchable":2,"filterable":1,"quickSearch":0,"ext":""},
-{"key":"drpyS_全民追剧","name":"🌍全民追剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/全民追剧","searchable":1,"filterable":1,"quickSearch":1,"ext":""},
 {"key":"drpyS_麦田影院","name":"🌍麦田影院(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/麦田影院","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
-{"key":"drpyS_专享影视","name":"🌍专享影视(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/专享影视","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 
 {"key":"drpyS_樱漫动漫","name":"🌍樱漫动漫(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/樱漫[漫]","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_集百动漫","name":"🌍集百动漫(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
@@ -43,7 +41,7 @@
 {"key":"py_芒.py","name":"🅿️芒果[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/芒.py","searchable":1,"quickSearch":1,"filterable":1},
 
 {"key":"py_甜圈短剧","name":"🅿️甜圈短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/甜圈短剧.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/剧多短剧APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_红果短剧","name":"🅿️红果短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/红果网页.py","searchable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
