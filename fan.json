@@ -6,8 +6,6 @@
 "sites":[
 {"key":"豆","name":"✨豆瓣","type": 3, "api": "csp_DouDouGuard","indexs":1,"searchable": 0,"quickSearch": 0,"filterable": 0},
 {"key": "直播转点播","name": "📺綜合直播┃直播","type": 4,"api": "http://zhangqun66.com/zh/2241-2.php","searchable": 1,"changeable": 0,"ext": "1,2,3,4,5,6"},
-
-{"key":"py_lemonlive","name":"🅿️一直播┃直播","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_lemonlive.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_AllliveGuard","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
 
 {"key":"Bili¹","name":"🅱哔哔合集¹┃弹幕","type": 3,"api": "csp_BiliGuard","style":{"type":"rect","ratio":1.597},"searchable":1,"quickSearch":0,"changeable":0,"ext":{"json":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bilibili.json"}},
@@ -31,18 +29,26 @@
 {"key":"drpyS_集百动漫","name":"🌍集百动漫(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_Nyafun","name":"🌍Nyafun(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/Nyafun[漫]","searchable":1,"filterable":0,"quickSearch":1,"ext":""},
 
-{"key":"py_光速","name":"🅿️光速[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_光速.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_mp","name":"🅿️美柏[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_mp.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_hitv","name":"🅿️嗨視[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_hitv.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_xpg","name":"🅿️XPG[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_xpg.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_爱","name":"🅿️愛奇異[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_爱.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_优","name":"🅿️優酷[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_优.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_腾.py","name":"🅿️騰訊[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_腾.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_芒.py","name":"🅿️芒果[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_芒.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_LIVES","name":"🅿️直播[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin//html/LIVES.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_hitvAPP","name":"🅿️hitvAPP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/hitvAPP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_小苹果APP","name":"🅿️小苹果APP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/小苹果APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_火车太顺APP","name":"🅿️火车太顺APP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/火车太顺APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_美帕APP","name":"🅿️美帕APP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/美帕APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_胖虎APP.","name":"🅿️胖虎APP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/胖虎APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_视觉APP","name":"🅿️视觉APP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/视觉APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_光速APP","name":"🅿️光速APP[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/光速APP.py","searchable":1,"quickSearch":1,"filterable":1},
 
-{"key":"py_甜圈短剧","name":"🅿️甜圈短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_甜圈短剧.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_红果短剧","name":"🅿️红果短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/py_红果网页.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_金牌","name":"🅿️金牌[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/金牌.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_绝对影视","name":"🅿️绝对影视[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/绝对影视.py","searchable":1,"quickSearch":1,"filterable":1},
+
+{"key":"py_爱","name":"🅿️愛奇異[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/爱.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_优","name":"🅿️優酷[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/优.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_腾.py","name":"🅿️騰訊[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/腾.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_芒.py","name":"🅿️芒果[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/芒.py","searchable":1,"quickSearch":1,"filterable":1},
+
+{"key":"py_甜圈短剧","name":"🅿️甜圈短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/py_甜圈短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_剧多短剧","name":"🅿️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/py_剧多短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_红果短剧","name":"🅿️红果短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/py_红果网页.py","searchable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧(DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
