@@ -92,14 +92,14 @@
 {"key":"csp_XBPQ_MYTHEME","name":"👀MYTHEME[XQ]","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":{"请求头": "手机","分类url":"https://www.duanju.uk/index.php/vod/type/id/{cateId}/page/{catePg}.html","搜索url":"https://www.duanju.uk/index.php/vod/search/page/{pg}/wd/{wd}.html","搜索模式": "1","直接播放": "0","图片": "data-original=\"&&\"","图片代理": "","数组":"","播放数组": "class=\"col-lg-8 col-md-7 col-sm-6 col-xs-4&&</div>","分类":"熱門短劇$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"}, 
 
 {"key":"奴娜TV","name":"🅰️奴娜TV[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://www.nntv.in/api.php/v1.vod"},
-{"key":"TV酷","name":"🅰️TV酷[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://www.tvkuys.xyz//api.php/app/"},
+{"key":"柒月影视","name":"🅰️柒月影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://www.ggww.net//api.php/app/"},
 {"key":"聚合蓝光","name":"🅰️聚合蓝光[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"http://kkwk123.top/api.php/app/"},
 {"key":"宝片视频","name":"🅰️宝片视频[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"http://172.247.189.145:8989/api.php/app/"},
 {"key":"千梦影视","name":"🅰️千梦影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://www.qmjzys.com/api.php/app/"},
-{"key":"沐沐影视","name":"🅰️沐沐影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://nnystv.cn/api.php/app/"},
+{"key":"瓜子影视","name":"🅰️瓜子影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"http://156.225.30.159:1234//api.php/app/"},
 {"key":"霏雪影视","name":"🅰️霏雪影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://www.fxys.fun/api.php/v1.vod"},
 {"key":"春華影视","name":"🅰️春華影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://chuavod.com/api.php/app/"},
-{"key":"五一影视","name":"🅰️五一影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://ys.51bro.cn/mogai_api.php/v1.vod"},
+{"key":"小枫影视","name":"🅰️小枫影视[APP]","type":3,"api":"csp_AppYsV2","searchable":1,"quickSearch":0,"filterable":0,"ext":"https://kekedy.icu/api.php/app/"},
 
 {"key":"dr_荐片[优]","name":"🎯荐片[优][JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"timeout":30,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/荐片[优].js"},
 {"key":"dr_一起看[优]","name":"🎯一起看[优][JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"filterable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/一起看[优].js"},
