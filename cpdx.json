@@ -103,6 +103,7 @@
 {"key":"csp_TTian_天天","name":"✈天天[PG]","type":3,"api":"csp_TTian","playerType":1,"ext":"http://op.ysdqjs.cn$$$cfg$$$1"},
 {"key":"csp_TTian_追剧","name":"✈追剧[PG]","type":3,"api":"csp_TTian","playerType":1,"ext":"http://app.kzjtv.com$$$cfg$$$1"},
 {"key":"csp_Kuaikan","name":"👀快看[PG]","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"csp_Guazi","name":"🍉瓜子[PG]","type":3,"api":"csp_Guazi","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"csp_Dm84","name":"🌸动漫巴士[PG]","type":3,"api":"csp_Dm84","playerType":2,"searchable":1,"quickSearch":1,"filterable":1},  
 {"key":"csp_Ysj","name":"🌸异界动漫[PG]","type":3,"api":"csp_Ysj","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"csp_Kugou","name":"🎵酷狗音乐[PG]","type":3,"api":"csp_Kugou","searchable":1,"quickSearch":0,"filterable":1},
