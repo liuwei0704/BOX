@@ -1,5 +1,4 @@
 {
-"notice":"檸檬Wex線路🍋",
 "spider":"https://gitlab.com/lemon52030/BOX/-/raw/main/wex.txt",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "sites":[
@@ -158,6 +157,7 @@
 {"name":"毛驢點擊","hosts":["www.maolvys.com"],"script":["document.getElementsByClassName('swal-buttonswal-button--confirm')[0].click()"]}
 ],
 "ads":["mozai.4gtv.tv","pv.vipwm.cc"],
+"notice":"檸檬Wex線路🍋",
 "lives":[
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"BJTV","type":0,"url":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1742130501942/bjtv.txt","playerType":1},
