@@ -2,11 +2,10 @@
 "spider":"https://gitlab.com/lemon52030/BOX/-/raw/main/wex.txt",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "sites":[
-{"key":"Douban","name":"🍋【Lemon】🍋","type":3,"api":"csp_DoubanGuard","searchable":0,"quickSearch":0,"filterable":0,"ext":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1729769265800/douban.json"},
-{"key":"Doubana","name":"⬇️【网盘类先扫码】⬇️","type":3,"api":"csp_DoubanGuard","searchable":0,"quickSearch":0,"filterable":0,"ext":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1729769265800/douban.json"},
+{"key":"Douban","name":"🍋【Lemon】🍋","type":3,"api":"csp_DoubanGuard","searchable":0,"quickSearch":0,"filterable":0,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/douban.json"},
 {"key":"Wexbiliys","name":"🅱‍哔哔┃影视🅱‍","type":3,"api":"csp_WexbiliysGuard","searchable":1,"changeable":1},
-{"key":"bili","name":"🅱哔哔┃合集🅱","type":3,"api":"csp_BiliGuard","searchable":1,"quickSearch":1,"filterable":1,"style":{"type":"rect","ratio":1.433},"ext":{"json":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1730557872081/bili001.txt"}},
-{"key":"biliych","name":"🅱哔哔┃歌曲🅱","type":3,"api":"csp_BiliGuard","searchable":0,"quickSearch":1,"filterable":1,"style":{"type":"rect","ratio":1.433},"ext":{"json":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1730557798499/bilisong.txt"}},
+{"key":"bili","name":"🅱哔哔┃合集🅱","type":3,"api":"csp_BiliGuard","searchable":1,"quickSearch":1,"filterable":1,"style":{"type":"rect","ratio":1.433},"ext":{"json":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bili001.txt"}},
+{"key":"biliych","name":"🅱哔哔┃歌曲🅱","type":3,"api":"csp_BiliGuard","searchable":0,"quickSearch":1,"filterable":1,"style":{"type":"rect","ratio":1.433},"ext":{"json":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/bilisong.txt"}},
 
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#擦邊短劇#指間看劇#爽劇不斷#盛世短剧#下山追短劇#牛牛短剧"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#球球说漫#糖宝动画#咕叽沙雕动画#神話動漫社#次元動漫社"},
