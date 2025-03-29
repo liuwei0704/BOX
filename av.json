@@ -22,7 +22,7 @@
 {"key":"py_lav","name":"🅿️LAV[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/lavAPP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_推特","name":"🅿️推特[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/推特APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_香蕉","name":"🅿️香蕉[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/香蕉APP.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_花都","name":"🅿️花都[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/花都APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_花都","name":"🅿️花都[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/花都.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_小红薯","name":"🅿️小红薯[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/小红薯APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_51吸瓜","name":"🅿️51吸瓜[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/51吸瓜.py","searchable":1,"quickSearch":1,"filterable":1},
 
