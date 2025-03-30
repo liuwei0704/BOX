@@ -99,7 +99,6 @@
 
 {"key":"片库","name":"🔀片库[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"http://pianku.rest/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"魅影","name":"🔀魅影[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.hangtong168.com/category/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
-{"key":"麦田","name":"🔀麦田[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.mtyy5.com/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"红狐狸","name":"🔀红狐狸[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://honghuli.com/fenlei/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"枫林网","name":"🔀枫林网[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://imaple8.co/type/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"七味网","name":"🔀七味网[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.qwnull.com/vt/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
