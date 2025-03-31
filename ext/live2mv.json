@@ -1,0 +1,12 @@
+[
+{"name": "檸檬直播","url": "https://gitlab.com/lemon52030/online/-/raw/main/TV/tw.txt"},
+{"name": "電影•4GTV","url": "https://raw.githubusercontent.com/pkj99/demo/main/media/movie-4gtv.m3u"},
+{"name": "電影•DC","url": "https://raw.githubusercontent.com/pkj99/demo/main/media/movie-dc.m3u"},
+{"name": "電影•熱播","url": "https://raw.githubusercontent.com/pkj99/demo/main/media/movie-hits.m3u"},
+{"name": "電影•IMDB","url":"https://raw.githubusercontent.com/pkj99/demo/main/media/movie-imdb.m3u"},
+{"name":"電影•LITV","url":"https://raw.githubusercontent.com/pkj99/demo/main/media/movie-litv.m3u"},
+{"name":"電影•漫威","url":"https://raw.githubusercontent.com/pkj99/demo/main/media/movie-marvel.m3u"},
+{"name":"電影•Netflix","url":"https://raw.githubusercontent.com/pkj99/demo/main/media/movie-netflix.m3u"},
+{"name":"電影•Random","url":"https://raw.githubusercontent.com/pkj99/demo/main/media/movie-random.m3u"},
+{"name":"電影•Series","url":"https://raw.githubusercontent.com/pkj99/demo/main/media/movie-series.m3u"}
+]
