@@ -54,9 +54,10 @@
 
 {"key":"py_爱","name":"✴️愛奇異[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/爱.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_优","name":"✴️優酷[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/优.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_腾.py","name":"✴️騰訊[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/腾.py","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"py_芒.py","name":"✴️芒果[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/芒.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_腾","name":"✴️騰訊[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/腾.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_芒","name":"✴️芒果[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/芒.py","searchable":1,"quickSearch":1,"filterable":1},
 
+{"key":"Py_藍莓短劇","name":"✴️藍莓短劇[PY]","type": 3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py.lm.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_红果短剧","name":"✴️红果短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/红果网页.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_甜圈短剧","name":"✴️甜圈短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/甜圈短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_剧多短剧","name":"✴️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/剧多短剧APP.py","searchable":1,"quickSearch":1,"filterable":1},
