@@ -109,7 +109,6 @@
 {"key":"红狐狸","name":"🔀红狐狸[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://honghuli.com/fenlei/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"枫林网","name":"🔀枫林网[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://imaple8.co/type/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"七味网","name":"🔀七味网[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.qwnull.com/vt/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
-{"key":"快影视","name":"🔀快影视[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.kuaiys.com/list/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"茶杯狐","name":"🔀茶杯狐[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.5jcd.com/typ/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"大师兄","name":"🔀大师兄[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.dsxysproo.com/dqvodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"追影猫","name":"🔀追影猫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.weisiwang.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
@@ -117,7 +116,6 @@
 {"key":"影视森林","name":"🔀影视森林[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.ncshdxx.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"大咖动漫","name":"🔀大咖动漫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.dk95.com/{cateId}/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"乾坤影院","name":"🔀乾坤影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.qiankun.tv/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
-{"key":"极速电影","name":"🔀极速电影[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://32d.cc/index.php/vod/type/id/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"饭团影视","name":"🔀饭团影视[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://fwdq.cc/vtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"纽约影院","name":"🔀纽约影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.nycvod.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"星辰影院","name":"🔀星辰影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.hongbaohk.com/pljx/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
@@ -133,7 +131,6 @@
 {"key":"99i影城","name":"🔀99i影城[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://cdn.99itv.net/show/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"53TV","name":"🔀53TV[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://53tv.net/ll/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"BT电影天堂","name":"🔀BT电影天堂[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.aidytt.com/bt/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
-{"key":"老地方影院","name":"🔀老地方影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.laodifang.tv/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"奴娜TV","name":"🅰️奴娜TV[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.nntv.in/api.php/v1.vod"},
 {"key":"大米星球","name":"🅰️大米星球[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.dmxq.fun/api.php/app/"},
