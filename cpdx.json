@@ -76,9 +76,10 @@
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
 {"key":"drpyS_短剧库","name":"🌍短剧库[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧库","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 
-{"key":"T4-獨播庫","name":"🍑獨播庫[T4]","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key":"T4-安博","name":"🍑安博[T4]","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key":"T4-歐樂","name":"🍑歐樂[T4]","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key":"ub18_T4","name":"🆙安博","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/ub18?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"olelive_T4","name":"🆙歐樂","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/olelive?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"duboku_T4","name":"🆙獨播庫","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/duboku?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"heimuer_T4","name":"🆙黑木耳","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/hme?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
 
 {"key":"黑木耳克隆","name":"🔥黑木耳[PHP]","type":4,"api":"http://zhangqun66.com/225.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰[PHP]","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},

@@ -93,14 +93,16 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_YsjGuard","searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1Guard","searchable": 1,"quickSearch": 1,"changeable":1},
 
-{"key":"T4-獨播庫","name":"🍑獨播庫┃T4","type": 4,"api":"https://tang.hz.cz/power/duboku?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key":"T4-安博","name":"🍑安博┃T4","type": 4,"api":"https://tang.hz.cz/power/ub18?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
-{"key":"T4-歐樂","name":"🍑歐樂┃T4","type": 4,"api":"https://tang.hz.cz/power/olelive?token=30b05f5f","searchable": 0,"quickSearch": 1,"filterable": 1,"changeable": 0},
+{"key":"ub18_T4","name":"🆙安博","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/ub18?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"olelive_T4","name":"🆙歐樂","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/olelive?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"duboku_T4","name":"🆙獨播庫","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/duboku?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"heimuer_T4","name":"🆙黑木耳","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/hme?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
 
 {"key":"黑木耳克隆","name":"🔥黑木耳┃T4","type":4,"api":"http://zhangqun66.com/225.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","searchable":1,"changeable":1},
+
 {"key":"drpy_js_ikanbot2","name":"🌍愛看機器人┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/ikanbot2.js"},
 {"key":"drpy_js_Jpys","name":"🌍文才影院┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/Jpys.js"},
 {"key":"drpy_js_jqqzx","name":"🌍劇圈圈┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/jqqzx.js"},
