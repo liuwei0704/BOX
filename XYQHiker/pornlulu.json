@@ -10,7 +10,7 @@
 "是否开启获取首页数据": "1",
 "首页推荐链接": "https://www.ptt.sex/zh-hans/?sort=id",
 "首页列表数组规则": "#videos",
-"首页片单列表数组规则": ".col-lg-3 col-md-3 col-sm-4 col-12  item p-0 pr-1",
+"首页片单列表数组规则": ".col-lg-3",
 "首页片单是否Jsoup写法": "1",
 "首页片单标题": ".card-body&&a&&Text",
 "首页片单链接": ".card-body&&a&&href",
@@ -83,7 +83,7 @@
 "筛选数据":{
 "":[
 {
-"key":"ceId",
+"key":"cateId",
 "name":"分类",
 "value":[
 {"v":"","n":"全部"},
