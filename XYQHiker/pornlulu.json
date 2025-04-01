@@ -19,7 +19,7 @@
 "首页片单链接加前缀": "https://www.ptt.sex",
 "首页片单链接加后缀": "",
 "分类起始页码": "1",
-"分类链接": "https://www.ptt.sex/zh-hans{cateId}?{by}&page={catePg}",
+"分类链接": "https://www.ptt.sex/zh-hans{ceId}?{by}&page={catePg}",
 //https://w1218.91p46.com/v.php?cegory=top&viewtype=basic&page=3
 //https://w1218.91p46.com/v.php?next=watch&page=2
 //https://w1218.91p46.com/v.php?cegory=hot&viewtype=basic&page=2
