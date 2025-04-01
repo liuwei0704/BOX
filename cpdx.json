@@ -112,6 +112,7 @@
 {"key":"茶杯狐","name":"🔀茶杯狐[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.5jcd.com/typ/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"大师兄","name":"🔀大师兄[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.dsxysproo.com/dqvodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"追影猫","name":"🔀追影猫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.weisiwang.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"碟調網","name":"🔀碟調網[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.shenqizhe.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"影视森林","name":"🔀影视森林[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.ncshdxx.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"大咖动漫","name":"🔀大咖动漫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.dk95.com/{cateId}/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
@@ -121,6 +122,7 @@
 {"key":"星辰影院","name":"🔀星辰影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.hongbaohk.com/pljx/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"万佳影视","name":"🔀万佳影视[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.wjys.cc/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"草莓影院","name":"🔀草莓影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://592g.com/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"八戒影院","name":"🔀八戒影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.vyanke.com/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"VOFLIX","name":"🔀VOFLIX[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.voflix.fun/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"LIBVIO","name":"🔀LIBVIO[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.libvio.cc/type/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
