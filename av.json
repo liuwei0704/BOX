@@ -16,6 +16,7 @@
 {"key":"MissAV","name":"MissAV","type":3,"api":"csp_Miss","searchable":1,"style":{"type":"rect","ratio":1.777}},
 {"key":"Hanime","name":"Hanime","type":3,"api":"csp_Hanime","searchable":0,"style":{"type":"rect","ratio":0.68}},
 
+{"key":"py_色播","name":"🅿️色播[PY]","type":3,"api":"https://y.337898581.xyz/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_色播聚合.py","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
 {"key":"py_Xvd","name":"🅿️Xvd[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/Xvd.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_Xhm","name":"🅿️Xhm[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/Xhm.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_Phb","name":"🅿️Phb[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/adult/Phb.py","searchable":1,"quickSearch":1,"filterable":1},

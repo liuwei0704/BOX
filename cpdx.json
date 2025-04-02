@@ -19,10 +19,6 @@
 
 {"key":"dr_爱看机器人","name":"🎥爱看机器人[JS]","type":3,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","searchable": 1,"quickSearch":1,"changeable":1,"ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/爱看机器人[虫].js"},
 {"key":"Panta","name":" 💿盘Ta[jar]","type":3,"api":"csp_Panta","quickSearch":1,"changeable":1,"filterable":1,"timeout":30,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.json$$$https://www.91panta.cn/$$$null$$$1"},
-{"key":"csp_Olevod","name":"🍿欧乐影院[PG]","type":3,"api":"csp_Olevod","quickSearch":1,"changeable":1,"filterable":1,"timeout":60,"ext":"./N3RD/T/pg.json$$$null$$$cfg$$$1"},
-{"key":"csp_Bdys01","name":"📯修罗影视[PG]","api":"csp_Bdys01","type":3,"filterable":1,"quickSearch":1,"searchable":1,"ext":"./N3RD/T/pg.json$$$https://www.xlys01.com/$$$cfg$$$1"},
-{"key":"csp_TTian_天天","name":"✈天天[PG]","type":3,"api":"csp_TTian","playerType":1,"ext":"http://op.ysdqjs.cn$$$cfg$$$1"},
-{"key":"csp_TTian_追剧","name":"✈追剧[PG]","type":3,"api":"csp_TTian","playerType":1,"ext":"http://app.kzjtv.com$$$cfg$$$1"},
 {"key":"csp_Kuaikan","name":"👀快看[PG]","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"csp_Guazi","name":"🍉瓜子[PG]","type":3,"api":"csp_Guazi","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"csp_Dm84","name":"🌸动漫巴士[PG]","type":3,"api":"csp_Dm84","playerType":2,"searchable":1,"quickSearch":1,"filterable":1},  
