@@ -59,6 +59,7 @@
 {"key":"py_红果短剧","name":"✴️红果短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/红果网页.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_甜圈短剧","name":"✴️甜圈短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/甜圈短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_剧多短剧","name":"✴️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/剧多短剧APP.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_好帅短剧","name":"✴️好帅短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/好帅短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
