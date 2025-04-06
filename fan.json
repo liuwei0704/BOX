@@ -5,6 +5,7 @@
 
 "sites":[
 {"key":"豆","name":"✨豆瓣","type": 3, "api": "csp_DouDouGuard","indexs":1,"searchable": 0,"quickSearch": 0,"filterable": 0},
+{"key":"drpy2_豆瓣[官]","name":"🌟豆瓣(DR2)","type":3,"api":"assets://js/lib/drpy2.js","searchable":1,"filterable":1,"quickSearch":1,"ext":"https://drpy-node-mauve.vercel.app/js/豆瓣[官].js"},
 {"key": "直播转点播","name": "📺綜合直播┃直播","type": 4,"api": "http://zhangqun66.com/zh/2241-2.php","searchable": 1,"changeable": 0,"ext": "1,2,3,4,5,6"},
 {"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_AllliveGuard","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
 {"key":"csp_Market","name":"🛒應用商店","style":{"type":"list"},"type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"https://raw.githubusercontent.com/myhomebox/tv/main/json/market.json"},
@@ -19,7 +20,6 @@
 {"key":"T4-Youtube2","name":"▶️YT┃動漫[T4]","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#球球说漫#糖宝动画#咕叽沙雕动画#神話動漫社#次元動漫社"},
 
 {"key":"drpyS_哔哩大全[官]","name":"🌍哔哩大全[官](DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]","searchable":2,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
-{"key":"drpyS_哔哩大杂烩[官]","name":"🌍哔哩大杂烩[官](DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]","searchable":2,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf5sbtPz5pV6IEEAolZcGBwAAAA="},
 {"key":"drpyS_采王2024","name":"🌍采王2024[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ2m5GBkcnLuTOfNTTqgURVDFUAlKCu7yAAAAA="},
 {"key":"drpyS_采王道长[合]","name":"🌍采王道长[合][JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ228u5M581NOqBRFQMAcGPDNobAAAA"},
 {"key":"drpyS_凡客TV","name":"🌍凡客TV[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
