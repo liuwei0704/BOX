@@ -127,6 +127,7 @@
 {"key":"XBiu_八戒影院","name":"🔀八戒影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.vyanke.com/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_老王電影","name":"🔀老王電影[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.laowang.co/vs/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_天空影視","name":"🔀天空影視[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.30sky.cc/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"XBiu_小鴨影音","name":"🔀小鴨影音[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.777tv.ai/vod/show/id/{cateId}/page/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"XBiu_111TV","name":"🔀111TV[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://m.111tvs.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_VOFLIX","name":"🔀VOFLIX[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.voflix.fun/vodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
