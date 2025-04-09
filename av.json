@@ -222,8 +222,8 @@
 
 "lives":[
 {"name":"LM","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
-{"name":"SS","type":0,"url":"https://raw.githubusercontent.com/lndsqhj/jk/refs/heads/main/pg/ss.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
-{"name":"MD","type":0,"url":"https://raw.githubusercontent.com/lndsqhj/jk/refs/heads/main/pg/madou.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
+{"name":"K9","type":0,"url":"https://git.acwing.com/tianyig886/zhibo/-/raw/main/ku9.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
+{"name":"MD","type":0,"url":"https://git.acwing.com/bang359/ba/-/raw/main/sstv.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
 
 "doh":[
 {"name": "Google","url": "https://dns.google/dns-query","ips": ["8.8.4.4","8.8.8.8","2001:4860:4860::8888","2001:4860:4860::8844"]},
