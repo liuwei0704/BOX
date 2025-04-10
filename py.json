@@ -398,13 +398,11 @@
 {"name":"綜合","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=1"},
 {"name":"ZLIVE","playerType":1,"ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=6"},
 {"name":"SMART┃PHP","ua":"AptvPlayer/1.3.3","url":"http://34.80.121.147:5978/stmv.php"},
-{"name":"SMART┃Python","ua":"AptvPlayer/1.3.3","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_smt.py","ext":[
-]},
+{"name":"SMART┃Python","ua":"AptvPlayer/1.3.3","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_smt.py","ext":[]},
 {"name":"ofiii","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=5"},
 {"name":"四季線上","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=3"},
 {"name":"LITV┃PHP","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=4"},
-{"name":"LITV┃Python","ua":"okhttp/4.12.0","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_litv.py","ext":[
-]},
+{"name":"LITV┃Python","ua":"okhttp/4.12.0","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_litv.py","ext":[]},
 {"name":"江蘇直播┃Python","ua":"okhttp/4.12.0","type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_jiangsu.py","ext":"","header":{"User-Agent":"Mozilla/5.0","Referer":"https://live.jstv.com/"}},
 {"name":"Gather","type":"0","ua":"okhttp/4.12.0","url":"https://tv.iill.top/m3u/Gather"},
 {"name":"MyTV","type":"0","ua":"okhttp/4.12.0","url":"https://tv.iill.top/m3u/MyTV"},
