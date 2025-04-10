@@ -8,12 +8,12 @@ YT直播請升級,https://live.metshop.top/douyu/9986305
 🇹🇼Youtube新聞,#genre#
 TVBS NEWS,https://www.youtube.com/live/m_dhMSvUCIc?si=78nn4zg-p7myFADX
 華視新聞 CH52,https://www.youtube.com/live/wM0g8EoUZ_E?si=3T_8RY87ofxF1e9l
-三立LIVE新聞,https://www.youtube.com/live/oZdzzvxTfUY?si=r5eFogY2Wtp5fow6
+三立LIVE新聞,https://www.youtube.com/live/2nFxwY1iXWg?si=IkzRAYHQD8vXV4P3
 鏡新聞,https://www.youtube.com/live/5n0y6b0Q25o?si=g5BhIIh3GkKHE6WN
 台視新聞 TTV NEWS,https://www.youtube.com/live/xL0ch83RAK8?si=oJboCZkV587NAROX
 中視新聞 HD直播頻道｜Taiwan CTV news HD Live,https://www.youtube.com/live/TCnaIE_SAtM?si=TL218pRsQaf-wPqs
-中天電視,https://www.youtube.com/live/oIgbl7t0S_w?si=2cFOk3EDavpOQm5t
-CTI+ | 中天2台,https://www.youtube.com/live/WPfPjbOLNfE?si=zXSnir0gxW9_7Gg2
+中天電視,https://www.youtube.com/live/vr3XyVCR4T0?si=sQicKc8vXagRHi4J
+CTI+ | 中天2台,https://www.youtube.com/live/DM_PEM8GrIg?si=I6QYFBSSSNKveaP8
 公視 網路直播頻道,https://www.youtube.com/live/C6gYqSHLRw4?si=RH1rK6z2Ty1W6Cx5
 公視新聞網,https://www.youtube.com/live/quwqlazU-c8?si=QVGvSdOOw6JUysBK
 公視台語台,https://www.youtube.com/live/6KlRR_DGhmI?si=FxUe97Uzd8xFnx_c
@@ -22,8 +22,6 @@ TTV LIVE 台視直播,https://www.youtube.com/live/uDqQo8a7Xmk?si=ve9gPXOQ3fJCkB
 寰宇新聞 頻道,https://www.youtube.com/live/6IquAgfvYmc?si=dx_A4oh2RZ8cbYef
 民視新聞網 Formosa TV News network,https://www.youtube.com/live/ylYJSBUgaMA?si=imrpr3gkiGHnhiwZ
 東森新聞,https://www.youtube.com/live/V1p33hqPrUk?si=WEahQ_iSd2GXJK_K
-年代新聞,http://211.23.114.106:8517/http/60.251.39.91:8081/hls/67/809/ch27.m3u8
-鳳凰衛視PhoenixTV,https://www.youtube.com/live/HFib76ySpbU?si=gNvltQSNXOHVRVyG
 
 🇹🇼台灣電視💫,#genre#
 TVBS新聞,http://148.135.34.95/mn.php?playurl=http://www.pelotas.org:8278/tvbs_n/playlist.m3u8
