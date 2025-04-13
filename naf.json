@@ -145,6 +145,8 @@
 {"key":"XBiu_大师兄","name":"🔀大师兄[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.dsxysproo.com/dqvodtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_追影猫","name":"🔀追影猫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.weisiwang.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_碟調網","name":"🔀碟調網[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.shenqizhe.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"XBiu_追剧吧","name":"🔀追剧吧[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://zjuba.vip/index.php/vod/show/id/{cateId}/page/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"XBiu_一個G","name":"🔀一個G[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://ygg01.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"XBiu_影视森林","name":"🔀影视森林[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.ncshdxx.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_MX动漫","name":"🔀MX动漫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.mxdmgw.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
