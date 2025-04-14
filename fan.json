@@ -70,7 +70,7 @@
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
 {"key":"drpyS_短剧库","name":"🌍短剧库[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧库","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
 
-{"key":"csp_XBPQ_短剧粉","name":"🔥短剧粉[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://www.djfen.cc/show/{cateId}/page/{catePg}/","搜索url": "https://www.djfen.cc/search/{wd}--/page/{pg}/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"vod-list row&&</div>","分类":"现代都市$21#女频恋爱$2#反转爽剧$3#年代穿越$5#脑洞悬疑$4古装仙侠$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
+{"key":"csp_XBPQ_短剧粉","name":"🔥短剧粉[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"http://www.djfen.cc/list/{cateId}-{catePg}/","搜索url": "https://www.djfen.cc/search/{wd}--/page/{pg}/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"vod-list row&&</div>","分类":"现代都市$21#女频恋爱$2#反转爽剧$3#年代穿越$5#脑洞悬疑$4古装仙侠$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 {"key":"csp_XBPQ_28短剧","name":"🔥28短剧[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 {"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","searchable":1,"changeable":1},
 {"key":"短劇GO","name":"🔥短劇GO┃T4","type":1,"api":"http://zhangqun1818.serv00.net:5052","searchable":1,"changeable":1},
@@ -101,7 +101,7 @@
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1Guard","timeout":10,"searchable": 1,"quickSearch": 1,"changeable":1},
 
 {"key":"ub18_T4","name":"🆙安博","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/ub18?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
-{"key":"olelive_T4","name":"🆙歐樂","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/olelive?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
+{"key":"olelive_T4","name":"??歐樂","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/olelive?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
 {"key":"duboku_T4","name":"🆙獨播庫","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/duboku?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
 {"key":"heimuer_T4","name":"🆙黑木耳","style":{"type":"rect","ratio":0.85},"type":4,"api":"https://tang.hz.cz/power/hme?token=361b548b","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":true},
 
