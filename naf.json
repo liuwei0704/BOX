@@ -182,6 +182,7 @@
 {"key":"XBiu_BT电影天堂","name":"🔀BT电影天堂[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.aidytt.com/bt/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"奴娜TV","name":"🅰️奴娜TV[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.nntv.in/api.php/v1.vod"},
+{"key":"APP_乐看vlog","name":"🅰️乐看vlog[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://lkvlog.cn//api.php/v1.vod"},
 {"key":"大米星球","name":"🅰️大米星球[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.dmxq.fun/api.php/app/"},
 {"key":"河狸影视","name":"🅰️河狸影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.heli888.cc/api.php/app/"},
 {"key":"聚合蓝光","name":"🅰️聚合蓝光[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"http://kkwk123.top/api.php/app/"},
