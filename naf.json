@@ -184,13 +184,11 @@
 {"key":"奴娜TV","name":"🅰️奴娜TV[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.nntv.in/api.php/v1.vod"},
 {"key":"大米星球","name":"🅰️大米星球[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.dmxq.fun/api.php/app/"},
 {"key":"河狸影视","name":"🅰️河狸影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.heli888.cc/api.php/app/"},
-{"key":"柒月影视","name":"🅰️柒月影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.ggww.net//api.php/app/"},
 {"key":"聚合蓝光","name":"🅰️聚合蓝光[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"http://kkwk123.top/api.php/app/"},
 {"key":"宝片视频","name":"🅰️宝片视频[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"http://172.247.189.145:8989/api.php/app/"},
 {"key":"千梦影视","name":"🅰️千梦影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.qmjzys.com/api.php/app/"},
 {"key":"瓜子影视","name":"🅰️瓜子影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"http://156.225.30.159:1234//api.php/app/"},
 {"key":"霏雪影视","name":"🅰️霏雪影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.fxys.fun/api.php/v1.vod"},
-{"key":"春華影视","name":"🅰️春華影视[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://chuavod.com/api.php/app/"},
 {"key":"永乐视频","name":"🅰️永乐视频[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.rrys.lv/api.php/app/"},
 
 {"key":"csp_XBPQ_劇迷","name":"📹劇迷[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "0","分类url":"https://gimy.ai/cat/{cateId}-{area}-{by}-{class}-{lang}----{catePg}---{year}.html;ak","搜索url": "https://gimy.ai/search/{wd}----------{pg}---.html","搜索模式": "1","图片":"data-original=\"&&\"","数组":"<li class=\"col-md-2 col-sm-3 col-xs-4*>&&</li>","播放数组":"class=\"clearfix fade in active&&</div>","分类":"电影$1#连续剧$2#综艺$29#动漫$30#短剧$34"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
