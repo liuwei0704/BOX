@@ -62,11 +62,11 @@
 {"key":"py_腾","name":"✴️騰訊[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/腾.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_芒","name":"✴️芒果[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/芒.py","searchable":1,"quickSearch":1,"filterable":1},
 
-{"key":"Py_藍莓短劇","name":"✴️藍莓短劇[PY]","type": 3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py.lm.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_红果短剧","name":"✴️红果短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/红果网页.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_甜圈短剧","name":"✴️甜圈短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/甜圈短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_剧多短剧","name":"✴️剧多短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/剧多短剧APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_好帅短剧","name":"✴️好帅短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/好帅短剧.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_偷乐短剧","name":"✴️偷乐短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/偷乐短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
@@ -137,7 +137,7 @@
 {"key":"XBiu_MX动漫","name":"🔀MX动漫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.mxdmgw.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_大咖动漫","name":"🔀大咖动漫[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.dk95.com/{cateId}/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_影视森林","name":"🔀影视森林[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.ncshdxx.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
-{"key":"XBiu_乾坤影院","name":"🔀乾坤影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.qiankun.tv/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"XBiu_乾坤影院","name":"??乾坤影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://www.qiankun.tv/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_饭团影视","name":"🔀饭团影视[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://fwdq.cc/vtype/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_纽约影院","name":"🔀纽约影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.nycvod.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_星辰影院","name":"🔀星辰影院[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.hongbaohk.com/pljx/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
