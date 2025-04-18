@@ -1,5 +1,5 @@
-🍀202504015更新🍀,#genre#
-更新說明,http://aktv_stream.m16tv.cfd//stream/test/null/AKTV.m3u8#https://live.metshop.top/huya/13303478
+🍀202504018更新🍀,#genre#
+更新說明,http://aktv_stream.m16tv.cfd/stream/test/null/AKTV.m3u8#https://live.metshop.top/huya/13303478
 更新AKTV,https://live.metshop.top/huya/15152155
 設定內直播,https://live.metshop.top/douyu/9986305
 小房子可切換,https://live.metshop.top/huya/593667
@@ -24,14 +24,11 @@ TTV LIVE 台視直播,https://www.youtube.com/live/uDqQo8a7Xmk?si=ve9gPXOQ3fJCkB
 東森新聞,https://www.youtube.com/live/V1p33hqPrUk?si=WEahQ_iSd2GXJK_K
 
 🇹🇼AKTV💫,#genre#
-28 AI 智慧賽馬,http://aktv_stream.m16tv.cfd/stream/aktv/28ai/AKTV.m3u8
 Channel 5 HD,http://aktv_stream.m16tv.cfd/stream/aktv/channel5hd/AKTV.m3u8
 Channel 8 HD,http://aktv_stream.m16tv.cfd/stream/aktv/channel8hd/AKTV.m3u8
 Channel U HD,http://aktv_stream.m16tv.cfd/stream/aktv/channeluhd/AKTV.m3u8
-myTV SUPER 18台,http://aktv_stream.m16tv.cfd/stream/aktv/mytvsuper18/AKTV.m3u8
 PopC,http://aktv_stream.m16tv.cfd/stream/aktv/popc/AKTV.m3u8
 ROCK Action,http://aktv_stream.m16tv.cfd/stream/aktv/rockaction/AKTV.m3u8
-TVB Plus,http://aktv_stream.m16tv.cfd/stream/aktv/tvbplus/AKTV.m3u8
 tvN,http://aktv_stream.m16tv.cfd/stream/aktv/tvn/AKTV.m3u8
 中天新聞台,http://aktv_stream.m16tv.cfd/stream/aktv/null-6/AKTV.m3u8
 千禧經典台(HK),http://aktv_stream.m16tv.cfd/stream/aktv/null-15/AKTV.m3u8
@@ -49,6 +46,9 @@ tvN,http://aktv_stream.m16tv.cfd/stream/aktv/tvn/AKTV.m3u8
 鳳凰資訊,http://aktv_stream.m16tv.cfd/stream/aktv/null-4/AKTV.m3u8
 鳳凰香港,http://aktv_stream.m16tv.cfd/stream/aktv/null-5/AKTV.m3u8
 黃金翡翠台,http://aktv_stream.m16tv.cfd/stream/aktv/null-21/AKTV.m3u8
+28AI智慧賽馬,http://aktv_stream.m16tv.cfd/stream/aktv1/28ai/AKTV.m3u8
+myTV SUPER 18台,http://aktv_stream.m16tv.cfd/stream/aktv1/mytvsuper18/AKTV.m3u8
+TVB Plus,http://aktv_stream.m16tv.cfd/stream/aktv1/tvbplus/AKTV.m3u8
 AXN,http://aktv_stream.m16tv.cfd/stream/aktv2/axn/AKTV.m3u8
 Love Nature HD,http://aktv_stream.m16tv.cfd/stream/aktv2/lovenaturehd/AKTV.m3u8
 无线新闻台(北美),http://aktv_stream.m16tv.cfd/stream/aktv2/null-1/AKTV.m3u8
@@ -104,6 +104,7 @@ YES network,http://aktv_stream.m16tv.cfd/stream/tuntun/foxsports1us/AKTV.m3u8
 CBS SPORTS NETWORK,http://aktv_stream.m16tv.cfd/stream/useradd1/cbssportsnetwork/AKTV.m3u8
 ESPN,http://aktv_stream.m16tv.cfd/stream/useradd1/espn/AKTV.m3u8
 ESPN NEWS,http://aktv_stream.m16tv.cfd/stream/useradd1/espnnews/AKTV.m3u8
+MLB_NETWORK,http://aktv_stream.m16tv.cfd/stream/useradd1/mlbnetwork/AKTV.m3u8
 Tennis Channel 2 US,http://aktv_stream.m16tv.cfd/stream/useradd1/tennischannel2us/AKTV.m3u8
 Tennis Channel US,http://aktv_stream.m16tv.cfd/stream/useradd1/tennischannelus/AKTV.m3u8
 US MTV LIVE,http://aktv_stream.m16tv.cfd/stream/useradd1/usmtvlive/AKTV.m3u8
