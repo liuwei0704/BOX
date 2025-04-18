@@ -22,12 +22,12 @@
 {"key":"T4-欧乐","name":"🔅欧乐[T4]","type":4,"api":"https://tang.hz.cz/power/olelive?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"T4-安博","name":"🔅安博[T4]","type":4,"api":"https://tang.hz.cz/power/ub18?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 
-{"key":"drpyS_哔哩大全[官]","name":"🌍哔哩大全[官](DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]","searchable":2,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
+{"key":"drpyS_哔哩大全[官]","name":"🌍哔哩大全[官](DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
 {"key":"drpyS_采王2024","name":"🌍采王2024[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ2m5GBkcnLuTOfNTTqgURVDFUAlKCu7yAAAAA="},
 {"key":"drpyS_采王道长[合]","name":"🌍采王道长[合][JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ228u5M581NOqBRFQMAcGPDNobAAAA"},
-{"key":"drpyS_凡客TV","name":"🌍凡客TV[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
-{"key":"drpyS_瓜子H5","name":"🌍瓜子H5[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/瓜子H5","searchable":2,"filterable":1,"quickSearch":0,"ext":""},
-{"key":"drpyS_麦田影院","name":"🌍麦田影院[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/麦田影院","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
+{"key":"drpyS_凡客TV","name":"🌍凡客TV[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
+{"key":"drpyS_瓜子H5","name":"🌍瓜子H5[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/瓜子H5","searchable":1,"filterable":1,"quickSearch":0,"ext":""},
+{"key":"drpyS_麦田影院","name":"🌍麦田影院[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/麦田影院","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 
 {"key":"drpyS_樱漫动漫","name":"🌍樱漫动漫[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/樱漫[漫]","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_集百动漫","name":"🌍集百动漫[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
@@ -73,9 +73,9 @@
 {"key":"py_好帅短剧","name":"✴️好帅短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/好帅短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_偷乐短剧","name":"✴️偷乐短剧[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/偷乐短剧.py","searchable":1,"quickSearch":1,"filterable":1},
 
-{"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":2,"filterable":0,"quickSearch":1,"ext":""},
-{"key":"drpyS_星芽短剧","name":"🌍星芽短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":2,"filterable":1,"quickSearch":1,"ext":""},
-{"key":"drpyS_短剧库","name":"🌍短剧库[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧库","searchable":2,"filterable":0,"quickSearch":0,"ext":""},
+{"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","searchable":1,"filterable":0,"quickSearch":1,"ext":""},
+{"key":"drpyS_星芽短剧","name":"🌍星芽短剧[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","searchable":1,"filterable":1,"quickSearch":1,"ext":""},
+{"key":"drpyS_短剧库","name":"🌍短剧库[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧库","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 
 {"key":"csp_XBPQ_短剧粉","name":"🔥短剧粉[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"http://www.djfen.cc/list/{cateId}-{catePg}/","搜索url": "https://www.djfen.cc/search/{wd}--/page/{pg}/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"vod-list row&&</div>","分类":"现代都市$21#女频恋爱$2#反转爽剧$3#年代穿越$5#脑洞悬疑$4古装仙侠$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
 {"key":"csp_XBPQ_28短剧","name":"🔥28短剧[XQ]","type": 3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","分类url":"https://28dj.tv/vodtype/{cateId}-{catePg}/","搜索url": "https://28dj.tv/vodsearch/{wd}----------{pg}---/","搜索模式": "1","图片":"data-original=\"&&\"","数组":"","播放数组":"class=\"scroll-content&&</div>","分类":"穿越重生$1#都市情爱$2#复仇爽剧$3#玄幻武侠$4#奇幻恐怖$5#其它短剧$20"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/XBPQ.jar"},
