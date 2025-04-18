@@ -1077,7 +1077,7 @@ player=2
 松视3,http://u3v.cn/6pJ0nv
 香蕉,http://18.svi-studio.com:8880/live/624372101145/418430465490/4.m3u8
 香蕉,http://u3v.cn/6aGCQR#http://s.mrw.so/bK5Rb
-惊艳,http://m6z.cn/6icNkg#http://suo.im/dfkTT
+惊艳,http://18.svi-studio.com:8880/live/908957700097/132663288386/1.m3u8#http://m6z.cn/6icNkg#http://suo.im/dfkTT
 潘多拉,http://18.svi-studio.com:8880/live/624372101145/418430465490/3.m3u8#http://u3v.cn/6xb1j0#http://suo.im/aZtnO
 彩虹电影,http://u3v.cn/5z1kHr#http://suo.im/cuIoU
 彩虹e,http://u3v.cn/63apMk#http://s.mrw.so/aeQSZ
