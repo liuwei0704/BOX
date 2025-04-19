@@ -85,6 +85,7 @@
 {"key":"py_绝对影视","name":"✴️绝对影视┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/绝对影视.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"Py_旺旺影視","name":"✴️旺旺影視┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/旺旺.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_小红影视","name":"✴️小红影视┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/小红影视.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_骚火电影","name":"✴️骚火电影[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/骚火电影.py","searchable":1,"quickSearch":1,"filterable":1},
 
 {"key":"py_爱","name":"✴️愛奇異┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/爱.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_优","name":"✴️優酷┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/official/优.py","searchable":1,"quickSearch":1,"filterable":1},
