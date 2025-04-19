@@ -18,9 +18,9 @@
 {"key":"T4-Youtube2","name":"▶️YT┃動漫⁴","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社"},
 
 {"key":"T4-heimuer","name":"🔅黑木耳┃T4","type":4,"api":"https://tang.hz.cz/power/hme?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0,"ext":false},
-{"key":"T4-独播库","name":"🔅独播库┃T4","type":4,"api":"https://tang.hz.cz/power/duboku?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
-{"key":"T4-欧乐","name":"🔅欧乐┃T4","type":4,"api":"https://tang.hz.cz/power/olelive?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
-{"key":"T4-安博","name":"🔅安博┃T4","type":4,"api":"https://tang.hz.cz/power/ub18?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
+{"key":"T4-独播库","name":"🔅独播库┃T4","type":4,"api":"https://tang.hz.cz/power/duboku?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0,"ext":false},
+{"key":"T4-欧乐","name":"🔅欧乐┃T4","type":4,"api":"https://tang.hz.cz/power/olelive?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0,"ext":false},
+{"key":"T4-安博","name":"🔅安博┃T4","type":4,"api":"https://tang.hz.cz/power/ub18?token=707a2984","searchable":1,"quickSearch":1,"filterable":1,"changeable":0,"ext":true},
 
 {"key":"YGP","name":"🚀叨观荐影┃预告片","type":3,"api":"csp_YGPGuard","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"原创","name":"☀原创┃不卡","type":3,"api":"csp_YCyzGuard","timeout":10,"playerType":1,"searchable":1,"quickSearch":1,"changeable":1},
