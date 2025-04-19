@@ -1042,12 +1042,12 @@ player=2
 parse=1
 player=2
 FashionTV Paris L'Original,https://www.fashiontv.com/watch/18717158
-1,https://www.youtube.com/live/3asRyC0A0nc
-2,https://www.youtube.com/live/tojE3-eBIoU
-3,https://www.youtube.com/live/qLH0YEwYPbA
-4,https://www.youtube.com/live/XdGi2HtqJSw
-5,https://www.youtube.com/live/BVdU62-6t3I
-6,https://www.youtube.com/live/-EWkPmuN60w
+FashionTV1,https://www.youtube.com/live/3asRyC0A0nc
+FashionTV2,https://www.youtube.com/live/tojE3-eBIoU
+FashionTV3,https://www.youtube.com/live/qLH0YEwYPbA
+FashionTV4,https://www.youtube.com/live/XdGi2HtqJSw
+FashionTV5,https://www.youtube.com/live/BVdU62-6t3I
+FashionTV6,https://www.youtube.com/live/-EWkPmuN60w
 
 💕短視頻_888,#genre#
 parse=1
