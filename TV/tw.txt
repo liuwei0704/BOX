@@ -1087,15 +1087,7 @@ player=2
 happy,http://m6z.cn/5O8pDG#http://suo.im/7emO2
 pigoo,https://luong.utako.moe/pigoo/index.m3u8#http://m6z.cn/5VECGB#http://s.mrw.so/7DlBI
 极限电影,http://suo.im/aD7Ry#http://suo.im/7emO2
-🔞Brazzers,http://88.212.7.11/live/test_brazzers_hd_hevc/playlist.m3u8
-🔞,http://88.212.7.11/live/test_desire_hd_hevc/playlist.m3u8
-🔞 TV,http://88.212.7.11/live/test_dorcel_hd_hevc/playlist.m3u8
-🔞,http://88.212.7.11/live/test_erox_hd_hevc/playlist.m3u8
-🔞,http://88.212.7.11/live/test_eroxxx_hd_hevc/playlist.m3u8
-🔞,http://88.212.7.11/live/test_extasy_hd_hevc/playlist.m3u8
-🔞,http://23.237.100.82:8000/HUSTLER/index.m3u8
-🔞,https://live.iptvxxx.net/hustlertv.m3u8
-🔞,https://stream.visit-x.tv/vxtv/live/playlist.m3u8
+麻豆直播,p3p://173.208.176.178:31809/63fd56ec000b5f0d26d4fe1b07963493
 
 🇯🇵日本频道_888,#genre#
 Zoom tv,http://185.236.229.62:9981/play/a02a
