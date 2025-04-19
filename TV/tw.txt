@@ -1041,13 +1041,12 @@ player=2
 👠Fashion TV_888,#genre#
 parse=1
 player=2
-FTV Midnight,http://bestavb.maria-db.co:8008/iuliana_chelaru/c73qgekdW3/267427
-FashionTV Paris L'Original,https://www.fashiontv.com/watch/16891758
-FashionTV Singapore,https://www.fashiontv.com/watch/16891759
-FashionTV Johannesburg,https://www.fashiontv.com/watch/16891761
-FashionTV Tokyo,https://www.fashiontv.com/watch/16891763
-FashionTV Paris-Mumbai,https://www.fashiontv.com/watch/16891762
-FashionTV New York,https://www.fashiontv.com/watch/16891764
+FashionTV Paris L'Original,https://www.fashiontv.com/watch/18717158
+Danube FashionZ Residence,https://www.fashiontv.com/watch/71837264
+Stradivarius | Paris, Campaign,https://www.fashiontv.com/watch/97470584
+Apr-17 | Happy Birthday Victoria Beckham,https://www.fashiontv.com/watch/97470585
+Babylon | S/S 25 Show,https://www.fashiontv.com/watch/97470586
+Georges Chakra | Paris Couture S/S 25,https://www.fashiontv.com/watch/97470554
 
 💕短視頻_888,#genre#
 parse=1
