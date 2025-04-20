@@ -6,6 +6,18 @@
 			"type_name":"Youtube Trends"
 		},
 		{
+			"type_id":"短劇",
+			"type_name":"短劇"
+		},
+		{
+			"type_id":"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB",
+			"type_name":"劇集"
+		},
+		{
+			"type_id":"電影",
+			"type_name":"電影"
+		},
+		{
 			"type_id":"LIST:自媒體 We Media,Aduo追劇 @aduo8848,指间看剧 @FingertipsTV1,爽劇不斷 @爽劇不斷",
 			"type_name":"自媒體"
 		},
@@ -28,18 +40,6 @@
 		{
 			"type_id":"LIST:新闻 Live,体育直播,赛事直播",
 			"type_name":"新聞直播"
-		},
-		{
-			"type_id":"短劇",
-			"type_name":"短劇"
-		},
-		{
-			"type_id":"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB",
-			"type_name":"劇集"
-		},
-		{
-			"type_id":"電影",
-			"type_name":"電影"
 		},
 		{
 			"type_id":"體育",
