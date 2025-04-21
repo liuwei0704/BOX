@@ -1042,7 +1042,7 @@ player=2
 parse=1
 player=2
 FashionTV Paris L'Original,https://www.fashiontv.com/watch/18717158
-FashionTV1,https://www.youtube.com/live/EzqksOfmdJg
+FashionTV1,https://www.youtube.com/live/s0mG0HN8_vk
 FashionTV2,https://www.youtube.com/live/tojE3-eBIoU
 FashionTV3,https://www.youtube.com/live/QcltAkKL1Ck
 FashionTV4,https://www.youtube.com/live/XdGi2HtqJSw
