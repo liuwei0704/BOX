@@ -157,6 +157,7 @@
 {"key":"XBiu_99i影城","name":"🔀99i影城[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://cdn.99itv.net/show/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_53TV","name":"🔀53TV[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://53tv.net/ll/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_BT电影天堂","name":"🔀BT电影天堂[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.aidytt.com/bt/{cateId}-{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+{"key":"XBiu_皮皮蛋影视","name":"🔀皮皮蛋影视[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://ppdys.me/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 
 {"key":"APP_奴娜TV","name":"🅰️奴娜TV[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://www.nntv.in/api.php/v1.vod"},
 {"key":"APP_乐看vlog","name":"🅰️乐看vlog[APP]","type":3,"api":"csp_AppYsV2","playerType":2,"searchable":1,"quickSearch":1,"ext":"https://lkvlog.cn//api.php/v1.vod"},
