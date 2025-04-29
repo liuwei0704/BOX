@@ -69,6 +69,7 @@
 {"key":"drpyS_Nyafun","name":"🌍Nyafun┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/Nyafun[漫]","searchable":1,"filterable":0,"quickSearch":1,"ext":""},
 
 {"key":"py_LIVES","name":"✴️直播┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/LIVES.py","searchable":1,"quickSearch":1,"filterable":1},
+{"key":"py_4KAV","name":"✴️4KAV[PY]","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/4KAV.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_hitvAPP","name":"✴️hitvAPP┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/hitvAPP.py","searchable":1,"quickSearch":1,"filterable":1},
 //{"key":"py_LREEOK","name":"✴️LREEOK┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/LREEOK.py","searchable":1,"quickSearch":1,"filterable":1},
 //{"key":"py_剧粑粑","name":"✴️剧粑粑┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/剧粑粑.py","searchable":1,"quickSearch":1,"filterable":1},
