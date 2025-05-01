@@ -32,10 +32,10 @@
 {"key":"csp_Kugou","name":"🎵酷狗音乐[PG]","type":3,"api":"csp_Kugou","searchable":1,"quickSearch":0,"filterable":1},
 {"key":"csp_Yinyuetai","name":"🎵音悦台[PG]","type":3,"api":"csp_Yinyuetai","searchable":1,"changeable":0},
 
-{"key":"Py_iqiyi","name":"愛奇藝┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_iqiyi.py"},
-{"key":"Py_qq","name":"騰訊┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_qq.py"},
-{"key":"Py_mgtv","name":"芒果┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_mgtv.py"},
-{"key":"Py_youku","name":"優酷┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_youku.py"},
+{"key":"Py_iqiyi","name":"🐾愛奇藝┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_iqiyi.py"},
+{"key":"Py_qq","name":"🐾騰訊┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_qq.py"},
+{"key":"Py_mgtv","name":"🐾芒果┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_mgtv.py"},
+{"key":"Py_youku","name":"🐾優酷┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_youku.py"},
 
 {"key":"Py_subaibai","name":"🐾素白白┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_subaibai.py"},
 {"key":"Py_moviehunter","name":"🐾電影獵手┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_moviehunter.py"},
