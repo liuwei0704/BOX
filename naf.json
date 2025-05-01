@@ -86,6 +86,7 @@
 {"key":"Py_jianpian","name":"🐾薦片┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_jianpian.py"},
 {"key":"Py_novipnoad","name":"🐾NO視頻┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_novipnoad.py"},
 //{"key":"Py_ppx","name":"🐾皮皮蝦┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_ppx.py"},
+{"key":"Py_kenan","name":"🐾柯南影視┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_kenan.py"},
 {"key":"Py_edge","name":"🐾邊緣影院┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_edge.py"},
 {"key":"Py_cloudspeed","name":"🐾雲速影院┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_cloudspeed.py"},
 {"key":"Py_fish","name":"🐾戀魚影院┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_fish.py"},

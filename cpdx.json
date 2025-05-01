@@ -55,6 +55,7 @@
 {"key":"Py_jianpian","name":"🐾薦片┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_jianpian.py"},
 {"key":"Py_novipnoad","name":"🐾NO視頻┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_novipnoad.py"},
 //{"key":"Py_ppx","name":"🐾皮皮蝦┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_ppx.py"},
+{"key":"Py_kenan","name":"🐾柯南影視┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_kenan.py"},
 {"key":"Py_edge","name":"🐾邊緣影院┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_edge.py"},
 {"key":"Py_cloudspeed","name":"🐾雲速影院┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_cloudspeed.py"},
 {"key":"Py_fish","name":"🐾戀魚影院┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_fish.py"},
@@ -79,6 +80,7 @@
 {"key":"Py_lm","name":"🐾藍莓短劇┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_lm.py"},
 {"key":"Py_toule","name":"🐾偷樂短劇┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_toule.py"},
 
+{"key":"drpy_js_花生短劇","name":"🌍花生短劇┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/has.js"},
 {"key":"drpyS_采王2024","name":"🌍采王2024[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ2m5GBkcnLuTOfNTTqgURVDFUAlKCu7yAAAAA="},
 {"key":"drpyS_采王道长[合]","name":"🌍采王道长[合][JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ228u5M581NOqBRFQMAcGPDNobAAAA"},
 {"key":"drpyS_凡客TV","name":"🌍凡客TV[JS]","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
