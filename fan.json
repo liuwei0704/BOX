@@ -47,7 +47,7 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_YsjGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1Guard","timeout":10,"searchable": 1,"quickSearch": 1,"changeable":1},
 
-{"key":"drpyS_哔哩大全[官]","name":"🌍哔哩大全[官](DS)","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
+{"key":"drpyS_哔哩大全[官]","name":"🌍哔哩大全┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
 {"key":"drpyS_采王2024","name":"🌍采王2024┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ2m5GBkcnLuTOfNTTqgURVDFUAlKCu7yAAAAA="},
 {"key":"drpyS_采王道长[合]","name":"🌍采王道长[合]┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/采集之王[合]","searchable":1,"filterable":1,"quickSearch":0,"ext":"H4sIAAAAAAAAA9PT088qzs/Tf9ne/nJ228u5M581NOqBRFQMAcGPDNobAAAA"},
 {"key":"drpyS_凡客TV","name":"🌍凡客TV┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":1,"filterable":0,"quickSearch":0,"ext":""},
