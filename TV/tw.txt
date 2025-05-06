@@ -1,6 +1,6 @@
-🍀20250505更新🍀,#genre#
+🍀20250507更新🍀,#genre#
 更新說明,https://live.metshop.top/huya/13303478
-更新AKTV,https://live.metshop.top/huya/15152155
+更新888,https://live.metshop.top/huya/15152155
 設定內直播,https://live.metshop.top/douyu/9986305
 小房子可切換,https://live.metshop.top/huya/593667
 其他線路,https://live.metshop.top/huya/16739452
@@ -1035,19 +1035,8 @@ parse=1
 player=2
 虎牙624（遊戲）,https://m.huya.com/402624
 第五人格賽事（遊戲）,https://m.huya.com/461698
-17經典台,https://17.live/zh-Hant/live/8494770
-17綜藝台,https://17.live/zh-Hant/live/417224
-
-👠Fashion TV_888,#genre#
-parse=1
-player=2
-FashionTV Paris L'Original,https://www.fashiontv.com/watch/18717158
-FashionTV1,https://www.youtube.com/live/s0mG0HN8_vk
-FashionTV2,https://www.youtube.com/live/tojE3-eBIoU
-FashionTV3,https://www.youtube.com/live/QcltAkKL1Ck
-FashionTV4,https://www.youtube.com/live/XdGi2HtqJSw
-FashionTV5,https://www.youtube.com/live/32KOzpabsL4
-FashionTV6,https://www.youtube.com/live/-EWkPmuN60w
+17經典台,https://tencent-global-pull-rtmp.17app.co/live/46d46576-cd73-4f19-bd5f-1e65e9a62e85.flv
+17綜藝台,https://tencent-global-pull-rtmp.17app.co/live/46d46576-cd73-4f19-bd5f-1e65e9a62e85.flv
 
 💕短視頻_888,#genre#
 parse=1
@@ -1069,6 +1058,14 @@ player=2
 happy,
 pigoo,https://luong.utako.moe/pigoo/index.m3u8
 极限电影,
+
+直播.无码av放映室,http://bo.xn--3oq579l.com/live/cx_15199.flv
+直播.明星av放映室,http://bo.xn--3oq579l.com/live/cx_15202.flv
+直播.嫖娼av放映室,http://bo.xn--tcwu45i.com/live/cx_15710.flv
+直播.古装av放映室,http://bo.xn--zwtw53a.com/live/cx_15672.flv
+直播.欧美av放映室,http://ujeznthweuela.tyrl4.xyz/live/cx_375008.flv
+直播.日本av放映室,http://l1zlazjetjmnhet.zhoujingjie.xyz/live/cx_373479.flv
+
 
 🇯🇵日本频道_888,#genre#
 Zoom tv,http://185.236.229.62:9981/play/a02a
