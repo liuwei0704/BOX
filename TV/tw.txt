@@ -1025,14 +1025,16 @@ YY剧场怀旧,https://live.metshop.top/yy/1382627144
 
 💕•音樂時尚,#genre#
 parse=1
-player=1
+ua=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36
+
 周杰伦MV,https://m.douyu.com/7537296
 阿七點歌台,https://m.douyu.com/3186217
 音樂MV,https://m.douyu.com/3870925
 
 💫其它直播,#genre#
 parse=1
-player=2
+ua=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36
+
 虎牙624（遊戲）,https://m.huya.com/402624
 第五人格賽事（遊戲）,https://m.huya.com/461698
 17經典台,https://17.live/zh-Hant/live/8494770
