@@ -1035,8 +1035,8 @@ parse=1
 player=2
 虎牙624（遊戲）,https://m.huya.com/402624
 第五人格賽事（遊戲）,https://m.huya.com/461698
-17經典台,https://tencent-global-pull-rtmp.17app.co/live/46d46576-cd73-4f19-bd5f-1e65e9a62e85.flv
-17綜藝台,https://tencent-global-pull-rtmp.17app.co/live/46d46576-cd73-4f19-bd5f-1e65e9a62e85.flv
+17經典台,https://17.live/zh-Hant/live/8494770
+17綜藝台,https://17.live/zh-Hant/live/417224
 
 💕短視頻_888,#genre#
 parse=1
