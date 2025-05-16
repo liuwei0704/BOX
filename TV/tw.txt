@@ -1042,14 +1042,14 @@ ua=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 
 💕短視頻_888,#genre#
 parse=1
-player=2
+playerType=2
 抖音,https://diskgirl.com/
 韓國KBJ,https://5721004.xyz/player/short.html
 日本,https://javtrailers.com/shorts?ref=porndude
 
 🈲VIP頻道_888,#genre#
 parse=1
-player=1
+playerType=1
 松视1,http://18.svi-studio.com:8880/live/584830114073/800309151021/5.m3u8
 松视1,http://18.svi-studio.com:80/live/652484888807/195449585962/5.m3u8
 松视2,http://18.svi-studio.com:8880/live/917952932058/953281067271/6.m3u8
