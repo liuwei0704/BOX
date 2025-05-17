@@ -78,6 +78,7 @@
 //{"key":"py_剧粑粑","name":"✴️剧粑粑┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/html/剧粑粑.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_MiFun","name":"✴️MiFun┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/MiFunAPP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"Py_薦片","name":"✴️薦片┃Py","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_jianpian.py"},
+{"key":"py_热播","name":"✴️热播┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/热播APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_美帕","name":"✴️美帕┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/美帕APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_光速","name":"✴️光速┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/光速APP.py","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"py_奇迹","name":"✴️奇迹┃PY","type": 3,"api":"https://raw.githubusercontent.com/JJBJJ/PyramidStore/refs/heads/main/plugin/app/奇迹APP.py","searchable":1,"quickSearch":1,"filterable":1},
