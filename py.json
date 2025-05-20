@@ -1,3 +1,8 @@
+
+//      >>> 当前时间是：2025-05-21 01:43:35 <<<
+//  关注微信公众号【神秘的哥哥们】有惊喜哦！！！
+//  当前接口：https://raw.githubusercontent.com/myhomebox/tv/refs/heads/main/4K-2.bmp
+
 {
 "sites":[
 {"key":"csp_Local","name":"💻本地視頻","style":{"type":"list"},
@@ -125,8 +130,12 @@
 "searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_youku.py"},
 {"key":"Py_novipnoad","name":"NO視頻┃Python","style":{"type":"rect","ratio":0.85},
 "searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_novipnoad.py"},
-{"key":"Py_ppx","name":"皮皮蝦┃Python","style":{"type":"rect","ratio":0.85},
-"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_ppx.py"},
+{"key":"Py_qj1080","name":"奇蹟┃Python","style":{"type":"rect","ratio":0.85},
+"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_qj1080.py"},
+{"key":"Py_rbotv","name":"熱播┃Python","style":{"type":"rect","ratio":0.85},
+"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_rbotv.py"},
+{"key":"Py_zero","name":"零度影院┃Python","style":{"type":"rect","ratio":0.85},
+"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_zero.py"},
 {"key":"Py_edge","name":"邊緣影院┃Python","style":{"type":"rect","ratio":0.85},
 "searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_edge.py"},
 {"key":"Py_MiFun","name":"MiFun動漫┃Python","style":{"type":"rect","ratio":0.85},
@@ -353,7 +362,7 @@
 {"name":"DNSWatch","url":"https://resolver2.dns.watch/dns-query","ips":["84.200.69.80","84.200.70.40"]},
 {"name":"Quad9","url":"https://dns.quad9.net/dns-quer","ips":["9.9.9.9","149.112.112.112"]}
 ],
-"proxy":["raw.githubusercontent.com","googlevideo.com","cdn.v82u1l.com","cdn.iz8qkg.com","cdn.kin6c1.com","c.biggggg.com","c.olddddd.com","haiwaikan.com","www.histar.tv","pornhub.com","youtube.com","uhibo.com",".*boku.*",".*nivod.*","*.t4tv.hz.cz",".*ulivetv.*"],"hosts":["cache.ott.ystenlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.bestlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.wasulive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.fifalive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.hnbblive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com"],"rules":[
+"proxy":["raw.githubusercontent.com","googlevideo.com","cdn.v82u1l.com","cdn.iz8qkg.com","cdn.kin6c1.com","c.biggggg.com","c.olddddd.com","haiwaikan.com","www.histar.tv","pornhub.com","youtube.com","uhibo.com",".*boku.*",".*nivod.*","*.t4tv.hz.cz",".*ulivetv.*"],"hosts":["cache.ott.ystenlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.bestlive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.wasulive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.fifalive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.FifastbLive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com","cache.ott.hnbblive.itv.cmvideo.cn=base-v4-free-mghy.e.cdn.chinamobile.com"],"rules":[
 {"host":"hdmoli.com","rule":[".m3u8"]},
 {"host":"https://api.live.bilibili.com","rule":["bilivideo.com","/index.m3u8"],"filter":["data.bilibili.com/log/web","i0.hdslb.com/bfs/live/"]},
 {"name":"火山嗅探","hosts":["huoshan.com"],"regex":["item_id="]},
@@ -423,14 +432,12 @@
 {"name":"綜合","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=1"},
 {"name":"ZLIVE","playerType":1,"ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=6"},
 {"name":"SMART┃PHP","ua":"AptvPlayer/1.3.3","url":"http://34.80.121.147:5005/stmv.php"},
-{"name":"SMART┃Python","ua":"AptvPlayer/1.3.3","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_smt.py","ext":[
-]},
 {"name":"ofiii","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=5"},
 {"name":"四季線上","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=3"},
-{"name":"LITV┃PHP","ua":"okhttp/4.12.0","url":"http://34.80.121.147:5005/index.php?token=Sr5sn337Y8rNX2NSivIUSA&live=m3u&url=4"},
 {"name":"LITV┃Python","ua":"okhttp/4.12.0","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_litv.py","ext":[
 ]},
-{"name":"江蘇直播┃Python","ua":"okhttp/4.12.0","type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_jiangsu.py","ext":"","header":{"User-Agent":"Mozilla/5.0","Referer":"https://live.jstv.com/"}},
+{"name":"BeeSport┃Python","ua":"okhttp/4.12.0","type":"3","api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_beesport.py","ext":[
+],"header":{"Referer":"https://p.m82xg4z0cdbz7.com/"}},
 {"name":"Gather","type":"0","ua":"okhttp/4.12.0","url":"https://tv.iill.top/m3u/Gather"},
 {"name":"MyTV","type":"0","ua":"okhttp/4.12.0","url":"https://tv.iill.top/m3u/MyTV"},
 {"name":"Sport","type":"0","ua":"okhttp/4.12.0","url":"https://tv.iill.top/m3u/Sport"}
