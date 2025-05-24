@@ -69,7 +69,7 @@
 {"key":"Py_keke","name":"✴️可可┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_keke.py"},
 {"key":"Py_xiaoji","name":"✴️小雞┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_xiaoji.py"},
 {"key":"Py_nivod","name":"✴️泥視頻┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_nivod.py"},
-{"key":"Py_1080P","name":"✴️酷雲┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_1080P.py"},
+//{"key":"Py_1080P","name":"✴️酷雲┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_1080P.py"},
 {"key":"Py_guowa","name":"✴️國外劇┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_guowa.py"},
 {"key":"Py_xiaohys","name":"✴️小紅┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_xiaohys.py"},
 {"key":"Py_moviehunter","name":"✴️電影獵手┃PY","searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/Plugin/py_moviehunter.py"},
