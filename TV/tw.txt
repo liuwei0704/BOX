@@ -677,13 +677,18 @@ CCTV17,http://59.39.89.130:60901/tsfile/live/0017_1.m3u8
 動漫輪播-七龍珠,https://live.metshop.top/huya/11601966
 動漫輪播-頭文字D,https://live.metshop.top/huya/11352889
 
+🔀短剧系列,#genre#
+星河剧场,http://43.138.0.72:35455/douyu/36337
+酷炫剧场,http://43.138.0.72:35455/douyu/8475821
+明日剧场,http://43.138.0.72:35455/douyu/562225
+精彩短剧看不停,https://www.goodiptv.club/douyu/11824307
+
 🐳•斗魚影視,#genre#
 陈周周yo,https://www.goodiptv.club/douyu/9018731
 橙記Orange丶,https://www.goodiptv.club/douyu/4549169
 深夜D你去看剧,https://www.goodiptv.club/douyu/12434419
 深夜D你除三害,https://www.goodiptv.club/douyu/12421816
 深夜D你上高速,https://www.goodiptv.club/douyu/7882691
-精彩短剧看不停,https://www.goodiptv.club/douyu/11824307
 奇光主播,https://www.goodiptv.club/douyu/8009547
 baby丶贝贝,https://www.goodiptv.club/douyu/431460
 进击的神乐,https://www.goodiptv.club/douyu/85894
@@ -872,6 +877,7 @@ Angela小兔,https://www.goodiptv.club/douyu/9617766
 影视笑工场,https://www.goodiptv.club/douyu/10298846
 欢乐小饭米粒,https://www.goodiptv.club/douyu/9403690
 用户2979576101,https://www.goodiptv.club/douyu/9273031
+
 🔁•虎牙影視,#genre#
 电影_星爷,https://live.metshop.top/huya/11342412
 电影_英叔,https://live.metshop.top/huya/11342421
