@@ -168,6 +168,8 @@
 
 {"key":"XBiu_MX动漫","name":"🔀MX动漫┃XB","type":3,"api":"csp_XBiu","searchable":0,"quickSearch":1,"ext":"https://www.mxdmgw.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_大咖动漫","name":"🔀大咖动漫┃XB","type":3,"api":"csp_XBiu","searchable":0,"quickSearch":1,"filterable":1,"ext":"https://www.dk95.com/{cateId}/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
+
+{"key":"XBiu_麒麟影音","name":"🔀麒麟影音[XBiu]","type":3,"api":"csp_XBiu","searchable":1,"quickSearch":1,"ext":"https://www.70yy.fun/index.php/vod/type/id/{cateId}/page/{catePg}.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_影视森林","name":"🔀影视森林┃XB","type":3,"api":"csp_XBiu","searchable":0,"quickSearch":1,"filterable":1,"ext":"https://www.ncshdxx.com/vodshow/{cateId}--------{catePg}---/","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_乾坤影院","name":"🔀乾坤影院┃XB","type":3,"api":"csp_XBiu","searchable":0,"quickSearch":1,"filterable":1,"ext":"https://www.qiankun.tv/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
 {"key":"XBiu_纽约影院","name":"🔀纽约影院┃XB","type":3,"api":"csp_XBiu","searchable":0,"quickSearch":1,"ext":"https://www.nycvod.com/vodshow/{cateId}--------{catePg}---.html","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/x.jar"},
