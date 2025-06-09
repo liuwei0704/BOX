@@ -1,0 +1,89 @@
+
+{
+    "class": [
+        {
+            "type_name": "劇瘋狂",
+            "type_id": "劇瘋狂",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "指間看劇",
+            "type_id": "指間看劇",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "音乐排行",
+            "type_id": "音乐排行",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "爽劇不斷",
+            "type_id": "爽劇不斷",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "牛牛短剧",
+            "type_id": "牛牛短剧",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "盛世短剧",
+            "type_id": "盛世短剧",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "真龍短剧",
+            "type_id": "真龍短剧",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "神云短劇",
+            "type_id": "神云短剧",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "神州劇場",
+            "type_id": "神州劇場",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "逆天劇場",
+            "type_id": "逆天劇場",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "酷喵追劇",
+            "type_id": "酷喵追劇",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "穿越短剧",
+            "type_id": "穿越短剧",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "擦邊短剧",
+            "type_id": "擦邊短剧",
+            "parse": 0,
+            "jx": 0
+        },
+        {
+            "type_name": "系統短剧",
+            "type_id": "系統短剧",
+            "parse": 0,
+            "jx": 0
+        }
+    ]
+}
