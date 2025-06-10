@@ -6,7 +6,7 @@
 {"key":"豆瓣","name":"🌟豆瓣┃PG","type":3,"api":"csp_Douban","style":{"type":"rect","ratio":0.85},"searchable":0,"changeable":1,"indexs":1,"ext":"https://cnb.cool/fish2018/pg/-/git/raw/master/lib/tokenm.json$$$https://www.fish2018.us.kg/p/lib/douban.json"},
 {"key":"dr_豆瓣","name":"🌟豆瓣┃JS","type":3,"searchable": 0,"quickSearch":0,"filterable":0,"api":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/libs/drpy2.min.js","ext":"https://git.886.be/https://raw.githubusercontent.com/n3rddd/N3RD/refs/heads/master/JN/dr_py/js/豆瓣[官].js"},
 {"key":"配置中心","name":"🖥️配置中心","type":3,"api":"csp_Config","style":{"type":"rect","ratio":0.85},"searchable":0,"changeable":0},
-{"key":"csp_Market","name":"🛒應用商店","style":{"type":"list"},"type":3,"api":"csp_Market","style":{"type":"rect","ratio":0.85},"searchable":0,"changeable":0,"ext":"https://raw.githubusercontent.com/myhomebox/tv/main/json/market.json"},
+{"key":"csp_Market","name":"🛒應用商店","style":{"type":"list"},"type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"https://raw.githubusercontent.com/myhomebox/tv/main/json/market.json"},
 
 {"key":"If_js_直播","name":"🎥直播┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/lf_live_min.js","style":{ "type":"oval"},"changeable":0,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/ext/lf_live.json"},
 {"key":"PHP直播","name": "📺直播┃T4","type": 4,"api": "http://zhangqun66.com/zh/2241-2.php","searchable": 1,"changeable": 0,"ext": "1,2,3,4,5,6"},
