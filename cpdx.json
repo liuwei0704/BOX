@@ -16,7 +16,7 @@
 
 {"key":"csp_Youtube","name":"▶️Youtube","type":3,"api":"csp_Youtube","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":0,"changeable":0,"timeout":120,"ext":{"token":"https://www.252035.xyz/p/lib/tokenm.json","json":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/youtube.json","type":"直播#新闻#剧集#电影#综艺#纪录片#音乐#体育#动物#风光#放松#4K#HDR#movie#music#documentary#bbcdocumentary#nationalgeographicdocumentary","keywords":"排行榜,HOT,TRENDS,热门话题,热门趋势,热门综艺,热门电影,热门电视剧,小姐姐","codecs":"","proxy":"noproxy","danmu":true},"style":{"type":"rect","ratio":1.597}},
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
-{"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社"},
+{"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"網文課代表#薇薇动漫迷#大寶說故事#小猫漫谈#動漫魔女#七號動漫館#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社#神話動漫社#次元動漫社"},
 
 {"key":"T4-heimuer","name":"🔅黑木耳┃T4","type":4,"api":"https://tang.hz.cz/power/hme?token=707a2984","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"filterable":1,"changeable":0,"ext":false},
 {"key":"T4-独播库","name":"🔅独播库┃T4","type":4,"api":"https://tang.hz.cz/power/duboku?token=707a2984","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"filterable":1,"changeable":0,"ext":false},
