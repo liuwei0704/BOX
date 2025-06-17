@@ -2,11 +2,19 @@
 	"recommend":"LIST:最新|推薦,官方頻道",
 	"class":[
 		{
-			"type_id":"GETTRENDS",
-			"type_name":"Youtube Trends"
+			"type_id":"短劇",
+			"type_name":"短劇"
 		},
 		{
-			"type_id":"LIST:自媒體 We Media,老高與小茉 @laogao,脑洞乌托邦 @NDWTB,自说自话的总裁 @STBoss,纪实说 @C-Documentary,老肉雜談 @老肉雜談,李永樂老師 @TchLiyongle,滇西小哥 @dianxixiaoge,李子柒 Liziqi @cnliziqi,老饭骨 @LaoFanGu,小高姐的 Magic Ingredients @MagicIngredients,小穎美食 @XiaoYingFood,primitivetechnology9550 @primitivetechnology9550,Mr Beast@MrBeast,Airforceproud95 @Airforceproud95,TheGreatWar @TheGreatWar,Mark Rober @MarkRober,不良林,涌哥侃侃 @ygkkk,悟空的日常",
+			"type_id":"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB",
+			"type_name":"劇集"
+		},
+		{
+			"type_id":"電影",
+			"type_name":"電影"
+		},
+		{
+			"type_id":"LIST:自媒體 We Media,Aduo追劇 @aduo8848,指间看剧 @FingertipsTV1,爽劇不斷 @爽劇不斷",
 			"type_name":"自媒體"
 		},
 		{
@@ -28,18 +36,6 @@
 		{
 			"type_id":"LIST:新闻 Live,体育直播,赛事直播",
 			"type_name":"新聞直播"
-		},
-		{
-			"type_id":"短劇",
-			"type_name":"短劇"
-		},
-		{
-			"type_id":"LIST:剧集,腾讯剧集,爱奇艺剧集,优酷剧集,芒果剧集,TVB",
-			"type_name":"劇集"
-		},
-		{
-			"type_id":"電影",
-			"type_name":"電影"
 		},
 		{
 			"type_id":"體育",
@@ -85,6 +81,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -183,18 +180,42 @@
 				"key":"tid",
 				"name":"短劇",
 				"value":[
-					{"n":"都市","v":"@Urbanshort-TV 都市 短劇"},
+					{"n":"都市","v":"都市 短劇"},
+					{"n":"系統","v":"系統 短劇"},
+					{"n":"擦邊","v":"擦邊 短劇"},
 					{"n":"爱情","v":"爱情 短劇"},
 					{"n":"复仇","v":"复仇 短劇"},
 					{"n":"穿越","v":"穿越 短劇"},
 					{"n":"喜剧","v":"喜剧 短劇"},
+					{"n":"逆襲","v":"逆襲 短劇"},
+					{"n":"戰神","v":"戰神 短劇"},
 					{"n":"奇幻","v":"奇幻 短劇"},
-					{"n":"九酱爱追剧","v":"@NineSauceDramaTV"},
-					{"n":"百万好剧场","v":"@1-pw5ox"},
+					{"n":"盛世短剧","v":"@ShengshiDrama"},
+					{"n":"牛牛短剧","v":"@niuniuduanju"},
+					{"n":"神云爽剧","v":"@Shenyuncooldrama"},
 					{"n":"咖啡追剧","v":"@@coffeedrama605"},
+					{"n":"YY劇場","v":"@YY-fh6fl"},
+                    {"n":"听花短剧","v":"@TinghuaDrama"},
+					{"n":"阿肥剧场","v":"@fat_drama"},
+					{"n":"九龙剧场","v":"@九龙剧场"},
+					{"n":"爽劇不斷","v":"@爽劇不斷"},
+					{"n":"蔓蔓書屋","v":"@ManManbook"},
+					{"n":"旋转汤圆","v":"@xuanzhuantangyuan"},
+					{"n":"指间看剧","v":"@FingertipsTV1"},
+					{"n":"逆天剧场","v":"@DefyFateStudio"},
+					{"n":"小爱推文","v":"@loffee7047"},
 					{"n":"斗罗短剧","v":"@DouluoDrama123 斗羅短劇"},
-					{"n":"嘟嘟剧场","v":"@DUDUJUCHANG"},
-					{"n":"牛牛短剧","v":"@niuniuduanju"}
+					{"n":"六翼至尊剧场","v":"@六翼至尊剧场"},
+					{"n":"青鸾枕夢劇","v":"@user-qlzmj"},
+					{"n":"下山追短剧","v":"@XiashanDrama"},
+					{"n":"短剧课代表","v":"@ShortDramaRep"},
+					{"n":"甜甜追短劇","v":"@TT-drama"},
+					{"n":"短劇追到爽","v":"@Dramagogogo-s1f"},
+					{"n":"柑橘短剧社","v":"@Citrus-drama"},
+					{"n":"劇翻天 Drama Go","v":"@DramaGo-Go"},
+					{"n":"Super Exciting","v":"@SuperExcitingDrama"},
+					{"n":"霸道短劇ShortDrama","v":"@霸道短劇ShortDrama"},
+					{"n":"心野短劇No1Drama","v":"@心野短劇No1Drama"}
 				]
 			}
 		],
@@ -204,6 +225,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -360,6 +382,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -480,6 +503,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -595,6 +619,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -728,6 +753,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -839,6 +865,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
@@ -974,6 +1001,7 @@
 				"name":"時間",
 				"value":[	
 					{"n":"時間全選","v":""},
+					{"n":"2025","v":"2025"},
 					{"n":"2024","v":"2024"},
 					{"n":"2023","v":"2023"},
 					{"n":"2022","v":"2022"},
