@@ -155,7 +155,6 @@
 {"key":"drpy_js_cpldq","name":"🌍一起看┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/cpldq.js"},
 {"key":"drpy_js_xiaobaotv","name":"🌍小寶影院┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/xiaobaotv.js"},
 {"key":"drpy_js_feitu","name":"🌍飛兔影視┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/feitu.js"},
-{"key":"drpy_js_shdy3","name":"🌍騷火電影┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/shdy3.js"},
 {"key":"drpy_js_139ys","name":"🌍139影視┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/139ys.js"},
 {"key":"drpy_js_HDmoli","name":"🌍HDmoli┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/HDmoli.js"},
 {"key":"drpy_js_99itv","name":"🌍99影院┃JS","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"changeable":1,"type":3,"api":"https://raw.githubusercontent.com/myhomebox/tv/main/lib/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/myhomebox/tv/main/js/99itv.js"},
@@ -165,7 +164,6 @@
 
 {"key":"drpyS_樱漫动漫","name":"🌍樱漫动漫┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/樱漫[漫]","style":{"type":"rect","ratio":0.85},"searchable":1,"filterable":0,"quickSearch":0,"ext":""},
 {"key":"drpyS_集百动漫","name":"🌍集百动漫┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫","style":{"type":"rect","ratio":0.85},"searchable":1,"filterable":0,"quickSearch":0,"ext":""},
-{"key":"drpyS_Nyafun","name":"🌍Nyafun┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/Nyafun[漫]","style":{"type":"rect","ratio":0.85},"searchable":1,"filterable":0,"quickSearch":1,"ext":""},
 
 {"key":"drpyS_蓝莓短剧","name":"🌍蓝莓短剧┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/蓝莓短剧","style":{"type":"rect","ratio":0.85},"searchable":1,"filterable":0,"quickSearch":1,"ext":""},
 {"key":"drpyS_星芽短剧","name":"🌍星芽短剧┃JS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧","style":{"type":"rect","ratio":0.85},"searchable":1,"filterable":1,"quickSearch":1,"ext":""},
