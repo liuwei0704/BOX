@@ -1,4 +1,4 @@
-🍀20250619更新🍀,#genre#
+🍀20250627更新🍀,#genre#
 更新說明,https://live.metshop.top/huya/13303478
 增加短劇頻道,https://live.metshop.top/huya/15152155
 設定內直播,https://live.metshop.top/douyu/9986305
@@ -1797,21 +1797,23 @@ playerType=2
 🈲VIP頻道_888,#genre#
 parse=1
 playerType=1
-松视1,http://18.svi-studio.com:8880/live/584830114073/800309151021/5.m3u8
-松视1,http://18.svi-studio.com:80/live/652484888807/195449585962/5.m3u8
-松视2,http://18.svi-studio.com:8880/live/917952932058/953281067271/6.m3u8
-松视3,https://18.svi-studio.com/live/271871095922/006886711863/20205.m3u8
-香蕉,http://18.svi-studio.com:8880/live/624372101145/418430465490/4.m3u8
-潘多拉,http://18.svi-studio.com:8880/live/624372101145/418430465490/3.m3u8
-惊艳,http://18.svi-studio.com:8880/live/908957700097/132663288386/1.m3u8 
- 
-驚艷台,http://18.svi-studio.com:8880/live/584830114073/800309151021/1.m3u8
-潘多拉,http://18.svi-studio.com:8880/live/908957700097/132663288386/3.m3u8
-潘多拉,http://18.svi-studio.com:8880/live/584830114073/800309151021/3.m3u8
-香蕉台,http://18.svi-studio.com:8880/live/908957700097/132663288386/4.m3u8
-松视1,http://18.svi-studio.com:8880/live/271871095922/006886711863/5.m3u8
-松视2,http://18.svi-studio.com:8880/live/271871095922/006886711863/6.m3u8
-松视3,http://18.svi-studio.com:8880/live/271871095922/006886711863/20205.m3u8
+HAPPY,https://hls-gateway.vpstv.net/streams/709091.m3u8
+极限,https://hls-gateway.vpstv.net/streams/709086.m3u8
+彩虹K台,https://hls-gateway.vpstv.net/streams/709040.m3u8
+潘朵拉,https://hls-gateway.vpstv.net/streams/709042.m3u8
+松視1臺,https://hls-gateway.vpstv.net/streams/709043.m3u8
+松視2台,https://hls-gateway.vpstv.net/streams/709044.m3u8
+彩虹e臺,https://hls-gateway.vpstv.net/streams/709039.m3u8
+彩虹電影,https://hls-gateway.vpstv.net/streams/709038.m3u8
+松視3台,https://hls-gateway.vpstv.net/streams/709084.m3u8
+驚艷,https://hls-gateway.vpstv.net/streams/709041.m3u8
+完美台,https://hls-gateway.vpstv.net/streams/476375.m3u8
+Playboy,https://hls-gateway.vpstv.net/streams/476376.m3u8
+Dorcel ,https://hls-gateway.vpstv.net/streams/476377.m3u8
+HAPPY CHANNEL,https://hls-gateway.vpstv.net/streams/709085.m3u8
+erox,https://hls-gateway.vpstv.net/streams/644724.m3u8
+eroxxx,https://hls-gateway.vpstv.net/streams/644725.m3u8
+brazzers,https://hls-gateway.vpstv.net/streams/644730.m3u8
 pigoo,https://luong.utako.moe/pigoo/index.m3u8
 
 🇯🇵日本频道_888,#genre#
