@@ -1,7 +1,7 @@
 {
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://cdn1.iconfinder.com/data/icons/interface-travel-and-environment/64/folder-film-movie-interface-video-play-1024.png",
-"spider":"https://github.com/chendi0207/my-TVBOX/raw/refs/heads/main/tvboxqq/欧歌/spider.jar","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
+"spider":"https://github.com/alantang1977/X/raw/refs/heads/main/jar/PandaQ.jpg","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
 
 "sites":[
 {"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
