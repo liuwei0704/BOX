@@ -1,7 +1,7 @@
 {
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
-"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;e602f31df877a79ab8297e3142bd02a0","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
+"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;174a252cc07fac93ac5eab6ef8645981","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
 
 "sites":[
 {"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
@@ -15,6 +15,7 @@
 {"key":"Bili²","name":"🅱️哔哔合集²┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 
 {"key":"荐片","name":"💡荐片┃影视","api":"csp_Jianpian","type":3,"playerType":1,"ext":"https://api.ubj83.com"},
+{"key":"移动","name":"💡移动┃影视","type":3,"api":"csp_YDjisu","searchable":1,"quickSearch":1},
 {"key":"热播影视","name":"💡热播┃影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"}},
 {"key":"天天影视","name":"💡天天┃影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://tt.ysdqjs.cn"}},
 {"key":"浪酷影视","name":"💡浪酷┃影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.lkuys.cn"}},
@@ -34,13 +35,11 @@
 {"key":"鸭梨影视","name":"💡鸭梨┃影视","type":3,"api":"csp_KmeiJu"},
 {"key":"huomaoys","name":"💡火猫┃影视","type":3,"api":"csp_Muou","jar":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749917849270/0615qj.jpg;md5;410ad21caad9e6f6d40c1ae5ca2be662","playerType":2,"ext":"7lj763gg0939790i413gi484k8058896highi4414h68l7g6hk8qiaojig9k2k289l9ik807i213k5j602"},
 {"key":"爆炸","name":"💡爆炸┃影视","type":3,"api":"csp_Muou","jar":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749917849270/0615qj.jpg;md5;410ad21caad9e6f6d40c1ae5ca2be662","playerType":2,"ext":"7lj763gg402i79425i3l85i6h848i295l5hiji5l828g3l3jjhg6kg7410lhjkqiaojij3ig1lg475178k7h0il4ig3h753h7hi516758699jh2g5h433li30gk11g73l90312h4g7"},
-{"key":"行动","name":"👑行动┃弹幕","type":3,"api":"csp_AppSy","ext":{"url":"http://160.202.246.9:2356","key1":"aassddwwxxllsx1x","key2":"aassddwwxxllsx1x","key3":"aassddwwxxllsx1x"}},
 {"key":"斗量","name":"👑斗量┃弹幕","type":3,"api":"csp_AppSy","ext":{"url":"https://app.ystva.com","key1":"hsZwQK5yrnefW7OJ","key2":"hsZwQK5yrnefW7OJ","key3":"hsZwQK5yrnefW7OJ"}},
 {"key":"追忆","name":"👑追忆┃弹幕","type":3,"api":"csp_AppSy","ext":{"url":"http://110.42.7.130:1866","key1":"aassddwwxxllsx1x","key2":"2083c87e98b6ce08","key3":"2083c87e98b6ce08"}},
 {"key":"雄鹰","name":"👑雄鹰┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"http://122.228.193.2:9988","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","deviceId":"","version":"120"}},
 {"key":"橘子","name":"👑橘子┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://api1.bffree.cn","dataKey":"2015692015692015","dataIv":"2015692015692015","deviceId":"","version":"300"}},
 {"key":"1若惜","name":"👑若惜┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://110.40.59.188:9527","dataKey":"ebad3f1a58b13933","dataIv":"ebad3f1a58b13933","deviceId":"","version":""}},
-{"key":"米兔","name":"👑米兔┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://v.tkbot.fun","dataKey":"d032c12876bc6848","dataIv":"d032c12876bc6848","deviceId":"","version":"200"}},
 {"key":"海豚","name":"👑海豚┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://appcms.htsp4k.top","dataKey":"7CYQQzwchRQpHCOj","dataIv":"7CYQQzwchRQpHCOj","deviceId":"","version":""}},
 {"key":"世颜","name":"👑世颜┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://sykjw.xyz","dataKey":"sicnagduxbSfisnz","dataIv":"sicnagduxbSfisnz","deviceId":"2112fc5eac600314ba95c4d65da9286b3","version":"556"}},
 {"key":"可达","name":"👑可达┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://ledayy.com","dataKey":"hjjp68c2okw12345","dataIv":"hjjp68c2okw12345","deviceId":"24bba8caeff7b3a63a486806bd7130fca","version":"102"}},
@@ -50,6 +49,7 @@
 {"key":"趣看","name":"👑趣看┃弹幕","type":3,"quickSearch":1,"api":"csp_AppMuou","ext":{"url":"https://xjuzi.top","dataKey":"6a482a70b80eefc9","dataIv":"c995826a3e86fedd","jxurl":"https://www.ququkan.cc"}},
 {"key":"驿站","name":"👑驿站┃弹幕","type":3,"quickSearch":1,"api":"csp_AppMuou","ext":{"url":"http://110.42.110.230:16189","dataKey":"d7378557d1d9c924","dataIv":"fb4594f622f34fea","jxurl":"https://qqiqiyiyoukumgtvapiappdyyztvjsoni8n2o0z1ws2n7b6v3x8.68.gy:56789"}},
 {"key":"樱桃","name":"👑樱桃┃弹幕","type":3,"quickSearch":1,"api":"csp_AppMuou","ext":{"url":"http://sp.dxgsp.cc","dataKey":"25f9e794323b4538","dataIv":"25f9e794323b4538","jxurl":"https://ap.dxgsp.cc"}},
+{"key":"蓝鹰","name":"👑蓝鹰┃弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"http://172.247.192.138:18520","dataKey":"SuNlEkOLAoWJj1Oe","dataIv":"SuNlEkOLAoWJj1Oe","deviceId":"","version":""}},
 
 {"key":"曼波动漫","name":"🤣曼波┃动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://app.omofun1.top","dataKey":"66dc309cbeeca454","dataIv":"66dc309cbeeca454","deviceId":"","version":""}},
 {"key":"咕咕动漫","name":"🤣咕咕┃动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://www.gugu3.com","dataKey":"nKfZ8KX6JTNWRzTD","dataIv":"nKfZ8KX6JTNWRzTD","deviceId":"","version":""}},
