@@ -187,7 +187,7 @@
 {"key":"vod_魔爪","name":"📌魔爪┃採集","type":1,"api":"https://mozhuazy.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"vod_如意","name":"📌如意┃採集","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"vod_蜂巢","name":"📌蜂巢┃採集","type":1,"api":"https://api.fczy888.me/api.php/provide/vod","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"xml_金鹰","name":"📌金鹰┃採集","type":0,"api":"https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/xml/","playUrl":"https://hd.iapijy.com/play?url=","searchable":1,"quickSearch":1,"categories":[]}
+{"key":"xml_金鹰","name":"📌金鹰┃採集","type":0,"api":"https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/xml/","playUrl":"https://hd.iapijy.com/play?url=","searchable":1,"quickSearch":1,"categories":[]},
 
 {"key":"虎牙","name":"🐯虎牙直播","type":3,"api":"https://raw.gitmirror.com/fantaiying7/EXT/refs/heads/main/drpy2.js","ext":"https://raw.gitmirror.com/fantaiying7/EXT/refs/heads/main/huya2.js","style":{"type":"rect","ratio":1.755},"playerType":"2","style":{"type":"rect","ratio":0.85},"searchable":0,"quickSearch":0,"changeable":0},
 {"key":"斗鱼","name":"🐟斗鱼直播","type":3,"api":"https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/js/lib/drpy2.min.js","ext":"https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/js/斗鱼直播.js","style":{"type":"rect","ratio":1.755},"playerType":"2","style":{"type":"rect","ratio":0.85},"searchable":0,"quickSearch":0,"changeable":0},

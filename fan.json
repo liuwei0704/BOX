@@ -146,7 +146,7 @@
 {"key":"vod_魔爪","name":"📌魔爪┃採集","type":1,"api":"https://mozhuazy.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"vod_如意","name":"📌如意┃採集","type":1,"api":"https://cj.rycjapi.com/api.php/provide/vod/","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"vod_蜂巢","name":"📌蜂巢┃採集","type":1,"api":"https://api.fczy888.me/api.php/provide/vod","searchable":1,"quickSearch":1,"filterable":1},
-{"key":"xml_金鹰","name":"📌金鹰┃採集","type":0,"api":"https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/xml/","playUrl":"https://hd.iapijy.com/play?url=","searchable":1,"quickSearch":1,"categories":[]}
+{"key":"xml_金鹰","name":"📌金鹰┃採集","type":0,"api":"https://jyzyapi.com/provide/vod/from/jinyingm3u8/at/xml/","playUrl":"https://hd.iapijy.com/play?url=","searchable":1,"quickSearch":1,"categories":[]},
 
 {"key":"926","name":"⚽926┃看球","type":3,"api":"csp_kanqiu926Guard","timeout":15,"searchable":0,"changeable":0,"style":{"type":"list"}},
 {"key":"88","name":"⚽88┃看球","type":3,"api":"csp_Sir88Guard","timeout":15,"searchable":0,"changeable":0,"style":{"type":"list"}},
