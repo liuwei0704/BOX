@@ -1,7 +1,7 @@
 {
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
-"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;5077ea664359491c4ae398cad3d61940","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
+"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;adfd1d8df0b7612149e1f3e090f34758","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
 
 "sites":[
 {"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
@@ -15,7 +15,7 @@
 {"key":"Bili²","name":"🅱️哔哔合集²┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動態漫#動漫雜談#國產原創相關#短片#影視剪輯#小劇場#綜合#电影#电视剧#小姐姐"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"Bili³","name":"🅱️哔哔合集³┃JS","type":3,"api":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/drpy2.min.js","searchable":1,"quickSearch":0,"filterable":1,"order_num":142,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/我的哔哩.js?type=url&params=https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/Bilibili/合集.json"},
 
-{"key":"采集之王","name":"🐢采集┃搜索","type":3,"api":"https://py.nxog.eu.org/https://cdn.jsdelivr.net/gh/ouhaibo1980/tvbox@main/js/drpy2.min.js","ext":"https://py.nxog.eu.org/https://cdn.jsdelivr.net/gh/ouhaibo1980/tvbox@main/js/采集之王.js?type=url&params=https://py.nxog.eu.org/https://cdn.jsdelivr.net/gh/ouhaibo1980/tvbox@main/json/采集静态.json$1$1"},
+{"key":"采集之王","name":"🐢采集┃搜索","type":3,"api":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/drpy2.min.js","ext":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/js/采集之王.js?type=url&params=https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/json/采集静态.json$1$1"},
 {"key":"荐片","name":"💡荐片｜影视","api":"csp_Jianpian","type":3,"playerType":1,"ext":"https://api.ubj83.com"},
 {"key":"移动","name":"💡移动｜影视","type":3,"api":"csp_YDjisu","searchable":1,"quickSearch":1},
 {"key":"热播影视","name":"💡热播｜影视","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"}},
@@ -36,7 +36,6 @@
 {"key":"爆炸","name":"💡爆炸｜影视","type":3,"api":"csp_Muou","jar":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/714c5f6aa89af46f/071.png;md5;9cf0a6c1f62ad83e9dccc2b7dd683a10","playerType":2,"ext":"7lj763gg402i79425i3l85i6h848i295l5hiji5l828g3l3jjhg6kg7410lhjkqiaojij3ig1lg475178k7h0il4ig3h753h7hi516758699jh2g5h433li30gk11g73l90312h4g7"},
 {"key":"豆丁","name":"👑豆丁｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"https://vip.123pan.cn/1848451100/zl/xfdd.txt","dataKey":"xasdasdqwertyuio","dataIv":"xasdasdqwertyuio","deviceId":"","version":""}},
 {"key":"雄鹰","name":"👑雄鹰｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"http://122.228.193.2:9988","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","deviceId":"","version":"120"}},
-{"key":"橘子","name":"👑橘子｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"http://t.bffree.cn/1.txt","dataKey":"2015692015692015","dataIv":"2015692015692015","deviceId":"","version":"300"}},
 {"key":"1若惜","name":"👑若惜｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://110.40.59.188:9527","dataKey":"ebad3f1a58b13933","dataIv":"ebad3f1a58b13933","deviceId":"","version":""}},
 {"key":"可达","name":"👑可达｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://ledayy.com","dataKey":"hjjp68c2okw12345","dataIv":"hjjp68c2okw12345","deviceId":"24bba8caeff7b3a63a486806bd7130fca","version":"102"}},
 {"key":"萝卜","name":"👑萝卜｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://apiapplbys.lbys.app:5678","dataKey":"apiapplbyskey168","dataIv":"apiapplbyskey168","deviceId":"","version":"107"}},
@@ -47,11 +46,11 @@
 {"key":"仓鼠","name":"👑仓鼠｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"https://newappcms.cs4k.top","dataKey":"Z98KXaLtO2wC1Pte","dataIv":"Z98KXaLtO2wC1Pte","deviceId":"","version":"120"}},
 {"key":"白蛇","name":"👑白蛇｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"http://tengxunyunaliyun.oss-cn-shanghai.aliyuncs.com/tengxunyun.txt","dataKey":"n3l2tx5jdkp9s2c8","dataIv":"n3l2tx5jdkp9s2c8","deviceId":"","version":"361"}},
 {"key":"外剧","name":"👑外剧｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://guowaiju.com","dataKey":"7xv16h7qgkrs9b1p","dataIv":"7xv16h7qgkrs9b1p","deviceId":"","version":""}},
-{"key":"星河","name":"👑星河｜弹幕","type":3,"quickSearch":1,"api":"csp_AppSy","ext":{"url":"http://192.140.161.171:2563","key1":"aassddwwxxllsx1x","key2":"aassddwwxxllsx1x","key3":"aassddwwxxllsx1x"}},
 {"key":"云云","name":"👑云云｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"","site":"https://staraugust123456.oss-cn-hangzhou.aliyuncs.com/1.txt","dataKey":"staraugust123456","dataIv":"staraugust123456","deviceId":"","version":"120"}},
 {"key":"光影","name":"👑光影｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://www.guangyingmi.com","dataKey":"230fnsodfsdhfon2","dataIv":"230fnsodfsdhfon2","deviceId":"","version":""}},
-{"key":"哔滴","name":"👑哔滴｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"","site":"https://ooxooxooxooxoo-1259561579.cos.ap-chengdu.myqcloud.com/ip.json","dataKey":"5ae8ee4bb95ea0ce","dataIv":"5ae8ee4bb95ea0ce","deviceId":"","version":"120"}},
 {"key":"丫丫","name":"👑丫丫｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://tv.yy-fun.cc","dataKey":"qkxnwkfjwpcnwycl","dataIv":"qkxnwkfjwpcnwycl","deviceId":"","version":""}},
+{"key":"乐达","name":"👑乐达｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://ledayy.com","site":"","dataKey":"hjjp68c2okw12345","dataIv":"hjjp68c2okw12345","deviceId":"","version":""}},
+
 {"key":"农民影视","name":"🧿农民｜影视","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://py.nxog.eu.org/https://cdn.jsdelivr.net/gh/ouhaibo1980/tvbox@main/json/nmys.json"},
 {"key":"八号影视","name":"🧿八号｜影视","type":3,"api":"csp_XYQHiker","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://py.nxog.eu.org/https://cdn.jsdelivr.net/gh/ouhaibo1980/tvbox@main/XYQHiker/八号影视.json"},
 {"key":"永乐影视","name":"🧿永乐｜影视","type":3,"api":"csp_HBPQ","ext":"https://py.nxog.eu.org/https://cdn.jsdelivr.net/gh/ouhaibo1980/tvbox@main/XBPQ/永乐影视.json"},
