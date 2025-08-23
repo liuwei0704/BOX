@@ -1,4 +1,4 @@
-🍀20250709更新🍀,#genre#
+🍀20250822更新🍀,#genre#
 更新說明,https://live.metshop.top/huya/13303478
 更新台灣2,https://live.metshop.top/huya/15152155
 設定內直播,https://live.metshop.top/douyu/9986305
@@ -22,6 +22,40 @@ TTV LIVE 台視直播,https://www.youtube.com/live/uDqQo8a7Xmk?si=ve9gPXOQ3fJCkB
 寰宇新聞 頻道,https://www.youtube.com/live/6IquAgfvYmc?si=dx_A4oh2RZ8cbYef
 民視新聞網 Formosa TV News network,https://www.youtube.com/live/ylYJSBUgaMA?si=imrpr3gkiGHnhiwZ
 東森新聞,https://www.youtube.com/live/V1p33hqPrUk?si=WEahQ_iSd2GXJK_K
+
+🇹🇼台灣綜合體育,#genre#
+momo綜合台,http://211.23.114.106:8511/http/59.120.8.187:8081/hls/76/818/momo_max.m3u8
+緯來日本HD,http://211.23.114.106:9336/http/61.219.99.20:8081/hls/69/811/ch34.m3u8
+緯來育樂HD,http://211.23.114.106:8513/http/59.120.8.187:8081/hls/68/810/ch30.m3u8
+緯來體育HD,http://211.23.114.106:8528/http/59.120.8.187:8081/hls/67/809/ch28.m3u8
+博斯運動一,http://211.23.114.106:8518/http/59.120.8.187:8068/hls/15/80/cstv15.m3u8
+
+DAZN 1,http://211.23.114.106:8523/http/59.120.8.187:8078/hls/25/80/esport.m3u8
+DAZN 2,http://211.23.114.106:8555/http/59.120.8.187:8078/hls/26/80/esport2.m3u8
+momo綜合台,http://211.23.114.106:8511/http/59.120.8.187:8081/hls/76/818/momo_max.m3u8
+momo綜合臺,http://220.134.196.147:8575/http/59.120.8.187:8081/hls/76/818/momo_max.m3u8
+國興衛視,http://123.51.229.128:8505/http/192.168.1.9:8081/hls/61/803/ch01.m3u8
+緯來日本HD,http://211.23.114.106:9336/http/61.219.99.20:8081/hls/69/811/ch34.m3u8
+緯來綜合HD,http://211.23.114.106:8536/http/61.219.99.20:8081/hls/68/810/ch32.m3u8
+緯來綜合HD,http://220.134.196.147:8533/http/61.219.99.20:8081/hls/68/810/ch32.m3u8
+緯來綜合,http://61.216.11.93:49981/stream/channelid/106481234.m3u8
+緯來育樂HD,http://211.23.114.106:8513/http/59.120.8.187:8081/hls/68/810/ch30.m3u8
+緯來體育HD,http://211.23.114.106:8528/http/59.120.8.187:8081/hls/67/809/ch28.m3u8
+
+緯來體育rtmp,rtmp://f13h.mine.nu:1935/sat/tv721
+緯來體育HD221,http://211.23.114.106:8528/http/59.120.8.187:8081/hls/67/809/ch28.m3u8
+緯來體育HD220,http://220.134.196.147:8553/http/59.120.8.187:8081/hls/67/809/ch28.m3u8
+
+DAZN 1,http://220.134.196.147:9120/http/59.120.8.187:8078/hls/25/80/esport.m3u8
+DAZN 1,http://211.23.114.106:8523/http/59.120.8.187:8078/hls/25/80/esport.m3u8
+DAZN 2,http://211.23.114.106:8555/http/59.120.8.187:8078/hls/26/80/esport2.m3u8
+DAZN 2,http://220.134.196.147:9119/http/59.120.8.187:8078/hls/26/80/esport2.m3u8
+博斯運動一,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=litv-longturn07
+博斯運動一,http://211.23.114.106:8518/http/59.120.8.187:8068/hls/15/80/cstv15.m3u8
+博斯運動一,http://220.134.196.147:8564/http/61.219.99.20:8068/hls/15/80/cstv15.m3u8
+博斯運動二,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=litv-longturn08
+智林體育,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=4gtv-4gtv101
+時尚運動X,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=4gtv-4gtv014
 
 🇹🇼台灣電視¹🆙,#genre#
 民视,rtmp://f13h.mine.nu/sat/tv051
@@ -1756,49 +1790,6 @@ ua=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chr
 parse=1
 playerType=2
 抖音,https://diskgirl.com/
+热舞,http://api.yujn.cn/api/rewu.php?type=video
 韓國KBJ,https://5721004.xyz/player/short.html
 日本,https://javtrailers.com/shorts?ref=porndude
-
-🈲VIP頻道_888,#genre#
-parse=1
-playerType=1
-HAPPY,https://hls-gateway.vpstv.net/streams/709091.m3u8
-极限,https://hls-gateway.vpstv.net/streams/709086.m3u8
-彩虹K台,https://hls-gateway.vpstv.net/streams/709040.m3u8
-潘朵拉,https://hls-gateway.vpstv.net/streams/709042.m3u8
-松視1臺,https://hls-gateway.vpstv.net/streams/709043.m3u8
-松視2台,https://hls-gateway.vpstv.net/streams/709044.m3u8
-彩虹e臺,https://hls-gateway.vpstv.net/streams/709039.m3u8
-彩虹電影,https://hls-gateway.vpstv.net/streams/709038.m3u8
-松視3台,https://hls-gateway.vpstv.net/streams/709084.m3u8
-驚艷,https://hls-gateway.vpstv.net/streams/709041.m3u8
-完美台,https://hls-gateway.vpstv.net/streams/476375.m3u8
-Playboy,https://hls-gateway.vpstv.net/streams/476376.m3u8
-Dorcel ,https://hls-gateway.vpstv.net/streams/476377.m3u8
-HAPPY CHANNEL,https://hls-gateway.vpstv.net/streams/709085.m3u8
-erox,https://hls-gateway.vpstv.net/streams/644724.m3u8
-eroxxx,https://hls-gateway.vpstv.net/streams/644725.m3u8
-brazzers,https://hls-gateway.vpstv.net/streams/644730.m3u8
-pigoo,https://luong.utako.moe/pigoo/index.m3u8
-
-🇯🇵日本频道_888,#genre#
-EroLuxe  Japanese,http://cdntv.online/high/ynemik5cl9/1694.mpeg
-日本映画専門チャンネル,https://stream02.willfonk.com/live_playlist.m3u8?cid=BS255&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1#https://stream01.willfonk.com/live_playlist.m3u8?cid=BS255&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1
-東映チャンネル,https://stream02.willfonk.com/live_playlist.m3u8?cid=CS218&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1#https://stream01.willfonk.com/live_playlist.m3u8?cid=CS218&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59d
-东映チャンネルhttp://cdns.jp-primehome.com:8000/zhongying/live/playlist.m3u8?cid=cs27
-チャンネルNECO,https://stream02.willfonk.com/live_playlist.m3u8?cid=CS223&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1#https://stream01.willfonk.com/live_playlist.m3u8?cid=CS223&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59d#https://stream01.willfonk.com/live_playlist.m3u8?cid=CS223&r=FHD&ccode=JP&m=d0:20:20:04:35:cc&t=0d6938cb3dcf4b79848bc1753a59daf1
-动物世界,http://v2.catcast.tv/content/40546/index.m3u8
-Кино 18+ International,https://v2.catcast.tv/content/40381/index.m3u8
-INDIEFILM,http://suo.im/aD7Ry
-
-📀欧美成人_888,#genre# 
-EroLuxe japanese,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95284/hls/pl.m3u8
-EroLuxe lesbians,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95720/hls/pl.m3u8
-EroLuxe massage,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95620/hls/pl.m3u8
-EroLuxe milf,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95793/hls/pl.m3u8
-EroLuxe orgy,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95842/hls/pl.m3u8
-EroLuxe pregnant,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95836/hls/pl.m3u8
-EroLuxe russian,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95728/hls/pl.m3u8
-EroLuxe solo,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95298/hls/pl.m3u8
-EroLuxe stepfamily,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/95947/hls/pl.m3u8
-EroLuxe asian,http://rr3.tvdosug.net/~201b1f1b238bf24db140c815edd27286508/96381/hls/pl.m3u8
