@@ -1,7 +1,7 @@
 {
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
-"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;125b1b81c9f32798dd83ddbf31866e4d","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
+"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;a9a57108cfeea32eeacfe0e360a12b3e","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
 
 "sites":[
 {"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
@@ -38,6 +38,7 @@
 {"key":"金牌影视","name":"💡金牌｜影视","type":3,"api":"csp_Jpys","ext":"https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"},
 {"key":"奇优影视","name":"💡奇优｜影视","type":3,"api":"csp_Qiyou"},
 {"key":"AI2","name":"💡AI┃仅搜索","type":3,"api":"csp_AI","searchable":1,"quickSearch":1,"filterable":0,"playerType":2,"jar":"https://alicliimg.clewm.net/342/790/68790342/17550582039404a8a3965607b246b57796ed778b096961755058201.jpg;md5;9cf0a6c1f62ad83e9dccc2b7dd683a10","ext":"7lj763gg0939795i037ki481k20ki2i3g3lk840883843k6k5l4354k0k10k48411g8654l9885g83ih2h0lh295lll81jg8k66l7011l8hji0l432912jhi3hk3140kghkhj3ghl7782871"},
+{"key":"爱看","name":"👑爱看｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://114.134.185.234","site":"","dataKey":"uI1TkPJC8B46AyN3","dataIv":"uI1TkPJC8B46AyN3","deviceId":"","version":""}},
 {"key":"雄鹰","name":"👑雄鹰｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet2","ext":{"url":"http://122.228.193.2:9988","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","deviceId":"","version":"120"}},
 {"key":"1若惜","name":"👑若惜｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://110.40.59.188:9527","dataKey":"ebad3f1a58b13933","dataIv":"ebad3f1a58b13933","deviceId":"","version":""}},
 {"key":"萝卜","name":"👑萝卜｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://apiapplbys.lbys.app:5678","dataKey":"apiapplbyskey168","dataIv":"apiapplbyskey168","deviceId":"","version":"107"}},
@@ -48,12 +49,22 @@
 {"key":"咖啡","name":"👑咖啡｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://daen-1256234123.cos.ap-shanghai.myqcloud.com/MuQi/mqxh.txt","dataKey":"37kj83zs1q16jk6t","dataIv":"37kj83zs1q16jk6t","deviceId":"","version":"101","ua":""}},
 {"key":"哔滴","name":"👑哔滴｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://ooxooxooxooxoo-1259561579.cos.ap-chengdu.myqcloud.com/ip.json","dataKey":"5ae8ee4bb95ea0ce","dataIv":"5ae8ee4bb95ea0ce","deviceId":"","version":"120","ua":"okhttp/3.10.0BDYS/109.0.0.8"}},
 {"key":"云云","name":"👑云云｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://staraugust123456.oss-cn-hangzhou.aliyuncs.com/1.txt","dataKey":"staraugust123456","dataIv":"staraugust123456","deviceId":"","version":"120"}},
-{"key":"若雪","name":"👑若雪｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"https://appcms.rx4k.top","site":"","dataKey":"ZX10ysTYZWtIJCTU","dataIv":"ZX10ysTYZWtIJCTU","deviceId":"","version":"120"}},
 {"key":"蓝鹰","name":"👑蓝鹰｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://lanyinghz.oss-cn-hangzhou.aliyuncs.com/lanyingxmy.txt","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","deviceId":"","version":"120"}},
 {"key":"仓鼠","name":"👑仓鼠｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://ceshi307386.oss-cn-beijing.aliyuncs.com/csurl.txt","dataKey":"Z98KXaLtO2wC1Pte","dataIv":"Z98KXaLtO2wC1Pte","deviceId":"","version":"120"}},
 {"key":"莱米","name":"👑莱米｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"http://laiget-1313189639.cos.ap-guangzhou.myqcloud.com/laimi.txt","dataKey":"ce032244d093b3e2","dataIv":"ce032244d093b3e2","deviceId":"","version":""}},
 {"key":"旗星","name":"👑旗星｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://ys.qist.top","site":"","dataKey":"2SWSPFxugBLPPOKo","dataIv":"2SWSPFxugBLPPOKo","deviceId":"","version":"120"}},
 {"key":"瓜萌","name":"👑瓜萌｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"https://www.guahd.com/1.txt","dataKey":"f2A7D4B9E8C16531","dataIv":"f2A7D4B9E8C16531","deviceId":"","version":""}},
+{"key":"星河","name":"👑星河｜弹幕","type":3,"quickSearch":1,"api":"csp_AppSy","ext":{"url":"http://192.140.161.171:2563","listKey":"aassddwwxxllsx1x","parsesKey":"aassddwwxxllsx1x"}},
+{"key":"和友","name":"👑和友｜弹幕","type":3,"api":"csp_AppSy","ext":{"url":"","site":"http://qcb.sxtzg.com/api.txt","siteKey":"rectangleadsadxa","listKey":"gHSLmx3JQRasgztO","parsesKey":"gHSLmx3JQRasgztO"}},
+{"key":"干饭","name":"👑干饭｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"http://110.42.53.99:1080","site":"","dataKey":"staraugust123456","dataIv":"staraugust123456","deviceId":"","version":"301","ua":""}},
+{"key":"鲸鱼","name":"👑鲸鱼｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://jingyu4k-1312635929.cos.ap-nanjing.myqcloud.com/1.json","dataKey":"AAdgrdghjfgswerA","dataIv":"AAdgrdghjfgswerA","deviceId":"","version":""}},
+{"key":"一三","name":"👑一三｜弹幕","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://cdn-tupic-duofun-neimenggu.56uxi.com/1.txt","dataKey":"qwertyuiopqwerty","dataIv":"qwertyuiopqwerty","deviceId":"","version":"","ua":""}},
+{"key":"柚子","name":"👑柚子｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://cnm.guahd.com","dataKey":"f2A7D4B9E8C16531","dataIv":"f2A7D4B9E8C16531","deviceId":"","version":"","ua":""}},
+{"key":"漫国","name":"👑漫国｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://app.lkdyw.cn","site":"","dataKey":"e65144389e9361b5","dataIv":"e65144389e9361b5","deviceId":"","version":"","ua":""}},
+{"key":"豆丁","name":"👑豆丁｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"http://45.66.157.77:9427/dd.txt","dataKey":"Xasdasd!123123dd","dataIv":"Xasdasd!123123dd","deviceId":"","version":"","ua":""}},
+{"key":"蔬菜","name":"👑蔬菜｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://huohu.yihn.cc","site":"","dataKey":"huohushipingetap","dataIv":"huohushipingetap","deviceId":"","version":"140","ua":""}},
+{"key":"爱看","name":"👑爱看｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://114.134.185.234","site":"","dataKey":"uI1TkPJC8B46AyN3","dataIv":"uI1TkPJC8B46AyN3","deviceId":"","version":""}},
+{"key":"云端","name":"👑云端｜弹幕","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://c8k2n5l0i9s8b2m1jj8k2x2l9ff68.ydysapi.cfd:27899","site":"","dataKey":"k9o3p2c8b7m3z0o8","dataIv":"k9o3p2c8b7m3z0o8","deviceId":"","version":""}},
 
 {"key":"1905","name":"🧿1905｜影视","type":3,"api":"csp_Web1905","searchable":1,"quickSearch":0,"filterable":0},
 {"key":"养生堂","name":"🧿养生｜知识","type":3,"jar":"https://alicliimg.clewm.net/342/790/68790342/175492501342882a47a74800c50acc8fee173f0038fe31754925012.jpg;md5;4d860d06ec233dbcb891b76055f099d5","api":"csp_XBPQ","ext":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/XBPQ/养生堂.json","style":{"type":"rect","ratio":1.597}},
@@ -65,7 +76,6 @@
 {"key":"永乐","name":"🧿永乐｜影视","type":3,"api":"csp_XBPQ","jar":"https://alicliimg.clewm.net/342/790/68790342/175492501342882a47a74800c50acc8fee173f0038fe31754925012.jpg;md5;4d860d06ec233dbcb891b76055f099d5","ext":{"副标题":"欧歌专属","请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","分类url":"https://www.ylys.tv/"}},
 {"key":"狐君","name":"🧿狐君｜影视","type":3,"api":"csp_XBPQ","jar":"https://alicliimg.clewm.net/342/790/68790342/175492501342882a47a74800c50acc8fee173f0038fe31754925012.jpg;md5;4d860d06ec233dbcb891b76055f099d5","ext":{"副标题":"欧歌专属","请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","分类url":"https://www.foxjun.com/"}},
 {"key":"优质","name":"🧿优质｜影视","type":3,"api":"csp_XBPQ","jar":"https://alicliimg.clewm.net/342/790/68790342/175492501342882a47a74800c50acc8fee173f0038fe31754925012.jpg;md5;4d860d06ec233dbcb891b76055f099d5","ext":{"副标题":"欧歌专属","请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","分类url":"https://www.myripon.com/"}},
-
 {"key":"猎手影视","name":"🧡猎手｜PY影视","type":3,"api":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/py/猎手影视.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"playerType":2},
 {"key":"若惜","name":"🧡若惜｜PY影视","type":3,"api":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/plugin/app/若惜追剧APP.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"playerType":2},
 {"key":"金牌影视PY","name":"🧡金牌｜PY影视","type":3,"api":"https://cdn.jsdmirror.com/gh/ouhaibo1980/tvbox@main/plugin/html/金牌.py","searchable":1,"quickSearch":1,"filterable":1,"playerType":2,"ext":{"site":"https://www.hkybqufgh.com,https://www.sizhengxt.com,https://0996zp.com,https://9zhoukj.com/,https://www.sizhengxt.com,https://www.tjrongze.com,https://www.jiabaide.cn,https://cqzuoer.com"}},
@@ -109,12 +119,6 @@
 {"key":"剧迷","name":"🎃剧迷┃磁力","type":3,"api":"csp_MeijuMi","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"电影","name":"🎃Mp4┃磁力","type":3,"api":"csp_Mp4Mov","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"天堂","name":"🎃美剧┃磁力","type":3,"api":"csp_MeijuTT","searchable":1,"quickSearch":1,"filterable":1},
-
-{"key":"球类","name":"⚽️球类┃合集","type":3,"api":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/drpy2.min.js","searchable":0,"quickSearch":0,"filterable":1,"order_num":142,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/我的哔哩.js?type=url&params=https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/Bilibili/球类合集.json"},
-{"key":"球星","name":"⚽️球星┃合集","type":3,"api":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/drpy2.min.js","searchable":0,"quickSearch":0,"filterable":1,"order_num":142,"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/我的哔哩.js?type=url&params=https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/Bilibili/球星合集.json"},
-{"key":"本地","name":"🌸本地┃视频","type":3,"api":"csp_LocalFile"},
-{"key":"预告","name":"🌸新片┃预告","type":3,"api":"csp_DouBan","searchable":0},
-{"key":"88看球","name":"💋88┃看球","type":3,"api":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/drpy2.min.js","style":{"type":"list"},"ext":"https://py.nxog.eu.org/https://raw.githubusercontent.com/ouhaibo1980/tvbox/refs/heads/main/js/88看球.js"},
 
 {"key":"push_agent","name":"📢手机┃推送","type":3,"api":"csp_Push","searchable":0,"filterable":0,"changeable":0},
 {"key":"应用商店","name":"🛒本地包更新","type":3,"api":"csp_Market","searchable":0,"changeable":0,"ext":"http://123.yy.xn--dkw.xn--6qq986b3xl/zm/sd.php"}],
