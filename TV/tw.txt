@@ -116,8 +116,8 @@ CNN new,http://125.227.210.55:8166/VideoInput/play.ts
 動漫輪播-頭文字D,https://live.metshop.top/huya/11352889
 
 🔀短剧系列,#genre#
-酷炫剧场,http://43.138.0.72:35455/douyu/8475821
-精彩短剧看不停,http://43.138.0.72:35455/douyu/11824307
+酷炫剧场,https://live.metshop.top/douyu/8475821
+精彩短剧看不停,https://live.metshop.top/douyu/11824307
 
 🐳•斗魚影視,#genre#
 橙記Orange丶,https://www.goodiptv.club/douyu/4549169
@@ -1209,9 +1209,9 @@ YY剧场怀旧,https://live.metshop.top/yy/1382627144
 
 💕•音樂時尚,#genre#
 parse=1
-周杰伦MV,http://43.138.0.72:35455/douyu/7537296
-阿七點歌台,http://43.138.0.72:35455/douyu/3186217
-音樂MV,http://43.138.0.72:35455/douyu/3870925
+周杰伦MV,https://live.metshop.top/douyu/7537296
+阿七點歌台,https://live.metshop.top/douyu/3186217
+音樂MV,https://live.metshop.top/douyu/3870925
 
 💕短視頻_888,#genre#
 parse=1
