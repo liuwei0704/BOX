@@ -1,7 +1,7 @@
 {
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
-"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;d5f98a44a9fea21cf88173146ce57690","warningText":"jar提示:📢接口软件永远免费📢长期维护切勿贩卖",
+"spider":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=index;md5;4cba08e94685615ec5337288e75d0e64",
 
 "sites":[
 {"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
@@ -32,7 +32,7 @@
 {"key":"爱看机器人","name":"💡爱看｜影视","type":3,"api":"csp_Ikanbot","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"三六零","name":"💡三六｜视频","type":3,"api":"csp_SP360"},
 {"key":"农民影视","name":"💡农民┃影视","type":3,"api":"csp_Wwys","ext":"https://www.wwgz.cn"},
-{"key":"鸭梨影视","name":"💡鸭梨｜影视","type":3,"api":"csp_KmeiJu"},
+{"key":"奇优影视","name":"💡奇优｜影视","type":3,"api":"csp_Qiyou"},
 {"key":"骚火影视","name":"💡骚火｜影视","type":3,"api":"csp_SaoHuo","playerType":2,"ext":"https://shdy5.us"},
 {"key":"金牌影视","name":"💡金牌｜影视","type":3,"api":"csp_Jpys","ext":"https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"},
 {"key":"1905","name":"💡1905｜影视","type":3,"api":"csp_Web1905","searchable":1,"quickSearch":0,"filterable":0},
