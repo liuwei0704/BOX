@@ -22,7 +22,7 @@
 {"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
 {"key":"config","name":"🐲配置｜中心","type":3,"jar":"https://jar.yy.xn--dkw.xn--6qq986b3xl/m/jar.php?id=cf2;md5;b961fa9359288f2a744090b6715683c0","api":"csp_Config","searchable":0},
 
-{"key":"csp_Youtube","name":"▶️Youtube","type":3,"api":"csp_Youtube","style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":0,"changeable":0,"timeout":120,"ext":{"token":"https://www.252035.xyz/p/lib/tokenm.json","json":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/youtube.json","type":"直播#新闻#剧集#电影#综艺#纪录片#音乐#体育#动物#风光#放松#4K#HDR#movie#music#documentary#bbcdocumentary#nationalgeographicdocumentary","keywords":"排行榜,HOT,TRENDS,热门话题,热门趋势,热门综艺,热门电影,热门电视剧,小姐姐","codecs":"","proxy":"noproxy","danmu":true},"style":{"type":"rect","ratio":1.597},"jar":"https://www.252035.xyz/p/pg.jar"},
+{"key":"csp_Youtube","name":"▶️Youtube","type":3,"api":"csp_Youtube","style":{"type":"rect","ratio":0.85},"searchable":0,"quickSearch":0,"changeable":0,"timeout":120,"ext":{"token":"https://www.252035.xyz/p/lib/tokenm.json","json":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/youtube.json","type":"直播#新闻#剧集#电影#综艺#纪录片#音乐#体育#动物#风光#放松#4K#HDR#movie#music#documentary#bbcdocumentary#nationalgeographicdocumentary","keywords":"排行榜,HOT,TRENDS,热门话题,热门趋势,热门综艺,热门电影,热门电视剧,小姐姐","codecs":"","proxy":"noproxy","danmu":true},"style":{"type":"rect","ratio":1.597},"jar":"https://www.252035.xyz/p/pg.jar"},
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#星芒漫画#星辰漫客#紫雲說漫#球球说漫#叨叨動漫#柒柒漫社"},
 
@@ -140,15 +140,6 @@
 {"name":"-10-","type":0,"url":"https://cdn.zyc888.top/?url="},
 {"name":"-11-","type":0,"url":"https://bd.jx.cn/?url="},
 {"name":"-12-","type":0,"url":"https://yparse.ik9.cc/index.php?url="}
-],
-"rules":[
-{"name":"磁力广告","hosts":["magnet"],"regex":["更多","社區","xuu","最新","直播","更新","社区","有趣","英皇体育","全中文AV在线","澳门皇冠赌场","哥哥快来","美女荷官","裸聊","新片首发","UUE29"]},
-{"name":"农民","hosts":["toutiaovod.com"],"regex":["video/tos/cn"]},
-{"name":"火山","hosts":["huoshan.com"],"regex":["item_id="]},
-{"name":"抖音","hosts":["douyin.com"],"regex":["is_play_url="]},
-{"name":"饭团点击","hosts":["dadagui","freeok","dadagui"],"script":["document.querySelector(\"#playleftiframe\").contentWindow.document.querySelector(\"#start\").click();"]},
-{"name":"毛驴点击","hosts":["www.maolvys.com"],"script":["document.getElementsByClassName('swal-buttonswal-button--confirm')[0].click()"]},
-{"name":"ofiii","hosts":["www.ofiii.com"],"script":["constplay=document.getElementsByClassName('play_icon')[0],event=newMouseEvent('click',{bubbles:!0,cancelable:!0,view:window,screenX:100,screenY:100,clientX:50,clientY:50,button:0,shiftKey:!1,ctrlKey:!1,altKey:!1,metaKey:!1,modifierState:0});play.dispatchEvent(event);"]}
 ],
 "rules":[
 {"name":"磁力广告","hosts":["magnet"],"regex":["更多","社區","xuu","最新","直播","更新","社区","有趣","英皇体育","全中文AV在线","澳门皇冠赌场","哥哥快来","美女荷官","裸聊","新片首发","UUE29"]},
