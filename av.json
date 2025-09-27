@@ -191,7 +191,6 @@
 {"key":"push_agent","name":"📎推送","type":3,"api":"csp_Push","searchable":0,"quickSearch":0,"changeable":0,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/lib/tokenm.jar","timeout":60}],
 
 "lives":[
-{"name":"MQiTV", "api": "csp_MQiTV", "ext": "https://59.125.210.231:4433","epg": "https://cdn.1678520.xyz/epg/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","jar":"https://raw.githubusercontent.com/ffmking/tv1/refs/heads/main/mtv.jar"},
 {"name":"LM","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
 {"name":"K9","type":0,"url":"https://git.acwing.com/tianyig886/zhibo/-/raw/main/ku9.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true},
 {"name":"MD","type":0,"url":"https://git.acwing.com/bang359/ba/-/raw/main/sstv.txt","ua":"okhttp/4.12.0","playerType":2,"epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png","pass":true}],
