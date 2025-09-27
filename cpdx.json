@@ -17,7 +17,7 @@
 {"name":"虎牙一起看","type":0,"url":"https://live.freetv.top/huyayqk.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"}
 ],
 "sites":[
-{"key":"豆瓣2","name":"📢tv","type":3,"api":"csp_Douban","searchable":0},
+{"key":"豆瓣2","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
 {"key":"config","name":"🐲配置｜中心","type":3,"jar":"https://ncstatic-file.clewm.net/rsrc/2025/0916/11/0df0dafe840912a9250167063b1f3cad.jpg;md5;dd19c67b72b708f567d94500d7d9ab4e","api":"csp_Config","searchable":0},
 {"key":"配置中心","name":"❤配置｜中心","type":3,"api":"csp_Config","searchable":0,"changeable":0,"style":{"type":"rect","ratio":1.597}},
 
