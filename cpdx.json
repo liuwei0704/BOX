@@ -17,7 +17,7 @@
 {"name":"虎牙一起看","type":0,"url":"https://live.freetv.top/huyayqk.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"}
 ],
 "sites":[
-{"key":"豆瓣2","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
+{"key":"豆瓣","name":"📢豆瓣","type":3,"api":"csp_Douban","searchable":0},
 {"key":"config","name":"🐲配置｜中心","type":3,"jar":"https://ncstatic-file.clewm.net/rsrc/2025/0916/11/0df0dafe840912a9250167063b1f3cad.jpg;md5;dd19c67b72b708f567d94500d7d9ab4e","api":"csp_Config","searchable":0},
 {"key":"配置中心","name":"❤配置｜中心","type":3,"api":"csp_Config","searchable":0,"changeable":0,"style":{"type":"rect","ratio":1.597}},
 
@@ -27,9 +27,10 @@
 {"key":"Bili¹","name":"🅱️哔哔合集┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"動態漫#沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動漫雜談"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 
 {"key":"愛瓜","name":"🔥愛瓜┃T4","type":4,"api":"http://zhangqun66.com/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"小蘋果","name":"🔥小蘋果┃T4","type":4,"api":"https://zhangqun66.com/zq/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"克隆合集","name":"🔥克隆合集┃T4","type":4,"api":".https://zhangqun66.com/zq/klhj.php","searchable":1,"quickSearch":1,"style":{"type":"rect","ratio":1.33},"changeable":1,"filterable":0},
-{"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":".https://zhangqun66.com/zq/cjjh.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"小蘋果","name":"🔥小蘋果┃T4","type":4,"api":"https://zhangqun66.com/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
 {"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
 
 {"key":"py_DianYingTanTang","name":"🫐电影天堂┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=DianYingTanTang","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
