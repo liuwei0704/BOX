@@ -1227,14 +1227,3 @@ playerType=2
 松視1台,http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/88
 松視2台,http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/89
 松視3台,http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/90
-
-极限,http://pulltest-bj.alivecdn.com:80/live/9839e069a8baef32f95618a2148c822f.flv
-happy,http://pulltest-bj.alivecdn.com:80/live/98e6313e373dfdd8a41c3f231f9d0fe8.flv
-香蕉,http://pulltest-bj.alivecdn.com:80/live/de124249681ead5090c440f129de3a0c.flv
-惊艳,http://pulltest-bj.alivecdn.com:80/live/7ccd4bc7187000e06021b7dac28678b8.flv
-潘多拉,http://pulltest-bj.alivecdn.com:80/live/1521d0790d20094aed0c3856d42908b0.flv
-彩虹电影,http://pulltest-bj.alivecdn.com:80/live/67d318bb4a3173e605e1a6e03372b45c.flv
-彩虹k,http://pulltest-bj.alivecdn.com:80/live/697168e9e58eeadb4edc2d12895d1dbb.flv
-彩虹e,http://pulltest-bj.alivecdn.com:80/live/93d02ef50841a119871679123a49f3f0.flv
-松视3,http://pulltest-bj.alivecdn.com:80/live/c318854a31ce438dd3444d21167b7e11.flv
-松视1,http://pulltest-bj.alivecdn.com:80/live/11cc25156a51439a5d3ef077d14f01f3.flv
