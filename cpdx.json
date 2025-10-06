@@ -55,7 +55,7 @@
 {"key":"Ysj","name":"🎀异界┃动漫","type":3,"api":"csp_YsjGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1Guard","timeout":15,"searchable": 1,"quickSearch": 1,"changeable":1},
 
-{"key":"漫国","name":"✴️漫国丨动漫","type":3,"api":"csp_AppSy","ext":{"site":"https://dm-1255775577.cos.ap-guangzhou.myqcloud.com/dmg/api.txt","siteKey":"rectangleadsadxa","listKey":"aassddwwxxllsx1x","parsesKey":"aassddwwxxllsx1x"},"jar":"https://github.com/ls125781003/qqctg/raw/refs/heads/main/潇洒/spider.jar"},
+{"key":"漫国","name":"✴️漫国丨动漫","type":3,"quickSearch":1,"api":"csp_AppSy","ext":{"site":"https://dm-1255775577.cos.ap-guangzhou.myqcloud.com/dmg/api.txt","siteKey":"rectangleadsadxa","listKey":"aassddwwxxllsx1x","parsesKey":"aassddwwxxllsx1x"},"jar":"https://github.com/ls125781003/qqctg/raw/refs/heads/main/潇洒/spider.jar"},
 {"key":"冬日","name":"✴️冬日丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://www.drdm.fun","site":"","dataKey":"qE2nD0rL1lH4uP9r","dataIv":"qE2nD0rL1lH4uP9r","deviceId":"","version":"","ua":""},"jar":"https://github.com/ls125781003/qqctg/raw/refs/heads/main/潇洒/spider.jar"},
 {"key":"漫屋","name":"✴️漫屋丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://www.yunwuee.icu","site":"","dataKey":"ygcnb9bdcmb8aeiw","dataIv":"ygcnb9bdcmb8aeiw","deviceId":"","version":"","ua":""},"jar":"https://github.com/ls125781003/qqctg/raw/refs/heads/main/潇洒/spider.jar"},
 {"key":"方舟","name":"✴️方舟丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://www.cyfz.vip","site":"","dataKey":"e72cdfd629e8895d","dataIv":"e72cdfd629e8895d","deviceId":"","version":"","ua":""},"jar":"https://github.com/ls125781003/qqctg/raw/refs/heads/main/潇洒/spider.jar"},
@@ -158,13 +158,20 @@
 ],
 
 "rules":[
-{"name":"磁力广告","hosts":["magnet"],"regex":["更多","社區","xuu","最新","直播","更新","社区","有趣","英皇体育","全中文AV在线","澳门皇冠赌场","哥哥快来","美女荷官","裸聊","新片首发","UUE29"]},
+{"name":"量子非凡","hosts":["lz","vip.lz","v.cdnlz","hd.lz","ffzy","vip.ffzy","hd.ffzy"],"regex":["#EXT-X-DISCONTINUITY\r*\n*#EXTINF:6.666667,[\\s\\S]*?#EXT-X-DISCONTINUITY","#EXT-X-DISCONTINUITY\r*\n*#EXTINF:6.600000,[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
+{"name":"索尼","hosts":["suonizy","qrssv.com"],"regex":["15.1666","15.2666"]},
+{"name":"乐视","hosts":["leshiyun"],"regex":["15.92"]},
+{"name":"优质","hosts":["yzzy","playback"],"regex":["16.63","18.66","17.66","19.13"]},
+{"name":"快看","hosts":["kuaikan","vip.kuaikan"],"regex":["15.32","15.231","18.066"]},
+{"name":"360","hosts":["lyhuicheng"],"regex":["#EXTINF.*?\\s+.*?hrz8QcR9.*?\\.ts\\s+","#EXT-X-KEY:METHOD=NONE[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
+{"name":"开源棋牌","hosts":["askzycdn","jkunbf","bfikuncdn","bfaskcdn"],"regex":["#EXT-X-KEY:METHOD=NONE\r*\n*#EXTINF:5,[\\s\\S]*?#EXT-X-DISCONTINUITY","#EXT-X-KEY:METHOD=AES-128,URI=\"[^\"]+\"\r*\n*#EXTINF:3.333,[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
+{"name":"暴风","hosts":["bfengbf.com","bfzy","c1"],"regex":["#EXTINF.*?\\s+.*?adjump.*?\\.ts\\s+","#EXT-X-DISCONTINUITY\r*\n*#EXTINF:3,[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
 {"name":"农民","hosts":["toutiaovod.com"],"regex":["video/tos/cn"]},
 {"name":"火山","hosts":["huoshan.com"],"regex":["item_id="]},
 {"name":"抖音","hosts":["douyin.com"],"regex":["is_play_url="]},
+{"name":"磁力广告","hosts":["magnet"],"regex":["更多","请访问","example","社區","xuu","直播","更新","社区","有趣","有趣","英皇体育","全中文AV在线","澳门皇冠赌场","哥哥快来","美女荷官","裸聊","新片首发","UUE29"]},
 {"name":"饭团点击","hosts":["dadagui","freeok","dadagui"],"script":["document.querySelector(\"#playleftiframe\").contentWindow.document.querySelector(\"#start\").click();"]},
-{"name":"毛驴点击","hosts":["www.maolvys.com"],"script":["document.getElementsByClassName('swal-buttonswal-button--confirm')[0].click()"]},
-{"name":"ofiii","hosts":["www.ofiii.com"],"script":["constplay=document.getElementsByClassName('play_icon')[0],event=newMouseEvent('click',{bubbles:!0,cancelable:!0,view:window,screenX:100,screenY:100,clientX:50,clientY:50,button:0,shiftKey:!1,ctrlKey:!1,altKey:!1,metaKey:!1,modifierState:0});play.dispatchEvent(event);"]}
+{"name":"毛驴点击","hosts":["www.maolvys.com"],"script":["document.getElementsByClassName('swal-buttonswal-button--confirm')[0].click()"]}
 ],
 
 "flags":["youku","优酷","优酷","优酷视频","qq","腾讯","腾讯","腾讯视频","iqiyi","qiyi","奇艺","爱奇艺","爱奇艺","m1905","xigua","letv","leshi","乐视","乐视","sohu","搜狐","搜狐","搜狐视频","tudou","pptv","mgtv","芒果","imgo","芒果TV","芒果TV","bilibili","哔哩","哔哩哔哩"],
