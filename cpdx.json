@@ -1,6 +1,6 @@
 {
 "spider":"https://coss.yupoo.com/upchat/2025-10-02/1759342598127.jpg;md5;f6dd09061793aa1f499be0ffebaf5f67",
-"notice":"更新日期10/13",
+"notice":"更新日期10/14",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -27,6 +27,9 @@
 {"key":"drpyS_七猫短剧","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_番茄短剧","name":"💠番茄短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/番茄短剧?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":0,"title":"番茄短剧","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_集百动漫","name":"💠集百动漫┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫?pwd=dzyyds","searchable":1,"filterable":0,"quickSearch":0,"title":"集百动漫","lang":"ds","ext":""},
+{"key":"drpy2_03影院[优]","name":"💠03影院┃DS","type":3,"api":"https://drpy-node-mauve.vercel.app/public/drpy/drpy2.min.js","searchable":1,"filterable":1,"quickSearch":1,"title":"03影院[优]","author":"小可乐/250915/第一版","类型":"影视","lang":"dr2","ext":"https://drpy-node-mauve.vercel.app/js/03影院[优].js"},
+{"key":"drpyS_凡客TV","name":"💠凡客TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"title":"凡客TV","lang":"ds","ext":""},
+{"key":"drpyS_王子TV","name":"💠王子TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/王子TV","searchable":1,"filterable":1,"quickSearch":0,"title":"王子TV","logo":"https://i-blog.csdnimg.cn/blog_migrate/2621e710a94ab40ba66645d47f296aaf.gif","lang":"ds","ext":""},
 
 {"key":"py_DianYingTanTang","name":"🫐电影天堂┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=DianYingTanTang","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"py_OleVod","name":"🍉欧乐影院┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=OleVod","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
