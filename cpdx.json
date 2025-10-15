@@ -1,6 +1,6 @@
 {
 "spider":"https://coss.yupoo.com/upchat/2025-10-02/1759342598127.jpg;md5;f6dd09061793aa1f499be0ffebaf5f67",
-"notice":"更新日期10/14",
+"notice":"更新日期10/15",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -63,6 +63,7 @@
 {"key":"Anime1","name":"🐾日本┃动漫","type": 3,"api": "csp_Anime1Guard","timeout":15,"searchable": 1,"quickSearch": 1,"changeable":1},
 
 {"key":"漫国","name":"✴️漫国丨动漫","type":3,"api":"csp_AppSy","ext":{"site":"https://dm-1255775577.cos.ap-guangzhou.myqcloud.com/dmg/api.txt","siteKey":"rectangleadsadxa","listKey":"aassddwwxxllsx1x","parsesKey":"aassddwwxxllsx1x"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
+{"key":"二三","name":"✴️二三｜动漫","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://cdn-tupic-duofun-neimenggu.56uxi.com/1.txt","dataKey":"qwertyuiopqwerty","dataIv":"qwertyuiopqwerty","deviceId":"","version":"120"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"冬日","name":"✴️冬日丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://www.drdm.fun","site":"","dataKey":"qE2nD0rL1lH4uP9r","dataIv":"qE2nD0rL1lH4uP9r","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"漫屋","name":"✴️漫屋丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://www.yunwuee.icu","site":"","dataKey":"ygcnb9bdcmb8aeiw","dataIv":"ygcnb9bdcmb8aeiw","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"元咲","name":"✴️元咲丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://cic.aicg.fun","site":"","dataKey":"2c4h36abd96se10u","dataIv":"2c4h36abd96se10u","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
@@ -77,6 +78,9 @@
 {"key":"鲸鱼","name":"🅰️鲸鱼｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://jingyu4k-1312635929.cos.ap-nanjing.myqcloud.com/1.json","dataKey":"AAdgrdghjfgswerA","dataIv":"AAdgrdghjfgswerA","deviceId":"","version":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"热剧","name":"🅰️热剧丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"https://www.rebovod.com","site":"","dataKey":"8191A7F47B37882F","dataIv":"8191A7F47B37882F","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"影视","name":"🅰️影视丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"","site":"https://aysappto.oss-cn-chengdu.aliyuncs.com/qj2.txt","dataKey":"sada21321sdq231d","dataIv":"sada21321sdq231d","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
+{"key":"于浅","name":"🅰️于浅｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://202.140.143.116:88","site":"","dataKey":"leroulerop.lerom","dataIv":"leroulerop.lerom","deviceId":"","version":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
+{"key":"火锅","name":"🅰️火锅｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://ios.hgyx.vip","site":"","dataKey":"062dec75d039980e","dataIv":"062dec75d039980e","deviceId":"","version":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
+{"key":"爱看","name":"🅰️爱看｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://www.appdm.akandm.com","site":"","dataKey":"uI1TkPJC8B46AyN3","dataIv":"uI1TkPJC8B46AyN3","deviceId":"","version":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"万能","name":"🅰️万能丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://wnvod.cc","site":"","dataKey":"5uBvur6znNUmE3zb","dataIv":"5uBvur6znNUmE3zb","deviceId":"","version":"","ua":"myapp/1.0.3"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"坚果","name":"🅰️坚果丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://a.ngdy1.cn","site":"","dataKey":"2015692015692015","dataIv":"2015692015692015","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"火花","name":"🅰️火花丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"","site":"http://v.itcxo.cn/txt/1.txt","dataKey":"PoiUytRedFghjklm","dataIv":"PoiUytRedFghjklm","deviceId":"","version":"","ua":""},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
