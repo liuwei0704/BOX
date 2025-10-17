@@ -1,6 +1,6 @@
 {
 "spider":"https://coss.yupoo.com/upchat/2025-10-15/1760514839339.jpg;md5;88cb103cc0693dbc8e30539714362e2d",
-"notice":"更新日期10/17",
+"notice":"更新日期10/18",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -18,9 +18,10 @@
 {"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
 {"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
 
-{"key":"星芽短剧","name":"🔖星芽｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
-{"key":"甜圈短剧","name":"🔖甜圈｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/甜圈短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
-{"key":"锦鲤短剧","name":"🔖锦鲤｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/锦鲤短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"潇洒_星芽","name":"🔖星芽丨短剧①","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"潇洒_甜圈","name":"🔖甜圈丨短剧②","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/py/甜圈短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"潇洒_锦鲤","name":"🔖锦鲤丨短剧③","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/py/锦鲤短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"潇洒_剧王","name":"🔖剧王丨短剧④","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_西饭短剧","name":"💠西饭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/西饭短剧?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"西饭短剧","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_软鸭短剧","name":"💠软鸭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/软鸭短剧?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"软鸭短剧","类型":"影视","lang":"ds","ext":""},
