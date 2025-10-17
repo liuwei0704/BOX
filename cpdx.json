@@ -26,7 +26,6 @@
 {"key":"drpyS_软鸭短剧","name":"💠软鸭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/软鸭短剧?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"软鸭短剧","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_七猫短剧","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_番茄短剧","name":"💠番茄短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/番茄短剧?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":0,"title":"番茄短剧","类型":"影视","lang":"ds","ext":""},
-{"key":"drpyS_集百动漫","name":"💠集百动漫┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫?pwd=dzyyds","searchable":1,"filterable":0,"quickSearch":0,"title":"集百动漫","lang":"ds","ext":""},
 {"key":"drpy2_03影院[优]","name":"💠03影院┃DS","type":3,"api":"https://drpy-node-mauve.vercel.app/public/drpy/drpy2.min.js","searchable":1,"filterable":1,"quickSearch":1,"title":"03影院[优]","author":"小可乐/250915/第一版","类型":"影视","lang":"dr2","ext":"https://drpy-node-mauve.vercel.app/js/03影院[优].js"},
 {"key":"drpyS_凡客TV","name":"💠凡客TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"title":"凡客TV","lang":"ds","ext":""},
 {"key":"drpyS_王子TV","name":"💠王子TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/王子TV","searchable":1,"filterable":1,"quickSearch":0,"title":"王子TV","logo":"https://i-blog.csdnimg.cn/blog_migrate/2621e710a94ab40ba66645d47f296aaf.gif","lang":"ds","ext":""},
