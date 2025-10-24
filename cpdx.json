@@ -6,7 +6,7 @@
 
 "sites":[
 {"key":"豆瓣","name":"🍀豆瓣","type":3,"api":"csp_DouDouGuard","indexs":1,"searchable":0,"quickSearch":0,"changeable":0},
-{"key":"Bili¹","name":"🅱️BiliBili┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"動態漫#沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動漫雜談#AMM動漫君"}},
+{"key":"Bili¹","name":"🅱️哔哩┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"動態漫#沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動漫雜談#AMM動漫君"}},
 {"key":"Bili²","name":"🅱️哔哩┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"我的哔哩[官]","lang":"ds","ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
 {"key":"Bili³","name":"🅱️哔哩┃PY✨","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
