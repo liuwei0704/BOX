@@ -29,9 +29,12 @@
 {"key":"樱樱女子","name":"Aries|樱樱女子","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/樱樱女子.json"},
 {"key":"成鸡思汉","name":"Aries|成鸡思汉","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/成鸡思汉.json"},
 
+{"key":"stripchat","name":"LIVE₁","type":3,"api":"https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/stripchat.py","searchable":1,"filterable":0,"changeable":0},
+{"key":"熊猫","name":"LIVE(韩)","type":3,"api":"https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/熊猫.py","searchable":1,"filterable":0,"changeable":0},
 {"key":"直播","name":"裸聊直播","type":3,"api":"https://gh-proxy.playdreamer.cn/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_色播聚合.py","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
 {"key":"肉视频","name":"肉视频","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/肉视频.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
-{"key":"JAVXX（优）","name":"JAVXX（优）","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/JAVXX（优）.js"},
+{"key":"javxx/嗷","name":"JAVXX¹","type":3,"api":"https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/javxx.py","searchable":1,"filterable":0,"changeable":0,"ext":{"site":"https://missav.ai","cfgo":"https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/cf-proxy-linux-arm64","plp":"","proxy":{"http":"","https":""}}},
+{"key":"JAVXX（优）","name":"JAVXX²","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/JAVXX（优）.js"},
 {"key":"黄色仓库","name":"黄色仓库","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/黄色仓库.js"},
 {"key":"lsp传媒","name":"lsp传媒","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/lsp传媒.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"牛皮","name":"牛皮","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/lavAPP.py","searchable":1,"quickSearch":1,"ext":{"site":"http://sir_new.tiansexyl.tv","cfproxy":"https://18.337898581.xyz/?url=","cfgo":"","plp":"","proxy":{"http":"","https":""}}},
@@ -50,8 +53,6 @@
 {"key":"91rb","name":"91rb","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/91rb.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"好色TV","name":"好色TV","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/好色TV.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"139fm多分类","name":"有声小说","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/139fm多分类.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
-{"key":"黄色仓库(1)","name":"黄色仓库(1)","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/黄色仓库(1).py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
-{"key":"黑料(修复版)","name":"黑料(修复版)","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/黑料(修复版).py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"今日看料","name":"今日看料","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/今日看料.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"ss直播","name":"ss直播","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/ss直播.js"},
 
