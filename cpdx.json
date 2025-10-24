@@ -6,8 +6,9 @@
 
 "sites":[
 {"key":"豆瓣","name":"🍀豆瓣","type":3,"api":"csp_DouDouGuard","indexs":1,"searchable":0,"quickSearch":0,"changeable":0},
-{"key":"Bili¹","name":"🅱️BiliBili┃弹幕¹","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"動態漫#沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動漫雜談#AMM動漫君"}},
-{"key":"drpyS_哔哩大全[官]","name":"🅱️哔哩┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"我的哔哩[官]","lang":"ds","ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
+{"key":"Bili¹","name":"🅱️BiliBili┃弹幕","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"動態漫#沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動漫雜談#AMM動漫君"}},
+{"key":"Bili²","name":"🅱️哔哩┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"我的哔哩[官]","lang":"ds","ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
+{"key":"Bili³","name":"🅱️哔哩┃PY✨","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun66.com/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
