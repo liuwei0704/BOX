@@ -1,6 +1,6 @@
 {
-"spider":"https://oss4liview.moji.com/thd_file/2025/10/24/ea390652790fea8fd82184be73d34c8c.jpg;md5;1b66d118194d194b6fd778a8a327aecc",
-"notice":"更新日期10/26",
+"spider":"https://oss4liview.moji.com/thd_file/2025/10/27/853b7d017bab8b352c5d731521bd65f5.jpg;md5;80d8f6a16e8fc3745fbbaaf6b07acdd8",
+"notice":"更新日期10/27",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -32,7 +32,7 @@
 {"key":"红豆","name":"🍊红豆┃多线","type":3,"api":"csp_AppSxGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOX1voDIQhH8epBwpmIsuS/sSCZ0NTh0TYsL4PsF1wEM1kc4mV87b9fc/FN//x7jUuaRvFX81tz8A=="},
 {"key":"下饭","name":"🍙下饭┃多线","type":3,"api":"csp_AppSxGuard","searchable":1,"quickSearch":1,"filterable":1,"ext":"rfOX1voDIQhH8epBwpmIsuStuSyZxtH332ksdImjS1xHcE9fpWVy8fNjc+8DhNI67j3SJZRGjnM="},
 {"key":"糯米","name":"🍓糯米┃多线","type":3,"api":"csp_NmyswvGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1},
-{"key":"奥特","name":"🏝奥特┃多线","type":3,"api":"csp_AueteGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1,"ext":"https://auete.com/"},
+{"key":"奥特","name":"🏝奥特┃多线","type":3,"api":"csp_AueteGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"荐片","name":"🐭荐片┃P2P","type":3,"api":"csp_JPJGuard","timeout":15,"playerType":2,"searchable":1,"quickSearch":1,"changeable":0},
 {"key":"新6V","name":"🧲新6V┃磁力","type":3,"api":"csp_SixVGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":0,"ext":"https://www.xb6v.com/"},
 {"key":"Dm84","name":"🚌巴士┃动漫","type":3,"api":"csp_Dm84Guard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1},
