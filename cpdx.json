@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/10/27/853b7d017bab8b352c5d731521bd65f5.jpg;md5;80d8f6a16e8fc3745fbbaaf6b07acdd8",
-"notice":"更新日期10/27",
+"notice":"更新日期10/29",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -53,6 +53,7 @@
 {"key":"冷心","name":"🅰️冷心｜APP","type":3,"api":"csp_AppMuou","ext":{"url":"http://app.789dd.cn","name":"火猫影视"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"金牌","name":"🅰️金牌｜APP","type":3,"api":"csp_AppMuou","searchable":1,"changeable":1,"ext":{"site":"https://muouapp.oss-cn-hangzhou.aliyuncs.com/MUOUAPP/godbbq.txt","name":"金牌影院（请断网再安装）"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"余白","name":"🅰️余白丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://dec.yb4k.top","dataKey":"KsmJgfp3MVQFKWRa","dataIv":"KsmJgfp3MVQFKWRa","token":"d51f0cf047e7d4c5f76e2720cfdcaa927055e77c5e8cc0a1a7e49ca198067161"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"清风","name":"🅰️清风丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://qfys.myqf.asia","dataKey":"vpsj6z4e7scbjbis","dataIv":"vpsj6z4e7scbjbis","token":"aecce83813a4d1cc04632200b8c5b46eef67487a934fd7377b7c19ef93520b79","ua":"Mozilla/5.0(Linux;Android13;Pixel8)AppleWebKit/537.36(KHTML,likeGecko)Chrome/116.0.0.0MobileSafari/537.36"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"秒看","name":"🅰️秒看丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"site":"https://mk1080.top/get.txt","dataKey":"c60d88b2eep53za8","dataIv":"c60d88b2eep53za8","token":"06caee3952a4c97d1ad4c766c875a99d3fa83aa68f46188823600d59ebba4469","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"咖啡","name":"🅰️咖啡丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://daen-1256234123.cos.ap-shanghai.myqcloud.com/MuQi/mqxh.txt","dataKey":"37kj83zs1q16jk6t","dataIv":"37kj83zs1q16jk6t","version":"101"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"若雪","name":"🅰️若雪丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"https://appcms.rx4k.top","dataKey":"ZX10ysTYZWtIJCTU","dataIv":"ZX10ysTYZWtIJCTU","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
