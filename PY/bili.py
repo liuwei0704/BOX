@@ -69,7 +69,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 			for cate in cateList:
 				result['class'].append({'type_name': cate, 'type_id': cate})
 		if not 'class' in result or result['class'] == []:
-			result['class'] = [{"type_name":"動態漫","type_id":"動態漫"},{"type_name":"沙雕动画","type_id":"沙雕动画"},{"type_name":"短劇","type_id":"短劇"}]
+			result['class'] = [{"type_name":"動態漫","type_id":"動態漫"},{"type_name":"沙雕动画","type_id":"沙雕动画"},{"type_name":"短劇","type_id":"短劇"},{"type_name":"鬼畜","type_id":"鬼畜"},{"type_name":"搞笑","type_id":"搞笑超清"},{"type_name":"舞蹈","type_id":"舞蹈"},{"type_name":"音乐","type_id":"音乐"},{"type_name":"歌曲","type_id":"歌曲"},{"type_name":"MV","type_id":"MV4K"},{"type_name":"舞曲","type_id":"舞曲超清"},{"type_name":"4K","type_id":"4K"},{"type_name":"电影","type_id":"电影"},{"type_name":"电视剧","type_id":"电视剧"}]
 		return result
 
 	def homeVideoContent(self):
