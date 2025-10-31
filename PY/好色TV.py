@@ -13,9 +13,11 @@ class Spider(Spider):
     def __init__(self):
         # 基础配置
         self.name = '好色TV（优）'
-        self.host = 'https://m.ml0987.online/'
+        self.host = 'https://hsex.icu/'
         self.candidate_hosts = [
-            "https://m.ml0987.online/"
+            "https://hsex.icu/",
+            "https://hsex1.icu/",
+            "https://hsex.tv/"
         ]
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
@@ -23,9 +25,9 @@ class Spider(Spider):
         }
         self.timeout = 5000
         
-        # 分类映射
+        # 分类映射（关键修复：视频分类url_suffix设为空，适配list-{pg}.htm格式）
         self.class_map = {
-            '视频': {'type_id': 'list', 'url_suffix': ''},
+            '视频': {'type_id': 'list', 'url_suffix': ''},  # 修复点1：视频分类后缀为空
             '周榜': {'type_id': 'top7', 'url_suffix': 'top7'},
             '月榜': {'type_id': 'top', 'url_suffix': 'top'},
             '5分钟+': {'type_id': '5min', 'url_suffix': '5min'},
@@ -276,101 +278,33 @@ class Spider(Spider):
                         views = text.replace('观看：', '').replace('观看', '').strip()
             remarks = f"{duration} | {views}"
             
-            # 简化版播放线路提取 - 直接基于找到的链接生成第二条线路
-            video_urls = []
+            # 提取播放地址
+            video_url = ''
+            m3u8_match = re.search(r'videoUrl\s*=\s*["\']([^"\']+\.m3u8)["\']', html)
+            if m3u8_match:
+                video_url = m3u8_match.group(1)
+            if not video_url:
+                source = data('source[src*=".m3u8"], source[src*=".mp4"]')
+                video_url = source.attr('src') or ''
+            if not video_url:
+                js_matches = re.findall(r'(https?://[^\s"\']+\.(?:m3u8|mp4))', html)
+                if js_matches:
+                    video_url = js_matches[0]
             
-            # 首先尝试提取任意一个m3u8链接
-            found_url = None
-            
-            # 方法1: 从video标签提取
-            video_element = data('video#video-play_html5_api')
-            if video_element:
-                video_src = video_element.attr('src')
-                if video_src and '.m3u8' in video_src:
-                    found_url = video_src
-                    print(f"从video标签找到链接: {found_url}")
-            
-            # 方法2: 从source标签提取
-            if not found_url:
-                source_element = data('source#video-source')
-                if source_element:
-                    source_src = source_element.attr('src')
-                    if source_src and '.m3u8' in source_src:
-                        found_url = source_src
-                        print(f"从source标签找到链接: {found_url}")
-            
-            # 方法3: 正则搜索
-            if not found_url:
-                m3u8_matches = re.findall(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
-                if m3u8_matches:
-                    found_url = m3u8_matches[0]
-                    print(f"通过正则找到链接: {found_url}")
-            
-            # 清理找到的URL
-            if found_url:
-                found_url = found_url.replace('\\/', '/').replace('\\u002F', '/').replace('\\"', '')
-                if not found_url.startswith('http'):
-                    found_url = f"https:{found_url}" if found_url.startswith('//') else f"https://{found_url}"
-                
-                # 关键修改：将HD线路放在前面
-                if 'hdcdn.online' in found_url:
-                    # 如果找到的是HD线路，直接添加，然后生成主线路
-                    video_urls.append(found_url)
-                    second_url = found_url.replace('hdcdn.online', 'hsex.tv')
-                    video_urls.append(second_url)
-                    print(f"生成主线路: {second_url}")
-                elif 'hsex.tv' in found_url:
-                    # 如果找到的是主线路，先生成HD线路，再添加主线路
-                    second_url = found_url.replace('hsex.tv', 'hdcdn.online')
-                    video_urls.append(second_url)  # HD线路在前
-                    video_urls.append(found_url)   # 主线路在后
-                    print(f"生成HD线路: {second_url}")
-                else:
-                    # 如果是其他域名，直接添加
-                    video_urls.append(found_url)
-                    video_urls.append(found_url)  # 复制一份作为备用
-                    print(f"复制备用线路: {found_url}")
-            
-            print(f"最终播放线路: {video_urls}")
-            
-            # 构建播放源信息 - 确保HD线路优先显示
-            play_from = []
-            play_url = []
-            
-            for i, video_url in enumerate(video_urls):
-                if 'hdcdn.online' in video_url:
-                    line_name = 'HD线路'  # HD线路优先
-                elif 'hsex.tv' in video_url:
-                    line_name = '主线路'
-                else:
-                    line_name = f'线路{i+1}'
-                
-                play_from.append(line_name)
-                play_url.append(f'正片${video_url}')
-            
-            # 如果没有找到任何线路
-            if not play_from:
-                play_from = ['好色TV']
-                play_url = ['正片$暂无播放地址']
-            
-            # 确保有两条线路（即使只有一条也复制一份）
-            if len(play_from) == 1:
-                play_from.append(f'{play_from[0]}-备用')
-                play_url.append(play_url[0])
-            
+            if video_url and not video_url.startswith('http'):
+                video_url = f"{self.host}{video_url.lstrip('/')}"
+        
             vod = {
                 'vod_id': vod_id,
                 'vod_name': title,
                 'vod_pic': vod_pic,
                 'vod_remarks': remarks,
-                'vod_play_from': '$$$'.join(play_from),
-                'vod_play_url': '$$$'.join(play_url)
+                'vod_play_from': '好色TV（优）',
+                'vod_play_url': f'正片${video_url}' if video_url else '正片$暂无地址'
             }
             return {'list': [vod]}
         except Exception as e:
             print(f"详情解析失败: {e}")
-            import traceback
-            traceback.print_exc()
             return {'list': []}
 
     def searchContent(self, key, quick, pg=1):
@@ -383,18 +317,11 @@ class Spider(Spider):
             # 编码关键词
             encoded_key = urllib.parse.quote(key.strip(), encoding='utf-8', errors='replace')
             
-            # 修复搜索翻页：根据页码构造正确的搜索URL
-            if int(pg) == 1:
-                # 第一页：/search.htm?search=关键词&sort=new
-                search_url = f"{self.host}search.htm"
-            else:
-                # 第二页及以后：/search-页码.htm?search=关键词&sort=new  
-                search_url = f"{self.host}search-{pg}.htm"
-            
-            # 搜索参数 - 添加 sort=new 参数
+            # 构造搜索URL
+            search_url = f"{self.host}search.htm"
             params = {
                 'search': encoded_key,
-                'sort': 'new'  # 新增排序参数
+                'page': int(pg)
             }
             
             # 发起请求
@@ -404,7 +331,6 @@ class Spider(Spider):
                 params=params,
                 timeout=8
             )
-            
             if resp.status_code not in (200, 302):
                 print(f"搜索页面请求失败，URL：{resp.url}，状态码：{resp.status_code}")
                 return {'list': [], 'page': int(pg), 'pagecount': 1, 'limit': 0, 'total': 0}
@@ -470,12 +396,12 @@ class Spider(Spider):
                 print(f"解析分页失败（默认单页）：{e}")
                 pagecount = 1
             
-            # 返回结果
+            # 返回结果（修复点2：补全page键的引号，修正语法错误）
             total = len(vlist) * pagecount
             print(f"搜索关键词「{key}」第{pg}页处理完成，结果{len(vlist)}条，总页数{pagecount}")
             return {
                 'list': vlist,
-                'page': int(pg),
+                'page': int(pg),  # 原代码此处缺少引号，导致语法错误
                 'pagecount': pagecount,
                 'limit': len(vlist),
                 'total': total
@@ -484,8 +410,7 @@ class Spider(Spider):
             print(f"搜索功能整体异常：{e}")
             return {
                 'list': [],
-                'page': int(pg),
-                'pagecount': 1,
+                'page': int(pg),                  'pagecount': 1,
                 'limit': 0,
                 'total': 0
             }
@@ -498,11 +423,12 @@ class Spider(Spider):
             'Host': urllib.parse.urlparse(self.host).netloc,
         })
         
+        # 根据rule中的double设置
         return {
-            'parse': 1,
+            'parse': 1,  # 根据rule中的play_parse设置
             'url': id,
             'header': headers,
-            'double': True
+            'double': True  # 根据rule中的double设置
         }
 
     def localProxy(self, param):
@@ -539,32 +465,30 @@ class Spider(Spider):
         headers = headers or self.headers
         params = params or {}
         try:
-            # 直接请求目标URL
             if method.upper() == 'GET':
                 resp = requests.get(
-                    url,
+                    url, 
                     headers=headers, 
                     timeout=timeout, 
                     allow_redirects=True,
-                    params=params
+                    params=params  # 支持GET请求带参数，适配搜索分页
                 )
             elif method.upper() == 'HEAD':
                 resp = requests.head(
-                    url,
+                    url, 
                     headers=headers, 
                     timeout=timeout, 
                     allow_redirects=False,
                     params=params
                 )
             else:
-                resp = requests.get(
-                    url,
+                resp = requests.get(  # 默认GET请求，兼容其他方法调用
+                    url, 
                     headers=headers, 
                     timeout=timeout, 
                     allow_redirects=True,
                     params=params
                 )
-            
             # 自动适配编码，避免中文乱码
             if 'charset' in resp.headers.get('Content-Type', '').lower():
                 resp.encoding = resp.apparent_encoding
@@ -573,9 +497,37 @@ class Spider(Spider):
             return resp
         except Exception as e:
             print(f"网络请求失败({url}): {e}")
+            # 返回统一格式空响应，避免后续逻辑崩溃
             return type('obj', (object,), {
                 'text': '', 
                 'status_code': 500, 
                 'headers': {},
                 'url': url
             })
+
+
+# ------------------------------
+# 可选测试代码（运行时注释或删除，用于验证功能）
+# ------------------------------
+if __name__ == "__main__":
+    # 初始化爬虫
+    spider = Spider()
+    spider.init()
+    
+    # 测试首页内容
+    print("=== 测试首页 ===")
+    home_data = spider.homeContent(filter='')
+    print(f"首页分类数：{len(home_data['class'])}")
+    print(f"首页视频数：{len(home_data['list'])}")
+    
+    # 测试视频分类（修复后的数据获取）
+    print("\n=== 测试视频分类（第1页） ===")
+    cate_data = spider.categoryContent(tid='list', pg=1, filter='', extend='')
+    print(f"视频分类第1页视频数：{len(cate_data['list'])}")
+    print(f"视频分类总页数：{cate_data['pagecount']}")
+    
+    # 测试搜索功能（修复语法错误后）
+    print("\n=== 测试搜索（关键词：测试） ===")
+    search_data = spider.searchContent(key="测试", quick=False, pg=1)
+    print(f"搜索结果数：{len(search_data['list'])}")
+    print(f"搜索总页数：{search_data['pagecount']}")

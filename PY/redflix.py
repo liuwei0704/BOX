@@ -1,12 +1,15 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 🍑
+# 灵感来源：嗷呜
+# 原作者的思路对本项目的实现提供了参考
+# 本代码在其nunflix基础上进行了扩展与修改
 import json
 import re
 import sys
 import os
 from pyquery import PyQuery as pq
 from base.spider import Spider
-
 class Spider(Spider):
 
     headers = {
@@ -18,18 +21,21 @@ class Spider(Spider):
     }
 
     def init(self, extend=""):
+        # Site and image hosts
         self.site = 'https://redflix.co'
         self.chost, self.token = self.gettoken()
         self.phost = 'https://image.tmdb.org/t/p/w500'
 
+        # Redflix embed servers (order matters for preference)
         self.servers = {
-            'vidfast': 'https://vidfast.pro',
-            'vidrock': 'https://vidrock.net',
-            'vidlink': 'https://vidlink.pro',
-            'videasy': 'https://player.videasy.net',
+            'vidfast': 'https://vidfast.pro',   
+            'vidrock': 'https://vidrock.net',   
+            'vidlink': 'https://vidlink.pro',   
+            'videasy': 'https://player.videasy.net',  
         }
         self.server_order = ['vidfast', 'vidrock', 'vidlink', 'videasy']
 
+        
         self.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
             'sec-ch-ua-platform': '"Windows"',
@@ -67,6 +73,7 @@ class Spider(Spider):
         return result
 
     def homeVideoContent(self):
+        # Use trending all day as Redflix does
         data = self.fetch(
             f"{self.chost}/trending/all/day",
             params={'api_key': self.token, 'language': 'en-US', 'page': 1},
@@ -75,6 +82,7 @@ class Spider(Spider):
         return {'list': self.getlist(data.get('results', []))}
 
     def categoryContent(self, tid, pg, filter, extend):
+        # tid: 'movie' or 'tv'
         params = {'page': pg, 'api_key': self.token, 'language': 'en-US'}
         data = self.fetch(f'{self.chost}/discover/{tid}', params=params, headers=self.headers).json()
         result = {
@@ -87,6 +95,7 @@ class Spider(Spider):
         return result
 
     def detailContent(self, ids):
+       
         path = ids[0]
         v = self.fetch(
             f'{self.chost}{path}',
@@ -97,6 +106,7 @@ class Spider(Spider):
         if is_movie:
             play_str = f"{v.get('title') or v.get('name')}${path}"
         else:
+            # Build seasons list, start episode 1 by default
             seasons = v.get('seasons') or []
             play_items = [
                 f"{i.get('name')}${path}/{i.get('season_number')}/1" for i in seasons if i.get('season_number')
@@ -122,65 +132,10 @@ class Spider(Spider):
         return {'list': self.getlist(data.get('results', [])), 'page': pg}
 
     def playerContent(self, flag, id, vipFlags):
+      
         try:
             media_type, tmdb_id, season, episode = self._parse_play_id(id)
-
-            s = season or '1'
-            e = episode or '1'
-
-            subs = []
-
-            def _map_lang(label: str) -> str:
-                name = (label or '').lower()
-                table = {
-                    'english': 'en', 'arabic': 'ar', 'chinese': 'zh', 'zh': 'zh', '简体': 'zh-CN', '繁體': 'zh-TW',
-                    'croatian': 'hr', 'czech': 'cs', 'danish': 'da', 'dutch': 'nl', 'finnish': 'fi', 'french': 'fr',
-                    'german': 'de', 'greek': 'el', 'hungarian': 'hu', 'indonesian': 'id', 'italian': 'it',
-                    'japanese': 'ja', 'korean': 'ko', 'norwegian': 'no', 'persian': 'fa', 'polish': 'pl',
-                    'portuguese (br)': 'pt-BR', 'portuguese': 'pt', 'romanian': 'ro', 'russian': 'ru',
-                    'serbian': 'sr', 'spanish': 'es', 'swedish': 'sv', 'turkish': 'tr', 'thai': 'th', 'vietnamese': 'vi'
-                }
-                if name in table:
-                    return table[name]
-                for k, v in table.items():
-                    if name.startswith(k) or k in name:
-                        return v
-                return ''
-
-            try:
-                if media_type == 'tv':
-                    sub_api = f"https://s.vdrk.site/subfetch.php?id={tmdb_id}&s={s}&e={e}"
-                else:
-                    sub_api = f"https://s.vdrk.site/subfetch.php?id={tmdb_id}"
-                hdr = self.jxh().copy()
-                hdr.update({'referer': 'https://vidrock.net/'})
-                resp = self.fetch(sub_api, headers=hdr, timeout=10)
-                if resp is not None and resp.status_code == 200:
-                    try:
-                        items = resp.json()
-                    except Exception:
-                        items = json.loads(resp.text or '[]')
-                    if (not items) and media_type == 'tv':
-                        try:
-                            resp2 = self.fetch(f"https://s.vdrk.site/subfetch.php?id={tmdb_id}", headers=hdr, timeout=10)
-                            if resp2 is not None and resp2.status_code == 200:
-                                try:
-                                    items = resp2.json()
-                                except Exception:
-                                    items = json.loads(resp2.text or '[]')
-                        except Exception:
-                            pass
-                    for it in items or []:
-                        u = it.get('file') or it.get('url') or it.get('src')
-                        name = it.get('label') or it.get('name') or 'Subtitle'
-                        if not u:
-                            continue
-                        low = u.lower()
-                        fmt = 'application/x-subrip' if ('srt' in low) else 'text/vtt'
-                        subs.append({'url': u, 'name': name, 'lang': _map_lang(name), 'format': fmt})
-            except Exception as _:
-                pass
-
+            
             for sid in self.server_order:
                 domain = self.servers.get(sid)
                 if not domain:
@@ -188,6 +143,9 @@ class Spider(Spider):
                 if media_type == 'movie':
                     embed = f"{domain}/movie/{tmdb_id}"
                 else:
+                    # season/episode may be None – default to 1/1
+                    s = season or '1'
+                    e = episode or '1'
                     if sid == 'vidfast':
                         embed = f"{domain}/tv/{tmdb_id}/{s}/{e}?autoNext=true&nextButton=false&title=true&poster=true&autoPlay=true"
                     elif sid == 'vidrock':
@@ -199,9 +157,10 @@ class Spider(Spider):
                         embed = f"{domain}/tv/{tmdb_id}/{s}/{e}?nextEpisode=true&autoplayNextEpisode=true&episodeSelector=true&color=8B5CF6"
                     else:
                         embed = f"{domain}/embed/{'movie' if media_type=='movie' else 'tv'}/{tmdb_id}{'' if media_type=='movie' else f'/{s}/{e}'}"
-                return {'parse': 1, 'url': embed, 'header': self.jxh(), 'subs': subs}
+                
+                return {'parse': 1, 'url': embed, 'header': self.jxh()}
             fallback = f"{self.site}/{media_type}/{tmdb_id}/watch"
-            return {'parse': 1, 'url': fallback, 'header': self.jxh(), 'subs': subs}
+            return {'parse': 1, 'url': fallback, 'header': self.jxh()}
         except Exception as e:
             self.log(f'Redflix playerContent error: {e}')
             return {'parse': 1, 'url': f"{self.site}{id if id.startswith('/') else '/' + id}", 'header': self.jxh()}
@@ -209,6 +168,7 @@ class Spider(Spider):
     def getlist(self, data, tid=''):
         videos = []
         for i in data or []:
+         
             media_type = tid or i.get('media_type')
             if media_type not in ('movie', 'tv'):
                 continue
@@ -226,14 +186,17 @@ class Spider(Spider):
         return videos
 
     def jxh(self):
+        
         header = self.headers.copy()
         header.update({'referer': f'{self.site}/', 'origin': self.site})
         header.pop('authorization', None)
         return header
 
     def _parse_play_id(self, id_str):
+        
         m = re.match(r'^/(movie|tv)/(\d+)(?:/(\d+)/(\d+))?$', id_str or '')
         if not m:
+            # Fallback: try to extract numbers
             if '/movie/' in id_str:
                 return 'movie', re.findall(r'/movie/(\d+)', id_str)[0], None, None
             elif '/tv/' in id_str:
@@ -245,6 +208,7 @@ class Spider(Spider):
         return media_type, tmdb_id, season, episode
 
     def gettoken(self):
+      
         hosts = [self.site]
         paths = ['/', '/movies', '/tv-shows']
         key_pattern = re.compile(r'TMDB_API_KEY\s*[:=]\s*[\"\']([A-Za-z0-9]+)[\"\']')
@@ -262,6 +226,7 @@ class Spider(Spider):
                     m = key_pattern.search(mjs)
                     if m:
                         return 'https://api.themoviedb.org/3', m.group(1)
+                 
                     mw = re.search(r'player-watch-([\w-]+)\.js', mjs)
                     if mw:
                         pw = f"{host}/assets/player-watch-{mw.group(1)}.js"
