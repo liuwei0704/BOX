@@ -11,8 +11,9 @@
 {"key":"冷心","name":"冷心｜APP","type":3,"api":"csp_AppMuou","ext":{"url":"http://app.789dd.cn","name":"火猫影视"}},
 {"key":"金牌","name":"金牌｜APP","type":3,"api":"csp_AppMuou","searchable":1,"changeable":1,"ext":{"site":"https://muouapp.oss-cn-hangzhou.aliyuncs.com/MUOUAPP/godbbq.txt","name":"金牌影院（请断网再安装）"}},
 {"key":"余白","name":"余白丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://dec.yb4k.top","dataKey":"KsmJgfp3MVQFKWRa","dataIv":"KsmJgfp3MVQFKWRa","token":"d51f0cf047e7d4c5f76e2720cfdcaa927055e77c5e8cc0a1a7e49ca198067161"}},
-{"key":"清风","name":"清风丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://qfys.myqf.asia","dataKey":"vpsj6z4e7scbjbis","dataIv":"vpsj6z4e7scbjbis","token":"cea6598a6f09e3af6d583911a81d37f4070c9007eaf35d72dc3cf81e64357bbf","ua":"Mozilla/5.0(Linux;Android13;Pixel8)AppleWebKit/537.36(KHTML,likeGecko)Chrome/116.0.0.0MobileSafari/537.36"}},
+{"key":"清风","name":"清风丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://qfys.myqf.asia","dataKey":"vpsj6z4e7scbjbis","dataIv":"vpsj6z4e7scbjbis","token":"7d7bc6b8bd0433079a6aa4f718a38a11945b15fce2875270ab96dd6272358288","ua":"Mozilla/5.0(Linux;Android13;Pixel8)AppleWebKit/537.36(KHTML,likeGecko)Chrome/116.0.0.0MobileSafari/537.36"}},
 {"key":"秒看","name":"秒看丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"site":"https://mk1080.top/get.txt","dataKey":"c60d88b2eep53za8","dataIv":"c60d88b2eep53za8","token":"06caee3952a4c97d1ad4c766c875a99d3fa83aa68f46188823600d59ebba4469","ua":"okhttp/3.10.0"}},
+{"key":"爱影","name":"爱影｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://aysappto.oss-cn-chengdu.aliyuncs.com/qj2.txt","dataKey":"sada21321sdq231d","dataIv":"sada21321sdq231d"}},
 {"key":"咖啡","name":"咖啡丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://daen-1256234123.cos.ap-shanghai.myqcloud.com/MuQi/mqxh.txt","dataKey":"37kj83zs1q16jk6t","dataIv":"37kj83zs1q16jk6t","version":"101"}},
 {"key":"若雪","name":"若雪丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"https://appcms.rx4k.top","dataKey":"ZX10ysTYZWtIJCTU","dataIv":"ZX10ysTYZWtIJCTU","version":"120"}},
 {"key":"蓝鹰","name":"蓝鹰｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://lanyinghz.oss-cn-hangzhou.aliyuncs.com/lanyingxmy.txt","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","version":"120"}},
@@ -188,7 +189,6 @@
 {"key":"push_agent","name":"手机｜推送","type":3,"api":"csp_Push","searchable":0,"filterable":0,"changeable":0}
 ],
 "parses":[
-{"name":"推荐","type":1,"url":"http://niiuma.qi-simple.top//nn.php?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","bilibili","1905"],"header":{"User-Agent":"okhttp/4.9.1"}}},
 {"name":"无上","type":"1","url":"https://mfjx.iwsyy.xyz/?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","bilibili","1905"],"header":{"User-Agent":"okhttp/4.9.1"}}},
 {"name":"巧计","type":1,"url":"https://zy.qiaoji8.com/xiafan.php?url=","ext":{"flag":["QD4K","iyf","duanju","gzcj","GTV","GZYS","weggz","Ace"],"header":{"User-Agent":"okhttp/4.9.1"}}},
 {"name":"咸鱼","type":0,"url":"https://jx.xymp4.cc/?url=","ext":{"header":{"user-agent":"Mozilla/5.0(X11;Linuxx86_64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/134.0.0.0Safari/537.36Edg/134.0.3124.68"}}},
