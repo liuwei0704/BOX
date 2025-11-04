@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/11/03/cc12b64ece89f1d75d2f371039694aa0.jpg;md5;11b6dbd2b630fc9c95e36247917f55db",
-"notice":"更新日期11/3",
+"notice":"更新日期11/4",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -54,9 +54,7 @@
 {"key":"冷心","name":"🅰️冷心｜APP","type":3,"api":"csp_AppMuou","ext":{"url":"http://app.789dd.cn","name":"火猫影视"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"金牌","name":"🅰️金牌｜APP","type":3,"api":"csp_AppMuou","searchable":1,"changeable":1,"ext":{"site":"https://muouapp.oss-cn-hangzhou.aliyuncs.com/MUOUAPP/godbbq.txt","name":"金牌影院（请断网再安装）"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"余白","name":"🅰️余白丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://dec.yb4k.top","dataKey":"KsmJgfp3MVQFKWRa","dataIv":"KsmJgfp3MVQFKWRa","token":"d51f0cf047e7d4c5f76e2720cfdcaa927055e77c5e8cc0a1a7e49ca198067161"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"清风","name":"🅰️清风丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://qfys.myqf.asia","dataKey":"vpsj6z4e7scbjbis","dataIv":"vpsj6z4e7scbjbis","token":"7d7bc6b8bd0433079a6aa4f718a38a11945b15fce2875270ab96dd6272358288","ua":"Mozilla/5.0(Linux;Android13;Pixel8)AppleWebKit/537.36(KHTML,likeGecko)Chrome/116.0.0.0MobileSafari/537.36"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"秒看","name":"🅰️秒看丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"site":"https://mk1080.top/get.txt","dataKey":"c60d88b2eep53za8","dataIv":"c60d88b2eep53za8","token":"06caee3952a4c97d1ad4c766c875a99d3fa83aa68f46188823600d59ebba4469","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"爱影","name":"🅰️爱影｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://aysappto.oss-cn-chengdu.aliyuncs.com/qj2.txt","dataKey":"sada21321sdq231d","dataIv":"sada21321sdq231d"} ,"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"优势","name":"🅰️优势丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://zxy-ys.810211.dpdns.org","dataKey":"1234567890123456","dataIv":"1234567890123456"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"咖啡","name":"🅰️咖啡丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://daen-1256234123.cos.ap-shanghai.myqcloud.com/MuQi/mqxh.txt","dataKey":"37kj83zs1q16jk6t","dataIv":"37kj83zs1q16jk6t","version":"101"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"若雪","name":"🅰️若雪丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"url":"https://appcms.rx4k.top","dataKey":"ZX10ysTYZWtIJCTU","dataIv":"ZX10ysTYZWtIJCTU","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"蓝鹰","name":"🅰️蓝鹰｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://lanyinghz.oss-cn-hangzhou.aliyuncs.com/lanyingxmy.txt","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
