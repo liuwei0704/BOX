@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/11/03/cc12b64ece89f1d75d2f371039694aa0.jpg;md5;11b6dbd2b630fc9c95e36247917f55db",
-"notice":"更新日期11/4",
+"notice":"更新日期11/6",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -65,6 +65,7 @@
 {"key":"影视","name":"🅰️影视丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://aysappto.oss-cn-chengdu.aliyuncs.com/qj2.txt","dataKey":"sada21321sdq231d","dataIv":"sada21321sdq231d"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"小猪","name":"🅰️小猪丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://tiantangyoulu.oss-cn-beijing.aliyuncs.com/tengxunyun.txt","dataKey":"seb5tq9mykp2w9ry","dataIv":"seb5tq9mykp2w9ry","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"云云","name":"🅰️云云丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://staraugust123456.oss-cn-hangzhou.aliyuncs.com/2.txt","dataKey":"staraugust123456","dataIv":"staraugust123456","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"坚果","name":"🅰️坚果｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"site":"https://qiliniao-1331306839.cos.ap-chengdu.myqcloud.com/jg.txt","dataKey":"2015692015692015","dataIv":"2015692015692015"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"星空","name":"🅰️星空｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://xkcms.xkgzs.xyz","dataKey":"AJcdjkAjkdJDkvcd","dataIv":"AJcdjkAjkdJDkvcd"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"于浅","name":"🅰️于浅｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://202.140.143.116:88","dataKey":"leroulerop.lerom","dataIv":"leroulerop.lerom"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"数字","name":"🅰️数字｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://app1-0-0.87333.cc","dataKey":"VwsHxkCViDXEExWa","dataIv":"VwsHxkCViDXEExWa"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
@@ -189,14 +190,6 @@
 "flags":["youku","优酷","优酷","优酷视频","qq","腾讯","腾讯","腾讯视频","iqiyi","qiyi","奇艺","爱奇艺","爱奇艺","m1905","xigua","letv","leshi","乐视","乐视","sohu","搜狐","搜狐","搜狐视频","tudou","pptv","mgtv","芒果","imgo","芒果TV","芒果TV","bilibili","哔哩","哔哩哔哩"],
 
 "rules":[
-{"name":"量子非凡","hosts":["lz","vip.lz","v.cdnlz","hd.lz","ffzy","vip.ffzy","hd.ffzy"],"regex":["#EXT-X-DISCONTINUITY\r*\n*#EXTINF:6.666667,[\\s\\S]*?#EXT-X-DISCONTINUITY","#EXT-X-DISCONTINUITY\r*\n*#EXTINF:6.600000,[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
-{"name":"索尼","hosts":["suonizy","qrssv.com"],"regex":["15.1666","15.2666"]},
-{"name":"乐视","hosts":["leshiyun"],"regex":["15.92"]},
-{"name":"优质","hosts":["yzzy","playback"],"regex":["16.63","18.66","17.66","19.13"]},
-{"name":"快看","hosts":["kuaikan","vip.kuaikan"],"regex":["15.32","15.231","18.066"]},
-{"name":"360","hosts":["lyhuicheng"],"regex":["#EXTINF.*?\\s+.*?hrz8QcR9.*?\\.ts\\s+","#EXT-X-KEY:METHOD=NONE[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
-{"name":"开源棋牌","hosts":["askzycdn","jkunbf","bfikuncdn","bfaskcdn"],"regex":["#EXT-X-KEY:METHOD=NONE\r*\n*#EXTINF:5,[\\s\\S]*?#EXT-X-DISCONTINUITY","#EXT-X-KEY:METHOD=AES-128,URI=\"[^\"]+\"\r*\n*#EXTINF:3.333,[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
-{"name":"暴风","hosts":["bfengbf.com","bfzy","c1"],"regex":["#EXTINF.*?\\s+.*?adjump.*?\\.ts\\s+","#EXT-X-DISCONTINUITY\r*\n*#EXTINF:3,[\\s\\S]*?#EXT-X-DISCONTINUITY"]},
 {"name":"农民","hosts":["toutiaovod.com"],"regex":["video/tos/cn"]},
 {"name":"火山","hosts":["huoshan.com"],"regex":["item_id="]},
 {"name":"抖音","hosts":["douyin.com"],"regex":["is_play_url="]},
