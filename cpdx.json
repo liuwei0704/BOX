@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/11/08/256841fbdd6dd9c5a411dcc9564e0e75.jpg;md5;56f518af99e91de33cd88eafc9b85c2d",
-"notice":"更新日期11/10",
+"notice":"更新日期11/11",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -99,7 +99,6 @@
 {"key":"52短剧","name":"🔖52短剧｜短剧","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨52短剧✨.json"},
 {"key":"星芽短剧","name":"🔖星芽｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"甜圈短剧","name":"🔖甜圈｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/甜圈短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
-{"key":"锦鲤短剧","name":"🔖锦鲤｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/锦鲤短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"番茄短剧","name":"🔖番茄｜短剧","type":3,"api":"csp_XBPQ","ext":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/XBPQ/番茄短剧.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar"},
 
