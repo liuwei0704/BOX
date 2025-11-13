@@ -7,8 +7,8 @@
 "sites":[
 {"key":"豆瓣","name":"🍀豆瓣","type":3,"api":"csp_DouDouGuard","indexs":1,"searchable":0,"quickSearch":0,"changeable":0},
 {"key": "php_server","name": "❗PHP爬虫┃測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/fm_xMydev.jar"},
-{"key":"php集合","name":"❗php集合","type":4,"api":".https://zhangqun66.com/zq/php.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
-{"key":"python集合","name":"❗python集合","type":4,"api":".https://zhangqun66.com/zq/py.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"php集合","name":"❗php集合","type":4,"api":"https://zhangqun66.com/zq/php.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"python集合","name":"❗python集合","type":4,"api":"https://zhangqun66.com/zq/py.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
 
 {"key":"Bili¹","name":"🅱️哔哩┃FF","type":3,"api":"csp_BiliGuard","searchable": 1,"changeable":0,"style":{"type":"rect","ratio":1.597},"ext":{"type":"動態漫#沙雕动画#逍遥动画君#小小七沙雕#同人•手書#動漫雜談#AMM動漫君"}},
 {"key":"Bili²","name":"🅱️哔哩┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"我的哔哩[官]","lang":"ds","ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
