@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/11/19/71e8037f867e425a7b2109cda6aab053.jpg;md5;08cf5c9e4f3326660eb75032e9ffc256",
-"notice":"更新日期11/19",
+"notice":"更新日期11/23",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -53,8 +53,14 @@
 
 {"key":"热播","name":"🅰️热播｜APP","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"浪酷","name":"🅰️浪酷｜APP","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.lkuys.cn"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"私人","name":"🅰️私人｜APP","type":3,"changeable":1,"api":"csp_AppYsV2","ext":"https://v.catcs.cc/api.php/v1.vod","jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"私人","name":"🅰️私人｜APP","type":3,"changeable":1,"api":"csp_AppYsV2","ext":"https://v.catcs.cc/api.php/v1.vod"},
 {"key":"火猫","name":"🅰️火猫｜APP","type":3,"api":"csp_AppMuou","ext":{"url":"http://app.789dd.cn","name":"火猫影视"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"羊羊","name":"🅰️羊羊｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppMuou","ext":{"url":"https://ht.zhenxun.love","name":"羊羊学院"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"思念","name":"🅰️思念｜APP","type":3,"api":"csp_AppFox","ext":{"host":"https://snys2.xyz","timeout":15,"ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"星空","name":"🅰️星空｜APP","type":3,"api":"csp_AppFox","ext":{"host":"http://fox.qwqfun.com"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"极兔","name":"🅰️极兔｜APP","type":3,"api":"csp_AppFox","ext":{"host":"http://www.mzd.asia"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"二三","name":"🅰️二三｜APP","type":3,"api":"csp_AppFox","ext":{"host":"http://a.cfys.xn--fiqs8s"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"金牌","name":"🅰️金牌┃APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppQi","ext":{"site":"https://dtqj1.gg1080.com:443/dtjp.txt","dataKey":"kecbio48dsq131ed","dataIv":"kecbio48dsq131ed"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"咖啡","name":"🅰️咖啡丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://daen-1256234123.cos.ap-shanghai.myqcloud.com/MuQi/mqxh.txt","dataKey":"37kj83zs1q16jk6t","dataIv":"37kj83zs1q16jk6t","version":"101"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"蓝鹰","name":"🅰️蓝鹰｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://lanyinghz.oss-cn-hangzhou.aliyuncs.com/lanyingxmy.txt","dataKey":"ca94b06ca359d80e","dataIv":"ca94b06ca359d80e","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"开心","name":"🅰️开心｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://guwozj-1319364746.cos.ap-guangzhou.myqcloud.com/gw.txt","dataKey":"ca94b06ca3c7d80e","dataIv":"ca94b06ca3c7d80e","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
@@ -90,7 +96,6 @@
 {"key":"灵虎","name":"🅰️灵虎｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"site":"https://bind.315999.xyz/89.txt","dataKey":"#getapp@TMD@2025","dataIv":"#getapp@TMD@2025","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"旗星","name":"🅰️旗星｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://ys.qist.top","dataKey":"2SWSPFxugBLPPOKo","dataIv":"2SWSPFxugBLPPOKo","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"丫丫","name":"🅰️丫丫｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://tv.yy-fun.cc","dataKey":"qkxnwkfjwpcnwycl","dataIv":"qkxnwkfjwpcnwycl"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"移动","name":"🅰️移动｜APP","type":3,"api":"csp_YD","searchable":1,"quickSearch":1,"style":{"type":"list"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 
 {"key":"愛瓜","name":"🔥愛瓜┃T4","type":4,"api":"http://zhangqun66.com/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"小蘋果","name":"🔥小蘋果┃T4","type":4,"api":"https://zhangqun66.com/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
