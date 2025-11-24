@@ -127,7 +127,7 @@
 {"key":"动漫岛","name":"动漫岛｜动漫","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/js/动漫岛.js"},
 {"key":"去看吧","name":"去看吧｜动漫","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/js/去看吧.js"},
 {"key":"异世界","name":"异世界｜动漫","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/js/drpy2.min.js","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/js/异世界.js"},
-{"key":"荐片","name":"荐片｜磁力","api":"csp_Jianpian","type":3,"ext":"https://api.ztcgi.com"},
+{"key":"荐片","name":"荐片｜磁力","api":"csp_Jianpian","type":3,"ext":"https://ev5356.970xw.com"},
 {"key":"修罗","name":"修罗｜磁力","api":"csp_Xlys","type":3,"ext":"https://xl01.com.de"},
 {"key":"七味","name":"七味｜磁力","type":3,"api":"csp_QnMp4","searchable":1,"quickSearch":1,"filterable":1,"ext":{"url":"https://www.pkmp4.xyz,https://www.qwnull.com,https://www.qwmkv.com,https://www.qwfilm.com,https://www.qnmp4.com,https://www.qnnull.com,https://www.qnhot.com"}},
 {"key":"80S","name":"80S｜磁力","type":3,"api":"csp_BLSGod","playerType":1,"searchable":1,"quickSearch":1,"filterable":1},
