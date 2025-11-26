@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/11/23/628d88373015ae8c8a1feafc8962b989.jpg;md5;2e2b0912f01c082c67423ea8a091ef28",
-"notice":"更新日期11/23",
+"notice":"更新日期11/26",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -167,7 +167,7 @@
 {"key":"push_agent","name":"🛴手机┃推送","type":3,"api":"csp_PushGuard","searchable":0,"quickSearch":0,"ext":{"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto"}}
 ],
 "lives":[
-{"key":"✨lives-SMT✨","name":"✨lives-SMT.py✨","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/lives-SMT.py"},
+{"name":"TV123","type":0,"url":"http://tv123.vvvv.ee/tv.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"港台TV","type":0,"url":"https://githubproxy.cc/https://raw.githubusercontent.com/iamfang2019/AAAAA/refs/heads/main/TW.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"綜合TV","type":0,"url":"https://github.com/lalifeier/IPTV/raw/refs/heads/main/m3u/IPTV.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
