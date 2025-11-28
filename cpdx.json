@@ -21,8 +21,19 @@
 {"key":"py_OleVod","name":"🍉欧乐影院┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=OleVod","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"py_Dm84","name":"🍋动漫巴士┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=Dm84","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 
+{"key":"金牌","name":"🪏金牌","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/金牌.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"界影视","name":"🪏界影视","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/界影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"4K影视","name":"🪏4K影视","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/4K影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"4KVM","name":"🪏4KVM","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/4KVM.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"两个BT","name":"🪏两个BT","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/两个BT.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"UVod","name":"🪏UVod","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/UVod.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0}
+{"key":"饭团影视","name":"🪏饭团影视","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/饭团影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"努努影院","name":"🪏努努影院","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/努努影院.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"小鸡暴走","name":"🪏小鸡暴走","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/小鸡暴走.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"小鸭子看看","name":"🪏小鸭子看看","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/小鸭子看看.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"小苹果影视","name":"🪏小苹果影视","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/小苹果影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+
 {"key":"YGP","name":"🚀叨观荐影┃预告片","type":3,"api":"csp_YGPGuard","searchable":0,"quickSearch":0,"changeable":0},
-{"key":"alllive","name":"📽️一直播┃直播","type":3,"api":"csp_AllliveGuard","playerType":2,"searchable":0,"quickSearch":0,"changeable":0},
 {"key":"立播","name":"🌟立播┃秒播","type":3,"api":"csp_LibvioGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":{"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto"}},
 {"key":"厂长","name":"📔厂长┃秒播","type":3,"api":"csp_NewCzGuard","timeout":10,"playerType":2,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"苹果","name":"🍎苹果┃秒播","type":3,"api":"csp_LiteAppleGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1},
@@ -119,16 +130,6 @@
 
 {"key":"csp_XBPQ_IdolTV","name":"📹IdolTV┃XQ","type": 3,"api":"csp_XBPQ","searchable":1,"style":{"type":"rect","ratio":0.85},"searchable":1,"quickSearch":1,"filterable":1,"ext": {"请求头":"User-Agent$MOBILE_UA","编码":"UTF-8","直接播放": "","免嗅": "1","分类url":"https://idoltv.tv/vodshow/{cateId}--{class}-{catePg}-{year}.html","搜索url": "https://idoltv.tv/vodsearch/page/{pg}/wd/{wd}.html","搜索模式": "1","图片":"data-original=\"&&\"","数组":"class=\"vodlist_thumb lazyload&&</li>","播放数组":"class=\"content_playlist&&</div>","嗅探词":".m3u8","分类":"電影$movies#網路電影$webmovie#電視劇$drama#韓國網劇$webdrama#綜藝$tvshow#IDOL綜藝$idolshow"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar"},
 {"key":"csp_XBPQ_韩片网","name":"📹韩片网┃XQ","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"searchable": 0,"quickSearch":1,"filterable":1,"ext":{"数组":"<li class=\"mo-paxs-5px mo-pamd-10px&&</li>","图片":"data-original=\"&&\"","标题":"/\">&&</a>","副标题":"mo-coxs-center\">&&</span>","简介":"讲述<p>&&</p>","链接":"href=\"&&\"","线路数组":"mo-prxs-2px mo-fsxs-16px&&/a>","线路标题":"</i>&&<","播放数组":"<ul class=\"mo-movs-item mo-sort-boxs&&</ul>","播放列表":"<a&&a>","播放链接":"href=\"&&\"","播放标题":">&&</","跳转播放链接":"data-play=\"&&\"","搜索url":"https://www.hanpian.tv/search/{wd}-------------/","分类url":"https://www.hanpian.tv/so/{cateId}/{area}-{by}--{lang}----{catePg}---{year}/","分类":"电影$movie#电视剧$tv#综艺$variety#动漫片$anime"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar"},
-
-{"key":"✨苿小影✨","name":"✨苿小影┃XQ","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨苿wèi小影✨.json"},
-{"key":"✨影剧屋(抓)✨","name":"✨影剧屋┃XQ","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨影剧屋(抓)✨.json"},
-{"key":"✨老大哥TV✨","name":"✨老大哥TV┃XQ","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨老大哥TV✨.json"},
-{"key":"✨明星影院✨","name":"✨明星影院┃XQ","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨明星影院✨.json"},
-{"key":"✨努努影院✨","name":"✨努努影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/努努影院.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"✨永乐视频✨","name":"✨永乐视频┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/永乐视频.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"✨小苹果影视✨","name":"✨小苹果影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/小苹果影视.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"✨小鸭子看看✨","name":"✨小鸭子看看┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/小鸭子看看.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"✨91毒舌电影✨","name":"✨91毒舌电影┃XQ","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨91毒舌电影✨.json"},
 
 {"key":"zy_量子资源","name":"💎量子LZ","type":1,"searchable":1,"quickSearch":1,"filterable":0,"api":"http://cj.lziapi.com/api.php/provide/vod/","playurl": "json:https://tvmvip.com/lz2.php?url=","searchable":1,"quickSearch":1,"categories":["国产剧","韩国剧","国产动漫","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","香港剧","台湾剧","韩国剧","纪录片","动画片","日本剧","泰国剧","欧美剧","日本动漫","欧梅动漫","海外动漫","电影解说","大陆综艺","港台综艺","韩国综艺","欧梅综艺","其他剧"]},
 {"key":"zy_非凡资源","name":"💎非凡FF","type":1,"searchable":1,"quickSearch":1,"filterable":0,"api":"http://ffzy5.tv/api.php/provide/vod/","searchable":1,"quickSearch":1,"categories":["国产剧","韩国剧","国产动漫","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","香港剧","台湾剧","韩国剧","纪录片","动画片","日本剧","泰国剧","欧美剧","日本动漫","欧梅动漫","海外动漫","电影解说","大陆综艺","港台综艺","韩国综艺","欧梅综艺","其他剧"]},
