@@ -19,7 +19,7 @@ class Spider(Spider):
     def destroy(self):
         pass
 
-    host = 'http://item.xpgcom.com'
+    host = 'http://asp.xpgtv.com'
 
     headers = {
         "User-Agent": "okhttp/3.12.11"
@@ -95,20 +95,46 @@ class Spider(Spider):
         urls = v.get('urls') or []
         play_items = []
         
+        # 允许的中文关键词列表
+        allowed_chinese_keywords = [
+            '蓝光', '超清', '高清', '标清', '枪版', '全清',
+            '全集', '全', '完整版', '正片', '预告', '花絮'
+        ]
+        
         for i in urls:
-            # 多种方式获取播放源名称
             key = (i.get('key') or i.get('name') or "").strip()
             url = (i.get('url') or "").strip()
             
-            # 检查是否为及时雨源（更严格的过滤）
             if key and url:
-                # 转换为小写进行匹配
-                key_lower = key.lower()
-                # 检查是否包含及时雨相关的关键词
-                if any(bad_word in key_lower for bad_word in ['及时雨', '及時雨', 'jsy']):
-                    continue  # 跳过及时雨源
-                
-                play_items.append(f"{key}${url}")
+                # 检查是否在允许的中文关键词列表中
+                if key in allowed_chinese_keywords:
+                    play_items.append(f"{key}${url}")
+                else:
+                    # 使用正则表达式匹配数字格式
+                    # 纯数字序号：1, 2, 3... (无限大)
+                    if re.match(r'^\d+$', key):
+                        play_items.append(f"{key}${url}")
+                    # 数字范围：1-10, 11-20 (无限大)
+                    elif re.match(r'^\d+-\d+$', key):
+                        play_items.append(f"{key}${url}")
+                    # 第1集, 第2期, 第3话 (无限大)
+                    elif re.match(r'^第\d+[集期话节]$', key):
+                        play_items.append(f"{key}${url}")
+                    # 第1季, 第2季 (无限大)
+                    elif re.match(r'^第\d+季$', key):
+                        play_items.append(f"{key}${url}")
+                    # 集1, 期2, 话3 (无限大)
+                    elif re.match(r'^[集期话]?\d+$', key):
+                        play_items.append(f"{key}${url}")
+                    # EP1, E01, EP01 (无限大)
+                    elif re.match(r'^E[P]?\d+$', key, re.IGNORECASE):
+                        play_items.append(f"{key}${url}")
+                    # 1080P, 720P, 4K (无限大)
+                    elif re.match(r'^\d+[PpKk]$', key):
+                        play_items.append(f"{key}${url}")
+                    # HD, FHD, UHD
+                    elif re.match(r'^[Hh][Dd]$', key) or re.match(r'^[Ff][Hh][Dd]$', key) or re.match(r'^[Uu][Hh][Dd]$', key):
+                        play_items.append(f"{key}${url}")
 
         play_url = "#".join(play_items)
         
