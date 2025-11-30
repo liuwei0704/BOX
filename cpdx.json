@@ -112,12 +112,12 @@
 {"key":"旗星","name":"🅰️旗星｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://ys.qist.top","dataKey":"2SWSPFxugBLPPOKo","dataIv":"2SWSPFxugBLPPOKo","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"丫丫","name":"🅰️丫丫｜APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://tv.yy-fun.cc","dataKey":"qkxnwkfjwpcnwycl","dataIv":"qkxnwkfjwpcnwycl"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 
-{"key":"愛瓜","name":"🔥愛瓜┃T4","type":4,"api":"http://zhangqun66.com/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"愛瓜","name":"🔥愛瓜┃T4","type":4,"api":"http://zhangqun1818.serv00.net/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"小蘋果","name":"🔥小蘋果┃T4","type":4,"api":"https://zhangqun66.com/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun66.com/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun66.com/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun66.com/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
-{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun66.com/ww.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
+{"key":"金鹰克隆","name":"🔥金鹰┃T4","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"华为吧克隆","name":"🔥华为吧┃T4","type":4,"api":"http://zhangqun1818.serv00.net/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"采集集合","name":"🔥采集集合┃T4","type":1,"api":"http://zhangqun1818.serv00.net/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
+{"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun1818.serv00.net/ww.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
 
 {"key":"51短剧","name":"🔖51短剧","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/51短剧.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar"},
 {"key":"52短剧","name":"🔖52短剧｜短剧","type":3,"playerType":2,"api":"csp_XBPQ","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/✨52短剧✨.json"},
