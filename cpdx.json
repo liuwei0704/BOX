@@ -1,6 +1,6 @@
 {
 "spider":"https://oss4liview.moji.com/thd_file/2025/11/28/6b765637d974223e1dddaaef872d0191.jpg;md5;403a59bd559cc36fe67544e5de66e774",
-"notice":"更新日期11/29",
+"notice":"更新日期11/30",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -17,9 +17,12 @@
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
 
-{"key":"py_DianYingTanTang","name":"🫐电影天堂┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=DianYingTanTang","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"t1_dian_ying_tian_tang_02","name":"🫐电影天堂┃T1","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"json:https://py.doube.eu.org/parse_dytt?url=","categories":["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","伦理片","短剧","动画片"]},
+{"key":"py_官採","name":"🍎官方采集┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=64832281816dd9a7b7c506233d457a5d","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"py_小蘋果123","name":"🍎小苹果┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=9037cfae7c64405111e0e364401adb60","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"py_OleVod","name":"🍉欧乐影院┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=OleVod","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"py_Dm84","name":"🍋动漫巴士┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=Dm84","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"py_粤漫之家","name":"🍋粤漫之家┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=de0fbc805050ecc4d63971c109724d0e","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 
 {"key":"金牌","name":"🪩金牌","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/金牌.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"界影视","name":"🪩界影视","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/界影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
