@@ -15,7 +15,7 @@
 {"key":"Bili³","name":"🅱️哔哩┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/PY/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
-{"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
+{"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
 
 {"key":"t1_dian_ying_tian_tang_02","name":"🫐电影天堂┃T1","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"json:https://py.doube.eu.org/parse_dytt?url=","categories":["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","伦理片","短剧","动画片"]},
 {"key":"py_官採","name":"🍎官方采集┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=64832281816dd9a7b7c506233d457a5d","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
