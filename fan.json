@@ -1,9 +1,9 @@
 {
-"spider":"https://oss4liview.moji.com/thd_file/2025/12/03/40664a16456714d85df66affff808e3a.jpg;md5;723a719bd225cd0a9a6df4e751729723",
+"spider":"https://oss4liview.moji.com/thd_file/2025/12/05/cf6a115ed77bcf1065441a7b73ec8e84.jpg;md5;6f66d4afc311f0535d76d64139879013",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "sites":[
-{"key":"豆","name":"新公众号【太太太硬了】","type":3,"api":"csp_DouDouGuard","indexs":1,"searchable":0,"quickSearch":0,"changeable":0},
-{"key":"MyDrive","name":"🗂我的云盘┃我配置","type":3,"api":"csp_MyDriveGuard","changeable":0,"indexs":0,"searchable":1,"style":{"type":"oval"},
+{"key":"豆豆","name":"关注新公众号【太太太硬了】防失联","type":3,"api":"csp_DouDouGuard","indexs":1,"searchable":0,"quickSearch":0,"changeable":0},
+{"key":"MDrive","name":"🗂我的云盘┃我配置","type":3,"api":"csp_MyDriveGuard","changeable":0,"indexs":0,"searchable":1,"style":{"type":"oval"},
 "ext":{"Cloud-drive":"tvfan/Cloud-drive.txt"}},
 {"key":"玩偶","name":"👽玩偶哥哥┃4K弹幕","type":3,"api":"csp_WoGGGuard","timeout":30,"searchable":1,"quickSearch":1,"changeable":0,"ext":{"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto"}},
 {"key":"YGP","name":"🚀叨观荐影┃预告片","type":3,"api":"csp_YGPGuard","searchable":0,"quickSearch":0,"changeable":0},
@@ -66,7 +66,7 @@
 {"key":"fan","name":"导航www.饭太硬.com","type":3,"api":"csp_XPathGuard","searchable":1,"quickSearch":0,"changeable":0},
 {"key":"cc","name":"请勿相信视频中广告","type":3,"api":"csp_XPathGuard","searchable":1,"quickSearch":0,"changeable":0}
 ],
-"logo":"https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/a3cb3f8553ca2d67/1.5873679404696913E9.gif",
+"logo":"https://img.imgdd.com/50871bc3-ff7a-46be-b4be-de69b5af241e.gif",
 "lives":[
 {"name":"冰茶","type":0,"url":"https://bc.188766.xyz/?ip=&mishitong=true&mima=mianfeibuhuaqian&json=true","timeout":10,"ua":"bingcha/1.1(mianfeifenxiang)"},
 {"name":"develop202","type":0,"url":"https://gh.llkk.cc/https://raw.githubusercontent.com/develop202/migu_video/refs/heads/main/interface.txt","playerType":2,"epg":"http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}"},
