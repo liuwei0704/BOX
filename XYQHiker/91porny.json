@@ -1,26 +1,12 @@
 {
-//请收藏地址发布页
-
-    //https://dizhi88.gitbook.io
-   // https://jiuse.pages.dev
-
-//发送邮件获得最新地址
-
-   // dizhi9191@gmail.com
-
-//永久地址
-
-   // https://91porny.com
-  //  https://jiuse.icu
- //   https://九色.com
 "规则名": "九色",
 //91porny.com
 "规则作者": "飞鱼",
-"请求头参数": "手机",
+"请求头参数": "PC_UA",
 "网页编码格式": "UTF-8",
 "图片是否需要代理": "0",
 "是否开启获取首页数据": "0",
-"首页推荐链接": "https://ywy.jsav2.com/video",
+"首页推荐链接": "https://kmy.9a07q.com/video",
 "首页列表数组规则": "#videoListPage",
 "首页片单列表数组规则": ".colVideoList",
 "首页片单是否Jsoup写法": "1",
@@ -28,10 +14,10 @@
 "首页片单链接": "a&&href",
 "首页片单图片": ".img&&style",
 "首页片单副标题": "'⏱️'+.layer&&Text",
-"首页片单链接加前缀": "https://ywy.jsav2.com",
+"首页片单链接加前缀": "https://kmy.9a07q.com",
 "首页片单链接加后缀": "",
 "分类起始页码": "1",
-"分类链接": "https://ywy.jsav2.com/video/category/{cateId}/{catePg}",
+"分类链接": "https://kmy.9a07q.com/video/category/{cateId}/{catePg}",
 //https://iook1.cc/vodtype/1-2.html
 //https://iook1.cc/label/new/page/1.html
 "分类名称": "最近更新&高清视频&最近加精&当前最热&最近得分&非付费&91原创&10分钟以上&20分钟以上&本月讨论&本月收藏&收藏最多&本月最热&上月最热",
@@ -43,10 +29,10 @@
 "分类片单链接": "a&&href",
 "分类片单图片": ".img&&style",
 "分类片单副标题": "'⏱️'+.layer&&Text",
-"分类片单链接加前缀": "https://ywy.jsav2.com",
+"分类片单链接加前缀": "https://kmy.9a07q.com",
 "分类片单链接加后缀": "",
 "搜索请求头参数": "User-Agent$手机",
-"搜索链接": "https://ywy.jsav2.com/search?keywords={wd}",
+"搜索链接": "https://kmy.9a07q.com/search?keywords={wd}",
 "POST请求数据": "",
 "搜索截取模式": "1",
 "搜索列表数组规则": "#main&&.colVideoList",
@@ -55,7 +41,7 @@
 "搜索片单标题": ".title&&Text",
 "搜索片单链接": "a&&href",
 "搜索片单副标题": "'⏱️'+.layer&&Text",
-"搜索片单链接加前缀": "https://ywy.jsav2.com",
+"搜索片单链接加前缀": "https://kmy.9a07q.com",
 "搜索片单链接加后缀": "",
 "链接是否直接播放": "1",
 "直接播放链接加前缀": "",

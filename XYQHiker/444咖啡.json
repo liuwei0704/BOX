@@ -20,7 +20,7 @@
 "首页片单链接加后缀": "",
 "分类起始页码": "1",
 "分类链接": "https://www.444.coffee/page/{catePg}?order={cateId}",
-"分类名称": "最新&最多人看&评分",
+"分类名称": "最新&评分",
 "分类名称替换词": "newest&views&rate",
 "分类截取模式": "1",
 "分类列表数组规则": ".Thumbnail_List&&li:has(img)",

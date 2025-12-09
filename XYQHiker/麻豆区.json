@@ -10,7 +10,7 @@
     "图片是否需要代理":"0",
     "是否开启获取首页数据":"1",
 	 //首页推荐数据获取链接
-    "首页推荐链接": "https://madouqu4.xyz",
+    "首页推荐链接": "https://madouqu14.cc",
     //首页推荐列表数组截取。
     "首页列表数组规则": ".posts-wrapper",
     //首页推荐片单列表数组定位。
@@ -32,7 +32,7 @@
     "首页片单链接加后缀": "",
     "分类起始页码": "1",
     //"分类链接": "https://www.l0l.tv/index.php/vod/show/id/{cateId}/page/{catePg}.html",
-	"分类链接": "https://madouqu4.xyz{cateId}page/{catePg}/",
+	"分类链接": "https://madouqu14.cc{cateId}page/{catePg}/",
     "分类名称": "全部传媒视频",
     "分类名称替换词": "/gccm/",
     //"筛选数据":{},
@@ -46,7 +46,7 @@
     "分类片单链接加前缀": "",
     "分类片单链接加后缀": "",
     "搜索请求头参数":"User-Agent$PC_UA",
-    "搜索链接": "https://madouqu4.xyz/?s={wd}",
+    "搜索链接": "https://madouqu14.cc/?s={wd}",
     "POST请求数据":"0",
     "搜索截取模式": "1",
     "搜索列表数组规则": ".posts-wrapper&&article",
