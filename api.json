@@ -158,7 +158,7 @@
 {"key":"糖果","name":"糖果｜搜索","type":3,"api":"csp_TGSou","searchable":1,"quickSearch":1,"filterable":1},
 {"key":"百酷","name":"百酷｜搜索","type":3,"api":"csp_Baiku"},
 {"key":"米搜","name":"米搜｜搜索","type":3,"api":"csp_MiSou"},
-{"key":"酷乐搜l","name":"酷乐｜搜索","type":3,"api":"csp_KuLe"},
+{"key":"酷乐","name":"酷乐｜搜索","type":3,"api":"csp_KuLe"},
 {"key":"鬼鬼","name":"鬼鬼｜搜索","type":3,"api":"csp_GuiGui"},
 {"key":"混合","name":"混合｜搜索","type":3,"api":"csp_HunHePan"},
 {"key":"兄弟","name":"兄弟｜搜索","type":3,"api":"csp_XiongDiPan"},
