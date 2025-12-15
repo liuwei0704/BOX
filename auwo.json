@@ -43,6 +43,7 @@
 
 {"key":"愛瓜","name":"🔥愛瓜丨T4","type":4,"api":"http://zhangqun1818.serv00.net/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"小蘋果","name":"🔥小蘋果丨T4","type":4,"api":"https://zhangqun66.com/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
+{"key":"及时雨","name": "🔥及时雨┃T4","type": 4,"api": "https://diwu.de5.net/XPG/及时雨.php","style": {"type": "rect","ratio": 1.33},"changeable": 1},
 {"key":"金鹰克隆","name":"🔥金鹰丨T4","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧丨T4","type":4,"api":"http://zhangqun1818.serv00.net/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合丨T4","type":1,"api":"http://zhangqun1818.serv00.net/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
