@@ -6,7 +6,7 @@
 {"name":"💬嗷嗚彈幕","key":"嗷嗚彈幕","type":3,"api":"csp_GoConfigAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"name":"⚙️配置中心","key":"配置中心","type":3,"api":"csp_MyConfigAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 
-{"key":"php_server","name": "❗PHP爬虫丨測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"timeout" : 1200,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/fm_xMydev.jar"},
+{"key":"php_server","name": "❗PHP爬虫丨測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"timeout" : 1200,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/php.jar"},
 {"key":"php集合","name":"❗php集合","type":4,"api":"http://zhangqun1818.serv00.net/php.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"python集合","name":"❗python集合","type":4,"api":"http://zhangqun1818.serv00.net/py.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
 

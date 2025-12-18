@@ -4,7 +4,7 @@
 "logo":"https://cdn4.iconfinder.com/data/icons/project-status-stickers-with-white-border/84/omg-sticker-1024.png",
 
 "sites":[
-{"key": "php_server","name": "❗PHP爬虫┃測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/fm_xMydev.jar"},
+{"key": "php_server","name": "❗PHP爬虫┃測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/php.jar"},
 {"key":"py_BadNews","name":"BadNews(T4)","type":4,"api":"https://py.doube.eu.org/spider?site=BadNews","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"style":{"type":"rect","ratio":1.5}},
 {"key":"py_Miss","name":"MissAV(T4)","type":4,"api":"https://py.doube.eu.org/spider?site=Miss","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"py_AiDou","name":"AiDou(T4)","type":4,"api":"https://py.doube.eu.org/spider?site=AiDou","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"style":{"type":"rect","ratio":1.5}},
