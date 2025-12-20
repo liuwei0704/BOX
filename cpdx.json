@@ -1,6 +1,6 @@
 {
-"spider":"https://oss4liview.moji.com/thd_file/2025/12/17/f00dddc87ee25e5b9704426ce889b12f.jpg;md5;3061fbfa3a828a81da9eb6175bb6e281",
-"notice":"更新日期12/17",
+"spider":"https://oss4liview.moji.com/thd_file/2025/12/20/3f39dca333c2e09c4e26a68caf726863.jpg;md5;e5a40e965cf73d840d2c9e5a70472bc7",
+"notice":"更新日期12/20",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
@@ -36,9 +36,13 @@
 {"key":"旺旺短劇","name":"🔥旺旺短劇┃T4","type":1,"api":"http://zhangqun1818.serv00.net/ww.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
 
 {"key":"51短剧","name":"🔖51短剧｜擦邊","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/51短剧.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/xyqxbpq.jar"},
-{"key":"星芽短剧","name":"🔖星芽｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
-{"key":"甜圈短剧","name":"🔖甜圈｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/甜圈短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
-{"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"锦鲤短剧","name":"🔖锦鲤｜短剧","type":3,"api":"csp_JinliDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"spider":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"笒鬼短剧","name":"🔖笒鬼｜短剧","type":3,"api":"csp_CenguiDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"spider":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"百度短剧","name":"🔖百度｜短剧","type":3,"api":"csp_BaiduDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"spider":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"星阁短剧","name":"🔖星阁｜短剧","type":3,"api":"csp_XinggeDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"spider":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"星芽短剧","name":"🔖星芽｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"番茄短剧","name":"🔖番茄｜短剧","type":3,"api":"csp_XBPQ","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/XBPQ/番茄短剧.json"},
 
 {"key":"drpyS_西饭短剧","name":"💠西饭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/西饭短剧?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"西饭短剧","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_软鸭短剧","name":"💠软鸭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/软鸭短剧?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"软鸭短剧","类型":"影视","lang":"ds","ext":""},
@@ -48,7 +52,7 @@
 {"key":"drpyS_凡客TV","name":"💠凡客TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"title":"凡客TV","lang":"ds","ext":""},
 {"key":"drpyS_王子TV","name":"💠王子TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/王子TV","searchable":1,"filterable":1,"quickSearch":0,"title":"王子TV","logo":"https://i-blog.csdnimg.cn/blog_migrate/2621e710a94ab40ba66645d47f296aaf.gif","lang":"ds","ext":""},
 
-{"key":"js_en_gf","name":"官方采集┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/en_gf.js","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"js_en_gf","name":"🌠官方采集┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/en_gf.js","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"金牌","name":"🪩金牌┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/金牌.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"界影视","name":"🪩界影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/界影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"4K影视","name":"🪩4K影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/4K影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
@@ -105,6 +109,7 @@
 {"key":"吉米","name":"🅰️吉米｜APP","type":3,"api":"csp_AppFox","ext":{"host":"http://fox.tvmao.top"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"二三","name":"🅰️二三｜APP","type":3,"api":"csp_AppFox","ext":{"host":"http://a.cfys.xn--fiqs8s"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"恋鱼","name":"🅰️恋鱼｜APP","type":3,"api":"csp_AppFox","ext":{"host":"https://173220859-1333208043.cos.ap-shanghai.myqcloud.com/1.json","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"麒麟","name":"🅰️麒麟｜APP","type":3,"api":"csp_AppFox","ext":{"host":"https://www.70yyw.cc","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"木瓜","name":"🅰️木瓜｜APP","type":3,"api":"csp_AppFox","ext":{"host":"http://www.yezitv.top"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"和友","name":"🅰️和友｜APP","type":3,"api":"csp_AppSy","ext":{"site":"http://qcb.sxtzg.com/api.txt","siteKey":"rectangleadsadxa","listKey":"gHSLmx3JQRasgztO","parsesKey":"gHSLmx3JQRasgztO"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"金牌","name":"🅰️金牌┃APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppQi","ext":{"site":"https://dtqj1.gg1080.com:443/dtjp.txt","dataKey":"kecbio48dsq131ed","dataIv":"kecbio48dsq131ed"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
@@ -121,7 +126,6 @@
 {"key":"剧梦","name":"🅰️剧梦｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.jumengwu.com","dataKey":"1f0a873caf2550a5","dataIv":"1f0a873caf2550a5"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"缘梦","name":"🅰️缘梦｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.zipfve.cn","dataKey":"1234567890987654","dataIv":"1234567890987654"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"麻花","name":"🅰️麻花｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"http://49.235.114.19:150","dataKey":"q7gj4f9br3fls6nh","dataIv":"q7gj4f9br3fls6nh"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"星空","name":"🅰️星空｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"http://43.154.4.75","dataKey":"HDk-7CnlK8SQUGLg","dataIv":"HDk-7CnlK8SQUGLg"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"冷心","name":"🅰️冷心｜APP","type":3,"api":"csp_AppGet","ext":{"url":"https://dy.58ys.vip","dataKey":"JEWibY1AgWF0V1xx","dataIv":"JEWibY1AgWF0V1xx"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"火猫","name":"🅰️火猫｜APP","type":3,"api":"csp_AppGet","ext":{"url":"http://103.23.148.70:14500","dataKey":"J6AIORKJ3PQOJKM8","dataIv":"J6AIORKJ3PQOJKM8"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"魔方","name":"🅰️魔方｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.mfsp4k.top","dataKey":"1234567887654321","dataIv":"1234567887654321"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
