@@ -12,12 +12,11 @@
 
 {"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
-{"key":"Bili²","name":"🅱️哔哩丨DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/我的哔哩[官]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"我的哔哩[官]","lang":"ds","ext":"H4sIAAAAAAAAA9PT088qzs/Tfzp5ytPJK58uWf60dYUeSAQAZ2A+OBkAAAA="},
-{"key":"Bili³","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
 {"key":"NYa","name":"🌐NYA|EMBY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/emby.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":{"server":"https://emby.bangumi.ca:443","username":"tangsan","password":"tangsan","proxy":"","thread":0,"device_name":"MyComputer","client":"HillsWindows","client_version":"0.2.2","device_id":"a9f74849-83d5-4a28-8b85-a087af1402e3"}},
 {"key":"hohai","name":"🌐好嗨|EMBY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/emby.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":{"server":"https://emby.hohai.eu.org:443","username":"hohai","password":"hohai","proxy":"","thread":0,"device_name":"MyComputer","client":"HillsWindows","client_version":"0.2.2","device_id":"a9f74849-83d5-4a28-8b85-a087af1402e3"}},
 
+{"key":"Bili","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"name":"🎉Bili","key":"Bili","type":3,"api":"csp_BiliAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"json":"https://gitee.com/amg99/tvjson/raw/master/spider/json/bili.json","cookie":""}},
 {"name":"🎬瓜子","key":"瓜子","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/guazi.json"},
 {"name":"🎭杜北","key":"杜北","type":3,"api":"csp_DubkAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/dubk.json"},
@@ -45,8 +44,7 @@
 {"name":"🎂岁岁短剧","key":"岁岁短剧","type":3,"api":"csp_SpdjAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 
 {"key":"愛瓜","name":"🔥愛瓜丨T4","type":4,"api":"http://zhangqun1818.serv00.net/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"小蘋果","name":"🔥小蘋果丨T4","type":4,"api":"https://zhangqun66.com/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
-{"key":"及时雨","name": "🔥及时雨┃T4","type": 4,"api": "https://diwu.de5.net/XPG/及时雨.php","style": {"type": "rect","ratio": 1.33},"changeable": 1},
+{"key":"小蘋果","name":"🔥小蘋果丨T4","type":4,"api":"http://zhangqun1818.serv00.net/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰丨T4","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"华为吧克隆","name":"🔥华为吧丨T4","type":4,"api":"http://zhangqun1818.serv00.net/hwb.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"采集集合","name":"🔥采集集合丨T4","type":1,"api":"http://zhangqun1818.serv00.net/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1},
