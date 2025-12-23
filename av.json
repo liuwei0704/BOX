@@ -1,5 +1,5 @@
 {
-"spider":"https://www.252035.xyz/p/lib/XBPQ.jar",
+"spider":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/XBPQ.jar",
 "wallpaper":"http://www.mpanso.com/小米/mpansou.ph",
 "logo":"https://cdn4.iconfinder.com/data/icons/project-status-stickers-with-white-border/84/omg-sticker-1024.png",
 
@@ -17,8 +17,6 @@
 {"key":"ss直播","name":"ss直播","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/ss直播.js"},
 
 {"key":"肉视频","name":"肉视频","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/肉视频.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
-{"key":"JAVXX¹","name":"JAVXX¹","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/javxx.py","searchable":1,"filterable":0,"changeable":0,"ext":{"site":"https://missav.ai","cfgo":"https://githubproxy.cc/https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/cf-proxy-linux-arm64","plp":"","proxy":{"http":"","https":""}}},
-{"key":"JAVXX²","name":"JAVXX²","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/JAVXX（优）.js"},
 {"key":"黄色仓库","name":"黄色仓库","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/黄色仓库.js"},
 {"key":"lsp传媒","name":"lsp传媒","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/lsp传媒.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":0},
 {"key":"牛皮","name":"牛皮","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/lavAPP.py","searchable":1,"quickSearch":1,"ext":{"site":"http://sir_new.tiansexyl.tv","cfproxy":"https://18.337898581.xyz/?url=","cfgo":"","plp":"","proxy":{"http":"","https":""}}},
