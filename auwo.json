@@ -28,6 +28,8 @@
 {"name":"🍏小苹果","key":"小苹果","type":3,"api":"csp_XpgAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🍈爱瓜","key":"爱瓜","type":3,"api":"csp_AiGuaAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"📹YOU视","key":"YOU视","type":3,"api":"csp_YouSPAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
+{"name":"🍕欧乐","key":"🍕欧乐","type":3,"api":"csp_OlyyAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
+{"name":"⛵爱壹帆","key":"⛵爱壹帆","type":3,"api":"csp_AiyfAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🏆高端","key":"高端","type":3,"api":"csp_DdysAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🍿哔嘀","key":"哔嘀","type":3,"api":"csp_BidysAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🏭厂长","key":"厂长","type":3,"api":"csp_CzzyAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
