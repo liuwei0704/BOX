@@ -45,13 +45,7 @@
 {"name":"⭐星星短剧","key":"星星短剧","type":3,"api":"csp_XydjAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🎂岁岁短剧","key":"岁岁短剧","type":3,"api":"csp_SpdjAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 
-{"key":"t1_dian_ying_tian_tang_02","name":"🫐电影天堂┃T1","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"json:https://py.doube.eu.org/parse_dytt?url=","categories":["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","伦理片","短剧","动画片"]},
-{"key":"py_官採","name":"🍎官方采集┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=64832281816dd9a7b7c506233d457a5d","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_小蘋果123","name":"🍎小苹果┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=9037cfae7c64405111e0e364401adb60","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_OleVod","name":"🍉欧乐影院┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=OleVod","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_Dm84","name":"🍋动漫巴士┃T4","type":4,"api":"https://py.doube.eu.org/spider?site=Dm84","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_粤漫之家","name":"🍋粤漫之家┃T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=de0fbc805050ecc4d63971c109724d0e","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-
+{"key":"t1_dian_ying_tian_tang_02","name":"🫐电影天堂丨T1","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"json:https://py.doube.eu.org/parse_dytt?url=","categories":["短剧","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","伦理片","动画片"]},
 {"key":"愛瓜","name":"🔥愛瓜丨T4","type":4,"api":"http://zhangqun1818.serv00.net/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"小蘋果","name":"🔥小蘋果丨T4","type":4,"api":"http://zhangqun1818.serv00.net/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰丨T4","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
@@ -75,13 +69,6 @@
 {"key":"drpy2_03影院[优]","name":"💠03影院丨DS","type":3,"api":"https://drpy-node-mauve.vercel.app/public/drpy/drpy2.min.js","searchable":1,"filterable":1,"quickSearch":1,"title":"03影院[优]","author":"小可乐/250915/第一版","类型":"影视","lang":"dr2","ext":"https://drpy-node-mauve.vercel.app/js/03影院[优].js"},
 {"key":"drpyS_凡客TV","name":"💠凡客TV丨DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":2,"filterable":0,"quickSearch":0,"title":"凡客TV","lang":"ds","ext":""},
 {"key":"drpyS_王子TV","name":"💠王子TV丨DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/王子TV","searchable":1,"filterable":1,"quickSearch":0,"title":"王子TV","logo":"https://i-blog.csdnimg.cn/blog_migrate/2621e710a94ab40ba66645d47f296aaf.gif","lang":"ds","ext":""},
-
-{"key":"t1_dian_ying_tian_tang_02","name":"🫐电影天堂丨T1","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"json:https://py.doube.eu.org/parse_dytt?url=","categories":["动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","伦理片","短剧","动画片"]},
-{"key":"py_官採","name":"🍎官方采集丨T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=64832281816dd9a7b7c506233d457a5d","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_小蘋果123","name":"🍎小苹果丨T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=9037cfae7c64405111e0e364401adb60","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_OleVod","name":"🍉欧乐影院丨T4","type":4,"api":"https://py.doube.eu.org/spider?site=OleVod","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_Dm84","name":"🍋动漫巴士丨T4","type":4,"api":"https://py.doube.eu.org/spider?site=Dm84","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"py_粤漫之家","name":"🍋粤漫之家丨T4","type":4,"api":"https://py.doube.eu.org/v2/spider?site=de0fbc805050ecc4d63971c109724d0e","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 
 {"key":"漫国动漫","name":"✴️漫国丨动漫","type":3,"api":"csp_AppSy","ext":{"site":"https://dm-1255775577.cos.ap-guangzhou.myqcloud.com/dmg/api.txt","siteKey":"rectangleadsadxa","listKey":"aassddwwxxllsx1x","parsesKey":"aassddwwxxllsx1x"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
 {"key":"丫丫动漫","name":"✴️丫丫｜动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://tv.yy-fun.cc","dataKey":"qkxnwkfjwpcnwycl","dataIv":"qkxnwkfjwpcnwycl"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/spider.jar"},
