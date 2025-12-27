@@ -25,7 +25,7 @@ class Spider(Spider):
             'Referer': f"{origin}/",
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0'
         }
-        self.stripchat_preferredVideoCodec = "h264" # h264、h265
+        self.stripchat_preferredVideoCodec = "H265" # H264、H265
         self.stripchat_decrypt_key = self.decode_key_compact("NDUgNTEgNzUgNjUgNjUgNDcgNjggMzIgNmIgNjEgNjUgNzcgNjEgMzMgNjMgNjg=")
         self.stripchat_auth_key = self.decode_key_compact("NGYgNmYgNmIgMzcgNzEgNzUgNjEgNjkgNGUgNjcgNjkgNzkgNzUgNjggNjEgNjk=")
         # 缓存字典
@@ -174,7 +174,7 @@ class Spider(Spider):
         url = unquote(param['url'])
         rsp = self.fetch(url)
         if rsp.status_code == 403:
-            rsp = self.fetch(re.sub(r'\d+p\d*\.m3u8', '160p_blurred.m3u8', url))
+            rsp = self.fetch(re.sub(r'(_\d+p\d*)?\.m3u8', '_160p_blurred.m3u8', url))
         if rsp.status_code != 200:
             return [404, "text/plain", ""]
         data = rsp.text
@@ -182,6 +182,7 @@ class Spider(Spider):
             data = self.process_m3u8(data)
         return [200, "application/vnd.apple.mpegur", data]
 
+    URL_PATTERN = re.compile(r'https://media-hls\.doppiocdn\.\w+/b-hls-\d+/media\.mp4')
     def process_m3u8(self, content):
         lines = content.strip().split('\n')
         for i, line in enumerate(lines):
@@ -189,12 +190,11 @@ class Spider(Spider):
                 mouflon = line.split(':', 2)[2].strip()
                 encrypted_stripped = re.sub(r'(_part\d+)?\.mp4$', '', mouflon)
                 parts = encrypted_stripped.rsplit('_', 2)
-                encrypted = parts[-2]
+                encrypted = parts[1]
                 reversed_encrypted = encrypted[::-1]
                 decrypted = self.decrypt(reversed_encrypted, self.stripchat_decrypt_key)
                 replacement = mouflon.replace(encrypted, decrypted)
-                pattern = r'https://media-hls\.doppiocdn\.\w+/b-hls-\d+/media\.mp4'
-                lines[i + 1] = re.sub(pattern, replacement, lines[i + 1])
+                lines[i + 1] = self.URL_PATTERN.sub( replacement, lines[i + 1])
         return '\n'.join(lines)
 
     def country_code_to_flag(self, country_code):
