@@ -1,6 +1,6 @@
-🍀20251003更新🍀,#genre#
+🍀20260105更新🍀,#genre#
 更新說明,https://live.metshop.top/huya/13303478
-更新體育,https://live.metshop.top/huya/15152155
+更新台灣直播,https://live.metshop.top/huya/15152155
 設定內直播,https://live.metshop.top/douyu/9986305
 小房子可切換,https://live.metshop.top/huya/593667
 其他線路,https://live.metshop.top/huya/16739452
@@ -48,6 +48,123 @@ DAZN 2,http://220.134.196.147:9119/http/59.120.8.187:8078/hls/26/80/esport2.m3u8
 博斯運動二,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=litv-longturn08
 智林體育,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=4gtv-4gtv101
 時尚運動X,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=4gtv-4gtv014
+
+🇹🇼台灣電視⁰🆙,#genre#
+中天新聞台,http://tv123.vvvv.ee/live.php/?ch=3d5f8112212
+TVBS新聞,http://tv123.vvvv.ee/live.php/?ch=46b20f31213
+民視新聞台,http://tv123.vvvv.ee/live.php/?ch=aab9e925214
+東森新聞台,http://tv123.vvvv.ee/live.php/?ch=6b8b9565215
+華視新聞,http://tv123.vvvv.ee/live.php/?ch=809b6fe4216
+鏡電視新聞台,http://tv123.vvvv.ee/live.php/?ch=eb50364a217
+東森財經新聞台,http://tv123.vvvv.ee/live.php/?ch=33f23164218
+中視新聞,http://tv123.vvvv.ee/live.php/?ch=0dae3c90219
+寰宇新聞台,http://tv123.vvvv.ee/live.php/?ch=c2d00904220
+寰宇新聞台灣台,http://tv123.vvvv.ee/live.php/?ch=5266b10e221
+三立新聞iNEWS,http://tv123.vvvv.ee/live.php/?ch=55df6471222
+Bloomberg TV,http://tv123.vvvv.ee/live.php/?ch=0b135d6d223
+SBN全球財經台,http://tv123.vvvv.ee/live.php/?ch=962de706224
+FRANCE24 英文台,http://tv123.vvvv.ee/live.php/?ch=95e31b09225
+半島國際新聞台,http://tv123.vvvv.ee/live.php/?ch=9a7ea393226
+NHK WORLD-JAPAN,http://tv123.vvvv.ee/live.php/?ch=c3edcc1e227
+CNBC Asia 財經台,http://tv123.vvvv.ee/live.php/?ch=4bd6af1a228
+DW德國之聲,http://tv123.vvvv.ee/live.php/?ch=3c9a546c229
+民視第一台,http://tv123.vvvv.ee/live.php/?ch=86dfcbf6230
+民視台灣台,http://tv123.vvvv.ee/live.php/?ch=924aef39231
+民視,http://tv123.vvvv.ee/live.php/?ch=5490039b232
+三立綜合台,http://tv123.vvvv.ee/live.php/?ch=56eeb224233
+華視,http://tv123.vvvv.ee/live.php/?ch=1cee9ca6234
+中視,http://tv123.vvvv.ee/live.php/?ch=a68b4e31235
+中視經典台,http://tv123.vvvv.ee/live.php/?ch=5d279e06236
+中視菁采台,http://tv123.vvvv.ee/live.php/?ch=c144294b237
+八大綜藝台,http://tv123.vvvv.ee/live.php/?ch=4dfd5edc238
+TVBS精采台,http://tv123.vvvv.ee/live.php/?ch=0e219be6239
+民視綜藝台,http://tv123.vvvv.ee/live.php/?ch=be1c8efc240
+TVBS,http://tv123.vvvv.ee/live.php/?ch=e9cb1451241
+TVBS歡樂台,http://tv123.vvvv.ee/live.php/?ch=dafb8738242
+TVBS綜藝台,http://tv123.vvvv.ee/live.php/?ch=ab66e77f243
+TVBS台劇台,http://tv123.vvvv.ee/live.php/?ch=df50261e244
+靖天綜合台,http://tv123.vvvv.ee/live.php/?ch=3641f928245
+靖天日本台,http://tv123.vvvv.ee/live.php/?ch=7b1dbf31246
+KLT-靖天國際台,http://tv123.vvvv.ee/live.php/?ch=1036c44a247
+靖天資訊台,http://tv123.vvvv.ee/live.php/?ch=45669746248
+Nice TV 靖天歡樂台,http://tv123.vvvv.ee/live.php/?ch=07859985249
+新唐人亞太台,http://tv123.vvvv.ee/live.php/?ch=75f6efb3250
+ARIRANG阿里郎頻道,http://tv123.vvvv.ee/live.php/?ch=ce9d45fd251
+Global Trekker,http://tv123.vvvv.ee/live.php/?ch=7bfe60b0252
+原住民族電視台,http://tv123.vvvv.ee/live.php/?ch=edaf5492253
+客家電視台,http://tv123.vvvv.ee/live.php/?ch=b79a35a2254
+國會頻道1,http://tv123.vvvv.ee/live.php/?ch=51d31bfa255
+國會頻道2,http://tv123.vvvv.ee/live.php/?ch=9cfff958256
+好消息,http://tv123.vvvv.ee/live.php/?ch=1a6845b9257
+好消息2台,http://tv123.vvvv.ee/live.php/?ch=a3becd4a258
+大愛電視,http://tv123.vvvv.ee/live.php/?ch=66bf4541259
+大愛二台,http://tv123.vvvv.ee/live.php/?ch=5ce50b04260
+人間衛視,http://tv123.vvvv.ee/live.php/?ch=d71fe932261
+民視旅遊台,http://tv123.vvvv.ee/live.php/?ch=ac696c8c262
+亞洲旅遊台,http://tv123.vvvv.ee/live.php/?ch=cafb0983263
+愛爾達生活旅遊台,http://tv123.vvvv.ee/live.php/?ch=88bcbf8d264
+fun探索娛樂台,http://tv123.vvvv.ee/live.php/?ch=67e8b1d9265
+幸福空間居家台,http://tv123.vvvv.ee/live.php/?ch=f14ca95c266
+Love Nature,http://tv123.vvvv.ee/live.php/?ch=3d96a94e267
+History 歷史頻道,http://tv123.vvvv.ee/live.php/?ch=57d17aa4268
+LUXE TV Channel,http://tv123.vvvv.ee/live.php/?ch=ead0c6ac269
+TV5MONDE STYLE HD 生活時尚,http://tv123.vvvv.ee/live.php/?ch=9baeac1f270
+MagellanTV頻道 (麥哲倫頻道),http://tv123.vvvv.ee/live.php/?ch=c420611f271
+Lifetime 娛樂頻道,http://tv123.vvvv.ee/live.php/?ch=68010558272
+ROCK Entertainment,http://tv123.vvvv.ee/live.php/?ch=eb54089f273
+八大精彩台,http://tv123.vvvv.ee/live.php/?ch=33ae35ab274
+靖天育樂台,http://tv123.vvvv.ee/live.php/?ch=32c098d4275
+豬哥亮歌廳秀,http://tv123.vvvv.ee/live.php/?ch=b7cc6399276
+韓國娛樂台 KMTV,http://tv123.vvvv.ee/live.php/?ch=fd5c729d277
+愛爾達娛樂台,http://tv123.vvvv.ee/live.php/?ch=95ab429f278
+民視影劇台,http://tv123.vvvv.ee/live.php/?ch=f8b3d6f2279
+公視戲劇,http://tv123.vvvv.ee/live.php/?ch=8764a216280
+采昌影劇台,http://tv123.vvvv.ee/live.php/?ch=5d7c5966281
+靖天戲劇台,http://tv123.vvvv.ee/live.php/?ch=8c3b5bea282
+靖洋戲劇台,http://tv123.vvvv.ee/live.php/?ch=39c23fbf283
+靖天映畫,http://tv123.vvvv.ee/live.php/?ch=9dcc304c284
+靖天電影台,http://tv123.vvvv.ee/live.php/?ch=03abe6ec285
+影迷數位電影台,http://tv123.vvvv.ee/live.php/?ch=c5198801286
+amc電影台,http://tv123.vvvv.ee/live.php/?ch=2fde5ec6287
+CinemaWorld,http://tv123.vvvv.ee/live.php/?ch=fbe1057c288
+My Cinema Europe HD 我的歐洲電影,http://tv123.vvvv.ee/live.php/?ch=a69a85aa289
+經典電影台,http://tv123.vvvv.ee/live.php/?ch=f8ae0236290
+電影原聲台CMusic,http://tv123.vvvv.ee/live.php/?ch=096a5da7291
+CI 罪案偵查頻道,http://tv123.vvvv.ee/live.php/?ch=152284d5292
+視納華仁紀實頻道,http://tv123.vvvv.ee/live.php/?ch=081dd273293
+影迷數位紀實台,http://tv123.vvvv.ee/live.php/?ch=3fccf17b294
+戲劇免費看 1台,http://tv123.vvvv.ee/live.php/?ch=554940a2295
+LiveABC互動英語頻道,http://tv123.vvvv.ee/live.php/?ch=cf131cf1296
+ELTV生活英語台,http://tv123.vvvv.ee/live.php/?ch=279834e9297
+MOMO親子台,http://tv123.vvvv.ee/live.php/?ch=2e7f2894298
+Nick Jr. 兒童頻道,http://tv123.vvvv.ee/live.php/?ch=fd671f49299
+尼克兒童頻道,http://tv123.vvvv.ee/live.php/?ch=8cde58a3300
+DreamWorks 夢工廠動畫,http://tv123.vvvv.ee/live.php/?ch=c5ddf727301
+靖天卡通台,http://tv123.vvvv.ee/live.php/?ch=1e0cff0b302
+靖洋卡通Nice Bingo,http://tv123.vvvv.ee/live.php/?ch=89debebb303
+金光布袋戲,http://tv123.vvvv.ee/live.php/?ch=e52c531f304
+霹靂布袋戲,http://tv123.vvvv.ee/live.php/?ch=7ededdb6305
+經典卡通台,http://tv123.vvvv.ee/live.php/?ch=4880f588306
+精選動漫台,http://tv123.vvvv.ee/live.php/?ch=527bde89307
+MTV Live HD 音樂頻道,http://tv123.vvvv.ee/live.php/?ch=2785a342308
+Mezzo Live HD,http://tv123.vvvv.ee/live.php/?ch=b327a2f6309
+CLASSICA 古典樂,http://tv123.vvvv.ee/live.php/?ch=d7dd7694310
+INULTRA,http://tv123.vvvv.ee/live.php/?ch=7274357c311
+TRACE Urban,http://tv123.vvvv.ee/live.php/?ch=f5577c3b312
+TRACE Sport Stars,http://tv123.vvvv.ee/live.php/?ch=4eb5408f313
+ROCK Action,http://tv123.vvvv.ee/live.php/?ch=5943b6dd314
+HITS頻道,http://tv123.vvvv.ee/live.php/?ch=f3db97ac315
+車迷TV,http://tv123.vvvv.ee/live.php/?ch=3e307158316
+GINX Esports TV,http://tv123.vvvv.ee/live.php/?ch=3d1d82ff317
+Pet Club TV,http://tv123.vvvv.ee/live.php/?ch=52490e36318
+滾動力rollor,http://tv123.vvvv.ee/live.php/?ch=7572d7de319
+達文西頻道,http://tv123.vvvv.ee/live.php/?ch=30933911320
+智林體育台,http://tv123.vvvv.ee/live.php/?ch=cfe135e0321
+時尚運動X,http://tv123.vvvv.ee/live.php/?ch=8bf5176a322
+東森購物一台,http://tv123.vvvv.ee/live.php/?ch=f691fcf4323
+東森購物二台,http://tv123.vvvv.ee/live.php/?ch=0206316a324
+東森購物三台,http://tv123.vvvv.ee/live.php/?ch=8eca22f9325
+東森購物四台,http://tv123.vvvv.ee/live.php/?ch=062ee0b9326
 
 🇹🇼台灣電視¹🆙,#genre#
 民视,rtmp://f13h.mine.nu/sat/tv051
