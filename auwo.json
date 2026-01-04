@@ -153,6 +153,7 @@
 {"key":"push_agent","name":"🛴推送","type":3,"api":"csp_PushAmns","searchable":0,"filterable":0,"changeable":0}
 ],
 "lives":[
+{"name":"SMT-TV","type":3,"url":"https://gh-proxy.com/https://raw.githubusercontent.com/doube-ba/TVlogo/refs/heads/main/smt.txt","api":"https://gh-proxy.com/https://raw.githubusercontent.com/doube-ba/TVlogo/refs/heads/main/py/SMT.py","ext":[]},
 {"name":"TV123","type":0,"url":"http://tv123.vvvv.ee/tv.m3u","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","playerType":2,"ua":"okhttp/4.12.0","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"JackTV","url":"https://php.946985.filegear-sg.me/jackTV.m3u","header":{"User-Agent":"Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/91.0.4472.124Safari/537.36"}},
