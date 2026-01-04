@@ -321,12 +321,6 @@ CNN new,http://125.227.210.55:8166/VideoInput/play.ts
 解说_冷君说电影,https://live.ottiptv.cc/huya/16739452
 解说_恐怖电影解说,https://live.ottiptv.cc/huya/16741179
 
-💕•音樂時尚,#genre#
-parse=1
-周杰伦MV,https://live.ottiptv.cc/douyu/7537296
-阿七點歌台,https://live.ottiptv.cc/douyu/3186217
-音樂MV,https://live.ottiptv.cc/douyu/3870925
-
 💕短視頻_888,#genre#
 parse=1
 playerType=2
