@@ -6,14 +6,8 @@
 {"name":"💬嗷嗚彈幕","key":"嗷嗚彈幕","type":3,"api":"csp_GoConfigAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"name":"⚙️配置中心","key":"配置中心","type":3,"api":"csp_MyConfigAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 
-{"key":"php_server","name": "❗PHP爬虫丨測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"timeout" : 1200,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/php.jar"},
-{"key":"php集合","name":"❗php集合","type":4,"api":"http://zhangqun1818.serv00.net/php.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
-{"key":"python集合","name":"❗python集合","type":4,"api":"http://zhangqun1818.serv00.net/py.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
-{"key":"js集合","name":"❗js集合","type":4,"api":"http://zhangqun1818.serv00.net/js.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
-
 {"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
-
 {"key":"NYa","name":"🌐NYA|EMBY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/emby.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":{"server":"https://emby.bangumi.ca:443","username":"tangsan","password":"tangsan","proxy":"","thread":0,"device_name":"MyComputer","client":"HillsWindows","client_version":"0.2.2","device_id":"a9f74849-83d5-4a28-8b85-a087af1402e3"}},
 
 {"key":"Bili¹","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
@@ -45,7 +39,11 @@
 {"name":"⭐星星短剧","key":"星星短剧","type":3,"api":"csp_XydjAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🎂岁岁短剧","key":"岁岁短剧","type":3,"api":"csp_SpdjAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 
-{"key":"t1_dian_ying_tian_tang_02","name":"🫐电影天堂丨T1","type":1,"api":"http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list","searchable":1,"quickSearch":0,"filterable":0,"changeable":0,"playUrl":"json:https://py.doube.eu.org/parse_dytt?url=","categories":["短剧","动作片","喜剧片","爱情片","科幻片","恐怖片","剧情片","战争片","国产剧","香港剧","韩国剧","欧美剧","记录片","台湾剧","日本剧","海外剧","泰国剧","大陆综艺","港台综艺","日韩综艺","欧美综艺","国产动漫","日韩动漫","欧美动漫","港台动漫","伦理片","动画片"]},
+{"key":"php_server","name": "❗PHP爬虫丨測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"timeout" : 1200,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/php.jar"},
+{"key":"php集合","name":"❗php集合","type":4,"api":"http://zhangqun1818.serv00.net/php.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"python集合","name":"❗python集合","type":4,"api":"http://zhangqun1818.serv00.net/py.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"js集合","name":"❗js集合","type":4,"api":"http://zhangqun1818.serv00.net/js.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
+
 {"key":"愛瓜","name":"🔥愛瓜丨T4","type":4,"api":"http://zhangqun1818.serv00.net/aigua.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"小蘋果","name":"🔥小蘋果丨T4","type":4,"api":"http://zhangqun1818.serv00.net/pingguo.php","searchable": 1,"quickSearch":1,"filterable":0},
 {"key":"金鹰克隆","name":"🔥金鹰丨T4","type":4,"api":"http://zhangqun1818.serv00.net/jy.php","searchable": 1,"quickSearch":1,"filterable":0},
@@ -80,8 +78,8 @@
 {"key":"米饭动漫","name":"✴️米饭｜动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"https://get.mymifun.com","dataKey":"GETMIFUNGEIMIFUN","dataIv":"GETMIFUNGEIMIFUN"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 
 {"key":"热播","name":"🅰️热播｜APP","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"椰子¹","name":"🅰️椰子¹｜APP","type":3,"changeable":0,"api":"csp_AppFox","ext":{"host":"http://103.109.20.117:550"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"椰子²","name":"🅰️椰子²｜APP","type":3,"changeable":0,"api":"csp_AppFox","ext":{"host":"https://yzysap.oss-cn-hangzhou.aliyuncs.com/yzysapp.json","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"花柳","name":"🅰️花柳｜APP","type":3,"changeable":0,"api":"csp_AppFox","ext":{"host":"http://nico.oiio.fun","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"椰子","name":"🅰️椰子｜APP","type":3,"changeable":0,"api":"csp_AppFox","ext":{"host":"https://yzysap.oss-cn-hangzhou.aliyuncs.com/yzysapp.json","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"恋鱼","name":"🅰️恋鱼｜APP","type":3,"api":"csp_AppFox","ext":{"host":"https://173220859-1333208043.cos.ap-shanghai.myqcloud.com/1.json","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"金牌","name":"🅰️金牌｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppQi","ext":{"site":"https://dtqj1.gg1080.com:443/dtjp.txt","dataKey":"kecbio48dsq131ed","dataIv":"kecbio48dsq131ed"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"爱盈","name":"🅰️爱盈｜APP","type":3,"api":"csp_AppQi","changeable":"1","quickSearch":0,"filterable":1,"ext":{"site":"https://aysappto.oss-cn-chengdu.aliyuncs.com/qj3.txt","dataKey":"sda1231sasddad21","dataIv":"sda1231sasddad21","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
@@ -91,6 +89,7 @@
 {"key":"鲸鱼","name":"🅰️鲸鱼｜APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://jingyu4k-1312635929.cos.ap-nanjing.myqcloud.com/1.json","dataKey":"AAdgrdghjfgswerA","dataIv":"AAdgrdghjfgswerA"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"小猪","name":"🅰️小猪丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://tiantangyoulu.oss-cn-beijing.aliyuncs.com/tengxunyun.txt","dataKey":"seb5tq9mykp2w9ry","dataIv":"seb5tq9mykp2w9ry","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"云云","name":"🅰️云云丨APP","type":3,"quickSearch":1,"api":"csp_AppQi","ext":{"site":"https://staraugust123456.oss-cn-hangzhou.aliyuncs.com/2.txt","dataKey":"staraugust123456","dataIv":"staraugust123456","version":"120"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"气球","name":"🅰️气球｜APP","type":3,"api":"csp_AppGet","ext":{"url":"https://vv.229d.cn","dataKey":"8888888888888888","dataIv":"8888888888888888"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"随看","name":"🅰️随看｜APP","type":3,"api":"csp_AppGet","ext":{"url":"https://suikan.tpmbt.cn","dataKey":"pHQsm6wjYaCuSPEz","dataIv":"pHQsm6wjYaCuSPEz"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"雨滴","name":"🅰️雨滴｜APP","type":3,"api":"csp_AppGet","ext":{"site":"https://appto2-1316376600.cos.ap-beijing.myqcloud.com/gap.txt","dataKey":"685bf108bc47b67d","dataIv":"685bf108bc47b67d"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"白鸽","name":"🅰️白鸽｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://cy.baige.asia","dataKey":"599D0FE5178642FD","dataIv":"599D0FE5178642FD"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
@@ -98,7 +97,7 @@
 {"key":"剧猫","name":"🅰️剧猫｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"site":"https://zjm-1302383509.cos.ap-guangzhou.myqcloud.com/zjm.txt","dataKey":"zjmznbl2026zcxgb","dataIv":"zjmznbl2026zcxgb"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"剧梦","name":"🅰️剧梦｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.jumengwu.com","dataKey":"1f0a873caf2550a5","dataIv":"1f0a873caf2550a5"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"缘梦","name":"🅰️缘梦｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.zipfve.cn","dataKey":"1234567890987654","dataIv":"1234567890987654"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"魔方","name":"🅰️魔方｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.mfsp4k.top","dataKey":"1234567887654321","dataIv":"1234567887654321"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"魔方","name":"🅰️魔方｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"url":"https://www.26mf4k.top","dataKey":"1234567887654321","dataIv":"1234567887654321"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"小猫","name":"🅰️小猫｜APP","type":3,"searchable":1,"changeable":1,"api":"csp_AppGet","ext":{"site":"http://xywlkj.oss-cn-beijing.aliyuncs.com/wp-content/uploads/2024/12/1.txt","dataKey":"xmyxmyxywlkjxywl","dataIv":"xmyxmyxywlkjxywl"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"瑞奇","name":"🅰️瑞奇｜APP","type":3,"searchable":1,"api":"csp_AppGet","ext":{"url":"http://rqxk.gdata.fun","dataKey":"yangruiqiYsapp00","dataIv":"yangruiqiYsapp00"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"优势","name":"🅰️优势丨APP","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://zxy-ys.810211.dpdns.org","dataKey":"1234567890123456","dataIv":"1234567890123456"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
