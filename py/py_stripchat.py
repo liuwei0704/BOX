@@ -246,3 +246,88 @@ class Spider(Spider):
 
     def fetch(self, url):
         return self.session.get(url, headers=self.headers, timeout=10)
+import logging
+
+# 設置日誌，方便除錯
+logger = logging.getLogger(__name__)
+
+class Spider(Spider):
+    # ... (init 部分保持不變)
+
+    def fetch(self, url, timeout=10):
+        try:
+            response = self.session.get(url, headers=self.headers, timeout=timeout)
+            response.raise_for_status() # 遇到 4xx, 5xx 直接拋出異常
+            return response
+        except Exception as e:
+            logger.error(f"Fetch failed: {url}, Error: {e}")
+            return None
+
+    def categoryContent(self, tid, pg, filter, extend):
+        # ... (前段邏輯不變)
+        response = self.fetch(url)
+        if not response: return {"list": [], "total": 0}
+        
+        try:
+            rsp = response.json()
+            models = rsp.get('models', [])
+            videos = []
+            for vod in models:
+                # 使用 .get() 避免 KeyErrors
+                username = str(vod.get('username', '')).strip()
+                if not username: continue
+                
+                videos.append({
+                    "vod_id": username,
+                    "vod_name": f"{self.country_code_to_flag(vod.get('country', ''))}{username}",
+                    "vod_pic": f"https://img.doppiocdn.net/thumbs/{vod.get('snapshotTimestamp')}/{vod.get('id')}",
+                    "vod_remarks": "" if vod.get('status') == "public" else "🎫"
+                })
+            # ... (後續 return)
+        except Exception as e:
+            logger.error(f"Error parsing category content: {e}")
+            return {"list": [], "total": 0}
+
+    def decrypt(self, encrypted_b64: str, key: str) -> str:
+        """優化後的解密邏輯"""
+        try:
+            # 1. 處理 Base64 填充
+            encrypted_b64 += '=' * (-len(encrypted_b64) % 4)
+            
+            # 2. 獲取哈希字節
+            hash_bytes = self.compute_hash(key)
+            encrypted_data = base64.b64decode(encrypted_b64)
+
+            # 3. 使用列表推導式提升異或效率
+            key_len = len(hash_bytes)
+            decrypted_bytes = bytes([
+                byte ^ hash_bytes[i % key_len] 
+                for i, byte in enumerate(encrypted_data)
+            ])
+            return decrypted_bytes.decode('utf-8')
+        except Exception as e:
+            logger.error(f"Decryption failed: {e}")
+            return ""
+
+    def process_m3u8(self, content):
+        """優化 M3U8 解析流程"""
+        lines = content.strip().splitlines()
+        output = []
+        for i in range(len(lines)):
+            line = lines[i]
+            # 這裡檢查下一行是否存在，防止索引越界
+            if line.startswith('#EXT-X-MOUFLON:URI:') and (i + 1 < len(lines)):
+                next_line = lines[i+1]
+                if 'media.mp4' in next_line:
+                    try:
+                        mouflon = line.split(':', 2)[2].strip()
+                        # 簡化字串提取邏輯
+                        encrypted_part = mouflon.rsplit('_', 2)[1]
+                        decrypted = self.decrypt(encrypted_part[::-1], self.stripchat_decrypt_key)
+                        
+                        # 替換下一行的 URL
+                        lines[i+1] = self.URL_PATTERN.sub(mouflon.replace(encrypted_part, decrypted), next_line)
+                    except Exception:
+                        pass
+            output.append(line)
+        return '\n'.join(lines)
