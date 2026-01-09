@@ -1,333 +1,428 @@
 # coding=utf-8
-# !/usr/bin/python
-import sys, re
+#!/usr/bin/env python3
 import base64
 import hashlib
-import requests
-from typing import Tuple
-from base.spider import Spider
+import re
 from datetime import datetime, timedelta
+from functools import lru_cache
+from typing import Dict, List, Optional, Tuple
 from urllib.parse import quote, unquote
-from urllib3.util.retry import Retry
-sys.path.append('..')
 
-# 搜索用户名，关键词格式为“类别+空格+关键词”
-# 类别在标签上已注明，比如“女主播g”，则搜索类别为“g”
-# 搜索“g per”，则在“女主播”中搜索“per”, 关键词不区分大小写，但至少3位，否则空结果
+import requests
+from urllib3.util.retry import Retry
+
+from base.spider import Spider
+
 
 class Spider(Spider):
+    # 常量定義
+    HOST = "https://zh.stripchat.com"
+    ORIGIN = HOST
+    HEADERS = {
+        "Origin": ORIGIN,
+        "Referer": f"{ORIGIN}/",
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) "
+            "Gecko/20100101 Firefox/147.0"
+        ),
+    }
+    PREFERRED_VIDEO_CODEC = "H265"  # 可選 H264、H265
+
+    # 類別映射
+    TAG_MAPPING = {"G": "girls", "C": "couples", "M": "men", "T": "trans"}
+    CLASSES = [
+        {"type_name": "女主播g", "type_id": "girls"},
+        {"type_name": "情侣c", "type_id": "couples"},
+        {"type_name": "男主播m", "type_id": "men"},
+        {"type_name": "跨性别t", "type_id": "trans"},
+    ]
+
+    # 標籤配置
+    VALUE_TAGS = (
+        {"n": "日本", "v": "tagLanguageJapanese"},
+        {"n": "韓國", "v": "tagLanguageKorean"},
+        {"n": "中国", "v": "tagLanguageChinese"},
+        {"n": "亚洲", "v": "ethnicityAsian"},
+        {"n": "白人", "v": "ethnicityWhite"},
+        {"n": "拉丁", "v": "ethnicityLatino"},
+        {"n": "混血", "v": "ethnicityMultiracial"},
+        {"n": "印度", "v": "ethnicityIndian"},
+        {"n": "阿拉伯", "v": "ethnicityMiddleEastern"},
+        {"n": "黑人", "v": "ethnicityEbony"},
+    )
+    MEN_TAGS = (
+        {"n": "情侣", "v": "sexGayCouples"},
+        {"n": "直男", "v": "orientationStraight"},
+    )
+
+    # 編譯正則表達式
+    URL_PATTERN = re.compile(r"https://media-hls\.doppiocdn\.\w+/b-hls-\d+/media\.mp4")
+    M3U8_RESOLUTION_PATTERN = re.compile(r'_(\d+p\d*)\.m3u8')
 
     def init(self, extend="{}"):
-        origin = 'https://zh.stripchat.com'
-        self.host = origin
-        self.headers = {
-            'Origin': origin,
-            'Referer': f"{origin}/",
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0'
-        }
-        self.stripchat_preferredVideoCodec = "H265" # H264、H265
-        self.stripchat_decrypt_key = self.decode_key_compact("NDUgNTEgNzUgNjUgNjUgNDcgNjggMzIgNmIgNjEgNjUgNzcgNjEgMzMgNjMgNjg=")
-        self.stripchat_auth_key = self.decode_key_compact("NGYgNmYgNmIgMzcgNzEgNzUgNjEgNjkgNGUgNjcgNjkgNzkgNzUgNjggNjEgNjk=")
-        # 缓存字典
-        self._hash_cache = {}
-        self.create_session_with_retry()
+        """初始化爬蟲"""
+        self.host = self.HOST
+        self.headers = self.HEADERS.copy()
+        
+        # 解密密鑰
+        self.stripchat_decrypt_key = self._decode_key_compact(
+            "NDUgNTEgNzUgNjUgNjUgNDcgNjggMzIgNmIgNjEgNjUgNzcgNjEgMzMgNjMgNjg="
+        )
+        self.stripchat_auth_key = self._decode_key_compact(
+            "NGYgNmYgNmIgMzcgNzEgNzUgNjEgNjkgNGUgNjcgNjkgNzkgNzUgNjggNjEgNjk="
+        )
+        
+        # 創建會話
+        self._create_session_with_retry()
 
     def getName(self):
-        pass
+        return "StripChat"
 
     def isVideoFormat(self, url):
-        pass
+        return "m3u8" in url
 
     def manualVideoCheck(self):
-        pass
-
-    def destroy(self):
-        pass
+        return False
 
     def homeContent(self, filter):
-        CLASSES = [{'type_name': '女主播g', 'type_id': 'girls'}, {'type_name': '情侣c', 'type_id': 'couples'}, {'type_name': '男主播m', 'type_id': 'men'}, {'type_name': '跨性别t', 'type_id': 'trans'}]
-        VALUE = ({'n': '日本', 'v': 'tagLanguageJapanese'},{'n': '韓國', 'v': 'tagLanguageKorean'},{'n': '中国', 'v': 'tagLanguageChinese'}, {'n': '亚洲', 'v': 'ethnicityAsian'}, {'n': '白人', 'v': 'ethnicityWhite'}, {'n': '拉丁', 'v': 'ethnicityLatino'}, {'n': '混血', 'v': 'ethnicityMultiracial'}, {'n': '印度', 'v': 'ethnicityIndian'}, {'n': '阿拉伯', 'v': 'ethnicityMiddleEastern'}, {'n': '黑人', 'v': 'ethnicityEbony'})
-        VALUE_MEN = ({'n': '情侣', 'v': 'sexGayCouples'}, {'n': '直男', 'v': 'orientationStraight'})
-        TIDS = ('girls', 'couples', 'men', 'trans')
-        filters = {
-            tid: [{'key': 'tag', 'value': VALUE_MEN + VALUE if tid == 'men' else VALUE}]
-            for tid in TIDS
-        }
-        return {
-            'class': CLASSES,
-            'filters': filters
-        }
+        """首頁內容"""
+        filters = {}
+        for tid in ["girls", "couples", "men", "trans"]:
+            filters[tid] = [
+                {
+                    "key": "tag",
+                    "value": (self.MEN_TAGS + self.VALUE_TAGS) 
+                    if tid == "men" else self.VALUE_TAGS,
+                }
+            ]
 
-    def homeVideoContent(self):
-        pass
+        return {"class": self.CLASSES, "filters": filters}
 
     def categoryContent(self, tid, pg, filter, extend):
+        """分類內容"""
         limit = 60
         offset = limit * (int(pg) - 1)
-        url = f"{self.host}/api/front/models?improveTs=false&removeShows=false&limit={limit}&offset={offset}&primaryTag={tid}&sortBy=stripRanking&rcmGrp=A&rbCnGr=true&prxCnGr=false&nic=false"
-        if 'tag' in extend:
+        
+        url = (
+            f"{self.host}/api/front/models?improveTs=false&removeShows=false&"
+            f"limit={limit}&offset={offset}&primaryTag={tid}&sortBy=stripRanking&"
+            f"rcmGrp=A&rbCnGr=true&prxCnGr=false&nic=false"
+        )
+        
+        if "tag" in extend:
             url = f'{url}&filterGroupTags=[["{extend["tag"]}"]]'
-        rsp = self.fetch(url).json()
-        videos = [
-            {
-                "vod_id": str(vod['username']).strip(),
-                "vod_name": f"{self.country_code_to_flag(str(vod['country']).strip())}{str(vod['username']).strip()}",
-                "vod_pic": f"https://img.doppiocdn.net/thumbs/{vod['snapshotTimestamp']}/{vod['id']}",
-                "vod_remarks": "" if vod.get('status') == "public" else "🎫"
-            }
-            for vod in rsp.get('models', [])
-        ]
-        total = int(rsp.get('filteredCount', 0))
+        
+        try:
+            rsp = self.fetch(url).json()
+        except Exception as e:
+            self.log(f"獲取分類內容失敗: {e}")
+            return {"list": [], "page": pg, "pagecount": 1, "limit": limit, "total": 0}
+        
+        videos = []
+        for vod in rsp.get("models", []):
+            videos.append(
+                {
+                    "vod_id": str(vod["username"]).strip(),
+                    "vod_name": (
+                        f"{self._country_code_to_flag(str(vod['country']).strip())}"
+                        f"{str(vod['username']).strip()}"
+                    ),
+                    "vod_pic": (
+                        f"https://img.doppiocdn.net/thumbs/"
+                        f"{vod['snapshotTimestamp']}/{vod['id']}"
+                    ),
+                    "vod_remarks": "" if vod.get("status") == "public" else "🎫",
+                }
+            )
+        
+        total = int(rsp.get("filteredCount", 0))
+        pagecount = (total + limit - 1) // limit if total > 0 else 1
+        
         return {
             "list": videos,
             "page": pg,
-            "pagecount": (total + limit - 1) // limit,
+            "pagecount": pagecount,
             "limit": limit,
-            "total": total
+            "total": total,
         }
 
     def detailContent(self, array):
+        """詳情頁內容"""
         username = array[0]
-        rsp = self.fetch(f"{self.host}/api/front/v2/models/username/{username}/cam").json()
-        info = rsp['cam']
-        user = rsp['user']['user']
-        id = str(user['id'])
-        country = str(user['country']).strip()
-        isLive = "" if user['isLive'] else " 已下播"
-        flag = self.country_code_to_flag(country)
-        remark, startAt = '', ''
-        if show := info.get('show'):
-            startAt = show.get('createdAt')
-        elif show := info.get('groupShowAnnouncement'):
-            startAt = show.get('startAt')
-        if startAt:
-            BJtime = (datetime.strptime(startAt, "%Y-%m-%dT%H:%M:%SZ") + timedelta(hours=8)).strftime("%m月%d日 %H:%M")
-            remark = f"🎫 始于 {BJtime}"
+        
+        try:
+            rsp = self.fetch(
+                f"{self.host}/api/front/v2/models/username/{username}/cam"
+            ).json()
+        except Exception:
+            return {"list": []}
+        
+        info = rsp["cam"]
+        user = rsp["user"]["user"]
+        user_id = str(user["id"])
+        country = str(user["country"]).strip()
+        
+        is_live = "" if user.get("isLive", False) else " 已下播"
+        flag = self._country_code_to_flag(country)
+        
+        # 處理演出信息
+        remark = ""
+        start_at = ""
+        
+        if show := info.get("show"):
+            start_at = show.get("createdAt")
+        elif show := info.get("groupShowAnnouncement"):
+            start_at = show.get("startAt")
+        
+        if start_at:
+            try:
+                beijing_time = (
+                    datetime.strptime(start_at, "%Y-%m-%dT%H:%M:%SZ") + timedelta(hours=8)
+                ).strftime("%m月%d日 %H:%M")
+                remark = f"🎫 始於 {beijing_time}"
+            except ValueError:
+                pass
+        
         vod = {
-            "vod_id": id,
-            "vod_name": str(info['topic']).strip(), 
-            "vod_pic": str(user['avatarUrl']),
-            "vod_director": f"{flag}{username}{isLive}",
+            "vod_id": user_id,
+            "vod_name": str(info["topic"]).strip(),
+            "vod_pic": str(user["avatarUrl"]),
+            "vod_director": f"{flag}{username}{is_live}",
             "vod_remarks": remark,
-            'vod_play_from': 'StripChat',
-            'vod_play_url': f"{id}${id}"
+            "vod_play_from": "StripChat",
+            "vod_play_url": f"{user_id}${user_id}",
         }
-        return {'list': [vod]}
+        
+        return {"list": [vod]}
 
-    def process_key(self, key: str) -> Tuple[str, str]:
-        tags = {'G': 'girls', 'C': 'couples', 'M': 'men', 'T': 'trans'}
-        parts = key.split(maxsplit=1)  # 仅分割第一个空格
-        if len(parts) > 1 and (tag := tags.get(parts[0].upper())):
+    def _process_key(self, key: str) -> Tuple[str, str]:
+        """處理搜索關鍵詞"""
+        parts = key.split(maxsplit=1)
+        if len(parts) > 1 and (tag := self.TAG_MAPPING.get(parts[0].upper())):
             return tag, parts[1].strip()
-        return 'girls', key.strip()
+        return "girls", key.strip()
 
     def searchContent(self, key, quick, pg="1"):
-        result = {}
+        """搜索內容"""
         if int(pg) > 1:
-            return result
-        tag, key = self.process_key(key)
-        url = f"{self.host}/api/front/v4/models/search/group/username?query={key}&limit=900&primaryTag={tag}"
-        rsp = self.fetch(url).json()
-        result['list'] = [
-            {
-                "vod_id": str(user['username']).strip(),
-                "vod_name": f"{self.country_code_to_flag(str(user['country']).strip())}{user['username']}",
-                "vod_pic": f"https://img.doppiocdn.net/thumbs/{user['snapshotTimestamp']}/{user['id']}",
-                "vod_remarks": "" if user['status'] == "public" else "🎫"
-            }
-            for user in rsp.get('models', []) 
-            if user['isLive']  # 过滤条件
-        ]
-        return result
+            return {"list": []}
+        
+        tag, search_key = self._process_key(key)
+        
+        try:
+            url = (
+                f"{self.host}/api/front/v4/models/search/group/username?"
+                f"query={search_key}&limit=900&primaryTag={tag}"
+            )
+            rsp = self.fetch(url).json()
+        except Exception:
+            return {"list": []}
+        
+        result_list = []
+        for user in rsp.get("models", []):
+            if not user.get("isLive", False):
+                continue
+                
+            result_list.append(
+                {
+                    "vod_id": str(user["username"]).strip(),
+                    "vod_name": (
+                        f"{self._country_code_to_flag(str(user['country']).strip())}"
+                        f"{user['username']}"
+                    ),
+                    "vod_pic": (
+                        f"https://img.doppiocdn.net/thumbs/"
+                        f"{user['snapshotTimestamp']}/{user['id']}"
+                    ),
+                    "vod_remarks": "" if user.get("status") == "public" else "🎫",
+                }
+            )
+        
+        return {"list": result_list}
 
     def playerContent(self, flag, id, vipFlags):
-        rsp = self.fetch(f"https://edge-hls.doppiocdn.net/hls/{id}/master/{id}_auto.m3u8?playlistType=lowLatency")
-        lines = rsp.text.strip().split('\n')
-        psch, pkey = '', ''
-        url = []
+        """播放器內容"""
+        try:
+            url = f"https://edge-hls.doppiocdn.net/hls/{id}/master/{id}_auto.m3u8?playlistType=lowLatency"
+            rsp = self.fetch(url)
+            lines = rsp.text.strip().split("\n")
+        except Exception:
+            return {"url": [], "parse": "0", "contentType": "", "header": self.headers}
+        
+        psch, pkey = "", ""
+        url_list = []
         mouflon_processed = False
+        
         for i, line in enumerate(lines):
-            if line.startswith('#EXT-X-MOUFLON:') and not mouflon_processed:
-                if parts := line.split(':'):
-                    if len(parts) >= 4:
-                        psch, pkey = parts[2], parts[3]
-                        mouflon_processed = True
-            if '#EXT-X-STREAM-INF' in line:
-                name_start = line.find('NAME="') + 6
-                name_end = line.find('"', name_start)
-                qn = line[name_start:name_end]
-                # URL在下一行
+            if line.startswith("#EXT-X-MOUFLON:") and not mouflon_processed:
+                parts = line.split(":")
+                if len(parts) >= 4:
+                    psch, pkey = parts[2], parts[3]
+                    mouflon_processed = True
+            
+            if "#EXT-X-STREAM-INF" in line:
+                # 提取畫質名稱
+                match = re.search(r'NAME="([^"]+)"', line)
+                if not match:
+                    continue
+                    
+                qn = match.group(1)
+                
+                # 獲取下一行的URL
+                if i + 1 >= len(lines):
+                    continue
+                    
                 url_base = lines[i + 1]
-                # 组合最终的URL，并加上psch和pkey参数
-                full_url = f"{url_base}&psch={psch}&pkey={pkey}&preferredVideoCodec={self.stripchat_preferredVideoCodec}"
+                full_url = (
+                    f"{url_base}&psch={psch}&pkey={pkey}&"
+                    f"preferredVideoCodec={self.PREFERRED_VIDEO_CODEC}"
+                )
                 proxy_url = f"{self.getProxyUrl()}&url={quote(full_url)}"
-                # 将画质和URL添加到列表中
-                url.extend([qn, proxy_url])
+                url_list.extend([qn, proxy_url])
+        
         return {
-            "url": url,
-            "parse": '0',
-            "contentType": '',
-            "header": self.headers
+            "url": url_list,
+            "parse": "0",
+            "contentType": "",
+            "header": self.headers,
         }
 
     def localProxy(self, param):
-        url = unquote(param['url'])
-        rsp = self.fetch(url)
-        if rsp.status_code == 403:
-            rsp = self.fetch(re.sub(r'(_\d+p\d*)?\.m3u8', '_160p_blurred.m3u8', url))
-        if rsp.status_code != 200:
-            return [404, "text/plain", ""]
-        data = rsp.text
-        if "#EXT-X-MOUFLON:URI:" in data:
-            data = self.process_m3u8(data)
-        return [200, "application/vnd.apple.mpegur", data]
+        """本地代理"""
+        url = unquote(param["url"])
+        
+        try:
+            rsp = self.fetch(url)
+            
+            # 如果403錯誤，嘗試獲取模糊版本
+            if rsp.status_code == 403:
+                blurred_url = self.M3U8_RESOLUTION_PATTERN.sub(
+                    "_160p_blurred.m3u8", url
+                )
+                rsp = self.fetch(blurred_url)
+            
+            if rsp.status_code != 200:
+                return [404, "text/plain", ""]
+            
+            data = rsp.text
+            
+            # 處理MOUFLON加密
+            if "#EXT-X-MOUFLON:URI:" in data:
+                data = self._process_m3u8(data)
+                
+            return [200, "application/vnd.apple.mpegurl", data]
+            
+        except Exception as e:
+            self.log(f"代理請求失敗: {e}")
+            return [500, "text/plain", f"Internal Server Error: {e}"]
 
-    URL_PATTERN = re.compile(r'https://media-hls\.doppiocdn\.\w+/b-hls-\d+/media\.mp4')
-    def process_m3u8(self, content):
-        lines = content.strip().split('\n')
+    def _process_m3u8(self, content: str) -> str:
+        """處理M3U8內容，解密加密部分"""
+        lines = content.strip().split("\n")
+        
         for i, line in enumerate(lines):
-            if (line.startswith('#EXT-X-MOUFLON:URI:') and 'media.mp4' in lines[i + 1]):
-                mouflon = line.split(':', 2)[2].strip()
-                encrypted_stripped = re.sub(r'(_part\d+)?\.mp4$', '', mouflon)
-                parts = encrypted_stripped.rsplit('_', 2)
-                encrypted = parts[1]
-                reversed_encrypted = encrypted[::-1]
-                decrypted = self.decrypt(reversed_encrypted, self.stripchat_decrypt_key)
-                replacement = mouflon.replace(encrypted, decrypted)
-                lines[i + 1] = self.URL_PATTERN.sub( replacement, lines[i + 1])
-        return '\n'.join(lines)
+            if not line.startswith("#EXT-X-MOUFLON:URI:"):
+                continue
+                
+            if i + 1 >= len(lines) or "media.mp4" not in lines[i + 1]:
+                continue
+                
+            mouflon = line.split(":", 2)[2].strip()
+            encrypted_stripped = re.sub(r"(_part\d+)?\.mp4$", "", mouflon)
+            parts = encrypted_stripped.rsplit("_", 2)
+            
+            if len(parts) < 2:
+                continue
+                
+            encrypted = parts[1]
+            reversed_encrypted = encrypted[::-1]
+            decrypted = self._decrypt(reversed_encrypted, self.stripchat_decrypt_key)
+            replacement = mouflon.replace(encrypted, decrypted)
+            lines[i + 1] = self.URL_PATTERN.sub(replacement, lines[i + 1])
+        
+        return "\n".join(lines)
 
-    def country_code_to_flag(self, country_code):
+    @staticmethod
+    def _country_code_to_flag(country_code: str) -> str:
+        """將國家代碼轉換為旗幟emoji"""
         if len(country_code) != 2 or not country_code.isalpha():
             return country_code
-        flag_emoji = ''.join([chr(ord(c.upper()) - ord('A') + 0x1F1E6) for c in country_code])
-        return flag_emoji
+            
+        try:
+            return "".join(
+                chr(ord(c.upper()) - ord("A") + 0x1F1E6) for c in country_code
+            )
+        except Exception:
+            return country_code
 
-    def decode_key_compact(self, base64_str):
-        decoded = base64.b64decode(base64_str).decode('utf-8')
+    @staticmethod
+    def _decode_key_compact(base64_str: str) -> str:
+        """解碼Base64格式的密鑰"""
+        decoded = base64.b64decode(base64_str).decode("utf-8")
         key_bytes = bytes(int(hex_str, 16) for hex_str in decoded.split(" "))
-        return key_bytes.decode('utf-8')
+        return key_bytes.decode("utf-8")
 
-    def compute_hash(self, key: str) -> bytes:
-        """计算并缓存SHA-256哈希"""
-        if key not in self._hash_cache:
-            sha256 = hashlib.sha256()
-            sha256.update(key.encode('utf-8'))
-            self._hash_cache[key] = sha256.digest()
-        return self._hash_cache[key]
+    @lru_cache(maxsize=128)
+    def _compute_hash(self, key: str) -> bytes:
+        """計算SHA-256哈希（帶緩存）"""
+        sha256 = hashlib.sha256()
+        sha256.update(key.encode("utf-8"))
+        return sha256.digest()
 
-    def decrypt(self, encrypted_b64: str, key: str) -> str:
-        # 修复Base64填充
+    def _decrypt(self, encrypted_b64: str, key: str) -> str:
+        """解密數據"""
+        # 修復Base64填充
         padding = len(encrypted_b64) % 4
         if padding:
-            encrypted_b64 += '=' * (4 - padding)
-    
-        # 计算哈希并解密
-        hash_bytes = self.compute_hash(key)
-        encrypted_data = base64.b64decode(encrypted_b64)
+            encrypted_b64 += "=" * (4 - padding)
+        
+        try:
+            # 計算哈希
+            hash_bytes = self._compute_hash(key)
+            
+            # 解碼Base64
+            encrypted_data = base64.b64decode(encrypted_b64)
+            
+            # 異或解密
+            decrypted_bytes = bytearray()
+            for i, cipher_byte in enumerate(encrypted_data):
+                key_byte = hash_bytes[i % len(hash_bytes)]
+                decrypted_bytes.append(cipher_byte ^ key_byte)
+                
+            return decrypted_bytes.decode("utf-8", errors="ignore")
+            
+        except Exception:
+            return ""
 
-        # 异或解密
-        decrypted_bytes = bytearray()
-        for i, cipher_byte in enumerate(encrypted_data):
-            key_byte = hash_bytes[i % len(hash_bytes)]
-            decrypted_bytes.append(cipher_byte ^ key_byte)
-        return decrypted_bytes.decode('utf-8')
-
-    def create_session_with_retry(self):
+    def _create_session_with_retry(self):
+        """創建帶重試機制的會話"""
         self.session = requests.Session()
         retry_strategy = Retry(
-            total = 3,
-            backoff_factor = 0.3,
-            status_forcelist = [429, 500, 502, 503, 504]  # 需要重试的状态码
+            total=3,
+            backoff_factor=0.3,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["GET", "POST"],
         )
         adapter = requests.adapters.HTTPAdapter(max_retries=retry_strategy)
         self.session.mount("http://", adapter)
         self.session.mount("https://", adapter)
 
-    def fetch(self, url):
-        return self.session.get(url, headers=self.headers, timeout=10)
-import logging
-
-# 設置日誌，方便除錯
-logger = logging.getLogger(__name__)
-
-class Spider(Spider):
-    # ... (init 部分保持不變)
-
-    def fetch(self, url, timeout=10):
-        try:
-            response = self.session.get(url, headers=self.headers, timeout=timeout)
-            response.raise_for_status() # 遇到 4xx, 5xx 直接拋出異常
-            return response
-        except Exception as e:
-            logger.error(f"Fetch failed: {url}, Error: {e}")
-            return None
-
-    def categoryContent(self, tid, pg, filter, extend):
-        # ... (前段邏輯不變)
-        response = self.fetch(url)
-        if not response: return {"list": [], "total": 0}
+    def fetch(self, url: str, **kwargs):
+        """發送HTTP請求"""
+        headers = kwargs.pop("headers", self.headers)
+        timeout = kwargs.pop("timeout", 10)
         
         try:
-            rsp = response.json()
-            models = rsp.get('models', [])
-            videos = []
-            for vod in models:
-                # 使用 .get() 避免 KeyErrors
-                username = str(vod.get('username', '')).strip()
-                if not username: continue
-                
-                videos.append({
-                    "vod_id": username,
-                    "vod_name": f"{self.country_code_to_flag(vod.get('country', ''))}{username}",
-                    "vod_pic": f"https://img.doppiocdn.net/thumbs/{vod.get('snapshotTimestamp')}/{vod.get('id')}",
-                    "vod_remarks": "" if vod.get('status') == "public" else "🎫"
-                })
-            # ... (後續 return)
+            return self.session.get(
+                url, headers=headers, timeout=timeout, **kwargs
+            )
+        except requests.exceptions.Timeout:
+            self.log(f"請求超時: {url}")
+            raise
         except Exception as e:
-            logger.error(f"Error parsing category content: {e}")
-            return {"list": [], "total": 0}
+            self.log(f"請求失敗: {url}, 錯誤: {e}")
+            raise
 
-    def decrypt(self, encrypted_b64: str, key: str) -> str:
-        """優化後的解密邏輯"""
-        try:
-            # 1. 處理 Base64 填充
-            encrypted_b64 += '=' * (-len(encrypted_b64) % 4)
-            
-            # 2. 獲取哈希字節
-            hash_bytes = self.compute_hash(key)
-            encrypted_data = base64.b64decode(encrypted_b64)
-
-            # 3. 使用列表推導式提升異或效率
-            key_len = len(hash_bytes)
-            decrypted_bytes = bytes([
-                byte ^ hash_bytes[i % key_len] 
-                for i, byte in enumerate(encrypted_data)
-            ])
-            return decrypted_bytes.decode('utf-8')
-        except Exception as e:
-            logger.error(f"Decryption failed: {e}")
-            return ""
-
-    def process_m3u8(self, content):
-        """優化 M3U8 解析流程"""
-        lines = content.strip().splitlines()
-        output = []
-        for i in range(len(lines)):
-            line = lines[i]
-            # 這裡檢查下一行是否存在，防止索引越界
-            if line.startswith('#EXT-X-MOUFLON:URI:') and (i + 1 < len(lines)):
-                next_line = lines[i+1]
-                if 'media.mp4' in next_line:
-                    try:
-                        mouflon = line.split(':', 2)[2].strip()
-                        # 簡化字串提取邏輯
-                        encrypted_part = mouflon.rsplit('_', 2)[1]
-                        decrypted = self.decrypt(encrypted_part[::-1], self.stripchat_decrypt_key)
-                        
-                        # 替換下一行的 URL
-                        lines[i+1] = self.URL_PATTERN.sub(mouflon.replace(encrypted_part, decrypted), next_line)
-                    except Exception:
-                        pass
-            output.append(line)
-        return '\n'.join(lines)
+    def log(self, message: str):
+        """日誌記錄（可根據需要實現）"""
+        print(f"[{self.getName()}] {message}")
