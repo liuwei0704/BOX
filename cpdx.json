@@ -53,7 +53,7 @@
 {"key":"python集合","name":"❗python集合","type":4,"api":"http://zhangqun1818.serv00.net/py.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"js集合","name":"❗js集合","type":4,"api":"http://zhangqun1818.serv00.net/js.php","searchable":1,"style":{"type":"rect","ratio":1.33},"changeable":1},
 
-{"key":"热播","name":"🅰️热播｜APP","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
+{"key":"热播影視","name":"🅰️热播｜APP","type":3,"api":"csp_AppRJ","searchable":1,"quickSearch":1,"filterable":0,"ext":{"url":"http://v.rbotv.cn"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"花柳","name":"🅰️花柳｜APP","type":3,"changeable":0,"api":"csp_AppFox","ext":{"host":"http://nico.oiio.fun","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"恋鱼","name":"🅰️恋鱼｜APP","type":3,"api":"csp_AppFox","ext":{"host":"https://173220859-1333208043.cos.ap-shanghai.myqcloud.com/1.json","ver":2},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"爱盈","name":"🅰️爱盈｜APP","type":3,"api":"csp_AppQi","changeable":"1","quickSearch":0,"filterable":1,"ext":{"site":"https://aysappto.oss-cn-chengdu.aliyuncs.com/qj3.txt","dataKey":"sda1231sasddad21","dataIv":"sda1231sasddad21","ua":"okhttp/3.10.0"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
