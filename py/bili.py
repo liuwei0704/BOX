@@ -1,731 +1,879 @@
-#coding=utf-8
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import re
 import sys
 import json
 import time
+import requests
 from datetime import datetime
 from urllib.parse import quote, unquote
-
-import requests
+from hashlib import md5
+from functools import reduce
 
 sys.path.append('..')
 from base.spider import Spider
 
-class Spider(Spider):  # 元类 默认的元类 type
-	def getName(self):
-		return "B站视频"
 
-	def init(self, extend):
-		try:
-			self.extendDict = json.loads(extend)
-		except:
-			self.extendDict = {}
+class Spider(Spider):
+    def __init__(self):
+        super().__init__()
+        self.header = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36",
+            "Referer": "https://www.bilibili.com"
+        }
+        self.retry = 0
+        self.extendDict = {}
 
-	def isVideoFormat(self, url):
-		pass
+    def getName(self):
+        return "B站视频"
 
-	def manualVideoCheck(self):
-		pass
+    def init(self, extend):
+        try:
+            self.extendDict = json.loads(extend)
+        except:
+            self.extendDict = {}
 
-	def homeContent(self, filter):
-		result = {}
-		result['filters'] = {}
-		cookie = ''
-		if 'cookie' in self.extendDict:
-			cookie = self.extendDict['cookie']
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
-		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
-		except:
-			pass
-		_, _, _ = self.getCookie(cookie)
-		bblogin = self.getCache('bblogin')
-		if bblogin:
-			result['class'] = []
-		else:
-			result['class'] = []
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			params = r.json()
-			if 'classes' in params:
-				result['class'] = result['class'] + params['classes']
-			if filter:
-				if 'filter' in params:
-					result['filters'] = params['filter']
-		elif 'categories' in self.extendDict or 'type' in self.extendDict:
-			if 'categories' in self.extendDict:
-				cateList = self.extendDict['categories'].split('#')
-			else:
-				cateList = self.extendDict['type'].split('#')
-			for cate in cateList:
-				result['class'].append({'type_name': cate, 'type_id': cate})
-		if not 'class' in result or result['class'] == []:
-			result['class'] = [{"type_name":"動態漫","type_id":"動態漫"},{"type_name":"傻屌仙逆","type_id":"沙雕仙逆"},{"type_name":"沙雕动画","type_id":"沙雕动画"},{"type_name":"小姐姐","type_id":"小姐姐"},{"type_name":"熱舞","type_id":"熱舞"}]
-		return result
+    def cleanText(self, text):
+        # 移除不必要的字符
+        return re.sub(r'[\x00-\x1F\x7F]', '', text).strip()
 
-	def homeVideoContent(self):
-		result = {}
-		cookie = ''
-		if 'cookie' in self.extendDict:
-			cookie = self.extendDict['cookie']
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
-		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
-		except:
-			pass
-		cookie, imgKey, subKey = self.getCookie(cookie)
-		url = 'https://api.bilibili.com/x/web-interface/index/top/feed/rcmd?y_num=1&fresh_type=3&feed_version=SEO_VIDEO&fresh_idx_1h=1&fetch_row=1&fresh_idx=1&brush=0&homepage_ver=1&ps=20'
-		r = requests.get(url, cookies=cookie, headers=self.header, timeout=5)
-		data = json.loads(self.cleanText(r.text))
-		try:
-			result['list'] = []
-			vodList = data['data']['item']
-			for vod in vodList:
-				aid = str(vod['id']).strip()
-				title = self.removeHtmlTags(vod['title']).strip()
-				img = vod['pic'].strip()
-				remark = time.strftime('%H:%M:%S', time.gmtime(vod['duration']))
-				if remark.startswith('00:'):
-					remark = remark[3:]
-				if remark == '00:00':
-					continue
-				result['list'].append({
-					'vod_id': aid,
-					'vod_name': title,
-					'vod_pic': img,
-					'vod_remarks': remark
-				})
-		except:
-			pass
-		return result
+    def removeHtmlTags(self, text):
+        return re.sub(r'<[^>]+>', '', text).strip()
 
-	def categoryContent(self, cid, page, filter, ext):
-		page = int(page)
-		result = {}
-		videos = []
-		cookie = ''
-		pagecount = page
-		if 'cookie' in self.extendDict:
-			cookie = self.extendDict['cookie']
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
-		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
-		except:
-			pass
-		cookie, imgKey, subKey = self.getCookie(cookie)
-		if cid == '动态':
-			if page > 1:
-				offset = self.getCache('offset')
-				if not offset:
-					offset = ''
-				url = f'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/all?timezone_offset=-480&type=all&offset={offset}&page={page}'
-			else:
-				url = f'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/all?timezone_offset=-480&type=all&page={page}'
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			self.setCache('offset', data['data']['offset'])
-			vodList = data['data']['items']
-			if data['data']['has_more']:
-				pagecount = page + 1
-			for vod in vodList:
-				if vod['type'] != 'DYNAMIC_TYPE_AV':
-					continue
-				vid = str(vod['modules']['module_dynamic']['major']['archive']['aid']).strip()
-				remark = vod['modules']['module_dynamic']['major']['archive']['duration_text'].strip()
-				title = self.removeHtmlTags(vod['modules']['module_dynamic']['major']['archive']['title']).strip()
-				img = vod['modules']['module_dynamic']['major']['archive']['cover']
-				videos.append({
-					"vod_id": vid,
-					"vod_name": title,
-					"vod_pic": img,
-					"vod_remarks": remark
-				})
-		elif cid == "收藏夹":
-			userid = self.getUserid(cookie)
-			if userid is None:
-				return {}, 1
-			url = f'http://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid={userid}&jsonp=jsonp'
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			vodList = data['data']['list']
-			pagecount = page
-			for vod in vodList:
-				vid = vod['id']
-				title = vod['title'].strip()
-				remark = vod['media_count']
-				img = 'https://api-lmteam.koyeb.app/files/shoucang.png'
-				videos.append({
-					"vod_id": f'fav&&&{vid}',
-					"vod_name": title,
-					"vod_pic": img,
-					"vod_tag": 'folder',
-					"vod_remarks": remark
-				})
-		elif cid.startswith('fav&&&'):
-			cid = cid[6:]
-			url = f'http://api.bilibili.com/x/v3/fav/resource/list?media_id={cid}&pn={page}&ps=20&platform=web&type=0'
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			if data['data']['has_more']:
-				pagecount = page + 1
-			else:
-				pagecount = page
-			vodList = data['data']['medias']
-			for vod in vodList:
-				vid = str(vod['id']).strip()
-				title = self.removeHtmlTags(vod['title']).replace("&quot;", '"')
-				img = vod['cover'].strip()
-				remark = time.strftime('%H:%M:%S', time.gmtime(vod['duration']))
-				if remark.startswith('00:'):
-					remark = remark[3:]
-				videos.append({
-					"vod_id": vid,
-					"vod_name": title,
-					"vod_pic": img,
-					"vod_remarks": remark
-				})
-		elif cid.startswith('UP主&&&'):
-			cid = cid[6:]
-			params = {'mid': cid, 'ps': 30, 'pn': page}
-			params = self.encWbi(params, imgKey, subKey)
-			url = 'https://api.bilibili.com/x/space/wbi/arc/search?'
-			for key in params:
-				url += f'&{key}={quote(params[key])}'
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			if page < data['data']['page']['count']:
-				pagecount = page + 1
-			else:
-				pagecount = page
-			if page == 1:
-				videos = [{"vod_id": f'UP主&&&{tid}', "vod_name": '播放列表'}]
-			vodList = data['data']['list']['vlist']
-			for vod in vodList:
-				vid = str(vod['aid']).strip()
-				title = self.removeHtmlTags(vod['title']).replace("&quot;", '"')
-				img = vod['pic'].strip()
-				remarkinfos = vod['length'].split(':')
-				minutes = int(remarkinfos[0])
-				if minutes >= 60:
-					hours = str(minutes // 60)
-					minutes = str(minutes % 60)
-					if len(hours) == 1:
-						hours = '0' + hours
-					if len(minutes) == 1:
-						minutes = '0' + minutes
-					remark = hours + ':' + minutes + ':' + remarkinfos[1]
-				else:
-					remark = vod['length']
-				videos.append({
-					"vod_id": vid,
-					"vod_name": title,
-					"vod_pic": img,
-					"vod_remarks": remark
-				})
-		elif cid == '历史记录':
-			url = f'http://api.bilibili.com/x/v2/history?pn={page}'
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			if len(data['data']) == 300:
-				pagecount = page + 1
-			else:
-				pagecount = page
-			vodList = data['data']
-			for vod in vodList:
-				if vod['duration'] <= 0:
-					continue
-				vid = str(vod["aid"]).strip()
-				img = vod["pic"].strip()
-				title = self.removeHtmlTags(vod["title"]).replace("&quot;", '"')
-				if vod['progress'] != -1:
-					process = time.strftime('%H:%M:%S', time.gmtime(vod['progress']))
-					totalTime = time.strftime('%H:%M:%S', time.gmtime(vod['duration']))
-					if process.startswith('00:'):
-						process = process[3:]
-					if totalTime.startswith('00:'):
-						totalTime = totalTime[3:]
-					remark = process + '|' + totalTime
-					videos.append({
-						"vod_id": vid,
-						"vod_name": title,
-						"vod_pic": img,
-						"vod_remarks": remark
-					})
-		else:
-			url = 'https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={}&page={}'
-			for key in ext:
-				if key == 'tid':
-					cid = ext[key]
-					continue
-				url += f'&{key}={ext[key]}'
-			url = url.format(cid, page)
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			pagecount = data['data']['numPages']
-			vodList = data['data']['result']
-			for vod in vodList:
-				if vod['type'] != 'video':
-					continue
-				vid = str(vod['aid']).strip()
-				title = self.removeHtmlTags(self.cleanText(vod['title']))
-				img = 'https:' + vod['pic'].strip()
-				remarkinfo = vod['duration'].split(':')
-				minutes = int(remarkinfo[0])
-				seconds = remarkinfo[1]
-				if len(seconds) == 1:
-					seconds = '0' + seconds
-				if minutes >= 60:
-					hour = str(minutes // 60)
-					minutes = str(minutes % 60)
-					if len(hour) == 1:
-						hour = '0' + hour
-					if len(minutes) == 1:
-						minutes = '0' + minutes
-					remark = f'{hour}:{minutes}:{seconds}'
-				else:
-					minutes = str(minutes)
-					if len(minutes) == 1:
-						minutes = '0' + minutes
-					remark = f'{minutes}:{seconds}'
-				videos.append({
-					"vod_id": vid,
-					"vod_name": title,
-					"vod_pic": img,
-					"vod_remarks": remark
-				})
-		lenvideos = len(videos)
-		result['list'] = videos
-		result['page'] = page
-		result['pagecount'] = pagecount
-		result['limit'] = lenvideos
-		result['total'] = lenvideos
-		return result
+    def formatDuration(self, seconds):
+        # 将秒数转为 HH:MM:SS 或 MM:SS
+        seconds = int(seconds)
+        if seconds >= 3600:
+            return time.strftime('%H:%M:%S', time.gmtime(seconds))
+        else:
+            return time.strftime('%M:%S', time.gmtime(seconds)).lstrip('0')
 
-	def detailContent(self, did):
-		aid = did[0]
-		if aid.startswith('UP主&&&'):
-			bizId = aid[6:]
-			oid = ''
-			url = f'https://api.bilibili.com/x/v2/medialist/resource/list?mobi_app=web&type=1&oid={oid}&biz_id={bizId}&otype=1&ps=100&direction=false&desc=true&sort_field=1&tid=0&with_current=false'
-			r = self.fetch(url, headers=self.header, timeout=5)
-			videoList = r.json()['data']['media_list']
-			vod = {
-				"vod_id": aid,
-				"vod_name": '播放列表',
-				'vod_play_from': 'B站视频'
-			}
-			playUrl = ''
-			for video in videoList:
-				remark = time.strftime('%H:%M:%S', time.gmtime(video['duration']))
-				name = self.removeHtmlTags(video['title']).strip().replace("#", "-").replace('$', '*')
-				if remark.startswith('00:'):
-					remark = remark[3:]
-				playUrl += f"[{remark}]/{name}$bvid&&&{video['bv_id']}#"
-			vod['vod_play_url'] = playUrl.strip('#')
-			result = {'list': [vod]}
-			return result
-		url = f"https://api.bilibili.com/x/web-interface/view?aid={aid}"
-		r = self.fetch(url, headers=self.header, timeout=10)
-		data = json.loads(self.cleanText(r.text))
-		if "staff" in data['data']:
-			director = ''
-			for staff in data['data']['staff']:
-				director += '[a=cr:{{"id":"UP主&&&{}","name":"{}"}}/]{}[/a],'.format(staff['mid'], staff['name'], staff['name'])
-		else:
-			director = '[a=cr:{{"id":"UP主&&&{}","name":"{}"}}/]{}[/a]'.format(data['data']['owner']['mid'], data['data']['owner']['name'], data['data']['owner']['name'])
-		vod = {
-			"vod_id": aid,
-			"vod_name": self.removeHtmlTags(data['data']['title']),
-			"vod_pic": data['data']['pic'],
-			"type_name": data['data']['tname'],
-			"vod_year": datetime.fromtimestamp(data['data']['pubdate']).strftime('%Y-%m-%d %H:%M:%S'),
-			"vod_content": data['data']['desc'].replace('\xa0', ' ').replace('\n\n', '\n').strip(),
-			"vod_director": director
-		}
-		videoList = data['data']['pages']
-		playUrl = ''
-		for video in videoList:
-			remark = time.strftime('%H:%M:%S', time.gmtime(video['duration']))
-			name = self.removeHtmlTags(video['part']).strip().replace("#", "-").replace('$', '*')
-			if remark.startswith('00:'):
-				remark = remark[3:]
-			playUrl = playUrl + f"[{remark}]/{name}${aid}_{video['cid']}#"
-		url = f'https://api.bilibili.com/x/web-interface/archive/related?aid={aid}'
-		r = self.fetch(url, headers=self.header, timeout=5)
-		data = json.loads(self.cleanText(r.text))
-		videoList = data['data']
-		playUrl = playUrl.strip('#') + '$$$'
-		for video in videoList:
-			remark = time.strftime('%H:%M:%S', time.gmtime(video['duration']))
-			if remark.startswith('00:'):
-				remark = remark[3:]
-			name = self.removeHtmlTags(video['title']).strip().replace("#", "-").replace('$', '*')
-			playUrl = playUrl + '[{}]/{}${}_{}#'.format(remark, name, video['aid'], video['cid'])
-		vod['vod_play_from'] = 'B站视频$$$相关视频'
-		vod['vod_play_url'] = playUrl.strip('#')
-		result = {
-			'list': [
-				vod
-			]
-		}
-		return result
+    def getCookieAndKeys(self):
+        """统一获取 cookie 和 imgKey/subKey"""
+        cookie_str = self.extendDict.get('cookie', '')
+        
+        if 'json' in self.extendDict:
+            try:
+                r = self.fetch(self.extendDict['json'], timeout=10)
+                data = r.json()
+                if 'cookie' in data:
+                    cookie_str = data['cookie']
+            except:
+                pass
+        
+        if not cookie_str:
+            cookie_str = '{}'
+        elif isinstance(cookie_str, str) and cookie_str.startswith('http'):
+            cookie_str = self.fetch(cookie_str, timeout=10).text.strip()
+        
+        try:
+            if isinstance(cookie_str, dict):
+                cookie_str = json.dumps(cookie_str, ensure_ascii=False)
+        except:
+            pass
+        
+        return self._parseCookie(cookie_str)
 
-	def searchContent(self, key, quick):
-		return self.searchContentPage(key, quick, '1')
+    def _parseCookie(self, cookie_str):
+        if cookie_str.startswith('{') and cookie_str.endswith('}'):
+            try:
+                cookies = json.loads(cookie_str)
+            except:
+                cookies = {}
+        else:
+            cookies = {}
+            for item in cookie_str.strip(';').split(';'):
+                if '=' in item:
+                    k, v = item.strip().split('=', 1)
+                    cookies[k] = v
+        
+        # 尝试从缓存获取
+        bblogin = self.getCache('bblogin')
+        if bblogin:
+            return cookies, bblogin.get('imgKey', ''), bblogin.get('subKey', '')
+        
+        # 请求接口获取
+        try:
+            r = requests.get(
+                "http://api.bilibili.com/x/web-interface/nav",
+                cookies=cookies,
+                headers=self.header,
+                timeout=10
+            )
+            data = r.json()
+            if data.get("code") == 0:
+                img_url = data['data']['wbi_img']['img_url']
+                sub_url = data['data']['wbi_img']['sub_url']
+                imgKey = img_url.rsplit('/', 1)[1].split('.')[0]
+                subKey = sub_url.rsplit('/', 1)[1].split('.')[0]
+                
+                cache_data = {
+                    'imgKey': imgKey,
+                    'subKey': subKey,
+                    'expiresAt': int(time.time()) + 1200
+                }
+                self.setCache('bblogin', cache_data)
+                return cookies, imgKey, subKey
+        except:
+            pass
+        
+        # 兜底方案
+        try:
+            r = self.fetch("https://www.bilibili.com/", headers=self.header, timeout=5)
+            cookies = r.cookies.get_dict()
+        except:
+            pass
+        
+        return cookies, '', ''
 
-	def searchContentPage(self, key, quick, page):
-		videos = []
-		if quick:
-			result = {
-				'list': videos
-			}
-			return result
-		cookie = ''
-		if 'cookie' in self.extendDict:
-			cookie = self.extendDict['cookie']
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
-		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
-		except:
-			pass
-		cookie, _, _ = self.getCookie(cookie)
-		url = f'https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={key}&page={page}'
-		r = self.fetch(url, headers=self.header, cookies=cookie, timeout=5)
-		jo = json.loads(self.cleanText(r.text))
-		if 'result' not in jo['data']:
-			return {'list': videos}, 1
-		vodList = jo['data']['result']
-		for vod in vodList:
-			aid = str(vod['aid']).strip()
-			title = self.removeHtmlTags(self.cleanText(vod['title']))
-			img = 'https:' + vod['pic'].strip()
-			try:
-				remarkinfo = vod['duration'].split(':')
-				minutes = int(remarkinfo[0])
-				seconds = remarkinfo[1]
-			except:
-				continue
-			if len(seconds) == 1:
-				seconds = '0' + seconds
-			if minutes >= 60:
-				hour = str(minutes // 60)
-				minutes = str(minutes % 60)
-				if len(hour) == 1:
-					hour = '0' + hour
-				if len(minutes) == 1:
-					minutes = '0' + minutes
-				remark = f'{hour}:{minutes}:{seconds}'
-			else:
-				minutes = str(minutes)
-				if len(minutes) == 1:
-					minutes = '0' + minutes
-				remark = f'{minutes}:{seconds}'
-			videos.append({
-				"vod_id": aid,
-				"vod_name": title,
-				"vod_pic": img,
-				"vod_remarks": remark
-			})
-		result = {
-			'list': videos
-		}
-		return result
+    def homeContent(self, filter):
+        result = {
+            'filters': {},
+            'class': []
+        }
+        
+        # 获取分类配置
+        config_classes = []
+        if 'json' in self.extendDict:
+            try:
+                r = self.fetch(self.extendDict['json'], timeout=10)
+                params = r.json()
+                if 'classes' in params:
+                    config_classes = params['classes']
+                if filter and 'filter' in params:
+                    result['filters'] = params['filter']
+            except:
+                pass
+        elif 'categories' in self.extendDict or 'type' in self.extendDict:
+            cate_str = self.extendDict.get('categories') or self.extendDict.get('type', '')
+            if cate_str:
+                for cate in cate_str.split('#'):
+                    config_classes.append({'type_name': cate, 'type_id': cate})
+        
+        result['class'].extend(config_classes)
+        
+        # 默认分类
+        if not result['class']:
+            default_cates = [
+                {"type_name": "動態漫", "type_id": "動態漫"},
+                {"type_name": "傻屌仙逆", "type_id": "沙雕仙逆"},
+                {"type_name": "沙雕动画", "type_id": "沙雕动画"},
+                {"type_name": "小姐姐", "type_id": "小姐姐"},
+                {"type_name": "熱舞", "type_id": "熱舞"}
+            ]
+            result['class'] = default_cates
+        
+        return result
 
-	def playerContent(self, flag, pid, vipFlags):
-		result = {}
-		if pid.startswith('bvid&&&'):
-			url = "https://api.bilibili.com/x/web-interface/view?bvid={}".format(pid[7:])
-			r = self.fetch(url, headers=self.header, timeout=10)
-			data = r.json()['data']
-			aid = data['aid']
-			cid = data['cid']
-		else:
-			idList = pid.split("_")
-			aid = idList[0]
-			cid = idList[1]
-		url = 'https://api.bilibili.com/x/player/playurl?avid={}&cid={}&qn=120&fnval=4048&fnver=0&fourk=1'.format(aid, cid)
-		cookie = ''
-		extendDict = self.extendDict
-		if 'cookie' in extendDict:
-			cookie = extendDict['cookie']
-		if 'json' in extendDict:
-			r = self.fetch(extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
-		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
-		except:
-			pass
-		cookiesDict, _, _ = self.getCookie(cookie)
-		cookies = quote(json.dumps(cookiesDict))
-		if 'thread' in extendDict:
-			thread = str(extendDict['thread'])
-		else:
-			thread = '0'
-		result["parse"] = 0
-		result["playUrl"] = ''
-		result["url"] = f'http://127.0.0.1:9978/proxy?do=py&type=mpd&cookies={cookies}&url={quote(url)}&aid={aid}&cid={cid}&thread={thread}'
-		result["header"] = self.header
-		result['danmaku'] = 'https://api.bilibili.com/x/v1/dm/list.so?oid={}'.format(cid)
-		result["format"] = 'application/dash+xml'
-		return result
+    def homeVideoContent(self):
+        result = {'list': []}
+        cookies, _, _ = self.getCookieAndKeys()
+        
+        try:
+            url = 'https://api.bilibili.com/x/web-interface/index/top/feed/rcmd?ps=20'
+            r = requests.get(url, cookies=cookies, headers=self.header, timeout=5)
+            data = r.json()
+            
+            for vod in data.get('data', {}).get('item', []):
+                try:
+                    aid = str(vod['id']).strip()
+                    title = self.removeHtmlTags(vod.get('title', '')).strip()
+                    img = vod.get('pic', '').strip()
+                    duration = vod.get('duration', 0)
+                    
+                    if duration <= 0:
+                        continue
+                    
+                    remark = self.formatDuration(duration)
+                    result['list'].append({
+                        'vod_id': aid,
+                        'vod_name': title,
+                        'vod_pic': img,
+                        'vod_remarks': remark
+                    })
+                except:
+                    continue
+        except:
+            pass
+        
+        return result
 
-	def localProxy(self, params):
-		if params['type'] == "mpd":
-			return self.proxyMpd(params)
-		if params['type'] == "media":
-			return self.proxyMedia(params)
-		return None
+    def categoryContent(self, cid, page, filter, ext):
+        page = int(page)
+        result = {
+            'list': [],
+            'page': page,
+            'pagecount': page,
+            'limit': 0,
+            'total': 0
+        }
+        
+        cookies, imgKey, subKey = self.getCookieAndKeys()
+        
+        # 分类处理
+        if cid == '动态':
+            return self._handleDynamic(cid, page, cookies, result)
+        elif cid == '收藏夹':
+            return self._handleFavoriteFolder(page, cookies, result)
+        elif cid.startswith('fav&&&'):
+            return self._handleFavoriteList(cid, page, cookies, result)
+        elif cid.startswith('UP主&&&'):
+            return self._handleUpVideos(cid, page, cookies, imgKey, subKey, result)
+        elif cid == '历史记录':
+            return self._handleHistory(page, cookies, result)
+        else:
+            return self._handleSearch(cid, page, ext, cookies, result)
+        
+        return result
 
-	def destroy(self):
-		pass
+    def _handleDynamic(self, cid, page, cookies, result):
+        if page > 1:
+            offset = self.getCache('offset') or ''
+            url = f'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/all?offset={offset}&page={page}'
+        else:
+            url = f'https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/all?page={page}'
+        
+        r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+        data = r.json()
+        
+        if 'offset' in data.get('data', {}):
+            self.setCache('offset', data['data']['offset'])
+        
+        has_more = data.get('data', {}).get('has_more', False)
+        result['pagecount'] = page + 1 if has_more else page
+        
+        for vod in data.get('data', {}).get('items', []):
+            if vod.get('type') != 'DYNAMIC_TYPE_AV':
+                continue
+            
+            modules = vod.get('modules', {}).get('module_dynamic', {})
+            archive = modules.get('major', {}).get('archive', {})
+            
+            vid = str(archive.get('aid', '')).strip()
+            if not vid:
+                continue
+            
+            title = self.removeHtmlTags(archive.get('title', '')).strip()
+            img = archive.get('cover', '')
+            remark = archive.get('duration_text', '').strip()
+            
+            result['list'].append({
+                "vod_id": vid,
+                "vod_name": title,
+                "vod_pic": img,
+                "vod_remarks": remark
+            })
+        
+        result['limit'] = result['total'] = len(result['list'])
+        return result
 
-	def proxyMpd(self, params):
-		content, durlinfos, mediaType = self.getDash(params)
-		if mediaType == 'mpd':
-			return [200, "application/dash+xml", content]
-		else:
-			url = ''
-			urlList = [content] + durlinfos['durl'][0]['backup_url'] if 'backup_url' in durlinfos['durl'][0] and durlinfos['durl'][0]['backup_url'] else [content]
-			for url in urlList:
-				if 'mcdn.bilivideo.cn' not in url:
-					break
-			header = self.header.copy()
-			if 'range' in params:
-				header['Range'] = params['range']
-			if '127.0.0.1:7777' in url:
-				header["Location"] = url
-				return [302, "video/MP2T", None, header]
-			r = requests.get(url, headers=header, stream=True)
-			return [206, "application/octet-stream", r.content]
+    def _handleFavoriteFolder(self, page, cookies, result):
+        userid = self._getUserId(cookies)
+        if not userid:
+            return result
+        
+        url = f'http://api.bilibili.com/x/v3/fav/folder/created/list-all?up_mid={userid}'
+        r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+        data = r.json()
+        
+        for vod in data.get('data', {}).get('list', []):
+            vid = vod.get('id', '')
+            title = vod.get('title', '').strip()
+            remark = vod.get('media_count', 0)
+            
+            result['list'].append({
+                "vod_id": f'fav&&&{vid}',
+                "vod_name": title,
+                "vod_pic": 'https://api-lmteam.koyeb.app/files/shoucang.png',
+                "vod_tag": 'folder',
+                "vod_remarks": str(remark)
+            })
+        
+        result['limit'] = result['total'] = len(result['list'])
+        return result
 
-	def proxyMedia(self, params, forceRefresh=False):
-		_, dashinfos, _ = self.getDash(params)
-		if 'videoid' in params:
-			videoid = int(params['videoid'])
-			dashinfo = dashinfos['video'][videoid]
-		elif 'audioid' in params:
-			audioid = int(params['audioid'])
-			dashinfo = dashinfos['audio'][audioid]
-		else:
-			return [404, "text/plain", ""]
-		url = ''
-		urlList = [dashinfo['baseUrl']] + dashinfo['backupUrl'] if 'backupUrl' in dashinfo and dashinfo['backupUrl'] else [dashinfo['baseUrl']]
-		for url in urlList:
-			if 'mcdn.bilivideo.cn' not in url:
-				break
-		if url == "":
-			return [404, "text/plain", ""]
-		header = self.header.copy()
-		if 'range' in params:
-			header['Range'] = params['range']
-		r = requests.get(url, headers=header, stream=True)
-		return [206, "application/octet-stream", r.content]
+    def _handleFavoriteList(self, cid, page, cookies, result):
+        media_id = cid[6:]
+        url = f'http://api.bilibili.com/x/v3/fav/resource/list?media_id={media_id}&pn={page}&ps=20'
+        r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+        data = r.json()
+        
+        has_more = data.get('data', {}).get('has_more', False)
+        result['pagecount'] = page + 1 if has_more else page
+        
+        for vod in data.get('data', {}).get('medias', []):
+            vid = str(vod.get('id', '')).strip()
+            title = self.removeHtmlTags(vod.get('title', '')).replace("&quot;", '"')
+            img = vod.get('cover', '').strip()
+            duration = vod.get('duration', 0)
+            
+            if duration <= 0:
+                continue
+            
+            remark = self.formatDuration(duration)
+            result['list'].append({
+                "vod_id": vid,
+                "vod_name": title,
+                "vod_pic": img,
+                "vod_remarks": remark
+            })
+        
+        result['limit'] = result['total'] = len(result['list'])
+        return result
 
-	def getDash(self, params, forceRefresh=False):
-		aid = params['aid']
-		cid = params['cid']
-		url = unquote(params['url'])
-		if 'thread' in params:
-			thread = params['thread']
-		else:
-			thread = 0
-		header = self.header.copy()
-		cookieDict = json.loads(params['cookies'])
-		key = f'bilivdmpdcache_{aid}_{cid}'
-		if forceRefresh:
-			self.delCache(key)
-		else:
-			data = self.getCache(key)
-			if data:
-				return data['content'], data['dashinfos'], data['type']
+    def _handleUpVideos(self, cid, page, cookies, imgKey, subKey, result):
+        mid = cid[6:]
+        params = {'mid': mid, 'ps': 30, 'pn': page}
+        
+        if imgKey and subKey:
+            params = self.encWbi(params, imgKey, subKey)
+        
+        url = 'https://api.bilibili.com/x/space/wbi/arc/search?'
+        for key in params:
+            url += f'&{key}={quote(str(params[key]))}'
+        
+        r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+        data = r.json()
+        
+        page_data = data.get('data', {}).get('page', {})
+        page_count = page_data.get('count', 1)
+        result['pagecount'] = page + 1 if page < page_count else page
+        
+        # 第一页添加播放列表项
+        if page == 1:
+            result['list'].append({
+                "vod_id": f'UP主&&&{mid}',
+                "vod_name": '播放列表'
+            })
+        
+        for vod in data.get('data', {}).get('list', {}).get('vlist', []):
+            vid = str(vod.get('aid', '')).strip()
+            title = self.removeHtmlTags(vod.get('title', '')).replace("&quot;", '"')
+            img = vod.get('pic', '').strip()
+            length = vod.get('length', '00:00')
+            
+            # 处理时长格式
+            if ':' in length:
+                parts = length.split(':')
+                if len(parts) == 2:
+                    minutes, seconds = parts
+                    if minutes.isdigit() and int(minutes) >= 60:
+                        hours = int(minutes) // 60
+                        minutes = int(minutes) % 60
+                        remark = f"{hours:02d}:{minutes:02d}:{seconds}"
+                    else:
+                        remark = f"{int(minutes):02d}:{seconds}"
+                else:
+                    remark = length
+            else:
+                remark = length
+            
+            result['list'].append({
+                "vod_id": vid,
+                "vod_name": title,
+                "vod_pic": img,
+                "vod_remarks": remark
+            })
+        
+        result['limit'] = result['total'] = len(result['list'])
+        return result
 
-		cookies = cookieDict.copy()
-		r = self.fetch(url, cookies=cookies, headers=header, timeout=5)
-		data = json.loads(self.cleanText(r.text))
-		if data['code'] != 0:
-			return '', {}, ''
-		if not 'dash' in data['data']:
-			purl = data['data']['durl'][0]['url']
-			try:
-				expiresAt = int(re.search(r'deadline=(\d+)', purl).group(1)) - 60
-			except:
-				expiresAt = int(time.time()) + 600
-			if int(thread) > 0:
-				try:
-					self.fetch('http://127.0.0.1:7777')
-				except:
-					self.fetch('http://127.0.0.1:9978/go')
-				purl = f'http://127.0.0.1:7777?url={quote(purl)}&thread={thread}'
-			self.setCache(key, {'content': purl, 'type': 'mp4', 'dashinfos':  data['data'], 'expiresAt': expiresAt})
-			return purl,  data['data'], 'mp4'
+    def _handleHistory(self, page, cookies, result):
+        url = f'http://api.bilibili.com/x/v2/history?pn={page}'
+        r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+        data = r.json()
+        
+        items = data.get('data', [])
+        if len(items) == 300:
+            result['pagecount'] = page + 1
+        else:
+            result['pagecount'] = page
+        
+        for vod in items:
+            duration = vod.get('duration', 0)
+            progress = vod.get('progress', -1)
+            
+            if duration <= 0 or progress == -1:
+                continue
+            
+            vid = str(vod.get("aid", "")).strip()
+            img = vod.get("pic", "").strip()
+            title = self.removeHtmlTags(vod.get("title", "")).replace("&quot;", '"')
+            
+            progress_str = self.formatDuration(progress)
+            total_str = self.formatDuration(duration)
+            remark = f"{progress_str}|{total_str}"
+            
+            result['list'].append({
+                "vod_id": vid,
+                "vod_name": title,
+                "vod_pic": img,
+                "vod_remarks": remark
+            })
+        
+        result['limit'] = result['total'] = len(result['list'])
+        return result
 
-		dashinfos = data['data']['dash']
-		duration = dashinfos['duration']
-		minBufferTime = dashinfos['minBufferTime']
-		videoinfo = ''
-		videoid = 0
-		deadlineList = []
-		for video in dashinfos['video']:
-			try:
-				deadline = int(re.search(r'deadline=(\d+)', video['baseUrl']).group(1))
-			except:
-				deadline = int(time.time()) + 600
-			deadlineList.append(deadline)
-			codecs = video['codecs']
-			bandwidth = video['bandwidth']
-			frameRate = video['frameRate']
-			height = video['height']
-			width = video['width']
-			void = video['id']
-			vidparams = params.copy()
-			vidparams['videoid'] = videoid
-			baseUrl = f'http://127.0.0.1:9978/proxy?do=py&type=media&cookies={quote(json.dumps(cookies))}&url={quote(url)}&aid={aid}&cid={cid}&videoid={videoid}'
-			videoinfo = videoinfo + f"""	      <Representation bandwidth="{bandwidth}" codecs="{codecs}" frameRate="{frameRate}" height="{height}" id="{void}" width="{width}">
-	        <BaseURL>{baseUrl}</BaseURL>
-	        <SegmentBase indexRange="{video['SegmentBase']['indexRange']}">
-	        <Initialization range="{video['SegmentBase']['Initialization']}"/>
-	        </SegmentBase>
-	      </Representation>\n"""
-			videoid += 1
-		audioinfo = ''
-		audioid = 0
-		# audioList = sorted(dashinfos['audio'], key=lambda x: x['bandwidth'], reverse=True)
-		for audio in dashinfos['audio']:
-			try:
-				deadline = int(re.search(r'deadline=(\d+)', audio['baseUrl']).group(1))
-			except:
-				deadline = int(time.time()) + 600
-			deadlineList.append(deadline)
-			bandwidth = audio['bandwidth']
-			codecs = audio['codecs']
-			aoid = audio['id']
-			aidparams = params.copy()
-			aidparams['audioid'] = audioid
-			baseUrl = f'http://127.0.0.1:9978/proxy?do=py&type=media&cookies={quote(json.dumps(cookies))}&url={quote(url)}&aid={aid}&cid={cid}&audioid={audioid}'
-			audioinfo = audioinfo + f"""	      <Representation audioSamplingRate="44100" bandwidth="{bandwidth}" codecs="{codecs}" id="{aoid}">
-	        <BaseURL>{baseUrl}</BaseURL>
-	        <SegmentBase indexRange="{audio['SegmentBase']['indexRange']}">
-	        <Initialization range="{audio['SegmentBase']['Initialization']}"/>
-	        </SegmentBase>
-	      </Representation>\n"""
-			audioid += 1
-		mpd = f"""<?xml version="1.0" encoding="UTF-8"?>
-	<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" profiles="urn:mpeg:dash:profile:isoff-on-demand:2011" type="static" mediaPresentationDuration="PT{duration}S" minBufferTime="PT{minBufferTime}S">
-	  <Period>
-	    <AdaptationSet mimeType="video/mp4" startWithSAP="1" scanType="progressive" segmentAlignment="true">
-	      {videoinfo.strip()}
-	    </AdaptationSet>
-	    <AdaptationSet mimeType="audio/mp4" startWithSAP="1" segmentAlignment="true" lang="und">
-	      {audioinfo.strip()}
-	    </AdaptationSet>
-	  </Period>
-	</MPD>"""
-		expiresAt = min(deadlineList) - 60
-		self.setCache(key, {'type': 'mpd', 'content': mpd.replace('&', '&amp;'), 'dashinfos': dashinfos, 'expiresAt': expiresAt})
-		return mpd.replace('&', '&amp;'), dashinfos, 'mpd'
+    def _handleSearch(self, cid, page, ext, cookies, result):
+        keyword = cid
+        params = f'search_type=video&keyword={quote(keyword)}&page={page}'
+        
+        for key in ext:
+            if key == 'tid':
+                continue
+            params += f'&{key}={ext[key]}'
+        
+        url = f'https://api.bilibili.com/x/web-interface/search/type?{params}'
+        r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+        data = r.json()
+        
+        result['pagecount'] = data.get('data', {}).get('numPages', 1)
+        
+        for vod in data.get('data', {}).get('result', []):
+            if vod.get('type') != 'video':
+                continue
+            
+            vid = str(vod.get('aid', '')).strip()
+            title = self.removeHtmlTags(vod.get('title', ''))
+            img = 'https:' + vod.get('pic', '').strip()
+            duration_str = vod.get('duration', '0:00')
+            
+            # 处理时长
+            if ':' in duration_str:
+                parts = duration_str.split(':')
+                if len(parts) == 2:
+                    minutes, seconds = parts
+                    minutes = int(minutes)
+                    if minutes >= 60:
+                        hours = minutes // 60
+                        minutes = minutes % 60
+                        remark = f"{hours:02d}:{minutes:02d}:{seconds}"
+                    else:
+                        remark = f"{minutes:02d}:{seconds}"
+                elif len(parts) == 3:
+                    remark = duration_str
+                else:
+                    remark = '00:00'
+            else:
+                remark = '00:00'
+            
+            result['list'].append({
+                "vod_id": vid,
+                "vod_name": title,
+                "vod_pic": img,
+                "vod_remarks": remark
+            })
+        
+        result['limit'] = result['total'] = len(result['list'])
+        return result
 
-	def getCookie(self, cookie):
-		if '{' in cookie and '}' in cookie:
-			cookies = json.loads(cookie)
-		else:
-			cookies = dict([co.strip().split('=', 1) for co in cookie.strip(';').split(';')])
-		bblogin = self.getCache('bblogin')
-		if bblogin:
-			imgKey = bblogin['imgKey']
-			subKey = bblogin['subKey']
-			return cookies, imgKey, subKey
+    def detailContent(self, did):
+        aid = did[0]
+        
+        # UP主播放列表处理
+        if aid.startswith('UP主&&&'):
+            bizId = aid[6:]
+            url = f'https://api.bilibili.com/x/v2/medialist/resource/list?type=1&biz_id={bizId}&ps=100'
+            r = self.fetch(url, headers=self.header, timeout=5)
+            data = r.json()
+            
+            playUrl = ''
+            for video in data.get('data', {}).get('media_list', []):
+                duration = video.get('duration', 0)
+                title = self.removeHtmlTags(video.get('title', '')).strip()
+                bvid = video.get('bv_id', '')
+                
+                if not bvid:
+                    continue
+                
+                remark = self.formatDuration(duration)
+                name = title.replace("#", "-").replace('$', '*')
+                playUrl += f"[{remark}]/{name}$bvid&&&{bvid}#"
+            
+            vod = {
+                "vod_id": aid,
+                "vod_name": '播放列表',
+                'vod_play_from': 'B站视频',
+                'vod_play_url': playUrl.strip('#')
+            }
+            return {'list': [vod]}
+        
+        # 普通视频处理
+        url = f"https://api.bilibili.com/x/web-interface/view?aid={aid}"
+        r = self.fetch(url, headers=self.header, timeout=10)
+        data = r.json().get('data', {})
+        
+        # 导演信息（UP主）
+        director = ''
+        if "staff" in data:
+            for staff in data['staff']:
+                mid = staff.get('mid', '')
+                name = staff.get('name', '')
+                if mid and name:
+                    director += f'[a=cr:{{"id":"UP主&&&{mid}","name":"{name}"}}/]{name}[/a],'
+        else:
+            owner = data.get('owner', {})
+            mid = owner.get('mid', '')
+            name = owner.get('name', '')
+            if mid and name:
+                director = f'[a=cr:{{"id":"UP主&&&{mid}","name":"{name}"}}/]{name}[/a]'
+        
+        # 基本信息
+        vod = {
+            "vod_id": aid,
+            "vod_name": self.removeHtmlTags(data.get('title', '')),
+            "vod_pic": data.get('pic', ''),
+            "type_name": data.get('tname', ''),
+            "vod_year": datetime.fromtimestamp(data.get('pubdate', 0)).strftime('%Y-%m-%d %H:%M:%S'),
+            "vod_content": data.get('desc', '').replace('\xa0', ' ').replace('\n\n', '\n').strip(),
+            "vod_director": director.rstrip(','),
+            "vod_play_from": 'B站视频$$$相关视频'
+        }
+        
+        # 主视频播放列表
+        playUrl = ''
+        pages = data.get('pages', [])
+        for video in pages:
+            duration = video.get('duration', 0)
+            part = video.get('part', '')
+            cid = video.get('cid', '')
+            
+            remark = self.formatDuration(duration)
+            name = self.removeHtmlTags(part).strip().replace("#", "-").replace('$', '*')
+            playUrl += f"[{remark}]/{name}${aid}_{cid}#"
+        
+        # 相关视频
+        url = f'https://api.bilibili.com/x/web-interface/archive/related?aid={aid}'
+        r = self.fetch(url, headers=self.header, timeout=5)
+        related_data = r.json()
+        
+        playUrl = playUrl.strip('#') + '$$$'
+        for video in related_data.get('data', []):
+            duration = video.get('duration', 0)
+            title = video.get('title', '')
+            related_aid = video.get('aid', '')
+            related_cid = video.get('cid', '')
+            
+            if not related_aid or not related_cid:
+                continue
+            
+            remark = self.formatDuration(duration)
+            name = self.removeHtmlTags(title).strip().replace("#", "-").replace('$', '*')
+            playUrl += f'[{remark}]/{name}${related_aid}_{related_cid}#'
+        
+        vod['vod_play_url'] = playUrl.strip('#')
+        return {'list': [vod]}
 
-		header = {
-			"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36"
-		}
-		r = requests.get("http://api.bilibili.com/x/web-interface/nav", cookies=cookies, headers=header, timeout=10)
-		data = json.loads(r.text)
-		code = data["code"]
-		if code == 0:
-			imgKey = data['data']['wbi_img']['img_url'].rsplit('/', 1)[1].split('.')[0]
-			subKey = data['data']['wbi_img']['sub_url'].rsplit('/', 1)[1].split('.')[0]
-			self.setCache('bblogin', {'imgKey': imgKey, 'subKey': subKey, 'expiresAt': int(time.time()) + 1200})
-			return cookies, imgKey, subKey
-		r = self.fetch("https://www.bilibili.com/", headers=header, timeout=5)
-		cookies = r.cookies.get_dict()
-		imgKey = ''
-		subKey = ''
-		return cookies, imgKey, subKey
+    def searchContent(self, key, quick):
+        return self.searchContentPage(key, quick, '1')
 
-	def getUserid(self, cookie):
-		# 获取自己的userid(cookies拥有者)
-		url = 'http://api.bilibili.com/x/space/myinfo'
-		r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-		data = json.loads(self.cleanText(r.text))
-		if data['code'] == 0:
-			return data['data']['mid']
+    def searchContentPage(self, key, quick, page):
+        if quick:
+            return {'list': []}
+        
+        cookies, _, _ = self.getCookieAndKeys()
+        url = f'https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={quote(key)}&page={page}'
+        
+        try:
+            r = self.fetch(url, headers=self.header, cookies=cookies, timeout=5)
+            data = r.json()
+        except:
+            return {'list': []}
+        
+        videos = []
+        for vod in data.get('data', {}).get('result', []):
+            if vod.get('type') != 'video':
+                continue
+            
+            aid = str(vod.get('aid', '')).strip()
+            title = self.removeHtmlTags(vod.get('title', ''))
+            img = 'https:' + vod.get('pic', '').strip()
+            duration_str = vod.get('duration', '0:00')
+            
+            # 处理时长
+            if ':' in duration_str:
+                parts = duration_str.split(':')
+                if len(parts) == 2:
+                    minutes, seconds = parts
+                    minutes = int(minutes)
+                    if minutes >= 60:
+                        hours = minutes // 60
+                        minutes = minutes % 60
+                        remark = f"{hours:02d}:{minutes:02d}:{seconds}"
+                    else:
+                        remark = f"{minutes:02d}:{seconds}"
+                else:
+                    remark = duration_str
+            else:
+                remark = '00:00'
+            
+            videos.append({
+                "vod_id": aid,
+                "vod_name": title,
+                "vod_pic": img,
+                "vod_remarks": remark
+            })
+        
+        return {'list': videos}
 
-	def removeHtmlTags(self, src):
-		from re import sub, compile
-		clean = compile('<.*?>')
-		return sub(clean, '', src)
+    def playerContent(self, flag, pid, vipFlags):
+        result = {
+            "parse": 0,
+            "playUrl": '',
+            "header": self.header
+        }
+        
+        # 解析视频ID
+        if pid.startswith('bvid&&&'):
+            bvid = pid[7:]
+            url = f"https://api.bilibili.com/x/web-interface/view?bvid={bvid}"
+            r = self.fetch(url, headers=self.header, timeout=10)
+            data = r.json().get('data', {})
+            aid = data.get('aid', '')
+            cid = data.get('cid', '')
+        else:
+            parts = pid.split("_")
+            aid = parts[0] if len(parts) > 0 else ''
+            cid = parts[1] if len(parts) > 1 else ''
+        
+        if not aid or not cid:
+            return result
+        
+        # 获取cookie
+        cookies, _, _ = self.getCookieAndKeys()
+        cookies_str = quote(json.dumps(cookies))
+        
+        # 构建代理URL
+        thread = str(self.extendDict.get('thread', '0'))
+        api_url = f'https://api.bilibili.com/x/player/playurl?avid={aid}&cid={cid}&qn=120&fnval=4048'
+        proxy_url = f'http://127.0.0.1:9978/proxy?do=py&type=mpd&cookies={cookies_str}&url={quote(api_url)}&aid={aid}&cid={cid}&thread={thread}'
+        
+        result["url"] = proxy_url
+        result["danmaku"] = f'https://api.bilibili.com/x/v1/dm/list.so?oid={cid}'
+        result["format"] = 'application/dash+xml'
+        
+        return result
 
-	def encWbi(self, params, imgKey, subKey):
-		from hashlib import md5
-		from functools import reduce
-		from urllib.parse import urlencode
-		mixinKeyEncTab = [46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35, 27, 43, 5, 49, 33, 9, 42, 19, 29, 28, 14, 39, 12, 38, 41, 13, 37, 48, 7, 16, 24, 55, 40, 61, 26, 17, 0, 1, 60, 51, 30, 4, 22, 25, 54, 21, 56, 59, 6, 63, 57, 62, 11, 36, 20, 34, 44, 52]
-		orig = imgKey + subKey
-		mixinKey = reduce(lambda s, i: s + orig[i], mixinKeyEncTab, '')[:32]
-		params['wts'] = round(time.time())  # 添加 wts 字段
-		params = dict(sorted(params.items()))  # 按照 key 重排参数
-		# 过滤 value 中的 "!'()*" 字符
-		params = {
-			k: ''.join(filter(lambda chr: chr not in "!'()*", str(v)))
-			for k, v
-			in params.items()
-		}
-		query = urlencode(params)  # 序列化参数
-		params['w_rid'] = md5((query + mixinKey).encode()).hexdigest()  # 计算 w_rid
-		return params
+    def localProxy(self, params):
+        if params.get('type') == "mpd":
+            return self.proxyMpd(params)
+        elif params.get('type') == "media":
+            return self.proxyMedia(params)
+        return None
 
-	retry = 0
-	header = {
-		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36",
-		"Referer": "https://www.bilibili.com"
-	}
+    def proxyMpd(self, params):
+        content, dashinfos, mediaType = self.getDash(params)
+        
+        if mediaType == 'mpd':
+            return [200, "application/dash+xml", content]
+        else:
+            # 处理mp4直链
+            url = content
+            if dashinfos and 'durl' in dashinfos and dashinfos['durl']:
+                durl = dashinfos['durl'][0]
+                url_list = [durl.get('url', '')]
+                if 'backup_url' in durl:
+                    url_list.extend(durl['backup_url'])
+                
+                for u in url_list:
+                    if 'mcdn.bilivideo.cn' not in u:
+                        url = u
+                        break
+            
+            header = self.header.copy()
+            if 'range' in params:
+                header['Range'] = params['range']
+            
+            if '127.0.0.1:7777' in url:
+                header["Location"] = url
+                return [302, "video/MP2T", None, header]
+            
+            r = requests.get(url, headers=header, stream=True, timeout=10)
+            return [206, "application/octet-stream", r.content]
 
+    def proxyMedia(self, params, forceRefresh=False):
+        _, dashinfos, _ = self.getDash(params)
+        
+        # 确定是视频还是音频
+        if 'videoid' in params:
+            videoid = int(params['videoid'])
+            if 'video' in dashinfos and videoid < len(dashinfos['video']):
+                dashinfo = dashinfos['video'][videoid]
+        elif 'audioid' in params:
+            audioid = int(params['audioid'])
+            if 'audio' in dashinfos and audioid < len(dashinfos['audio']):
+                dashinfo = dashinfos['audio'][audioid]
+        else:
+            return [404, "text/plain", ""]
+        
+        # 选择最佳URL
+        url_list = [dashinfo.get('baseUrl', '')]
+        if 'backupUrl' in dashinfo:
+            url_list.extend(dashinfo['backupUrl'])
+        
+        url = ''
+        for u in url_list:
+            if 'mcdn.bilivideo.cn' not in u:
+                url = u
+                break
+        
+        if not url:
+            return [404, "text/plain", ""]
+        
+        header = self.header.copy()
+        if 'range' in params:
+            header['Range'] = params['range']
+        
+        r = requests.get(url, headers=header, stream=True, timeout=10)
+        return [206, "application/octet-stream", r.content]
+
+    def getDash(self, params, forceRefresh=False):
+        aid = params.get('aid', '')
+        cid = params.get('cid', '')
+        url = unquote(params.get('url', ''))
+        thread = params.get('thread', '0')
+        
+        cache_key = f'bilivdmpdcache_{aid}_{cid}'
+        if not forceRefresh:
+            cached = self.getCache(cache_key)
+            if cached:
+                return cached.get('content', ''), cached.get('dashinfos', {}), cached.get('type', '')
+        
+        # 获取cookie
+        try:
+            cookieDict = json.loads(params.get('cookies', '{}'))
+        except:
+            cookieDict = {}
+        
+        # 请求数据
+        try:
+            r = self.fetch(url, cookies=cookieDict, headers=self.header, timeout=5)
+            data = r.json()
+        except:
+            return '', {}, ''
+        
+        if data.get('code') != 0:
+            return '', {}, ''
+        
+        # 非dash格式（mp4直链）
+        if 'dash' not in data.get('data', {}):
+            durl = data['data'].get('durl', [])
+            if not durl:
+                return '', {}, ''
+            
+            purl = durl[0].get('url', '')
+            if not purl:
+                return '', {}, ''
+            
+            # 解析过期时间
+            expiresAt = int(time.time()) + 600
+            match = re.search(r'deadline=(\d+)', purl)
+            if match:
+                expiresAt = int(match.group(1)) - 60
+            
+            # 线程代理
+            if thread != '0':
+                try:
+                    self.fetch('http://127.0.0.1:7777', timeout=2)
+                except:
+                    self.fetch('http://127.0.0.1:9978/go', timeout=2)
+                purl = f'http://127.0.0.1:7777?url={quote(purl)}&thread={thread}'
+            
+            cache_data = {
+                'content': purl,
+                'type': 'mp4',
+                'dashinfos': data['data'],
+                'expiresAt': expiresAt
+            }
+            self.setCache(cache_key, cache_data)
+            return purl, data['data'], 'mp4'
+        
+        # dash格式
+        dashinfos = data['data']['dash']
+        duration = dashinfos.get('duration', 0)
+        minBufferTime = dashinfos.get('minBufferTime', '1')
+        
+        # 构建MPD
+        video_reps = ''
+        audio_reps = ''
+        deadline_list = []
+        
+        # 视频轨
+        for idx, video in enumerate(dashinfos.get('video', [])):
+            # 过期时间
+            deadline = int(time.time()) + 600
+            match = re.search(r'deadline=(\d+)', video.get('baseUrl', ''))
+            if match:
+                deadline = int(match.group(1))
+            deadline_list.append(deadline)
+            
+            # 代理URL
+            baseUrl = f'http://127.0.0.1:9978/proxy?do=py&type=media&cookies={quote(json.dumps(cookieDict))}&url={quote(url)}&aid={aid}&cid={cid}&videoid={idx}'
+            
+            video_reps += f"""      <Representation bandwidth="{video.get('bandwidth', 0)}" codecs="{video.get('codecs', '')}" frameRate="{video.get('frameRate', '30')}" height="{video.get('height', 0)}" id="{video.get('id', '')}" width="{video.get('width', 0)}">
+        <BaseURL>{baseUrl}</BaseURL>
+        <SegmentBase indexRange="{video.get('SegmentBase', {}).get('indexRange', '')}">
+          <Initialization range="{video.get('SegmentBase', {}).get('Initialization', '')}"/>
+        </SegmentBase>
+      </Representation>\n"""
+        
+        # 音轨
+        for idx, audio in enumerate(dashinfos.get('audio', [])):
+            # 过期时间
+            deadline = int(time.time()) + 600
+            match = re.search(r'deadline=(\d+)', audio.get('baseUrl', ''))
+            if match:
+                deadline = int(match.group(1))
+            deadline_list.append(deadline)
+            
+            # 代理URL
+            baseUrl = f'http://127.0.0.1:9978/proxy?do=py&type=media&cookies={quote(json.dumps(cookieDict))}&url={quote(url)}&aid={aid}&cid={cid}&audioid={idx}'
+            
+            audio_reps += f"""      <Representation audioSamplingRate="44100" bandwidth="{audio.get('bandwidth', 0)}" codecs="{audio.get('codecs', '')}" id="{audio.get('id', '')}">
+        <BaseURL>{baseUrl}</BaseURL>
+        <SegmentBase indexRange="{audio.get('SegmentBase', {}).get('indexRange', '')}">
+          <Initialization range="{audio.get('SegmentBase', {}).get('Initialization', '')}"/>
+        </SegmentBase>
+      </Representation>\n"""
+        
+        # 构建完整MPD
+        mpd = f"""<?xml version="1.0" encoding="UTF-8"?>
+<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" profiles="urn:mpeg:dash:profile:isoff-on-demand:2011" type="static" mediaPresentationDuration="PT{duration}S" minBufferTime="PT{minBufferTime}S">
+  <Period>
+    <AdaptationSet mimeType="video/mp4" startWithSAP="1" scanType="progressive" segmentAlignment="true">
+{video_reps.strip()}
+    </AdaptationSet>
+    <AdaptationSet mimeType="audio/mp4" startWithSAP="1" segmentAlignment="true" lang="und">
+{audio_reps.strip()}
+    </AdaptationSet>
+  </Period>
+</MPD>"""
+        
+        expiresAt = min(deadline_list) - 60 if deadline_list else int(time.time()) + 600
+        cache_data = {
+            'type': 'mpd',
+            'content': mpd.replace('&', '&amp;'),
+            'dashinfos': dashinfos,
+            'expiresAt': expiresAt
+        }
+        self.setCache(cache_key, cache_data)
+        
+        return mpd.replace('&', '&amp;'), dashinfos, 'mpd'
+
+    def _getUserId(self, cookies):
+        """获取用户ID"""
+        try:
+            url = 'http://api.bilibili.com/x/space/myinfo'
+            r = self.fetch(url, cookies=cookies, headers=self.header, timeout=5)
+            data = r.json()
+            if data.get('code') == 0:
+                return data['data'].get('mid')
+        except:
+            return None
+        return None
+
+    def encWbi(self, params, imgKey, subKey):
+        """WBI签名算法"""
+        mixinKeyEncTab = [
+            46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35, 27, 43, 5, 49, 33, 9, 42, 19, 29, 28, 14,
