@@ -12,7 +12,6 @@
 {"key":"NYa","name":"🌐NYA|EMBY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/emby.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":{"server":"https://emby.bangumi.ca:443","username":"tangsan","password":"tangsan","proxy":"","thread":0,"device_name":"MyComputer","client":"HillsWindows","client_version":"0.2.2","device_id":"a9f74849-83d5-4a28-8b85-a087af1402e3"}},
 
 {"key":"Bili¹","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"name":"🎉Bili","key":"Bili²","type":3,"api":"csp_BiliAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"json":"https://gitee.com/amg99/tvjson/raw/master/spider/json/bili.json","cookie":""}},
 {"name":"🎉Bili|合集","key":"Bili","type":3,"api":"csp_BiliAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"json":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/bili.json","cookie":""}},
 {"name":"🥔瓜子|秒播","key":"Guazi","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/guazi.json"},
 {"name":"☕韩剧|秒播","key":"Hxq","type":3,"api":"csp_HxqAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
