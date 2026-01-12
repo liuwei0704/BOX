@@ -1,6 +1,6 @@
-🍀20260111更新🍀,#genre#
+🍀20260112更新🍀,#genre#
 更新說明,https://live.ottiptv.cc/huya/13303478
-更新斗魚直播,https://live.ottiptv.cc/huya/15152155
+日常更新,https://live.ottiptv.cc/huya/15152155
 設定內直播,https://live.ottiptv.cc/douyu/9986305
 小房子可切換,https://live.ottiptv.cc/huya/593667
 其他線路,https://live.ottiptv.cc/huya/16739452
@@ -49,7 +49,7 @@ DAZN2,http://220.134.196.147:9119/http/59.120.8.187:8078/hls/26/80/esport2.m3u8
 智林體育,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=4gtv-4gtv101
 時尚運動X,http://breezy-audrie-zspace-7524863c.koyeb.app/live?token=leifeng&id=4gtv-4gtv014
 
-🇹🇼台灣電視¹🆙,#genre#
+🇹🇼台灣電視,#genre#
 民视,rtmp://f13h.mine.nu/sat/tv051
 台视,rtmp://f13h.mine.nu/sat/tv071
 中视,rtmp://f13h.mine.nu/sat/tv091
