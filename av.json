@@ -5,6 +5,7 @@
 
 "sites":[
 {"key":"采集集合","name":"🔥采集集合丨T4","type":4,"api":"http://zhangqun1818.serv00.net/cj/cjjh.php","style":{"type":"rect","ratio":0.85},"searchable":1,"changeable":1,"ext":"2"},
+{"key":"Live","name":"SCLive","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_stripchat.py","searchable":1,"filterable":0,"changeable":0},
 
 {"key":"麻豆JS","name":"麻豆","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/麻豆.min.js","searchable":1,"quickSearch":1,"filterable":0,"changeable":0,"ext":[]},
 {"key":"樱花JS","name":"樱花","type":3,"api":"https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/樱花视频.min.js","searchable":1,"quickSearch":1,"filterable":0,"changeable":0,"ext":[]},
@@ -48,9 +49,7 @@
 {"key":"MemoJav","name":"MemoJav","type":3,"api":"csp_XBPQ","searchable":0,"quickSearch":1,"filterable":1,"ext":{"分类url":"https://memojav.com/{cateId}/page-{catePg}","直接播放": "1","图片": "src=\"&&\"","分类":"熱門$best#新片$video"}},
 
 {"key":"php_server","name": "❗PHP爬虫┃測試","type": 3,"api": "csp_PhpServer","searchable": 1,"quickSearch": 1,"filterable": 1,"jar": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/php.jar"},
-{"key":"KBJ直播","name":"KBJ直播","type":3,"api":"csp_XBPQ","style":{"ratio":1.7},"ext":{"作者":"魔法少女","click":"tab-link active about","分类url":"https://sexkbj.com/category/{cateId}/page/{catePg}/?filter={by};;z","分类":"韩国BJ$korean-bj#优质节目$premium#自媒体$afreecatv#韩国业余$korean-amateur","主页url":"https://sexkbj.com/","数组":"data-post-id&&</article>","标题":"title=\"&&\"","副标题":"duration\">*>*>&&</span","图片":"data-src=\"&&\"","链接":"href=\"&&\"","链接前缀":"https://sexkbj.com","搜索url":"https://sexkbj.com/page/{pg}/?s={wd}","搜索数组":"article&&</article>","搜索标题":"title=\"&&\"","搜索图片":"data-src=\"&&\"","搜索链接":"href=\"&&\"","搜索链接前缀":"https://sexkbj.com","嗅探词":".m3u8","排序":"最新视频&最多观看&长视频&随机视频","排序值":"latest&most-viewed&longest&random"}},
 {"key":"熊猫","name":"LIVE(韩)","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/熊猫.py","searchable":1,"filterable":0,"changeable":0},
-{"key":"Live","name":"LIVE¹","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_stripchat.py","searchable":1,"filterable":0,"changeable":0},
 {"key":"直播","name":"裸聊直播","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_色播聚合.py","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
 {"key":"ss直播","name":"ss直播","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/ss直播.js"},
 
