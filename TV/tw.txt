@@ -1400,8 +1400,8 @@ playerType=2
 松視3台,http://15.204.105.50:25461/G2s9zK2n9m/xDtwVfWM8T/90
 
 🔞18+频道_888,#genre#
-parse=1
-playerType=2
+parse=0
+playerType=1
 极限电影台,http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/987.ts
 潘多拉完美台,http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/981.ts
 松视1台,http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/984.ts
