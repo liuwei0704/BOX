@@ -91,206 +91,206 @@ BBCnew,http://125.227.210.55:8165/VideoInput/play.ts
 CNNnew,http://125.227.210.55:8166/VideoInput/play.ts
 
 🇹🇼台灣測試,#genre#
-民视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/156.ts
-中视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/159.ts
-华视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/158.ts
-台视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/157.ts
-公视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/160.ts
-中天综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/175.ts
-中天娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/176.ts
-中天亚洲台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/177.ts
-东森综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/178.ts
-东森戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/180.ts
-TVBS 综合 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/182.ts
-TVBS 欢乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/183.ts
-TVBS 精采台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/184.ts
-TVBS 台剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/186.ts
-TVBS 综艺台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/185.ts
-三立综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/187.ts
-三立台湾台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/188.ts
-三立戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/190.ts
-三立都会台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/189.ts
-中视经典台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/196.ts
-中视菁采台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/197.ts
-民视台湾台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/192.ts
-民视影剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/194.ts
-民视旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/195.ts
-民视第一台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/191.ts
-民视综艺台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/193.ts
-台视综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/198.ts
-公视3 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/200.ts
-公视台语台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/199.ts
-公视戏剧 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/201.ts
-HBO Family (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/204.ts
-HBO Hits (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/205.ts
-HBO Signature (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/203.ts
-HBO LOGO (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/206.ts
-CINEMAX (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/207.ts
-影迷数位纪实台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/214.ts
-CI 罪案侦查频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/213.ts
-Cinema World (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/215.ts
-CNEX 视纳华仁纪实频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/217.ts
-HITS频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/212.ts
-Lifetime娱乐频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/223.ts
-tvN (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/224.ts
-纬来综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/229.ts
-纬来戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/230.ts
-纬来日本台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/227.ts
-纬来精彩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/232.ts
-纬来育乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/228.ts
-龙华偶像台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/236.ts
-龙华卡通台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/239.ts
-龙华戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/235.ts
-龙华日韩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/234.ts
-八大综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/241.ts
-八大娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/245.ts
-八大戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/242.ts
-八大第一台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/244.ts
-八大精彩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/240.ts
-八大综艺台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/243.ts
-ELTA 爱尔达娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/252.ts
-ELTA 爱尔达影剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/248.ts
-ELTA 爱尔达日韩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/250.ts
-ELTA 爱尔达生活旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/251.ts
-ELTA 爱尔达综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/249.ts
-靖天综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/279.ts
-靖天卡通台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/277.ts
-靖天戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/275.ts
-靖天日本台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/280.ts
-靖天映画台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/281.ts
-靖天欢乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/284.ts
-靖天育乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/283.ts
-靖天资讯台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/285.ts
-靖洋戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/276.ts
-靖洋卡通Nice Bingo,http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/278.ts
-KLT-靖天国际 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/286.ts
-探索频道 Discovery Channel  (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/287.ts
-探索亚洲 Discovery Asia (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/288.ts
-探索动力 Discovery DMAX (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/290.ts
-探索科学 Discovery Science (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/289.ts
-历史频道 2HISTORY 2 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/293.ts
-历史频道 History (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/292.ts
-国家地理 National Geographic (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/294.ts
-动物星球 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/295.ts
-亚洲美食频道 Asian Food Network (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/300.ts
-Discovery EVE (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/291.ts
-Smart 知识台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/331.ts
-TLC 旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/298.ts
-Love Nature (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/296.ts
-BBC Earth (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/304.ts
-BBC Lifestyle (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/305.ts
-Asia 亚洲旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/297.ts
-Travel Channel 旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/299.ts
-居家乐活频道 HGTV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/303.ts
-美食星球 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/301.ts
-幸福空间居家台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/347.ts
-东森幼幼台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/308.ts
-卡通频道 CN (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/314.ts
-卡通台 Cartoonito (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/318.ts
-达文西频道 DaVinCi (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/316.ts
-梦工厂动画 Dreamworks (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/317.ts
-尼克儿童频道 Nickelodeon (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/312.ts
-MOMO 亲子台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/313.ts
-Animax 卡通 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/310.ts
-BBC Cbeebies (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/319.ts
-Baby TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/320.ts
-Boomerang (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/309.ts
-Nick Jr.儿童频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/311.ts
-爱放动漫台 I-Fun (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/315.ts
-经典卡通台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/360.ts
-高点综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/324.ts
-JET 综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/322.ts
-MOMO 综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/321.ts
-ETtoday 综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/367.ts
-EYE 戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/307.ts
-EYE 旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/306.ts
-ROCK Action (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/328.ts
-ROCK Entertainment (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/327.ts
-ROCK Extreme (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/329.ts
-Z频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/339.ts
-东风卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/340.ts
-彩昌影剧 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/355.ts
-华艺中文台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/345.ts
-台湾戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/325.ts
-无线卫星亚洲台 TVBS Asia (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/332.ts
-INULTRA (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/363.ts
-Fashion TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/341.ts
-Fun 探索娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/356.ts
-Global Trekker (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/333.ts
-Channel V 音乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/357.ts
-LUXE TV Channel (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/362.ts
-Mezzo Live (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/343.ts
-Moonbug (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/364.ts
-年代MUCH台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/358.ts
-电影原声台 CMusic (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/326.ts
-音乐频道 MTV Live (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/344.ts
-MTV Asia (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/330.ts
-TRACE Urban (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/342.ts
-猪哥亮歌厅秀 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/354.ts
-古典乐 CLASSICA (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/348.ts
-GINX Esports TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/334.ts
-博斯 Pace Sport (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/365.ts
-时尚运动X (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/346.ts
-环球旅行家 Globetrotter (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/302.ts
-生活時尚 TV5MONDE STYLE (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/361.ts
-金光布袋戏 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/352.ts
-霹雳台湾台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/351.ts
-阿里郎频道 Arirang (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/350.ts
-韩国娱乐台 (TW) KMTV,http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/349.ts
-麦哲伦频道 Magellan TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/366.ts
-原住民族电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/381.ts
-客家电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/380.ts
-国会频道 1 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/393.ts
-国会频道 2 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/394.ts
-国兴卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/338.ts
-东森购物1台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/375.ts
-东森购物2台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/376.ts
-东森购物3台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/377.ts
-东森购物5台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/378.ts
-东森超视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/374.ts
-大爱电视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/396.ts
-大爱二台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/397.ts
-好消息 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/401.ts
-好消息2台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/402.ts
-华藏卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/398.ts
-人间卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/395.ts
-十方法界 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/400.ts
-希望频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/405.ts
-诚心电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/403.ts
-生命电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/404.ts
-无上师电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/399.ts
-NHK WORLD JAPAN (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/388.ts
-ELTV生活英语台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/392.ts
-LiveABC互动英语频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/391.ts
-Cinemax H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/430.ts
-JET 综合台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/408.ts
-MOMO 综合台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/436.ts
-MOMO 亲子台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/435.ts
-TVBS H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/412.ts
-TVBS 欢乐台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/413.ts
-东森幼幼 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/414.ts
-东森戏剧 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/416.ts
-东森综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/415.ts
-东森财经 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/417.ts
-中天娱乐 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/411.ts
-中天综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/410.ts
-三立新闻 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/418.ts
-三立台湾台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/419.ts
-三立都会台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/420.ts
-国兴卫视 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/431.ts
-壹新闻台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/407.ts
-年代新闻台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/406.ts
-年代MUCH台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/434.ts
-纬来戏剧 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/426.ts
-纬来日本 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/427.ts
-纬来综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/425.ts
-纬来育乐 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/428.ts
-八大综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/421.ts
-八大戏剧 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/423.ts
-八大第一 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/422.ts
-动物星球 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/433.ts
-TLC 旅遊生活台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/432.ts
-TaiWan Plus H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/27685935/437.ts
+民视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/156.ts
+中视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/159.ts
+华视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/158.ts
+台视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/157.ts
+公视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/160.ts
+中天综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/175.ts
+中天娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/176.ts
+中天亚洲台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/177.ts
+东森综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/178.ts
+东森戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/180.ts
+TVBS 综合 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/182.ts
+TVBS 欢乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/183.ts
+TVBS 精采台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/184.ts
+TVBS 台剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/186.ts
+TVBS 综艺台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/185.ts
+三立综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/187.ts
+三立台湾台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/188.ts
+三立戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/190.ts
+三立都会台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/189.ts
+中视经典台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/196.ts
+中视菁采台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/197.ts
+民视台湾台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/192.ts
+民视影剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/194.ts
+民视旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/195.ts
+民视第一台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/191.ts
+民视综艺台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/193.ts
+台视综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/198.ts
+公视3 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/200.ts
+公视台语台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/199.ts
+公视戏剧 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/201.ts
+HBO Family (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/204.ts
+HBO Hits (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/205.ts
+HBO Signature (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/203.ts
+HBO LOGO (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/206.ts
+CINEMAX (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/207.ts
+影迷数位纪实台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/214.ts
+CI 罪案侦查频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/213.ts
+Cinema World (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/215.ts
+CNEX 视纳华仁纪实频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/217.ts
+HITS频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/212.ts
+Lifetime娱乐频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/223.ts
+tvN (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/224.ts
+纬来综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/229.ts
+纬来戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/230.ts
+纬来日本台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/227.ts
+纬来精彩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/232.ts
+纬来育乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/228.ts
+龙华偶像台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/236.ts
+龙华卡通台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/239.ts
+龙华戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/235.ts
+龙华日韩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/234.ts
+八大综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/241.ts
+八大娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/245.ts
+八大戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/242.ts
+八大第一台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/244.ts
+八大精彩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/240.ts
+八大综艺台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/243.ts
+ELTA 爱尔达娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/252.ts
+ELTA 爱尔达影剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/248.ts
+ELTA 爱尔达日韩台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/250.ts
+ELTA 爱尔达生活旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/251.ts
+ELTA 爱尔达综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/249.ts
+靖天综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/279.ts
+靖天卡通台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/277.ts
+靖天戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/275.ts
+靖天日本台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/280.ts
+靖天映画台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/281.ts
+靖天欢乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/284.ts
+靖天育乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/283.ts
+靖天资讯台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/285.ts
+靖洋戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/276.ts
+靖洋卡通Nice Bingo,http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/278.ts
+KLT-靖天国际 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/286.ts
+探索频道 Discovery Channel  (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/287.ts
+探索亚洲 Discovery Asia (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/288.ts
+探索动力 Discovery DMAX (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/290.ts
+探索科学 Discovery Science (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/289.ts
+历史频道 2HISTORY 2 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/293.ts
+历史频道 History (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/292.ts
+国家地理 National Geographic (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/294.ts
+动物星球 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/295.ts
+亚洲美食频道 Asian Food Network (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/300.ts
+Discovery EVE (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/291.ts
+Smart 知识台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/331.ts
+TLC 旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/298.ts
+Love Nature (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/296.ts
+BBC Earth (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/304.ts
+BBC Lifestyle (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/305.ts
+Asia 亚洲旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/297.ts
+Travel Channel 旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/299.ts
+居家乐活频道 HGTV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/303.ts
+美食星球 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/301.ts
+幸福空间居家台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/347.ts
+东森幼幼台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/308.ts
+卡通频道 CN (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/314.ts
+卡通台 Cartoonito (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/318.ts
+达文西频道 DaVinCi (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/316.ts
+梦工厂动画 Dreamworks (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/317.ts
+尼克儿童频道 Nickelodeon (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/312.ts
+MOMO 亲子台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/313.ts
+Animax 卡通 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/310.ts
+BBC Cbeebies (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/319.ts
+Baby TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/320.ts
+Boomerang (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/309.ts
+Nick Jr.儿童频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/311.ts
+爱放动漫台 I-Fun (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/315.ts
+经典卡通台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/360.ts
+高点综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/324.ts
+JET 综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/322.ts
+MOMO 综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/321.ts
+ETtoday 综合台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/367.ts
+EYE 戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/307.ts
+EYE 旅游台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/306.ts
+ROCK Action (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/328.ts
+ROCK Entertainment (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/327.ts
+ROCK Extreme (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/329.ts
+Z频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/339.ts
+东风卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/340.ts
+彩昌影剧 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/355.ts
+华艺中文台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/345.ts
+台湾戏剧台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/325.ts
+无线卫星亚洲台 TVBS Asia (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/332.ts
+INULTRA (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/363.ts
+Fashion TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/341.ts
+Fun 探索娱乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/356.ts
+Global Trekker (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/333.ts
+Channel V 音乐台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/357.ts
+LUXE TV Channel (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/362.ts
+Mezzo Live (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/343.ts
+Moonbug (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/364.ts
+年代MUCH台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/358.ts
+电影原声台 CMusic (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/326.ts
+音乐频道 MTV Live (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/344.ts
+MTV Asia (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/330.ts
+TRACE Urban (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/342.ts
+猪哥亮歌厅秀 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/354.ts
+古典乐 CLASSICA (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/348.ts
+GINX Esports TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/334.ts
+博斯 Pace Sport (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/365.ts
+时尚运动X (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/346.ts
+环球旅行家 Globetrotter (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/302.ts
+生活時尚 TV5MONDE STYLE (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/361.ts
+金光布袋戏 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/352.ts
+霹雳台湾台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/351.ts
+阿里郎频道 Arirang (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/350.ts
+韩国娱乐台 (TW) KMTV,http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/349.ts
+麦哲伦频道 Magellan TV (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/366.ts
+原住民族电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/381.ts
+客家电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/380.ts
+国会频道 1 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/393.ts
+国会频道 2 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/394.ts
+国兴卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/338.ts
+东森购物1台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/375.ts
+东森购物2台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/376.ts
+东森购物3台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/377.ts
+东森购物5台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/378.ts
+东森超视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/374.ts
+大爱电视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/396.ts
+大爱二台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/397.ts
+好消息 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/401.ts
+好消息2台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/402.ts
+华藏卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/398.ts
+人间卫视 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/395.ts
+十方法界 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/400.ts
+希望频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/405.ts
+诚心电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/403.ts
+生命电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/404.ts
+无上师电视台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/399.ts
+NHK WORLD JAPAN (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/388.ts
+ELTV生活英语台 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/392.ts
+LiveABC互动英语频道 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/391.ts
+Cinemax H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/430.ts
+JET 综合台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/408.ts
+MOMO 综合台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/436.ts
+MOMO 亲子台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/435.ts
+TVBS H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/412.ts
+TVBS 欢乐台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/413.ts
+东森幼幼 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/414.ts
+东森戏剧 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/416.ts
+东森综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/415.ts
+东森财经 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/417.ts
+中天娱乐 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/411.ts
+中天综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/410.ts
+三立新闻 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/418.ts
+三立台湾台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/419.ts
+三立都会台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/420.ts
+国兴卫视 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/431.ts
+壹新闻台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/407.ts
+年代新闻台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/406.ts
+年代MUCH台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/434.ts
+纬来戏剧 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/426.ts
+纬来日本 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/427.ts
+纬来综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/425.ts
+纬来育乐 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/428.ts
+八大综合 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/421.ts
+八大戏剧 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/423.ts
+八大第一 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/422.ts
+动物星球 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/433.ts
+TLC 旅遊生活台 H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/432.ts
+TaiWan Plus H265 (TW),http://iptvpro.pw:35451/live/加QQ群1077202079/33596872/437.ts
 
 🇹🇼卡通動漫,#genre#
 動漫輪播-貓和老鼠,https://live.ottiptv.cc/huya/11352879
