@@ -1,5 +1,7 @@
 {
 "spider":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/WvSpider.jar",
+"wallpaper":"https://深色壁纸.xxooo.cf/",
+"logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 "sites":[
 {"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
