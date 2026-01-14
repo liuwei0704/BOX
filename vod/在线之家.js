@@ -1,8 +1,8 @@
 /**
  * 在线之家 (zxzjys.com) 爬虫
  * 适配模板：低端影视.js
- * 版本：2.0
- * 最后更新：2026-01-13, 适配 WvSpider 版本 写法
+ * 版本：2.1
+ * 最后更新：2026-01-14, 修复图片获取问题
  * 
  * @config
  * debug: true
@@ -123,33 +123,78 @@ async function action(actionStr) {
 /* ---------------- 工具函数 ---------------- */
 
 /**
- * 提取视频列表 (提取+补全+替换)
+ * 提取视频列表 (修复图片获取逻辑)
  */
 function parseVideoList(document) {
-    const boxes = Array.from(document.querySelectorAll('.stui-vodlist__item, .stui-vodlist li'));
+    const boxes = Array.from(document.querySelectorAll('.stui-vodlist__item, .stui-vodlist li, ul.stui-vodlist__media li'));
     const list = boxes.map(box => {
-        const thumbEl = box.querySelector('.stui-vodlist__thumb, .pic');
-        const titleEl = box.querySelector('.title a') || thumbEl;
-        const remarksEl = box.querySelector('.pic-text');
+        const thumbEl = box.querySelector('.stui-vodlist__thumb, .pic, a.stui-vodlist__thumb');
+        const titleEl = box.querySelector('.title a') || box.querySelector('a.title') || thumbEl;
+        const remarksEl = box.querySelector('.pic-text, .stui-vodlist__pic-text');
 
         // ID 提取与补全
         let vodId = thumbEl?.getAttribute('href') || '';
+        if (!vodId && titleEl) vodId = titleEl.getAttribute('href') || '';
         if (vodId && !vodId.startsWith('http')) {
             vodId = baseUrl + (vodId.startsWith('/') ? '' : '/') + vodId;
         }
 
-        // 图片提取与协议/路径替换修复
-        let vodPic = thumbEl?.getAttribute('data-original') || 
-                     thumbEl?.style.backgroundImage?.match(/url\(["']?([^"')]+)["']?\)/)?.[1] || '';
-        if (vodPic && vodPic.startsWith('//')) vodPic = 'https:' + vodPic;
-        else if (vodPic && !vodPic.startsWith('http')) vodPic = baseUrl + (vodPic.startsWith('/') ? '' : '/') + vodPic;
+        // 图片提取 - 多种尝试方案
+        let vodPic = '';
+        
+        // 方案1: 直接获取img标签的src或data-original
+        const imgEl = box.querySelector('img');
+        if (imgEl) {
+            vodPic = imgEl.getAttribute('data-original') || 
+                     imgEl.getAttribute('data-src') || 
+                     imgEl.getAttribute('src') || 
+                     imgEl.getAttribute('_src') || '';
+        }
+        
+        // 方案2: 从背景图片中提取
+        if (!vodPic && thumbEl) {
+            const style = thumbEl.getAttribute('style') || thumbEl.style.backgroundImage;
+            if (style) {
+                const match = style.match(/url\(["']?([^"')]+)["']?\)/);
+                if (match) vodPic = match[1];
+            }
+        }
+        
+        // 方案3: 从data-original属性获取
+        if (!vodPic) {
+            vodPic = thumbEl?.getAttribute('data-original') || 
+                     thumbEl?.getAttribute('data-src') || '';
+        }
+
+        // 图片URL处理
+        if (vodPic) {
+            if (vodPic.startsWith('//')) {
+                vodPic = 'https:' + vodPic;
+            } else if (vodPic.startsWith('/')) {
+                vodPic = baseUrl + vodPic;
+            } else if (!vodPic.startsWith('http')) {
+                vodPic = baseUrl + '/' + vodPic;
+            }
+            
+            // 移除可能的URL参数中的尺寸限制
+            vodPic = vodPic.replace(/_\d+x\d+\./g, '.');
+        }
+
+        // 标题提取
+        let vodName = '';
+        if (titleEl) {
+            vodName = titleEl.getAttribute('title') || titleEl.textContent?.trim() || '';
+        }
+        if (!vodName && imgEl) {
+            vodName = imgEl.getAttribute('alt') || imgEl.getAttribute('title') || '';
+        }
 
         return {
-            vod_name:   thumbEl?.getAttribute('title') || titleEl?.textContent?.trim() || '',
-            vod_pic:    vodPic,
+            vod_name: vodName || '',
+            vod_pic: vodPic,
             vod_remarks: remarksEl?.textContent?.trim() || '',
-            vod_id:    vodId,
-            vod_actor: box.querySelector('.text')?.textContent?.trim() || ''
+            vod_id: vodId,
+            vod_actor: box.querySelector('.text, .stui-vodlist__detail p')?.textContent?.trim() || ''
         };
     }).filter(it => it.vod_id);
 
@@ -161,22 +206,27 @@ function parseVideoList(document) {
  */
 function parseDetailPage(document) {
     const title = document.querySelector('.stui-content__detail .title')?.textContent.trim() || '';
-    const vod_pic = document.querySelector('.stui-content__thumb img')?.getAttribute('data-original') || document.querySelector('.stui-content__thumb img')?.src || '';
+    const vod_pic = document.querySelector('.stui-content__thumb img')?.getAttribute('data-original') || 
+                    document.querySelector('.stui-content__thumb img')?.getAttribute('src') || '';
     
     // 提取并清洗详情数据 (去除前缀标签)
-    const infoElements = Array.from(document.querySelectorAll('.stui-content__detail .data'));
-    const findInfo = (tag) => infoElements.find(el => el.textContent.includes(tag))?.textContent.replace(tag, '').replace(/[:：]/g, '').trim() || '';
+    const infoElements = Array.from(document.querySelectorAll('.stui-content__detail .data, .stui-content__detail p'));
+    const findInfo = (tag) => {
+        const el = infoElements.find(el => el.textContent.includes(tag));
+        if (!el) return '';
+        return el.textContent.replace(tag, '').replace(/[:：]/g, '').trim();
+    };
 
     const vod_year = findInfo('年份');
     const vod_area = findInfo('地区');
     const vod_actor = findInfo('主演');
     const vod_director = findInfo('导演');
-    const vod_remarks = findInfo('更新');
+    const vod_remarks = findInfo('更新') || findInfo('状态');
     const vod_content = document.querySelector('.detail-content')?.textContent.trim() || 
-                        document.querySelector('.detail-sketch')?.textContent.trim() || '';
+                        document.querySelector('.detail-sketch')?.textContent.trim() || 
+                        document.querySelector('.stui-content__desc')?.textContent.trim() || '';
 
     // 播放线路合并逻辑
-    // 逻辑：将不同 Tab 的线路名存入 froms，将对应列表存入 urls，最后用 $$$ 合并输出
     const tabEls = Array.from(document.querySelectorAll('.nav-tabs li a'));
     const playlistEls = Array.from(document.querySelectorAll('.stui-content__playlist'));
     
@@ -187,8 +237,9 @@ function parseDetailPage(document) {
         const fromName = tabEls[index]?.textContent.trim() || `线路${index + 1}`;
         const links = Array.from(ul.querySelectorAll('li a')).map(a => {
             let href = a.getAttribute('href');
-            if (href && !href.startsWith('http')) href = baseUrl + href;
-            return `${a.textContent.trim()}$${href}`;
+            if (href && !href.startsWith('http')) href = baseUrl + (href.startsWith('/') ? '' : '/') + href;
+            const episodeName = a.textContent.trim();
+            return `${episodeName}$${href}`;
         });
 
         if (links.length > 0) {
@@ -212,7 +263,3 @@ function parseDetailPage(document) {
         vod_play_url: playUrls.join('$$$')
     }];
 }
-
-/* ---------------- 导出对象 ---------------- */
-const spider = { init, homeContent, homeVideoContent, categoryContent, detailContent, searchContent, playerContent, action };
-spider;
