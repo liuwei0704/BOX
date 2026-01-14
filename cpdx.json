@@ -4,6 +4,7 @@
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 
 "sites":[
+{"key":"js_en_gf","name":"🌐官方采集┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/en_gf.js","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"T4-Youtube1","name":"▶️YT┃短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT┃動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"AI漫劇#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
 
@@ -102,8 +103,8 @@
 {"key":"drpy2_03影院[优]","name":"💠03影院┃DS","type":3,"api":"https://drpy-node-mauve.vercel.app/public/drpy/drpy2.min.js","searchable":1,"filterable":1,"quickSearch":1,"title":"03影院[优]","author":"小可乐/250915/第一版","类型":"影视","lang":"dr2","ext":"https://drpy-node-mauve.vercel.app/js/03影院[优].js"},
 {"key":"drpyS_凡客TV","name":"💠凡客TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":1,"filterable":0,"quickSearch":0,"title":"凡客TV","lang":"ds","ext":""},
 {"key":"drpyS_王子TV","name":"💠王子TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/王子TV","searchable":1,"filterable":1,"quickSearch":0,"title":"王子TV","logo":"https://i-blog.csdnimg.cn/blog_migrate/2621e710a94ab40ba66645d47f296aaf.gif","lang":"ds","ext":""},
+{"key":"drpyS_集百动漫","name":"💠集百动漫┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/集百动漫[漫]","searchable":1,"filterable":0,"quickSearch":0,"title":"集百动漫[漫]","author":"EylinSir/251129/修复版","类型":"影视","lang":"ds","ext":""},
 
-{"key":"js_en_gf","name":"🌠官方采集┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/en_gf.js","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"金牌","name":"🪩金牌┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/金牌.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"界影视","name":"🪩界影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/界影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"4K影视","name":"🪩4K影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/4K影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
