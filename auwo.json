@@ -61,6 +61,8 @@
 {"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"番茄短剧","name":"🔖番茄｜短剧","type":3,"api":"csp_XBPQ","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/XBPQ/番茄短剧.json","jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 
+{"key":"drpyS_55影视","name":"💠55影视┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/55影视?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":1,"title":"55影视","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_999片","name":"💠999片┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/999片?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"999片","author":"EylinSir优化251201","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_小苹果","name":"💠小苹果┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/小苹果[优]","searchable":2,"filterable":1,"quickSearch":0,"title":"小苹果[优]","author":"EylinSir","类型":"影视","lang":"ds","ext":""},
 {"key":"drpy2_03影院","name":"💠03影院┃DS","type":3,"api":"https://drpy-node-mauve.vercel.app/public/drpy/drpy2.min.js","searchable":1,"filterable":1,"quickSearch":1,"title":"03影院[优]","author":"小可乐/250915/第一版","类型":"影视","lang":"dr2","ext":"https://drpy-node-mauve.vercel.app/js/03影院[优].js"},
 {"key":"drpyS_凡客TV","name":"💠凡客TV┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/凡客TV","searchable":1,"filterable":0,"quickSearch":0,"title":"凡客TV","lang":"ds","ext":""},
