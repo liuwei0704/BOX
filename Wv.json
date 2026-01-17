@@ -19,6 +19,7 @@
 {"key":"wv_555ys","name":"Ⓜ️wv|555影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/555影视.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_fktv","name":"Ⓜ️wv|快点播","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/快点播.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_xlys","name":"Ⓜ️wv|修罗影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/修罗影视.js","searchable":1,"filterable":1,"switchable":1},
+{"key":"wv_xykk","name":"Ⓜ️wv|小鴨看看","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/小鴨看看.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_ysp","name":"Ⓜ️wv|央视直播","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/央视频.js"},
 
 {"key":"drpyS_55影视","name":"💠55影视┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/55影视?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":1,"title":"55影视","类型":"影视","lang":"ds","ext":""},
