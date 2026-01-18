@@ -3,10 +3,6 @@
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "logo":"https://icons.iconarchive.com/icons/github/octicons/256/device-camera-video-16-icon.png",
 "sites":[
-{"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
-{"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
-{"key":"Bili¹","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-
 {"key":"wv_3q","name":"Ⓜ️wv|3Q影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/3Q影视.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_ddys","name":"Ⓜ️wv|低端影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/低端影视.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_libvio","name":"Ⓜ️wv|Libvio","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/libvio.js","searchable":1,"filterable":1,"switchable":1},
@@ -22,6 +18,10 @@
 {"key":"wv_xykk","name":"Ⓜ️wv|小鴨看看","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/小鴨看看.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_hrtv","name":"Ⓜ️wv|華人影視","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/華人影視.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_ysp","name":"Ⓜ️wv|央视直播","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/央视频.js"},
+
+{"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
+{"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
+{"key":"Bili¹","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
 {"key":"drpyS_七猫短剧[短]","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧[短]","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_星芽短剧[短]","name":"💠星芽短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"星芽短剧[短]","lang":"ds","ext":""},
@@ -76,6 +76,7 @@
 {"key":"小鸡暴走","name":"🪩小鸡暴走┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小鸡暴走.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"小鸭子看看","name":"🪩小鸭子看看┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小鸭子看看.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"小苹果影视","name":"🪩小苹果影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小苹果影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+
 {"key":"漫国动漫","name":"✴️漫国丨动漫","type":3,"api":"csp_AppSy","ext":{"site":"https://dm-1255775577.cos.ap-guangzhou.myqcloud.com/dmg/api.txt","siteKey":"rectangleadsadxa","listKey":"aassddwwxxllsx1x","parsesKey":"aassddwwxxllsx1x"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"丫丫动漫","name":"✴️丫丫｜动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://tv.yy-fun.cc","dataKey":"qkxnwkfjwpcnwycl","dataIv":"qkxnwkfjwpcnwycl"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 {"key":"冬日动漫","name":"✴️冬日丨动漫","type":3,"quickSearch":1,"api":"csp_AppGet","ext":{"url":"http://www.drdm.fun","dataKey":"qE2nD0rL1lH4uP9r","dataIv":"qE2nD0rL1lH4uP9r"},"jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
