@@ -15,7 +15,7 @@
 {"key":"wv_555ys","name":"Ⓜ️wv|555影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/555影视.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_fktv","name":"Ⓜ️wv|快点播","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/快点播.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_xlys","name":"Ⓜ️wv|修罗影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/修罗影视.js","searchable":1,"filterable":1,"switchable":1},
-{"key":"wv_hrtv","name":"Ⓜ️wv|華人影視","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/華人影視.js","searchable":1,"filterable":1,"switchable":1},
+{"key":"wv_hrtv","name":"Ⓜ️wv|華人影視","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/華人影視.js","searchable":0,"filterable":0,"switchable":0},
 {"key":"wv_ysp","name":"Ⓜ️wv|央视直播","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/央视频.js"},
 
 {"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
