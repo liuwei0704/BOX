@@ -90,7 +90,7 @@ TVBS新聞,http://125.227.210.55:8186/VideoInput/play.ts
 BBCnew,http://125.227.210.55:8165/VideoInput/play.ts
 CNNnew,http://125.227.210.55:8166/VideoInput/play.ts
 
-🇹🇼SMT,#genre#
+🇹🇼台灣SMT,#genre#
 TVBS 歡樂台,http://96.44.160.246:9999/smt.php?id=tvbshuanle_twn
 TVBS HD,http://96.44.160.246:9999/smt.php?id=tvbs
 中天娱乐 CTI Entertaiment,http://96.44.160.246:9999/smt.php?id=ctient
@@ -487,7 +487,8 @@ ELTV娛樂,http://breezy-audrie-zspace-7524863c.koyeb.app/sub?token=leifeng&id=4
 靖天歡樂台,http://breezy-audrie-zspace-7524863c.koyeb.app/sub?token=leifeng&id=4gtv-4gtv054
 靖天育樂台,http://breezy-audrie-zspace-7524863c.koyeb.app/sub?token=leifeng&id=4gtv-4gtv062
 中視菁采台,http://breezy-audrie-zspace-7524863c.koyeb.app/sub?token=leifeng&id=4gtv-4gtv0
-🇹🇼卡通動漫,#genre#
+
+🐯卡通動漫,#genre#
 動漫輪播-貓和老鼠,https://live.ottiptv.cc/huya/11352879
 動漫輪播-虹猫蓝兔七侠传,https://live.ottiptv.cc/huya/22592516
 動漫輪播-鼹鼠的故事,https://live.ottiptv.cc/huya/24614736
