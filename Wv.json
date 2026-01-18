@@ -23,6 +23,14 @@
 {"key":"wv_hrtv","name":"Ⓜ️wv|華人影視","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/華人影視.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_ysp","name":"Ⓜ️wv|央视直播","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/央视频.js"},
 
+{"key":"drpyS_七猫短剧[短]","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_星芽短剧[短]","name":"💠星芽短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"星芽短剧[短]","lang":"ds","ext":""},
+{"key":"drpyS_牛牛短剧[短]","name":"💠牛牛短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/牛牛短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"牛牛短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_番茄短剧[短]","name":"💠番茄短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/番茄短剧[短]?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":0,"title":"番茄短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_西饭短剧[短]","name":"💠西饭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/西饭短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"西饭短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_软鸭短剧[短]","name":"💠软鸭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/软鸭短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"软鸭短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_短剧聚合[短]","name":"💠短剧聚合┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧聚合[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":1,"title":"短剧聚合[短]","author":"EylinSir","类型":"聚合短剧","lang":"ds","ext":""},
+
 {"key":"drpyS_55影视","name":"💠55影视┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/55影视?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":1,"title":"55影视","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_999片","name":"💠999片┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/999片?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"999片","author":"EylinSir优化251201","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_小苹果","name":"💠小苹果┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/小苹果[优]","searchable":2,"filterable":1,"quickSearch":0,"title":"小苹果[优]","author":"EylinSir","类型":"影视","lang":"ds","ext":""},
@@ -33,9 +41,7 @@
 {"key":"drpyS_爱壹帆","name":"💠爱壹帆┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/爱壹帆","searchable":2,"filterable":0,"quickSearch":0,"title":"爱壹帆","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_玖月影视","name":"💠玖月影视┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/玖月影视","searchable":1,"filterable":0,"quickSearch":1,"title":"玖月影视","author":"不告诉你","类型":"影视","logo":"https://i-blog.csdnimg.cn/blog_migrate/2621e710a94ab40ba66645d47f296aaf.gif","lang":"ds","ext":""},
 {"key":"drpyS_永乐视频","name":"💠永乐视频┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/永乐视频[优]","searchable":1,"filterable":1,"quickSearch":1,"title":"永乐视频[优]","类型":"影视","lang":"ds","ext":""},
-
 {"key":"drpyS_Emby","name":"💠Emby┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/Emby[优]","searchable":2,"filterable":0,"quickSearch":1,"title":"Emby[优]","类型":"影视","lang":"ds","ext":""},
-{"key":"NYa","name":"🌐NYA|EMBY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/emby.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1,"ext":{"server":"https://emby.bangumi.ca:443","username":"tangsan","password":"tangsan","proxy":"","thread":0,"device_name":"MyComputer","client":"HillsWindows","client_version":"0.2.2","device_id":"a9f74849-83d5-4a28-8b85-a087af1402e3"}},
 
 {"key":"drpyS_NT动漫","name":"💠NT动漫┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/NT动漫[漫]","searchable":2,"filterable":1,"quickSearch":0,"title":"NT动漫[漫]","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_动漫妖","name":"💠动漫妖┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/动漫妖[漫]","searchable":2,"filterable":1,"quickSearch":1,"title":"动漫妖[漫]","author":"","类型":"动漫","lang":"ds","ext":""},

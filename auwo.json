@@ -61,6 +61,14 @@
 {"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"番茄短剧","name":"🔖番茄｜短剧","type":3,"api":"csp_XBPQ","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/XBPQ/番茄短剧.json","jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
 
+{"key":"drpyS_七猫短剧[短]","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_星芽短剧[短]","name":"💠星芽短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"星芽短剧[短]","lang":"ds","ext":""},
+{"key":"drpyS_牛牛短剧[短]","name":"💠牛牛短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/牛牛短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"牛牛短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_番茄短剧[短]","name":"💠番茄短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/番茄短剧[短]?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":0,"title":"番茄短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_西饭短剧[短]","name":"💠西饭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/西饭短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"西饭短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_软鸭短剧[短]","name":"💠软鸭短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/软鸭短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"软鸭短剧[短]","类型":"影视","lang":"ds","ext":""},
+{"key":"drpyS_短剧聚合[短]","name":"💠短剧聚合┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/短剧聚合[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":1,"title":"短剧聚合[短]","author":"EylinSir","类型":"聚合短剧","lang":"ds","ext":""},
+
 {"key":"drpyS_55影视","name":"💠55影视┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/55影视?pwd=dzyyds","searchable":2,"filterable":0,"quickSearch":1,"title":"55影视","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_999片","name":"💠999片┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/999片?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"999片","author":"EylinSir优化251201","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_小苹果","name":"💠小苹果┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/小苹果[优]","searchable":2,"filterable":1,"quickSearch":0,"title":"小苹果[优]","author":"EylinSir","类型":"影视","lang":"ds","ext":""},
