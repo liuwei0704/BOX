@@ -174,7 +174,7 @@
 {"key":"push_agent","name":"🛴手机┃推送","type":3,"api":"csp_PushGuard","searchable":0,"quickSearch":0,"ext":{"Cloud-drive":"tvfan/Cloud-drive.txt","from":"4k|auto"}}
 ],
 "lives":[
-{"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
+{"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"TV123","type":0,"url":"http://tv123.vvvv.ee/tv.m3u","playerType":2,"ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"JackTV","url":"https://php.946985.filegear-sg.me/jackTV.m3u","header":{"User-Agent":"Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/91.0.4472.124Safari/537.36"}},
 {"name":"港台TV","type":0,"url":"https://githubproxy.cc/https://raw.githubusercontent.com/iamfang2019/AAAAA/refs/heads/main/TW.txt","playerType":2,"ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
