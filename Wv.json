@@ -9,6 +9,7 @@
 {"key":"wv_zxzj","name":"Ⓜ️wv|在线之家","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/在线之家.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_jldj","name":"Ⓜ️wv|锦鲤短剧","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/锦鲤短剧.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_xhjw","name":"Ⓜ️wv|新韩剧网","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/新韩剧网.js","searchable":1,"filterable":1,"switchable":1},
+{"key":"wv_rzjy","name":"Ⓜ️wv|短劇網","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/短劇網.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_jqqzx","name":"Ⓜ️wv|剧圈圈","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/剧圈圈.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_jddzx","name":"Ⓜ️wv|剧多多","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/剧多多.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_aizju","name":"Ⓜ️wv|爱追剧","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/vod/爱追剧.js","searchable":1,"filterable":1,"switchable":1},
