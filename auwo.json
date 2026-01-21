@@ -157,6 +157,7 @@
 {"name":"📁本地|播放","key":"MyLocal","type":3,"api":"csp_MyLocalAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"name":"☁️我的|挎鈳","key":"MyQuark","type":3,"api":"csp_MyQuarkAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/quark.json"},
 {"name":"☁️我的|佰渡","key":"MyBaidu","type":3,"api":"csp_MyBaiduAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/baidu.json"},
+{"name":"🎸酷狗|音乐","key":"KuGou","type":3,"api":"csp_KuGouAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":0},
 {"name":"🐙GHub|商店","key":"GitHub","type":3,"api":"csp_GitHubAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/github.json"},
 {"name":"🤪玩偶|4K","key":"woWogg","type":3,"api":"csp_WoggAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"sites":"http://woggpan.888484.xyz,http://woggpan.xxooo.cf,http://wogg.xxooo.cf,http://wogg4k.333232.xyz,https://www.wogg.one","filters":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/wogg.json"}},
 {"name":"😀蜡笔|4K","key":"lbWobg","type":3,"api":"csp_WobgAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"sites":"http://feimao888.fun,https://feimao666.fun","filters":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/wolb.json"}},
