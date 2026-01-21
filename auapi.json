@@ -1,10 +1,5 @@
-
-//      >>> 当前时间是：2026-01-20 22:02:44 <<<
-//  关注微信公众号【太太太硬了】有惊喜哦！！！
-//  当前接口：https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/config
-
 {
-"spider":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png;md5;17bf2b5b763087472f8df4ee9f65a41b","logo":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/logo.gif",
+"spider":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png;md5;02e25630338d9e1bbb83c169128d0965","logo":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/logo.gif",
 "sites":[
 {"name":"💬嗷嗚|彈幕","key":"GoConfig","type":3,"api":"csp_GoConfigAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"name":"🍉短剧|导航","key":"Hggg","type":3,"api":"csp_HgggAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
@@ -12,6 +7,7 @@
 {"name":"📁本地|播放","key":"MyLocal","type":3,"api":"csp_MyLocalAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"name":"☁️我的|挎鈳","key":"MyQuark","type":3,"api":"csp_MyQuarkAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/quark.json"},
 {"name":"☁️我的|佰渡","key":"MyBaidu","type":3,"api":"csp_MyBaiduAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/baidu.json"},
+{"name":"🎸酷狗|音乐","key":"KuGou","type":3,"api":"csp_KuGouAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":0},
 {"name":"🐙GHub|商店","key":"GitHub","type":3,"api":"csp_GitHubAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/github.json"},
 {"name":"🤪玩偶|4K","key":"woWogg","type":3,"api":"csp_WoggAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{
 "sites":"http://woggpan.888484.xyz,http://woggpan.xxooo.cf,http://wogg.xxooo.cf,http://wogg4k.333232.xyz,https://www.wogg.one","filters":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/wogg.json"}},
