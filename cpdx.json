@@ -95,7 +95,6 @@
 {"key":"星芽短剧","name":"🔖星芽｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"番茄短剧","name":"🔖番茄｜短剧","type":3,"api":"csp_XBPQ","ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/XBPQ/番茄短剧.json","jar":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/spider.jar"},
-{"key":"天堂短劇","name":"🔖天堂｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/天堂短劇網.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_七猫短剧[短]","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧[短]","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_星芽短剧[短]","name":"💠星芽短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"星芽短剧[短]","lang":"ds","ext":""},
@@ -134,12 +133,14 @@
 {"key":"两个BT","name":"🪩两个BT┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/两个BT.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"UVod","name":"🪩UVod┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/UVod.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"柯南影视","name":"🪩柯南影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/柯南影视.py","style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"歐樂影視","name":"🪩歐樂影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/歐樂影視.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"永乐视频","name":"🪩永乐视频┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/永乐视频.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"猎手影视","name":"🪩猎手影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/猎手影视.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"电影猎手","name":"🪩电影猎手┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/电影猎手.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"饭团影视","name":"🪩饭团影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/饭团影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"努努影院","name":"🪩努努影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/努努影院.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"小鸡暴走","name":"🪩小鸡暴走┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小鸡暴走.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"天堂短劇網","name":"🪩天堂短劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/天堂短劇網.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"小鸭子看看","name":"🪩小鸭子看看┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小鸭子看看.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"小苹果影视","name":"🪩小苹果影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小苹果影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 
