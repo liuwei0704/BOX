@@ -27,8 +27,7 @@ class Spider(Spider):
             {"type_name": "電影", "type_id": "/mianfei/dianying/"},
             {"type_name": "電視劇", "type_id": "/mianfei/lianxuju/"},
             {"type_name": "動漫", "type_id": "/mianfei/dongman/"},
-            {"type_name": "綜藝", "type_id": "/mianfei/zongyi/"},
-            {"type_name": "福利", "type_id": "/mianfei/fuli/"}
+            {"type_name": "綜藝", "type_id": "/mianfei/zongyi/"}
         ]
         result["class"] = classes
         return result
@@ -218,6 +217,10 @@ class Spider(Spider):
             play_from_list = []
             play_url_list = []
             
+            # 优先查找"貝貝影院-電影資源2"这条线路
+            default_source = "貝貝影院-電影資源2"
+            found_default = False
+            
             for section in play_sections:
                 h2 = section.find('h2')
                 if not h2:
@@ -227,6 +230,12 @@ class Spider(Spider):
                 # 清理播放源名称
                 if "永久免费" in play_source_name:
                     play_source_name = play_source_name.split("-永久免费")[0].strip()
+                
+                # 檢查是否是默認線路
+                is_default = False
+                if "電影資源2" in play_source_name or "电影资源2" in play_source_name:
+                    play_source_name = "貝貝影院-電影資源2"
+                    is_default = True
                 
                 # 查找下一个video_list div
                 next_elem = section.find_next_sibling()
@@ -265,8 +274,74 @@ class Spider(Spider):
                         episode_links.append(f"{title}${href}")
                 
                 if episode_links:
-                    play_from_list.append(play_source_name)
-                    play_url_list.append("#".join(episode_links))
+                    # 如果是默认线路，放在第一位
+                    if is_default:
+                        play_from_list.insert(0, play_source_name)
+                        play_url_list.insert(0, "#".join(episode_links))
+                        found_default = True
+                    else:
+                        play_from_list.append(play_source_name)
+                        play_url_list.append("#".join(episode_links))
+            
+            # 如果没有找到默认线路，尝试查找其他线路作为备用
+            if not found_default:
+                # 重新查找所有播放源，优先使用"貝貝影院"开头的线路
+                temp_from_list = []
+                temp_url_list = []
+                
+                for section in root.find_all('div', class_='down-title'):
+                    h2 = section.find('h2')
+                    if not h2:
+                        continue
+                    
+                    play_source_name = h2.text.strip()
+                    if "永久免费" in play_source_name:
+                        play_source_name = play_source_name.split("-永久免费")[0].strip()
+                    
+                    # 查找播放列表
+                    video_list_div = None
+                    next_elem = section.find_next_sibling()
+                    for _ in range(5):
+                        if next_elem and hasattr(next_elem, 'get') and next_elem.get('class'):
+                            if 'video_list' in next_elem.get('class'):
+                                video_list_div = next_elem
+                                break
+                        if next_elem:
+                            next_elem = next_elem.find_next_sibling()
+                        else:
+                            break
+                    
+                    if not video_list_div:
+                        continue
+                    
+                    # 收集播放链接
+                    episode_links = []
+                    for a_tag in video_list_div.find_all('a'):
+                        href = a_tag.get('href', '')
+                        title = a_tag.text.strip()
+                        
+                        if href and title:
+                            if not href.startswith('http'):
+                                if href.startswith('/'):
+                                    href = self.host + href
+                                else:
+                                    href = self.host + '/' + href
+                            
+                            title = title.replace('$', '').replace('#', '')
+                            episode_links.append(f"{title}${href}")
+                    
+                    if episode_links:
+                        # 优先使用"貝貝影院"开头的线路
+                        if play_source_name.startswith("貝貝影院"):
+                            temp_from_list.insert(0, play_source_name)
+                            temp_url_list.insert(0, "#".join(episode_links))
+                        else:
+                            temp_from_list.append(play_source_name)
+                            temp_url_list.append("#".join(episode_links))
+                
+                if temp_from_list:
+                    play_from_list = temp_from_list
+                    play_url_list = temp_url_list
             
             # 如果没有找到播放源，尝试其他方式
             if not play_from_list:
@@ -292,12 +367,12 @@ class Spider(Spider):
                             episode_links.append(f"{title}${href}")
                     
                     if episode_links:
-                        play_from_list = ["貝貝雲播放"]
+                        play_from_list = ["貝貝影院"]
                         play_url_list = ["#".join(episode_links)]
             
             # 如果还是没有找到播放源，添加默认的
             if not play_from_list:
-                play_from_list = ["貝貝雲播放"]
+                play_from_list = ["貝貝影院"]
                 play_url_list = [f"第1集${url}"]
             
             # 构建完整的影片信息
@@ -314,6 +389,7 @@ class Spider(Spider):
                 "vod_play_url": "$$$".join(play_url_list)
             }
             
+            print(f"播放线路: {play_from_list}")
             return {"list": [video]}
             
         except Exception as e:
@@ -324,7 +400,7 @@ class Spider(Spider):
                 "vod_name": "影片详情加载失败",
                 "vod_pic": "",
                 "vod_content": "",
-                "vod_play_from": "貝貝雲播放",
+                "vod_play_from": "貝貝影院",
                 "vod_play_url": f"第1集${self.host}"
             }
             return {"list": [video]}
