@@ -1,5 +1,5 @@
 # coding=utf-8
-# !/usr/bin/python
+#!/usr/bin/python
 import sys
 import os
 sys.path.append("..")
@@ -61,8 +61,9 @@ class Spider(Spider):
             
             html = self.fetch(url, headers=self.header()).text
             
-            # 解析視頻列表
-            pattern = r'<li class="vodlist_item.*?">.*?<a class="vodlist_thumb.*?" .*?dids="(\d+)".*?href="(.*?)".*?title="(.*?)".*?data-original="(.*?)".*?</a>.*?<p class="vodlist_title">.*?<a.*?>(.*?)</a>.*?</p>.*?<p class="vodlist_sub">(.*?)</p>'
+            # 修復正則表達式：避免匹配到包含var vod_id的內容
+            # 使用更精確的模式匹配
+            pattern = r'<li\s+class="vodlist_item[^"]*">.*?<a\s+class="vodlist_thumb[^"]*"[^>]*dids="(\d+)"[^>]*href="([^"]*)"[^>]*title="([^"]*)"[^>]*data-original="([^"]*)"[^>]*>.*?<p\s+class="vodlist_title">.*?<a[^>]*>([^<]*)</a>.*?</p>.*?<p\s+class="vodlist_sub">([^<]*)</p>'
             matches = re.findall(pattern, html, re.S)
             
             for match in matches:
@@ -70,11 +71,27 @@ class Spider(Spider):
                 detail_url = match[1]
                 title = match[2].strip()
                 cover = match[3]
-                title_html = match[4]
+                title_html = match[4].strip()
                 actors = match[5].strip()
                 
-                # 從title_html中提取標題（去除HTML標籤）
-                title_clean = re.sub(r'<.*?>', '', title_html).strip()
+                # 清理標題：移除var vod_id=xxxxx等JS代碼
+                # 先嘗試從title_html提取，如果包含JS代碼則從title屬性提取
+                title_clean = title_html
+                
+                # 檢查是否包含var vod_id=
+                if 'var vod_id=' in title_clean:
+                    # 使用title屬性作為備選
+                    title_clean = title
+                
+                # 進一步清理：移除任何JS代碼
+                title_clean = re.sub(r'var\s+vod_id\s*=\s*\d+;?\s*', '', title_clean)
+                title_clean = re.sub(r'<script[^>]*>.*?</script>', '', title_clean, flags=re.S)
+                title_clean = re.sub(r'javascript:.*?(;|$)', '', title_clean)
+                title_clean = title_clean.strip()
+                
+                # 如果還是空的，使用title屬性
+                if not title_clean:
+                    title_clean = title
                 
                 # 從封面URL提取年份
                 year = ""
@@ -85,30 +102,29 @@ class Spider(Spider):
                 
                 # 提取評分和熱度
                 score = "0.0"
-                hot = "0"
                 
-                # 嘗試從HTML片段中提取評分
-                item_html = match[0] if match else ""
-                score_pattern = r'text_right text_dy.*?>(\d+\.?\d*)<'
-                score_match = re.search(score_pattern, item_html)
-                if score_match:
-                    score = score_match.group(1)
+                # 嘗試從當前匹配的完整HTML塊中提取評分
+                # 查找匹配的HTML片段
+                item_pattern = r'<li\s+class="vodlist_item[^"]*"[^>]*dids="' + vod_id + r'"[^>]*>.*?<p\s+class="vodlist_sub">[^<]*</p>'
+                item_match = re.search(item_pattern, html, re.S)
+                
+                if item_match:
+                    item_text = item_match.group(0)
+                    score_pattern = r'text_right\s+text_dy[^>]*>(\d+\.?\d*)<'
+                    score_match = re.search(score_pattern, item_text)
+                    if score_match:
+                        score = score_match.group(1)
                 
                 # 提取視頻質量
                 quality = "高清"
-                quality_match = re.search(r'voddate voddate_year">(.*?)</em>', item_html)
-                if quality_match:
-                    quality = quality_match.group(1)
-                
-                # 提取狀態
-                status = ""
-                status_match = re.search(r'<em class="voddate">(.*?)</em>', item_html)
-                if status_match:
-                    status = status_match.group(1)
+                if 'item_text' in locals():
+                    quality_match = re.search(r'voddate\s+voddate_year">([^<]*)</em>', item_text)
+                    if quality_match:
+                        quality = quality_match.group(1)
                 
                 video = {
                     "vod_id": vod_id,
-                    "vod_name": title_clean if title_clean else title,
+                    "vod_name": title_clean,
                     "vod_pic": cover,
                     "vod_year": year,
                     "vod_remarks": f"{quality}|評分:{score}",
@@ -118,9 +134,21 @@ class Spider(Spider):
             
             # 獲取總頁數
             total_page = 1
-            page_match = re.search(r'共有(\d+)頁', html)
+            page_match = re.search(r'共有\s*(\d+)\s*頁', html)
             if page_match:
                 total_page = int(page_match.group(1))
+            else:
+                # 嘗試其他方式查找頁數
+                page_patterns = [
+                    r'<a[^>]*>(\d+)</a>\s*<a[^>]*>下一頁</a>',
+                    r'page/(\d+)\.html">尾頁</a>',
+                    r'共\s*(\d+)\s*頁'
+                ]
+                for pattern in page_patterns:
+                    page_match = re.search(pattern, html)
+                    if page_match:
+                        total_page = int(page_match.group(1))
+                        break
             
             # 獲取總視頻數
             total = len(videos)
@@ -133,6 +161,8 @@ class Spider(Spider):
             
         except Exception as e:
             print(f"Error parsing category: {e}")
+            import traceback
+            traceback.print_exc()
             result["list"] = []
             result["page"] = pg
             result["pagecount"] = 1
@@ -212,6 +242,7 @@ class Spider(Spider):
                 score = score_match.group(1)
             
             # 提取狀態
+            status = ""
             status_pattern = r'<span class="data_style">(.*?)</span>'
             status_match = re.search(status_pattern, html)
             if status_match:
@@ -326,6 +357,8 @@ class Spider(Spider):
             
         except Exception as e:
             print(f"Error parsing detail: {e}")
+            import traceback
+            traceback.print_exc()
             # 返回默認信息
             video = {
                 "vod_id": vod_id,
@@ -356,7 +389,7 @@ class Spider(Spider):
             html = self.fetch(url, headers=self.header()).text
             
             # 使用和分類頁相同的解析邏輯
-            pattern = r'<li class="vodlist_item.*?">.*?<a class="vodlist_thumb.*?" .*?dids="(\d+)".*?href="(.*?)".*?title="(.*?)".*?data-original="(.*?)".*?</a>.*?<p class="vodlist_title">.*?<a.*?>(.*?)</a>.*?</p>.*?<p class="vodlist_sub">(.*?)</p>'
+            pattern = r'<li\s+class="vodlist_item[^"]*">.*?<a\s+class="vodlist_thumb[^"]*"[^>]*dids="(\d+)"[^>]*href="([^"]*)"[^>]*title="([^"]*)"[^>]*data-original="([^"]*)"[^>]*>.*?<p\s+class="vodlist_title">.*?<a[^>]*>([^<]*)</a>.*?</p>.*?<p\s+class="vodlist_sub">([^<]*)</p>'
             matches = re.findall(pattern, html, re.S)
             
             for match in matches:
@@ -364,21 +397,44 @@ class Spider(Spider):
                 detail_url = match[1]
                 title = match[2].strip()
                 cover = match[3]
-                title_html = match[4]
+                title_html = match[4].strip()
                 actors = match[5].strip()
                 
-                title_clean = re.sub(r'<.*?>', '', title_html).strip()
+                # 清理標題：移除var vod_id=xxxxx等JS代碼
+                title_clean = title_html
+                
+                # 檢查是否包含var vod_id=
+                if 'var vod_id=' in title_clean:
+                    # 使用title屬性作為備選
+                    title_clean = title
+                
+                # 進一步清理：移除任何JS代碼
+                title_clean = re.sub(r'var\s+vod_id\s*=\s*\d+;?\s*', '', title_clean)
+                title_clean = re.sub(r'<script[^>]*>.*?</script>', '', title_clean, flags=re.S)
+                title_clean = re.sub(r'javascript:.*?(;|$)', '', title_clean)
+                title_clean = title_clean.strip()
+                
+                # 如果還是空的，使用title屬性
+                if not title_clean:
+                    title_clean = title
                 
                 # 提取評分
                 score = "0.0"
-                score_pattern = r'text_right text_dy.*?>(\d+\.?\d*)<'
-                score_match = re.search(score_pattern, match[0] if match else "")
-                if score_match:
-                    score = score_match.group(1)
+                
+                # 查找匹配的HTML片段
+                item_pattern = r'<li\s+class="vodlist_item[^"]*"[^>]*dids="' + vod_id + r'"[^>]*>.*?<p\s+class="vodlist_sub">[^<]*</p>'
+                item_match = re.search(item_pattern, html, re.S)
+                
+                if item_match:
+                    item_text = item_match.group(0)
+                    score_pattern = r'text_right\s+text_dy[^>]*>(\d+\.?\d*)<'
+                    score_match = re.search(score_pattern, item_text)
+                    if score_match:
+                        score = score_match.group(1)
                 
                 video = {
                     "vod_id": vod_id,
-                    "vod_name": title_clean if title_clean else title,
+                    "vod_name": title_clean,
                     "vod_pic": cover,
                     "vod_year": "",
                     "vod_remarks": f"評分:{score}",
@@ -391,6 +447,17 @@ class Spider(Spider):
             page_match = re.search(r'page/(\d+)\.html">尾頁</a>', html)
             if page_match:
                 total_page = int(page_match.group(1))
+            else:
+                # 嘗試其他方式查找頁數
+                page_patterns = [
+                    r'<a[^>]*>(\d+)</a>\s*<a[^>]*>下一頁</a>',
+                    r'共\s*(\d+)\s*頁'
+                ]
+                for pattern in page_patterns:
+                    page_match = re.search(pattern, html)
+                    if page_match:
+                        total_page = int(page_match.group(1))
+                        break
             
             result["list"] = videos
             result["page"] = pg
@@ -400,6 +467,8 @@ class Spider(Spider):
             
         except Exception as e:
             print(f"Error searching: {e}")
+            import traceback
+            traceback.print_exc()
             result["list"] = []
             result["page"] = pg
             result["pagecount"] = 1
@@ -483,6 +552,8 @@ class Spider(Spider):
         
         except Exception as e:
             print(f"Error parsing player content: {e}")
+            import traceback
+            traceback.print_exc()
             result["parse"] = 1
             result["url"] = url
         
@@ -571,6 +642,8 @@ class Spider(Spider):
                 
         except Exception as e:
             print(f"Error in localProxy: {e}")
+            import traceback
+            traceback.print_exc()
             return [500, "text/plain", f"Server Error: {str(e)}"]
 
     def header(self):
