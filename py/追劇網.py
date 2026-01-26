@@ -27,7 +27,8 @@ class Spider(Spider):
             {"type_name": "電影", "type_id": "1"},
             {"type_name": "劇集", "type_id": "2"},
             {"type_name": "綜藝", "type_id": "3"},
-            {"type_name": "動漫", "type_id": "4"}
+            {"type_name": "動漫", "type_id": "4"},
+            {"type_name": "福利", "type_id": "27"}
         ]
         result["class"] = classes
         
