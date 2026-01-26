@@ -51,6 +51,7 @@
 {"key":"两个BT","name":"🪩两个BT┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/两个BT.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"UVod","name":"🪩UVod┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/UVod.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"柯南影视","name":"🪩柯南影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/柯南影视.py","style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"極速看劇","name":"🪩極速看劇┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/極速看劇.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"歐樂影視","name":"🪩歐樂影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/歐樂影視.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"永乐视频","name":"🪩永乐视频┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/永乐视频.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"猎手影视","name":"🪩猎手影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/猎手影视.py","style":{"type":"rect","ratio":1.33},"changeable":1},
