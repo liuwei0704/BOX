@@ -43,8 +43,8 @@
 
 {"key":"js_en_gf","name":"官方采集┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/en_gf.js","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"金牌","name":"🪩金牌┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/金牌.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"追劇網","name":"🪩追劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/追劇網.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"界影视","name":"🪩界影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/界影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"追劇網","name":"🪩追劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/追劇網.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"4K影视","name":"🪩4K影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/4K影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"4KVM","name":"🪩4KVM┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/4KVM.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"LSYS","name":"🪩LSYS┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/LSYS.py","style":{"type":"rect","ratio":1.33},"changeable":1},
@@ -58,6 +58,7 @@
 {"key":"电影猎手","name":"🪩电影猎手┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/电影猎手.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"貝貝影院","name":"🪩貝貝影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/貝貝影院.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"星辰影院","name":"🪩星辰影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/星辰影院.py","style":{"type":"rect","ratio":1.33},"changeable":1},
+{"key":"傳奇影院","name":"🪩傳奇影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/傳奇影院.py","style":{"type":"rect","ratio":1.33},"changeable":1},
 {"key":"饭团影视","name":"🪩饭团影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/饭团影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"努努影院","name":"🪩努努影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/努努影院.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"小鸡暴走","name":"🪩小鸡暴走┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小鸡暴走.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
