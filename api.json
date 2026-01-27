@@ -144,6 +144,7 @@
 {"key":"AList","name":"AList｜合集","type":3,"api":"csp_Alist","searchable":1,"filterable":1,"changeable":0,"style":{"type":"list"},
 "ext":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/json/alist.json"},
 {"key":"88看球","name":"88｜看球","type":3,"api":"csp_Kanqiu","gridview":3,"style":{"type":"list"}},
+{"key":"爱听音乐","name":"爱听｜音乐","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/爱听音乐.py"},
 {"key":"六月听书","name":"六月｜听书","type":3,"api":"csp_TingBook","style":{"type":"list"}},
 {"key":"呦呦DJ","name":"呦呦｜DJ","type":3,"api":"csp_Djuu","style":{"type":"list"}},
 {"key":"戏曲多多","name":"戏曲｜多多","type":3,"api":"csp_AppLY","style":{"type":"list"}},
