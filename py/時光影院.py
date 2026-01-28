@@ -30,6 +30,7 @@ class Spider(Spider):
             {"type_name": "连续剧", "type_id": "2"},
             {"type_name": "动漫", "type_id": "3"},
             {"type_name": "综艺", "type_id": "4"},
+            {"type_name": "短劇", "type_id": "22"},
             {"type_name": "体育", "type_id": "32"}
         ]
         result["class"] = classes
