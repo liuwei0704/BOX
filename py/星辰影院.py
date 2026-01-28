@@ -82,32 +82,39 @@ class Spider(Spider):
         return {"list": videos}
 
     def categoryContent(self, tid, pg, filter, extend):
-        # 构建分类页URL
-        base_url = self.host + tid
-        
-        if int(pg) > 1:
-            if tid.endswith('.html'):
-                base_path = tid[:-5]
-                url = f"{self.host}{base_path}-{pg}.html"
-            else:
-                url = f"{self.host}{tid}?page={pg}"
-        else:
-            url = base_url
-        
-        print(f"分类页URL尝试1: {url}")
-        
         try:
+            # 从tid中提取分类ID（如/vodtype/1.html -> 1）
+            class_id_match = re.search(r'/vodtype/(\d+)\.html', tid)
+            if class_id_match:
+                class_id = class_id_match.group(1)
+            else:
+                # 如果是其他分类，如/label/new.html
+                class_id_match = re.search(r'/(\w+)/(\w+)\.html', tid)
+                if class_id_match:
+                    class_id = class_id_match.group(2)
+                else:
+                    class_id = "1"  # 默认值
+            
+            # 构建分类页URL - 从HTML中可以看到格式是 /vodtype/6-2.html
+            if int(pg) > 1:
+                # 第2页及以后：/vodtype/6-2.html
+                url = f"{self.host}/vodtype/{class_id}-{pg}.html"
+            else:
+                # 第1页：/vodtype/6.html 或保持原始tid
+                url = self.host + tid
+            
+            print(f"分类页URL: {url}")
+            
             rsp = self.fetch(url, headers=self.header())
             if rsp.status_code != 200:
                 print(f"URL {url} 返回状态码: {rsp.status_code}")
-                if int(pg) > 1:
-                    if tid.endswith('.html'):
-                        base_path = tid[:-5]
-                        url = f"{self.host}{base_path}/page/{pg}.html"
-                    else:
-                        url = f"{self.host}{tid}/page/{pg}.html"
-                    print(f"分类页URL尝试2: {url}")
-                    rsp = self.fetch(url, headers=self.header())
+                return {
+                    "list": [],
+                    "page": int(pg),
+                    "pagecount": 1,
+                    "limit": 20,
+                    "total": 0
+                }
             
             root = BeautifulSoup(rsp.text, 'html.parser')
             videos = []
@@ -151,64 +158,53 @@ class Spider(Spider):
                             "vod_remarks": vod_remarks
                         })
             
-            # 方法2：如果没有找到轮播图，尝试查找常规视频列表
-            if not videos:
-                print("尝试查找常规视频列表")
-                list_selectors = [
-                    'ul.video-film-list li',
-                    'ul.video-small-list li',
-                    'ul.video-list li',
-                    'div.video-item'
-                ]
+            # 方法2：查找常规视频列表 - 主要视频列表
+            print("尝试查找常规视频列表")
+            video_items = root.select('ul.video-film-list li .video-item')
+            if not video_items:
+                video_items = root.select('ul.video-list li .video-item')
+            
+            for item in video_items:
+                a = item.find('a', class_='video-link')
+                if not a:
+                    continue
                 
-                for selector in list_selectors:
-                    items = root.select(selector)
-                    if items:
-                        print(f"使用选择器 '{selector}' 找到 {len(items)} 个项目")
-                        for item in items:
-                            a = item.find('a', class_='video-link')
-                            if not a:
-                                continue
-                            
-                            vod_id = a.get('href', '')
-                            if vod_id and not vod_id.startswith('http'):
-                                vod_id = self.host + vod_id if vod_id.startswith('/') else vod_id
-                            
-                            vod_pic = ""
-                            img_div = item.find('div', class_='item-pic')
-                            if img_div:
-                                if img_div.get('data-original'):
-                                    vod_pic = img_div['data-original']
-                                elif img_div.get('data-background'):
-                                    vod_pic = img_div['data-background']
-                                elif img_div.find('img') and img_div.find('img').get('src'):
-                                    vod_pic = img_div.find('img')['src']
-                                elif img_div.find('img') and img_div.find('img').get('data-src'):
-                                    vod_pic = img_div.find('img')['data-src']
-                            
-                            if vod_pic and not vod_pic.startswith('http'):
-                                vod_pic = 'https:' + vod_pic if vod_pic.startswith('//') else vod_pic
-                            
-                            vod_name = ""
-                            h2 = item.find('h2', class_='video-con-tit')
-                            if not h2:
-                                h2 = item.find('h2')
-                            if h2:
-                                vod_name = h2.text.strip()
-                            
-                            vod_remarks = ""
-                            duration_div = item.find('div', class_='video-duration')
-                            if duration_div:
-                                vod_remarks = duration_div.text.strip()
-                            
-                            if vod_name and vod_id:
-                                videos.append({
-                                    "vod_id": vod_id,
-                                    "vod_name": vod_name,
-                                    "vod_pic": vod_pic,
-                                    "vod_remarks": vod_remarks
-                                })
-                        break
+                vod_id = a.get('href', '')
+                if vod_id and not vod_id.startswith('http'):
+                    vod_id = self.host + vod_id if vod_id.startswith('/') else vod_id
+                
+                vod_pic = ""
+                img_div = item.find('div', class_='item-pic')
+                if img_div:
+                    if img_div.get('data-original'):
+                        vod_pic = img_div['data-original']
+                    elif img_div.get('data-background'):
+                        vod_pic = img_div['data-background']
+                    elif img_div.find('img') and img_div.find('img').get('src'):
+                        vod_pic = img_div.find('img')['src']
+                    elif img_div.find('img') and img_div.find('img').get('data-src'):
+                        vod_pic = img_div.find('img')['data-src']
+                
+                if vod_pic and not vod_pic.startswith('http'):
+                    vod_pic = 'https:' + vod_pic if vod_pic.startswith('//') else vod_pic
+                
+                vod_name = ""
+                h2 = item.find('h2', class_='video-con-tit')
+                if h2:
+                    vod_name = h2.text.strip()
+                
+                vod_remarks = ""
+                duration_div = item.find('div', class_='video-duration')
+                if duration_div:
+                    vod_remarks = duration_div.text.strip()
+                
+                if vod_name and vod_id:
+                    videos.append({
+                        "vod_id": vod_id,
+                        "vod_name": vod_name,
+                        "vod_pic": vod_pic,
+                        "vod_remarks": vod_remarks
+                    })
             
             # 去重
             unique_videos = []
@@ -222,27 +218,35 @@ class Spider(Spider):
             
             # 尝试获取总页数
             pagecount = 1
-            pagination_selectors = [
-                'div.pagination',
-                'ul.pagination',
-                'div.page',
-                'ul.page',
-                'div.pager',
-                'ul.pager'
-            ]
             
-            for selector in pagination_selectors:
-                pagination = root.select_one(selector)
-                if pagination:
-                    page_links = pagination.find_all('a')
+            # 查找分页元素 - 从HTML中可以看到有<ul class="ewave-page">
+            page_div = root.find('ul', class_='ewave-page')
+            if page_div:
+                print("找到ewave-page分页")
+                
+                # 方法1：从分页文本中提取（如"2/181"）
+                page_text_elem = page_div.find('li', class_='hidden-md hidden-lg hidden-xl hidden-xxl active')
+                if page_text_elem:
+                    page_text = page_text_elem.find('span', class_='num')
+                    if page_text:
+                        page_match = re.search(r'(\d+)/(\d+)', page_text.text.strip())
+                        if page_match:
+                            pagecount = int(page_match.group(2))
+                            print(f"从分页文本找到总页数: {pagecount}")
+                
+                # 方法2：如果没有找到文本，从分页链接中提取
+                if pagecount == 1:
+                    page_links = page_div.find_all('a')
                     max_page = 1
                     for link in page_links:
                         href = link.get('href', '')
                         text = link.text.strip()
                         
                         if href:
+                            # 从URL中提取页码
                             patterns = [
-                                r'[-/](\d+)\.html$',
+                                r'/vodtype/\d+-(\d+)\.html$',
+                                r'[-_](\d+)\.html$',
                                 r'[?&]page=(\d+)',
                                 r'[-/]page/(\d+)',
                                 r'[-/](\d+)/?$'
@@ -267,10 +271,29 @@ class Spider(Spider):
                     
                     if max_page > 1:
                         pagecount = max_page
-                    break
+                        print(f"从分页链接找到最大页数: {pagecount}")
             
+            # 方法3：从script标签中获取总数量
+            if pagecount == 1:
+                scripts = root.find_all('script')
+                for script in scripts:
+                    if script.string and 'ewave-total' in script.string:
+                        total_match = re.search(r'ewave-total["\']?[^}]*?(\d+)', script.string)
+                        if total_match:
+                            total = int(total_match.group(1))
+                            # 假设每页24个结果（从HTML中可以看到每页24个）
+                            pagecount = (total + 23) // 24
+                            print(f"从script中找到总记录数 {total}，计算页数: {pagecount}")
+                            break
+            
+            # 如果没有找到分页信息，但有数据，尝试设置合理的页数
             if videos and pagecount == 1 and int(pg) == 1:
-                pagecount = 999
+                # 检查是否有"下一页"链接
+                next_link = root.find('a', text=re.compile(r'下一页|下一頁|>|»'))
+                if next_link or len(videos) >= 20:
+                    pagecount = 999
+                else:
+                    pagecount = 1
             
             print(f"分类页解析结果: 找到 {len(videos)} 个视频，当前第 {pg} 页，共 {pagecount} 页")
             
@@ -279,7 +302,7 @@ class Spider(Spider):
                 "page": int(pg),
                 "pagecount": pagecount,
                 "limit": 20,
-                "total": 9999
+                "total": 9999 if pagecount == 999 else pagecount * 20
             }
             
         except Exception as e:
