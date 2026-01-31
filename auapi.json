@@ -1,6 +1,5 @@
-
 {
-"spider":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png;md5;7c2b299fc00d3839a97edc1db82279dd","logo":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/logo.gif",
+"spider":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/bfdb--cvdvds.png;md5;f2c41671f2e782b1c5cbf31dad8950fd","logo":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/logo.gif",
 "sites":[
 {"name":"💬嗷嗚|彈幕","key":"GoConfig","type":3,"api":"csp_GoConfigAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"name":"🍉短剧|导航","key":"Hggg","type":3,"api":"csp_HgggAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
@@ -24,7 +23,8 @@
 "sites":"https://tv.yydsys.top,https://tv.yydsys.cc,https://tv.214521.xyz","filters":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/wodd.json"}},
 {"name":"🥸欧哥|4K","key":"ogWobg","type":3,"api":"csp_WobgAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{
 "sites":"https://woog.nxog.eu.org","filters":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/woog.json"}},
-{"name":"🎉Bili|合集","key":"Bili","type":3,"api":"csp_BiliAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"json":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/bili.json","cookie":""}},
+{"name":"🎉Bili|合集","key":"Bili","type":3,"api":"csp_BiliAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"json":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/bili.json","cookie":""},
+"style":{"type":"rect","ratio":1.433}},
 {"name":"🥔瓜子|秒播","key":"Guazi","type":3,"api":"csp_GuaziAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/json/guazi.json"},
 {"name":"☕韩剧|秒播","key":"Hxq","type":3,"api":"csp_HxqAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1},
 {"name":"🌱春天|秒播","key":"NewGr","type":3,"api":"csp_NewGrAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"BG6DUQMDRsRW0hbHAYRFwFNSUoESx4PHgAPBksaHRRWXkcFLQEDFwIMCBhEXkBZVVteWx8XHEVIVT8zHlAtMRIyLDszASEtF0sAMj8ONj0BLCofKAo2PCc4ET8TQT0JFjArVzRYRVpEDRRKX1sTPx8LLwkgOCtUQBc1HAUXOC0SSiIoSU9HS1AWFhUuDANUXEYRAAQXFhAVHBYPGwcPC1NJRRUOBQwGABUtGhsWAEVIVRUBAhU4BRZUU0pJWwIYFxkEABcoCAQcAEVMRAcNBUsAEQ4YGh9JCw4VFVNJRQUfFz0YCRgGHxsACEVIVVRHXUcUDxUWBwQAGAEcVkhHVkNVSkcHABUFDwsMSl9bRktEQlVFDw=="},
