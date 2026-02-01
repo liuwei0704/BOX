@@ -1,0 +1,1775 @@
+{
+    "spider": "http://127.0.0.1:9978/file/VodPlus/jar/fm_xMydev.jar",
+    "wallpaper": "",
+    "warningText": "此文件可以随意调节自己想要的任何数据",
+    "logo": "http://php.540734621.xyz/logo/logo.php",
+    "sites": [
+        {
+            "key": "lf_js_search",
+            "name": "✅ 豆瓣 | 首页",
+            "api": "http://127.0.0.1:9978/file/VodPlus/wwwroot/lib/js/lf_search3_min.js",
+            "type": 3,
+            "searchable": 0,
+            "changeable": 1,
+            "quickSearch": 0,
+            "filterable": 0
+        },
+        {
+            "key": "php-server",
+            "name": "PHP | 全能爬虫",
+            "type": 3,
+            "api": "csp_PhpServer",
+            "tmeout": 120,
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },
+        {
+            "key": "config",
+            "name": "更新接口 | 长按刷新",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/config.php"
+        },
+        {
+            "key": "push_agent",
+            "name": "Push | 推送",
+            "type": 3,
+            "hide": 1,
+            "api": "csp_Push"
+        },
+        {
+            "key": "BIlibili(PHP)",
+            "name": "BIlibili(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/BIlibili.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "TVB云播(PHP)",
+            "name": "TVB云播(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/TVB云播.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "及时雨(PHP)",
+            "name": "及时雨(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/及时雨.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "哇哇影视(PHP)",
+            "name": "哇哇影视(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/哇哇影视.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "嗷呜动漫(PHP)",
+            "name": "嗷呜动漫(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/嗷呜动漫.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "小苹果(PHP)",
+            "name": "小苹果(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/小苹果.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "山有木兮(PHP)",
+            "name": "山有木兮(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/山有木兮.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "探花(PHP)",
+            "name": "探花(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/探花.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "金牌影视(PHP)",
+            "name": "金牌影视(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/金牌影视.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "零度(PHP)",
+            "name": "零度(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/零度.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "麻雀视频(PHP)",
+            "name": "麻雀视频(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/PHP文件/麻雀视频.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "元彪(JSON)",
+            "name": "元彪(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/元彪.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "刘德华(JSON)",
+            "name": "刘德华(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/刘德华.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "古装(JSON)",
+            "name": "古装(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/古装.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "吴京(JSON)",
+            "name": "吴京(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/吴京.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "周星驰(JSON)",
+            "name": "周星驰(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/周星驰.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "周润发(JSON)",
+            "name": "周润发(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/周润发.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "实验(苹果)(JSON)",
+            "name": "实验(苹果)(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/实验(苹果).json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "成龙(JSON)",
+            "name": "成龙(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/成龙.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "斯坦森(JSON)",
+            "name": "斯坦森(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/斯坦森.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "李连杰(JSON)",
+            "name": "李连杰(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/李连杰.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "林正英(JSON)",
+            "name": "林正英(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/林正英.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "毒品(JSON)",
+            "name": "毒品(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/毒品.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "洪金宝(JSON)",
+            "name": "洪金宝(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/洪金宝.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "狙击(JSON)",
+            "name": "狙击(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/狙击.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "甄子丹(JSON)",
+            "name": "甄子丹(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/甄子丹.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "破案(JSON)",
+            "name": "破案(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/破案.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "穿越(JSON)",
+            "name": "穿越(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/穿越.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "追击(JSON)",
+            "name": "追击(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/追击.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "追杀(JSON)",
+            "name": "追杀(JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视JSON类/追杀.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "2026年最新电影(TXT)",
+            "name": "2026年最新电影(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/2026年最新电影.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "43部邵氏电影(TXT)",
+            "name": "43部邵氏电影(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/43部邵氏电影.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "78部怀旧电影(TXT)",
+            "name": "78部怀旧电影(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/78部怀旧电影.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "80后经典老剧(TXT)",
+            "name": "80后经典老剧(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/80后经典老剧.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "全国地方台大全(TXT)",
+            "name": "全国地方台大全(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/全国地方台大全.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "分集短剧(TXT)",
+            "name": "分集短剧(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/分集短剧.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "央衛省級地方260121(TXT)",
+            "name": "央衛省級地方260121(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/央衛省級地方260121.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "港台（免T）CsTl(TXT)",
+            "name": "港台（免T）CsTl(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/港台（免T）CsTl.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电视剧大全(TXT)",
+            "name": "电视剧大全(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/电视剧大全.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "盗墓系列电影专辑(TXT)",
+            "name": "盗墓系列电影专辑(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/盗墓系列电影专辑.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "短剧系列(TXT)",
+            "name": "短剧系列(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/短剧系列.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "短剧集(TXT)",
+            "name": "短剧集(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/短剧集.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "综艺大集合(TXT)",
+            "name": "综艺大集合(TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/影视TXT类/综艺大集合.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "AV[秘](JSON)",
+            "name": "AV[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/AV.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_国产新片[秘](JSON)",
+            "name": "hsck_国产新片[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_国产新片.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_国产视频[秘](JSON)",
+            "name": "hsck_国产视频[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_国产视频.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_无码中文字幕[秘](JSON)",
+            "name": "hsck_无码中文字幕[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_无码中文字幕.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_日本无码[秘](JSON)",
+            "name": "hsck_日本无码[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_日本无码.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_日本有码[秘](JSON)",
+            "name": "hsck_日本有码[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_日本有码.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_有码中文字幕[秘](JSON)",
+            "name": "hsck_有码中文字幕[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_有码中文字幕.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "hsck_欧美高清[秘](JSON)",
+            "name": "hsck_欧美高清[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/hsck_欧美高清.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "lsp_videos_auto[秘](JSON)",
+            "name": "lsp_videos_auto[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/lsp_videos_auto.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "lsp_videos_auto[秘](M3U)",
+            "name": "lsp_videos_auto[秘](M3U)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/lsp_videos_auto.m3u",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "p影院[秘](JSON)",
+            "name": "p影院[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/p影院.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "videos_vod[秘](JSON)",
+            "name": "videos_vod[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/videos_vod.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "yellow[秘](JSON)",
+            "name": "yellow[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/yellow.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "少女社[秘](JSON)",
+            "name": "少女社[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/少女社.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "成鸡思汉[秘](JSON)",
+            "name": "成鸡思汉[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/成鸡思汉.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "日日撸[秘](JSON)",
+            "name": "日日撸[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/日日撸.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "有爱爱[秘](JSON)",
+            "name": "有爱爱[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/有爱爱.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "有码中文字幕[秘](JSON)",
+            "name": "有码中文字幕[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/有码中文字幕.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "榴莲视频[秘](JSON)",
+            "name": "榴莲视频[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/榴莲视频.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "欧美高清[秘](JSON)",
+            "name": "欧美高清[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/欧美高清.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "比卡比卡[秘](JSON)",
+            "name": "比卡比卡[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/比卡比卡.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-YOYO电视剧[秘](JSON)",
+            "name": "油管-YOYO电视剧[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-YOYO电视剧.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-中国电视剧[秘](JSON)",
+            "name": "油管-中国电视剧[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-中国电视剧.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-中国精品电视剧[秘](JSON)",
+            "name": "油管-中国精品电视剧[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-中国精品电视剧.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-华语经典剧场[秘](JSON)",
+            "name": "油管-华语经典剧场[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-华语经典剧场.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-好想讲英文[秘](JSON)",
+            "name": "油管-好想讲英文[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-好想讲英文.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-家有大中医[秘](JSON)",
+            "name": "油管-家有大中医[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-家有大中医.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-牛牛短剧[秘](JSON)",
+            "name": "油管-牛牛短剧[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-牛牛短剧.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-甜宠追剧社[秘](JSON)",
+            "name": "油管-甜宠追剧社[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-甜宠追剧社.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-碟工看片社[秘](JSON)",
+            "name": "油管-碟工看片社[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-碟工看片社.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-神云爽剧[秘](JSON)",
+            "name": "油管-神云爽剧[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-神云爽剧.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-精品好剧[秘](JSON)",
+            "name": "油管-精品好剧[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-精品好剧.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-精选电视剧频道[秘](JSON)",
+            "name": "油管-精选电视剧频道[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-精选电视剧频道.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-腾讯古装[秘](JSON)",
+            "name": "油管-腾讯古装[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-腾讯古装.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-腾讯悬疑[秘](JSON)",
+            "name": "油管-腾讯悬疑[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-腾讯悬疑.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-腾讯明星[秘](JSON)",
+            "name": "油管-腾讯明星[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-腾讯明星.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-腾讯经典[秘](JSON)",
+            "name": "油管-腾讯经典[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-腾讯经典.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "油管-腾讯青春[秘](JSON)",
+            "name": "油管-腾讯青春[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/油管-腾讯青春.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "爱妻艺 (1)[秘](JSON)",
+            "name": "爱妻艺 (1)[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/爱妻艺 (1).json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "爱妻艺[秘](JSON)",
+            "name": "爱妻艺[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/爱妻艺.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "狼友总站[秘](JSON)",
+            "name": "狼友总站[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/狼友总站.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "玩偶姐姐[秘](JSON)",
+            "name": "玩偶姐姐[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/玩偶姐姐.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "玩偶姐姐1[秘](JSON)",
+            "name": "玩偶姐姐1[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/玩偶姐姐1.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "玫瑰TV[秘](JSON)",
+            "name": "玫瑰TV[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/玫瑰TV.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-元彪[秘](JSON)",
+            "name": "电影天堂-元彪[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-元彪.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-刘德华[秘](JSON)",
+            "name": "电影天堂-刘德华[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-刘德华.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-古装[秘](JSON)",
+            "name": "电影天堂-古装[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-古装.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-吴京[秘](JSON)",
+            "name": "电影天堂-吴京[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-吴京.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-周星驰[秘](JSON)",
+            "name": "电影天堂-周星驰[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-周星驰.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-周润发[秘](JSON)",
+            "name": "电影天堂-周润发[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-周润发.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-成龙[秘](JSON)",
+            "name": "电影天堂-成龙[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-成龙.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-斯坦森[秘](JSON)",
+            "name": "电影天堂-斯坦森[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-斯坦森.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-李连杰[秘](JSON)",
+            "name": "电影天堂-李连杰[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-李连杰.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "电影天堂-林正英[秘](JSON)",
+            "name": "电影天堂-林正英[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/电影天堂-林正英.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "色库tv[秘](JSON)",
+            "name": "色库tv[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/色库tv.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "色库tv1[秘](JSON)",
+            "name": "色库tv1[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/色库tv1.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "色最色[秘](JSON)",
+            "name": "色最色[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/色最色.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "色最色111[秘](JSON)",
+            "name": "色最色111[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/色最色111.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "色花堂[秘](JSON)",
+            "name": "色花堂[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/色花堂.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "苹果(实验)[秘](JSON)",
+            "name": "苹果(实验)[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/苹果(实验).json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "麻豆影视[秘](JSON)",
+            "name": "麻豆影视[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/麻豆影视.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "麻豆映画[秘](JSON)",
+            "name": "麻豆映画[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/麻豆映画.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "麻豆社[秘](JSON)",
+            "name": "麻豆社[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/麻豆社.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "麻豆集[秘](JSON)",
+            "name": "麻豆集[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/麻豆集.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色-JAVX[秘](JSON)",
+            "name": "黄色-JAVX[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色-JAVX.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色-完整版1[秘](JSON)",
+            "name": "黄色-完整版1[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色-完整版1.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色-完整版2[秘](JSON)",
+            "name": "黄色-完整版2[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色-完整版2.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色-完整版3[秘](JSON)",
+            "name": "黄色-完整版3[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色-完整版3.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色-完整版4[秘](JSON)",
+            "name": "黄色-完整版4[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色-完整版4.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色仓库[秘](JSON)",
+            "name": "黄色仓库[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色仓库.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色仓库11[秘](JSON)",
+            "name": "黄色仓库11[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色仓库11.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色仓库123[秘](JSON)",
+            "name": "黄色仓库123[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色仓库123.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "黄色仓库啦[秘](JSON)",
+            "name": "黄色仓库啦[秘](JSON)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类/黄色JSON类[秘]/黄色仓库啦.json",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "新片[秘](TXT)",
+            "name": "新片[秘](TXT)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类[秘]/新片.txt",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "麻豆图标版[秘](M3U)",
+            "name": "麻豆图标版[秘](M3U)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./文件类[秘]/麻豆图标版.m3u",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "光社漫画[漫](PY)",
+            "name": "光社漫画[漫](PY)",
+            "type": 3,
+            "api": "./漫画类[漫]/光社漫画.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "动漫啦[漫](PY)",
+            "name": "动漫啦[漫](PY)",
+            "type": 3,
+            "api": "./漫画类[漫]/动漫啦.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "包子漫画[漫](PY)",
+            "name": "包子漫画[漫](PY)",
+            "type": 3,
+            "api": "./漫画类[漫]/包子漫画.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "绅士漫画[漫](PY)",
+            "name": "绅士漫画[漫](PY)",
+            "type": 3,
+            "api": "./漫画类[漫]/绅士漫画.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "酷爱漫画1[漫](0.PY)",
+            "name": "酷爱漫画1[漫](0.PY)",
+            "type": 3,
+            "api": "./漫画类[漫]/酷爱漫画1.0.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "74P福利图[秘](PY)",
+            "name": "74P福利图[秘](PY)",
+            "type": 3,
+            "api": "./瑟瑟[秘]/74P福利图.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "小黄鸟[秘](WV.JS)",
+            "name": "小黄鸟[秘](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./瑟瑟[秘]/小黄鸟.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "本地JSON-M3U(有图)源搜索(PY)",
+            "name": "本地JSON-M3U(有图)源搜索(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地JSON-M3U(有图)源搜索.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "本地JSON-M3U(有图)源读取(PY)",
+            "name": "本地JSON-M3U(有图)源读取(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地JSON-M3U(有图)源读取.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "本地JSON读取(PY)",
+            "name": "本地JSON读取(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地JSON读取.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "本地M3U读取(PY)",
+            "name": "本地M3U读取(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地M3U读取.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "本地TXT读取(PY)",
+            "name": "本地TXT读取(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地TXT读取.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "本地源综合搜索(PY)",
+            "name": "本地源综合搜索(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地源综合搜索.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "本地源综合读取(PY)",
+            "name": "本地源综合读取(PY)",
+            "type": 3,
+            "api": "./百合本地搜/本地源综合读取.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "国际直播大全[TV](M3U)",
+            "name": "国际直播大全[TV](M3U)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./直播[TV]/国际直播大全.m3u",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "央视直播(1080P)[TV](WV.JS)",
+            "name": "央视直播(1080P)[TV](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./直播[TV]/央视直播(1080P).wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "福利直播源[TV](M3U)",
+            "name": "福利直播源[TV](M3U)",
+            "type": 3,
+            "api": "csp_FileSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./直播[TV]/福利直播源.m3u",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "直播转点播(PHP)",
+            "name": "直播转点播(PHP)",
+            "type": 4,
+            "api": "http://0.0.0.0:8901/直播转点播/直播转点播.php",
+            "searchable": 0,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "3Q影视[剧](WV.JS)",
+            "name": "3Q影视[剧](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./看剧[剧]/3Q影视.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "低端影视[剧](WV.JS)",
+            "name": "低端影视[剧](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./看剧[剧]/低端影视.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "剧圈圈[剧](WV.JS)",
+            "name": "剧圈圈[剧](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./看剧[剧]/剧圈圈.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "剧多多[剧](WV.JS)",
+            "name": "剧多多[剧](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./看剧[剧]/剧多多.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "新韩剧网[剧](WV.JS)",
+            "name": "新韩剧网[剧](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./看剧[剧]/新韩剧网.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "爱追剧[剧](WV.JS)",
+            "name": "爱追剧[剧](WV.JS)",
+            "type": 3,
+            "api": "csp_WvSpider",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1,
+            "ext": "./看剧[剧]/爱追剧.wv.js",
+            "jar": "./lib/WvSpider.jar"
+        },
+        {
+            "key": "三三言情[书](PY)",
+            "name": "三三言情[书](PY)",
+            "type": 3,
+            "api": "./阅读类[书]/三三言情.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "去读书[书](PY)",
+            "name": "去读书[书](PY)",
+            "type": 3,
+            "api": "./阅读类[书]/去读书[书].py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "第一版主[书](PY)",
+            "name": "第一版主[书](PY)",
+            "type": 3,
+            "api": "./阅读类[书]/第一版主.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        },
+        {
+            "key": "阅读助手[书](PY)",
+            "name": "阅读助手[书](PY)",
+            "type": 3,
+            "api": "./阅读类[书]/阅读助手.py",
+            "searchable": 1,
+            "filterable": 1,
+            "switchable": 1
+        }
+    ],
+    "doh": [
+        {
+            "name": "Google",
+            "url": "https://dns.google/dns-query",
+            "ips": [
+                "8.8.4.4",
+                "8.8.8.8"
+            ]
+        },
+        {
+            "name": "Cloudflare",
+            "url": "https://cloudflare-dns.com/dns-query",
+            "ips": [
+                "1.1.1.1",
+                "1.0.0.1",
+                "2606:4700:4700::1111",
+                "2606:4700:4700::1001"
+            ]
+        },
+        {
+            "name": "AdGuard",
+            "url": "https://dns.adguard.com/dns-query",
+            "ips": [
+                "94.140.14.140",
+                "94.140.14.141"
+            ]
+        },
+        {
+            "name": "DNSWatch",
+            "url": "https://resolver2.dns.watch/dns-query",
+            "ips": [
+                "84.200.69.80",
+                "84.200.70.40"
+            ]
+        },
+        {
+            "name": "Quad9",
+            "url": "https://dns.quad9.net/dns-quer",
+            "ips": [
+                "9.9.9.9",
+                "149.112.112.112"
+            ]
+        }
+    ],
+    "rules": [
+        {
+            "name": "hwk",
+            "hosts": [
+                "haiwaikan"
+            ],
+            "regex": [
+                "10.0099",
+                "10.3333",
+                "16.0599",
+                "8.1748",
+                "10.85"
+            ]
+        },
+        {
+            "name": "yqk",
+            "hosts": [
+                "yqk88"
+            ],
+            "regex": [
+                "18.4",
+                "15.1666"
+            ]
+        },
+        {
+            "name": "sn",
+            "hosts": [
+                "suonizy"
+            ],
+            "regex": [
+                "15.1666",
+                "15.2666"
+            ]
+        },
+        {
+            "name": "bf",
+            "hosts": [
+                "bfzy"
+            ],
+            "regex": [
+                "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:3,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+            ]
+        },
+        {
+            "name": "xx",
+            "hosts": [
+                "aws.ulivetv.net"
+            ],
+            "regex": [
+                "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:8,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+            ]
+        },
+        {
+            "name": "lz",
+            "hosts": [
+                "vip.lz",
+                "hd.lz",
+                "v.cdnlz1",
+                "v.cdnlz"
+            ],
+            "regex": [
+                "18.5333"
+            ]
+        },
+        {
+            "name": "非凡",
+            "hosts": [
+                "vip.ffzy",
+                "hd.ffzy"
+            ],
+            "regex": [
+                "25.0666"
+            ]
+        },
+        {
+            "name": "hs",
+            "hosts": [
+                "huoshan.com"
+            ],
+            "regex": [
+                "item_id="
+            ]
+        },
+        {
+            "name": "dy",
+            "hosts": [
+                "douyin.com"
+            ],
+            "regex": [
+                "is_play_url="
+            ]
+        },
+        {
+            "name": "nm",
+            "hosts": [
+                "toutiaovod.com"
+            ],
+            "regex": [
+                "video/tos/cn"
+            ]
+        },
+        {
+            "name": "cl",
+            "hosts": [
+                "magnet"
+            ],
+            "regex": [
+                "最 新",
+                "直 播",
+                "更 新"
+            ]
+        }
+    ],
+    "lives": [
+        {
+            "name": "中港台日韩直播源",
+            "type": 0,
+            "url": "./直播文件/中港台日韩直播源.txt",
+            "playerType": 2,
+            "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
+            "logo": "https://11.112114.xyz/logo/中港台日韩直播源.png",
+            "ua": ""
+        },
+        {
+            "name": "国际直播大全",
+            "type": 0,
+            "url": "./直播文件/国际直播大全.m3u",
+            "playerType": 2,
+            "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
+            "logo": "https://11.112114.xyz/logo/国际直播大全.png",
+            "ua": ""
+        },
+        {
+            "name": "福利直播源",
+            "type": 0,
+            "url": "./直播文件/福利直播源.m3u",
+            "playerType": 2,
+            "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
+            "logo": "https://11.112114.xyz/logo/福利直播源.png",
+            "ua": ""
+        }
+    ]
+}
