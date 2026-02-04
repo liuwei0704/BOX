@@ -70,7 +70,7 @@
 {"key":"hipy_py_端木","name":"✳️端木┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/端木.py","searchable":1,"filterable":1,"quickSearch":1,"title":"端木","lang":"hipy","ext":""},
 {"key":"hipy_py_独播库","name":"✳️独播库┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/独播库.py","searchable":1,"filterable":1,"quickSearch":1,"title":"独播库","lang":"hipy","ext":""},
 {"key":"hipy_py_麦田影院","name":"✳️麦田影院┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/麦田影院.py","searchable":1,"filterable":1,"quickSearch":1,"title":"麦田影院","lang":"hipy","ext":""},
-{"key":"hipy_py_麻雀视频","name":"✳️麻雀视频┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/麻雀视频.py","searchable":1,"filterable":1,"quickSearch":1,"title":"麻雀视频","lang":"hipy","ext":""}
+{"key":"hipy_py_麻雀视频","name":"✳️麻雀视频┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/麻雀视频.py","searchable":1,"filterable":1,"quickSearch":1,"title":"麻雀视频","lang":"hipy","ext":""},
 {"key":"hipy_py_兄弟影视","name":"✳️兄弟影视┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/兄弟影视.py","searchable":1,"filterable":1,"quickSearch":1,"title":"兄弟影视","lang":"hipy","ext":""},
 {"key":"hipy_py_看客TV","name":"✳️看客TV┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/看客TV.py","searchable":1,"filterable":1,"quickSearch":1,"title":"看客TV","lang":"hipy","ext":""},
 {"key":"hipy_py_哇哇APP","name":"✳️哇哇APP┃HP","type":3,"api":"https://drpy-node-mauve.vercel.app/py/哇哇APP.py","searchable":1,"filterable":1,"quickSearch":1,"title":"哇哇APP","lang":"hipy","ext":""},
