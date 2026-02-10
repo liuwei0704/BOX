@@ -3,7 +3,7 @@
 "logo":"https://pimg.1px.tw/kevinhooooo/1382968110-1464645251.gif",
 "wallpaper": "https://深色壁纸.xxooo.cf/",
 "sites":[
-{"key":"豆瓣","name":"🚀豆瓣预告","type":3,"api":"csp_YGP","playerType":2,"searchable":1,"quickSearch":1,"filterable":1},
+{"key":"js_en_gf","name":"Ⓜ️官方采集┃JS","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js/en_gf.js","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"找短剧","name":"🍉找短剧","type":3,"api":"csp_HgggAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"jar":"https://jihulab.com/yoursmile2/TVBox/-/raw/master/custom_spider.jar"},
 
 {"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
