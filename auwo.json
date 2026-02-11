@@ -4,7 +4,7 @@
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "sites":[
 {"name":"💬嗷嗚彈幕","key":"嗷嗚彈幕","type":3,"api":"csp_GoConfigAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
-{"name":"🍉短剧|导航","key":"DjHggg","type":3,"api":"csp_HgggAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0"ext":"short_play"},
+{"name":"🍉短剧|导航","key":"DjHggg","type":3,"api":"csp_HgggAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"short_play"},
 {"name":"🍉漫剧|导航","key":"MjHggg","type":3,"api":"csp_HgggAmns","indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"comic_series"},
 {"name":"⚙️配置中心","key":"配置中心","type":3,"api":"csp_MyConfigAmns","searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 
