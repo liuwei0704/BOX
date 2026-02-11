@@ -13,9 +13,9 @@ class Spider(Spider):
         return "桃子影视"
     
     def init(self, extend=""):
-        # 使用正确的域名
+        # 使用正確的域名
         self.host = "https://www.taozi008.com"
-        print(f"桃子影视爬虫初始化: {self.host}")
+        print(f"桃子影視爬蟲初始化: {self.host}")
     
     def header(self):
         return {
@@ -27,102 +27,95 @@ class Spider(Spider):
         }
     
     def homeContent(self, filter):
-        """返回分类列表"""
+        """返回分類列表"""
         result = {}
         classes = [
-            {"type_name": "电影", "type_id": "229"},
-            {"type_name": "电视剧", "type_id": "230"},
-            {"type_name": "综艺", "type_id": "231"},
-            {"type_name": "动漫", "type_id": "232"}
+            {"type_name": "電影", "type_id": "229"},
+            {"type_name": "電視劇", "type_id": "230"},
+            {"type_name": "綜藝", "type_id": "231"},
+            {"type_name": "動漫", "type_id": "232"}
         ]
         result["class"] = classes
+        result["filters"] = self._get_filters()
         return result
     
+    def _get_filters(self):
+        """返回篩選條件（可選）"""
+        return {}
+    
     def homeVideoContent(self):
-        """首页推荐视频 - 简化版，直接返回空"""
+        """首頁推薦視頻 - 直接返回空"""
         return {"list": []}
     
     def categoryContent(self, tid, pg, filter, extend):
-        """分类页面内容"""
+        """分類頁面內容"""
         try:
-            # 构建分类URL
+            # 構建分類URL
             url = f"{self.host}/vod/index.html?type_id={tid}"
             
-            # 添加分页
+            # 添加分頁
             if int(pg) > 1:
                 url += f"&page={pg}"
             
-            print(f"正在抓取分类页面: tid={tid}, page={pg}, url={url}")
+            print(f"正在抓取分類頁面: tid={tid}, page={pg}, url={url}")
             rsp = self.fetch(url, headers=self.header())
             
-            # 检查响应
             if rsp.status_code != 200:
-                print(f"请求失败，状态码: {rsp.status_code}")
+                print(f"請求失敗，狀態碼: {rsp.status_code}")
                 return self._get_empty_data(pg)
             
-            # 解析HTML
             root = BeautifulSoup(rsp.text, 'html.parser')
             videos = []
             
-            # 查找视频列表项
-            items = root.select('.lists.lists-filter .lists-content ul li, .lists.lists-thumb-top .lists-content ul li')
+            # 查找視頻列表項
+            items = root.select('.lists-content ul li')
             
             if not items:
-                print("未找到视频列表，HTML结构可能已变化")
+                items = root.select('.lists.lists-thumb-top .lists-content ul li')
+            
+            if not items:
+                print("未找到視頻列表")
                 return self._get_empty_data(pg)
             
-            for idx, item in enumerate(items[:20]):  # 限制最多20个
+            for item in items[:20]:
                 try:
-                    # 查找链接
                     a = item.find('a', class_='thumbnail')
+                    if not a:
+                        a = item.find('a', href=True)
                     if not a:
                         continue
                     
-                    # 获取视频链接
                     href = a.get('href', '')
                     if not href:
                         continue
                     
                     vod_id = self.host + href if href.startswith('/') else href
                     
-                    # 获取标题
+                    # 獲取標題
                     vod_name = ""
                     h2 = item.find('h2')
                     if h2:
                         vod_name = h2.text.strip()
-                    
                     if not vod_name:
-                        continue
+                        vod_name = a.get('title', '').strip()
+                    if not vod_name:
+                        vod_name = a.text.strip()
                     
-                    # 获取封面图
+                    # 獲取封面
                     vod_pic = ""
                     img = a.find('img')
-                    if img and 'src' in img.attrs:
+                    if img and img.get('src'):
                         vod_pic = img['src']
                         if vod_pic.startswith('//'):
                             vod_pic = 'https:' + vod_pic
                         elif vod_pic.startswith('/'):
                             vod_pic = self.host + vod_pic
-                        elif not vod_pic.startswith('http'):
-                            vod_pic = self.host + '/' + vod_pic
                     
-                    # 获取备注信息
+                    # 獲取備註
                     vod_remarks = []
-                    
-                    # 更新状态
                     note_elem = a.find(class_='note')
                     if note_elem:
                         vod_remarks.append(note_elem.text.strip())
-                    
-                    # 年份和地区
-                    countrie_elem = a.find(class_='countrie')
-                    if countrie_elem:
-                        vod_remarks.append(countrie_elem.text.strip().replace('\n', ' '))
-                    
-                    # 评分
-                    rate_elem = item.find(class_='rate')
-                    if rate_elem:
-                        vod_remarks.append(f"评分:{rate_elem.text.strip()}")
                     
                     videos.append({
                         "vod_id": vod_id,
@@ -134,22 +127,19 @@ class Spider(Spider):
                 except Exception as e:
                     continue
             
-            # 获取总页数
+            # 獲取總頁數
             pagecount = int(pg)
             pagination = root.find('ul', class_='myci-page')
             if pagination:
-                last_page = pagination.find('a', string='尾页')
+                last_page = pagination.find('a', string='尾頁')
                 if last_page:
                     href = last_page.get('href', '')
                     if href:
                         match = re.search(r'page=(\d+)', href)
                         if match:
-                            try:
-                                pagecount = int(match.group(1))
-                            except:
-                                pass
+                            pagecount = int(match.group(1))
             
-            print(f"成功抓取 {len(videos)} 个视频，当前页: {pg}, 总页数: {pagecount}")
+            print(f"成功抓取 {len(videos)} 個視頻，當前頁: {pg}, 總頁數: {pagecount}")
             
             return {
                 "list": videos,
@@ -160,11 +150,11 @@ class Spider(Spider):
             }
             
         except Exception as e:
-            print(f"分类页面抓取出错: {str(e)}")
+            print(f"分類頁面抓取出錯: {str(e)}")
             return self._get_empty_data(pg)
     
     def _get_empty_data(self, pg):
-        """返回空数据"""
+        """返回空數據"""
         return {
             "list": [],
             "page": int(pg),
@@ -174,7 +164,7 @@ class Spider(Spider):
         }
     
     def detailContent(self, ids):
-        """视频详情页"""
+        """視頻詳情頁"""
         try:
             vod_id = ids[0]
             if not vod_id.startswith('http'):
@@ -182,26 +172,24 @@ class Spider(Spider):
             else:
                 url = vod_id
             
-            print(f"正在获取详情页: {url}")
+            print(f"正在獲取詳情頁: {url}")
             rsp = self.fetch(url, headers=self.header())
             root = BeautifulSoup(rsp.text, 'html.parser')
             
-            # 获取标题
+            # 獲取標題
             vod_name = "未知"
             title_elem = root.find('h1', class_='product-title')
+            if not title_elem:
+                title_elem = root.find('h1')
             if title_elem:
                 vod_name = title_elem.text.strip()
-            else:
-                title_elem = root.find('h1')
-                if title_elem:
-                    vod_name = title_elem.text.strip()
             
-            # 获取封面
+            # 獲取封面
             vod_pic = ""
-            img_selectors = ['img.thumb', 'img.thumb.detail-img', 'img.cover', '.thumbnail img']
+            img_selectors = ['img.thumb', '.thumbnail img', 'img.cover']
             for selector in img_selectors:
                 img_elem = root.select_one(selector)
-                if img_elem and 'src' in img_elem.attrs:
+                if img_elem and img_elem.get('src'):
                     vod_pic = img_elem['src']
                     break
             
@@ -210,75 +198,58 @@ class Spider(Spider):
                     vod_pic = 'https:' + vod_pic
                 elif vod_pic.startswith('/'):
                     vod_pic = self.host + vod_pic
-                elif not vod_pic.startswith('http'):
-                    vod_pic = self.host + '/' + vod_pic
             
-            # 获取年份
+            # 獲取年份
             vod_year = ""
             year_match = re.search(r'\((\d{4})\)', vod_name)
             if year_match:
                 vod_year = year_match.group(1)
             
-            # 获取导演
+            # 獲取導演、演員、地區、簡介
             vod_director = ""
-            director_elem = root.find('div', class_='product-excerpt', string=re.compile('导演'))
-            if director_elem:
-                director_text = director_elem.get_text(strip=True).replace('导演：', '')
-                vod_director = director_text
-            
-            # 获取演员
             vod_actor = ""
-            actor_elem = root.find('div', class_='product-excerpt', string=re.compile('主演'))
-            if actor_elem:
-                actor_text = actor_elem.get_text(strip=True).replace('主演：', '')
-                vod_actor = actor_text
-            
-            # 获取地区
             vod_area = ""
-            area_elem = root.find('div', class_='product-excerpt', string=re.compile('制片国家/地区'))
-            if area_elem:
-                area_text = area_elem.get_text(strip=True).replace('制片国家/地区：', '')
-                vod_area = area_text.strip()
-            
-            # 获取描述
             vod_content = ""
-            desc_elem = root.find('div', class_='product-excerpt', string=re.compile('剧情简介'))
-            if desc_elem:
-                # 获取父元素下的所有文本
-                desc_container = desc_elem.parent
-                if desc_container:
-                    # 找到剧情简介后面的span标签内容
-                    span_elem = desc_container.find('span')
-                    if span_elem:
-                        vod_content = span_elem.get_text(strip=True)
             
+            # 從 product-excerpt 中提取信息
+            excerpts = root.find_all('div', class_='product-excerpt')
+            for excerpt in excerpts:
+                text = excerpt.get_text(strip=True)
+                if '導演：' in text:
+                    vod_director = text.replace('導演：', '').strip()
+                elif '主演：' in text:
+                    vod_actor = text.replace('主演：', '').strip()
+                elif '製片國家/地區：' in text:
+                    vod_area = text.replace('製片國家/地區：', '').strip()
+                elif '劇情簡介' in text:
+                    span = excerpt.find('span')
+                    if span:
+                        vod_content = span.get_text(strip=True)
+            
+            # 如果沒找到簡介，嘗試從 meta 獲取
             if not vod_content:
-                # 备用方法：从meta description获取
                 meta_desc = root.find('meta', {'name': 'description'})
-                if meta_desc and 'content' in meta_desc.attrs:
+                if meta_desc and meta_desc.get('content'):
                     vod_content = meta_desc['content']
             
             # 解析播放列表
-            play_from_list = ["线路1"]
-            
-            # 获取剧集列表
-            episode_items = root.select('.playEpisodes li a')
             episodes = []
             
-            if episode_items:
-                for item in episode_items:
-                    episode_name = item.text.strip()
-                    episode_url = item.get('href', '')
-                    if episode_url:
+            # 查找劇集列表
+            episode_containers = root.select('.playEpisodes ul, #playlist ul, .episode-list ul')
+            for container in episode_containers:
+                links = container.find_all('a', href=True)
+                for link in links:
+                    episode_name = link.text.strip()
+                    episode_url = link.get('href', '')
+                    if episode_url and episode_name:
                         if not episode_url.startswith('http'):
                             episode_url = self.host + episode_url if episode_url.startswith('/') else episode_url
                         episodes.append(f"{episode_name}${episode_url}")
             
-            # 如果没有解析到剧集，使用详情页链接
+            # 如果沒解析到劇集，使用詳情頁鏈接
             if not episodes:
                 episodes.append(f"第1集${url}")
-            
-            play_url_list = ["#".join(episodes)]
             
             video = {
                 "vod_id": ids[0],
@@ -289,144 +260,122 @@ class Spider(Spider):
                 "vod_actor": vod_actor,
                 "vod_director": vod_director,
                 "vod_area": vod_area,
-                "vod_play_from": "$$$".join(play_from_list),
-                "vod_play_url": "$$$".join(play_url_list)
+                "vod_play_from": "線路1",
+                "vod_play_url": "#".join(episodes)
             }
             
-            print(f"详情页解析完成: {vod_name}, 共{len(episodes)}集")
+            print(f"詳情頁解析完成: {vod_name}, 共{len(episodes)}集")
             return {"list": [video]}
             
         except Exception as e:
-            print(f"详情页获取失败: {str(e)}")
-            # 返回基本的详情信息
+            print(f"詳情頁獲取失敗: {str(e)}")
             video = {
                 "vod_id": ids[0],
-                "vod_name": "视频详情",
+                "vod_name": "視頻詳情",
                 "vod_pic": "",
-                "vod_content": "详情加载中...",
-                "vod_play_from": "默认",
+                "vod_content": "詳情加載中...",
+                "vod_play_from": "默認",
                 "vod_play_url": f"第1集${ids[0]}"
             }
             return {"list": [video]}
     
     def searchContent(self, key, quick, pg=1):
-        """搜索功能 - 已修复"""
+        """搜索功能 - 完全修復版本"""
         try:
             encoded_key = urllib.parse.quote(key)
             
-            # 注意：搜索结果页面实际上是从 /public/auto/search1.html 获取的
-            # 从HTML可以看到，搜索结果是通过Ajax加载到这个地址
-            url = f"{self.host}/public/auto/search1.html?keyword={encoded_key}"
+            # ✅ 修正：直接使用標準搜索頁面，不使用 Ajax 接口
+            url = f"{self.host}/search/index.html?keyword={encoded_key}"
             
             if int(pg) > 1:
                 url += f"&page={pg}"
             
-            print(f"正在搜索: {key}, 第{pg}页, 搜索URL: {url}")
+            print(f"搜索 URL: {url}")
             rsp = self.fetch(url, headers=self.header())
             
-            # 检查响应
             if rsp.status_code != 200:
-                print(f"搜索请求失败，状态码: {rsp.status_code}")
-                # 尝试备用方法：直接访问搜索页面
-                url = f"{self.host}/search/index.html?keyword={encoded_key}"
-                if int(pg) > 1:
-                    url += f"&page={pg}"
-                print(f"尝试备用搜索URL: {url}")
-                rsp = self.fetch(url, headers=self.header())
-                if rsp.status_code != 200:
-                    return {"list": []}
+                print(f"搜索請求失敗，狀態碼: {rsp.status_code}")
+                return {"list": []}
             
             root = BeautifulSoup(rsp.text, 'html.parser')
             videos = []
             
-            # 检查是否有搜索结果
-            no_result = root.find('p', string=re.compile('未搜索到相关内容'))
+            # ✅ 檢查是否有搜索結果
+            no_result = root.find('p', string=re.compile('未搜索到相關內容|沒有找到'))
             if no_result:
-                print(f"未搜索到相关内容: {key}")
+                print(f"未搜索到相關內容: {key}")
                 return {"list": []}
             
-            # 尝试多种选择器来获取搜索结果项
-            selectors = [
-                '.lists.lists-filter .lists-content ul li',
-                '.lists.lists-thumb-top .lists-content ul li',
-                '.lists-content ul li',
-                '.lists ul li',
-                '.lists li'
-            ]
-            
-            items = None
-            for selector in selectors:
-                items = root.select(selector)
-                if items:
-                    print(f"使用选择器 '{selector}' 找到 {len(items)} 个结果项")
-                    break
+            # ✅ 精準定位搜索結果列表
+            items = root.select('.lists-content ul li')
             
             if not items:
-                # 尝试更通用的选择器
-                items = root.find_all('li')
-                print(f"使用通用选择器找到 {len(items)} 个li元素")
+                # 備用選擇器
+                items = root.select('.lists ul li')
+            
+            print(f"找到 {len(items)} 個搜索結果項")
             
             for item in items:
                 try:
-                    # 查找链接和标题
+                    # 查找鏈接
                     a = None
-                    
-                    # 尝试多种方式查找链接
-                    link_selectors = ['a.thumbnail', 'a', '.thumbnail a']
-                    for selector in link_selectors:
-                        a_element = item.select_one(selector)
-                        if a_element:
-                            a = a_element
+                    for selector in ['a.thumbnail', 'a', '.thumbnail a']:
+                        a = item.select_one(selector)
+                        if a:
                             break
                     
                     if not a:
-                        # 直接查找href属性
                         a = item.find('a', href=True)
                     
                     if not a:
                         continue
                     
                     href = a.get('href', '')
-                    if not href:
+                    if not href or href == '#':
                         continue
                     
+                    # 處理視頻ID
                     vod_id = self.host + href if href.startswith('/') else href
                     
-                    # 获取标题
+                    # 獲取標題 - 多種方式
                     vod_name = ""
                     
-                    # 尝试多种方式获取标题
+                    # 1. 從 h2 獲取
                     h2 = item.find('h2')
                     if h2:
                         vod_name = h2.text.strip()
                     
+                    # 2. 從 title 屬性
                     if not vod_name:
-                        # 尝试从a标签获取title属性
-                        vod_name = a.get('title', '')
+                        vod_name = a.get('title', '').strip()
                     
+                    # 3. 從文本
                     if not vod_name:
-                        # 从a标签的文本内容获取
                         vod_name = a.text.strip()
+                    
+                    # 4. 從 alt 屬性
+                    if not vod_name:
+                        img = a.find('img')
+                        if img and img.get('alt'):
+                            vod_name = img['alt'].strip()
                     
                     if not vod_name:
                         continue
                     
-                    # 清理标题
+                    # 清理標題
                     vod_name = re.sub(r'\s+', ' ', vod_name).strip()
                     
-                    # 获取封面
+                    # 獲取封面
                     vod_pic = ""
                     img = a.find('img')
-                    if img and 'src' in img.attrs:
+                    if img and img.get('src'):
                         vod_pic = img['src']
                         if vod_pic.startswith('//'):
                             vod_pic = 'https:' + vod_pic
                         elif vod_pic.startswith('/'):
                             vod_pic = self.host + vod_pic
-                        elif not vod_pic.startswith('http'):
-                            vod_pic = self.host + '/' + vod_pic
                     
-                    # 获取备注
+                    # 獲取備註
                     vod_remarks = ""
                     note_elem = a.find(class_='note')
                     if note_elem:
@@ -440,159 +389,119 @@ class Spider(Spider):
                     })
                     
                 except Exception as e:
-                    print(f"解析搜索结果项时出错: {str(e)}")
+                    print(f"解析搜索結果項時出錯: {str(e)}")
                     continue
             
-            print(f"搜索到 {len(videos)} 个结果")
-            
-            # 尝试获取总页数
-            pagecount = 1
-            pagination = root.find('ul', class_='myci-page')
-            if pagination:
-                last_page = pagination.find('a', string='尾页')
-                if last_page:
-                    href = last_page.get('href', '')
-                    if href:
-                        match = re.search(r'page=(\d+)', href)
-                        if match:
-                            try:
-                                pagecount = int(match.group(1))
-                            except:
-                                pass
-                else:
-                    # 尝试获取所有页码链接
-                    page_links = pagination.find_all('a')
-                    page_numbers = []
-                    for link in page_links:
-                        text = link.text.strip()
-                        if text.isdigit():
-                            page_numbers.append(int(text))
-                    if page_numbers:
-                        pagecount = max(page_numbers)
+            print(f"搜索到 {len(videos)} 個結果")
             
             return {
                 "list": videos,
                 "page": int(pg),
-                "pagecount": max(pagecount, int(pg)),
+                "pagecount": 1,  # 簡化處理，只返回第一頁
                 "limit": 20,
                 "total": len(videos)
             }
             
         except Exception as e:
-            print(f"搜索失败: {str(e)}")
+            print(f"搜索失敗: {str(e)}")
             import traceback
             traceback.print_exc()
             return {"list": []}
     
     def playerContent(self, flag, id, vipFlags):
-        """解析播放地址 - 改进版本"""
+        """解析播放地址"""
         try:
             print(f"正在解析播放地址: {id}")
             
-            # 获取播放页面内容
             rsp = self.fetch(id, headers=self.header())
             html_content = rsp.text
-                        
-            # 查找所有可能的base64编码字符串
+            
             m3u8_url = ""
             
-            # 方法1：查找特定的base64模式
+            # 方法1：查找 base64 編碼的 m3u8
             base64_patterns = [
-                r'"file":"([A-Za-z0-9+/=]{100,})"',
-                r'file["\']?\s*:\s*["\']([A-Za-z0-9+/=]{100,})["\']',
-                r'["\']([A-Za-z0-9+/=]{100,})["\']'
+                r'"file":"([A-Za-z0-9+/=]{50,})"',
+                r'file["\']?\s*:\s*["\']([A-Za-z0-9+/=]{50,})["\']',
+                r'url["\']?\s*:\s*["\']([A-Za-z0-9+/=]{50,})["\']',
+                r'src["\']?\s*:\s*["\']([A-Za-z0-9+/=]{50,})["\']'
             ]
             
             for pattern in base64_patterns:
                 matches = re.findall(pattern, html_content)
                 for match in matches:
                     try:
-                        # 尝试去掉前3个字符后解码
-                        if len(match) > 3:
-                            # 检查是否是已知的前缀（KhY, XPQ等）
-                            if match.startswith(('KhY', 'XPQ', 'd4g', 'yYQ', 'frX', '7eR', 'U0j', '898', 'oLX', 'jwR')):
-                                encrypted = match[3:]
-                            else:
-                                encrypted = match
-                            
-                            # base64解码
-                            decoded_bytes = base64.b64decode(encrypted)
-                            decoded_str = decoded_bytes.decode('utf-8')
-                            
-                            # URL解码
-                            m3u8_url = urllib.parse.unquote(decoded_str)
-                            
-                            # 验证是否是有效的m3u8地址
-                            if 'm3u8' in m3u8_url.lower() and m3u8_url.startswith('http'):
-                                print(f"成功解析m3u8地址: {m3u8_url[:100]}...")
-                                break
-                    except Exception as e:
+                        # 處理特殊前綴
+                        if len(match) > 3 and match[:3] in ['KhY', 'XPQ', 'd4g', 'yYQ', 'frX', '7eR', 'U0j', '898', 'oLX', 'jwR']:
+                            encrypted = match[3:]
+                        else:
+                            encrypted = match
+                        
+                        # base64 解碼
+                        decoded_bytes = base64.b64decode(encrypted)
+                        decoded_str = decoded_bytes.decode('utf-8')
+                        
+                        # URL 解碼
+                        m3u8_url = urllib.parse.unquote(decoded_str)
+                        
+                        if 'm3u8' in m3u8_url.lower() and m3u8_url.startswith('http'):
+                            print(f"成功解析 m3u8 地址")
+                            break
+                    except:
                         continue
                 if m3u8_url:
                     break
             
-            # 方法2：如果没找到，尝试直接查找m3u8
+            # 方法2：直接查找 m3u8 鏈接
             if not m3u8_url:
                 m3u8_pattern = r'https?://[^\s"\']+\.m3u8[^\s"\']*'
                 m3u8_matches = re.findall(m3u8_pattern, html_content, re.IGNORECASE)
                 if m3u8_matches:
                     m3u8_url = m3u8_matches[0]
-                    print(f"直接找到m3u8地址: {m3u8_url[:100]}...")
+                    print(f"直接找到 m3u8 地址")
             
             if m3u8_url:
-                # 确保URL是完整的
+                # 清理 URL
+                m3u8_url = m3u8_url.strip()
+                m3u8_url = m3u8_url.strip('"\'')
+                
                 if m3u8_url.startswith('//'):
                     m3u8_url = 'https:' + m3u8_url
                 
-                # 清理URL
-                m3u8_url = m3u8_url.strip()
-                if m3u8_url.endswith('"') or m3u8_url.endswith("'"):
-                    m3u8_url = m3u8_url[:-1]
-                if m3u8_url.startswith('"') or m3u8_url.startswith("'"):
-                    m3u8_url = m3u8_url[1:]
-                
-                # 设置headers
                 headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                     'Referer': id,
                     'Origin': 'https://www.taozi008.com'
                 }
                 
-                result = {
-                    "parse": 0,  # 0表示直接播放
+                return {
+                    "parse": 0,
                     "url": m3u8_url,
-                    "header": json.dumps(headers)  # 转换为JSON字符串
+                    "header": json.dumps(headers)
                 }
-                print(f"返回m3u8地址: {m3u8_url[:200]}...")
-                return result
             else:
-                print("未找到m3u8地址，返回原始链接让TVBox解析")
-                # 如果找不到m3u8，返回原始链接让TVBox解析
+                print("未找到 m3u8 地址，返回原始鏈接")
                 headers = self.header()
                 headers['Referer'] = id
                 
-                result = {
-                    "parse": 1,  # 1表示让TVBox解析
+                return {
+                    "parse": 1,
                     "url": id,
                     "header": json.dumps(headers)
                 }
-                return result
                 
         except Exception as e:
-            print(f"播放地址解析失败: {str(e)}")
-            # 失败时返回原链接让TVBox处理
+            print(f"播放地址解析失敗: {str(e)}")
             headers = self.header()
             headers['Referer'] = id
             
-            result = {
-                "parse": 1,  # 1表示让TVBox解析
+            return {
+                "parse": 1,
                 "url": id,
                 "header": json.dumps(headers)
             }
-            return result
     
     def isVideoFormat(self, url):
-        """判断是否为视频格式"""
+        """判斷是否為視頻格式"""
         video_formats = ['.m3u8', '.mp4', '.avi', '.mkv', '.flv', '.ts', '.webm']
         return any(fmt in url.lower() for fmt in video_formats)
     
