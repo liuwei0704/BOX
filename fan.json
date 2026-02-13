@@ -1,5 +1,5 @@
 {
-"spider":"https://oss4liview.moji.com/thd_file/2026/02/12/858fd72ff379c78886915a1e35fb2133.jpg;md5;7f1adb608c7375f92deee7f04abea6e6",
+"spider":"https://oss4liview.moji.com/thd_file/2026/02/13/bbabc422844a5b06038bd154eb2b0b57.jpg;md5;78a03fbb16cc42b7c79d9c1d1464be00",
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 
 "sites":[
@@ -20,14 +20,14 @@
 {"key":"比特","name":"🍄比特┃秒播","type":3,"api":"csp_BttwooGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1},
 //{"key":"苹果","name":"🍎苹果┃秒播","type":3,"api":"csp_LiteAppleGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"热播","name":"📺热播┃多线","type":3,"api":"csp_AppTTGuard","timeout":10,"playerType":2,"searchable":1,"quickSearch":1,"changeable":1,"ext":"uqGL1bNENExT7/hGxpSE5qU="},
+{"key":"糯米","name":"🍓糯米┃多线","type":3,"api":"csp_NmyswvGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"剧圈","name":"🐻剧圈┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOb1uAWbkRHp7hdxprG9un3+S3T18333j8hL4ryEFdPZxse8yYwoKFyJOlU2M9/q2OcL8NQxT0k5GV9Quw0AIzUurGBVyPqCLrdirfpAz+n0Qh7PVBWo8uxWhO1Bs1MCYA1oiM="},
-{"key":"光影","name":"🌞光影┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOb1uAWbkRHp7hdxprG9un3+T/Ky8ijlm1jJ8+yU0seIgQe6DRwqrUqYeBZw91iuG3ZcN1Sz2Im+G8mF+shR+eNzbfXXm6lQP/dh6jgV3vuhAU7ZRwc9pSgTUu4VYIbAYdt+2ddGRy/WuLwxQbgQsRBzg=="},
+{"key":"光影","name":"🌞光影┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOb1uAWbkRHp7hdxprG9un3+TrS2dv+1y8lL4ryEFdPZxse8yYwoKFyJOlU2M9/q2OcL8NQxT0k4zImBOA4Uobe87udCDvyWafXmuGpRG3z0Vg1KUZQ7ty7UE+qFZ1UBoc16Q=="},
 {"key":"米团","name":"🍙米团┃多线","type":3,"api":"csp_AppYsV2Guard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOK0+FRORAJ7epFjN2F+Lm9o2nF28P91TA4dIy3AAlFKw5JqColrKxydelI2IR6sXTYZ5UR0n0xqycyEeglO8+BuuDECGmuSr7GhKG/QGX42VBkbwIc7pP8BBPxQ51QZuBRwSk3Wmr8OK703W6ZI7Uui11v"},
-{"key":"播客","name":"🦊播客┃多线","type":3,"api":"csp_AppNoxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOK0+FRORAJ7epFjN2FsOb0+G+dnI21lWFvI8G1X0oOORAM7CY0gqEhKK4JhYY76CLHO9RMjjBz6nh5Qu4pE8uU8OyFXnXyAuvJl6j2FHH2zVZyZQ4c44j2G1DpXZ1cBYExpHhLS036F+r0x1WoFtRJlT5UVzv/OBWXlbdBG5NIvmxIFeUyRIs8dhpC3eetx7bu+kJaSK5Mb7GRWR+9F6/ij4XTvoO1QaycaicscgI+BX9yb/gWs7c/VwIE9cwQwftEn0cD96msn45f/tv6dGr1CHdRBb7jD0Y6XgZ6X8CY9dPzPYiMTOlNtqONBwjopgk="},
+{"key":"播客","name":"🦊播客┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOX1voDIQhH8epBwtCFsub18Wmenoi4l29kKsy7UkwYMxpf9CY77fshcekBhdA642OKKsMYzDZl6C04VuIpAozGrejSUw=="},
 {"key":"猫猫","name":"🐟猫猫┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOX1voDIQhH8epBwpmIsuStr2HSytK11WwwcM/+XB8SbkBB4XYk/L52LroCiYRhoDrRLJ4ZkCh5q2RxCb5yUs6B5aCQVGSkR6zDgKLrFSDulg=="},
 //{"key":"包子","name":"🍩包子┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOb1uAWbkRHp7hdxprG9un3+S/Cz8j6xik9ZozpEkhbYkFU/DFvvK1mZONQ0N84uGiCZNFRz3ln6nh5Q+YkAdSQ6aaNTzegVrmV3P39FC7u1UYse1VMo56uQUy/V4IOUYZzsnJBF1/lWqakhRaj"},
-{"key":"鲸鱼","name":"👀爱影┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOb1uAWbkRHp7hdxprG9un3+SDcz8rnlT83d5z3FhMaeEUUqDo3pqx1fbpMycIs9SKEeN0FligzxT55OaAlO5qM0+WFfzCsCLA="},
-{"key":"糯米","name":"🍓糯米┃多线","type":3,"api":"csp_NmyswvGuard","timeout":15,"searchable":1,"quickSearch":1,"changeable":1},
+{"key":"爱影","name":"👀爱影┃多线","type":3,"api":"csp_AppSxGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1,"ext":"rfOb1uAWbkRHp7hdxprG9un3+T/Ky8ijlm1jJ8+yU0seIgQe6DRwqrUqYeBZw91iuG3ZcN1Sz2Im+G8mF+shR+eNzbfXXm6lQP/dh6jgV3vuhAU7ZRwc9pSgTUu4VYIbAYdt+2ddGRy/WuLwxQbgQsRBzg=="},
 {"key":"奥特","name":"🏝奥特┃多线","type": 3,"api":"csp_AueteGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":1},
 {"key":"荐片","name":"🐭荐片┃P2P","type":3,"api":"csp_JPJGuard","timeout":10,"playerType":2,"searchable":1,"quickSearch":1,"changeable":0},
 {"key":"新6V","name":"🧲新6V┃磁力","type":3,"api":"csp_SixVGuard","timeout":10,"searchable":1,"quickSearch":1,"changeable":0,"ext": "https://www.xb6v.com/"},
