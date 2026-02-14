@@ -174,9 +174,10 @@ class Spider(Spider):
             return {'class': [], 'list': []}
     
     def _get_home_list(self, data):
-        """首页推荐列表 - 只取正在热播区域"""
+        """首页推荐列表 - 修复选择器"""
         videos = []
-        items = data('#SliderList_0 .myui-vodbox-content')
+        # 从HTML看，首页热播区域使用相同的结构
+        items = data('#SliderList_0 .movie-ul > .myui-vodbox-content')
         for item in items.items():
             video_info = self._extract_video_basic(item)
             if video_info:
@@ -184,7 +185,7 @@ class Spider(Spider):
         return videos[:12]
     
     def categoryContent(self, tid, pg, filter, extend):
-        """分类页内容"""
+        """分类页内容 - 修复选择器"""
         try:
             # 分页URL
             match = re.search(r'/vod(?:type|show)/(\d+)', tid)
@@ -198,10 +199,11 @@ class Spider(Spider):
             data = self.getpq(html)
             
             videos = []
-            # 分类页影片容器
-            items = data('.movie-ul .myui-vodbox-content, .vod-list-box .myui-vodbox-content, .show-vod-list .myui-vodbox-content')
+            # 修复：直接选择.movie-ul下的.myui-vodbox-content（子元素，非后代）
+            items = data('.movie-ul > .myui-vodbox-content')
             
             for item in items.items():
+                # 过滤掉轮播区域的内容
                 if item.parents('[id^="SliderList_"]'):
                     continue
                 video_info = self._extract_video_basic(item)
@@ -241,9 +243,9 @@ class Spider(Spider):
             return {'list': [], 'page': int(pg), 'pagecount': 1, 'limit': 30, 'total': 0}
     
     def _get_video_list(self, data):
-        """提取搜索页视频"""
+        """提取搜索页视频 - 修复选择器"""
         videos = []
-        items = data('.show-vod-list .movie-ul .myui-vodbox-content')
+        items = data('.show-vod-list .movie-ul > .myui-vodbox-content')
         for item in items.items():
             video_info = self._extract_video_basic(item)
             if video_info:
@@ -251,7 +253,7 @@ class Spider(Spider):
         return videos
     
     def detailContent(self, ids):
-        """详情页：提取视频详情 + 完整播放列表 + ✅ 修復年份（只取第一個四位數字）"""
+        """详情页：提取视频详情 + 完整播放列表 - 修復播放列表選擇器"""
         try:
             first_id = next(iter(ids)) if hasattr(ids, '__iter__') and not isinstance(ids, str) else ids
             html = self.fetch(first_id, headers=self.headers).text
@@ -288,6 +290,8 @@ class Spider(Spider):
             if roles:
                 actor = roles.text().replace('主演：', '').strip()
             if not actor:
+                actor = data('.director.text-overflow').eq(1).text().replace('主演:', '').strip()
+            if not actor:
                 actor = data('meta[property="og:video:actor"]').attr('content') or ''
             
             # 导演
@@ -295,13 +299,14 @@ class Spider(Spider):
             director_elem = data('.info-director')
             if director_elem:
                 director = director_elem.text().replace('导演：', '').strip()
+            if not director:
+                director = data('.director.text-overflow').eq(0).text().replace('导演:', '').strip()
             
-            # ✅ 修復年份提取 - 只取.info-bottom .right的第一個四位數字
+            # 年份提取
             year = ''
             year_elem = data('.info-bottom .right')
             if year_elem:
                 year_text = year_elem.text().strip()
-                # 只取第一個符合四位數字的年份
                 year_match = re.search(r'(\d{4})', year_text)
                 if year_match:
                     year = year_match.group(1)
@@ -318,37 +323,29 @@ class Spider(Spider):
             if remarks_elem:
                 remarks = remarks_elem.text().strip()
             
-            # ---------- 2. 播放列表 ----------
+            # ---------- 2. 播放列表 - 修復選擇器 ----------
             play_from_list = []
             play_url_list = []
             
-            # 详情页的播放列表结构
-            player_tabs = data('.player-box .nav-btn li, .player-box .swiper-slide.player_name')
-            
+            # 獲取所有播放線路名稱
+            player_tabs = data('.player-box .swiper-slide.player_name a')
             for tab in player_tabs.items():
-                tab_link = tab('a')
-                tab_href = tab_link.attr('href')
-                if not tab_href:
-                    continue
-                
-                from_name = tab_link.text().strip()
-                if not from_name:
-                    from_name = f"線路{len(play_from_list)+1}"
-                
-                playlist_id = tab_href.replace('#', '')
-                
+                from_name = tab.text().strip()
+                if from_name:
+                    play_from_list.append(from_name)
+            
+            # 獲取所有播放列表內容
+            playlist_divs = data('.tab-content .tab-pane')
+            for i, playlist in enumerate(playlist_divs.items()):
                 episode_links = []
-                playlist_div = data(f'#{playlist_id}')
-                if playlist_div:
-                    episode_items = playlist_div('.listitem a')
-                    for episode in episode_items.items():
-                        episode_url = self._normalize_url(episode.attr('href'))
-                        episode_name = episode.text().strip()
-                        if episode_url and episode_name:
-                            episode_links.append(f"{episode_name}${episode_url}")
+                episode_items = playlist('.listitem a')
+                for episode in episode_items.items():
+                    episode_url = self._normalize_url(episode.attr('href'))
+                    episode_name = episode.text().strip()
+                    if episode_url and episode_name:
+                        episode_links.append(f"{episode_name}${episode_url}")
                 
                 if episode_links:
-                    play_from_list.append(from_name)
                     play_url_list.append('#'.join(episode_links))
             
             # ---------- 3. 组装返回数据 ----------
@@ -364,7 +361,7 @@ class Spider(Spider):
                 'vod_director': director
             }
             
-            if play_from_list and play_url_list:
+            if play_from_list and play_url_list and len(play_from_list) == len(play_url_list):
                 vod['vod_play_from'] = '$$$'.join(play_from_list)
                 vod['vod_play_url'] = '$$$'.join(play_url_list)
             else:
