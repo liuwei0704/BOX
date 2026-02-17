@@ -6,6 +6,8 @@
 "sites":[
 {"key":"Live","name":"SCLive","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_stripchat.py","searchable":1,"filterable":0,"changeable":0},
 {"key":"Pandalive","name":"Pandalive┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Pandalive.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"DXLive","name":"DXLive┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/DXLive.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"MyJAV","name":"MyJAV┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/MyJAV.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"熊猫","name":"LIVE(韩)","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/su147456888444/tvbox/refs/heads/main/drpy_js/熊猫.py","searchable":1,"filterable":0,"changeable":0},
 {"key":"直播","name":"裸聊直播","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/fish2018/lib/refs/heads/main/py/py_色播聚合.py","searchable":1,"quickSearch":1,"filterable":0,"changeable":0},
 {"key":"ss直播","name":"ss直播","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/drpy2.min.js","searchable":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/ss直播.js"},
