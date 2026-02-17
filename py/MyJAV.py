@@ -123,11 +123,11 @@ class Spider(Spider):
                         classes.append({'type_name': '最新更新', 'type_id': self._normalize_url('/videos?x=updated')})
                     elif name == 'Uncensored':
                         classes.append({'type_name': '无码', 'type_id': self._normalize_url('/videos?x=uncensored')})
-                    elif name == 'Tags':
+                    #elif name == 'Tags':
                         classes.append({'type_name': '标签', 'type_id': self._normalize_url('/tags')})
-                    elif name == 'Actors':
+                    #elif name == 'Actors':
                         classes.append({'type_name': '演员', 'type_id': self._normalize_url('/actors')})
-                    elif name == 'Makers':
+                    #elif name == 'Makers':
                         classes.append({'type_name': '制作商', 'type_id': self._normalize_url('/makers')})
                     else:
                         classes.append({'type_name': name, 'type_id': self._normalize_url(link)})
