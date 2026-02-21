@@ -3,8 +3,7 @@ import re
 import sys
 import json
 import requests
-from urllib.parse import urljoin, urlencode
-
+from urllib.parse import urljoin, urlencode, quote
 
 sys.path.append('..')
 from base.spider import Spider
@@ -31,7 +30,7 @@ class Spider(Spider):
         pass
 
     # ==================== 配置區域 ====================
-    host = 'https://avjoy.me'  # 網站主域名
+    host = 'https://avjoy.me'
     
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -49,30 +48,6 @@ class Spider(Spider):
         {'type_name': '无码', 'type_id': 'uncensored'},
     ]
     
-    # 列表頁選擇器配置
-    list_selector = 'div.content-left div.col-6'  # 視頻列表項
-    title_selector = 'span.content-title'  # 標題選擇器
-    title_attr = ''  # 標題屬性（留空表示取文本）
-    
-    img_selector = 'img'  # 圖片選擇器
-    img_attr = 'src'  # 圖片屬性
-    img_attr_backup = 'data-src'  # 備用圖片屬性
-    
-    remark_selector = 'div.duration'  # 備註選擇器（顯示時長）
-    remark_selector_backup = '.pic-text'  # 備用備註選擇器
-    
-    # 詳情頁選擇器配置
-    detail_name_selector = 'h1'  # 標題
-    detail_pic_selector = 'div.player img, div.video-cover img'  # 圖片
-    detail_desc_selector = 'div.video-description'  # 簡介
-    
-    # 播放頁選擇器配置
-    play_video_selector = 'video source'  # video標籤
-    play_iframe_selector = 'iframe#player, div.player iframe'  # iframe標籤
-    
-    # 分頁配置
-    page_param = 'page'  # 分頁參數名
-    
     # ==================== 工具函數 ====================
     
     def _normalize_url(self, url):
@@ -88,67 +63,6 @@ class Spider(Spider):
             return 'https://' + url
         return url
 
-    def getpq(self, text):
-        """安全獲取PyQuery對象"""
-        try:
-            return pq(text)
-        except:
-            try:
-                return pq(text.encode('utf-8'))
-            except:
-                return pq('')
-
-    def _extract_video_basic(self, item):
-        """從列表項提取視頻基本信息"""
-        try:
-            # 獲取連結
-            links = item('a')
-            if len(links) < 1:
-                return None
-            link = links.eq(0).attr('href')
-            if not link or '/video/' not in link:
-                return None
-            link = self._normalize_url(link)
-            
-            # 提取視頻ID
-            vid = link.split('/video/')[-1].split('/')[0] if '/video/' in link else ''
-            
-            # 標題
-            title_elem = item.find(self.title_selector)
-            title = title_elem.text() if title_elem else ''
-            title = title.strip() or '未知標題'
-            
-            # 圖片
-            img = ''
-            img_elem = item.find(self.img_selector)
-            if img_elem:
-                img = img_elem.attr(self.img_attr)
-                if not img and self.img_attr_backup:
-                    img = img_elem.attr(self.img_attr_backup)
-            img = self._normalize_url(img) if img else ''
-            
-            # 備註（時長）
-            remark = ''
-            remark_elem = item.find(self.remark_selector)
-            if remark_elem:
-                remark = remark_elem.text()
-            if not remark and self.remark_selector_backup:
-                remark_elem = item.find(self.remark_selector_backup)
-                if remark_elem:
-                    remark = remark_elem.text()
-            remark = remark.strip()
-            
-            return {
-                'vod_id': vid,
-                'vod_name': title,
-                'vod_pic': img,
-                'vod_remarks': remark,
-                'vod_url': link
-            }
-        except Exception as e:
-            print(f'提取視頻信息失敗: {e}')
-            return None
-
     def _fetch_html(self, url):
         """獲取HTML內容"""
         try:
@@ -159,28 +73,90 @@ class Spider(Spider):
             print(f'獲取HTML失敗: {e}')
         return ''
 
+    def _extract_videos(self, html):
+        """從HTML中提取視頻列表 - 通用方法"""
+        videos = []
+        try:
+            # 匹配視頻卡片的正則表達式
+            pattern = r'<div[^>]*class=\"[^\"]*col-6[^\"]*\"[^>]*>.*?<a[^>]*href=\"(/video/(\d+)[^\"]*)\"[^>]*>.*?<img[^>]*src=\"([^\"]+)\"[^>]*>.*?<span[^>]*class=\"content-title\"[^>]*>(.*?)</span>.*?<div[^>]*class=\"duration\"[^>]*>(.*?)</div>'
+            matches = re.findall(pattern, html, re.DOTALL | re.IGNORECASE)
+            
+            for match in matches:
+                video_url, vid, pic, title, duration = match
+                # 清理HTML標籤
+                title = re.sub(r'<[^>]+>', '', title).strip()
+                duration = re.sub(r'<[^>]+>', '', duration).strip()
+                
+                videos.append({
+                    'vod_id': vid,
+                    'vod_name': title,
+                    'vod_pic': self._normalize_url(pic),
+                    'vod_remarks': duration
+                })
+        except Exception as e:
+            print(f'提取視頻列表失敗: {e}')
+        return videos
+
+    def _extract_detail(self, html, vid):
+        """從詳情頁提取信息"""
+        detail = {}
+        try:
+            # 提取標題
+            title_match = re.search(r'<h1[^>]*>(.*?)</h1>', html, re.DOTALL | re.IGNORECASE)
+            title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip() if title_match else ''
+            
+            # 提取封面 - 多種匹配方式
+            pic = ''
+            # 方式1: 從 thumb-overlay 中提取
+            pic_match = re.search(r'<div[^>]*class=\"[^\"]*thumb-overlay[^\"]*\"[^>]*>.*?<img[^>]*src=\"([^\"]+)\"[^>]*>', html, re.DOTALL | re.IGNORECASE)
+            if not pic_match:
+                # 方式2: 從 og:image meta 標籤提取
+                pic_match = re.search(r'<meta[^>]*property=\"og:image\"[^>]*content=\"([^\"]+)\"', html, re.IGNORECASE)
+            if not pic_match:
+                # 方式3: 從 player div 中提取
+                pic_match = re.search(r'<div[^>]*class=\"[^\"]*player[^\"]*\"[^>]*>.*?<img[^>]*src=\"([^\"]+)\"[^>]*>', html, re.DOTALL | re.IGNORECASE)
+            
+            pic = self._normalize_url(pic_match.group(1)) if pic_match else ''
+            
+            # 提取描述
+            desc_match = re.search(r'<div[^>]*class=\"[^\"]*video-description[^\"]*\"[^>]*>(.*?)</div>', html, re.DOTALL | re.IGNORECASE)
+            description = re.sub(r'<[^>]+>', '', desc_match.group(1)).strip() if desc_match else ''
+            
+            # 提取播放地址 - 優先匹配video標籤
+            play_url = ''
+            video_match = re.search(r'<video[^>]*>.*?<source[^>]*src=\"([^\"]+)\"[^>]*>', html, re.DOTALL | re.IGNORECASE)
+            if video_match:
+                play_url = video_match.group(1)
+            else:
+                # 嘗試匹配iframe
+                iframe_match = re.search(r'<iframe[^>]*src=\"([^\"]+)\"[^>]*>', html, re.IGNORECASE)
+                if iframe_match:
+                    play_url = iframe_match.group(1)
+            
+            play_url = self._normalize_url(play_url) if play_url else ''
+            
+            detail = {
+                'vod_id': vid,
+                'vod_name': title,
+                'vod_pic': pic,
+                'vod_content': description,
+                'vod_play_url': play_url
+            }
+        except Exception as e:
+            print(f'提取詳情信息失敗: {e}')
+        return detail
+
     # ==================== 核心方法 ====================
     
     def homeContent(self, filter):
         """獲取首頁內容"""
         result = {}
-        videos = []
         try:
             html = self._fetch_html(self.host)
-            if not html:
-                return result
-            
-            doc = self.getpq(html)
-            
-            # 獲取視頻列表
-            items = doc(self.list_selector)
-            for item in items.items():
-                video_info = self._extract_video_basic(item)
-                if video_info:
-                    videos.append(video_info)
-            
-            result['list'] = videos
-            result['class'] = self.default_classes
+            if html:
+                videos = self._extract_videos(html)
+                result['list'] = videos
+                result['class'] = self.default_classes
         except Exception as e:
             print(f'homeContent錯誤: {e}')
         return result
@@ -188,7 +164,6 @@ class Spider(Spider):
     def categoryContent(self, tid, pg, filter, extend):
         """獲取分類內容"""
         result = {}
-        videos = []
         page = int(pg) if pg else 1
         try:
             # 構建分類URL
@@ -200,23 +175,13 @@ class Spider(Spider):
                 url = f'{self.host}/videos/{tid}?page={page}'
             
             html = self._fetch_html(url)
-            if not html:
-                return result
-            
-            doc = self.getpq(html)
-            
-            # 獲取視頻列表
-            items = doc(self.list_selector)
-            for item in items.items():
-                video_info = self._extract_video_basic(item)
-                if video_info:
-                    videos.append(video_info)
-            
-            result['list'] = videos
-            result['page'] = str(page)
-            result['pagecount'] = '9999'
-            result['limit'] = '30'
-            result['total'] = '99999'
+            if html:
+                videos = self._extract_videos(html)
+                result['list'] = videos
+                result['page'] = str(page)
+                result['pagecount'] = '9999'
+                result['limit'] = '30'
+                result['total'] = '99999'
         except Exception as e:
             print(f'categoryContent錯誤: {e}')
         return result
@@ -230,100 +195,103 @@ class Spider(Spider):
             url = f'{self.host}/video/{vid}'
             
             html = self._fetch_html(url)
-            if not html:
-                return result
-            
-            doc = self.getpq(html)
-            
-            # 標題
-            title_elem = doc(self.detail_name_selector)
-            title = title_elem.text() if title_elem else ''
-            
-            # 封面
-            pic = ''
-            pic_elem = doc(self.detail_pic_selector)
-            if pic_elem:
-                pic = pic_elem.attr('src')
-            pic = self._normalize_url(pic) if pic else ''
-            
-            # 描述
-            description = ''
-            desc_elem = doc(self.detail_desc_selector)
-            if desc_elem:
-                description = desc_elem.text().strip()
-            
-            # 獲取播放地址
-            play_url = ''
-            
-            # 嘗試查找video標籤
-            video = doc(self.play_video_selector)
-            if video:
-                play_url = video.attr('src')
-            
-            # 如果沒有video，嘗試iframe
-            if not play_url:
-                iframe = doc(self.play_iframe_selector)
-                if iframe:
-                    play_url = iframe.attr('src')
-            
-            play_url = self._normalize_url(play_url) if play_url else ''
-            
-            videos.append({
-                'vod_id': vid,
-                'vod_name': title,
-                'vod_pic': pic,
-                'vod_content': description,
-                'vod_play_from': 'avjoy',
-                'vod_play_url': f'{title}${play_url}'
-            })
-            
-            result['list'] = videos
+            if html:
+                detail = self._extract_detail(html, vid)
+                if detail:
+                    detail['vod_play_from'] = 'avjoy'
+                    detail['vod_play_url'] = f'{detail.get("vod_name", "")}${detail.get("vod_play_url", "")}'
+                    videos.append(detail)
+                result['list'] = videos
         except Exception as e:
             print(f'detailContent錯誤: {e}')
         return result
 
     def searchContent(self, keyword, pg):
-        """搜索內容"""
+        """搜索內容 - 基於實際頁面結構優化"""
         result = {}
         videos = []
         try:
-            url = f'{self.host}/search/videos/{keyword}?page={pg}'
+            # 使用 quote 進行URL編碼，確保中文正確處理
+            encoded_keyword = quote(keyword)
+            # 按照實際頁面格式構建URL
+            url = f'{self.host}/search/videos/{encoded_keyword}?page={pg}'
+            print(f'搜索URL: {url}')
             
             html = self._fetch_html(url)
             if not html:
+                print('搜索頁面獲取失敗')
                 return result
             
-            doc = self.getpq(html)
+            # 保存HTML用於調試（可選）
+            # with open('/sdcard/AiHelper/workspace/spider/search_debug.html', 'w', encoding='utf-8') as f:
+            #     f.write(html)
             
-            items = doc(self.list_selector)
-            for item in items.items():
-                video_info = self._extract_video_basic(item)
-                if video_info:
-                    videos.append(video_info)
+            # 從實際頁面結構中提取視頻列表
+            # 頁面結構: <div class="col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3"> ... </div>
+            pattern = r'<div[^>]*class=\"[^\"]*col-6[^\"]*\"[^>]*>.*?<a[^>]*href=\"(/video/(\d+)[^\"]*)\"[^>]*>.*?<img[^>]*src=\"([^\"]+)\"[^>]*>.*?<span[^>]*class=\"content-title\"[^>]*>(.*?)</span>.*?<div[^>]*class=\"duration\"[^>]*>(.*?)</div>'
+            matches = re.findall(pattern, html, re.DOTALL | re.IGNORECASE)
+            
+            if matches:
+                print(f'找到 {len(matches)} 個搜索結果')
+                for match in matches:
+                    video_url, vid, pic, title, duration = match
+                    # 清理HTML標籤
+                    title = re.sub(r'<[^>]+>', '', title).strip()
+                    duration = re.sub(r'<[^>]+>', '', duration).strip()
+                    
+                    videos.append({
+                        'vod_id': vid,
+                        'vod_name': title,
+                        'vod_pic': self._normalize_url(pic),
+                        'vod_remarks': duration
+                    })
+            else:
+                print('沒有找到搜索結果')
             
             result['list'] = videos
+            print(f'搜索完成，共 {len(videos)} 個結果')
+            
         except Exception as e:
             print(f'searchContent錯誤: {e}')
+            import traceback
+            traceback.print_exc()
+            
         return result
 
     def playerContent(self, flag, id, vipFlags):
-        """獲取播放地址"""
+        """獲取播放地址（修復5秒問題）"""
         result = {}
         try:
             # 如果 id 已經是完整URL，直接返回
             if id.startswith('http'):
                 result['parse'] = 0
                 result['url'] = id
-                result['header'] = self.headers
+                # 添加完整的請求頭，防止盜鏈
+                result['header'] = {
+                    'User-Agent': self.headers['User-Agent'],
+                    'Referer': self.host + '/',
+                    'Origin': self.host,
+                    'Accept': '*/*',
+                    'Range': 'bytes=0-',
+                    'Connection': 'keep-alive',
+                }
             else:
                 # 否則從詳情頁獲取播放地址
                 detail = self.detailContent([id])
                 if detail and detail.get('list'):
                     play_url = detail['list'][0].get('vod_play_url', '')
-                    if play_url:
+                    if play_url and '$' in play_url:
                         result['parse'] = 0
                         result['url'] = play_url.split('$')[-1]
-                        result['header'] = self.headers
+                        # 添加完整的請求頭，防止盜鏈
+                        result['header'] = {
+                            'User-Agent': self.headers['User-Agent'],
+                            'Referer': self.host + '/',
+                            'Origin': self.host,
+                            'Accept': '*/*',
+                            'Range': 'bytes=0-',
+                            'Connection': 'keep-alive',
+                        }
         except Exception as e:
             print(f'playerContent錯誤: {e}')
         return result
