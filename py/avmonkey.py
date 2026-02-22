@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # AV猴影视 TVBox 爬虫
-# 完全兼容版 - 所有方法都接收可变参数
+# 最终修复版 - 所有方法都支持额外参数
 
 import re
 import json
@@ -8,13 +8,12 @@ import urllib.parse
 import urllib.request
 import ssl
 import sys
-import time
 
 # 忽略SSL证书验证
 ssl._create_default_https_context = ssl._create_unverified_context
 
 class Spider:
-    """AV猴TVBox爬虫 - 完全兼容版"""
+    """AV猴TVBox爬虫 - 最终修复版"""
     
     def __init__(self):
         self.siteUrl = "https://avmonkey.tv"
@@ -77,7 +76,7 @@ class Spider:
         return {'list': []}
         
     def categoryContent(self, tid, pg=1, filter=False, ext=None, *args, **kwargs):
-        """获取分类内容"""
+        """获取分类内容 - 修复分页"""
         result = {
             'list': [],
             'page': int(pg),
@@ -87,29 +86,54 @@ class Spider:
         }
         
         try:
+            page = int(pg)
+            
             # 构建分类URL
             if tid in self.cateManual.values():
-                cat_name = tid.split('-')[0]
-                cat_id = tid.split('-')[1]
-                url = f"{self.siteUrl}/categories/{urllib.parse.quote(cat_name)}-{cat_id}"
-            else:
+                # 格式如: 国产自拍-1
                 url = f"{self.siteUrl}/categories/{urllib.parse.quote(tid)}"
+                if page > 1:
+                    url = f"{url}/page/{page}"
+            else:
+                # 处理传入的可能是分类名
+                url = f"{self.siteUrl}/categories/{urllib.parse.quote(tid)}"
+                if page > 1:
+                    url = f"{url}/page/{page}"
             
-            # 添加分页
-            if int(pg) > 1:
-                url = f"{url}?page={pg}"
-            
+            print(f"分类URL: {url}")
             html = self.fetch(url)
+            
             if html:
                 videos = self._parse_video_list(html)
                 result['list'] = videos
                 
-                # 获取总页数
-                page_pattern = r'<a[^>]*href="[^"]*[?&]page=(\d+)"[^>]*>(\d+)</a>'
-                pages = re.findall(page_pattern, html)
-                if pages:
-                    max_page = max([int(p[1]) for p in pages])
-                    result['pagecount'] = max_page
+                # 从HTML中提取总页数
+                # 查找分页链接
+                page_pattern = r'<a[^>]*href="[^"]*/page/(\d+)"[^>]*>(\d+)</a>'
+                page_matches = re.findall(page_pattern, html)
+                
+                if page_matches:
+                    pages = [int(p[1]) for p in page_matches]
+                    if pages:
+                        max_page = max(pages)
+                        result['pagecount'] = max_page
+                        print(f"找到页码: {pages}, 最大页: {max_page}")
+                else:
+                    # 尝试查找下一页链接
+                    next_pattern = r'<a[^>]*href="[^"]*/page/(\d+)"[^>]*>下一页</a>'
+                    next_match = re.search(next_pattern, html)
+                    if next_match:
+                        next_page = int(next_match.group(1))
+                        result['pagecount'] = next_page
+                        print(f"下一页到第{next_page}页")
+                    else:
+                        # 如果没有分页链接，但有视频，且视频数量满20，可能还有更多页
+                        if videos and len(videos) >= 20:
+                            result['pagecount'] = page + 1
+                            print(f"视频数{len(videos)}，可能还有下一页")
+                
+                print(f"当前页: {page}, 总页数: {result['pagecount']}, 视频数: {len(videos)}")
+                
         except Exception as e:
             print(f"categoryContent error: {e}")
             
@@ -128,11 +152,14 @@ class Spider:
             else:
                 url = f"{self.siteUrl}/video/{vid}"
             
+            print(f"详情URL: {url}")
             html = self.fetch(url)
+            
             if html:
                 vod = self._parse_detail(html, vid)
                 if vod:
                     vod_list.append(vod)
+                    
         except Exception as e:
             print(f"detailContent error: {e}")
             
@@ -145,18 +172,21 @@ class Spider:
         try:
             encoded_key = urllib.parse.quote(key)
             url = f"{self.siteUrl}/Search/{encoded_key}"
+            print(f"搜索URL: {url}")
             
             html = self.fetch(url)
             if html:
                 videos = self._parse_video_list(html)
                 vod_list = videos[:20]
+                print(f"搜索结果数: {len(vod_list)}")
+                
         except Exception as e:
             print(f"searchContent error: {e}")
             
         return {'list': vod_list}
         
     def searchContentPage(self, key, quick=False, pg=1, *args, **kwargs):
-        """分页搜索 - TVBox可选方法"""
+        """分页搜索"""
         return self.searchContent(key, quick)
         
     def playerContent(self, flag, id, vipFlags=None, *args, **kwargs):
@@ -164,6 +194,8 @@ class Spider:
         result = {}
         
         try:
+            print(f"获取播放地址: flag={flag}, id={id}")
+            
             if id.startswith('http'):
                 play_url = id
             else:
@@ -178,6 +210,9 @@ class Spider:
                 'User-Agent': self.headers['User-Agent'],
                 'Referer': self.siteUrl
             })
+            
+            print(f"播放地址: {play_url[:100] if play_url else 'None'}")
+            
         except Exception as e:
             print(f"playerContent error: {e}")
             result['url'] = id
@@ -188,46 +223,70 @@ class Spider:
         """解析视频列表"""
         videos = []
         
-        # 方法1: 查找视频卡片
-        pattern = r'<a[^>]*href="([^"]*/(?:video|archives)/([^"/?]+))"[^>]*>.*?<img[^>]*src="([^"]*)"[^>]*>.*?<p[^>]*>([^<]*)</p>'
-        matches = re.findall(pattern, html, re.DOTALL)
+        # 匹配视频卡片
+        patterns = [
+            # 模式1: a标签包含p标签
+            r'<a[^>]*href="([^"]*/(?:video|archives)/([^"/?]+))"[^>]*>.*?<img[^>]*src="([^"]*)"[^>]*>.*?<p[^>]*>([^<]*)</p>',
+            # 模式2: a标签包含div标签
+            r'<a[^>]*href="([^"]*/(?:video|archives)/([^"/?]+))"[^>]*>.*?<img[^>]*src="([^"]*)"[^>]*>.*?<div[^>]*>([^<]*)</div>',
+            # 模式3: 更宽松的匹配
+            r'<a[^>]*href="([^"]*/(?:video|archives)/([^"/?]+))"[^>]*>.*?<img[^>]*src="([^"]*)"[^>]*>.*?<[^>]*>([^<]*)</[^>]*>'
+        ]
         
-        for match in matches:
-            try:
-                url = match[0]
-                vid = match[1]
-                img = match[2]
-                title = match[3].strip()
-                
-                # 清理标题
-                title = re.sub(r'<[^>]+>', '', title)
-                if not title or len(title) < 2:
-                    continue
-                    
-                # 处理相对路径
-                if not url.startswith('http'):
-                    url = urllib.parse.urljoin(self.siteUrl, url)
-                if not img.startswith('http'):
-                    img = urllib.parse.urljoin(self.siteUrl, img)
-                
-                # 提取时长
-                remarks = ''
-                dur_match = re.search(r'(\d+:\d+)', html[html.find(title):html.find(title)+300])
-                if dur_match:
-                    remarks = dur_match.group(1)
-                
-                video = {
-                    'vod_id': vid,
-                    'vod_name': title[:100],
-                    'vod_pic': img,
-                    'vod_remarks': remarks,
-                    'vod_content': title
-                }
-                videos.append(video)
-            except:
-                continue
-                
-        return videos
+        for pattern in patterns:
+            matches = re.findall(pattern, html, re.DOTALL | re.IGNORECASE)
+            if matches:
+                print(f"使用模式匹配到 {len(matches)} 个视频卡片")
+                for match in matches:
+                    try:
+                        url = match[0]
+                        vid = match[1]
+                        img = match[2]
+                        title = match[3].strip() if len(match) > 3 else ''
+                        
+                        # 清理标题
+                        title = re.sub(r'<[^>]+>', '', title)
+                        title = re.sub(r'\s+', ' ', title).strip()
+                        
+                        if not title or len(title) < 2:
+                            continue
+                            
+                        # 处理相对路径
+                        if not url.startswith('http'):
+                            url = urllib.parse.urljoin(self.siteUrl, url)
+                        if not img.startswith('http'):
+                            img = urllib.parse.urljoin(self.siteUrl, img)
+                        
+                        # 提取时长
+                        remarks = ''
+                        dur_pattern = r'(\d+:\d+)'
+                        dur_match = re.search(dur_pattern, html[html.find(title)-500:html.find(title)+500])
+                        if dur_match:
+                            remarks = dur_match.group(1)
+                        
+                        video = {
+                            'vod_id': vid,
+                            'vod_name': title[:100],
+                            'vod_pic': img,
+                            'vod_remarks': remarks,
+                            'vod_content': title
+                        }
+                        videos.append(video)
+                    except:
+                        continue
+                if videos:
+                    break
+        
+        # 去重
+        seen = set()
+        unique_videos = []
+        for v in videos:
+            if v['vod_id'] not in seen:
+                seen.add(v['vod_id'])
+                unique_videos.append(v)
+        
+        print(f"解析到 {len(unique_videos)} 个视频")
+        return unique_videos
         
     def _parse_detail(self, html, vid):
         """解析详情页"""
@@ -254,8 +313,6 @@ class Spider:
             
             # 提取缩略图
             img_match = re.search(r'<meta[^>]*property="og:image"[^>]*content="([^"]*)"', html)
-            if not img_match:
-                img_match = re.search(r'<img[^>]*src="([^"]*)"[^>]*class="[^"]*thumbnail[^"]*"', html)
             if img_match:
                 vod['vod_pic'] = img_match.group(1)
             
@@ -272,7 +329,7 @@ class Spider:
                 vod['vod_play_url'] = f"播放地址${self.siteUrl}/video/{vid}"
             
             # 提取观看数
-            views_match = re.search(r'([\d.]+[千万]?)[^0-9]*?播放', html)
+            views_match = re.search(r'([\d.]+[千万]?)[^0-9]*?(?:次)?播放', html)
             if views_match:
                 vod['vod_remarks'] = f"{views_match.group(1)}次播放"
                 
@@ -317,15 +374,17 @@ class Spider:
         return play_url
         
     def localProxy(self, param, *args, **kwargs):
-        """本地代理 - TVBox可选方法"""
+        """本地代理"""
         return None
         
     def fetch(self, url):
         """发送HTTP请求"""
         try:
+            print(f"请求URL: {url}")
             req = urllib.request.Request(url, headers=self.headers)
             with urllib.request.urlopen(req, timeout=10) as response:
                 html = response.read().decode('utf-8', errors='ignore')
+                print(f"响应长度: {len(html)}")
                 return html
         except Exception as e:
             print(f"fetch error {url}: {e}")
@@ -345,6 +404,10 @@ if __name__ == "__main__":
     print(f"分类数量: {len(home.get('class', []))}")
     print(f"视频数量: {len(home.get('list', []))}")
     
-    if home.get('list'):
-        print(f"\n第一个视频: {home['list'][0].get('vod_name', '')}")
-        print(f"视频ID: {home['list'][0].get('vod_id', '')}")
+    print("\n=== 测试分页功能 ===")
+    cat1 = spider.categoryContent("国产自拍-1", 1)
+    print(f"第一页视频数: {len(cat1.get('list', []))}")
+    print(f"总页数: {cat1.get('pagecount')}")
+    
+    if cat1.get('list'):
+        print("\n第一个视频:", cat1['list'][0]['vod_name'])
