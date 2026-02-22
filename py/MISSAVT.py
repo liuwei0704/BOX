@@ -36,10 +36,20 @@ class Spider(Spider):
             return self.host + url
         return url
 
+    def getConfig(self):
+        return {
+            "siteUrl": self.host,
+            "siteName": self.getName(),
+            "ext": "",
+            "type": 0,
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 0
+        }
+
     def homeContent(self, filter):
         result = {'class': [], 'list': []}
         
-        # 分類列表
         result['class'] = [
             {'type_name': '首页', 'type_id': '/'},
             {'type_name': '热门影片', 'type_id': '/sort/month_hot/'},
@@ -53,20 +63,16 @@ class Spider(Spider):
             {'type_name': '主题', 'type_id': '/tags/'},
         ]
         
-        # 獲取首頁HTML
         r = self.fetch(self.host, headers=self.headers)
         if r:
             html = self._get_html(r)
-            
-            # 找到所有視頻列表區塊
             blocks = re.findall(r'<ul[^>]*class="video-items[^"]*"[^>]*>(.*?)</ul>', html, re.S)
             
             for block in blocks:
                 items = re.findall(r'<li>(.*?)</li>', block, re.S)
                 for item in items:
                     href_match = re.search(r'href="([^"]+)"', item)
-                    if not href_match:
-                        continue
+                    if not href_match: continue
                     href = href_match.group(1)
                     
                     pic_match = re.search(r'data-src="([^"]+)"', item)
@@ -87,7 +93,6 @@ class Spider(Spider):
     def categoryContent(self, tid, pg, filter, extend):
         result = {'list': [], 'page': pg, 'pagecount': 1, 'limit': 24, 'total': 0}
         
-        # 構建URL
         url = self._normalize_url(tid)
         if pg != '1':
             if url.endswith('/'):
@@ -98,16 +103,13 @@ class Spider(Spider):
         r = self.fetch(url, headers=self.headers)
         if r:
             html = self._get_html(r)
-            
-            # 找到視頻列表
             list_match = re.search(r'<ul[^>]*class="video-items[^"]*"[^>]*>(.*?)</ul>', html, re.S)
             if list_match:
                 items = re.findall(r'<li>(.*?)</li>', list_match.group(1), re.S)
                 
                 for item in items:
                     href_match = re.search(r'href="([^"]+)"', item)
-                    if not href_match: 
-                        continue
+                    if not href_match: continue
                     href = href_match.group(1)
                     
                     pic_match = re.search(r'data-src="([^"]+)"', item)
@@ -131,7 +133,6 @@ class Spider(Spider):
                             'vod_remarks': ''
                         })
             
-            # 解析分頁
             total_match = re.search(r'第1/(\d+) 页', html)
             if total_match:
                 result['pagecount'] = int(total_match.group(1))
@@ -147,7 +148,6 @@ class Spider(Spider):
         if r:
             html = self._get_html(r)
             
-            # 標題
             title = ''
             t1 = re.search(r'<h1[^>]*>(.*?)</h1>', html)
             if t1: 
@@ -157,41 +157,25 @@ class Spider(Spider):
                 if t2: 
                     title = t2.group(1).strip()
             
-            # 嘗試提取海報，但不要影響其他功能
             poster = ''
-            try:
-                p1 = re.search(r'<img[^>]*data-src="([^"]+)"', html)
-                if p1:
-                    poster = p1.group(1)
-                    if poster.startswith('//'):
-                        poster = 'https:' + poster
-            except:
-                pass
+            p1 = re.search(r'<img[^>]*data-src="([^"]+)"', html)
+            if p1:
+                poster = p1.group(1)
+            if poster and poster.startswith('//'):
+                poster = 'https:' + poster
             
-            # 視頻地址 - 優先從 poster div 的 data-url 提取
             video = ''
             v1 = re.search(r'<div[^>]*class="[^"]*poster[^"]*"[^>]*data-url="([^"]+)"', html)
             if v1:
                 video = v1.group(1)
-            
             if not video:
                 v2 = re.search(r'data-url="([^"]+)"', html)
                 if v2:
                     video = v2.group(1)
-            
             if not video:
                 v3 = re.search(r'<video[^>]*src="([^"]+)"', html)
                 if v3:
                     video = v3.group(1)
-            
-            if not video:
-                all_m3u8 = re.findall(r'(https?://[^"\']+\.m3u8[^"\']*)', html)
-                for url in all_m3u8:
-                    if 'preview' not in url.lower() and '10s' not in url.lower():
-                        video = url
-                        break
-                if not video and all_m3u8:
-                    video = all_m3u8[0]
             
             if video:
                 video = video.replace('&amp;', '&')
@@ -203,7 +187,7 @@ class Spider(Spider):
             vod = {
                 'vod_id': ids[0],
                 'vod_name': title,
-                'vod_pic': poster,  # 如果有就顯示，沒有就空著
+                'vod_pic': poster,
                 'vod_remarks': '',
                 'vod_actor': '',
                 'vod_director': '',
@@ -217,23 +201,49 @@ class Spider(Spider):
     def searchContent(self, key, quick):
         result = {'list': []}
         url = f'{self.host}/search/{key}/'
+        
         r = self.fetch(url, headers=self.headers)
-        if r:
-            html = self._get_html(r)
-            match = re.search(r'<ul[^>]*class="video-items[^"]*"[^>]*>(.*?)</ul>', html, re.S)
-            if match:
-                items = re.findall(r'<li>(.*?)</li>', match.group(1), re.S)
-                for item in items:
-                    href_match = re.search(r'href="([^"]+)"', item)
-                    if not href_match: continue
-                    href = href_match.group(1)
-                    pic_match = re.search(r'data-src="([^"]+)"', item)
-                    pic = pic_match.group(1) if pic_match else ''
-                    title_match = re.search(r'<a[^>]*class="[^"]*my-1[^"]*"[^>]*>(.*?)</a>', item, re.S)
-                    if title_match:
-                        title = title_match.group(1).strip()
-                        title = re.sub(r'^\d+:\d+:\d+\s*', '', title)
-                        result['list'].append({'vod_id': href, 'vod_name': title, 'vod_pic': pic, 'vod_remarks': ''})
+        if not r:
+            return result
+        
+        html = self._get_html(r)
+        
+        # 找到所有的 li 標籤
+        items = re.findall(r'<li>(.*?)</li>', html, re.S)
+        
+        for item in items:
+            # 提取鏈接
+            href_match = re.search(r'<a[^>]*href="([^"]+)"[^>]*>', item)
+            if not href_match:
+                continue
+            href = href_match.group(1)
+            
+            # 提取圖片
+            pic_match = re.search(r'data-src="([^"]+)"', item)
+            pic = pic_match.group(1) if pic_match else ''
+            if pic and pic.startswith('//'):
+                pic = 'https:' + pic
+            
+            # 提取標題 - 先找 h2，再找 a 標籤
+            title = ''
+            title_match = re.search(r'<h2[^>]*class="[^"]*line-clamp-2[^"]*"[^>]*>(.*?)</h2>', item, re.S)
+            if title_match:
+                title = title_match.group(1).strip()
+            else:
+                # 如果沒有 h2，找第二個 a 標籤
+                a_matches = re.findall(r'<a[^>]*>(.*?)</a>', item, re.S)
+                if len(a_matches) >= 2:
+                    title = a_matches[-1].strip()
+            
+            if title:
+                title = re.sub(r'^\d+:\d+:\d+\s*', '', title)
+                result['list'].append({
+                    'vod_id': href,
+                    'vod_name': title,
+                    'vod_pic': pic,
+                    'vod_remarks': ''
+                })
+        
         return result
 
     def playerContent(self, flag, id, vipFlags):
