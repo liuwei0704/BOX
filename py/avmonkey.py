@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# AV猴影视 TVBox 爬虫 - 专门修复播放地址
+# AV猴影视 TVBox 爬虫 - 强制使用contentUrl
 
 import re
 import json
@@ -11,7 +11,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 class Spider:
-    """AV猴TVBox爬虫 - 专门修复播放地址"""
+    """AV猴TVBox爬虫 - 强制使用contentUrl"""
     
     def __init__(self):
         self.siteUrl = "https://avmonkey.tv"
@@ -82,24 +82,23 @@ class Spider:
             if tid in self.cateManual.values():
                 cat_name = tid.split('-')[0]
                 cat_id = tid.split('-')[1]
-                url = f"{self.siteUrl}/categories/{urllib.parse.quote(cat_name)}-{cat_id}"
-            else:
-                url = f"{self.siteUrl}/categories/{urllib.parse.quote(tid)}"
-            
-            if int(pg) > 1:
-                url = f"{url}?page={pg}"
-            
-            html = self.fetch(url)
-            if html:
-                videos = self._parse_video_list(html)
-                result['list'] = videos
                 
-                # 获取总页数
-                page_pattern = r'<a[^>]*href="[^"]*[?&]page=(\d+)"[^>]*>(\d+)</a>'
-                pages = re.findall(page_pattern, html)
-                if pages:
-                    max_page = max([int(p[1]) for p in pages])
-                    result['pagecount'] = max_page
+                if int(pg) > 1:
+                    url = f"{self.siteUrl}/categories/{urllib.parse.quote(cat_name)}-{cat_id}/page/{pg}"
+                else:
+                    url = f"{self.siteUrl}/categories/{urllib.parse.quote(cat_name)}-{cat_id}"
+                
+                html = self.fetch(url)
+                if html:
+                    videos = self._parse_video_list(html)
+                    result['list'] = videos
+                    
+                    # 获取总页数
+                    page_pattern = r'<a[^>]*href="[^"]*/page/(\d+)"[^>]*>(\d+)</a>'
+                    pages = re.findall(page_pattern, html)
+                    if pages:
+                        max_page = max([int(p[1]) for p in pages])
+                        result['pagecount'] = max_page
         except Exception as e:
             print(f"categoryContent error: {e}")
             
@@ -145,153 +144,89 @@ class Spider:
         return {'list': vod_list}
         
     def playerContent(self, flag, id, vipFlags=None, *args, **kwargs):
-        """获取播放地址 - 专门修复版本"""
+        """获取播放地址 - 强制使用contentUrl"""
         result = {}
         
         try:
-            print(f"playerContent - id: {id}")
-            
             if id.startswith('http'):
-                # 如果已经是URL，直接返回
                 play_url = id
             else:
-                # 获取详情页HTML
                 url = f"{self.siteUrl}/video/{id}"
-                print(f"Fetching detail page: {url}")
-                
+                print(f"Fetching player URL: {url}")
                 html = self.fetch(url)
+                
                 if html:
-                    # 使用专门的播放地址提取方法
-                    play_url = self._extract_video_url(html)
-                    print(f"Extracted play_url: {play_url}")
+                    # 强制从JSON-LD提取contentUrl
+                    play_url = self._extract_content_url(html)
+                    print(f"Extracted contentUrl: {play_url}")
                 else:
                     play_url = url
-            
-            if not play_url:
-                play_url = url
                 
             result['url'] = play_url
             result['parse'] = 0
             result['header'] = json.dumps({
                 'User-Agent': self.headers['User-Agent'],
-                'Referer': self.siteUrl,
-                'Accept': '*/*',
-                'Connection': 'keep-alive'
+                'Referer': self.siteUrl
             })
-            print(f"Returning result: {result}")
-            
         except Exception as e:
             print(f"playerContent error: {e}")
             result['url'] = id
             
         return result
         
-    def _extract_video_url(self, html):
-        """专门提取视频地址的方法"""
+    def _extract_content_url(self, html):
+        """专门提取contentUrl的方法"""
         
-        # 方法1: 从JSON-LD提取 (根据您提供的HTML)
+        # 查找所有JSON-LD数据
         jsonld_pattern = r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>'
         jsonld_matches = re.findall(jsonld_pattern, html, re.DOTALL | re.IGNORECASE)
         
         for jsonld in jsonld_matches:
             try:
                 data = json.loads(jsonld)
-                print(f"JSON-LD data keys: {data.keys() if isinstance(data, dict) else 'not dict'}")
-                
-                # 处理VideoObject类型
                 if isinstance(data, dict):
                     # 直接查找contentUrl
                     if 'contentUrl' in data:
                         url = data['contentUrl']
                         if url and ('mp4' in url or 'm3u8' in url):
-                            print(f"Found contentUrl: {url}")
                             return url
                     
-                    # 查找video字段
+                    # 查找video对象中的contentUrl
                     if 'video' in data and isinstance(data['video'], dict):
                         if 'contentUrl' in data['video']:
                             url = data['video']['contentUrl']
                             if url:
-                                print(f"Found video.contentUrl: {url}")
                                 return url
-                    
-                    # 查找url字段
-                    if 'url' in data and isinstance(data['url'], str):
-                        if 'mp4' in data['url'] or 'm3u8' in data['url']:
-                            print(f"Found url: {data['url']}")
-                            return data['url']
-                            
-            except json.JSONDecodeError as e:
-                print(f"JSON decode error: {e}")
+            except:
                 continue
         
-        # 方法2: 查找NUXT数据中的视频地址
-        nuxt_pattern = r'window\.__NUXT__\s*=\s*({.*?});'
-        nuxt_match = re.search(nuxt_pattern, html, re.DOTALL)
-        if nuxt_match:
-            try:
-                data = json.loads(nuxt_match.group(1))
-                # 递归查找所有可能的视频URL
-                def find_video_url(obj):
-                    if isinstance(obj, dict):
-                        # 检查是否包含视频URL的字段
-                        for key in ['videoUrl', 'contentUrl', 'url', 'src', 'playUrl']:
-                            if key in obj and isinstance(obj[key], str):
-                                if 'mp4' in obj[key] or 'm3u8' in obj[key]:
-                                    return obj[key]
-                        # 递归查找
-                        for value in obj.values():
-                            result = find_video_url(value)
-                            if result:
-                                return result
-                    elif isinstance(obj, list):
-                        for item in obj:
-                            result = find_video_url(item)
-                            if result:
-                                return result
-                    return None
-                
-                url = find_video_url(data)
-                if url:
-                    print(f"Found in NUXT: {url}")
-                    return url
-            except:
-                pass
+        # 如果找不到，回退到原来的方法
+        return self._extract_play_url_fallback(html)
         
-        # 方法3: 直接查找MP4链接
-        mp4_pattern = r'(https?://[^"\']+\.mp4[^"\']*)'
-        mp4_matches = re.findall(mp4_pattern, html)
-        for url in mp4_matches:
-            if 'thumbnail' not in url.lower() and 'preview' not in url.lower():
-                print(f"Found MP4: {url}")
-                return url
+    def _extract_play_url_fallback(self, html):
+        """备用的播放地址提取方法"""
+        play_url = None
         
-        # 方法4: 查找M3U8链接
+        # 查找M3U8链接
         m3u8_pattern = r'(https?://[^"\']+\.m3u8[^"\']*)'
-        m3u8_matches = re.findall(m3u8_pattern, html)
-        for url in m3u8_matches:
-            print(f"Found M3U8: {url}")
-            return url
+        m3u8_match = re.search(m3u8_pattern, html)
+        if m3u8_match:
+            play_url = m3u8_match.group(1)
         
-        # 方法5: 查找video标签
-        video_pattern = r'<video[^>]*src="([^"]*)"'
-        video_match = re.search(video_pattern, html)
-        if video_match:
-            src = video_match.group(1)
-            if src.startswith('http'):
-                print(f"Found video src: {src}")
-                return src
-            else:
-                url = urllib.parse.urljoin(self.siteUrl, src)
-                print(f"Found video src (relative): {url}")
-                return url
+        # 查找API链接
+        if not play_url:
+            api_pattern = r'(/api/[^"\']*\.m3u8[^"\']*)'
+            api_match = re.search(api_pattern, html)
+            if api_match:
+                play_url = urllib.parse.urljoin(self.siteUrl, api_match.group(1))
         
-        return None
+        return play_url
         
     def _parse_video_list(self, html):
-        """解析视频列表 - 保持原样"""
+        """解析视频列表"""
         videos = []
         
+        # 查找视频卡片
         pattern = r'<a[^>]*href="([^"]*/(?:video|archives)/([^"/?]+))"[^>]*>.*?<img[^>]*src="([^"]*)"[^>]*>.*?<p[^>]*>([^<]*)</p>'
         matches = re.findall(pattern, html, re.DOTALL)
         
@@ -302,15 +237,19 @@ class Spider:
                 img = match[2]
                 title = match[3].strip()
                 
+                # 清理标题
                 title = re.sub(r'<[^>]+>', '', title)
                 if not title or len(title) < 2:
                     continue
                     
-                if not url.startswith('http'):
-                    url = urllib.parse.urljoin(self.siteUrl, url)
-                if not img.startswith('http'):
-                    img = urllib.parse.urljoin(self.siteUrl, img)
+                # 处理图片URL
+                if img:
+                    if img.startswith('//'):
+                        img = 'https:' + img
+                    elif not img.startswith('http'):
+                        img = urllib.parse.urljoin(self.siteUrl, img)
                 
+                # 提取时长
                 remarks = ''
                 dur_match = re.search(r'(\d+:\d+)', html[html.find(title):html.find(title)+300])
                 if dur_match:
@@ -364,8 +303,8 @@ class Spider:
             if desc_match:
                 vod['vod_content'] = desc_match.group(1)
             
-            # 获取播放地址
-            play_url = self._extract_video_url(html)
+            # 使用专门的contentUrl提取方法
+            play_url = self._extract_content_url(html)
             if play_url:
                 vod['vod_play_url'] = f"播放地址${play_url}"
             else:
