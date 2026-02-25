@@ -55,8 +55,10 @@
 {"key":"锦鲤短剧","name":"🔖锦鲤｜短剧","type":3,"api":"csp_JinliDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"jar":"https://githubproxy.cc/https://github.com/ls125781003/testboxapi/raw/refs/heads/main/xiaosa/spider.jar"},
 {"key":"七猫短剧","name":"🔖七猫｜短剧","type":3,"api":"csp_QiMaoDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"jar":"https://githubproxy.cc/https://github.com/ls125781003/testboxapi/raw/refs/heads/main/xiaosa/spider.jar"},
 {"key":"星阁短剧","name":"🔖星阁｜短剧","type":3,"api":"csp_XinggeDJ","searchable":1,"changeable":1,"quickSearch":1,"filterable":1,"jar":"https://githubproxy.cc/https://github.com/ls125781003/testboxapi/raw/refs/heads/main/xiaosa/spider.jar"},
-{"key":"星芽短剧","name":"🔖星芽｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
-{"key":"剧王短剧","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"星芽短剧_PY","name":"🔖星芽｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"剧王短剧_PY","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"河馬短剧_PY","name":"🔖河馬｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/HMDJ.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"PTT短剧_PY","name":"🔖PTT｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/PTT短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_七猫短剧[短]","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧[短]","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_星芽短剧[短]","name":"💠星芽短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/星芽短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":1,"title":"星芽短剧[短]","lang":"ds","ext":""},
