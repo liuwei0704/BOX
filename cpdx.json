@@ -63,6 +63,8 @@
 {"key":"河馬短剧_PY","name":"🔖河馬｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/HMDJ.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"PTT短剧_PY","name":"🔖PTT｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/PTT短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"ur95短剧_PY","name":"🔖UR95｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/ur95短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"短劇粉_PY","name":"🔖短劇粉｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/短劇粉.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"短劇窩_PY","name":"🔖短劇窩｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/短劇窩.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 
 {"key":"drpyS_七猫短剧[短]","name":"💠七猫短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/七猫短剧[短]?pwd=dzyyds","searchable":1,"filterable":1,"quickSearch":0,"title":"七猫短剧[短]","类型":"影视","lang":"ds","ext":""},
 {"key":"drpyS_牛牛短剧[短]","name":"💠牛牛短剧┃DS","type":4,"api":"https://drpy-node-mauve.vercel.app/api/牛牛短剧[短]?pwd=dzyyds","searchable":2,"filterable":1,"quickSearch":0,"title":"牛牛短剧[短]","类型":"影视","lang":"ds","ext":""},
