@@ -62,6 +62,7 @@
 {"key":"星芽短剧_PY","name":"🔖星芽｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/星芽短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"剧王短剧_PY","name":"🔖剧王｜短剧","type":3,"api":"https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/tvbox/py/剧王短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"河馬短剧_PY","name":"🔖河馬｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/HMDJ.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
+{"key":"热播短剧_PY","name":"🔖热播｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/热播短剧网.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"PTT短剧_PY","name":"🔖PTT｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/PTT短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"ur95短剧_PY","name":"🔖UR95｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/ur95短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"短劇粉_PY","name":"🔖短劇粉｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/短劇粉.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
