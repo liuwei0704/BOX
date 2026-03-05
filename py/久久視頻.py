@@ -275,7 +275,7 @@ class Spider(Spider):
             print(f"Error in detailContent: {e}")
             return {'list': []}
     
-    def searchContent(self, keyword, quick):
+    def searchContent(self, key, quick, pg=1):
         """\u641c\u7d22\u529f\u80fd"""
         try:
             search_url = f"{self.host}/node/search?q={urllib.parse.quote(keyword)}"
