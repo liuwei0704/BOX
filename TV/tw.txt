@@ -5,6 +5,14 @@
 小房子可切換,https://live.ottiptv.cc/huya/593667
 其他線路,https://live.ottiptv.cc/huya/16739452
 
+🇹🇼愛爾達體育,#genre#
+parse=1
+playerType=2
+愛爾達體育1,https://edge.yeslivetv.cc/live/elta1.m3u8?token=330c8cad60163c1f46a3efdcf8ff78cc66c4284c9f16268cad810ae23308108b&expires=1772806058&vid=elta1
+愛爾達體育2,https://edge.yeslivetv.cc/live/elta2.m3u8?token=1d5cce5e97259aca8be5ec042bafba4dd2c4861310fb9c14723f590c3bdf1041&expires=1772806129&vid=elta2
+愛爾達體育3,https://edge.yeslivetv.cc/live/elta3.m3u8?token=57ef52f99b9574295e7a5629dbb72fc9e4d1a45a7b27a8013c05d6208e26dcb2&expires=1772806164&vid=elta3
+愛爾達體育4,https://edge.404406.xyz/live/elta4.m3u8?token=c91126ddb18dd84fbcb646ca4601bc63396791f88f7eb7dcf2eb03bd9aa7d97d&expires=1772806194&vid=elta4
+
 🇹🇼Youtube新聞,#genre#
 TVBSNEWS,https://www.youtube.com/live/m_dhMSvUCIc?si=78nn4zg-p7myFADX
 華視新聞CH52,https://www.youtube.com/live/wM0g8EoUZ_E?si=3T_8RY87ofxF1e9l
@@ -24,10 +32,7 @@ TTVLIVE台視直播,https://www.youtube.com/live/uDqQo8a7Xmk?si=ve9gPXOQ3fJCkBVh
 東森新聞,https://www.youtube.com/live/V1p33hqPrUk?si=WEahQ_iSd2GXJK_K
 
 🇹🇼台灣綜合體育,#genre#
-愛爾達體育1,https://edge.yeslivetv.cc/live/elta1.m3u8?token=330c8cad60163c1f46a3efdcf8ff78cc66c4284c9f16268cad810ae23308108b&expires=1772806058&vid=elta1
-愛爾達體育2,https://edge.yeslivetv.cc/live/elta2.m3u8?token=1d5cce5e97259aca8be5ec042bafba4dd2c4861310fb9c14723f590c3bdf1041&expires=1772806129&vid=elta2
-愛爾達體育3,https://edge.yeslivetv.cc/live/elta3.m3u8?token=57ef52f99b9574295e7a5629dbb72fc9e4d1a45a7b27a8013c05d6208e26dcb2&expires=1772806164&vid=elta3
-愛爾達體育4,https://edge.404406.xyz/live/elta4.m3u8?token=c91126ddb18dd84fbcb646ca4601bc63396791f88f7eb7dcf2eb03bd9aa7d97d&expires=1772806194&vid=elta4momo綜合台,http://211.23.114.106:8511/http/59.120.8.187:8081/hls/76/818/momo_max.m3u8
+momo綜合台,http://211.23.114.106:8511/http/59.120.8.187:8081/hls/76/818/momo_max.m3u8
 momo綜合臺,http://220.134.196.147:8575/http/59.120.8.187:8081/hls/76/818/momo_max.m3u8
 國興衛視,http://123.51.229.128:8505/http/192.168.1.9:8081/hls/61/803/ch01.m3u8
 緯來日本HD,http://211.23.114.106:9336/http/61.219.99.20:8081/hls/69/811/ch34.m3u8
