@@ -4,7 +4,7 @@
 "logo":"https://cdn4.iconfinder.com/data/icons/project-status-stickers-with-white-border/84/omg-sticker-1024.png",
 
 "sites":[
-{"key":"Live","name":"SCLive","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_stripchat.py","searchable":1,"filterable":0,"changeable":0},
+{"key":"Stripchat","name":"Stripchat┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/py_stripchat.py","searchable":1,"filterable":0,"changeable":0},
 {"key":"Pandalive","name":"Pandalive┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Pandalive.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"DXLive","name":"DXLive┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/DXLive.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"MyJAV","name":"MyJAV┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/MyJAV.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
