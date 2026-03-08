@@ -16,10 +16,7 @@ class Spider():
         return {
             'class': [
                 {'type_name': '最新更新', 'type_id': 'latest-updates/'},
-                {'type_name': '中文字幕', 'type_id': 'chinese-subtitles/'},
-                {'type_name': '日本無碼', 'type_id': 'japan-uncensored/'},
-                {'type_name': '日本有碼', 'type_id': 'japan-censored/'},
-                {'type_name': '4K高清', 'type_id': 'tags/4k/'},
+                {'type_name': '4K高清', 'type_id': 'tags/4k/'}
                 ],
             'list': []
         }
