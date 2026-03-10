@@ -29,18 +29,23 @@ class Spider(Spider):
 
     def categoryContent(self, tid, pg, filter, extend):
         base_tid = tid.strip('/')
-        url = f"{self.host}/{base_tid}" if str(pg) == "1" else f"{self.host}/{base_tid}/page/{pg}"
+        # 规范化分页 URL，兼容 /page/n/ 格式
+        if int(pg) == 1:
+            url = f"{self.host}/{base_tid}"
+        else:
+            url = f"{self.host}/{base_tid}/page/{pg}/"
         res = self.fetch(url, headers=self.header)
         video_list = self.parse_video_list(res.text)
         return {"page": pg, "pagecount": 999, "limit": len(video_list), "total": 999, "list": video_list}
 
     def parse_video_list(self, html):
         result = []
-        pattern = re.compile(r'<article[^>]*>.*?<a href="([^"]+)"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*alt="([^"]+)"', re.S)
+        # 更加鲁棒的正则：alt 属性可选，放宽匹配限制
+        pattern = re.compile(r'<a href="([^"]+)"[^>]*>.*?<img[^>]*?(?:data-src|src)="([^"]+)"(?:[^>]*alt="([^"]*)")?', re.S)
         matches = pattern.findall(html)
         for link, img, title in matches:
             vod_id = link.replace(self.host, "").strip("/")
-            result.append({"vod_id": vod_id, "vod_name": title.strip(), "vod_pic": img, "vod_remarks": ""})
+            result.append({"vod_id": vod_id, "vod_name": title.strip() or "未知标题", "vod_pic": img, "vod_remarks": ""})
         return result
 
     def detailContent(self, ids):
