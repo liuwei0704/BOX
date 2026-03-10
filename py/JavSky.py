@@ -19,10 +19,8 @@ class Spider(Spider):
             {"type_id": "category/censored", "type_name": "Censored"},
             {"type_id": "category/uncensored", "type_name": "Uncensored"},
             {"type_id": "amateur", "type_name": "Amateur"},
-            {"type_id": "category/chinese-sub", "type_name": "Chinese Sub"},
-            {"type_id": "actress", "type_name": "Porn Stars"},
-            {"type_id": "studio", "type_name": "Studios"}
-        ]
+            {"type_id": "category/chinese-sub", "type_name": "Chinese Sub"}
+          ]
         res = self.fetch(self.host, headers=self.header)
         video_list = self.parse_video_list(res.text)
         return {"class": classes, "list": video_list}
