@@ -32,7 +32,8 @@ class Spider(Spider):
             {"type_name": "水果AV", "type_id": "35"},
             {"type_name": "色情情燴", "type_id": "30"},
             {"type_name": "經典四級", "type_id": "47"},
-            {"type_name": "鹹濕電台", "type_id": "169"}
+            {"type_name": "鹹濕電台", "type_id": "169"},
+            {"type_name": "三級倫理", "type_id": "53"}
         ]
         try:
             html = self.fetch(self.host).text
