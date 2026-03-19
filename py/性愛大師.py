@@ -30,11 +30,17 @@ class Spider():
     def homeContent(self, filter):
         result = {}
         classes = [
-            {"type_name": "国产自拍", "type_id": "1"},
-            {"type_name": "网友自拍", "type_id": "2"},
-            {"type_name": "麻豆传媒", "type_id": "3"},
-            {"type_name": "探花系列", "type_id": "4"},
-            {"type_name": "三级伦理", "type_id": "5"}
+            {"type_name": "国产", "type_id": "1"},
+            {"type_name": "中文传媒", "type_id": "2"},
+            {"type_name": "日本AV", "type_id": "3"},
+            {"type_name": "无码流出", "type_id": "37"},
+            {"type_name": "中文字幕", "type_id": "42"},
+            {"type_name": "欧美AV", "type_id": "4"},
+            {"type_name": "明星网黄", "type_id": "5"},
+            {"type_name": "吃瓜黑料", "type_id": "6"},
+            {"type_name": "变态暗网", "type_id": "7"},
+            {"type_name": "小众口味", "type_id": "8"},
+            {"type_name": "其它", "type_id": "9"}
         ]
         result['class'] = classes
         try:
