@@ -73,14 +73,33 @@ class Spider():
 
     def detailContent(self, ids):
         vod_id = ids[0]
+        # 处理可能的完整 URL 或相对路径
         url = self.host + vod_id if vod_id.startswith('/') else f"{self.host}/index.php/vod/detail/id/{vod_id}.html"
         try:
             res = requests.get(url, headers=self.header, timeout=10)
+            res.encoding = 'utf-8'
             soup = BeautifulSoup(res.text, 'html.parser')
+            
+            # 1. 尝试从 h1 获取片名（最准确）
+            # 2. 尝试从 class="vod-detail-name" 获取
+            # 3. 最后从 title 获取并清洗
+            name_tag = soup.select_one('h1') or soup.select_one('.vod-detail-name') or soup.select_one('.title')
+            if name_tag:
+                vod_name = name_tag.get_text(strip=True)
+            else:
+                vod_name = soup.title.text.split('-')[0].split('_')[0].strip()
+            
+            # 清除常见的后缀噪音
+            vod_name = re.sub(r'(在线播放|高清视频|免费观看|BD|HD|MP4| - 性爱大师)$', '', vod_name).strip()
+
+            # 获取图片预览（如果详情页有的话，尝试抓取）
+            img_tag = soup.select_one('.vod-pic img') or soup.select_one('img')
+            vod_pic = img_tag.get('src', '') if img_tag else ""
+
             vod = {
                 "vod_id": vod_id,
-                "vod_name": soup.title.text.split('-')[0].strip(),
-                "vod_pic": "",
+                "vod_name": vod_name,
+                "vod_pic": vod_pic,
                 "vod_play_from": "MasterPlayer",
                 "vod_play_url": f"立即播放${vod_id}"
             }
@@ -118,6 +137,7 @@ class Spider():
             remarks = item.select_one('span.atten')
             if a:
                 raw_name = a.get_text(strip=True)
+                # 剔除日期和尾部多余字符
                 clean_name = re.sub(r'\d{4}-\d{2}-\d{2}.*$', '', raw_name)
                 clean_name = re.sub(r'\d+$', '', clean_name).strip()
                 vod_list.append({
