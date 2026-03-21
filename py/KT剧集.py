@@ -21,6 +21,7 @@ class Spider():
             res = requests.get(self.siteUrl, headers=self.header, timeout=10)
             res.encoding = "utf-8"
             html = res.text
+            # 这里的切片逻辑保留，确保只抓取推荐位
             if "今日热播" in html:
                 html = html.split("今日热播")[1].split("最新电影")[0]
             return {"list": self.parseList(html)}
@@ -49,21 +50,28 @@ class Spider():
 
     def parseList(self, html):
         videos = []
-        # ✅ 增强正则：同时匹配 href, id, title, pic 和 角标(vtitle)
-        # 考虑到源码结构，先匹配每个 li 块再细分提取
-        items = re.findall(r'<li class="col-xs-4.*?">.*?</li>', html, re.S)
+        # ✅ 兼容性修复：不再硬匹配 <li class="...">，改用更通用的块切分
+        # 匹配包含图片和标题的 A 标签区块
+        items = re.findall(r'<div class="pic">.*?</div>\s*<div class="name">.*?</div>', html, re.S)
         
+        # 如果首页结构更简单，尝试备用匹配（直接匹配关键属性）
+        if not items:
+            items = re.findall(r'<li.*?>.*?</li>', html, re.S)
+
+        seen = set()
         for item in items:
             try:
-                # 提取链接、ID和标题
+                # 提取核心信息
                 m = re.search(r'href="(/movie/(\d+)\.html)" title="(.*?)"', item)
-                # 提取图片
                 p = re.search(r'data-original="(.*?)"', item)
-                # ✅ 提取角标（如：全集、更新至12集）
-                r = re.search(r'<span class="vtitle[^>]*>(.*?)</span>', item)
+                # 角标：优先匹配 vtitle，如果没有则匹配备注类信息
+                r = re.search(r'class="vtitle[^>]*>(.*?)</span>', item)
                 
                 if m and p:
                     href, v_id, name = m.groups()
+                    if v_id in seen: continue
+                    seen.add(v_id)
+                    
                     pic = p.group(1)
                     remarks = r.group(1).strip() if r else ""
                     
@@ -78,7 +86,7 @@ class Spider():
                         "vod_id": href,
                         "vod_name": clean_name,
                         "vod_pic": pic,
-                        "vod_remarks": remarks # ✅ 加入角标显示
+                        "vod_remarks": remarks
                     })
             except:
                 continue
@@ -104,7 +112,6 @@ class Spider():
             url_dict = {}
             for p_href, p_name in play_matches:
                 p_name_clean = re.sub(r'<.*?>', '', p_name).strip()
-                # 屏蔽干扰项
                 if any(x in p_name_clean for x in ["立即播放", "下载", "APP"]): 
                     continue
                 
@@ -121,9 +128,7 @@ class Spider():
                 final_url.append("#".join(urls))
 
             return {"list": [{
-                "vod_id": v_id, 
-                "vod_name": name, 
-                "vod_pic": pic,
+                "vod_id": v_id, "vod_name": name, "vod_pic": pic,
                 "vod_play_from": "$$$".join(final_from),
                 "vod_play_url": "$$$".join(final_url)
             }]}
@@ -141,7 +146,7 @@ class Spider():
         except:
             return {"parse": 1, "url": f"{self.siteUrl}{id}"}
 
-    def searchContent(self, key, quick,pg="1"):
+    def searchContent(self, key, quick, pg="1"):
         if not hasattr(self, 'siteUrl'): self.init()
         url = f"{self.siteUrl}/search.html?wd={key}"
         try:
