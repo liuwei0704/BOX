@@ -16,7 +16,6 @@ class Spider(Spider):
 
     def homeContent(self, filter):
         cate_list = [
-            {"type_name": "短劇: fddchannel", "type_id": "user/fddchannel"},
             {"type_name": "短劇: narumi4001 ", "type_id": "user/narumi4001"},
             {"type_name": "短劇: huinan520-349", "type_id": "user/huinan520-349"},
             {"type_name": "短劇: stupiddm250", "type_id": "user/stupiddm250"},
@@ -24,6 +23,7 @@ class Spider(Spider):
             {"type_name": "短劇: drkr004", "type_id": "user/drkr004"},
             {"type_name": "短劇: yi.tong292", "type_id": "user/yi.tong292"},
             {"type_name": "短劇: kchow125 ", "type_id": "user/kchow125"},
+            {"type_name": "短劇: fddchannel", "type_id": "user/fddchannel"},
             {"type_name": "短劇: Cabian", "type_id": "user/cabian"},
             {"type_name": "新聞", "type_id": "tag/news"},
             {"type_name": "體育", "type_id": "tag/sport"},
