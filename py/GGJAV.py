@@ -59,7 +59,7 @@ class Spider(Spider):
             pic = soup.find('meta', property="og:image")['content'] if soup.find('meta', property="og:image") else ""
             vod = {
                 "vod_id": vod_id, "vod_name": name, "vod_pic": pic,
-                "vod_play_from": "GGJAV-Direct", "vod_play_url": f"播放${vod_id}", "vod_content": name
+                "vod_play_from": "GGJAV-Direct", "vod_play_url": f"点击播放${vod_id}", "vod_content": name
             }
             result["list"].append(vod)
         except: pass
@@ -76,28 +76,37 @@ class Spider(Spider):
         return result
 
     def playerContent(self, flag, id, vipFlags):
-        # --- 暴力穿透逻辑 ---
         try:
             res = requests.get(id, headers=self.headers, timeout=10)
-            # 匹配 embed 链接中的 u= 参数
-            embed_match = re.search(r'embed\?u=([a-zA-Z0-9+/=]+)', res.text)
-            if embed_match:
-                b64_str = embed_match.group(1)
-                # Base64 解码得到原始 MP4 地址
+            html = res.text
+            # 强化匹配：同时寻找 embed?u= 和 script/attr 里的 base64 串
+            # 优先寻找包含 u= 的参数，这是最稳的
+            b64_pattern = r'[uU]=([a-zA-Z0-9+/=]{40,})'
+            match = re.search(b64_pattern, html)
+            
+            # 如果没找到，退而求其次找任何看起来像 https 地址转 Base64 的长串 (aHR0c 开头)
+            if not match:
+                match = re.search(r'[\'"](aHR0c[a-zA-Z0-9+/=]{40,})[\'"]', html)
+            
+            if match:
+                b64_str = match.group(1)
                 raw_url = base64.b64decode(b64_str).decode('utf-8')
+                # 很多时候直链前面会带 // 或没带协议
+                if raw_url.startswith('//'): raw_url = "https:" + raw_url
+                
                 return {
-                    "parse": 0, # 直接出流，不走解析
+                    "parse": 0,
                     "url": raw_url,
                     "header": {
                         "User-Agent": self.headers['User-Agent'],
-                        "Referer": "https://ggjav.com/", # 必须用 .com 的 Referer
+                        "Referer": "https://ggjav.com/",
                         "Connection": "keep-alive"
                     }
                 }
-        except Exception as e:
+        except Exception:
             pass
         
-        # 兜底返回原地址走解析
+        # 兜底：如果还是没抓到加密串，返回原地址走解析（虽然可能有广告，但至少能看）
         return {"parse": 1, "url": id, "header": {"Referer": id}}
 
     def parseList(self, html):
