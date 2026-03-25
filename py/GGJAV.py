@@ -25,8 +25,11 @@ class Spider(Spider):
         result["class"] = [
             {"type_id": "/main/censored", "type_name": "有码AV"},
             {"type_id": "/main/uncensored", "type_name": "无码高清"},
+            {"type_id": "/main/ctg?ctgs=無碼流出", "type_name": "无码流出"},
             {"type_id": "/main/amateur", "type_name": "素人作品"},
-            {"type_id": "/main/chinese", "type_name": "华语字幕"}
+            {"type_id": "/main/chinese", "type_name": "华语字幕"},
+            {"type_id": "/main/europe", "type_name": "歐美高清"},
+            {"type_id": "/main/cartoon", "type_name": "動漫高清"}
         ]
         try:
             res = requests.get(f"{self.host}/main/censored", headers=self.headers, timeout=10)
