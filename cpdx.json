@@ -161,7 +161,6 @@
 {"key":"奈飛工廠","name":"🪩奈飛工廠┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/奈飛工廠.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"天天韩剧","name":"🪩天天韩剧┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/天天韩剧.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"毒哥影視","name":"🪩毒哥影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/毒哥影視.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"柯南影视","name":"🪩柯南影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/柯南影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"一起影視","name":"🪩一起影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/yiqiys_spider.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"打卡影视","name":"🪩打卡影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/打卡影视.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"桃子影視","name":"🪩桃子影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/桃子影視.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
