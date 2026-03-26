@@ -17,6 +17,8 @@ class Spider(Spider):
     def homeContent(self, filter):
         cate_list = [
             {"type_name": "短劇: narumi4001 ", "type_id": "user/narumi4001"},
+            {"type_name": "短劇: ckhow9393-528 ", "type_id": "user/ckhow9393-528"},
+            {"type_name": "短劇: zenostar ", "type_id": "user/zenostar"},
             {"type_name": "短劇: huinan520-349", "type_id": "user/huinan520-349"},
             {"type_name": "短劇: stupiddm250", "type_id": "user/stupiddm250"},
             {"type_name": "短劇: daiqixuan520", "type_id": "user/daiqixuan520"},
