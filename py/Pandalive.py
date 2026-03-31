@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 import requests
 import urllib.parse
+import json
 
 class Spider:
     def init(self, extend=""):
         self.host = "https://5721004.xyz"
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Referer': self.host
+            'Referer': f"{self.host}/player/pandalive0418.html"
         }
-        print("爬蟲初始化成功")
+        print("PandaLive 專業版 (僅 PandaTV) 初始化成功")
 
     def getName(self):
-        return "M3U8直播"
+        return "PandaLive"
 
     def getDependence(self):
-        """返回依賴庫"""
         return []
 
     def isVideoFormat(self, url):
@@ -31,178 +31,195 @@ class Spider:
         return None
 
     def homeContent(self, filter):
-        """首頁 - 返回分類和推薦列表"""
+        """首頁 - 僅保留 PandaTV 分類與對應篩選器"""
         try:
-            # 分類
+            # 只保留 PandaTV
             classes = [
-                {'type_id': 'live', 'type_name': '📺 直播頻道'}
+                {'type_id': 'pandalive', 'type_name': '🐼 PandaTV'}
             ]
             
-            # 獲取直播列表
-            live_list = self._get_live_list()
+            filters = {
+                "pandalive": [
+                    {
+                        "key": "type",
+                        "name": "類型",
+                        "value": [
+                            {"n": "全部", "v": "all"},
+                            {"n": "🔞 19+", "v": "adult"},
+                            {"n": "🔐 密碼房", "v": "pw"},
+                            {"n": "💎 粉絲房", "v": "fan"}
+                        ]
+                    },
+                    {
+                        "key": "sort",
+                        "name": "排序",
+                        "value": [
+                            {"n": "觀眾量 ↓", "v": "user-desc"},
+                            {"n": "實時熱度 ↓", "v": "totalScoreCnt-desc"},
+                            {"n": "關注量 ↓", "v": "bookmarkCnt-desc"}
+                        ]
+                    }
+                ]
+            }
             
+            # 獲取首頁推薦數據 (從 JSON 獲取以保證有圖片)
+            all_data = self._fetch_json_data()
             return {
                 'class': classes,
-                'list': live_list[:20],
-                'filters': {}
+                'list': all_data[:30],
+                'filters': filters
             }
         except Exception as e:
             print(f"homeContent錯誤: {e}")
             return {'class': [], 'list': []}
 
     def homeVideoContent(self):
-        """首頁視頻推薦"""
         try:
-            live_list = self._get_live_list()
-            return {'list': live_list[:20]}
+            return {'list': self._fetch_json_data()[:20]}
         except:
             return {'list': []}
 
     def categoryContent(self, tid, pg, filter, extend):
-        """分類頁"""
+        """分類頁 - 基於 JSON 的篩選排序邏輯"""
         try:
-            if tid == 'live':
-                videos = self._get_live_list()
-            else:
-                videos = []
+            all_list = self._fetch_json_data()
+            filtered = all_list
             
-            # 分頁
-            page_size = 30
-            start = (int(pg) - 1) * page_size
-            end = start + page_size
-            page_videos = videos[start:end] if start < len(videos) else []
+            # 1. 執行篩選
+            f_type = extend.get('type', 'all')
+            if f_type == 'adult':
+                filtered = [v for v in filtered if v.get('_isAdult')]
+            elif f_type == 'pw':
+                filtered = [v for v in filtered if v.get('_isPw')]
+            elif f_type == 'fan':
+                filtered = [v for v in filtered if v.get('_type') == 'fan']
+            
+            # 2. 執行排序
+            sort_type = extend.get('sort', 'user-desc')
+            if sort_type == 'user-desc':
+                filtered.sort(key=lambda x: x.get('_user_count', 0), reverse=True)
+            elif sort_type == 'totalScoreCnt-desc':
+                filtered.sort(key=lambda x: x.get('_score', 0), reverse=True)
+            elif sort_type == 'bookmarkCnt-desc':
+                filtered.sort(key=lambda x: x.get('_bookmark', 0), reverse=True)
+            
+            # 3. 分頁
+            pg = int(pg)
+            limit = 30
+            start = (pg - 1) * limit
+            end = start + limit
+            page_list = filtered[start:end] if start < len(filtered) else []
             
             return {
-                'list': page_videos,
-                'page': int(pg),
-                'pagecount': (len(videos) + page_size - 1) // page_size if videos else 1,
-                'limit': page_size,
-                'total': len(videos)
+                'list': page_list,
+                'page': pg,
+                'pagecount': (len(filtered) + limit - 1) // limit if filtered else 1,
+                'limit': limit,
+                'total': len(filtered)
             }
         except Exception as e:
             print(f"categoryContent錯誤: {e}")
-            return {'list': [], 'page': int(pg), 'pagecount': 1, 'limit': 30, 'total': 0}
+            return {'list': [], 'page': int(pg)}
 
-    def _get_live_list(self):
-        """從list.m3u獲取直播列表"""
+    def _fetch_json_data(self):
+        """抓取 list.json 數據，確保 vod_pic 獲取正確"""
         try:
-            url = f"{self.host}/player/list.m3u"
-            print(f"請求: {url}")
+            url = f"{self.host}/player/list.json"
+            res = requests.get(url, headers=self.headers, timeout=10)
+            if res.status_code != 200:
+                return []
             
-            response = requests.get(url, headers=self.headers, timeout=10)
-            print(f"響應狀態碼: {response.status_code}")
+            data = res.json()
+            raw_list = data.get('list', [])
             
-            if response.status_code == 200:
-                lines = response.text.split('\n')
-                streams = []
-                i = 0
+            processed = []
+            for item in raw_list:
+                user_id = item.get('userId', '')
+                nick = item.get('userNick', '未知主播')
+                title = item.get('title', '無標題')
                 
-                while i < len(lines):
-                    line = lines[i].strip()
-                    
-                    if line.startswith('#EXTINF:'):
-                        # 解析: #EXTINF:0,主播ID,主播名稱
-                        parts = line.split(',', 2)
-                        if len(parts) >= 3:
-                            name = parts[1].strip()      # 主播ID
-                            nameinfo = parts[2].strip()  # 主播名稱
-                        else:
-                            name = parts[1].strip() if len(parts) > 1 else "未知"
-                            nameinfo = name
-                        
-                        # 下一行是URL
-                        if i + 1 < len(lines):
-                            url_line = lines[i + 1].strip()
-                            if url_line.startswith('http'):
-                                # 編碼URL作為ID
-                                encoded_url = urllib.parse.quote(url_line, safe='')
-                                
-                                streams.append({
-                                    'vod_id': f"live_{name}_{encoded_url}",
-                                    'vod_name': f"📺 {nameinfo}",
-                                    'vod_pic': 'https://tupian.li/images/2024/03/30/660769b1ba623.png',
-                                    'vod_remarks': '🔴 直播',
-                                    'vod_actor': name
-                                })
-                            i += 1
-                    i += 1
+                is_adult = item.get('isAdult', False)
+                is_pw = item.get('isPw', False)
+                v_type = item.get('type', '')
                 
-                print(f"總共找到 {len(streams)} 個直播")
-                return streams
-            
-            return []
-            
+                processed.append({
+                    'vod_id': f"live_{user_id}",
+                    'vod_name': f"📺 {nick}",
+                    'vod_pic': item.get('thumbUrl', 'https://tupian.li/images/2024/03/30/660769b1ba623.png'),
+                    'vod_remarks': f"👤 {item.get('user', 0)} {'🔞' if is_adult else ''}",
+                    'vod_content': title,
+                    'vod_actor': user_id,
+                    '_isAdult': is_adult,
+                    '_isPw': is_pw,
+                    '_type': v_type,
+                    '_user_count': item.get('user', 0),
+                    '_score': item.get('totalScoreCnt', 0),
+                    '_bookmark': item.get('bookmarkCnt', 0)
+                })
+            return processed
         except Exception as e:
-            print(f"獲取直播列表異常: {e}")
+            print(f"JSON抓取失敗: {e}")
             return []
 
     def detailContent(self, ids):
-        """詳情頁"""
+        """詳情頁 - 保持對接 list.m3u 獲取真實流地址的邏輯"""
         try:
-            if isinstance(ids, list):
-                first_id = ids[0]
-            else:
-                first_id = ids
+            first_id = ids[0] if isinstance(ids, list) else ids
+            user_id = first_id.replace("live_", "")
             
-            if first_id.startswith("live_"):
-                parts = first_id.split('_', 2)
-                if len(parts) == 3:
-                    name = parts[1]
-                    encoded_url = parts[2]
-                    
-                    try:
-                        stream_url = urllib.parse.unquote(encoded_url)
-                    except:
-                        stream_url = encoded_url
-                    
-                    # 代理服務器
-                    proxies = [
-                        "https://flank.515355.xyz/proxy/",
-                        "https://uae2.515355.xyz/proxy/",
-                        "https://pol.515355.xyz/proxy/",
-                        "https://hubu.515355.xyz/proxy/?",
-                        "https://f00.515355.xyz/proxy/",
-                        "https://ce2.515355.xyz/proxy/?",
-                    ]
-                    
-                    play_links = []
-                    for i, proxy in enumerate(proxies, 1):
-                        play_links.append(f"代理{i}${proxy + stream_url}")
-                    play_links.append(f"直連${stream_url}")
-                    
-                    vod = {
-                        'vod_id': first_id,
-                        'vod_name': f"📺 {name}",
-                        'vod_pic': 'https://tupian.li/images/2024/03/30/660769b1ba623.png',
-                        'vod_content': f'主播: {name}',
-                        'vod_actor': name,
-                        'vod_remarks': '🔴 直播',
-                        'vod_play_from': '直播源',
-                        'vod_play_url': '#'.join(play_links)
-                    }
-                    return {'list': [vod]}
+            stream_url = ""
+            m3u_res = requests.get(f"{self.host}/player/list.m3u", headers=self.headers, timeout=10)
+            if m3u_res.status_code == 200:
+                lines = m3u_res.text.split('\n')
+                for i, line in enumerate(lines):
+                    # 匹配格式: #EXTINF:0,主播ID,主播名稱
+                    if f",{user_id}," in line and i + 1 < len(lines):
+                        stream_url = lines[i+1].strip()
+                        break
             
-            return {'list': []}
+            if not stream_url:
+                # 如果 M3U 匹配不到，嘗試模糊匹配主播 ID
+                for i, line in enumerate(lines):
+                    if user_id in line and i + 1 < len(lines):
+                        stream_url = lines[i+1].strip()
+                        break
+
+            proxies = [
+                "https://flank.515355.xyz/proxy/",
+                "https://uae2.515355.xyz/proxy/",
+                "https://pol.515355.xyz/proxy/",
+                "https://hubu.515355.xyz/proxy/?",
+                "https://f00.515355.xyz/proxy/",
+                "https://ce2.515355.xyz/proxy/?",
+            ]
             
+            play_links = [f"代理{i}${p}{stream_url}" for i, p in enumerate(proxies, 1)]
+            play_links.append(f"直連${stream_url}")
+            
+            vod = {
+                'vod_id': first_id,
+                'vod_name': f"PandaTV - {user_id}",
+                'vod_pic': 'https://tupian.li/images/2024/03/30/660769b1ba623.png',
+                'vod_content': f'主播: {user_id}',
+                'vod_play_from': 'PandaLive',
+                'vod_play_url': '#'.join(play_links)
+            }
+            return {'list': [vod]}
         except Exception as e:
             print(f"detailContent錯誤: {e}")
             return {'list': []}
 
     def searchContent(self, key, quick, pg="1"):
-        """搜索"""
+        """搜索 - 帶 pg="1" 修復"""
         try:
-            videos = self._get_live_list()
-            results = []
-            key_lower = key.lower()
-            for v in videos:
-                if key_lower in v.get('vod_name', '').lower():
-                    results.append(v)
-            return {'list': results[:50], 'page': int(pg)}
+            all_v = self._fetch_json_data()
+            key_l = key.lower()
+            res = [v for v in all_v if key_l in v['vod_name'].lower() or key_l in v['vod_actor'].lower()]
+            return {'list': res[:50], 'page': int(pg)}
         except:
             return {'list': [], 'page': int(pg)}
 
     def playerContent(self, flag, id, vipFlags):
-        """播放"""
         return {
             'parse': 0,
             'url': id,
