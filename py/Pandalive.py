@@ -157,11 +157,11 @@ class Spider:
                     
                     # 代理服務器
                     proxies = [
+                        "https://flank.515355.xyz/proxy/",
                         "https://uae2.515355.xyz/proxy/",
                         "https://pol.515355.xyz/proxy/",
                         "https://hubu.515355.xyz/proxy/?",
                         "https://f00.515355.xyz/proxy/",
-                        "https://flank.515355.xyz/proxy/",
                         "https://ce2.515355.xyz/proxy/?",
                     ]
                     
