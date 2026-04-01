@@ -22,6 +22,7 @@ class Spider(Spider):
     def homeContent(self, filter):
         self.prepare()
         classes = [
+            {"type_name": "最新", "type_id": "new"},
             {"type_name": "HD日本", "type_id": "51"},
             {"type_name": "HD歐美", "type_id": "52"},
             {"type_name": "日本有碼", "type_id": "20"},
@@ -32,6 +33,7 @@ class Spider(Spider):
             {"type_name": "水果AV", "type_id": "35"},
             {"type_name": "色情情燴", "type_id": "30"},
             {"type_name": "經典四級", "type_id": "47"},
+            {"type_name": "三級電影", "type_id": "53"},
             {"type_name": "鹹濕電台", "type_id": "169"}
         ]
         try:
