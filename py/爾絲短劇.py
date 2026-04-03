@@ -10,21 +10,36 @@ class Spider():
         return ["requests", "beautifulsoup4"]
 
     def getName(self):
-        return "爾絲短劇(穩定版)"
+        return "爾絲短劇(過檢測版)"
 
     def init(self, extend=""):
         self.host = "https://www.ersidj.cc"
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        # 使用 Session 自動管理 Cookies
+        self.session = requests.Session()
+        self.ua_list = [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+        ]
+
+    def get_headers(self):
+        return {
+            "User-Agent": random.choice(self.ua_list),
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
             "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Accept-Encoding": "gzip, deflate, br",
             "Referer": self.host + "/",
-            "Connection": "keep-alive",
+            "Sec-Ch-Ua": '"Google Chrome";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+            "Sec-Ch-Ua-Mobile": "?0",
+            "Sec-Ch-Ua-Platform": '"Windows"',
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-User": "?1",
             "Upgrade-Insecure-Requests": "1"
         }
 
     def homeContent(self, filter):
-        # 完整分類清單
         result = {'class': [
             {"type_name": "全部", "type_id": "uu"},
             {"type_name": "婚姻", "type_id": "HxxhSb"},
@@ -34,41 +49,18 @@ class Spider():
             {"type_name": "權謀", "type_id": "xTPSjV"},
             {"type_name": "奇幻", "type_id": "5k18R7"},
             {"type_name": "總裁", "type_id": "NkSrxN"},
-            {"type_name": "戰爭", "type_id": "1NNbCJ"},
-            {"type_name": "懸疑", "type_id": "xWNBTh"},
-            {"type_name": "搞笑", "type_id": "5Ap1kr"},
-            {"type_name": "豪門", "type_id": "VT177I"},
-            {"type_name": "家庭", "type_id": "bQ5N5M"},
-            {"type_name": "勵志", "type_id": "yPGIBa"},
-            {"type_name": "甜寵", "type_id": "rxypaw"},
-            {"type_name": "恐怖", "type_id": "TNbA55"},
-            {"type_name": "熱血", "type_id": "TRUUND"},
             {"type_name": "都市", "type_id": "GXYuRA"},
-            {"type_name": "復仇", "type_id": "CJyBHx"},
-            {"type_name": "穿越", "type_id": "rV8818"},
-            {"type_name": "情感", "type_id": "9x718j"}
+            {"type_name": "復仇", "type_id": "CJyBHx"}
         ]}
 
-        # 篩選器配置
         filters = {}
         filter_config = [
-            {"key": "tag", "name": "標籤", "value": [
-                {"n": "全部", "v": "S"}, {"n": "逆襲", "v": "900688nqS"}, {"n": "都市", "v": "90sq5r02S"}, 
-                {"n": "甜寵", "v": "751p5on0S"}, {"n": "愛情", "v": "723160p5S"}, {"n": "情感", "v": "60p5611sS"},
-                {"n": "復仇", "v": "590q4rp7S"}, {"n": "豪門", "v": "8p6n95r8S"}, {"n": "家庭", "v": "5oo65rnqS"}
-            ]},
+            {"key": "tag", "name": "標籤", "value": [{"n": "全部", "v": "S"}, {"n": "逆襲", "v": "900688nqS"}, {"n": "都市", "v": "90sq5r02S"}]},
             {"key": "channel", "name": "頻道", "value": [{"n": "全部", "v": "uu"}, {"n": "男頻", "v": "male"}, {"n": "女頻", "v": "female"}]},
-            {"key": "year", "name": "年代", "value": [{"n": "全部", "v": ""}, {"n": "古代", "v": "1"}, {"n": "現代", "v": "2"}]},
-            {"key": "state", "name": "狀態", "value": [{"n": "全部", "v": "0"}, {"n": "完結", "v": "2"}, {"n": "連載", "v": "1"}]},
-            {"key": "sort", "name": "排序", "value": [
-                {"n": "最新", "v": "0"}, {"n": "推薦", "v": "1"}, {"n": "最近更新", "v": "2"}, 
-                {"n": "周點擊", "v": "3"}, {"n": "月點擊", "v": "4"}, {"n": "點擊量", "v": "6"}
-            ]}
+            {"key": "sort", "name": "排序", "value": [{"n": "最新", "v": "0"}, {"n": "推薦", "v": "1"}, {"n": "點擊量", "v": "6"}]}
         ]
-        
         for item in result['class']:
             filters[item['type_id']] = filter_config
-            
         result['filters'] = filters
         return result
 
@@ -76,10 +68,9 @@ class Spider():
         return self.categoryContent("uu", 1, False, {})
 
     def categoryContent(self, tid, pg, filter, extend):
-        # 🟢 防封策略：非首頁加載增加 1-2 秒隨機延遲
-        if int(pg) > 1:
-            time.sleep(random.uniform(1, 2))
-
+        # 增加隨機休眠，減少被標記風險
+        time.sleep(random.uniform(0.5, 1.5))
+        
         result = {}
         tag = extend.get('tag', 'S')
         cate = tid
@@ -91,16 +82,17 @@ class Spider():
         url = f"{self.host}/shuku/{tag},{cate},{channel},{year},{state},{sort},{pg}.html"
         
         try:
-            res = requests.get(url, headers=self.headers, timeout=15)
+            res = self.session.get(url, headers=self.get_headers(), timeout=15)
+            # 如果還是被封，嘗試訪問首頁拿 Cookie 再回來
             if res.status_code == 403:
-                return {"list": [{"vod_name": "⚠️ IP 受限，請降低翻頁速度", "vod_id": "error"}]}
+                self.session.get(self.host, headers=self.get_headers())
+                res = self.session.get(url, headers=self.get_headers(), timeout=15)
             
             res.encoding = 'utf-8'
             soup = BeautifulSoup(res.text, 'html.parser')
             result['list'] = self.parse_vod_list(soup)
             result['page'] = pg
-            # 🟢 防封策略：限制總頁數，防止 App 無限加載導致 IP 被黑
-            result['pagecount'] = 20
+            result['pagecount'] = 10  # 降低分頁數，避免自動加載過快
         except:
             result['list'] = []
         return result
@@ -111,24 +103,14 @@ class Spider():
         for item in items:
             href = item.get('href', '')
             vod_id = href.replace('/content/', '').replace('.html', '')
-            
             img_el = item.find('img')
             name_el = item.select_one('.font-bold')
             name = name_el.get_text(strip=True) if name_el else (img_el.get('alt', '') if img_el else "")
-            
-            if not name or len(name) < 2: continue
-            
+            if not name: continue
             pic = img_el.get('data-lazy') or img_el.get('src') or ""
             if pic.startswith('/'): pic = self.host + pic
-            
             remark = item.select_one('.bg-surface').get_text(strip=True) if item.select_one('.bg-surface') else ""
-            
-            vod_list.append({
-                "vod_id": vod_id,
-                "vod_name": name,
-                "vod_pic": pic,
-                "vod_remarks": remark
-            })
+            vod_list.append({"vod_id": vod_id, "vod_name": name, "vod_pic": pic, "vod_remarks": remark})
         
         unique_list = []
         seen = set()
@@ -141,10 +123,8 @@ class Spider():
     def detailContent(self, ids):
         try:
             vod_id = ids[0]
-            if vod_id == "error": return {"list": []}
-            
             url = f"{self.host}/content/{vod_id}.html"
-            res = requests.get(url, headers=self.headers, timeout=10)
+            res = self.session.get(url, headers=self.get_headers(), timeout=10)
             res.encoding = 'utf-8'
             soup = BeautifulSoup(res.text, 'html.parser')
             
@@ -154,38 +134,32 @@ class Spider():
             if pic.startswith('/'): pic = self.host + pic
 
             def get_playlist(line):
-                # 生成 100 集播放清單
                 return "#".join([f"第{i}集$/play/{vod_id}/{i}?line={line}" for i in range(1, 101)])
 
             play_from = ["線路1", "線路2", "線路3"]
             play_url = [get_playlist(1), get_playlist(2), get_playlist(3)]
 
             return {"list": [{
-                "vod_id": vod_id,
-                "vod_name": title,
-                "vod_pic": pic,
-                "type_name": "短劇",
-                "vod_play_from": "$$$".join(play_from),
-                "vod_play_url": "$$$".join(play_url)
+                "vod_id": vod_id, "vod_name": title, "vod_pic": pic, "type_name": "短劇",
+                "vod_play_from": "$$$".join(play_from), "vod_play_url": "$$$".join(play_url)
             }]}
         except:
             return {"list": []}
 
-    def searchContent(self, key, quick, pg=1):
-        # 🟢 防封策略：搜尋前強制延遲，避免連續快速搜尋
-        time.sleep(1)
-        result = {'list': []}
+    def searchContent(self, key, quick):
+        time.sleep(2) # 搜尋強烈建議延遲
         search_url = f"{self.host}/searchlist/"
         try:
-            # 使用你測試通過的 POST 與 pg=1 參數
             payload = {'keyword': key, 'pg': 1}
-            res = requests.post(search_url, headers=self.headers, data=payload, timeout=15)
+            # 搜尋通常檢查更嚴格，使用 POST 時必須帶上完整的 Referer
+            h = self.get_headers()
+            h["Origin"] = self.host
+            res = self.session.post(search_url, headers=h, data=payload, timeout=15)
             res.encoding = 'utf-8'
             soup = BeautifulSoup(res.text, 'html.parser')
-            result['list'] = self.parse_vod_list(soup)
+            return {'list': self.parse_vod_list(soup)}
         except:
-            pass
-        return result
+            return {'list': []}
 
     def playerContent(self, flag, id, vipFlags):
         play_url = self.host + id if id.startswith('/') else id
