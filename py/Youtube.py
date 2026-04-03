@@ -141,30 +141,52 @@ class Spider():
                 })
         return items
 
-    def playerContent(self, flag, id, vipFlags):
-        # 這裡返回 YouTube 標準播放頁，Fongmi 會嘗試解析
-        result = {
-            "parse": 1, 
-            "url": f"https://www.youtube.com/watch?v={id}", 
-            "header": {"User-Agent": "Mozilla/5.0"}
+    def detailContent(self, array):
+        # 取得影片 ID (這是在列表點擊時傳進來的 vod_id)
+        tid = array[0]
+        
+        # 2026 修正：Fongmi 殼子需要完整的詳情結構才能觸發播放器
+        vod = {
+            "vod_id": tid,
+            "vod_name": "YouTube 影片",
+            "vod_pic": f"https://i.ytimg.com/vi/{tid}/hqdefault.jpg",
+            "vod_type": "YouTube",
+            "vod_year": "2026",
+            "vod_area": "Global",
+            "vod_remarks": "高清解析",
+            "vod_actor": "YouTube Creator",
+            "vod_director": "Google",
+            "vod_content": "正在為您解析 YouTube 影片數據...",
+            "vod_play_from": "YouTube",
+            # 💡 關鍵：格式必須是 "顯示名稱$影片ID"
+            "vod_play_url": f"點擊播放${tid}" 
         }
-        return result
+        
+        # 注意：Fongmi 的 list 必須包裝在字典中
+        return {"list": [vod]}
 
-    def format_list(self, raw_list):
-        items = []
-        if not isinstance(raw_list, list):
-            return items
-        for item in raw_list:
-            vid = item.get('vod_id', item.get('videoId', ''))
-            name = item.get('vod_name', item.get('title', ''))
-            if vid and name:
-                items.append({
-                    "vod_id": vid,
-                    "vod_name": name,
-                    "vod_pic": item.get('vod_pic', f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"),
-                    "vod_remarks": item.get('vod_remarks', '2026_Fix')
-                })
-        return items
+    def playerContent(self, flag, id, vipFlags):
+        """
+        當用戶點擊播放時，Fongmi 會調用此函數
+        """
+        # 1. 構造 YouTube 移動端播放網址 (移動端網址比網頁版更容易被盒子嗅探)
+        url = f"https://m.youtube.com/watch?v={id}"
+        
+        # 2. 強制模擬移動瀏覽器，讓 YouTube 返回不帶複雜加密的影片頁面
+        header = {
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1',
+            'Referer': 'https://m.youtube.com/',
+            'Sec-Fetch-Mode': 'navigate'
+        }
+
+        # 3. 設置解析模式
+        # parse: 1 代表調用盒子內置解析 (內置嗅探)
+        # 如果你的盒子有外部解析接口，它會自動生效
+        return {
+            "parse": 1,
+            "url": url,
+            "header": header
+        }
 
 # 測試區塊（盒子環境不調用）
 if __name__ == '__main__':
