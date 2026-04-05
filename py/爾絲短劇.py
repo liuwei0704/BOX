@@ -11,14 +11,15 @@ class Spider():
         return "爾絲短劇"
 
     def init(self, extend=""):
-        self.host = "https://www.ersidj.cc"
+        # 建議使用 tw 域名提高解析成功率
+        self.host = "https://tw.ersidj.cc"
         self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-            "Referer": self.host
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1",
+            "Referer": self.host + "/",
+            "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8"
         }
 
     def homeContent(self, filter):
-        # 完整分類列表 (包含更多隱藏分類)
         result = {'class': [
             {"type_name": "全部", "type_id": "uu"},
             {"type_name": "婚姻", "type_id": "HxxhSb"},
@@ -43,7 +44,6 @@ class Spider():
             {"type_name": "情感", "type_id": "9x718j"}
         ]}
 
-        # 完整篩選配置 (對應 URL: /shuku/標籤,分類,頻道,年代,狀態,排序,頁碼.html)
         filters = {}
         filter_config = [
             {"key": "tag", "name": "標籤", "value": [
@@ -71,7 +71,6 @@ class Spider():
 
     def categoryContent(self, tid, pg, filter, extend):
         result = {}
-        # 獲取篩選參數
         tag = extend.get('tag', 'S')
         cate = tid
         channel = extend.get('channel', 'uu')
@@ -79,7 +78,6 @@ class Spider():
         state = extend.get('state', '0')
         sort = extend.get('sort', '0')
         
-        # 構造 URL
         url = f"{self.host}/shuku/{tag},{cate},{channel},{year},{state},{sort},{pg}.html"
         
         try:
@@ -88,20 +86,17 @@ class Spider():
             soup = BeautifulSoup(res.text, 'html.parser')
             result['list'] = self.parse_vod_list(soup)
             result['page'] = pg
-            result['pagecount'] = 20
+            result['pagecount'] = 99
         except:
             result['list'] = []
         return result
 
     def parse_vod_list(self, soup):
         vod_list = []
-        # 尋找所有劇集連結
         items = soup.find_all('a', href=re.compile(r'/content/[a-zA-Z0-9]+\.html'))
         for item in items:
             href = item.get('href', '')
             vod_id = href.replace('/content/', '').replace('.html', '')
-            
-            # 優先從圖片 alt 或 font-bold 找標題
             img_el = item.find('img')
             name_el = item.select_one('.font-bold')
             name = name_el.get_text(strip=True) if name_el else (img_el.get('alt', '') if img_el else "")
@@ -110,17 +105,10 @@ class Spider():
             
             pic = img_el.get('data-lazy') or img_el.get('src') or ""
             if pic.startswith('/'): pic = self.host + pic
-            
             remark = item.select_one('.bg-surface').get_text(strip=True) if item.select_one('.bg-surface') else ""
             
-            vod_list.append({
-                "vod_id": vod_id,
-                "vod_name": name,
-                "vod_pic": pic,
-                "vod_remarks": remark
-            })
+            vod_list.append({"vod_id": vod_id, "vod_name": name, "vod_pic": pic, "vod_remarks": remark})
         
-        # 簡單去重
         unique_list = []
         seen = set()
         for v in vod_list:
@@ -143,19 +131,16 @@ class Spider():
             if pic.startswith('/'): pic = self.host + pic
 
             def get_playlist(line):
+                # 爾絲短劇播放路由通常為 /play/{id}/{episode}?line={line}
                 eps = [f"第{i}集$/play/{vod_id}/{i}?line={line}" for i in range(1, 101)]
                 return "#".join(eps)
 
-            play_from = ["線路1", "線路2", "線路3"]
-            play_url = [get_playlist(1), get_playlist(2), get_playlist(3)]
+            play_from = ["官方線路1", "備用線路2", "備用線路3"]
+            play_url = [get_playlist("g0"), get_playlist("g1"), get_playlist("g2")]
 
             vod = {
-                "vod_id": vod_id,
-                "vod_name": title,
-                "vod_pic": pic,
-                "type_name": "短劇",
-                "vod_play_from": "$$$".join(play_from),
-                "vod_play_url": "$$$".join(play_url)
+                "vod_id": vod_id, "vod_name": title, "vod_pic": pic, "type_name": "短劇",
+                "vod_play_from": "$$$".join(play_from), "vod_play_url": "$$$".join(play_url)
             }
             return {"list": [vod]}
         except:
@@ -163,10 +148,9 @@ class Spider():
 
     def searchContent(self, key, quick, pg=1):
         result = {'list': []}
-        # 使用你測試 OK 的 POST 與 pg=1 邏輯
         search_url = f"{self.host}/searchlist/"
         try:
-            payload = {'keyword': key, 'pg': 1}
+            payload = {'keyword': key, 'pg': pg}
             res = requests.post(search_url, headers=self.headers, data=payload, timeout=10)
             res.encoding = 'utf-8'
             soup = BeautifulSoup(res.text, 'html.parser')
@@ -176,14 +160,20 @@ class Spider():
         return result
 
     def playerContent(self, flag, id, vipFlags):
-        # 移除可能存在的 line 重複拼接，確保 URL 格式正確
+        # 1. 確保播放頁 URL 完整且帶有必要的 line 參數
         play_url = self.host + id if id.startswith('/') else id
+        if 'line=' not in play_url:
+            play_url += ('&' if '?' in play_url else '?') + "line=g0"
+
+        # 2. 使用 parse: 1 調用後端解析 (目前該站點支持)
         return {
             "parse": 1,
             "url": play_url,
             "header": {
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1",
                 "Referer": self.host + "/",
-                "Origin": self.host
+                "Origin": self.host,
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8"
             }
         }
