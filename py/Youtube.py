@@ -28,13 +28,14 @@ class Spider():
         result = {}
         # 這裡建議使用英文 ID，在請求 PHP 時再處理
         cateManual = {
+            "追爽劇": "@追爽劇",
+            "盛世劇集": "@ShengshiDrama",
+            "王者短劇": "@王者短劇堂KingDramaHub",
             "蒼穹動漫社": "@DragonAnimationClub",
             "桃桃爱漫画": "@桃桃爱漫画",
             "阿星推文": "@阿星推文",
             "AI动漫频道": "@AI动漫频道",
-            "漫剧不打烊": "@漫剧不打烊",
-            "盛世劇集": "@ShengshiDrama",
-            "王者短劇": "@王者短劇堂KingDramaHub"
+            "漫剧不打烊": "@漫剧不打烊"
         }
         classes = []
         for k in cateManual:
