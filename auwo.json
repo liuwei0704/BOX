@@ -4,9 +4,15 @@
 "wallpaper":"https://深色壁纸.xxooo.cf/",
 "sites":[
 {"key":"GoConfig","name":"💬嗷嗚|彈幕","type":3,"api":"csp_GoConfigAmns","playerType":2,"indexs":1,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/aowu/json/douban.json"},
+{"key":"MyConfig","name":"⚙️配置|中心","type":3,"api":"csp_MyConfigAmns","playerType":2,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
 {"key":"MjHggg","name":"🐲嗷嗚|漫剧","type":3,"api":"csp_HgggAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"comic_series"},
 {"key":"DjHggg","name":"😈嗷嗚|短剧","type":3,"api":"csp_HgggAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":"short_play"},
-{"key":"MyConfig","name":"⚙️配置|中心","type":3,"api":"csp_MyConfigAmns","playerType":2,"searchable":0,"filterable":0,"quickSearch":0,"changeable":0},
+
+{"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
+{"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
+{"key":"Dailymotion","name":"🪩Dailymotion┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Dailymotion.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"Youtube_PY","name":"🪩Youtube┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Youtube.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
+
 {"key":"HHkk","name":"🍭豪堪|短剧","type":3,"api":"csp_HHkkAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"genre":"shortdrama"},
 {"key":"Hema","name":"🛸盒马|短剧","type":3,"api":"csp_HemaAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"genre":"shortdrama"},
 {"key":"Bddj","name":"🧸拜拜|短剧","type":3,"api":"csp_BddjAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"genre":"shortdrama"},
@@ -16,11 +22,6 @@
 {"key":"Qmdj","name":"🐱喵喵|短剧","type":3,"api":"csp_QmdjAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"genre":"shortdrama"},
 {"key":"Xydj","name":"⭐星星|短剧","type":3,"api":"csp_XydjAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"genre":"shortdrama"},
 {"key":"Spdj","name":"🎂岁岁|短剧","type":3,"api":"csp_SpdjAmns","playerType":2,"searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"genre":"shortdrama"},
-
-{"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
-{"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
-{"key":"Dailymotion","name":"🪩Dailymotion┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Dailymotion.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"Youtube_PY","name":"🪩Youtube┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Youtube.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
 {"key":"51短剧","name":"🔖51短剧｜擦邊","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/51短剧.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/XBPQ.jar"},
 {"key":"包子短剧_PY","name":"🔖包子┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/包子短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
