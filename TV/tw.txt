@@ -1,4 +1,4 @@
-🍀20260306更新🍀,#genre#
+🍀隨緣更新🍀,#genre#
 更新說明,https://live.ottiptv.cc/huya/13303478
 日常更新,https://live.ottiptv.cc/huya/15152155
 設定內直播,https://live.ottiptv.cc/douyu/9986305
@@ -1185,6 +1185,7 @@ yaoyao说,https://live.ottiptv.cc/douyu/884073
 💕短視頻_888,#genre#
 parse=1
 playerType=2
+AI,https://girl.gs/
 抖音,https://diskgirl.com/
 热舞,http://api.yujn.cn/api/rewu.php?type=video
 韓國KBJ,https://5721004.xyz/player/short.html
