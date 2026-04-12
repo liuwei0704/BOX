@@ -19,7 +19,7 @@ class Spider:
     def init(self, extend): pass
 
     def homeContent(self, filter):
-        classes = [{"type_id": "系统觉醒", "type_name": "系统觉醒"},{"type_id": "穿越重生", "type_name": "穿越重生"},{"type_id": "都市逆袭", "type_name": "都市逆袭"},{"type_id": "古风权谋", "type_name": "古风权谋"},{"type_id": "总裁娇妻", "type_name": "总裁娇妻"}]
+        classes = [{"type_id": "系统觉醒", "type_name": "系统觉醒"},{"type_id": "穿越重生", "type_name": "穿越重生"},{"type_id": "都市逆袭", "type_name": "都市逆袭"},{"type_id": "古风权谋", "type_name": "古风权谋"},{"type_id": "总裁娇妻", "type_name": "总裁娇妻"},{"type_id": "玄幻仙侠", "type_name": "玄幻仙侠"},{"type_id": "奇幻科幻", "type_name": "奇幻科幻"}]
         return {"class": classes, "list": self.get_list(self.siteUrl + "/index.html")}
 
     def homeVideoContent(self):
