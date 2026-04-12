@@ -6,7 +6,7 @@ import html
 
 class Spider():
     def getName(self):
-        return "必康影视"
+        return "必康影視"
 
     def getDependence(self):
         return []
@@ -25,8 +25,48 @@ class Spider():
     def homeContent(self, filter):
         self.check_init()
         result = {}
-        cateManual = {"短劇": "20","电影": "1", "电视剧": "2", "综艺": "3", "动漫": "4"}
-        result["class"] = [{"type_name": k, "type_id": v} for k, v in cateManual.items()]
+        # 這裡將「短劇」作為一個大類，利用篩選器切換 50, 51 等子 ID
+        result["class"] = [
+            {"type_name": "短劇", "type_id": "20"},
+            {"type_name": "電影", "type_id": "1"},
+            {"type_name": "電視劇", "type_id": "2"},
+            {"type_name": "綜藝", "type_id": "3"},
+            {"type_name": "動漫", "type_id": "4"}
+        ]
+        
+        # 篩選器配置
+        result["filters"] = {
+            "20": [
+                {
+                    "key": "tid",
+                    "name": "分類",
+                    "value": [
+                        {"n": "全部", "v": "20"},
+                        {"n": "穿越短劇", "v": "50"},
+                        {"n": "愛情短劇", "v": "51"},
+                        {"n": "懸疑短劇", "v": "52"},
+                        {"n": "仙俠短劇", "v": "53"},
+                        {"n": "都市短劇", "v": "54"},
+                        {"n": "短劇列表", "v": "55"}
+                    ]
+                },
+                {
+                    "key": "by",
+                    "name": "排序",
+                    "value": [
+                        {"n": "按更新", "v": "time"},
+                        {"n": "按熱度", "v": "hits"},
+                        {"n": "按評分", "v": "score"}
+                    ]
+                },
+                {
+                    "key": "letter",
+                    "name": "字母",
+                    "value": [{"n": "全部", "v": ""}] + [{"n": chr(i), "v": chr(i)} for i in range(65, 91)] + [{"n": "0-9", "v": "0-9"}]
+                }
+            ]
+        }
+        
         try:
             res = requests.get(self.host, headers=self.header, timeout=10)
             res.encoding = 'utf-8'
@@ -40,30 +80,42 @@ class Spider():
 
     def parse_list(self, raw_html):
         videos = []
-        # 修正正则，同时抓取图片下方的备注标签（如有）
-        items = re.findall(r'<a href="(/bicon/\d+\.html)".*?title="(.*?)".*?data-original="(.*?)".*?>(.*?)</a>', raw_html, re.S)
+        # 強力匹配：抓取圖片、標題和狀態角標
+        items = re.findall(r'href="(/bicon/\d+\.html)".*?title="(.*?)".*?data-original="(.*?)".*?>(.*?)</a>', raw_html, re.S)
         for sid, name, pic, extra in items:
             if pic.startswith("//"): pic = "https:" + pic
             elif pic.startswith("/"): pic = self.host + pic
             
-            # --- 角标处理逻辑 ---
-            # 提取 <span> 里的内容作为角标，例如 "高清"、"完结"
+            # 提取 <span class="state">更新全集</span>
             remark = self.regStr(extra, r'<span.*?>(.*?)</span>')
             
             videos.append({
                 "vod_id": sid,
                 "vod_name": html.unescape(name),
                 "vod_pic": pic,
-                "vod_remarks": remark # 这里的备注会显示在角标位置
+                "vod_remarks": remark
             })
         return videos
 
     def categoryContent(self, tid, pg, filter, extend):
         self.check_init()
-        url = f"{self.host}/vodtype/{tid}-{pg}.html"
-        res = requests.get(url, headers=self.header, timeout=10)
-        res.encoding = 'utf-8'
-        return {"list": self.parse_list(res.text), "page": pg, "pagecount": 999}
+        
+        # 關鍵修改：如果篩選器選了子分類，則覆蓋原始 tid
+        curr_tid = extend.get("tid", tid)
+        by = extend.get("by", "time")
+        letter = extend.get("letter", "")
+        
+        # 構建 MacCMS vodshow URL
+        # 結構: {tid}--{by}---{letter}---{pg}---.html
+        url = f"{self.host}/vodshow/{curr_tid}--{by}---{letter}---{pg}---.html"
+        
+        try:
+            res = requests.get(url, headers=self.header, timeout=10)
+            res.encoding = 'utf-8'
+            video_list = self.parse_list(res.text)
+            return {"list": video_list, "page": pg, "pagecount": 999}
+        except:
+            return {"list": [], "page": pg, "pagecount": 0}
 
     def detailContent(self, ids):
         self.check_init()
@@ -73,22 +125,23 @@ class Spider():
             res = requests.get(url, headers=self.header, timeout=10)
             res.encoding = 'utf-8'
             raw_html = res.text
+
+            # 物理清洗標籤
             clean_html = re.sub(r'<(tcenter|fss|tyyt|ssmall|time|areass|sdu|is|font|dfn|sadw|acronym|ecode)[^>]*?>', '', raw_html)
             clean_html = re.sub(r'</(tcenter|fss|tyyt|ssmall|time|areass|sdu|is|font|dfn|sadw|acronym|ecode)>', '', clean_html)
 
-            # 提取备注并清洗，去掉“资源：”前缀，使其在详情页角标更美观
-            raw_remark = self.regStr(clean_html, r'资源：</label><span>(.*?)</span>')
-            remark = raw_remark.replace("资源：", "").strip()
+            raw_remark = self.regStr(clean_html, r'資源：</label><span>(.*?)</span>')
+            remark = raw_remark.replace("資源：", "").strip()
 
             vod = {
                 "vod_id": tid,
                 "vod_name": self.regStr(clean_html, r'<h1.*?>(.*?)</h1>'),
                 "vod_pic": self.regStr(clean_html, r'id="movie_thumb".*?data-original="(.*?)"'),
-                "type_name": self.regStr(clean_html, r'类型：</label><span>(.*?)</span>'),
+                "type_name": self.regStr(clean_html, r'類型：</label><span>(.*?)</span>'),
                 "vod_year": self.regStr(clean_html, r'年份：</label><span>(.*?)</span>'),
                 "vod_remarks": remark,
                 "vod_actor": self.regStr(clean_html, r'主演：</label><span>(.*?)</span>'),
-                "vod_director": self.regStr(clean_html, r'导演：</label><span>(.*?)</span>'),
+                "vod_director": self.regStr(clean_html, r'導演：</label><span>(.*?)</span>'),
                 "vod_content": self.regStr(clean_html, r'style="text-indent: 28px;margin-top: 10px;">(.*?)</div>')
             }
 
@@ -101,8 +154,7 @@ class Spider():
                 p_list = [f"{html.unescape(re.sub(r'<.*?>','',l[1])).strip()}${l[0]}" for l in links]
                 if p_list: play_urls.append("#".join(p_list))
 
-            if len(froms) < len(play_urls): froms = [f"线路{i+1}" for i in range(len(play_urls))]
-            vod["vod_play_from"] = "$$$".join(froms)
+            vod["vod_play_from"] = "$$$".join(froms[:len(play_urls)])
             vod["vod_play_url"] = "$$$".join(play_urls)
             return {"list": [vod]}
         except:
@@ -124,9 +176,7 @@ class Spider():
             player_data = re.search(r'var player_aaaa\s*=\s*(\{.*?\});', res.text)
             if player_data:
                 config = json.loads(player_data.group(1))
-                video_url = config.get('url', '')
-                is_video = '.m3u8' in video_url or '.mp4' in video_url
-                return {"parse": 0 if is_video else 1, "url": video_url, "header": self.header}
+                return {"parse": 0 if ('.m3u8' in config['url'] or '.mp4' in config['url']) else 1, "url": config['url'], "header": self.header}
             return {"parse": 1, "url": url, "header": self.header}
         except:
             return {"parse": 1, "url": url, "header": self.header}
