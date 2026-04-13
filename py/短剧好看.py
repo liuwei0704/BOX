@@ -15,6 +15,7 @@ class Spider(Spider):
     def homeContent(self, filter):
         if not hasattr(self, 'host'): self.init()
         result = {'class': [
+            {"type_name": "精選", "type_id": "jingxuanduanju"},
             {"type_name": "都市", "type_id": "dushi"},
             {"type_name": "穿越", "type_id": "chuanyue"},
             {"type_name": "古代", "type_id": "gudai"},
