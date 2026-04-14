@@ -3,32 +3,32 @@
     "站名": "51吃瓜擦邊短劇",
     "編碼": "UTF-8",
     "請求頭": "User-Agent$MOBILE_UA",
+    // 這裡改為根域名，確保 /archives/... 能正確補全為 https://chigua.com/archives/...
     "主頁url": "https://chigua.com",
     "起始頁": "1",
     "分類url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
     "分類": "✨短劇✨$cbdj",
 
-    // --- 列表頁截取修正 ---
-    // 數組：改用更有辨識度的 <article 作為開頭，並確保結尾閉合
+    // --- 列表頁截取 ---
+    // 數組：使用 article 標籤，並加上 [不含] 過濾掉無效內容
     "數組": "<article&&</article>[不含:旗士]",
     
-    // 圖片：保持從 JS 函數中提取
+    // 圖片：從 JS 腳本提取，如果讀不到，請檢查源碼中是否有這行
     "圖片": "loadBannerDirect('&&'",
     
-    // 標題：精準定位 headline 屬性
+    // 標題：對應你給的 HTML 中的 headline
     "標題": "itemprop=\"headline\">&&<",
     
-    // 副標題：提取發佈日期
+    // 副標題：提取日期
     "副標題": "itemprop=\"datePublished\" content=\"&&\"",
     
-    // 連結：確保提取到的 /archives/... 能自動補上域名
+    // 連結：提取 a 標籤的 href
     "連結": "href=\"&&\"",
 
-    // --- 詳情頁截取 ---
-    // 簡介：改用更寬鬆的正則，或者 Jsoup 
-    "簡介": "itemprop=\"description\">&&<||p:blockquote->text",
+    // --- 詳情頁與播放 ---
+    "簡介": "p:blockquote->text",
     
-    // 播放跳轉：根據你之前的配置，這部分通常在頁面源碼的 script 或 json 數據中
+    // 這裡通常是二級跳轉，保持你原本的邏輯
     "跳轉播放連結": "video\":{\"url\":\"&&\"",
     "直接播放": "1",
 
