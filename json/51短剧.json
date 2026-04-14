@@ -4,17 +4,26 @@
     "编码": "UTF-8",
     "请求头": "User-Agent$MOBILE_UA",
     "主页url": "https://chigua.com/category/cbdj/",
-    "首页": "200",
-    "起始页": "0",
+    "起始页": "1",
     "分类url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
     "分类": "✨短剧✨$cbdj",
-    "数组": "url mainEntityOfPage\"&&</a[不包含:旗士]",
-    "图片": "https://www.loliapi.com/bg/",
+    
+    // 修正過濾語法，並指定更精準的截取範圍
+    "数组": "url mainEntityOfPage\"&&</a[不含:旗士]",
+    
+    // 若要使用隨機圖片，建議維持原樣；若要抓取網頁圖片，請改為截取規則
+    "图片": "https://v2.api-m.com/api/meinvpic?return=302",
+    
     "标题": "《&&》",
     "副标题": "<span itemprop=\"datePublished*>&&<",
     "链接": "<a href=\"&&\"",
-    "简介": "👉+/blockquote><p>&&</p><p><div class=\"dplayer",
+    
+    // 詳情與播放
+    "简介": "👉+p:blockquote->text", // 建議改用 jsoup 獲取純文本，更乾淨
     "跳转播放链接": "video\":{\"url\":\"&&\"",
+    "直接播放": "1", // 強制開啟直接播放模式
+    
+    // 搜索配置
     "搜索url": "https://chigua.com/category/id/{pg}/?wd={wd}",
     "搜索模式": "1"
 }
