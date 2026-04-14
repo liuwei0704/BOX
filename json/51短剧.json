@@ -3,37 +3,36 @@
     "站名": "51吃瓜擦邊短劇",
     "編碼": "UTF-8",
     "請求頭": "User-Agent$MOBILE_UA",
-    "主頁url": "https://chigua.com/category/cbdj/",
-    "首頁": "200",
+    "主頁url": "https://chigua.com",
     "起始頁": "1",
     "分類url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
-    "分類": "✨短剧✨$cbdj",
+    "分類": "✨短劇✨$cbdj",
 
-    // --- 列表頁截取 ---
-    // 使用 <article 標籤作為數組，並排除包含「旗士」的內容
+    // --- 列表頁截取修正 ---
+    // 數組：改用更有辨識度的 <article 作為開頭，並確保結尾閉合
     "數組": "<article&&</article>[不含:旗士]",
     
-    // 從 JavaScript 的 loadBannerDirect 函數中提取原始圖片地址
+    // 圖片：保持從 JS 函數中提取
     "圖片": "loadBannerDirect('&&'",
     
-    // 標題提取，精確匹配 headline 屬性
+    // 標題：精準定位 headline 屬性
     "標題": "itemprop=\"headline\">&&<",
     
-    // 副標題提取發佈日期
+    // 副標題：提取發佈日期
     "副標題": "itemprop=\"datePublished\" content=\"&&\"",
     
-    // 連結提取
+    // 連結：確保提取到的 /archives/... 能自動補上域名
     "連結": "href=\"&&\"",
 
     // --- 詳情頁截取 ---
-    // 簡介：使用 Jsoup 語法提取 blockquote 標籤內的文字，更乾淨
-    "簡介": "👉+p:blockquote->text",
+    // 簡介：改用更寬鬆的正則，或者 Jsoup 
+    "簡介": "itemprop=\"description\">&&<||p:blockquote->text",
     
-    // 播放跳轉邏輯
+    // 播放跳轉：根據你之前的配置，這部分通常在頁面源碼的 script 或 json 數據中
     "跳轉播放連結": "video\":{\"url\":\"&&\"",
     "直接播放": "1",
 
     // --- 搜索配置 ---
-    "搜索url": "https://chigua.com/category/id/{pg}/?wd={wd}",
+    "搜索url": "https://chigua.com/index.php/index/search?wd={wd}",
     "搜索模式": "1"
 }
