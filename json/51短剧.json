@@ -1,38 +1,20 @@
 {
-    "作者": "Aries",
-    "站名": "51吃瓜擦邊短劇",
-    "編碼": "UTF-8",
-    "請求頭": "User-Agent$MOBILE_UA",
-    // 這裡改為根域名，確保 /archives/... 能正確補全為 https://chigua.com/archives/...
-    "主頁url": "https://chigua.com/category/cbdj/",
-    "起始頁": "1",
-    "分類url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
-    "分類": "✨短劇✨$cbdj",
-
-    // --- 列表頁截取 ---
-    // 數組：使用 article 標籤，並加上 [不含] 過濾掉無效內容
-    "數組": "<article&&</article>[不含:旗士]",
-    
-    // 圖片：從 JS 腳本提取，如果讀不到，請檢查源碼中是否有這行
-    "圖片": "loadBannerDirect('&&'",
-    
-    // 標題：對應你給的 HTML 中的 headline
-    "標題": "itemprop=\"headline\">&&<",
-    
-    // 副標題：提取日期
-    "副標題": "itemprop=\"datePublished\" content=\"&&\"",
-    
-    // 連結：提取 a 標籤的 href
-    "連結": "href=\"&&\"",
-
-    // --- 詳情頁與播放 ---
-    "簡介": "p:blockquote->text",
-    
-    // 這裡通常是二級跳轉，保持你原本的邏輯
-    "跳轉播放連結": "video\":{\"url\":\"&&\"",
-    "直接播放": "1",
-
-    // --- 搜索配置 ---
-    "搜索url": "https://chigua.com/index.php/index/search?wd={wd}",
+    "作者": "Aries(Gemini優化版)",
+    "站名": "51吃瓜短劇",
+    "编码": "UTF-8",
+    "请求头": "User-Agent$MOBILE_UA#Referer$https://51cg1.com/",
+    "主页url": "https://51cg1.com/category/cbdj/",
+    "首页": "200",
+    "起始页": "1",
+    "分类url": "https://51cg1.com/category/{cateId}/page/{catePg}/[https://51cg1.com/category/{cateId}/];;mrcRAz",
+    "分类": "✨短剧✨$cbdj",
+    "数组": "article&&</article>",
+    "图片": "data-src=\"&&\"",
+    "标题": "title=\"&&\"",
+    "副标题": "<span itemprop=\"datePublished\">&&</span>",
+    "链接": "href=\"&&\"",
+    "简介": "<blockquote>&&</blockquote>",
+    "跳转播放链接": "video\":{\"url\":\"&&\"",
+    "搜索url": "https://51cg1.com/?s={wd}&p={pg}",
     "搜索模式": "1"
 }
