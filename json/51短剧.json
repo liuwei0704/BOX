@@ -4,7 +4,7 @@
     "編碼": "UTF-8",
     "請求頭": "User-Agent$MOBILE_UA",
     // 這裡改為根域名，確保 /archives/... 能正確補全為 https://chigua.com/archives/...
-    "主頁url": "https://chigua.com",
+    "主頁url": "https://chigua.com/category/cbdj/",
     "起始頁": "1",
     "分類url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
     "分類": "✨短劇✨$cbdj",
