@@ -1,21 +1,22 @@
 {
-    "作者": "Aries(暴力修復)",
+    "作者": "Aries(圖片暴力抓取)",
     "站名": "51吃瓜短劇",
     "编码": "UTF-8",
-    "请求头": "User-Agent$MOBILE_UA#Referer$https://51cg1.com/",
-    "主页url": "https://51cg1.com/category/cbdj/",
+    "请求头": "User-Agent$MOBILE_UA#Referer$https://chigua.com/",
+    "主页url": "https://chigua.com/category/cbdj/",
     "首页": "200",
-    "起始页": "1",
-    "分类url": "https://51cg1.com/category/{cateId}/{catePg}/[https://51cg1.com/category/{cateId}/]",
+    "起始页": "0",
+    "分类url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
     "分类": "✨短剧✨$cbdj",
+    "数组": "url mainEntityOfPage\"&&</a",
     
-    "数组": "item-container&&</article>",
-    "图片": "src=\"&&\"||data-src=\"&&\"",
-    "标题": "title=\"&&\"",
-    "链接": "href=\"&&\"",
-    "副标题": "datePublished\">&&<",
+    "图片": "data-src=\"&&\"||src=\"&&\"||data-original=\"&&\"",
     
+    "标题": "《&&》",
+    "副标题": "<span itemprop=\"datePublished*>&&<",
+    "链接": "<a href=\"&&\"",
+    "简介": "👉+/blockquote><p>&&</p><p><div class=\"dplayer",
     "跳转播放链接": "video\":{\"url\":\"&&\"",
-    "搜索url": "https://51cg1.com/?s={wd}",
+    "搜索url": "https://chigua.com/category/id/{pg}/?wd={wd}",
     "搜索模式": "1"
 }
