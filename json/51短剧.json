@@ -1,15 +1,17 @@
 {
-    "作者": "Aries(圖片修復版)",
+    "作者": "Aries(圖片暴力抓取)",
     "站名": "51吃瓜短劇",
     "编码": "UTF-8",
-    "请求头": "User-Agent$MOBILE_UA#Referer$https://chigua.com/#Accept$image/avif,image/webp,image/apng,image/*,*/*;q=0.8",
+    "请求头": "User-Agent$MOBILE_UA#Referer$https://chigua.com/",
     "主页url": "https://chigua.com/category/cbdj/",
     "首页": "200",
     "起始页": "0",
     "分类url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
     "分类": "✨短剧✨$cbdj",
     "数组": "url mainEntityOfPage\"&&</a",
-    "图片": "data-src=\"&&\"[替换:https://chigua.com/wp-content/themes/zhibo/img/column-default.png>>空]",
+    
+    "图片": "data-src=\"&&\"||src=\"&&\"||data-original=\"&&\"",
+    
     "标题": "《&&》",
     "副标题": "<span itemprop=\"datePublished*>&&<",
     "链接": "<a href=\"&&\"",
