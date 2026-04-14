@@ -1,29 +1,39 @@
 {
     "作者": "Aries",
-    "站名": "51吃瓜擦边短剧",
-    "编码": "UTF-8",
-    "请求头": "User-Agent$MOBILE_UA",
-    "主页url": "https://chigua.com/category/cbdj/",
-    "起始页": "1",
-    "分类url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
-    "分类": "✨短剧✨$cbdj",
+    "站名": "51吃瓜擦邊短劇",
+    "編碼": "UTF-8",
+    "請求頭": "User-Agent$MOBILE_UA",
+    "主頁url": "https://chigua.com/category/cbdj/",
+    "首頁": "200",
+    "起始頁": "1",
+    "分類url": "https://chigua.com/category/{cateId}/{catePg}/[https://chigua.com/category/{cateId}/];;mrcRAz",
+    "分類": "✨短剧✨$cbdj",
+
+    // --- 列表頁截取 ---
+    // 使用 <article 標籤作為數組，並排除包含「旗士」的內容
+    "數組": "<article&&</article>[不含:旗士]",
     
-    // 修正過濾語法，並指定更精準的截取範圍
-    "数组": "url mainEntityOfPage\"&&</a[不含:旗士]",
+    // 從 JavaScript 的 loadBannerDirect 函數中提取原始圖片地址
+    "圖片": "loadBannerDirect('&&'",
     
-    // 若要使用隨機圖片，建議維持原樣；若要抓取網頁圖片，請改為截取規則
-    "图片": "https://v2.api-m.com/api/meinvpic?return=302",
+    // 標題提取，精確匹配 headline 屬性
+    "標題": "itemprop=\"headline\">&&<",
     
-    "标题": "《&&》",
-    "副标题": "<span itemprop=\"datePublished*>&&<",
-    "链接": "<a href=\"&&\"",
+    // 副標題提取發佈日期
+    "副標題": "itemprop=\"datePublished\" content=\"&&\"",
     
-    // 詳情與播放
-    "简介": "👉+p:blockquote->text", // 建議改用 jsoup 獲取純文本，更乾淨
-    "跳转播放链接": "video\":{\"url\":\"&&\"",
-    "直接播放": "1", // 強制開啟直接播放模式
+    // 連結提取
+    "連結": "href=\"&&\"",
+
+    // --- 詳情頁截取 ---
+    // 簡介：使用 Jsoup 語法提取 blockquote 標籤內的文字，更乾淨
+    "簡介": "👉+p:blockquote->text",
     
-    // 搜索配置
+    // 播放跳轉邏輯
+    "跳轉播放連結": "video\":{\"url\":\"&&\"",
+    "直接播放": "1",
+
+    // --- 搜索配置 ---
     "搜索url": "https://chigua.com/category/id/{pg}/?wd={wd}",
     "搜索模式": "1"
 }
