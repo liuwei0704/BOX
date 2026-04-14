@@ -127,19 +127,55 @@ class Spider(Spider):
 
     def playerContent(self, flag, id, vipFlags):
         self.prepare()
+        import base64
+        import urllib.parse
         play_url = self.host + id if id.startswith('/') else f"{self.host}/{id}"
         headers = {"User-Agent": self.m_ua, "Referer": self.host}
         res = self.fetch(play_url, headers=headers)
         html = res.text
         
-        # 提取 m3u8
-        matches = re.findall(r'[\'\"](https?[:\/]+[^\'\" ]+?\.m3u8[^\'\" ]*)[\'\"]', html)
-        for m in matches:
-            final_url = m.replace('\/', '/').replace('&amp;', '&')
-            return {"parse": 0, "url": final_url, "header": headers}
-        
-        url_raw = re.search(r'[\'\"]url[\'\"]\s*:\s*[\'\"](.*?)[\'\"]', html)
-        if url_raw:
-            return {"parse": 0, "url": url_raw.group(1).replace('\/', '/'), "header": headers}
+        # 1. 尝试解析苹果CMS核心变量 player_aaaa
+        player_data = re.search(r'var\s+player_aaaa\s*=\s*(\{.*?\})', html)
+        if player_data:
+            try:
+                data = json.loads(player_data.group(1))
+                v_url = data.get('url', '')
+                
+                # 处理 Base64 编码
+                if v_url and not v_url.startswith('http') and not v_url.startswith('/'):
+                    try:
+                        v_url = base64.b64decode(v_url).decode('utf-8')
+                    except:
+                        pass
+                
+                v_url = urllib.parse.unquote(v_url).replace('\\/', '/')
+                
+                # 如果获取到了有效的 URL
+                if v_url and len(v_url) > 10:
+                    if 'url=' in v_url:
+                        v_url = v_url.split('url=')[-1]
+                    
+                    ext = v_url.split('?')[0].split('.')[-1].lower()
+                    if ext in ['m3u8', 'mp4', 'flv']:
+                        return {"parse": 0, "url": v_url, "header": headers}
+                    else:
+                        return {"parse": 1, "url": v_url, "header": headers}
+            except:
+                pass
 
-        return {"parse": 1, "url": play_url}
+        # 2. 暴力提取：如果 player_aaaa 里没 url，则扫描全页面的 m3u8 特征
+        # 排除掉 js 文件，寻找可能是视频流的地址
+        raw_urls = re.findall(r'[\'\"](https?[:\\\/]+[^\'\" ]+?\.m3u8[^\'\" ]*)[\'\"]', html)
+        for r_url in raw_urls:
+            r_url = r_url.replace('\\/', '/')
+            if 'index.m3u8' in r_url or '.m3u8' in r_url:
+                return {"parse": 0, "url": r_url, "header": headers}
+
+        # 2. 增强型正则匹配（兼容转义斜杠）
+        matches = re.findall(r'[\'\"](https?[:\\\/]+[^\'\" ]+?\.m3u8[^\'\" ]*)[\'\"]', html)
+        for m in matches:
+            final_url = m.replace('\\/', '/').replace('&amp;', '&')
+            return {"parse": 0, "url": final_url, "header": headers}
+
+        # 3. 兜底方案：交给 APP 原生嗅探
+        return {"parse": 1, "url": play_url, "header": headers}
