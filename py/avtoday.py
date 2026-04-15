@@ -71,16 +71,40 @@ class Spider:
         return vod_list
 
     def categoryContent(self, tid, pg, filter, extend):
-        # 修正分類分頁：WordPress 通常是 /category/name/page/2 或 /page/2
+        # 確保 pg 是數字型態
+        p = int(pg)
+        
+        # 建立基礎 URL
         if tid == "new":
-            url = f"{self.host}/page/{pg}" if str(pg) != "1" else f"{self.host}/"
+            # 針對首頁新片：https://avtoday.io/?page=2
+            base_url = f"{self.host}/"
         else:
-            url = f"{self.host}/{tid}/page/{pg}" if str(pg) != "1" else f"{self.host}/{tid}"
-            
+            # 針對分類：確保路徑結尾有 / 避免 301 重定向問題
+            # 變成 https://avtoday.io/catalog/FC2/?page=2
+            clean_tid = tid.strip('/')
+            base_url = f"{self.host}/{clean_tid}/"
+
+        # 構造帶參數的請求 URL
+        params = {'page': p}
+        
         try:
-            r = requests.get(url, headers=self.header, timeout=10, verify=False)
-            return {"list": self.parse_list(r.text)}
-        except: return {"list": []}
+            # 使用 requests 的 params 參數會自動處理 ? 與 & 的拼接，最安全
+            r = requests.get(base_url, params=params, headers=self.header, timeout=10, verify=False)
+            r.encoding = 'utf-8'
+            
+            vod_list = self.parse_list(r.text)
+            
+            # 必須回傳這四個數值，TVBox 的翻頁按鈕才會解鎖
+            return {
+                "page": p,
+                "pagecount": p + 1, # 強制讓 TVBox 覺得還有下一頁
+                "limit": len(vod_list),
+                "total": 999,
+                "list": vod_list
+            }
+        except Exception as e:
+            print(f"Error: {e}")
+            return {"list": []}
 
     def searchContent(self, key, quick, pg="1"):
         # 放棄搜索，返回空列表避免報錯
