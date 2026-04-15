@@ -29,7 +29,6 @@ class Spider():
         # 這裡建議使用英文 ID，在請求 PHP 時再處理
         cateManual = {
             "追爽劇": "@追爽劇",
-            "竹筍劇場": "@ZhuJianSuperMovie",
             "盛世劇集": "@ShengshiDrama",
             "王者短劇堂": "@王者短劇堂KingDramaHub",
             "雷凌短劇社": "@雷凌短劇社No1Drama",
