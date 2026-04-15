@@ -10,7 +10,8 @@
 {"key":"Dailymotion","name":"🪩Dailymotion┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Dailymotion.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"Youtube_PY","name":"🪩Youtube┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Youtube.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
-{"key":"51短剧","name":"🔖51短剧｜擦邊","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/51短剧.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/XBPQ.jar"},
+{"key":"51短剧","name":"🔖51短剧｜擦邊","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/json/51%E7%9F%AD%E5%89%A7.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/XBPQ.jar"},
+{"key":"91短剧_PY","name":"🔖91短剧｜擦邊","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/91短劇.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"包子短剧_PY","name":"🔖包子┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/包子短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"果果短劇¹_PY","name":"🔖果果¹┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/果果短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"果果短劇²_PY","name":"🔖果果²┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/新果果短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
