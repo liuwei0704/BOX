@@ -24,6 +24,8 @@ class Spider:
         return {"class": [
             {"type_id": "new", "type_name": "🎥 新片上架"},
             {"type_id": "hot", "type_name": "🔥 人氣影片"},
+            {"type_id": "catalog/FC2#0", "type_name": "FC2"},
+            {"type_id": "catalog/%E7%84%A1%E7%A2%BC#0", "type_name": "無碼影片"},
             {"type_id": "catalog/%E4%B8%AD%E6%96%87%E5%AD%97%E5%B9%95", "type_name": "🔠 中文字幕"}
         ]}
 
