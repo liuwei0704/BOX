@@ -1186,6 +1186,7 @@ yaoyao说,https://live.ottiptv.cc/douyu/884073
 parse=1
 playerType=2
 AI,https://girl.gs/
+抖阴,https://douyin18.com/
 抖音,https://diskgirl.com/
 热舞,http://api.yujn.cn/api/rewu.php?type=video
 韓國KBJ,https://5721004.xyz/player/short.html
