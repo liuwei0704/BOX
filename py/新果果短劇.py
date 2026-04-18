@@ -97,7 +97,11 @@ class Spider():
     def detailContent(self, ids):
         if not hasattr(self, 'siteUrl'):
             self.init()
+    def detailContent(self, ids):
+        if not hasattr(self, 'siteUrl'):
+            self.init()
         tid = ids[0]
+        # 處理 ID 拼接
         url = self.siteUrl + tid if tid.startswith('/') else f"{self.siteUrl}/duanju/{tid}"
         
         try:
@@ -105,26 +109,38 @@ class Spider():
             res.encoding = 'utf-8'
             html = etree.HTML(res.text)
             
-            name = self.xpathText(html, '//h2[@class="info-title"]/text()') or self.xpathText(html, '//div[@class="header-title-text"]/text()')
+            # 使用精確的 class 定位
+            name = self.xpathText(html, '//h2[@class="info-title"]/text()')
             pic = self.xpath(html, '//img[@class="detail-poster"]/@src')
             desc = self.xpathText(html, '//p[@class="info-desc"]/text()')
             
             vod = {
                 "vod_id": tid,
-                "vod_name": name.strip() if name else "未知新劇",
+                "vod_name": name.strip() if name else "未知短劇",
                 "vod_pic": pic,
-                "type_name": "新短劇",
-                "vod_content": desc.strip() if desc else "無簡介"
+                "type_name": "果果短劇",
+                "vod_content": desc.strip() if desc else "暫無簡介"
             }
             
+            # 解析劇集列表
             play_url = []
-            ep_nodes = html.xpath('//div[@id="episodeGrid"]//a')
+            # 針對 <div class="episode-item"> 內的 <a> 標籤進行解析
+            ep_nodes = html.xpath('//div[@id="episodeGrid"]//div[contains(@class,"episode-item")]/a')
             for a in ep_nodes:
-                ep_name = "".join(a.xpath('./text()')).strip().replace('✓', '')
+                # 獲取第幾集文字
+                ep_name = "".join(a.xpath('./text()')).strip()
+                # 獲取 href，例如 player.php?bookid=...
                 ep_href = a.xpath('./@href')[0]
-                if "player.php" in ep_href:
-                    ep_href = "/duanju/" + ep_href
+                if not ep_href.startswith('http'):
+                    # 補全路徑，確保與 playerContent 匹配
+                    ep_href = "/duanju/" + ep_href if not ep_href.startswith('/duanju/') else ep_href
                 play_url.append(f"{ep_name}${ep_href}")
+            
+            vod["vod_play_from"] = "果果原線"
+            vod["vod_play_url"] = "#".join(play_url)
+            return {"list": [vod]}
+        except Exception as e:
+            return {"list": []}
             
             vod["vod_play_from"] = "幼稚線路"
             vod["vod_play_url"] = "#".join(play_url)
