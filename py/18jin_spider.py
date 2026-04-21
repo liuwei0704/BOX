@@ -119,7 +119,7 @@ class Spider(Spider):
 
     def searchContent(self, key, quick, pg=1):
         if not hasattr(self, 'host'): self.init()
-        result = {"list": [], "page": int(pg), "pagecount": 1, "limit": 20, "total": 0}
+        result = {"list": []}
         
         url = f"{self.host}/index.php/vod/search/page/{pg}/wd/{quote(key)}.html"
         try:
@@ -134,18 +134,14 @@ class Spider(Spider):
         try:
             play_url = id if id.startswith('http') else urljoin(self.host, id)
             
-            # 设置正确的 Referer
-            headers = self.headers.copy()
-            headers['Referer'] = play_url
-            
-            res = requests.get(play_url, headers=headers, timeout=10)
+            res = requests.get(play_url, headers=self.headers, timeout=10)
             res.encoding = 'utf-8'
             html = res.text
             
-            # 方法1: 直接搜索转义后的m3u8地址（最关键！）
-            match = re.search(r'https?:\/\/[^"\'\s]+\.m3u8[^"\'\s]*', html)
+            # 方法1: 直接搜索转义后的m3u8地址
+            match = re.search(r'https?:\\/\\/[^"\'\s]+\.m3u8[^"\'\s]*', html)
             if match:
-                video_url = match.group(0).replace('\/', '/')
+                video_url = match.group(0).replace('\\/', '/')
                 return {"parse": 0, "url": video_url, "header": self.headers}
             
             # 方法2: 搜索mp4地址
