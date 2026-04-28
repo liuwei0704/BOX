@@ -8,7 +8,7 @@ class Spider():
     vod_cache = {}
 
     def getName(self):
-        return "第一AV_全兼容穩定版"
+        return "第一AV_自動解析版"
 
     def init(self, extend=""):
         self.host = "https://chenjiuq.cfd"
@@ -18,11 +18,9 @@ class Spider():
             "Referer": self.host
         }
 
-    # --- 框架必需方法補齊 ---
     def getDependence(self): return []
     def homeVideoContent(self): return {"list": []}
     def isVideoCanPlay(self): return True
-    # ----------------------
 
     def fetch(self, url, ref=""):
         try:
@@ -34,14 +32,14 @@ class Spider():
         except: return ""
 
     def homeContent(self, filter):
-        return {
-            "class": [
-                {"type_name": "视频一区", "type_id": "1"}, 
-                {"type_name": "中文字幕", "type_id": "7"}, 
-                {"type_name": "麻豆传媒", "type_id": "21"},
-                {"type_name": "日韩电影", "type_id": "6"}
-            ]
-        }
+        # 從首頁自動抓取所有分類，確保與網站同步
+        html = self.fetch(self.host + "/index.php/vod/type/id/1.html")
+        classes = []
+        # 使用你剛提供的結構進行正則匹配
+        items = re.findall(r'href="/index\.php/vod/type/id/(\d+)\.html">([^<]+)</a>', html)
+        for tid, name in items:
+            classes.append({"type_name": name, "type_id": tid})
+        return {"class": classes}
 
     def categoryContent(self, tid, pg, filter, extend):
         url = f"{self.host}/index.php/vod/type/id/{tid}/page/{pg}.html"
