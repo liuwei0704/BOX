@@ -24,16 +24,19 @@ class Spider():
             return ""
 
     def homeContent(self, filter):
-        # 已補全網頁端主流分類
+        # 根據你提供的 HTML 精確補全分類
         res = {
             'class': [
                 {"type_name": "最新影片", "type_id": "latest-updates"},
-                {"type_name": "亞洲無碼", "type_id": "uncensored-asia"},
-                {"type_name": "亞洲有碼", "type_id": "censored-asia"},
-                {"type_name": "台灣自拍", "type_id": "taiwan-av"},
-                {"type_name": "成人動漫", "type_id": "anime"},
-                {"type_name": "國產精選", "type_id": "chinese-av"},
-                {"type_name": "素人/人妻", "type_id": "amateur"}
+                {"type_name": "中文字幕", "type_id": "categories/chinese-subtitle"},
+                {"type_name": "直接開啪", "type_id": "categories/sex-only"},
+                {"type_name": "無碼解放", "type_id": "categories/uncensored"},
+                {"type_name": "制服誘惑", "type_id": "categories/uniform"},
+                {"type_name": "角色劇情", "type_id": "categories/roleplay"},
+                {"type_name": "男友視角", "type_id": "categories/pov"},
+                {"type_name": "主奴調教", "type_id": "categories/bdsm"},
+                {"type_name": "進犯", "type_id": "categories/intrusion"},
+                {"type_name": "流出", "type_id": "categories/hixxen-cam"}
             ],
             'list': []
         }
@@ -48,8 +51,9 @@ class Spider():
         return {"list": self.parseList(self.fetch(self.host))}
 
     def categoryContent(self, tid, pg, filter, extend):
-        # XOJAV 的分頁路徑通常為 /category/tid?page=pg 或 /tid?page=pg
-        url = f"{self.host}/{tid}?page={pg}"
+        # 判斷 tid 是否已經包含 categories/ 前綴
+        path = tid if "categories/" in tid or tid == "latest-updates" else f"categories/{tid}"
+        url = f"{self.host}/{path}?page={pg}"
         return {"list": self.parseList(self.fetch(url))}
 
     def detailContent(self, ids):
@@ -68,7 +72,6 @@ class Spider():
     def playerContent(self, flag, id, vipFlags):
         video_page = f"{self.host}/videos/{id}"
         html = self.fetch(video_page)
-        # 提取串流地址
         raw_url = re.search(r"var\s+stream\s*=\s*'([^']+)'", html)
         url = raw_url.group(1).replace('\\/', '/') if raw_url else ""
         return {
@@ -84,7 +87,7 @@ class Spider():
     def parseList(self, html):
         videos = []
         if not html: return videos
-        # 兼容多種影片方塊結構
+        # 使用更穩健的正則匹配影片 ID 和標題
         pattern = r'href="[^"]*/videos/([^"/]+)"[^>]*>.*?alt="([^"]+)"'
         for vid, title in re.findall(pattern, html, re.S):
             if vid not in [v['vod_id'] for v in videos]:
@@ -95,9 +98,7 @@ class Spider():
                 })
         return videos
 
-    def searchContent(self, key, quick, pg=1):
+    def searchContent(self, key, quick):
+        import urllib.parse
         url = f"{self.host}/search?q={urllib.parse.quote(key)}"
         return {"list": self.parseList(self.fetch(url))}
-
-    def localProxy(self, param):
-        return [200, "video/MP2T", b"", ""]
