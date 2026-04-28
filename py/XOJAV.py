@@ -95,7 +95,7 @@ class Spider():
                 })
         return videos
 
-    def searchContent(self, key, quick):
+    def searchContent(self, key, quick, pg=1):
         url = f"{self.host}/search?q={urllib.parse.quote(key)}"
         return {"list": self.parseList(self.fetch(url))}
 
