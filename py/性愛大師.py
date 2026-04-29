@@ -6,10 +6,10 @@ import re
 
 class Spider():
     def __init__(self):
-        self.host = "https://6o5n.xxaaddss.com"
+        self.host = "https://2dt0.xxaaddss.top/"
         self.header = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": "https://6o5n.xxaaddss.com/"
+            "Referer": "https://2dt0.xxaaddss.top//"
         }
 
     def getName(self):
