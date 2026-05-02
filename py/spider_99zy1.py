@@ -25,8 +25,7 @@ class Spider(Spider):
         """返回分类列表"""
         result = {}
         result["class"] = [
-            {"type_name": "全网资源", "type_id": "1"},
-            {"type_name": "99原创", "type_id": "6"},
+            {"type_name": "全网资源", "type_id": "1"}
         ]
         return result
     
