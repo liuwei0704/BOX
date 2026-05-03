@@ -1,4 +1,4 @@
-# 电影人生 Spider (dyrsok.org) - 修复标题提取
+# 电影人生 Spider (dyrsok.org) - 最终版（支持分页）
 import re
 import json
 import urllib.request
@@ -176,11 +176,12 @@ class Spider:
         return self.homeContent(filter=False)
 
     def categoryContent(self, tid, pg=1, filter=False, extend={}):
-        p = int(pg) - 1
+        p = int(pg)
         info = self.categories.get(tid)
         if not info:
             return {"list": []}
         
+        # 构建URL - 使用 page 参数
         url = self.site_url + info["url"] + "?page=" + str(p)
         
         if extend.get("class"):
@@ -194,11 +195,16 @@ class Spider:
         if not html:
             return {"list": []}
         
+        vod_list = self.extract_vod_list(html)
+        
+        # 分页逻辑：如果当前页有数据，假设有下一页
+        pagecount = p + 1 if len(vod_list) >= 20 else p
+        
         return {
-            "list": self.extract_vod_list(html),
-            "page": pg,
-            "pagecount": 1,
-            "total": 0
+            "list": vod_list,
+            "page": p,
+            "pagecount": pagecount,
+            "total": len(vod_list)
         }
 
     def detailContent(self, ids):
@@ -212,29 +218,21 @@ class Spider:
         if not html:
             return {"list": []}
         
-        # 修复标题提取
+        # 标题
         title = ""
-        # 方法1: 从 flex-grow 区域的 h1 提取
         h1_match = re.search(r'<div[^>]*flex-grow[^>]*>.*?<h1[^>]*>(.*?)</h1>', html, re.DOTALL)
         if h1_match:
             title = re.sub(r'<[^>]+>', '', h1_match.group(1)).strip()
-        # 方法2: 从 h1 提取（排除站点名）
         if not title:
             h1_match2 = re.search(r'<h1[^>]*>(.*?)</h1>', html)
             if h1_match2:
                 candidate = re.sub(r'<[^>]+>', '', h1_match2.group(1)).strip()
                 if candidate and "电影人生" not in candidate:
                     title = candidate
-        # 方法3: 从 og:title 提取
         if not title:
             og_match = re.search(r'<meta[^>]*property=["\']og:title["\'][^>]*content=["\']([^"\']+)["\']', html)
             if og_match:
                 title = og_match.group(1).split('-')[0].strip()
-        # 方法4: 从 title 标签提取
-        if not title:
-            title_match = re.search(r'<title>(.*?)</title>', html)
-            if title_match:
-                title = title_match.group(1).split('-')[0].strip()
         
         # 图片
         pic = ""
@@ -306,7 +304,7 @@ class Spider:
         }]}
 
     def searchContent(self, key, quick=False, pg=1):
-        p = int(pg) - 1
+        p = int(pg)
         url = self.site_url + "/s.html?name=" + urllib.parse.quote(key) + "&page=" + str(p)
         html = self.fetch(url)
         if not html:
