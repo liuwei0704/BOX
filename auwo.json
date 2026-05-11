@@ -25,8 +25,6 @@
 {"key":"51短剧","name":"🔖51短剧｜擦邊","type":3,"playerType":2,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://githubproxy.cc/https://raw.githubusercontent.com/yxy2015/1/refs/heads/main/js/18/json/51短剧.json","jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/XBPQ.jar"},
 {"key":"包子短剧_PY","name":"🔖包子┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/包子短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"果果短劇¹_PY","name":"🔖果果¹┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/果果短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"果果短劇²_PY","name":"🔖果果²┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/新果果短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
-{"key":"短剧好看_PY","name":"🔖好看┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/短剧好看.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"下飯短劇_PY","name":"🔖下飯┃短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/下飯短劇.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"河馬短剧_PY","name":"🔖河馬｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/HMDJ.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
 {"key":"PTT短剧_PY","name":"🔖PTT｜短剧","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/PTT短剧.py","searchable":1,"changeable":1,"quickSearch":1,"filterable":1},
