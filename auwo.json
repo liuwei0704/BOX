@@ -24,7 +24,6 @@
 {"key":"Bili","name":"🎉Bili|合集","type":3,"api":"csp_BiliAmns","searchable":1,"filterable":1,"quickSearch":1,"changeable":1,"ext":{"json":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/aowu/json/bili.json","cookie":""}},
 
 {"key":"八戒影视[APP]","name":"☄️八戒影视[APP]","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/py/app/八戒影视.py"},
-{"key":"proxy_drama","name":"☄️proxy_drama","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/py/app/proxy_drama.py","searchable":0,"changeable":0},
 {"key":"新浪资源[APP]","name":"☄️新浪资源[APP]","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/py/app/新浪资源.py","changeable":0},
 {"key":"独播库[APP]","name":"☄️独播库[APP]","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/py/app/独播库.py"},
 {"key":"壹影视[APP]","name":"☄️壹影视[APP]","type":3,"api":"https://githubproxy.cc/https://raw.githubusercontent.com/ls125781003/testboxapi/refs/heads/main/py/app/壹影视.py"},
