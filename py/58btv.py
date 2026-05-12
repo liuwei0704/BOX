@@ -72,7 +72,7 @@ class Spider:
     def categoryContent(self, tid, pg, filter, extend):
         page = int(pg) if pg else 1
         url = BASE + "/" + tid + "/"
-        if page > 1: url = BASE + "/" + tid + "/page/" + str(page) + "/"
+        if page > 1: url = BASE + "/" + tid + "/?page=" + str(page)
         html = _get(url)
         result = {"page": page, "pagecount": 99, "limit": 24, "total": 0, "list": []}
         if not html: return result
