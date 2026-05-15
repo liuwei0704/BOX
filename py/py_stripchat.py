@@ -47,7 +47,7 @@ class Spider(Spider):
 
     def homeContent(self, filter):
         CLASSES = [{'type_name': '女主播g', 'type_id': 'girls'}, {'type_name': '情侣c', 'type_id': 'couples'}, {'type_name': '男主播m', 'type_id': 'men'}, {'type_name': '跨性别t', 'type_id': 'trans'}]
-        VALUE = [{'n': '中国', 'v': 'tagLanguageChinese'}, {'n': '亚洲', 'v': 'ethnicityAsian'}, {'n': '白人', 'v': 'ethnicityWhite'}, {'n': '拉丁', 'v': 'ethnicityLatino'}, {'n': '混血', 'v': 'ethnicityMultiracial'}, {'n': '印度', 'v': 'ethnicityIndian'}, {'n': '阿拉伯', 'v': 'ethnicityMiddleEastern'}, {'n': '黑人', 'v': 'ethnicityEbony'}]
+        VALUE = [{"n": "日本", "v": "tagLanguageJapanese"},{"n": "韓國", "v": "tagLanguageKorean"},{'n': '中国', 'v': 'tagLanguageChinese'}, {'n': '亚洲', 'v': 'ethnicityAsian'}, {'n': '白人', 'v': 'ethnicityWhite'}, {'n': '拉丁', 'v': 'ethnicityLatino'}, {'n': '混血', 'v': 'ethnicityMultiracial'}, {'n': '印度', 'v': 'ethnicityIndian'}, {'n': '阿拉伯', 'v': 'ethnicityMiddleEastern'}, {'n': '黑人', 'v': 'ethnicityEbony'}]
         VALUE_MEN = [{'n': '情侣', 'v': 'sexGayCouples'}, {'n': '直男', 'v': 'orientationStraight'}]
         TIDS = ('girls', 'couples', 'men', 'trans')
         filters = {tid: [{'key': 'tag', 'value': VALUE_MEN + VALUE if tid == 'men' else VALUE}] for tid in TIDS}
@@ -119,7 +119,7 @@ class Spider(Spider):
                 if startAt: remark = f"🎫 始于 {(datetime.strptime(startAt, '%Y-%m-%dT%H:%M:%SZ') + timedelta(hours=8)).strftime('%m月%d日 %H:%M')}"
             search_username = self.normalize_username_for_hdstream(username)
             director_link = f"{flag}[a=cr:{{\"id\":\"hd_search_{search_username}\",\"name\":\"搜索 {username} 录像\"}}/]{username}[/a]"
-            return {'list': [{"vod_id": uid, "vod_name": str(info['topic'])[:80], "vod_pic": str(user['avatarUrl']), "vod_director": director_link, "vod_remarks": remark, 'vod_play_from': 'StripChat$$$LemonCams', 'vod_play_url': f"{uid}${uid}$$${uid}$lemon_{uid}"}]}
+            return {'list': [{"vod_id": uid, "vod_name": str(info['topic'])[:80], "vod_pic": str(user['avatarUrl']), "vod_director": director_link, "vod_remarks": remark, 'vod_play_from': 'LemonCams$$$StripChat', 'vod_play_url': f"{uid}${uid}$$${uid}$lemon_{uid}"}]}
         except: return {'list': []}
 
     def searchContent(self, key, quick, pg="1"):
