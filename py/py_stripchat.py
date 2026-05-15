@@ -12,7 +12,6 @@ class Spider(Spider):
     def init(self, extend="{}"):
         origin = 'https://zh.stripchat.com'
         self.host = origin
-        # 使用 doppiocdn.org 域名，国内可访问
         self.Doppiocdn = "doppiocdn.org"
         
         user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0"
@@ -51,56 +50,54 @@ class Spider(Spider):
             {'type_name': '男主播', 'type_id': 'men'},
             {'type_name': '跨性别', 'type_id': 'trans'}
         ]
-        VALUE = [
-            {"n": "日本", "v": "tagLanguageJapanese"},
-            {"n": "韓國", "v": "tagLanguageKorean"},
-            {'n': '中国', 'v': 'tagLanguageChinese'},
-            {'n': '亚洲', 'v': 'ethnicityAsian'},
-            {'n': '白人', 'v': 'ethnicityWhite'},
-            {'n': '拉丁', 'v': 'ethnicityLatino'},
-            {'n': '混血', 'v': 'ethnicityMultiracial'},
-            {'n': '印度', 'v': 'ethnicityIndian'},
-            {'n': '阿拉伯', 'v': 'ethnicityMiddleEastern'},
-            {'n': '黑人', 'v': 'ethnicityEbony'}
-        ]
-        VALUE_MEN = [
-            {'n': '情侣', 'v': 'sexGayCouples'},
-            {'n': '直男', 'v': 'orientationStraight'}
-        ]
-        TIDS = ('girls', 'couples', 'men', 'trans')
-        filters = {tid: [{'key': 'tag', 'value': VALUE_MEN + VALUE if tid == 'men' else VALUE}] for tid in TIDS}
-        return {'class': CLASSES, 'filters': filters}
+        return {'class': CLASSES, 'filters': {}}
 
     def categoryContent(self, tid, pg, filter, extend):
+        """分类内容 - 修复版"""
+        # 确保 limit 变量已定义
         limit = 60
-        offset = limit * (int(pg) - 1)
+        page = int(pg) if pg else 1
+        offset = limit * (page - 1)
+        
         url = f"{self.host}/api/front/models?improveTs=false&removeShows=false&limit={limit}&offset={offset}&primaryTag={tid}&sortBy=stripRanking&rcmGrp=A&rbCnGr=true&prxCnGr=false&nic=false"
-        if 'tag' in extend:
+        
+        if 'tag' in extend and extend['tag']:
             url += f'&filterGroupTags=[["{extend["tag"]}"]]'
         
+        print(f"请求URL: {url}")
+        
         try:
-            rsp = self.session_get(url).json()
+            rsp = self.session_get(url)
+            if rsp.status_code != 200:
+                print(f"请求失败: {rsp.status_code}")
+                return {"list": [], "page": page, "pagecount": 1}
+            
+            data = rsp.json()
+            print(f"返回数据: {data.keys() if data else 'None'}")
+            
         except Exception as e:
             print(f"category error: {e}")
-            return {"list": [], "page": pg, "pagecount": 1}
+            return {"list": [], "page": page, "pagecount": 1}
         
         videos = []
-        for v in rsp.get('models', []):
+        for v in data.get('models', []):
             name = v.get('username', '')
             flag = self.country_code_to_flag(str(v.get('country', '')))
             videos.append({
                 "vod_id": name,
                 "vod_name": f"{flag}{name}",
                 "vod_pic": f"https://img.doppiocdn.com/thumbs/{v.get('snapshotTimestamp', '')}/{v.get('id', '')}",
-                "vod_remarks": "" if v.get('status') == "public" else "私密"
+                "vod_remarks": "私密" if v.get('status') != "public" else ""
             })
         
-        total = int(rsp.get('filteredCount', 0))
+        total = int(data.get('filteredCount', 0))
         pagecount = (total + limit - 1) // limit if total > 0 else 1
+        
+        print(f"返回 {len(videos)} 条数据，总数 {total}")
         
         return {
             "list": videos,
-            "page": pg,
+            "page": page,
             "pagecount": pagecount,
             "limit": limit,
             "total": total
@@ -110,9 +107,12 @@ class Spider(Spider):
         username = array[0]
         
         try:
-            rsp = self.session_get(f"{self.host}/api/front/v2/models/username/{username}/cam").json()
-            info = rsp['cam']
-            user = rsp['user']['user']
+            rsp = self.session_get(f"{self.host}/api/front/v2/models/username/{username}/cam")
+            if rsp.status_code != 200:
+                return {'list': []}
+            data = rsp.json()
+            info = data['cam']
+            user = data['user']['user']
             uid = str(user['id'])
             isLive = user.get('isLive', False)
             flag = self.country_code_to_flag(str(user.get('country', '')))
@@ -151,12 +151,15 @@ class Spider(Spider):
             search_key = key.strip()
         
         try:
-            rsp = self.session_get(f"{self.host}/api/front/v4/models/search/group/username?query={search_key}&limit=50&primaryTag={tag}").json()
+            rsp = self.session_get(f"{self.host}/api/front/v4/models/search/group/username?query={search_key}&limit=50&primaryTag={tag}")
+            if rsp.status_code != 200:
+                return {"list": []}
+            data = rsp.json()
         except Exception:
             return {"list": []}
         
         videos = []
-        for u in rsp.get('models', []):
+        for u in data.get('models', []):
             if not u.get('isLive'):
                 continue
             name = u.get('username', '')
@@ -165,14 +168,13 @@ class Spider(Spider):
                 "vod_id": name,
                 "vod_name": f"{flag}{name}",
                 "vod_pic": f"https://img.doppiocdn.com/thumbs/{u.get('snapshotTimestamp', '')}/{u.get('id', '')}",
-                "vod_remarks": "" if u.get('status') == "public" else "私密"
+                "vod_remarks": "私密" if u.get('status') != "public" else ""
             })
         
         return {"list": videos}
 
     def playerContent(self, flag, id, vipFlags):
-        """获取播放地址 - 使用 doppiocdn.org 域名"""
-        # 使用 doppiocdn.org（国内可访问）
+        """获取播放地址"""
         master_url = f"https://edge-hls.{self.Doppiocdn}/hls/{id}/master/{id}_auto.m3u8?playlistType=lowLatency"
         
         try:
@@ -190,7 +192,6 @@ class Spider(Spider):
         processed = False
         
         for i, line in enumerate(lines):
-            # 提取 MOUFLON 参数
             if line.startswith('#EXT-X-MOUFLON:') and not processed:
                 parts = line.split(':')
                 if len(parts) >= 4:
@@ -199,7 +200,6 @@ class Spider(Spider):
                     processed = True
             
             if '#EXT-X-STREAM-INF' in line and i + 1 < len(lines):
-                # 提取清晰度
                 qn_start = line.find('NAME="') + 6
                 qn_end = line.find('"', qn_start)
                 qn = line[qn_start:qn_end] if qn_start > 6 else "auto"
@@ -210,7 +210,6 @@ class Spider(Spider):
                 else:
                     full_url = f"{base_url}?psch={psch}&pkey={pkey}&preferredVideoCodec={self.stripchat_preferredVideoCodec}"
                 
-                # 通过代理获取
                 urls.append(qn)
                 urls.append(f"{self.getProxyUrl()}&url={quote(full_url)}")
         
@@ -224,17 +223,14 @@ class Spider(Spider):
         return {"url": urls, "parse": '0', "header": headers}
 
     def localProxy(self, param):
-        """代理处理 m3u8 请求"""
         url = unquote(param['url'])
-        print(f"localProxy: {url[:100]}...")
         
         try:
             rsp = self.session_get(url)
         except Exception as e:
-            print(f"proxy request error: {e}")
+            print(f"proxy error: {e}")
             return [404, "text/plain", ""]
         
-        # 处理 403 错误，尝试模糊分辨率
         if rsp.status_code == 403:
             blurred_url = re.sub(r'(_\d+p\d*)?\.m3u8', '_160p_blurred.m3u8', url)
             try:
@@ -245,7 +241,6 @@ class Spider(Spider):
         if rsp.status_code != 200:
             return [404, "text/plain", ""]
         
-        # 处理 MOUFLON 加密
         if "#EXT-X-MOUFLON:URI:" in rsp.text:
             data = self.process_m3u8(rsp.text)
         else:
@@ -256,13 +251,11 @@ class Spider(Spider):
     URL_PATTERN = re.compile(r'https://media-hls\.doppiocdn\.\w+/b-hls-\d+/media\.mp4')
     
     def process_m3u8(self, content):
-        """处理 MOUFLON 加密的 m3u8"""
         lines = content.strip().split('\n')
         for i, line in enumerate(lines):
             if line.startswith('#EXT-X-MOUFLON:URI:') and i + 1 < len(lines):
                 if 'media.mp4' in lines[i + 1]:
                     mouflon = line.split(':', 2)[2].strip()
-                    # 提取加密部分
                     encrypted_match = re.search(r'_([a-zA-Z0-9]+)\.mp4$', mouflon)
                     if encrypted_match:
                         encrypted = encrypted_match.group(1)
@@ -304,12 +297,7 @@ class Spider(Spider):
 
     def create_session_with_retry(self):
         self.session = requests.Session()
-        retry = Retry(
-            total=3,
-            backoff_factor=0.3,
-            status_forcelist=[429, 500, 502, 503, 504],
-            raise_on_status=False
-        )
+        retry = Retry(total=3, backoff_factor=0.3, status_forcelist=[429, 500, 502, 503, 504])
         adapter = requests.adapters.HTTPAdapter(max_retries=retry)
         self.session.mount('http://', adapter)
         self.session.mount('https://', adapter)
