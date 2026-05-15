@@ -119,7 +119,7 @@ class Spider(Spider):
                 if startAt: remark = f"🎫 始于 {(datetime.strptime(startAt, '%Y-%m-%dT%H:%M:%SZ') + timedelta(hours=8)).strftime('%m月%d日 %H:%M')}"
             search_username = self.normalize_username_for_hdstream(username)
             director_link = f"{flag}[a=cr:{{\"id\":\"hd_search_{search_username}\",\"name\":\"搜索 {username} 录像\"}}/]{username}[/a]"
-            return {'list': [{"vod_id": uid, "vod_name": str(info['topic'])[:80], "vod_pic": str(user['avatarUrl']), "vod_director": director_link, "vod_remarks": remark, 'vod_play_from': 'LemonCams$$$StripChat', 'vod_play_url': f"{uid}${uid}$$${uid}$lemon_{uid}"}]}
+            return {'list': [{"vod_id": uid, "vod_name": str(info['topic'])[:80], "vod_pic": str(user['avatarUrl']), "vod_director": director_link, "vod_remarks": remark, 'vod_play_from': 'StripChat$$$LemonCams', 'vod_play_url': f"{uid}${uid}$$${uid}$lemon_{uid}"}]}
         except: return {'list': []}
 
     def searchContent(self, key, quick, pg="1"):
