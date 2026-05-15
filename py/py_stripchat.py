@@ -10,7 +10,7 @@ sys.path.append('..')
 
 class Spider(Spider):
     def init(self, extend="{}"):
-        origin = 'https://zh.stripchat.com'
+        origin = 'https://stripchat.com'
         self.host = origin
         self.Doppiocdn = "doppiocdn.org"
         #domains = [
