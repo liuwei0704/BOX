@@ -1,7 +1,7 @@
 /**
  * 低端影视(ddys.run)爬虫
  * 作者：deepseek
- * 版本：1.1
+ * 版本：1.3
  * 最后更新：2026-05-21
  * 发布页：https://www.ddys.diy/
  *
@@ -17,31 +17,11 @@
  *
  */
 
-
-
-
 const baseUrl = 'https://www.ddys.run';
 const headers = { 'Referer': baseUrl };
 
-/**
- * 初始化
- */
-async function init(cfg) {
-    // 检查是否有密码验证页面残留
-    if (typeof document !== 'undefined' && document) {
-        var passwordInput = document.querySelector('input[type="password"]');
-        if (passwordInput) {
-            console.log('检测到密码输入框，等待用户输入...');
-        }
-    }
-    return;
-}
-
-/**
- * 首页分类（基于实际网站结构）
- */
+// ==================== 首页分类 ====================
 async function homeContent(filter) {
-    // 共同的筛选器（电影和剧集共用，动漫部分共用）
     var commonFilters = [
         { key: "class", name: "按剧情", value: [
             {n:"全部",v:""}, {n:"喜剧",v:"喜剧"}, {n:"爱情",v:"爱情"}, {n:"恐怖",v:"恐怖"},
@@ -66,7 +46,6 @@ async function homeContent(filter) {
         ] }
     ];
 
-    // 动漫专用筛选（动漫没有剧情和地区筛选）
     var animeFilters = [
         { key: "year", name: "按年份", value: [
             {n:"全部",v:""}, {n:"2026",v:"2026"}, {n:"2025",v:"2025"}, {n:"2024",v:"2024"},
@@ -92,51 +71,48 @@ async function homeContent(filter) {
     };
 }
 
-/**
- * 首页推荐视频
- */
+// ==================== 首页推荐 ====================
 async function homeVideoContent() {
-    const document = await Java.wvOpen(`${baseUrl}/`);  // 使用模板字符串
-    const videos = parseVideoList(document);
+    var document = await Java.wvOpen(baseUrl + '/');
+    var videos = parseVideoList(document);
     return { list: videos };
 }
 
-/**
- * 分类内容
- */
+// ==================== 分类内容 ====================
 async function categoryContent(tid, pg, filter, extend) {
     var p = parseInt(pg) || 1;
-    var area = extend.area || '';
-    var year = extend.year || '';
-    var cat = extend.class || '';
+    var ext = extend || {};
+    
+    var area = ext.area;
+    var year = ext.year;
+    var cat = ext.class;
     
     var url = '';
-    // 构建分类URL
-    if (area && area !== '') {
-        // 按地区筛选: /list/dianying-大陆----------.html
-        url = `${baseUrl}/list/${tid}-${area}----------.html`;
-    } else if (cat && cat !== '') {
-        // 按剧情筛选: /list/dianying---喜剧--------.html
-        url = `${baseUrl}/list/${tid}---${cat}--------.html`;
-    } else if (year && year !== '') {
-        // 按年份筛选: /list/dianying-----------2026.html
-        url = `${baseUrl}/list/${tid}-----------${year}.html`;
+    var hasArea = area && area !== '' && area !== '全部';
+    var hasCat = cat && cat !== '' && cat !== '全部';
+    var hasYear = year && year !== '' && year !== '全部';
+    
+    if (hasArea) {
+        url = baseUrl + '/list/' + tid + '-' + area + '----------.html';
+    } else if (hasCat) {
+        url = baseUrl + '/list/' + tid + '---' + cat + '--------.html';
+    } else if (hasYear) {
+        url = baseUrl + '/list/' + tid + '-----------' + year + '.html';
     } else {
-        // 无筛选，普通分页: /category/dianying-2.html
-        url = `${baseUrl}/category/${tid}-${p}.html`;
+        url = baseUrl + '/category/' + tid + '-' + p + '.html';
     }
     
-    console.log("categoryContent URL:", url);
-    const document = await Java.wvOpen(url);
-    const videos = parseVideoList(document);
+    console.log("category URL: " + url);
+    var doc = await Java.wvOpen(url);
+    var videos = parseVideoList(doc);
     
-    // 提取分页信息
     var page = p;
     var pagecount = p;
     var total = videos.length;
+    
     try {
-        // 修正选择器：匹配 li.active.num a
-        var pageEl = document.querySelector("li.active.num a");
+        var pageEl = doc.querySelector(".stui-page__item li.active.num a");
+        if (!pageEl) pageEl = doc.querySelector("li.active.num a");
         if (pageEl) {
             var pageText = pageEl.textContent || pageEl.innerText;
             var parts = pageText.split('/');
@@ -147,30 +123,25 @@ async function categoryContent(tid, pg, filter, extend) {
             }
         }
     } catch(e) {
-        console.log("parse page error:", e);
+        console.log("分页解析错误: " + e);
     }
     
     return { code: 1, msg: "数据列表", list: videos, page: page, pagecount: pagecount, limit: 12, total: total };
 }
 
-/**
- * 详情页
- */
+// ==================== 详情页 ====================
 async function detailContent(ids) {
-	// Java.showWebView();
-    const document = await Java.wvOpen(ids[0]);
-    const list = parseDetailPage(document);
-    return { code: 1, msg: "数据列表", page: 1, pagecount: 1, limit: 1, total: 1, list };
+    var id = Array.isArray(ids) ? ids[0] : ids;
+    var doc = await Java.wvOpen(id);
+    var list = parseDetailPage(doc);
+    return { code: 1, msg: "数据列表", page: 1, pagecount: 1, limit: 1, total: 1, list: list };
 }
 
-/**
- * 搜索
- */
+// ==================== 搜索 ====================
 async function searchContent(key, quick, pg) {
     var p = parseInt(pg) || 1;
-    // 搜索URL格式: /search/关键词----------页码---.html
-    var url = `${baseUrl}/search/${encodeURIComponent(key)}----------${p}---.html`;
-    console.log("search URL:", url);
+    var url = baseUrl + '/search/' + encodeURIComponent(key) + '----------' + p + '---.html';
+    console.log("search URL: " + url);
     
     var res = await Java.req(url);
     if (!res.doc) {
@@ -193,123 +164,151 @@ async function searchContent(key, quick, pg) {
                 total = pagecount * 12;
             }
         }
-    } catch(e) {
-        console.log("search parse page error:", e);
-    }
+    } catch(e) {}
     
     return { code: 1, msg: "数据列表", list: videos, page: page, pagecount: pagecount, limit: 12, total: total };
 }
 
-/**
- * 播放器
- */
+// ==================== 播放器 ====================
 async function playerContent(flag, id, vipFlags) {
-    return { url: id, parse: 1 };
+    return { url: id, parse: 1, header: headers };
 }
 
-/**
- * action
- */
-async function action(actionStr) {
-    try {
-        const params = JSON.parse(actionStr);
-        console.log("action params:", params);
-    } catch (e) {
-        console.log("action is not JSON, treat as string");
+// ==================== 路由配置 ====================
+var routes = {
+    homeVideoContent: function() {
+        return baseUrl + '/';
+    },
+    categoryContent: function(tid, pg, filter, extend) {
+        var p = parseInt(pg) || 1;
+        return baseUrl + '/category/' + tid + '-' + p + '.html';
+    },
+    detailContent: function(ids) {
+        var id = Array.isArray(ids) ? ids[0] : ids;
+        return id;
+    },
+    searchContent: function(key, quick, pg) {
+        return false;
+    },
+    playerContent: function(flag, id, vipFlags) {
+        return id;
     }
-    return;
-}
+};
 
+// ==================== 辅助函数 ====================
 
-/* ---------------- 工具函数 ---------------- */
-
-/**
- * 提取视频列表
- */
-function parseVideoList(document) {
-    var boxes = Array.from(document.querySelectorAll('.stui-vodlist__box'));
+function parseVideoList(doc) {
+    var boxes = doc.querySelectorAll('.stui-vodlist__box');
     var list = [];
+    
     for (var i = 0; i < boxes.length; i++) {
         var box = boxes[i];
         var titleEl = box.querySelector('.title a');
         var thumbEl = box.querySelector('.stui-vodlist__thumb');
         var remarksEl = box.querySelector('.pic-text');
         
-        // 处理 vod_id
         var vodId = titleEl ? titleEl.getAttribute('href') : '';
         if (vodId && !vodId.startsWith('http')) {
             vodId = baseUrl + (vodId.startsWith('/') ? '' : '/') + vodId;
         }
         
-        // 提取角标（如 HD中字|国语、TC中字、更新至第09集、已完结等）
-        var vod_remarks = remarksEl ? remarksEl.textContent.trim() : '';
-        
-        // 尝试从角标中提取年份（如包含年份数字）
-        var vod_year = '';
-        var yearMatch = vod_remarks.match(/(19|20)\d{2}/);
-        if (yearMatch) {
-            vod_year = yearMatch[0];
-        }
-        
-        // 提取演员信息（从注释节点）
-        var vod_actor = '';
-        var textEl = box.querySelector('.text');
-        if (textEl) {
-            var comment = textEl.previousSibling;
-            if (comment && comment.nodeType === 8) {
-                vod_actor = comment.textContent.trim();
+        var vodName = titleEl ? (titleEl.title || titleEl.textContent || '') : '';
+        var vodPic = '';
+        if (thumbEl) {
+            vodPic = thumbEl.getAttribute('data-original') || thumbEl.src || '';
+            if (!vodPic && thumbEl.style.backgroundImage) {
+                var match = thumbEl.style.backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
+                if (match) vodPic = match[1];
             }
         }
         
-        list.push({
-            vod_name: titleEl ? (titleEl.title || titleEl.textContent || '') : '',
-            vod_pic: thumbEl ? (thumbEl.getAttribute('data-original') ||
-                        (thumbEl.style.backgroundImage ? thumbEl.style.backgroundImage.match(/url\(["']?([^"')]+)["']?\)/)?.[1] : '') || '') : '',
-            vod_remarks: vod_remarks,
-            vod_year: vod_year,
-            vod_id: vodId,
-            vod_actor: vod_actor
-        });
+        var vodRemarks = remarksEl ? remarksEl.textContent.trim() : '';
+        var vodYear = '';
+        var yearMatch = vodRemarks.match(/(19|20)\d{2}/);
+        if (yearMatch) vodYear = yearMatch[0];
+        
+        var vodActor = '';
+        var textEl = box.querySelector('.text');
+        if (textEl && textEl.previousSibling && textEl.previousSibling.nodeType === 8) {
+            vodActor = textEl.previousSibling.textContent.trim();
+        }
+        
+        if (vodId && vodName) {
+            list.push({
+                vod_id: vodId,
+                vod_name: vodName,
+                vod_pic: vodPic,
+                vod_remarks: vodRemarks,
+                vod_year: vodYear,
+                vod_actor: vodActor
+            });
+        }
     }
     return list;
 }
 
-/**
- * 解析详情页
- */
-function parseDetailPage(document) {
-    const title = document.querySelector('.stui-content__detail .title')?.textContent.trim() || '';
-    const vod_pic = document.querySelector('.stui-content__thumb img')?.src || '';
-    const info = document.querySelectorAll('.stui-content__detail .data');
-
-    const typeMatch = info[0]?.textContent.match(/类型：([^/]+)\s*\/\s*地区：([^/]+)\s*\/\s*年份：(\d+)/) || [];
-    const type_name = typeMatch[1] || '', vod_area = typeMatch[2] || '', vod_year = typeMatch[3] || '';
-    const vod_actor = info[1]?.textContent.replace('主演：', '').trim() || '';
-    const vod_director = info[2]?.textContent.replace('导演：', '').trim() || '';
-    const vod_remarks = info[3]?.textContent.replace('更新：', '').trim() || '';
-    const vod_content = document.querySelector('.detail-content')?.textContent.trim() ||
-                        document.querySelector('.detail-sketch')?.textContent.trim() || '';
-
-    // 播放线路
-    const head = document.querySelector('.stui-vodlist__head h3');
-    const ul = document.querySelector('.stui-content__playlist');
-    const episodes = ul ? Array.from(ul.querySelectorAll('a')).map(a =>
-        `${a.textContent.trim()}$${baseUrl + a.getAttribute('href')}`) : [];
-    const vod_play_from = head ? head.textContent.trim().replace('在线播放', '线路') : '';
-    const vod_play_url = episodes.join('#');
-
+function parseDetailPage(doc) {
+    var title = doc.querySelector('.stui-content__detail .title');
+    var vodName = title ? title.textContent.trim() : '';
+    
+    var thumb = doc.querySelector('.stui-content__thumb img');
+    var vodPic = thumb ? (thumb.src || '') : '';
+    
+    var info = doc.querySelectorAll('.stui-content__detail .data');
+    var vodArea = '', vodYear = '', vodActor = '', vodDirector = '', vodRemarks = '';
+    
+    if (info.length > 0) {
+        var typeMatch = info[0].textContent.match(/类型：([^/]+)\s*\/\s*地区：([^/]+)\s*\/\s*年份：(\d+)/);
+        if (typeMatch) {
+            vodArea = typeMatch[2] || '';
+            vodYear = typeMatch[3] || '';
+        }
+    }
+    if (info.length > 1) {
+        vodActor = info[1].textContent.replace('主演：', '').trim();
+    }
+    if (info.length > 2) {
+        vodDirector = info[2].textContent.replace('导演：', '').trim();
+    }
+    if (info.length > 3) {
+        vodRemarks = info[3].textContent.replace('更新：', '').trim();
+    }
+    
+    var vodContent = doc.querySelector('.detail-content') || doc.querySelector('.detail-sketch');
+    vodContent = vodContent ? vodContent.textContent.trim() : '';
+    
+    var head = doc.querySelector('.stui-vodlist__head h3');
+    var ul = doc.querySelector('.stui-content__playlist');
+    var vodPlayFrom = head ? head.textContent.trim().replace('在线播放', '线路') : '';
+    var vodPlayUrl = '';
+    
+    if (ul) {
+        var links = ul.querySelectorAll('a');
+        var eps = [];
+        for (var i = 0; i < links.length; i++) {
+            var link = links[i];
+            var epName = link.textContent.trim();
+            var epUrl = link.getAttribute('href');
+            if (epUrl && !epUrl.startsWith('http')) {
+                epUrl = baseUrl + (epUrl.startsWith('/') ? '' : '/') + epUrl;
+            }
+            eps.push(epName + '$' + epUrl);
+        }
+        vodPlayUrl = eps.join('#');
+    }
+    
     return [{
-        vod_id: window.location.pathname.replace(/[^\w]/g, '_'),
-        vod_name: title,
-        vod_pic: vod_pic,
-        vod_remarks: vod_remarks,
-        vod_year: vod_year,
-        vod_actor: vod_actor,
-        vod_director: vod_director,
-        vod_area: vod_area,
-        vod_lang: vod_area.includes('大陆') ? '国语' : '其他',
-        vod_content: vod_content,
-        vod_play_from: vod_play_from,
-        vod_play_url: vod_play_url
+        vod_id: vodName.replace(/[^\w]/g, '_'),
+        vod_name: vodName,
+        vod_pic: vodPic,
+        vod_remarks: vodRemarks,
+        vod_year: vodYear,
+        vod_actor: vodActor,
+        vod_director: vodDirector,
+        vod_area: vodArea,
+        vod_lang: vodArea.indexOf('大陆') !== -1 ? '国语' : '其他',
+        vod_content: vodContent,
+        vod_play_from: vodPlayFrom,
+        vod_play_url: vodPlayUrl
     }];
 }
