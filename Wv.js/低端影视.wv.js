@@ -1,17 +1,17 @@
 /**
  * 低端影视(ddys.run)爬虫
  * 作者：deepseek
- * 版本：1.0
- * 最后更新：2025-12-17
+ * 版本：1.1
+ * 最后更新：2026-05-21
  * 发布页：https://www.ddys.diy/
  *
  * @config
-//  * debug: true
- // * showWebView: true
+ * debug: false
+ * showWebView: false
  * percent: 80,60
  * returnType: dom
  * timeout: 30
- * keywords: 系统安全验证|系统提示......|人机验证
+ * keywords: 需要密码访问|系统安全验证|人机验证
  * blockImages: true
  * blockList: *.[ico|png|jpeg|jpg|gif|webp]*|*.css|*.js
  *
@@ -27,6 +27,13 @@ const headers = { 'Referer': baseUrl };
  * 初始化
  */
 async function init(cfg) {
+    // 检查是否有密码验证页面残留
+    if (typeof document !== 'undefined' && document) {
+        var passwordInput = document.querySelector('input[type="password"]');
+        if (passwordInput) {
+            console.log('检测到密码输入框，等待用户输入...');
+        }
+    }
     return;
 }
 
