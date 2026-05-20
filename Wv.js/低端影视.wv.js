@@ -1,7 +1,7 @@
 /**
  * 低端影视(ddys.run)爬虫
  * 作者：deepseek
- * 版本：1.3
+ * 版本：1.4
  * 最后更新：2026-05-21
  * 发布页：https://www.ddys.diy/
  *
@@ -73,8 +73,8 @@ async function homeContent(filter) {
 
 // ==================== 首页推荐 ====================
 async function homeVideoContent() {
-    var document = await Java.wvOpen(baseUrl + '/');
-    var videos = parseVideoList(document);
+    var doc = await Java.wvOpen(baseUrl + '/');
+    var videos = parseVideoList(doc);
     return { list: videos };
 }
 
@@ -143,18 +143,19 @@ async function searchContent(key, quick, pg) {
     var url = baseUrl + '/search/' + encodeURIComponent(key) + '----------' + p + '---.html';
     console.log("search URL: " + url);
     
-    var res = await Java.req(url);
-    if (!res.doc) {
+    // 使用 wvOpen 复用 WebView 的 Cookie 会话（密码验证）
+    var doc = await Java.wvOpen(url);
+    if (!doc) {
         return { code: 0, msg: "搜索失败", list: [], page: 1, pagecount: 1, limit: 12, total: 0 };
     }
     
-    var videos = parseVideoList(res.doc);
+    var videos = parseVideoList(doc);
     var page = p;
     var pagecount = p;
     var total = videos.length;
     
     try {
-        var pageEl = res.doc.querySelector("li.active.num a");
+        var pageEl = doc.querySelector("li.active.num a");
         if (pageEl) {
             var pageText = pageEl.textContent || pageEl.innerText;
             var parts = pageText.split('/');
@@ -164,7 +165,9 @@ async function searchContent(key, quick, pg) {
                 total = pagecount * 12;
             }
         }
-    } catch(e) {}
+    } catch(e) {
+        console.log("搜索分页解析错误: " + e);
+    }
     
     return { code: 1, msg: "数据列表", list: videos, page: page, pagecount: pagecount, limit: 12, total: total };
 }
@@ -188,6 +191,7 @@ var routes = {
         return id;
     },
     searchContent: function(key, quick, pg) {
+        // 搜索使用 wvOpen，不需要 routes 预加载
         return false;
     },
     playerContent: function(flag, id, vipFlags) {
