@@ -38,65 +38,58 @@ async function init(cfg) {
 }
 
 /**
- * 首页分类
+ * 首页分类（基于实际网站结构）
  */
 async function homeContent(filter) {
+    // 共同的筛选器（电影和剧集共用，动漫部分共用）
+    var commonFilters = [
+        { key: "class", name: "按剧情", value: [
+            {n:"全部",v:""}, {n:"喜剧",v:"喜剧"}, {n:"爱情",v:"爱情"}, {n:"恐怖",v:"恐怖"},
+            {n:"动作",v:"动作"}, {n:"科幻",v:"科幻"}, {n:"剧情",v:"剧情"}, {n:"战争",v:"战争"},
+            {n:"警匪",v:"警匪"}, {n:"犯罪",v:"犯罪"}, {n:"动画",v:"动画"}, {n:"奇幻",v:"奇幻"},
+            {n:"武侠",v:"武侠"}, {n:"冒险",v:"冒险"}, {n:"枪战",v:"枪战"}, {n:"悬疑",v:"悬疑"},
+            {n:"惊悚",v:"惊悚"}, {n:"经典",v:"经典"}, {n:"青春",v:"青春"}, {n:"文艺",v:"文艺"},
+            {n:"古装",v:"古装"}, {n:"历史",v:"历史"}, {n:"运动",v:"运动"}
+        ] },
+        { key: "area", name: "按地区", value: [
+            {n:"全部",v:""}, {n:"大陆",v:"大陆"}, {n:"香港",v:"香港"}, {n:"台湾",v:"台湾"},
+            {n:"美国",v:"美国"}, {n:"法国",v:"法国"}, {n:"英国",v:"英国"}, {n:"日本",v:"日本"},
+            {n:"韩国",v:"韩国"}, {n:"德国",v:"德国"}, {n:"泰国",v:"泰国"}, {n:"印度",v:"印度"},
+            {n:"意大利",v:"意大利"}, {n:"西班牙",v:"西班牙"}, {n:"加拿大",v:"加拿大"}, {n:"其他",v:"其他"}
+        ] },
+        { key: "year", name: "按年份", value: [
+            {n:"全部",v:""}, {n:"2026",v:"2026"}, {n:"2025",v:"2025"}, {n:"2024",v:"2024"},
+            {n:"2023",v:"2023"}, {n:"2022",v:"2022"}, {n:"2021",v:"2021"}, {n:"2020",v:"2020"},
+            {n:"2019",v:"2019"}, {n:"2018",v:"2018"}, {n:"2017",v:"2017"}, {n:"2016",v:"2016"},
+            {n:"2015",v:"2015"}, {n:"2014",v:"2014"}, {n:"2013",v:"2013"}, {n:"2012",v:"2012"},
+            {n:"2011",v:"2011"}, {n:"2010",v:"2010"}
+        ] }
+    ];
 
-    const filterConfig = {
+    // 动漫专用筛选（动漫没有剧情和地区筛选）
+    var animeFilters = [
+        { key: "year", name: "按年份", value: [
+            {n:"全部",v:""}, {n:"2026",v:"2026"}, {n:"2025",v:"2025"}, {n:"2024",v:"2024"},
+            {n:"2023",v:"2023"}, {n:"2022",v:"2022"}, {n:"2021",v:"2021"}, {n:"2020",v:"2020"},
+            {n:"2019",v:"2019"}, {n:"2018",v:"2018"}, {n:"2017",v:"2017"}, {n:"2016",v:"2016"},
+            {n:"2015",v:"2015"}, {n:"2014",v:"2014"}, {n:"2013",v:"2013"}, {n:"2012",v:"2012"},
+            {n:"2011",v:"2011"}, {n:"2010",v:"2010"}, {n:"2009",v:"2009"}, {n:"2008",v:"2008"},
+            {n:"2007",v:"2007"}, {n:"2006",v:"2006"}, {n:"2005",v:"2005"}, {n:"2004",v:"2004"}
+        ] }
+    ];
+
+    return {
         class: [
-            { type_id: "1", type_name: "电影" },
-            { type_id: "2", type_name: "电视剧1" },
-            { type_id: "3", type_name: "电视剧2" },
-            { type_id: "4", type_name: "电视剧3" },
-            { type_id: "5", type_name: "电视剧4" },
-            { type_id: "6", type_name: "电视剧5" },
-            { type_id: "7", type_name: "电视剧6" },
-            { type_id: "8", type_name: "电视剧7" },
-            { type_id: "9", type_name: "电视剧8" },
-            { type_id: "10", type_name: "电视剧9" },
-            { type_id: "11", type_name: "电视剧10" },
-            { type_id: "12", type_name: "电视剧11" },
-            { type_id: "13", type_name: "电视剧12" },
-            { type_id: "14", type_name: "电视剧13" },
-            { type_id: "15", type_name: "电视剧14" },
-            { type_id: "16", type_name: "电视剧15" },
-            { type_id: "17", type_name: "电视剧16" },
-            { type_id: "18", type_name: "电视剧17" },
-            { type_id: "19", type_name: "电视剧18" },
-            { type_id: "20", type_name: "电视剧19" },
-            { type_id: "21", type_name: "电视剧20" },
-            { type_id: "22", type_name: "动漫" }
+            { type_id: "dianying", type_name: "电影" },
+            { type_id: "juji", type_name: "剧集" },
+            { type_id: "dongman", type_name: "动漫" }
         ],
         filters: {
-            "1": [
-                { key: "type",  name: "按类型",  value: [ {n:"全部",v:""}, {n:"动作片",v:"dongzuopian"}, {n:"剧情片",v:"juqingpian"}, {n:"冒险片",v:"maoxianpian"}, {n:"惊悚片",v:"jingsongpian"}, {n:"喜剧片",v:"xijupian"}, {n:"爱情片",v:"aiqingpian"}, {n:"科幻片",v:"kehuanpian"}, {n:"战争片",v:"zhanzhengpian"}, {n:"警匪片",v:"jingfeipian"}, {n:"犯罪片",v:"fanzuipian"}, {n:"恐怖片",v:"kongbupian"}, {n:"悬疑片",v:"xuanyipian"}, {n:"灾难片",v:"zainanpian"}, {n:"奇幻片",v:"qihuanpian"}, {n:"动画片",v:"donghuapian"}, {n:"其他片",v:"qitapian"} ] },
-                { key: "class", name: "按剧情",  value: [ {n:"全部",v:""}, {n:"喜剧",v:"喜剧"}, {n:"爱情",v:"爱情"}, {n:"恐怖",v:"恐怖"}, {n:"动作",v:"动作"}, {n:"科幻",v:"科幻"}, {n:"剧情",v:"剧情"}, {n:"战争",v:"战争"}, {n:"警匪",v:"警匪"}, {n:"犯罪",v:"犯罪"}, {n:"动画",v:"动画"}, {n:"奇幻",v:"奇幻"}, {n:"武侠",v:"武侠"}, {n:"冒险",v:"冒险"}, {n:"枪战",v:"枪战"}, {n:"悬疑",v:"悬疑"}, {n:"惊悚",v:"惊悚"}, {n:"经典",v:"经典"}, {n:"青春",v:"青春"}, {n:"文艺",v:"文艺"}, {n:"微电影",v:"微电影"}, {n:"古装",v:"古装"}, {n:"历史",v:"历史"}, {n:"运动",v:"运动"}, {n:"农村",v:"农村"}, {n:"儿童",v:"儿童"}, {n:"网络电影",v:"网络电影"} ] },
-                { key: "area",  name: "按地区",  value: [ {n:"全部",v:""}, {n:"大陆",v:"大陆"}, {n:"香港",v:"香港"}, {n:"台湾",v:"台湾"}, {n:"美国",v:"美国"}, {n:"法国",v:"法国"}, {n:"英国",v:"英国"}, {n:"日本",v:"日本"}, {n:"韩国",v:"韩国"}, {n:"德国",v:"德国"}, {n:"泰国",v:"泰国"}, {n:"印度",v:"印度"}, {n:"意大利",v:"意大利"}, {n:"西班牙",v:"西班牙"}, {n:"加拿大",v:"加拿大"}, {n:"其他",v:"其他"} ] },
-                { key: "year",  name: "按年份",  value: [ {n:"全部",v:""}, {n:"2025",v:"2025"}, {n:"2024",v:"2024"}, {n:"2023",v:"2023"}, {n:"2022",v:"2022"}, {n:"2021",v:"2021"}, {n:"2020",v:"2020"}, {n:"2019",v:"2019"}, {n:"2018",v:"2018"}, {n:"2017",v:"2017"}, {n:"2016",v:"2016"}, {n:"2015",v:"2015"}, {n:"2014",v:"2014"}, {n:"2013",v:"2013"}, {n:"2012",v:"2012"}, {n:"2011",v:"2011"}, {n:"2010",v:"2010"} ] },
-                { key: "lang",  name: "按语言",  value: [ {n:"全部",v:""}, {n:"国语",v:"国语"}, {n:"英语",v:"英语"}, {n:"粤语",v:"粤语"}, {n:"闽南语",v:"闽南语"}, {n:"韩语",v:"韩语"}, {n:"日语",v:"日语"}, {n:"法语",v:"法语"}, {n:"德语",v:"德语"}, {n:"其它",v:"其它"} ] },
-                { key: "sort",  name: "按排序",  value: [ {n:"时间",v:"time"}, {n:"人气",v:"hits"}, {n:"评分",v:"score"} ] }
-            ],
-            "2": [
-                { key: "type",  name: "按类型",  value: [ {n:"全部",v:""}, {n:"国产剧",v:"guochanju"}, {n:"港台剧",v:"gangtaiju"}, {n:"日韩剧",v:"rihanju"}, {n:"欧美剧",v:"oumeiju"}, {n:"泰国剧",v:"taiguoju"}, {n:"其他剧",v:"qitaju"} ] },
-                { key: "class", name: "按剧情",  value: [ {n:"全部",v:""}, {n:"古装",v:"古装"}, {n:"战争",v:"战争"}, {n:"青春偶像",v:"青春偶像"}, {n:"喜剧",v:"喜剧"}, {n:"家庭",v:"家庭"}, {n:"犯罪",v:"犯罪"}, {n:"动作",v:"动作"}, {n:"奇幻",v:"奇幻"}, {n:"剧情",v:"剧情"}, {n:"历史",v:"历史"}, {n:"经典",v:"经典"}, {n:"乡村",v:"乡村"}, {n:"情景",v:"情景"}, {n:"商战",v:"商战"}, {n:"网剧",v:"网剧"}, {n:"其他",v:"其他"} ] },
-                { key: "area",  name: "按地区",  value: [ {n:"全部",v:""}, {n:"内地",v:"内地"}, {n:"韩国",v:"韩国"}, {n:"香港",v:"香港"}, {n:"台湾",v:"台湾"}, {n:"日本",v:"日本"}, {n:"美国",v:"美国"}, {n:"泰国",v:"泰国"}, {n:"英国",v:"英国"}, {n:"新加坡",v:"新加坡"}, {n:"其他",v:"其他"} ] },
-                { key: "year",  name: "按年份",  value: [ {n:"全部",v:""}, {n:"2025",v:"2025"}, {n:"2024",v:"2024"}, {n:"2023",v:"2023"}, {n:"2022",v:"2022"}, {n:"2021",v:"2021"}, {n:"2020",v:"2020"}, {n:"2019",v:"2019"}, {n:"2018",v:"2018"}, {n:"2017",v:"2017"}, {n:"2016",v:"2016"}, {n:"2015",v:"2015"}, {n:"2014",v:"2014"}, {n:"2013",v:"2013"}, {n:"2012",v:"2012"}, {n:"2011",v:"2011"}, {n:"2010",v:"2010"}, {n:"2009",v:"2009"}, {n:"2008",v:"2008"}, {n:"2006",v:"2006"}, {n:"2005",v:"2005"}, {n:"2004",v:"2004"} ] },
-                { key: "lang",  name: "按语言",  value: [ {n:"全部",v:""}, {n:"国语",v:"国语"}, {n:"英语",v:"英语"}, {n:"粤语",v:"粤语"}, {n:"闽南语",v:"闽南语"}, {n:"韩语",v:"韩语"}, {n:"日语",v:"日语"}, {n:"其它",v:"其它"} ] },
-                { key: "sort",  name: "按排序",  value: [ {n:"时间",v:"time"}, {n:"人气",v:"hits"}, {n:"评分",v:"score"} ] }
-            ],
-            "4": [
-                { key: "type",  name: "按类型",  value: [ {n:"全部",v:""}, {n:"日韩动漫",v:"rihandongman"}, {n:"国产动漫",v:"guochandongman"}, {n:"欧美动漫",v:"oumeidongman"}, {n:"港台动漫",v:"gangtaidongman"}, {n:"其他动漫",v:"qitadongman"} ] },
-                // { key: "class", name: "按剧情",  value: [ {n:"全部",v:""}, {n:"情感",v:"情感"}, {n:"科幻",v:"科幻"}, {n:"热血",v:"热血"}, {n:"推理",v:"推理"}, {n:"搞笑",v:"搞笑"}, {n:"冒险",v:"冒险"}, {n:"萝莉",v:"萝莉"}, {n:"校园",v:"校园"}, {n:"动作",v:"动作"}, {n:"机战",v:"机战"}, {n:"运动",v:"运动"}, {n:"战争",v:"战争"}, {n:"少年",v:"少年"}, {n:"少女",v:"少女"}, {n:"社会",v:"社会"}, {n:"原创",v:"原创"}, {n:"亲子",v:"亲子"}, {n:"益智",v:"益智"}, {n:"励志",v:"励志"}, {n:"其他",v:"其他"} ] },
-                // { key: "area",  name: "按地区",  value: [ {n:"全部",v:""}, {n:"国产",v:"国产"}, {n:"日本",v:"日本"}, {n:"欧美",v:"欧美"}, {n:"其他",v:"其他"} ] },
-                { key: "year",  name: "按年份",  value: [ {n:"全部",v:""}, {n:"2025",v:"2025"}, {n:"2024",v:"2024"}, {n:"2023",v:"2023"}, {n:"2022",v:"2022"}, {n:"2021",v:"2021"}, {n:"2020",v:"2020"}, {n:"2019",v:"2019"}, {n:"2018",v:"2018"}, {n:"2017",v:"2017"}, {n:"2016",v:"2016"}, {n:"2015",v:"2015"}, {n:"2014",v:"2014"}, {n:"2013",v:"2013"}, {n:"2012",v:"2012"}, {n:"2011",v:"2011"}, {n:"2010",v:"2010"}, {n:"2009",v:"2009"}, {n:"2008",v:"2008"}, {n:"2007",v:"2007"}, {n:"2006",v:"2006"}, {n:"2005",v:"2005"}, {n:"2004",v:"2004"} ] },
-                { key: "lang",  name: "按语言",  value: [ {n:"全部",v:""}, {n:"国语",v:"国语"}, {n:"英语",v:"英语"}, {n:"粤语",v:"粤语"}, {n:"闽南语",v:"闽南语"}, {n:"韩语",v:"韩语"}, {n:"日语",v:"日语"}, {n:"其它",v:"其它"} ] },
-                { key: "sort",  name: "按排序",  value: [ {n:"时间",v:"time"}, {n:"人气",v:"hits"}, {n:"评分",v:"score"} ] }
-            ]
+            "dianying": commonFilters,
+            "juji": commonFilters,
+            "dongman": animeFilters
         }
     };
-
-
-    return filterConfig;
 }
 
 /**
@@ -112,20 +105,52 @@ async function homeVideoContent() {
  * 分类内容
  */
 async function categoryContent(tid, pg, filter, extend) {
-
-    const area = extend.area || '';
-    const year = extend.year || '';
-    const cat = extend.class || '';
-    const sort = extend.sort || '';
-    const type = extend.type || tid;
-    const lang = extend.lang || '';
-
-    // console.log("筛选参数:", extend, `type=${type}, area=${area}, year=${year}, cat=${cat}, sort=${sort}, lang=${lang}`);
-    const document = await Java.wvOpen(`${baseUrl}/list/${type||tid}-${area}-${sort}-${cat}-${lang}----${pg}---${year}.html`);
+    var p = parseInt(pg) || 1;
+    var area = extend.area || '';
+    var year = extend.year || '';
+    var cat = extend.class || '';
+    
+    var url = '';
+    // 构建分类URL
+    if (area && area !== '') {
+        // 按地区筛选: /list/dianying-大陆----------.html
+        url = `${baseUrl}/list/${tid}-${area}----------.html`;
+    } else if (cat && cat !== '') {
+        // 按剧情筛选: /list/dianying---喜剧--------.html
+        url = `${baseUrl}/list/${tid}---${cat}--------.html`;
+    } else if (year && year !== '') {
+        // 按年份筛选: /list/dianying-----------2026.html
+        url = `${baseUrl}/list/${tid}-----------${year}.html`;
+    } else {
+        // 无筛选，普通分页: /category/dianying-2.html
+        url = `${baseUrl}/category/${tid}-${p}.html`;
+    }
+    
+    console.log("categoryContent URL:", url);
+    const document = await Java.wvOpen(url);
     const videos = parseVideoList(document);
-    const getPages = document.querySelector("ul > li.active.num").outerText;
-    const pages = getPages.split('/');
-    return { code: 1, msg: "数据列表", list: videos, page: pages[0], pagecount: pages[1], limit: 12, total: pages[1] * 12 };
+    
+    // 提取分页信息
+    var page = p;
+    var pagecount = p;
+    var total = videos.length;
+    try {
+        // 修正选择器：匹配 li.active.num a
+        var pageEl = document.querySelector("li.active.num a");
+        if (pageEl) {
+            var pageText = pageEl.textContent || pageEl.innerText;
+            var parts = pageText.split('/');
+            if (parts.length === 2) {
+                page = parseInt(parts[0]);
+                pagecount = parseInt(parts[1]);
+                total = pagecount * 12;
+            }
+        }
+    } catch(e) {
+        console.log("parse page error:", e);
+    }
+    
+    return { code: 1, msg: "数据列表", list: videos, page: page, pagecount: pagecount, limit: 12, total: total };
 }
 
 /**
@@ -142,16 +167,37 @@ async function detailContent(ids) {
  * 搜索
  */
 async function searchContent(key, quick, pg) {
-    let res = await Java.req(`${baseUrl}/search/${key}----------${pg}---.html`);
-    const videos = parseVideoList(res.doc);
-    let pages = [1, 1];
-    let total = videos.length;
+    var p = parseInt(pg) || 1;
+    // 搜索URL格式: /search/关键词----------页码---.html
+    var url = `${baseUrl}/search/${encodeURIComponent(key)}----------${p}---.html`;
+    console.log("search URL:", url);
+    
+    var res = await Java.req(url);
+    if (!res.doc) {
+        return { code: 0, msg: "搜索失败", list: [], page: 1, pagecount: 1, limit: 12, total: 0 };
+    }
+    
+    var videos = parseVideoList(res.doc);
+    var page = p;
+    var pagecount = p;
+    var total = videos.length;
+    
     try {
-        const getPages = res.doc.querySelector("ul > li.active.num").outerText;
-        pages = getPages.split('/');
-        total = parseInt(pages[1]) * 12;
-    } catch (e) {}
-    return { code: 1, msg: "数据列表", list: videos, page: pages[0], pagecount: pages[1], limit: 12, total };
+        var pageEl = res.doc.querySelector("li.active.num a");
+        if (pageEl) {
+            var pageText = pageEl.textContent || pageEl.innerText;
+            var parts = pageText.split('/');
+            if (parts.length === 2) {
+                page = parseInt(parts[0]);
+                pagecount = parseInt(parts[1]);
+                total = pagecount * 12;
+            }
+        }
+    } catch(e) {
+        console.log("search parse page error:", e);
+    }
+    
+    return { code: 1, msg: "数据列表", list: videos, page: page, pagecount: pagecount, limit: 12, total: total };
 }
 
 /**
@@ -181,33 +227,50 @@ async function action(actionStr) {
  * 提取视频列表
  */
 function parseVideoList(document) {
-    const boxes = Array.from(document.querySelectorAll('.stui-vodlist__box'));
-    const list = boxes.map(box => {
-        const titleEl   = box.querySelector('.title a');
-        const thumbEl   = box.querySelector('.stui-vodlist__thumb');
-        const remarksEl = box.querySelector('.pic-text');
-
+    var boxes = Array.from(document.querySelectorAll('.stui-vodlist__box'));
+    var list = [];
+    for (var i = 0; i < boxes.length; i++) {
+        var box = boxes[i];
+        var titleEl = box.querySelector('.title a');
+        var thumbEl = box.querySelector('.stui-vodlist__thumb');
+        var remarksEl = box.querySelector('.pic-text');
+        
         // 处理 vod_id
-        let vodId = titleEl?.getAttribute('href') || '';
+        var vodId = titleEl ? titleEl.getAttribute('href') : '';
         if (vodId && !vodId.startsWith('http')) {
             vodId = baseUrl + (vodId.startsWith('/') ? '' : '/') + vodId;
         }
-
-        return {
-            vod_name:   titleEl?.title || titleEl?.textContent || '',
-            vod_pic:    thumbEl?.getAttribute('data-original') ||
-                        thumbEl?.style.backgroundImage?.match(/url\(["']?([^"')]+)["']?\)/)?.[1] || '',
-            vod_remarks: '备注演示',//remarksEl?.textContent || '',
-			vod_year: '年份演示',
-            vod_id:    vodId,
-            vod_actor: (() => {
-                const textEl  = box.querySelector('.text');
-                const comment = textEl?.previousSibling;
-                return comment?.nodeType === 8 ? comment.textContent.trim() : '';
-            })()
-        };
-    });
-
+        
+        // 提取角标（如 HD中字|国语、TC中字、更新至第09集、已完结等）
+        var vod_remarks = remarksEl ? remarksEl.textContent.trim() : '';
+        
+        // 尝试从角标中提取年份（如包含年份数字）
+        var vod_year = '';
+        var yearMatch = vod_remarks.match(/(19|20)\d{2}/);
+        if (yearMatch) {
+            vod_year = yearMatch[0];
+        }
+        
+        // 提取演员信息（从注释节点）
+        var vod_actor = '';
+        var textEl = box.querySelector('.text');
+        if (textEl) {
+            var comment = textEl.previousSibling;
+            if (comment && comment.nodeType === 8) {
+                vod_actor = comment.textContent.trim();
+            }
+        }
+        
+        list.push({
+            vod_name: titleEl ? (titleEl.title || titleEl.textContent || '') : '',
+            vod_pic: thumbEl ? (thumbEl.getAttribute('data-original') ||
+                        (thumbEl.style.backgroundImage ? thumbEl.style.backgroundImage.match(/url\(["']?([^"')]+)["']?\)/)?.[1] : '') || '') : '',
+            vod_remarks: vod_remarks,
+            vod_year: vod_year,
+            vod_id: vodId,
+            vod_actor: vod_actor
+        });
+    }
     return list;
 }
 
