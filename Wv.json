@@ -9,6 +9,7 @@
 {"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
 
 {"key":"wv_momovod","name":"Ⓜ️Wv┃momovod","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/momovod.wv.js","searchable":1,"filterable":1,"switchable":1},
+{"key":"wv_ddya","name":"Ⓜ️Wv┃低端影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/低端影视.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_jqqzx","name":"Ⓜ️Wv┃剧圈圈","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/剧圈圈.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_jddzx","name":"Ⓜ️Wv┃剧多多","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/剧多多.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"wv_hanju","name":"Ⓜ️Wv┃新韩剧网","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/新韩剧网.wv.js","searchable":1,"filterable":1,"switchable":1},
