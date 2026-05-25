@@ -8,6 +8,15 @@
 {"key":"T4-Youtube1","name":"▶️YT丨短劇","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 1,"changeable": 1,"ext":"最新短劇#短劇推薦#劇瘋狂#盛世短劇#神州劇場#爽劇不斷#牛牛短劇"},
 {"key":"T4-Youtube2","name":"▶️YT丨動漫","type": 4,"api":"http://zhangqun1818.serv00.net/yt/yt001.php","searchable": 0,"changeable": 1,"ext":"漫感律動#網文課代表#動漫魔女#神話動漫社#次元動漫社#七號動漫館#愛看動漫Animation#风油精动漫#阅文漫画#蒼穹動漫社Animation Club"},
 
+{"key":"MjHggg","name":"🎬嗷嗚|漫剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"comic_series","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"DjHggg","name":"🎬嗷嗚|短剧","type":3,"api":"csp_HgggAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"short_play","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"HHkk","name":"🎬豪堪|短剧","type":3,"api":"csp_HHkkAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"Hema","name":"🎬盒马|短剧","type":3,"api":"csp_HemaAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"Bddj","name":"🎬拜拜|短剧","type":3,"api":"csp_BddjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"Wgdj","name":"🎬围观|短剧","type":3,"api":"csp_WgdjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"Qmdj","name":"🎬喵喵|短剧","type":3,"api":"csp_QmdjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+{"key":"Xydj","name":"🎬星星|短剧","type":3,"api":"csp_XydjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama","jar":"http://mytv6688.xyz/aowu/bfdb--cvdvds.png"},
+
 {"key":"Wv_momovod","name":"Ⓜ️Wv┃momovod","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/momovod.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_998pian","name":"Ⓜ️Wv┃999片","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/998pian.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_duanjuzx","name":"Ⓜ️Wv┃短剧网","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/duanjuzx.wv.js","searchable":1,"filterable":1,"switchable":1},
