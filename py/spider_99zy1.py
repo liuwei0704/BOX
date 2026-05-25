@@ -9,20 +9,33 @@ from bs4 import BeautifulSoup
 
 class Spider(Spider):
     def getName(self):
-        return "99专员_SampleTV"
+        return "99专员_Fixed"
     
     def init(self, extend=""):
         self.host = "https://www.99zy1.top"
         pass
     
-    def header(self):
-        return {
+    def header(self, referer=None):
+        headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Referer': self.host,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Cache-Control': 'max-age=0',
         }
+        if referer:
+            headers['Referer'] = referer
+        else:
+            headers['Referer'] = self.host
+        return headers
     
     def homeContent(self, filter):
-        """返回分类列表"""
         result = {}
         result["class"] = [
             {"type_name": "全网资源", "type_id": "1"}
@@ -30,7 +43,6 @@ class Spider(Spider):
         return result
     
     def homeVideoContent(self):
-        """首页推荐视频解析"""
         try:
             rsp = self.fetch(self.host, headers=self.header())
             root = BeautifulSoup(rsp.text, 'html.parser')
@@ -64,7 +76,6 @@ class Spider(Spider):
             return {"list": []}
 
     def categoryContent(self, tid, pg, filter, extend):
-        """分类页"""
         result = {}
         pg = int(pg)
         if pg > 1:
@@ -73,31 +84,59 @@ class Spider(Spider):
             url = f"{self.host}/index.php/vod/type/id/{tid}.html"
             
         try:
-            rsp = self.fetch(url, headers=self.header())
+            # 首次请求带完整头
+            rsp = self.fetch(url, headers=self.header(url))
+            
+            # 检查是否被 Cloudflare 拦截
+            if 'Just a moment' in rsp.text or 'cf_chl' in rsp.text:
+                # 重试一次，可能第一次触发了验证
+                rsp = self.fetch(url, headers=self.header(url))
+            
             root = BeautifulSoup(rsp.text, 'html.parser')
             videos = []
             
             items = root.select('.vod-list a')
-            for item in items:
-                vod_id = item.get('href', '')
-                if not vod_id:
-                    continue
-                
-                img = item.select_one('.vod-pic')
-                vod_pic = img.get('src', '') if img else ""
-                
-                name_elem = item.select_one('.vod-name')
-                vod_name = name_elem.text.strip() if name_elem else "未知"
-                
-                date_elem = item.select_one('.vod-date')
-                vod_remarks = date_elem.text.strip() if date_elem else ""
-                
-                videos.append({
-                    "vod_id": self.regUrl(vod_id),
-                    "vod_name": vod_name,
-                    "vod_pic": self.regUrl(vod_pic),
-                    "vod_remarks": vod_remarks
-                })
+            
+            # 如果还是没解析到，尝试备用选择器
+            if not items:
+                items = root.select('.vod-list .vod-item')
+                for item in items:
+                    a_tag = item.find('a')
+                    if a_tag:
+                        vod_id = a_tag.get('href', '')
+                        img = a_tag.select_one('.vod-pic')
+                        vod_pic = img.get('src', '') if img else ""
+                        name_elem = a_tag.select_one('.vod-name')
+                        vod_name = name_elem.text.strip() if name_elem else "未知"
+                        date_elem = a_tag.select_one('.vod-date')
+                        vod_remarks = date_elem.text.strip() if date_elem else ""
+                        videos.append({
+                            "vod_id": self.regUrl(vod_id),
+                            "vod_name": vod_name,
+                            "vod_pic": self.regUrl(vod_pic),
+                            "vod_remarks": vod_remarks
+                        })
+            else:
+                for item in items:
+                    vod_id = item.get('href', '')
+                    if not vod_id:
+                        continue
+                    
+                    img = item.select_one('.vod-pic')
+                    vod_pic = img.get('src', '') if img else ""
+                    
+                    name_elem = item.select_one('.vod-name')
+                    vod_name = name_elem.text.strip() if name_elem else "未知"
+                    
+                    date_elem = item.select_one('.vod-date')
+                    vod_remarks = date_elem.text.strip() if date_elem else ""
+                    
+                    videos.append({
+                        "vod_id": self.regUrl(vod_id),
+                        "vod_name": vod_name,
+                        "vod_pic": self.regUrl(vod_pic),
+                        "vod_remarks": vod_remarks
+                    })
 
             # 分页解析
             page_count = pg
@@ -120,27 +159,23 @@ class Spider(Spider):
             return {"list": [], "page": pg, "pagecount": pg}
 
     def detailContent(self, ids):
-        """详情页解析"""
         vod_id = ids[0]
         url = self.regUrl(vod_id)
         
         try:
-            rsp = self.fetch(url, headers=self.header())
+            rsp = self.fetch(url, headers=self.header(url))
             root = BeautifulSoup(rsp.text, 'html.parser')
             
-            # 1. 影片名称 - .detail-pos text
             vod_name = ""
             title_ele = root.select_one('.detail-pos text')
             if title_ele:
                 vod_name = title_ele.text.strip()
             
-            # 2. 封面图片 - .detail-vod-pic
             vod_pic = ""
             pic_tag = root.select_one('.detail-vod-pic')
             if pic_tag:
                 vod_pic = self.regUrl(pic_tag.get('src', ''))
             
-            # 3. 播放线路 - .detail-btns 每个是独立线路块
             play_from = []
             play_urls = []
             
@@ -161,7 +196,6 @@ class Spider(Spider):
                     play_from.append(line_name)
                     play_urls.append("#".join(episodes))
             
-            # 4. script player_aaaa 兜底
             if not play_urls:
                 script_text = rsp.text
                 match = re.search(r'var\s+player_aaaa\s*=\s*(\{.*?\});', script_text, re.DOTALL)
@@ -180,7 +214,6 @@ class Spider(Spider):
                     except:
                         pass
             
-            # 5. m3u8/mp4 直链兜底
             if not play_urls:
                 txt = rsp.text
                 m3u8 = re.findall(r'(https?://[^"\'\s]+\.m3u8[^"\'\s]*)', txt)
@@ -194,7 +227,6 @@ class Spider(Spider):
                     play_from.append("直链")
                     play_urls.append("#".join(eps))
             
-            # 6. 简介
             vod_content = ""
             desc_tag = root.select_one('.vod-desc') or root.select_one('.vod-content')
             if desc_tag:
@@ -213,7 +245,6 @@ class Spider(Spider):
             return {"list": []}
 
     def searchContent(self, key, quick, pg=1):
-        """搜索功能"""
         pg = int(pg)
         encoded_key = urllib.parse.quote(key)
         
@@ -223,7 +254,7 @@ class Spider(Spider):
             url = f"{self.host}/index.php/vod/search/wd/{encoded_key}.html"
             
         try:
-            rsp = self.fetch(url, headers=self.header())
+            rsp = self.fetch(url, headers=self.header(url))
             root = BeautifulSoup(rsp.text, 'html.parser')
             videos = []
             
@@ -249,7 +280,6 @@ class Spider(Spider):
                     "vod_remarks": vod_remarks
                 })
             
-            # 分页
             page_count = pg
             pagination = root.select_one('.pagenavi_txt')
             if pagination:
@@ -264,21 +294,18 @@ class Spider(Spider):
             return {"list": [], "page": pg, "pagecount": pg}
 
     def playerContent(self, flag, id, vipFlags):
-        """播放解析"""
         url = self.regUrl(id)
-        result = {"parse": 1, "url": url, "header": self.header()}
+        result = {"parse": 1, "url": url, "header": self.header(url)}
         
         try:
-            rsp = self.fetch(url, headers=self.header())
+            rsp = self.fetch(url, headers=self.header(url))
             script_text = rsp.text
             
-            # 尝试从页面源码寻找直接的 m3u8 链接
             m3u8_match = re.search(r'(https?://[^"\'\s]+\.m3u8[^"\'\s]*)', script_text)
             if m3u8_match:
                 result["parse"] = 0
                 result["url"] = m3u8_match.group(1)
             else:
-                # 尝试寻找.mp4直链
                 mp4_match = re.search(r'(https?://[^"\'\s]+\.mp4[^"\'\s]*)', script_text)
                 if mp4_match:
                     result["parse"] = 0
@@ -289,7 +316,6 @@ class Spider(Spider):
         return result
 
     def regUrl(self, url):
-        """规范化 URL"""
         if not url:
             return ""
         if url.startswith('//'):
