@@ -82,16 +82,19 @@ class Spider(Spider):
         page = int(pg) if pg else 1
         type_map = {
             "1": "",
-            "2": "/sort/month_hot/",
-            "3": "/category/reducing-mosaic/",
-            "4": "/category/chinese-subtitle/",
-            "5": "/category/amateur/",
+            "2": "/sort/month_hot",
+            "3": "/category/reducing-mosaic",
+            "4": "/category/chinese-subtitle",
+            "5": "/category/amateur",
         }
-        path = type_map.get(tid, "")
-        if page > 1:
-            url = f"{BASE}{path}?page={page}"
+        base_path = type_map.get(tid, "")
+        if base_path == "":
+            url = BASE + "/"
         else:
-            url = f"{BASE}{path}"
+            if page == 1:
+                url = f"{BASE}{base_path}/"
+            else:
+                url = f"{BASE}{base_path}/{page}/"
         html = self._get(url)
         video_list = self._parse_list(html) if html else []
         return {
@@ -118,13 +121,12 @@ class Spider(Spider):
                 m = re.search(r'<div[^>]*class=["\'][^"\']*poster[^"\']*["\'][^>]*>.*?<img[^>]*(?:data-src|src)=["\']([^"\']+)["\']', html, re.DOTALL)
                 if m:
                     pic = self._fix(m.group(1))
-                # 关键修改：不再返回 m3u8，返回播放页 URL
                 result["list"].append({
                     "vod_id": vod_id,
                     "vod_name": title,
                     "vod_pic": pic,
                     "vod_play_from": "默认",
-                    "vod_play_url": f"播放${url}"  # 返回播放页 URL
+                    "vod_play_url": f"播放${url}"
                 })
             except:
                 continue
@@ -144,10 +146,9 @@ class Spider(Spider):
         }
 
     def playerContent(self, flag, id, vipFlags):
-        # 直接返回播放页 URL，让 TVBox 用 parse=1 模式交给第三方解析器
         return {
             "parse": 1,
-            "url": id,  # id 就是 detailContent 返回的完整 URL
+            "url": id,
             "header": json.dumps(self.headers)
         }
 
