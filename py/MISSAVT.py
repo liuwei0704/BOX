@@ -118,20 +118,13 @@ class Spider(Spider):
                 m = re.search(r'<div[^>]*class=["\'][^"\']*poster[^"\']*["\'][^>]*>.*?<img[^>]*(?:data-src|src)=["\']([^"\']+)["\']', html, re.DOTALL)
                 if m:
                     pic = self._fix(m.group(1))
-                play_url = ""
-                m = re.search(r'<div[^>]*class=["\'][^"\']*poster[^"\']*["\'][^>]*data-url=["\']([^"\']+)["\']', html)
-                if m:
-                    play_url = self._fix(m.group(1))
-                if not play_url:
-                    m = re.search(r'<video[^>]*src=["\']([^"\']+\.m3u8[^"\']*)["\']', html)
-                    if m:
-                        play_url = self._fix(m.group(1))
+                # 关键修改：不再返回 m3u8，返回播放页 URL
                 result["list"].append({
                     "vod_id": vod_id,
                     "vod_name": title,
                     "vod_pic": pic,
                     "vod_play_from": "默认",
-                    "vod_play_url": f"播放${play_url}" if play_url else ""
+                    "vod_play_url": f"播放${url}"  # 返回播放页 URL
                 })
             except:
                 continue
@@ -151,36 +144,10 @@ class Spider(Spider):
         }
 
     def playerContent(self, flag, id, vipFlags):
-        # 构建播放页URL
-        if id.startswith('http'):
-            play_url = id
-        else:
-            play_url = BASE + '/watch/' + id + '/'
-        # 实时抓取播放页，提取最新的m3u8链接
-        html = self._get(play_url)
-        if html:
-            # 从 poster 的 data-url 提取
-            m = re.search(r'<div[^>]*class=["\'][^"\']*poster[^"\']*["\'][^>]*data-url=["\']([^"\']+)"', html)
-            if m:
-                m3u8_url = self._fix(m.group(1))
-                return {
-                    "parse": 0,
-                    "url": m3u8_url,
-                    "header": json.dumps(self.headers)
-                }
-            # 从 video 标签提取
-            m = re.search(r'<video[^>]*src=["\']([^"\']+\.m3u8[^"\']*)"', html)
-            if m:
-                m3u8_url = self._fix(m.group(1))
-                return {
-                    "parse": 0,
-                    "url": m3u8_url,
-                    "header": json.dumps(self.headers)
-                }
-        # 降级：返回播放页让客户端解析
+        # 直接返回播放页 URL，让 TVBox 用 parse=1 模式交给第三方解析器
         return {
             "parse": 1,
-            "url": play_url,
+            "url": id,  # id 就是 detailContent 返回的完整 URL
             "header": json.dumps(self.headers)
         }
 
