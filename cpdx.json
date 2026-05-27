@@ -105,6 +105,7 @@
 {"key":"KTV183","name":"🪩KTV183┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/KTV183.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"Cloud影视","name":"🪩Cloud影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Cloud影视.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"KT剧集","name":"🪩KT剧集┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/KT剧集.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
+{"key":"飛快TV","name":"🪩飛快TV┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/feikuai.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"03影视","name":"🪩03影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/03yy.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"4K影视","name":"🪩4K影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/4K影视.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"FoFo影院","name":"🪩FoFo影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/fofoyy_spider.py","searchable":1,"quickSearch":0,"filterable":1,"changeable":0},
