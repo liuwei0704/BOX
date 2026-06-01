@@ -1,19 +1,43 @@
-# 电影人生 Spider (dyrsok.org) - 最终版（支持分页）
+# 电影人生 Spider (dyrsok.org) - 增强反爬版
 import re
 import json
 import urllib.request
 import urllib.parse
+import urllib.error
 import gzip
+import time
+import random
 from io import BytesIO
-from urllib.parse import urljoin
+from http.cookiejar import CookieJar
 
 class Spider:
     def __init__(self):
         self.site_url = "https://www.dyrsok.org"
+        
+        # 多个 User-Agent 轮换
+        self.user_agents = [
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        ]
+        
         self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "Referer": self.site_url
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "Accept-Encoding": "gzip, deflate",
+            "Connection": "keep-alive",
+            "Upgrade-Insecure-Requests": "1",
+            "Cache-Control": "max-age=0",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "Sec-Fetch-User": "?1"
         }
+        
+        # 使用 CookieJar 保持会话
+        self.cookie_jar = CookieJar()
+        self.opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(self.cookie_jar))
         
         self.categories = {
             "dianying": {"name": "电影", "url": "/dianying.html"},
@@ -84,80 +108,118 @@ class Spider:
     def getDependence(self):
         return []
 
-    def fetch(self, url):
-        req = urllib.request.Request(url, headers=self.headers)
-        try:
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                raw = resp.read()
-                if resp.headers.get('Content-Encoding') == 'gzip':
-                    buf = BytesIO(raw)
-                    with gzip.GzipFile(fileobj=buf) as gz:
-                        return gz.read().decode('utf-8', errors='ignore')
-                return raw.decode('utf-8', errors='ignore')
-        except Exception as e:
-            return ""
-
-    def fix_url(self, url):
-        if not url:
-            return ""
-        if url.startswith("http"):
-            return url
-        if url.startswith("//"):
-            return "https:" + url
-        return urljoin(self.site_url, url)
-
-    def extract_vod_list(self, html):
-        result = []
-        items = re.findall(r'<div class="[^"]*relative group[^"]*"[^>]*>(.*?)</div>\s*(?=<div|<a|</section|</main)', html, re.DOTALL)
-        for item in items:
+    def get_random_ua(self):
+        return random.choice(self.user_agents)
+    
+    def random_delay(self):
+        """随机延迟，模拟人类行为"""
+        time.sleep(random.uniform(1, 3))
+    
+    def fetch(self, url, retry=3):
+        """获取网页内容，支持重试、随机UA、会话保持"""
+        for attempt in range(retry):
             try:
-                a_match = re.search(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*>', item)
-                if not a_match:
+                # 随机 User-Agent
+                headers = self.headers.copy()
+                headers["User-Agent"] = self.get_random_ua()
+                headers["Referer"] = self.site_url
+                
+                # 首次请求访问首页获取cookie
+                if attempt == 0 and len(self.cookie_jar) == 0:
+                    try:
+                        req = urllib.request.Request(self.site_url, headers=headers)
+                        self.opener.open(req, timeout=15)
+                        self.random_delay()
+                    except:
+                        pass
+                
+                # 正式请求
+                req = urllib.request.Request(url, headers=headers)
+                with self.opener.open(req, timeout=20) as resp:
+                    raw = resp.read()
+                    if resp.headers.get('Content-Encoding') == 'gzip':
+                        buf = BytesIO(raw)
+                        with gzip.GzipFile(fileobj=buf) as gz:
+                            content = gz.read().decode('utf-8', errors='ignore')
+                    else:
+                        content = raw.decode('utf-8', errors='ignore')
+                    
+                    # 随机延迟，避免请求过快
+                    self.random_delay()
+                    return content
+                    
+            except urllib.error.HTTPError as e:
+                if e.code == 429:
+                    wait_time = (attempt + 1) * 5 + random.uniform(0, 2)
+                    print(f"遇到429限流，等待{wait_time:.1f}秒后重试...")
+                    time.sleep(wait_time)
                     continue
-                url = self.fix_url(a_match.group(1))
-                if not re.search(r'/dyrsorg-\d+/', url):
+                print(f"HTTP错误 {e.code}: {url}")
+                return ""
+            except Exception as e:
+                print(f"Fetch error: {e}")
+                if attempt < retry - 1:
+                    time.sleep(3)
                     continue
+                return ""
+        return ""
+    
+    def extract_vod_list(self, html):
+        """从HTML中提取视频列表"""
+        vod_list = []
+        if not html:
+            return vod_list
+        
+        # 多种模式匹配
+        patterns = [
+            r'<a[^>]*href=["\'](/vod/[^"\']+)["\'][^>]*>.*?<img[^>]*src=["\']([^"\']+)["\'][^>]*>.*?<h3[^>]*>(.*?)</h3>',
+            r'<a[^>]*href=["\'](/vod/[^"\']+)["\'][^>]*>.*?<img[^>]*data-src=["\']([^"\']+)["\'][^>]*>.*?<span[^>]*class="[^"]*title[^"]*"[^>]*>(.*?)</span>',
+            r'<a[^>]*href=["\'](/vod/[^"\']+)["\'][^>]*>.*?<div[^>]*class="[^"]*name[^"]*"[^>]*>(.*?)</div>',
+            r'<a[^>]*href=["\'](/vod/[^"\']+)["\'][^>]*>(.*?)</a>'
+        ]
+        
+        for pattern in patterns:
+            matches = re.findall(pattern, html, re.DOTALL)
+            if matches:
+                for match in matches:
+                    try:
+                        vod_url = match[0] if match[0].startswith('http') else self.site_url + match[0]
+                        pic_url = ""
+                        title = ""
+                        
+                        if len(match) >= 3:
+                            pic_url = match[1] if match[1] and (match[1].startswith('http') or match[1].startswith('/')) else ""
+                            title = re.sub(r'<[^>]+>', '', match[2]).strip()
+                        else:
+                            title = re.sub(r'<[^>]+>', '', match[1]).strip()
+                        
+                        if pic_url and not pic_url.startswith('http'):
+                            pic_url = self.site_url + pic_url
+                        
+                        # 过滤无效标题
+                        if title and vod_url and 2 < len(title) < 100:
+                            if not any(word in title for word in ['下一页', '加载', '更多', '广告']):
+                                vod_list.append({
+                                    "vod_id": vod_url,
+                                    "vod_name": title,
+                                    "vod_pic": pic_url,
+                                    "vod_remarks": ""
+                                })
+                    except:
+                        continue
                 
-                title = ""
-                h3_match = re.search(r'<h3[^>]*>(.*?)</h3>', item, re.DOTALL)
-                if h3_match:
-                    title = re.sub(r'<[^>]+>', '', h3_match.group(1)).strip()
-                if not title:
-                    title_match = re.search(r'title=["\']([^"\']+)["\']', a_match.group(0))
-                    if title_match:
-                        title = title_match.group(1)
-                if not title:
-                    continue
-                
-                pic = ""
-                img_match = re.search(r'<img[^>]*data-src=["\']([^"\']+)["\']', item)
-                if img_match:
-                    pic = self.fix_url(img_match.group(1))
-                
-                remark = ""
-                r1 = re.search(r'<div[^>]*backdrop-blur-sm[^>]*>(.*?)</div>', item, re.DOTALL)
-                if r1:
-                    remark = re.sub(r'<[^>]+>', '', r1.group(1)).strip()
-                if not remark:
-                    r2 = re.search(r'(\d+集)', item)
-                    if r2:
-                        remark = r2.group(1)
-                if not remark:
-                    r3 = re.search(r'(1080P|720P|4K|HD)', item, re.IGNORECASE)
-                    if r3:
-                        remark = r3.group(1).upper()
-                
-                result.append({
-                    "vod_id": url,
-                    "vod_name": title,
-                    "vod_pic": pic,
-                    "vod_remarks": remark
-                })
-                if len(result) >= 20:
+                if vod_list:
                     break
-            except:
-                continue
-        return result
+        
+        # 去重
+        seen = set()
+        unique_list = []
+        for item in vod_list:
+            if item["vod_id"] not in seen:
+                seen.add(item["vod_id"])
+                unique_list.append(item)
+        
+        return unique_list[:30]
 
     def homeContent(self, filter=False):
         result = {"class": [], "list": []}
@@ -167,6 +229,7 @@ class Spider:
                 item["filters"] = self.filters[tid]
             result["class"].append(item)
         
+        # 获取首页推荐视频
         html = self.fetch(self.site_url + "/")
         if html:
             result["list"] = self.extract_vod_list(html)
@@ -181,7 +244,7 @@ class Spider:
         if not info:
             return {"list": []}
         
-        # 构建URL - 使用 page 参数
+        # 构建URL
         url = self.site_url + info["url"] + "?page=" + str(p)
         
         if extend.get("class"):
@@ -197,7 +260,7 @@ class Spider:
         
         vod_list = self.extract_vod_list(html)
         
-        # 分页逻辑：如果当前页有数据，假设有下一页
+        # 简单分页判断
         pagecount = p + 1 if len(vod_list) >= 20 else p
         
         return {
@@ -218,88 +281,55 @@ class Spider:
         if not html:
             return {"list": []}
         
-        # 标题
+        # 标题提取
         title = ""
-        h1_match = re.search(r'<div[^>]*flex-grow[^>]*>.*?<h1[^>]*>(.*?)</h1>', html, re.DOTALL)
-        if h1_match:
-            title = re.sub(r'<[^>]+>', '', h1_match.group(1)).strip()
-        if not title:
-            h1_match2 = re.search(r'<h1[^>]*>(.*?)</h1>', html)
-            if h1_match2:
-                candidate = re.sub(r'<[^>]+>', '', h1_match2.group(1)).strip()
-                if candidate and "电影人生" not in candidate:
-                    title = candidate
-        if not title:
-            og_match = re.search(r'<meta[^>]*property=["\']og:title["\'][^>]*content=["\']([^"\']+)["\']', html)
-            if og_match:
-                title = og_match.group(1).split('-')[0].strip()
+        title_match = re.search(r'<h1[^>]*>(.*?)</h1>', html)
+        if title_match:
+            title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip()
         
         # 图片
         pic = ""
         img_match = re.search(r'<img[^>]*data-src=["\']([^"\']+)["\']', html)
         if img_match:
-            pic = self.fix_url(img_match.group(1))
+            pic = img_match.group(1)
+            if not pic.startswith('http'):
+                pic = self.site_url + pic
         
         # 简介
         desc = ""
-        desc_match = re.search(r'<div[^>]*bg-gray-50[^>]*text-justify[^>]*>(.*?)</div>', html, re.DOTALL)
+        desc_match = re.search(r'<div[^>]*class="[^"]*desc[^"]*"[^>]*>(.*?)</div>', html, re.DOTALL)
         if desc_match:
             desc = re.sub(r'<[^>]+>', '', desc_match.group(1)).strip()
         
-        # 年份、类型
-        year = ""
-        type_name = ""
-        tags = re.findall(r'<span[^>]*bg-gray-100[^>]*>(.*?)</span>', html)
-        if len(tags) >= 1:
-            type_name = re.sub(r'<[^>]+>', '', tags[0]).strip()
-        if len(tags) >= 2:
-            year = re.sub(r'<[^>]+>', '', tags[1]).strip()
-        
-        # 获取线路
-        origins = []
-        origin_btns = re.findall(r'<button[^>]*data-origin=["\']([^"\']+)["\'][^>]*>', html)
-        for origin in origin_btns:
-            if origin and origin not in origins:
-                origins.append(origin)
-        if not origins:
-            origins = ["超级线路"]
-        
         # 获取剧集
         eps = []
-        ep_links = re.findall(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*class="[^"]*list-item[^"]*"[^>]*>', html)
-        for i, href in enumerate(ep_links):
-            p_match = re.search(r'[?&]p=(\d+)', href)
-            p = p_match.group(1) if p_match else str(i)
-            ep_name = "第" + str(i+1) + "集"
-            ep_title_match = re.search(r'data-title=["\']([^"\']+)["\']', href)
-            if ep_title_match:
-                ep_name = ep_title_match.group(1)
-            eps.append({"name": ep_name, "p": p, "href": href})
+        ep_links = re.findall(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*>.*?(\d+)集', html)
+        if not ep_links:
+            ep_links = re.findall(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', html)
+        
+        for i, ep in enumerate(ep_links[:30]):
+            if isinstance(ep, tuple):
+                href = ep[0]
+                ep_name = ep[1] if len(ep) > 1 else f"第{i+1}集"
+            else:
+                href = ep
+                ep_name = f"第{i+1}集"
+            
+            ep_link = href if href.startswith('http') else self.site_url + href
+            eps.append({"name": ep_name, "url": ep_link})
         
         if not eps:
-            eps = [{"name": "正片", "p": "0", "href": ""}]
+            eps = [{"name": "正片", "url": url}]
         
-        play_from = []
-        play_url_parts = []
-        for origin in origins:
-            play_from.append(origin)
-            ep_parts = []
-            for ep in eps:
-                if ep["href"]:
-                    ep_link = self.site_url + ep["href"]
-                else:
-                    ep_link = self.site_url + url.split("/")[-1] + "?origin=" + origin + "&p=" + ep["p"]
-                ep_parts.append(ep["name"] + "$" + ep_link)
-            play_url_parts.append("#".join(ep_parts))
+        play_from = ["直接播放"]
+        play_url = "#".join([f"{ep['name']}${ep['url']}" for ep in eps])
         
         return {"list": [{
             "vod_id": url,
             "vod_name": title,
             "vod_pic": pic,
             "vod_play_from": "$$$".join(play_from),
-            "vod_play_url": "$$$".join(play_url_parts),
-            "vod_year": year,
-            "vod_type": type_name,
+            "vod_play_url": play_url,
             "vod_content": desc
         }]}
 
@@ -312,26 +342,4 @@ class Spider:
         return {"list": self.extract_vod_list(html)}
 
     def playerContent(self, flag, id, vipFlags=[]):
-        html = self.fetch(id)
-        if not html:
-            return {"parse": 0, "playUrl": id}
-        
-        preload_match = re.search(r'<link rel="preload" href="([^"]+)"', html)
-        if preload_match:
-            m3u8_url = self.fix_url(preload_match.group(1))
-            m3u8_url = m3u8_url.replace('&amp;', '&')
-            return {"parse": 0, "playUrl": m3u8_url}
-        
-        vod_list_match = re.search(r'dyrs_vod_list\s*=\s*JSON\.parse\([\'"](.*?)[\'"]\)', html)
-        if vod_list_match:
-            try:
-                json_str = vod_list_match.group(1).replace('\\"', '"').replace('\\\\', '\\')
-                data = json.loads(json_str)
-                if data and len(data) > 0:
-                    m3u8_url = self.fix_url(data[0].get("url", ""))
-                    m3u8_url = m3u8_url.replace('&amp;', '&')
-                    return {"parse": 0, "playUrl": m3u8_url}
-            except:
-                pass
-        
         return {"parse": 0, "playUrl": id}
