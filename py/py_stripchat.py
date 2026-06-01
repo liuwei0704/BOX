@@ -10,7 +10,7 @@ sys.path.append('..')
 
 class Spider(Spider):
     def init(self, extend="{}"):
-        origin = 'https://stripchat.com'
+        origin = 'https://zh.stripchat.com'
         self.host = origin
         self.Doppiocdn = "doppiocdn.org"
         #domains = [
@@ -18,12 +18,13 @@ class Spider(Spider):
         #    "doppiocdn.org",       # 靠谱云cdn，国内有节点
         #    "doppiocdn.net"        # cft cdn
         #]
-        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:152.0) Gecko/20100101 Firefox/152.0"
+        user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0"
         self.headers = {'Origin': origin, 'Referer': f"{origin}/", 'User-Agent': user_agent, "Accept-Language": "zh,en;q=0.5"}
         self.search_host = "https://hdstream.ing"
         self.search_headers = {'Origin': self.search_host, 'Referer': f"{self.search_host}/", 'User-Agent': user_agent}
         self.stripchat_preferredVideoCodec = "H265"
         self.stripchat_decrypt_key = self.decode_key_compact("NDUgNTEgNzUgNjUgNjUgNDcgNjggMzIgNmIgNjEgNjUgNzcgNjEgMzMgNjMgNjg=")
+        self.stripchat_auth_key = 'Ook7quaiNgiyuhai'
         self._hash_cache = {}
         self.stripchat_play='0 0'
         self.create_session_with_retry()
@@ -47,7 +48,7 @@ class Spider(Spider):
 
     def homeContent(self, filter):
         CLASSES = [{'type_name': '女主播g', 'type_id': 'girls'}, {'type_name': '情侣c', 'type_id': 'couples'}, {'type_name': '男主播m', 'type_id': 'men'}, {'type_name': '跨性别t', 'type_id': 'trans'}]
-        VALUE = [{"n": "日本", "v": "tagLanguageJapanese"},{"n": "韓國", "v": "tagLanguageKorean"},{'n': '中国', 'v': 'tagLanguageChinese'}, {'n': '亚洲', 'v': 'ethnicityAsian'}, {'n': '白人', 'v': 'ethnicityWhite'}, {'n': '拉丁', 'v': 'ethnicityLatino'}, {'n': '混血', 'v': 'ethnicityMultiracial'}, {'n': '印度', 'v': 'ethnicityIndian'}, {'n': '阿拉伯', 'v': 'ethnicityMiddleEastern'}, {'n': '黑人', 'v': 'ethnicityEbony'}]
+        VALUE = [{'n': '中国', 'v': 'tagLanguageChinese'}, {'n': '亚洲', 'v': 'ethnicityAsian'}, {'n': '白人', 'v': 'ethnicityWhite'}, {'n': '拉丁', 'v': 'ethnicityLatino'}, {'n': '混血', 'v': 'ethnicityMultiracial'}, {'n': '印度', 'v': 'ethnicityIndian'}, {'n': '阿拉伯', 'v': 'ethnicityMiddleEastern'}, {'n': '黑人', 'v': 'ethnicityEbony'}]
         VALUE_MEN = [{'n': '情侣', 'v': 'sexGayCouples'}, {'n': '直男', 'v': 'orientationStraight'}]
         TIDS = ('girls', 'couples', 'men', 'trans')
         filters = {tid: [{'key': 'tag', 'value': VALUE_MEN + VALUE if tid == 'men' else VALUE}] for tid in TIDS}
@@ -119,7 +120,7 @@ class Spider(Spider):
                 if startAt: remark = f"🎫 始于 {(datetime.strptime(startAt, '%Y-%m-%dT%H:%M:%SZ') + timedelta(hours=8)).strftime('%m月%d日 %H:%M')}"
             search_username = self.normalize_username_for_hdstream(username)
             director_link = f"{flag}[a=cr:{{\"id\":\"hd_search_{search_username}\",\"name\":\"搜索 {username} 录像\"}}/]{username}[/a]"
-            return {'list': [{"vod_id": uid, "vod_name": str(info['topic'])[:80], "vod_pic": str(user['avatarUrl']), "vod_director": director_link, "vod_remarks": remark, 'vod_play_from': 'StripChat$$$LemonCams', 'vod_play_url': f"{uid}${uid}$$${uid}$lemon_{uid}"}]}
+            return {'list': [{"vod_id": username, "vod_name": str(info['topic'])[:80], "vod_pic": str(user['avatarUrl']), "vod_director": director_link, "vod_remarks": remark, 'vod_play_from': 'StripChat$$$LemonCams', 'vod_play_url': f"{uid}${uid}$$${uid}$lemon_{uid}"}]}
         except: return {'list': []}
 
     def searchContent(self, key, quick, pg="1"):
@@ -165,10 +166,10 @@ class Spider(Spider):
         try:
             rsp = self.session_get(f"https://edge-hls.{self.Doppiocdn}/hls/{id}/master/{id}_auto.m3u8?playlistType=lowLatency").text
             lines = rsp.strip().split('\n')
-            psch, pkey, urls, processed = 'v2', 'Ook7quaiNgiyuhai', [], False
+            psch, pkey, urls, processed = 'v2', self.stripchat_auth_key, [], False
             for i, line in enumerate(lines):
-                if line.startswith('#EXT-X-MOUFLON:') and not processed:
-                    if len(parts := line.split(':')) >= 4: psch, pkey, processed = parts[2], parts[3], True
+                #if line.startswith('#EXT-X-MOUFLON:') and not processed:
+                #    if len(parts := line.split(':')) >= 4: psch, pkey, processed = parts[2], parts[3], True
                 if '#EXT-X-STREAM-INF' in line:
                     qn_start = line.find('NAME="')+6
                     qn = line[qn_start:line.find('"', qn_start)]
