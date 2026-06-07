@@ -46,7 +46,6 @@ class Spider(Spider):
         url = f"https://{self.host}/index.php/vod/type/id/{tid}/page/{pg}.html"
         res = requests.get(url, headers=self.headers, timeout=10)
         res.encoding = "utf-8"
-        
         items = re.findall(r'<a href="/index.php/vod/detail/id/(\d+)\.html"[^>]*>.*?<img src="([^"]+)"[^>]*>.*?<p class="vod-name">([^<]+)</p>', res.text, re.DOTALL)
         videos = []
         seen = set()
@@ -55,18 +54,14 @@ class Spider(Spider):
                 continue
             seen.add(vid)
             videos.append({"vod_id": vid, "vod_name": title, "vod_pic": pic})
-        
-        # 提取分页：找所有页码数字的最大值
         page_nums = re.findall(r'<a[^>]+href="/index.php/vod/type/id/' + tid + r'/page/(\d+)\.html"[^>]*>(\d+)</a>', res.text)
         max_page = 1
         for _, page_num in page_nums:
             if page_num.isdigit():
                 max_page = max(max_page, int(page_num))
-        # 也检查当前激活页
         current_match = re.search(r'<text[^>]*class="[^"]*page-actvie[^"]*"[^>]*>(\d+)</text>', res.text)
         if current_match:
             max_page = max(max_page, int(current_match.group(1)))
-        
         return {"list": videos, "page": int(pg), "pagecount": max_page, "limit": 30, "total": len(videos)}
 
     def detailContent(self, ids):
@@ -97,11 +92,12 @@ class Spider(Spider):
         return {"list": videos, "page": int(pg), "pagecount": 1, "limit": 30, "total": len(videos)}
 
     def playerContent(self, flag, id, vipFlags):
-        if ".m3u8" in id:
-            return {"parse": 1, "playUrl": "", "url": id, "header": json.dumps({"Referer": "https://www.sflm998.top"})}
         url = id if id.startswith("http") else f"https://{self.host}{id}"
         res = requests.get(url, headers=self.headers, timeout=10)
         res.encoding = "utf-8"
         match = re.search(r'"url":"([^"]+\.m3u8)"', res.text)
-        play_url = match.group(1).replace("\\/", "/") if match else ""
-        return {"parse": 1, "playUrl": "", "url": play_url, "header": json.dumps({"Referer": "https://www.sflm998.top"})}
+        if match:
+            play_url = match.group(1).replace("\\/", "/")
+        else:
+            play_url = ""
+        return {"parse": 0, "playUrl": "", "url": play_url, "header": ""}
