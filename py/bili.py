@@ -74,48 +74,35 @@ class Spider(Spider):  # 元类 默认的元类 type
 
 	def homeVideoContent(self):
 		result = {}
-		cookie = ''
-		if 'cookie' in self.extendDict:
-			cookie = self.extendDict['cookie']
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
-		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
-		except:
-			pass
-		cookie, imgKey, subKey = self.getCookie(cookie)
 		url = 'https://api.bilibili.com/x/web-interface/index/top/feed/rcmd?y_num=1&fresh_type=3&feed_version=SEO_VIDEO&fresh_idx_1h=1&fetch_row=1&fresh_idx=1&brush=0&homepage_ver=1&ps=20'
-		r = requests.get(url, cookies=cookie, headers=self.header, timeout=5)
-		data = json.loads(self.cleanText(r.text))
+		headers = {
+			'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36',
+			'Referer': 'https://www.bilibili.com'
+		}
 		try:
+			r = requests.get(url, headers=headers, timeout=10)
+			data = r.json()
 			result['list'] = []
-			vodList = data['data']['item']
-			for vod in vodList:
-				aid = str(vod['id']).strip()
-				title = self.removeHtmlTags(vod['title']).strip()
-				img = vod['pic'].strip()
-				remark = time.strftime('%H:%M:%S', time.gmtime(vod['duration']))
-				if remark.startswith('00:'):
-					remark = remark[3:]
-				if remark == '00:00':
-					continue
-				result['list'].append({
-					'vod_id': aid,
-					'vod_name': title,
-					'vod_pic': img,
-					'vod_remarks': remark
-				})
-		except:
-			pass
+			if data.get('code') == 0:
+				vodList = data['data']['item']
+				for vod in vodList:
+					aid = str(vod['id']).strip()
+					title = self.removeHtmlTags(vod['title']).strip()
+					img = vod['pic'].strip()
+					remark = time.strftime('%H:%M:%S', time.gmtime(vod['duration']))
+					if remark.startswith('00:'):
+						remark = remark[3:]
+					if remark == '00:00':
+						continue
+					result['list'].append({
+						'vod_id': aid,
+						'vod_name': title,
+						'vod_pic': img,
+						'vod_remarks': remark
+					})
+		except Exception as e:
+			result['list'] = []
 		return result
-
 	def categoryContent(self, cid, page, filter, ext):
 		page = int(page)
 		result = {}
