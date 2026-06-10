@@ -51,10 +51,10 @@
 {"key":"JinPai","name":"🧩金牌|快速","type":3,"api":"csp_JinPaiAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"YIys","name":"🧩伊外|快速","type":3,"api":"csp_YIysAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"Dubk","name":"🧩杜北|快速","type":3,"api":"csp_DubkAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://nos.netease.com/youdata-netease/public-utilUpload-dETsDhhkydVym6T7qzn7WB.gz"},
-{"key":"Gaze","name":"🔗Gaze|2K","type":3,"api":"csp_GazeAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://gaze.show,https://gazes.store,https://gazes.top,https://gazes.site"},
-{"key":"Bidys","name":"🔗哔嘀|2K","type":3,"api":"csp_BidysAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://www.xlys02.com,https://xl02.com.de"},
-{"key":"Czzy","name":"🔗厂长|2K","type":3,"api":"csp_CzzyAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"sites":"https://www.cz4k.com,https://www.cz01.org,https://czzyv.com","filters":""}},
-{"key":"Libvio","name":"🔗LBV|2K","type":3,"api":"csp_LibvioAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"sites":"https://www.libvio.run,https://www.libvio.mov,https://www.libvios.com,https://www.libhd.com,https://www.libvio.life","filters":""}},
+{"key":"Gaze","name":"🔗Gaze|2K","type":3,"api":"csp_GazeAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://gaze.show,https://gazes.store,https://gazes.top,https://gazes.host"},
+{"key":"Bidys","name":"🔗哔嘀|2K","type":3,"api":"csp_BidysAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://v.xl01.eu.cc,https://xl02.com.de,https://v.xl02.eu.cc,https://v.xl01.cc.ua"},
+{"key":"Czzy","name":"🔗厂长|2K","type":3,"api":"csp_CzzyAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"sites":"https://czzy.top,https://www.4kcz.com,https://www.cz4k.com","filters":""}},
+{"key":"Libvio","name":"🔗LBV|2K","type":3,"api":"csp_LibvioAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"sites":"https://www.libvios.com,https://www.libhd.com,https://www.libvio.life","filters":""}},
 {"key":"AiGua","name":"🌍爱瓜|墙外","type":3,"api":"csp_AiGuaAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"Ysp","name":"🌍U视|墙外","type":3,"api":"csp_YspAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"Olyy","name":"🌍欧乐|墙外","type":3,"api":"csp_OlyyAmns","searchable":1,"quickSearch":1,"changeable":0},
@@ -161,7 +161,8 @@
 {"name":"虎牙一起看","type":0,"url":"https://sub.ottiptv.cc/huyayqk.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"斗鱼一起看","type":0,"url":"https://sub.ottiptv.cc/douyuyqk.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"B站直播","type":0,"url":"https://sub.ottiptv.cc/bililive.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
-{"name":"YY轮播","type":0,"url":"https://sub.ottiptv.cc/yylunbo.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"}
+{"name":"YY轮播","type":0,"url":"https://sub.ottiptv.cc/yylunbo.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"虎牙放映厅","key":"HuyaLive","type":3,"api":"csp_HuyaLiveAmns"}
 ],
 "parses":[
 {"name":"聚合1","type":3,"url":"Demo"},
