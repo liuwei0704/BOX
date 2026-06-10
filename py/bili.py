@@ -12,7 +12,7 @@ import requests
 sys.path.append('..')
 from base.spider import Spider
 
-class Spider(Spider):  # 元类 默认的元类 type
+class Spider(Spider):
 	def getName(self):
 		return "B站视频"
 
@@ -103,6 +103,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 		except Exception as e:
 			result['list'] = []
 		return result
+
 	def categoryContent(self, cid, page, filter, ext):
 		page = int(page)
 		result = {}
@@ -264,6 +265,7 @@ class Spider(Spider):  # 元类 默认的元类 type
 						"vod_remarks": remark
 					})
 		else:
+			# 搜索分类（包括"動態漫"）
 			url = 'https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={}&page={}'
 			for key in ext:
 				if key == 'tid':
@@ -271,40 +273,48 @@ class Spider(Spider):  # 元类 默认的元类 type
 					continue
 				url += f'&{key}={ext[key]}'
 			url = url.format(cid, page)
-			r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
-			data = json.loads(self.cleanText(r.text))
-			pagecount = data['data']['numPages']
-			vodList = data['data']['result']
-			for vod in vodList:
-				if vod['type'] != 'video':
-					continue
-				vid = str(vod['aid']).strip()
-				title = self.removeHtmlTags(self.cleanText(vod['title']))
-				img = 'https:' + vod['pic'].strip()
-				remarkinfo = vod['duration'].split(':')
-				minutes = int(remarkinfo[0])
-				seconds = remarkinfo[1]
-				if len(seconds) == 1:
-					seconds = '0' + seconds
-				if minutes >= 60:
-					hour = str(minutes // 60)
-					minutes = str(minutes % 60)
-					if len(hour) == 1:
-						hour = '0' + hour
-					if len(minutes) == 1:
-						minutes = '0' + minutes
-					remark = f'{hour}:{minutes}:{seconds}'
-				else:
-					minutes = str(minutes)
-					if len(minutes) == 1:
-						minutes = '0' + minutes
-					remark = f'{minutes}:{seconds}'
-				videos.append({
-					"vod_id": vid,
-					"vod_name": title,
-					"vod_pic": img,
-					"vod_remarks": remark
-				})
+			try:
+				headers = {
+					'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36',
+					'Referer': 'https://www.bilibili.com'
+				}
+				r = requests.get(url, headers=headers, timeout=10)
+				data = r.json()
+				if data.get('code') == 0:
+					pagecount = data['data']['numPages']
+					vodList = data['data']['result']
+					for vod in vodList:
+						if vod['type'] != 'video':
+							continue
+						vid = str(vod['aid']).strip()
+						title = self.removeHtmlTags(self.cleanText(vod['title']))
+						img = 'https:' + vod['pic'].strip()
+						remarkinfo = vod['duration'].split(':')
+						minutes = int(remarkinfo[0])
+						seconds = remarkinfo[1]
+						if len(seconds) == 1:
+							seconds = '0' + seconds
+						if minutes >= 60:
+							hour = str(minutes // 60)
+							minutes = str(minutes % 60)
+							if len(hour) == 1:
+								hour = '0' + hour
+							if len(minutes) == 1:
+								minutes = '0' + minutes
+							remark = f'{hour}:{minutes}:{seconds}'
+						else:
+							minutes = str(minutes)
+							if len(minutes) == 1:
+								minutes = '0' + minutes
+							remark = f'{minutes}:{seconds}'
+						videos.append({
+							"vod_id": vid,
+							"vod_name": title,
+							"vod_pic": img,
+							"vod_remarks": remark
+						})
+			except:
+				pass
 		lenvideos = len(videos)
 		result['list'] = videos
 		result['page'] = page
@@ -392,63 +402,52 @@ class Spider(Spider):  # 元类 默认的元类 type
 				'list': videos
 			}
 			return result
-		cookie = ''
-		if 'cookie' in self.extendDict:
-			cookie = self.extendDict['cookie']
-		if 'json' in self.extendDict:
-			r = self.fetch(self.extendDict['json'], timeout=10)
-			if 'cookie' in r.json():
-				cookie = r.json()['cookie']
-		if cookie == '':
-			cookie = '{}'
-		elif type(cookie) == str and cookie.startswith('http'):
-			cookie = self.fetch(cookie, timeout=10).text.strip()
+		url = f'https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={key}&page={page}'
 		try:
-			if type(cookie) == dict:
-				cookie = json.dumps(cookie, ensure_ascii=False)
+			headers = {
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36',
+				'Referer': 'https://www.bilibili.com'
+			}
+			r = requests.get(url, headers=headers, timeout=10)
+			data = r.json()
+			if data.get('code') == 0 and 'result' in data['data']:
+				vodList = data['data']['result']
+				for vod in vodList:
+					if vod['type'] != 'video':
+						continue
+					aid = str(vod['aid']).strip()
+					title = self.removeHtmlTags(self.cleanText(vod['title']))
+					img = 'https:' + vod['pic'].strip()
+					try:
+						remarkinfo = vod['duration'].split(':')
+						minutes = int(remarkinfo[0])
+						seconds = remarkinfo[1]
+					except:
+						continue
+					if len(seconds) == 1:
+						seconds = '0' + seconds
+					if minutes >= 60:
+						hour = str(minutes // 60)
+						minutes = str(minutes % 60)
+						if len(hour) == 1:
+							hour = '0' + hour
+						if len(minutes) == 1:
+							minutes = '0' + minutes
+						remark = f'{hour}:{minutes}:{seconds}'
+					else:
+						minutes = str(minutes)
+						if len(minutes) == 1:
+							minutes = '0' + minutes
+						remark = f'{minutes}:{seconds}'
+					videos.append({
+						"vod_id": aid,
+						"vod_name": title,
+						"vod_pic": img,
+						"vod_remarks": remark
+					})
 		except:
 			pass
-		cookie, _, _ = self.getCookie(cookie)
-		url = f'https://api.bilibili.com/x/web-interface/search/type?search_type=video&keyword={key}&page={page}'
-		r = self.fetch(url, headers=self.header, cookies=cookie, timeout=5)
-		jo = json.loads(self.cleanText(r.text))
-		if 'result' not in jo['data']:
-			return {'list': videos}, 1
-		vodList = jo['data']['result']
-		for vod in vodList:
-			aid = str(vod['aid']).strip()
-			title = self.removeHtmlTags(self.cleanText(vod['title']))
-			img = 'https:' + vod['pic'].strip()
-			try:
-				remarkinfo = vod['duration'].split(':')
-				minutes = int(remarkinfo[0])
-				seconds = remarkinfo[1]
-			except:
-				continue
-			if len(seconds) == 1:
-				seconds = '0' + seconds
-			if minutes >= 60:
-				hour = str(minutes // 60)
-				minutes = str(minutes % 60)
-				if len(hour) == 1:
-					hour = '0' + hour
-				if len(minutes) == 1:
-					minutes = '0' + minutes
-				remark = f'{hour}:{minutes}:{seconds}'
-			else:
-				minutes = str(minutes)
-				if len(minutes) == 1:
-					minutes = '0' + minutes
-				remark = f'{minutes}:{seconds}'
-			videos.append({
-				"vod_id": aid,
-				"vod_name": title,
-				"vod_pic": img,
-				"vod_remarks": remark
-			})
-		result = {
-			'list': videos
-		}
+		result = {'list': videos}
 		return result
 
 	def playerContent(self, flag, pid, vipFlags):
@@ -615,7 +614,6 @@ class Spider(Spider):  # 元类 默认的元类 type
 			videoid += 1
 		audioinfo = ''
 		audioid = 0
-		# audioList = sorted(dashinfos['audio'], key=lambda x: x['bandwidth'], reverse=True)
 		for audio in dashinfos['audio']:
 			try:
 				deadline = int(re.search(r'deadline=(\d+)', audio['baseUrl']).group(1))
@@ -679,7 +677,6 @@ class Spider(Spider):  # 元类 默认的元类 type
 		return cookies, imgKey, subKey
 
 	def getUserid(self, cookie):
-		# 获取自己的userid(cookies拥有者)
 		url = 'http://api.bilibili.com/x/space/myinfo'
 		r = self.fetch(url, cookies=cookie, headers=self.header, timeout=5)
 		data = json.loads(self.cleanText(r.text))
@@ -698,16 +695,15 @@ class Spider(Spider):  # 元类 默认的元类 type
 		mixinKeyEncTab = [46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35, 27, 43, 5, 49, 33, 9, 42, 19, 29, 28, 14, 39, 12, 38, 41, 13, 37, 48, 7, 16, 24, 55, 40, 61, 26, 17, 0, 1, 60, 51, 30, 4, 22, 25, 54, 21, 56, 59, 6, 63, 57, 62, 11, 36, 20, 34, 44, 52]
 		orig = imgKey + subKey
 		mixinKey = reduce(lambda s, i: s + orig[i], mixinKeyEncTab, '')[:32]
-		params['wts'] = round(time.time())  # 添加 wts 字段
-		params = dict(sorted(params.items()))  # 按照 key 重排参数
-		# 过滤 value 中的 "!'()*" 字符
+		params['wts'] = round(time.time())
+		params = dict(sorted(params.items()))
 		params = {
 			k: ''.join(filter(lambda chr: chr not in "!'()*", str(v)))
 			for k, v
 			in params.items()
 		}
-		query = urlencode(params)  # 序列化参数
-		params['w_rid'] = md5((query + mixinKey).encode()).hexdigest()  # 计算 w_rid
+		query = urlencode(params)
+		params['w_rid'] = md5((query + mixinKey).encode()).hexdigest()
 		return params
 
 	retry = 0
@@ -715,4 +711,3 @@ class Spider(Spider):  # 元类 默认的元类 type
 		"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36",
 		"Referer": "https://www.bilibili.com"
 	}
-
