@@ -25,7 +25,6 @@
 {"key":"Qmdj","name":"🎬喵喵|短剧","type":3,"api":"csp_QmdjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"Xydj","name":"🎬星星|短剧","type":3,"api":"csp_XydjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 
-//{"key":"Bili¹","name":"🅱️哔哩丨PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bili.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 {"key":"BiliHeji","name":"🎉Bili|合集","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"home":"1","json":"https://nos.netease.com/youdata-netease/public-utilUpload-k6DvN2PqNEVLhPeiigkmji.gz","cookie":""},"style":{"type":"rect","ratio":1.433}},
 {"key":"Bilive","name":"📡Bili|Live","type":3,"api":"csp_BiliveAmns","searchable":1,"quickSearch":1,"changeable":0,"style":{"type":"rect","ratio":1.433}},
 {"key":"HuyaLive","name":"📡虎牙|Live","type":3,"api":"csp_HuyaLiveAmns","searchable":1,"quickSearch":1,"changeable":0,"style":{"type":"rect","ratio":1.433}},
