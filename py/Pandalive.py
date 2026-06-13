@@ -234,11 +234,11 @@ class Spider:
                 stream_url = f"{self.host}/player/pandalive.html?url={user_id}"
             
             proxies = [
-                "https://hubu.515355.xyz/proxy/?",
-                "https://flank.515355.xyz/proxy/",
                 "https://uae2.515355.xyz/proxy/",
+                "https://hubu.515355.xyz/proxy/?",
                 "https://pol.515355.xyz/proxy/",
                 "https://f00.515355.xyz/proxy/",
+                "https://flank.515355.xyz/proxy/",
                 "https://ce2.515355.xyz/proxy/?",
             ]
             
