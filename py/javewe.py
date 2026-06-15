@@ -1,15 +1,10 @@
 # coding=utf-8
-import sys
-import os
 import re
-import json
-import base64
 import urllib.parse
+import requests
 from bs4 import BeautifulSoup
 
 class Spider:
-    """JAVEWE 爬虫 - 影视/综艺/动漫等"""
-    
     def getName(self):
         return "JAVEWE"
     
@@ -24,7 +19,6 @@ class Spider:
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
         }
-        # 分类列表
         self.categories = [
             {"type_id": "popular-today", "type_name": "今日热门"},
             {"type_id": "popular-week", "type_name": "本周热门"},
@@ -36,9 +30,7 @@ class Spider:
         ]
     
     def fetch(self, url):
-        """发送HTTP请求"""
         try:
-            import requests
             r = requests.get(url, headers=self.headers, timeout=15)
             r.encoding = 'utf-8'
             return r.text
@@ -47,9 +39,8 @@ class Spider:
             return None
     
     def build_full_url(self, url):
-        if not url or not isinstance(url, str):
+        if not url:
             return ''
-        url = url.strip()
         if url.startswith('http://') or url.startswith('https://'):
             return url
         if url.startswith('//'):
@@ -146,7 +137,7 @@ class Spider:
             if img_elem and img_elem.get('src'):
                 vod_pic = self.build_full_url(img_elem.get('src'))
             
-            # 提取演员等信息
+            # 提取演员
             vod_actor = ""
             meta = soup.select_one('.product_meta')
             if meta:
@@ -154,22 +145,22 @@ class Spider:
                 if starring_links:
                     vod_actor = ', '.join([a.get_text().strip() for a in starring_links])
             
-            # 提取播放链接 - 关键修改：直接返回中间页URL，让playerContent处理
+            # 提取播放链接
             play_url = ""
             links_input = soup.find('input', id='links')
             if links_input and links_input.get('value'):
+                import base64
                 encoded = links_input.get('value')
                 try:
                     decoded = base64.b64decode(encoded).decode('utf-8')
                     play_list = [url.strip() for url in decoded.split(',,,') if url and url.strip()]
                     if play_list:
-                        # 使用第一个播放链接
                         first_url = play_list[0]
                         if not first_url.startswith('http'):
                             first_url = 'https://' + first_url
                         play_url = first_url
-                except Exception as e:
-                    print(f"解码播放地址失败: {e}")
+                except:
+                    pass
             
             if not play_url:
                 iframe = soup.find('iframe', id='iframe-link')
@@ -191,31 +182,11 @@ class Spider:
         return result
     
     def searchContent(self, key, quick, pg="1"):
-        page = int(pg) if pg else 1
-        import urllib.parse
-        if page == 1:
-            url = f"{self.host}/search?s={urllib.parse.quote(key)}"
-        else:
-            url = f"{self.host}/search?page={page}&s={urllib.parse.quote(key)}"
-        
-        html = self.fetch(url)
-        videos = self.parse_video_list(html) if html else []
-        return {
-            "list": videos,
-            "page": page,
-            "pagecount": 1,
-            "limit": len(videos),
-            "total": len(videos)
-        }
+        # 网站搜索功能不可用，返回空结果
+        return {"list": [], "page": 1, "pagecount": 1, "limit": 0, "total": 0}
     
     def playerContent(self, flag, id, vipFlags):
-        """
-        播放器接口 - 与 mjv012.py 相同的成功模式
-        返回 parse=1 让客户端加载中间页，由客户端 WebView 处理 JS 加密
-        """
         if id and id.startswith('http'):
-            # 返回 parse=1，让客户端直接加载URL
-            # 客户端会处理页面中的 JS 加密和播放器加载
             return {"parse": 1, "playUrl": "", "url": id, "header": self.headers}
         return {"parse": 1, "playUrl": "", "url": "", "header": self.headers}
     
