@@ -13,6 +13,7 @@
 {"key":"Wv_hanju","name":"Ⓜ️Wv┃新韩剧网","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/新韩剧网.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_ttys","name":"Ⓜ️Wv┃天天影院","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/天天影院.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_ddya","name":"Ⓜ️Wv┃低端影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/低端影视.wv.js","searchable":1,"filterable":1,"switchable":1},
+{"key":"Wv_hongguo","name":"Ⓜ️Wv┃红果短剧","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/hongguo.wv.js","searchable":0,"filterable":0,"switchable":0},
 
 {"key":"八戒影视[APP]","name":"☄️八戒影视[APP]","type":3,"api":"https://raw.githubusercontent.com/ls125781003/tbapi2/refs/heads/main/py/app/八戒影视.py"},
 {"key":"新浪资源[APP]","name":"☄️新浪资源[APP]","type":3,"api":"https://raw.githubusercontent.com/ls125781003/tbapi2/refs/heads/main/py/app/新浪资源.py","changeable":0},
