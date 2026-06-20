@@ -152,7 +152,7 @@
 {"key":"push_agent","name":"🛴推送|播放","type":3,"api":"csp_PushAmns","searchable":0,"quickSearch":0,"changeable":0}
 ],
 "lives":[
-{"name":"咖啡直播","key":"KafLive","type":3,"api":"csp_KafLiveAmns","playerType":2}
+{"name":"咖啡直播","key":"KafLive","type":3,"api":"csp_KafLiveAmns","playerType":2},
 {"name":"檸檬TV","type":0,"url":"https://gitlab.com/lemon52030/BOX/-/raw/main/TV/tw.txt","ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"TV123","type":0,"url":"http://tv123.vvvv.ee/tv.m3u","playerType":2,"ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"4GTV¹","url":"https://raw.githubusercontent.com/myhomebox/EPG/refs/heads/main/playlist/4gtv.m3u"},
