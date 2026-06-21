@@ -5,7 +5,6 @@
 "danmaku":"http://127.0.0.1:2525/danmu?name={name}&epid={episode}",
 "sites":[
 {"key":"Douban","name":"🔥豆瓣推荐","type":3,"api":"csp_DoubanAmns","indexs":1,"searchable":0,"quickSearch":0,"changeable":0,"ext":"https://file.icve.com.cn/file_doc/803/892/C8FDF0894D61FA21A937E21135CB9125.aowu"},
-{"key":"AwDouban","name":"更新日期:20260620","type":3,"api":"csp_DoubanAmns","indexs":1,"searchable":0,"quickSearch":0,"changeable":0,"ext":"https://file.icve.com.cn/file_doc/803/892/C8FDF0894D61FA21A937E21135CB9125.aowu"},
 {"key":"MyConfig","name":"⚙️配置|中心","type":3,"api":"csp_AAConfigAmns","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"Dailymotion","name":"🪩Dailymotion┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Dailymotion.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 
