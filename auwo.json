@@ -1,7 +1,7 @@
 {
 "spider": "https://gitlab.com/lemon52030/BOX/-/raw/main/jar/auwo.jar",
 "logo":"https://pimg.1px.tw/kevinhooooo/1382968110-1464645251.gif",
-"wallpaper":"https://bing.img.run/rand.php",
+"wallpaper": "http://127.0.0.1:9978/proxy?do=AowuWapper&mode=1",
 "danmaku":"http://127.0.0.1:2525/danmu?name={name}&epid={episode}",
 "sites":[
 {"key":"Douban","name":"🔥豆瓣推荐","type":3,"api":"csp_DoubanAmns","indexs":1,"searchable":0,"quickSearch":0,"changeable":0,"ext":"https://file.icve.com.cn/file_doc/803/892/C8FDF0894D61FA21A937E21135CB9125.aowu"},
