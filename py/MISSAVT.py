@@ -3,22 +3,23 @@ import re
 import json
 import urllib.request
 import urllib.parse
+import base64
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
 from base.spider import Spider
 
 BASE = "https://missavt.com"
+AES_KEY = b'f5d965df75336270'
+AES_IV = b'97b60394abc2fbe1'
 
 class Spider(Spider):
     def getName(self):
         return "MissAVt"
 
     def init(self, extend=""):
-        self.site_url = BASE
-        self._og_cache = {}
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": BASE + "/",
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+            "Referer": BASE + "/"
         }
 
     def getDependence(self):
@@ -30,65 +31,127 @@ class Spider(Spider):
     def _get(self, url):
         try:
             req = urllib.request.Request(url, headers=self.headers)
-            with urllib.request.urlopen(req, timeout=5) as resp:
-                return resp.read().decode('utf-8', errors='ignore')
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return r.read().decode('utf-8', errors='ignore')
         except:
-            return None
+            return ""
 
     def _fix(self, u):
         if not u:
             return ""
-        u = u.strip()
         if u.startswith("//"):
             return "https:" + u
         if u.startswith("/"):
             return BASE + u
         return u
 
-    def _get_og_image(self, vid):
-        """从详情页获取og:image"""
-        if vid in self._og_cache:
-            return self._og_cache[vid]
-        try:
-            url = f"{BASE}/watch/{vid}/"
-            html = self._get(url)
-            if html:
-                m = re.search(r'<meta[^>]*property=["\']og:image["\'][^>]*content=["\']([^"\']+)["\']', html)
-                if m:
-                    pic = self._fix(m.group(1))
-                    self._og_cache[vid] = pic
-                    return pic
-        except:
-            pass
-        return ""
+    def _build_proxy_pic(self, pic_url):
+        """将原始加密图片 URL 转换为 TVBox 本地代理 URL"""
+        if not pic_url:
+            return ""
+        clean_url = pic_url.replace("pics://", "https://") if pic_url.startswith("pics://") else pic_url
+        img_b64 = base64.b64encode(clean_url.encode()).decode('utf-8')
+        return f"proxy://do=py&site={self.getName()}&type=img&url={img_b64}"
 
-    def _parse_list(self, html, max_items=24):
+    def _parse_list(self, html):
         if not html:
             return []
-        results = []
-        pattern = r'<a[^>]*href="/watch/([^"/]+)/?"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?</a>\s*<a[^>]*[^>]*>([^<]+)</a>'
-        matches = list(re.finditer(pattern, html, re.DOTALL))
-        for m in matches[:max_items]:
-            vid = m.group(1).strip()
-            title = m.group(3).strip()
-            pic = self._get_og_image(vid)
-            results.append({"vod_id": vid, "vod_name": title, "vod_pic": pic})
-        if not results:
-            pattern2 = r'<a[^>]*href="/watch/([^"/]+)/?"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?</a>.*?<a[^>]*class="[^"]*line-clamp[^"]*"[^>]*>([^<]+)</a>'
-            matches2 = list(re.finditer(pattern2, html, re.DOTALL))
-            for m in matches2[:max_items]:
-                vid = m.group(1).strip()
-                title = m.group(3).strip()
-                pic = self._get_og_image(vid)
-                results.append({"vod_id": vid, "vod_name": title, "vod_pic": pic})
+        results, seen = [], set()
+        
+        blocks = re.split(r'(?=<a[^>]+href=["\'][^"\']*?/watch/)', html)
+        
+        for block in blocks:
+            if "/watch/" not in block:
+                continue
+                
+            href_match = re.search(r'href=["\'][^"\']*?/watch/([^"\'>/]+)/?["\']', block)
+            if not href_match:
+                continue
+                
+            vod_id = href_match.group(1).strip()
+            if not vod_id or len(vod_id) < 2 or vod_id in seen:
+                continue
+            seen.add(vod_id)
+
+            pic = ""
+            mp = re.search(r'data-src=["\']([^"\']+)["\']', block)
+            if mp:
+                pic = self._fix(mp.group(1))
+                
+            title = vod_id
+            ma = re.search(r'class=["\'][^"\']*?line-clamp-2[^"\']*?["\'][^>]*>([\s\S]*?)</a>', block)
+            if ma:
+                title = ma.group(1).strip()
+                title = re.sub(r'<[^>]+>', '', title)
+            else:
+                malt = re.search(r'<img[^>]+alt=["\']([^"\']{2,})["\']', block)
+                if malt:
+                    title = malt.group(1).strip()
+
+            duration = ""
+            md = re.search(r'(\d{1,2}:\d{2}(?::\d{2})?)', block)
+            if md:
+                duration = md.group(1)
+
+            proxy_pic = self._build_proxy_pic(pic)
+            results.append({
+                "vod_id": vod_id,
+                "vod_name": title,
+                "vod_pic": proxy_pic,
+                "vod_remarks": duration
+            })
+            
         return results
+
+    def localProxy(self, params):
+        """本地代理图片解密引擎"""
+        if params.get('type') == 'img':
+            try:
+                img_url = base64.b64decode(params.get('url')).decode('utf-8')
+                img_headers = self.headers.copy()
+                img_headers.update({'Accept': 'image/avif,image/webp,image/*,*/*;q=0.8'})
+                req = urllib.request.Request(img_url, headers=img_headers)
+                
+                with urllib.request.urlopen(req, timeout=10) as r:
+                    raw_data = r.read()
+
+                if raw_data.startswith(b'\xff\xd8') or raw_data.startswith(b'\x89PNG') or raw_data.startswith(b'GIF8'):
+                    mime = "image/jpeg" if raw_data.startswith(b'\xff\xd8') else ("image/png" if raw_data.startswith(b'\x89PNG') else "image/gif")
+                    return [200, mime, raw_data]
+
+                if raw_data.startswith(b'"') or b' ' in raw_data[:10]:
+                    raw_data = base64.b64decode(raw_data.strip(b'"\' \n\r'))
+
+                cipher = AES.new(AES_KEY, AES.MODE_CBC, AES_IV)
+                decrypted = cipher.decrypt(raw_data)
+                try:
+                    decrypted = unpad(decrypted, AES.block_size)
+                except:
+                    pass
+
+                mime = "image/jpeg"
+                if decrypted.startswith(b'\x89PNG'):
+                    mime = "image/png"
+                elif decrypted.startswith(b'GIF8'):
+                    mime = "image/gif"
+                elif decrypted.startswith(b'RIFF') and b'WEBP' in decrypted[8:12]:
+                    mime = "image/webp"
+
+                return [200, mime, decrypted]
+            except Exception as e:
+                print(f"本地代理图片解密异常: {e}")
+        return [404, "text/plain", "Not Found"]
+
+    def _m3u8(self, slug):
+        html = self._get(f"{BASE}/embed/{slug}/")
+        m = re.search(r'<source\s+src=["\']([^"\']+\.m3u8[^"\']*)["\']', html)
+        return m.group(1) if m else ""
 
     def homeVideoContent(self):
         return self.homeContent(False)
 
     def homeContent(self, filter):
         html = self._get(BASE + "/")
-        video_list = self._parse_list(html, 24) if html else []
         classes = [
             {"type_id": "1", "type_name": "📺 首页"},
             {"type_id": "sort_hot", "type_name": "🔥 当前最热"},
@@ -131,7 +194,7 @@ class Spider(Spider):
             {"type_id": "tags", "type_name": "🏷️ AV标签"},
             {"type_id": "articles", "type_name": "📝 AV影评"},
         ]
-        return {"class": classes, "list": video_list, "filters": {}}
+        return {"class": classes, "list": self._parse_list(html)[:24], "filters": {}}
 
     def categoryContent(self, tid, pg, filter, extend):
         page = int(pg) if pg else 1
@@ -183,8 +246,8 @@ class Spider(Spider):
         else:
             url = f"{BASE}{base_path}" if page == 1 else f"{BASE}{base_path.rstrip('/')}/{page}/"
         html = self._get(url)
-        video_list = self._parse_list(html, 24) if html else []
-        pagecount = 50
+        video_list = self._parse_list(html)
+        pagecount = 100
         if html:
             m = re.search(r'第\d+/(\d+)\s*页', html)
             if m:
@@ -203,73 +266,66 @@ class Spider(Spider):
     def detailContent(self, ids):
         result = {"list": []}
         for vod_id in ids:
-            try:
-                embed_url = f"{BASE}/embed/{vod_id}/"
-                embed_html = self._get(embed_url)
-                if not embed_html:
-                    continue
-                
-                detail_url = f"{BASE}/watch/{vod_id}/"
-                detail_html = self._get(detail_url)
-                title = ""
-                pic = ""
-                if detail_html:
-                    m = re.search(r'<h1[^>]*>([^<]+)</h1>', detail_html)
-                    if m:
-                        title = m.group(1).strip()
-                    if not title:
-                        m = re.search(r'<title>([^<]+)</title>', detail_html)
-                        if m:
-                            title = m.group(1).strip().replace(' - MissAVt', '').replace(' - MissAV', '')
-                    m = re.search(r'<meta[^>]*property=["\']og:image["\'][^>]*content=["\']([^"\']+)["\']', detail_html)
-                    if m:
-                        pic = self._fix(m.group(1))
-                    if not pic:
-                        m = re.search(r'<meta[^>]*name=["\']twitter:image["\'][^>]*content=["\']([^"\']+)["\']', detail_html)
-                        if m:
-                            pic = self._fix(m.group(1))
-                
-                play_url = ""
-                m = re.search(r'<source[^>]*src="([^"]+\.m3u8[^"]*)"', embed_html)
-                if m:
-                    play_url = self._fix(m.group(1))
-                if not play_url:
-                    m = re.search(r'<video[^>]*src="([^"]+\.m3u8[^"]*)"', embed_html)
-                    if m:
-                        play_url = self._fix(m.group(1))
-                if not play_url:
-                    m = re.search(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', embed_html)
-                    if m:
-                        play_url = m.group(1)
-                
-                play_str = f"播放${play_url}" if play_url else f"播放{detail_url}"
-                result["list"].append({
-                    "vod_id": vod_id,
-                    "vod_name": title or vod_id,
-                    "vod_pic": pic,
-                    "vod_play_from": "MissAVt",
-                    "vod_play_url": play_str
-                })
-            except:
+            html = self._get(f"{BASE}/watch/{vod_id}/")
+            if not html:
                 continue
+                
+            title = vod_id
+            m = re.search(r'<h1[^>]*>\s*([^<]+)\s*</h1>', html)
+            if m:
+                title = m.group(1).strip()
+            
+            pic = ""
+            m = re.search(r'"thumbnailUrl"\s*:\s*"([^"]+)"', html)
+            if not m:
+                m = re.search(r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"', html)
+            if m:
+                pic = self._fix(m.group(1))
+            
+            proxy_pic = self._build_proxy_pic(pic)
+            
+            desc = ""
+            m = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html)
+            if m:
+                desc = m.group(1).strip()
+            
+            duration = ""
+            m = re.search(r'"times"\s*:\s*"([^"]+)"', html)
+            if m:
+                duration = m.group(1)
+            
+            m3u8 = self._m3u8(vod_id)
+            play_url = f"默认${m3u8}" if m3u8 else f"默认${BASE}/watch/{vod_id}/"
+            
+            result["list"].append({
+                "vod_id": vod_id,
+                "vod_name": title,
+                "vod_pic": proxy_pic,
+                "vod_content": desc,
+                "vod_remarks": duration,
+                "vod_play_from": "默认",
+                "vod_play_url": play_url
+            })
         return result
 
     def searchContent(self, key, quick, pg="1"):
         page = int(pg) if pg else 1
         encoded_key = urllib.parse.quote(key)
-        url = f"{BASE}/search/{encoded_key}/" if page == 1 else f"{BASE}/search/{encoded_key}/?page={page}"
-        html = self._get(url)
-        video_list = self._parse_list(html, 24) if html else []
-        return {"list": video_list, "page": page, "pagecount": 20}
+        url = f"{BASE}/search/{encoded_key}/" if page <= 1 else f"{BASE}/search/{encoded_key}/?page={page}"
+        return {"list": self._parse_list(self._get(url)), "page": page, "pagecount": 20}
 
     def playerContent(self, flag, id, vipFlags):
+        play_url = id
+        if ".m3u8" not in id:
+            m = re.search(r'/watch/([^/]+)/?$', id)
+            slug = m.group(1) if m else id.rstrip('/').split('/')[-1]
+            m3u8 = self._m3u8(slug)
+            if m3u8:
+                play_url = m3u8
         return {
             "parse": 0,
-            "url": id,
-            "header": json.dumps({
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "Referer": BASE + "/"
-            })
+            "url": play_url,
+            "header": json.dumps(self.headers)
         }
 
     def destroy(self):
