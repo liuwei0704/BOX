@@ -1,34 +1,139 @@
-import sys, requests, re, json, base64
-from bs4 import BeautifulSoup
-from urllib.parse import urljoin, unquote, quote
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import sys, re, json, base64, urllib.request, urllib.parse
 
-class Spider():
+class Spider:
     def __init__(self):
-        self.host = "https://186416.xyz"
-        self.session = requests.Session()
-        self.headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
-            'Referer': self.host,
-        }
+        pass
 
     def getName(self):
         return "18CM视频站"
 
-    # --- 依赖声明 ---
     def getDependence(self):
         return []
 
     def init(self, extend=""):
-        try: 
-            self.session.get(self.host, headers=self.headers, timeout=5)
-        except: 
-            pass
+        self.host = "https://186416.xyz"
+        self.ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+        self.headers = {
+            'User-Agent': self.ua,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'Referer': self.host,
+        }
+        self.limit = 24
 
-    # --- 首页内容：分类 + 推荐视频 ---
+    def _ensure_init(self):
+        if not hasattr(self, 'host'):
+            self.init()
+
+    def _fetch(self, url):
+        self._ensure_init()
+        try:
+            req = urllib.request.Request(url, headers=self.headers)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                return resp.read().decode('utf-8', errors='ignore')
+        except Exception as e:
+            return None
+
+    def _parse_video_list(self, html, limit=None):
+        """
+        只提取主内容区域的视频列表，排除推荐区域
+        """
+        items = []
+        if not html:
+            return items
+        
+        # 截取主内容区域：从 "分类：xxx" 之后到分页导航之前
+        # 找到 "分类：" 标记，从此处开始提取
+        main_start = html.find('分类：')
+        if main_start == -1:
+            main_start = 0
+        
+        # 找到 "最新發佈影片" 或 "标签" 或 "熱門推薦"，作为结束标记
+        end_markers = ['最新發佈影片', '标签', '熱門推薦', 'Join 18CM']
+        main_end = len(html)
+        for marker in end_markers:
+            pos = html.find(marker, main_start)
+            if pos != -1 and pos < main_end:
+                main_end = pos
+        
+        main_html = html[main_start:main_end]
+        
+        # 匹配 article.post 块
+        pattern = r'<article[^>]*class="[^"]*post[^"]*"[^>]*>(.*?)</article>'
+        blocks = re.findall(pattern, main_html, re.DOTALL)
+        
+        for block in blocks:
+            try:
+                title = ""
+                m = re.search(r'<a[^>]*title="([^"]*)"', block)
+                if m:
+                    title = m.group(1)
+                if not title:
+                    m = re.search(r'<a[^>]*>([^<]*)</a>', block)
+                    if m:
+                        title = m.group(1).strip()
+                if not title:
+                    continue
+                title = re.sub(r'[-|_\s]*(18CM|18cm|免费|高清|在线|观看|完整版|无码).*$', '', title, flags=re.I).strip()
+                
+                link = ""
+                m = re.search(r'<a[^>]*href="([^"]*)"', block)
+                if m:
+                    link = m.group(1)
+                    if not link.startswith('http'):
+                        link = urllib.parse.urljoin(self.host, link)
+                
+                pic = ""
+                m = re.search(r'<img[^>]*(?:data-src|src)="([^"]*)"', block)
+                if m:
+                    pic = m.group(1)
+                    if not pic.startswith('http'):
+                        pic = urllib.parse.urljoin(self.host, pic)
+                
+                remarks = ""
+                m = re.search(r'<span[^>]*class="[^"]*views[^"]*"[^>]*>([^<]*)</span>', block)
+                if m:
+                    remarks = m.group(1).strip()
+                
+                if link and title:
+                    vod_id_match = re.search(r'/(\d+)/?$', link)
+                    if vod_id_match:
+                        vod_id = vod_id_match.group(1)
+                    else:
+                        vod_id = link.split('/')[-1] or link
+                    
+                    items.append({
+                        "vod_id": vod_id,
+                        "vod_name": title,
+                        "vod_pic": pic,
+                        "vod_remarks": remarks or ""
+                    })
+                    if limit and len(items) >= limit:
+                        break
+            except:
+                continue
+        return items
+
+    def _parse_total_pages(self, html):
+        max_page = 1
+        if not html:
+            return max_page
+        nums = re.findall(r'<a[^>]*>\s*(\d+)\s*</a>', html)
+        for n in nums:
+            if n.isdigit() and int(n) > max_page:
+                max_page = int(n)
+        m = re.search(r'共\s*(\d+)\s*页', html)
+        if m:
+            max_page = int(m.group(1))
+        return max_page if max_page >= 1 else 1
+
     def homeContent(self, filter):
+        self._ensure_init()
         result = {
             'class': [
-                {"type_name": "全部", "type_id": ""},
+                
                 {"type_name": "国产", "type_id": "%e5%9c%8b%e7%94%a2av/"},
                 {"type_name": "网红", "type_id": "%e9%a1%94%e5%80%bc%e7%b6%b2%e7%b4%85/"},
                 {"type_name": "探花", "type_id": "%e6%8e%a2%e8%8a%b1%e7%b4%84%e7%82%ae/"},
@@ -41,191 +146,128 @@ class Spider():
                 {"type_name": "欧美", "type_id": "%e6%ad%90%e7%be%8e/"},
             ]
         }
-        # 获取首页推荐视频
-        try:
-            res = self.session.get(self.host, headers=self.headers)
-            res.encoding = 'utf-8'
-            v_list = self.parseHomeList(res.text)
-            result['list'] = v_list
-        except:
+        html = self._fetch(self.host)
+        if html:
+            result['list'] = self._parse_video_list(html, self.limit)
+        else:
             result['list'] = []
         return result
 
     def homeVideoContent(self):
         return self.homeContent(False)
 
-    # --- 解析首页视频列表 ---
-    def parseHomeList(self, html):
-        video_list = []
-        soup = BeautifulSoup(html, 'html.parser')
-        # 首页视频在 article.post 容器中
-        items = soup.select('article.post')
-        for item in items:
-            try:
-                a = item.find('a', href=True)
-                if not a: 
-                    continue
-                title_elem = item.select_one('.entry-title a') or a
-                raw_name = title_elem.get('title') or title_elem.text.strip()
-                name = re.sub(r'[-|_\s]*(18CM|18cm|免费|高清|在线|观看|完整版|无码).*$', '', raw_name, flags=re.I).strip()
-                
-                img = item.find('img')
-                pic = img.get('data-src') or img.get('src') or ''
-                if pic and not pic.startswith('http'):
-                    pic = urljoin(self.host, pic)
-                
-                # 获取播放次数/备注
-                views_elem = item.select_one('.views, .meta-views, .entry-meta span')
-                remarks = views_elem.text.strip() if views_elem else ''
-                
-                video_list.append({
-                    "vod_id": a['href'],
-                    "vod_name": name,
-                    "vod_pic": pic,
-                    "vod_remarks": remarks
-                })
-            except:
-                continue
-        
-        # 去重
-        seen = set()
-        res_list = []
-        for v in video_list:
-            if v['vod_id'] not in seen:
-                res_list.append(v)
-                seen.add(v['vod_id'])
-        return res_list
-
-    # --- 分类列表 ---
     def categoryContent(self, tid, pg, filter, extend):
-        # tid 为分类ID，pg 为页码
+        self._ensure_init()
+        pg = int(pg) if pg else 1
         if tid:
-            url = urljoin(self.host, f"/{tid}page/{pg}/")
+            if '%' not in tid:
+                tid = urllib.parse.quote(tid)
+            clean_tid = tid.rstrip('/')
+            if pg == 1:
+                url = urllib.parse.urljoin(self.host, "/%s/" % clean_tid)
+            else:
+                url = urllib.parse.urljoin(self.host, "/%s/page/%s/" % (clean_tid, pg))
         else:
-            url = urljoin(self.host, f"/page/{pg}/")
+            if pg == 1:
+                url = urllib.parse.urljoin(self.host, "/")
+            else:
+                url = urllib.parse.urljoin(self.host, "/page/%s/" % pg)
         
-        try:
-            res = self.session.get(url, headers=self.headers)
-            res.encoding = 'utf-8'
-            v_list = self.parseCategoryList(res.text)
+        html = self._fetch(url)
+        if html:
+            v_list = self._parse_video_list(html, self.limit)
+            total_pages = self._parse_total_pages(html)
             return {
                 "list": v_list,
-                "page": int(pg),
-                "pagecount": 99,
+                "page": pg,
+                "pagecount": total_pages,
                 "limit": len(v_list),
-                "total": 999
+                "total": 0
             }
-        except Exception as e:
-            return {"list": [], "page": int(pg)}
+        return {"list": [], "page": pg, "pagecount": 1, "limit": 0, "total": 0}
 
-    def parseCategoryList(self, html):
-        video_list = []
-        soup = BeautifulSoup(html, 'html.parser')
-        items = soup.select('article.post')
-        for item in items:
-            try:
-                a = item.find('a', href=True)
-                if not a:
-                    continue
-                title_elem = item.select_one('.entry-title a') or a
-                raw_name = title_elem.get('title') or title_elem.text.strip()
-                name = re.sub(r'[-|_\s]*(18CM|18cm|免费|高清|在线|观看|完整版|无码).*$', '', raw_name, flags=re.I).strip()
-                
-                img = item.find('img')
-                pic = img.get('data-src') or img.get('src') or ''
-                if pic and not pic.startswith('http'):
-                    pic = urljoin(self.host, pic)
-                
-                video_list.append({
-                    "vod_id": a['href'],
-                    "vod_name": name,
-                    "vod_pic": pic,
-                    "vod_remarks": ""
-                })
-            except:
-                continue
-        
-        seen = set()
-        res_list = []
-        for v in video_list:
-            if v['vod_id'] not in seen:
-                res_list.append(v)
-                seen.add(v['vod_id'])
-        return res_list
-
-    # --- 搜索 ---
     def searchContent(self, key, quick, pg=1):
-        search_url = urljoin(self.host, f"/?s={quote(key)}")
-        try:
-            res = self.session.get(search_url, headers=self.headers)
-            res.encoding = 'utf-8'
-            v_list = self.parseCategoryList(res.text)
-            return {"list": v_list}
-        except:
-            return {"list": []}
+        self._ensure_init()
+        search_url = urllib.parse.urljoin(self.host, "/?s=%s" % urllib.parse.quote(key))
+        html = self._fetch(search_url)
+        if html:
+            return {"list": self._parse_video_list(html, self.limit)}
+        return {"list": []}
 
-    # --- 详情页 ---
     def detailContent(self, ids):
-        url = ids[0] if ids[0].startswith('http') else urljoin(self.host, ids[0])
-        try:
-            res = self.session.get(url, headers=self.headers)
-            res.encoding = 'utf-8'
-            soup = BeautifulSoup(res.text, 'html.parser')
-            
-            # 标题
-            title_elem = soup.select_one('.entry-title')
-            vod_name = title_elem.text.strip() if title_elem else "未知标题"
-            
-            # 封面
-            img = soup.select_one('.post-thumbnail img, .entry-content img')
-            vod_pic = img.get('src') or img.get('data-src') or ''
-            if vod_pic and not vod_pic.startswith('http'):
-                vod_pic = urljoin(self.host, vod_pic)
-            
-            # 描述
-            desc_elem = soup.select_one('.entry-content p, .video-description')
-            vod_content = desc_elem.text.strip() if desc_elem else ""
-            
-            # 播放源解析：从iframe的q参数中提取真实地址
-            play_url = ""
-            iframe = soup.select_one('.video-player iframe')
-            if iframe:
-                iframe_src = iframe.get('src', '')
-                # 提取q参数
-                q_match = re.search(r'q=([^&]+)', iframe_src)
-                if q_match:
-                    try:
-                        q_value = q_match.group(1)
-                        decoded = base64.b64decode(q_value).decode('utf-8')
-                        from urllib.parse import unquote
-                        video_html = unquote(decoded)
-                        # 从video HTML中提取src
-                        src_match = re.search(r'src="([^"]+)"', video_html)
-                        if src_match:
-                            play_url = src_match.group(1)
-                    except:
-                        pass
-            
-            # 演员/分类信息
-            tags = [t.text.strip() for t in soup.select('.entry-tags a, .tags-links a')]
-            vod_actor = ','.join(tags[:5]) if tags else ""
-            
-            vod_list = [{
-                "vod_id": ids[0],
-                "vod_name": vod_name,
-                "vod_pic": vod_pic,
-                "vod_content": vod_content,
-                "vod_actor": vod_actor,
-                "vod_play_from": "18CM",
-                "vod_play_url": f"正片${play_url}" if play_url else "正片$"
-            }]
-            return {"list": vod_list}
-        except Exception as e:
+        self._ensure_init()
+        if not ids:
             return {"list": []}
+        vod_id = ids[0]
+        if vod_id.isdigit():
+            url = urllib.parse.urljoin(self.host, "/?p=%s" % vod_id)
+        elif vod_id.startswith('http'):
+            url = vod_id
+        else:
+            url = urllib.parse.urljoin(self.host, "/%s/" % vod_id)
+        html = self._fetch(url)
+        if not html:
+            return {"list": []}
+        
+        vod_name = "未知标题"
+        m = re.search(r'<h1[^>]*class="entry-title"[^>]*>([^<]*)</h1>', html)
+        if m:
+            vod_name = m.group(1).strip()
+        if not vod_name or vod_name == "未知标题":
+            m = re.search(r'<title>([^<]*)</title>', html)
+            if m:
+                vod_name = m.group(1).strip()
+                vod_name = re.sub(r'[-–]18CM.*$', '', vod_name).strip()
+        
+        vod_pic = ""
+        m = re.search(r'<img[^>]*class="[^"]*post-thumbnail[^"]*"[^>]*(?:data-src|src)="([^"]*)"', html)
+        if not m:
+            m = re.search(r'<img[^>]*(?:data-src|src)="([^"]*)"[^>]*class="[^"]*wp-post-image[^"]*"', html)
+        if m:
+            vod_pic = m.group(1)
+            if not vod_pic.startswith('http'):
+                vod_pic = urllib.parse.urljoin(self.host, vod_pic)
+        
+        vod_content = ""
+        m = re.search(r'<div[^>]*class="entry-content"[^>]*>(.*?)</div>', html, re.DOTALL)
+        if m:
+            vod_content = re.sub(r'<[^>]+>', ' ', m.group(1)).strip()
+            vod_content = re.sub(r'\s+', ' ', vod_content)[:200]
+        
+        play_url = ""
+        m = re.search(r'<iframe[^>]*src="([^"]*)"', html)
+        if m:
+            iframe_src = m.group(1)
+            q_m = re.search(r'q=([^&]+)', iframe_src)
+            if q_m:
+                try:
+                    q_value = q_m.group(1)
+                    decoded = base64.b64decode(q_value).decode('utf-8')
+                    video_html = urllib.parse.unquote(decoded)
+                    src_m = re.search(r'src="([^"]+)"', video_html)
+                    if src_m:
+                        play_url = src_m.group(1)
+                except:
+                    pass
+            if not play_url and iframe_src.startswith('http'):
+                play_url = iframe_src
+        
+        tags = re.findall(r'<a[^>]*rel="tag"[^>]*>([^<]*)</a>', html)
+        vod_actor = ','.join(tags[:5]) if tags else ""
+        
+        vod_list = [{
+            "vod_id": vod_id,
+            "vod_name": vod_name,
+            "vod_pic": vod_pic,
+            "vod_content": vod_content,
+            "vod_actor": vod_actor,
+            "vod_play_from": "18CM",
+            "vod_play_url": "正片$%s" % play_url if play_url else "正片$"
+        }]
+        return {"list": vod_list}
 
-    # --- 播放地址解析 ---
     def playerContent(self, flag, id, vipFlags):
-        # id 为播放地址 URL
+        self._ensure_init()
         if id.startswith('http'):
             return {"url": id}
-        return {"url": urljoin(self.host, id)}
+        return {"url": urllib.parse.urljoin(self.host, id)}
