@@ -80,7 +80,6 @@ class Spider:
         for item in items:
             try:
                 if hasattr(item, 'select_one'):
-                    # BeautifulSoup对象
                     a_tag = item.select_one('a')
                     if not a_tag:
                         continue
@@ -100,7 +99,6 @@ class Spider:
                     remark_tag = item.select_one('.module-item-text')
                     remark = remark_tag.text.strip() if remark_tag else ''
                 else:
-                    # 正则匹配
                     a_match = re.search(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*>', item)
                     if not a_match:
                         continue
@@ -171,7 +169,6 @@ class Spider:
         if not url_path:
             return {"list": []}
         
-        # 构建分页URL
         if p > 1:
             url = self.site_url + url_path + "?page=" + str(p)
         else:
@@ -183,11 +180,9 @@ class Spider:
         
         vod_list = self.extract_vod_list(html)
         
-        # 提取总页数 - 从分页控件中解析
         pagecount = p
         soup = self._parse_html(html)
         if soup:
-            # 查找所有分页数字
             page_items = soup.select('#page a, #page span, .page-number')
             for item in page_items:
                 text = item.text.strip()
@@ -198,7 +193,6 @@ class Spider:
                             pagecount = num
                     except:
                         pass
-            # 如果还是没有，尝试从"尾页"链接提取
             if pagecount == p:
                 last_link = soup.select_one('a[href*="page="]:contains("尾页")')
                 if last_link:
@@ -229,7 +223,6 @@ class Spider:
         
         soup = self._parse_html(html) if html else None
         
-        # 提取标题
         title = ""
         if soup:
             h1 = soup.select_one('h1.page-title')
@@ -244,7 +237,6 @@ class Spider:
             if title_match:
                 title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip()
         
-        # 提取封面
         pic = ""
         if soup:
             img = soup.select_one('img[data-original]')
@@ -255,7 +247,6 @@ class Spider:
             if img_match:
                 pic = self.fix_url(img_match.group(1))
         
-        # 提取简介
         desc = ""
         if soup:
             desc_tag = soup.select_one('.video-info-content, .vod-content, .module-desc')
@@ -267,12 +258,10 @@ class Spider:
                 desc = re.sub(r'<[^>]+>', '', desc_match.group(1)).strip()
                 desc = re.sub(r'<a[^>]*>.*?</a>', '', desc).strip()
         
-        # 从详情页URL提取视频ID
         vid_match = re.search(r'/(duanjuxq|manjuxq)/(\d+)', url)
         video_id = vid_match.group(2) if vid_match else None
         prefix = vid_match.group(1).replace('juxq', 'ju') if vid_match else 'duanju'
         
-        # 提取总集数
         total_episodes = 80
         if soup:
             text = soup.text
@@ -293,7 +282,6 @@ class Spider:
         if total_episodes > 200:
             total_episodes = 80
         
-        # 构造剧集列表
         episodes = []
         for i in range(1, total_episodes + 1):
             play_url = f"{self.site_url}/{prefix}/{video_id}/play-{i}-1.html"
@@ -357,3 +345,7 @@ class Spider:
                     return {"parse": 0, "playUrl": video_url}
         
         return {"parse": 1, "playUrl": id}
+
+    def destroy(self):
+        """销毁资源"""
+        pass
