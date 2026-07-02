@@ -7,7 +7,10 @@
 {"key":"Douban","name":"🔥豆瓣推荐","type":3,"api":"csp_DoubanAmns","indexs":1,"searchable":0,"quickSearch":0,"changeable":0,"ext":"https://file.icve.com.cn/file_doc/803/892/C8FDF0894D61FA21A937E21135CB9125.aowu"},
 {"key":"Y360","name":"🔥360推荐","type":3,"api":"csp_Y360Amns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://file.icve.com.cn/file_doc/121/281/1E74668FD5125AA70977BC98A1B297A1.aowu"},
 {"key":"MyConfig","name":"⚙️配置|中心","type":3,"api":"csp_AAConfigAmns","searchable":0,"quickSearch":0,"changeable":0},
+
 {"key":"Dailymotion","name":"🪩Dailymotion┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Dailymotion.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"新短劇網","name":"🪩新短劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/newduanju_spider.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
+{"key":"八影短劇網","name":"🪩八影短劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/八影短劇網.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 
 {"key":"AowuDmAw","name":"🐱嗷嗚|动漫","type":3,"api":"csp_AowuDmAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"563357143fce50cabe524135fd3fb26e4af09034942cb186addd2322edf17ab6c9b78627645980399087f30260707c8613b0ad40dab539ddb35d7ac9f78fcf015b7e10bc9ca2f37e127890269cdd3efdfa6ce6789494fdc5352c9e544f3b048a43885af6fb083f8545f6bfa3d33291ea4210bb397b004f1b5c2660408febda99840eec91efa7142878bb1e553ad0872a0851f903d7748b0bdee1ad7975b8f4c4838fda079f1bdebb0ab77f51da3dfa8eb30ca3c0bf56e584abfd70e025a03aeff2bca60aa9075588a4953a1b7fef021b"},
 {"key":"FanShu","name":"🐱番薯|动漫","type":3,"api":"csp_FanShuAmns","searchable":1,"quickSearch":1,"changeable":0},
@@ -51,6 +54,7 @@
 {"key":"Ysp","name":"🌍U视|墙外","type":3,"api":"csp_YspAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"Olyy","name":"🌍欧乐|墙外","type":3,"api":"csp_OlyyAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"Aiyf","name":"🌍壹帆|墙外","type":3,"api":"csp_AiyfAmns","searchable":1,"quickSearch":1,"changeable":0},
+
 {"key":"Bilive","name":"📡Bili|Live","type":3,"api":"csp_BiliveAmns","searchable":1,"quickSearch":1,"changeable":0,"style":{"type":"rect","ratio":1.433}},
 {"key":"HuyaLive","name":"📡虎牙|Live","type":3,"api":"csp_HuyaLiveAmns","searchable":1,"quickSearch":1,"changeable":0,"style":{"type":"rect","ratio":1.433}},
 {"key":"GuaziLive","name":"🏆瓜子|体育","type":3,"api":"csp_GuaziLiveAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"https://api.bmjb2mk7.com,https://api.46d5umpk.com,https://api.tkfupxqu.com,https://api.5h5hbfhh.com,https://api.qchyzkww.com,https://api.cjxxpgkq.com,https://api.zejzeu7p.com"},
@@ -58,6 +62,7 @@
 {"key":"BbkqLive","name":"🏆88|体育","type":3,"api":"csp_BbkqLiveAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://www.88kanqiu.app,https://www.88kanqiu.la,https://www.88kanqiu.one,https://www.88kanqiu.ooo,https://www.88kanqiu.pw"},
 {"key":"KafLive","name":"🏆咖啡|体育","type":3,"api":"csp_KafLiveAmns","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"BiliHeji","name":"🎉Bili|合集","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"home":"1","json":"https://nos.netease.com/youdata-netease/public-utilUpload-k6DvN2PqNEVLhPeiigkmji.gz","cookie":""},"style":{"type":"rect","ratio":1.433}},
+
 {"key":"八戒影视[APP]","name":"☄️八戒影视[APP]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/app/八戒影视.py"},
 {"key":"新浪资源[APP]","name":"☄️新浪资源[APP]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/app/新浪资源.py","changeable":0},
 {"key":"独播库[APP]","name":"☄️独播库[APP]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/app/独播库.py"},
@@ -93,12 +98,8 @@
 {"key":"金牌","name":"🪩金牌┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/金牌.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"追劇網","name":"🪩追劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/追劇網.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"追剧兔","name":"🪩追剧兔┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/zhuijutu.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"首映網","name":"🪩首映網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/首映網.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"58btv","name":"🪩58btv┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/58btv.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"KTV183","name":"🪩KTV183┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/KTV183.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"Cloud影视","name":"🪩Cloud影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/Cloud影视.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"KT剧集","name":"🪩KT剧集┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/KT剧集.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"03影视","name":"🪩03影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/03yy.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"4K影视","name":"🪩4K影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/4K影视.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"FoFo影院","name":"🪩FoFo影院┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/fofoyy_spider.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"2DZ影視","name":"🪩2DZ影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/2DZ影視.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
@@ -117,9 +118,7 @@
 {"key":"必康影视","name":"🪩必康影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/必康影视.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"打卡影视","name":"🪩打卡影视┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/打卡影视.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"毒哥影視","name":"🪩毒哥影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/毒哥影視.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"桃子影視","name":"🪩桃子影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/桃子影視.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"枝枝影視","name":"🪩枝枝影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/枝枝影視.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"乐兔影視","name":"🪩乐兔影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/letu_spider.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"袋鼠影視","name":"🪩袋鼠影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/袋鼠影視.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"極速看劇","name":"🪩極速看劇┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/極速看劇.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"永乐视频","name":"🪩永乐视频┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/永乐视频.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
@@ -136,7 +135,6 @@
 {"key":"小豬看看","name":"🪩小豬看看┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/xiaozhukankan.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"小鸭子看看","name":"🪩小鸭子看看┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/小鸭子看看.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"哈密瓜影視","name":"🪩哈密瓜影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/hmgyy.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
-{"key":"八影短劇網","name":"🪩八影短劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/八影短劇網.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"MMOV影視","name":"🪩MMOV影視┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/MMOV影視.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 
 {"key":"PSfish","name":"🔍fish|盘搜","type":3,"api":"csp_PSfishAmns","searchable":1,"quickSearch":1,"changeable":0},
