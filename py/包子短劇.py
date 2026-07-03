@@ -1,116 +1,241 @@
+# 包子短剧 Spider (baoziduanju.com)
 import sys
 import re
-import requests
 import json
-from bs4 import BeautifulSoup
-from urllib.parse import quote
+import urllib.parse
+from urllib.parse import urljoin, quote
 
 class Spider:
     def __init__(self):
-        self.siteUrl = "https://baoziduanju.com"
-        self.session = requests.Session()
-        self.header = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": self.siteUrl
+        self.site_url = "https://baoziduanju.com"
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Accept': 'application/json, text/html,application/xhtml+xml,application/xml;q=0.9',
+            'Accept-Language': 'zh-CN,zh;q=0.9',
+            'Referer': self.site_url
         }
+        
+        self.categories = [
+            {"type_id": "1", "type_name": "系统觉醒", "url": "/category/系统觉醒.html"},
+            {"type_id": "2", "type_name": "穿越重生", "url": "/category/穿越重生.html"},
+            {"type_id": "3", "type_name": "都市逆袭", "url": "/category/都市逆袭.html"},
+            {"type_id": "4", "type_name": "古风权谋", "url": "/category/古风权谋.html"},
+            {"type_id": "5", "type_name": "总裁娇妻", "url": "/category/总裁娇妻.html"},
+            {"type_id": "6", "type_name": "玄幻仙侠", "url": "/category/玄幻仙侠.html"},
+            {"type_id": "7", "type_name": "奇幻科幻", "url": "/category/奇幻科幻.html"}
+        ]
 
-    def getName(self): return "包子短剧"
-    def getDependence(self): return []
-    def init(self, extend): pass
+    def init(self, cfg=None):
+        pass
 
-    def homeContent(self, filter):
-        classes = [{"type_id": "系统觉醒", "type_name": "系统觉醒"},{"type_id": "穿越重生", "type_name": "穿越重生"},{"type_id": "都市逆袭", "type_name": "都市逆袭"},{"type_id": "古风权谋", "type_name": "古风权谋"},{"type_id": "总裁娇妻", "type_name": "总裁娇妻"},{"type_id": "玄幻仙侠", "type_name": "玄幻仙侠"},{"type_id": "奇幻科幻", "type_name": "奇幻科幻"}]
-        return {"class": classes, "list": self.get_list(self.siteUrl + "/index.html")}
+    def getDependence(self):
+        return []
+
+    def getClass(self):
+        result = []
+        for cat in self.categories:
+            result.append({
+                "type_id": self.site_url + cat["url"],
+                "type_name": cat["type_name"]
+            })
+        return result
+
+    def _fetch(self, url, is_json=False):
+        import urllib.request
+        try:
+            parsed = urllib.parse.urlparse(url)
+            path_parts = parsed.path.split('/')
+            encoded_path = '/'.join(quote(p) if p and not re.match(r'^[a-zA-Z0-9\-_.~]+$', p) else p for p in path_parts)
+            encoded_url = urllib.parse.urlunparse((
+                parsed.scheme, parsed.netloc, encoded_path, 
+                parsed.params, parsed.query, parsed.fragment
+            ))
+            
+            req = urllib.request.Request(encoded_url, headers=self.headers)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                content = resp.read().decode('utf-8', errors='ignore')
+                if is_json:
+                    return json.loads(content)
+                return content
+        except Exception as e:
+            return None if not is_json else {}
+
+    def fix_url(self, url):
+        if not url:
+            return ""
+        if url.startswith("http"):
+            return url
+        if url.startswith("//"):
+            return "https:" + url
+        return urljoin(self.site_url, url)
+
+    def extract_list(self, html):
+        result = []
+        seen = set()
+        if not html or 'video-card' not in html:
+            return result
+        
+        pattern = r'<a\s+href="(/video/\d+\.html)"[^>]*>.*?<img[^>]+src="([^"]+)"[^>]*>.*?<div[^>]*class="[^"]*video-duration[^"]*"[^>]*>([^<]+)</div>.*?<div[^>]*class="[^"]*video-title[^"]*"[^>]*>([^<]+)</div>'
+        
+        for href, pic, duration, title in re.findall(pattern, html, re.DOTALL):
+            url = self.fix_url(href)
+            if url in seen:
+                continue
+            seen.add(url)
+            
+            result.append({
+                "vod_id": url,
+                "vod_name": title.strip(),
+                "vod_pic": self.fix_url(pic),
+                "vod_remarks": duration.strip()
+            })
+        
+        return result
+
+    def homeContent(self, filter=False):
+        class_list = self.getClass()
+        html = self._fetch(self.site_url + "/")
+        video_list = self.extract_list(html) if html else []
+        return {
+            "class": class_list,
+            "list": video_list
+        }
 
     def homeVideoContent(self):
-        return {"list": self.get_list(self.siteUrl + "/index.html")}
+        return self.homeContent()
 
-    def categoryContent(self, tid, pg, filter, extend):
-        e_tid = tid if tid.startswith("%") else quote(tid)
-        url = f"{self.siteUrl}/category/{e_tid}.html" if str(pg) == "1" else f"{self.siteUrl}/category/{e_tid}/page/{pg}.html"
-        return {"page": pg, "pagecount": 99, "list": self.get_list(url)}
+    def categoryContent(self, tid, pg=1, filter=False, extend={}):
+        p = int(pg) if pg else 1
+        
+        if p > 1:
+            if tid.endswith('.html'):
+                url = tid.replace('.html', f'/page/{p}.html')
+            else:
+                url = tid + f'/page/{p}'
+        else:
+            url = tid
+        
+        html = self._fetch(url)
+        if not html:
+            return {"list": []}
+        
+        vod_list = self.extract_list(html)
+        
+        return {
+            "list": vod_list,
+            "page": p,
+            "pagecount": 20
+        }
 
     def detailContent(self, ids):
-        id_val = str(ids[0])
-        target = self.siteUrl + (id_val if id_val.startswith("/") else "/video/" + id_val + ".html")
-        res = self.session.get(target, headers=self.header, timeout=10, verify=False)
-        res.encoding = 'utf-8'
-        html = res.text
-        play_list = []
-        v_match = re.search(r"vodPlayUrl\s*=\s*['\"](.*?)['\"]", html)
-        if v_match:
-            v_raw = v_match.group(1).replace('\/', '/')
-            if '#' in v_raw: play_list = v_raw.split('#')
-            elif '.m3u8' in v_raw: play_list.append("正片$" + v_raw)
-        if not play_list:
-            c_m = re.search(r'/(?:video|watch)/(\d+)', id_val)
-            if c_m:
-                cid = c_m.group(1)
-                eps = re.findall(rf'/{cid}_(\d+)\.html', html)
-                if eps:
-                    for ep in sorted(list(set(map(int, eps)))):
-                        play_list.append(f"第{ep}集${self.siteUrl}/watch/{cid}_{ep}.html")
+        if not ids:
+            return {"list": []}
+        
+        url = ids[0]
+        if not url.startswith("http"):
+            url = self.fix_url(url)
+        
+        html = self._fetch(url)
+        if not html:
+            return {"list": []}
+        
+        # 标题
         title = "短剧"
-        t_m = re.search(r'<h1.*?>(.*?)</h1>', html)
-        if t_m: title = t_m.group(1).split('-')[0].strip()
+        t = re.search(r'<h1[^>]*>(.*?)</h1>', html, re.DOTALL)
+        if t:
+            title = re.sub(r'<[^>]+>', '', t.group(1)).strip()
+            title = title.split('-')[0].strip()
+        
+        # 封面
+        pic = ""
+        p = re.search(r'<img[^>]+src=["\']([^"\']+\.(?:jpg|jpeg|png|webp))["\']', html)
+        if p:
+            pic = self.fix_url(p.group(1))
+        
+        # 提取播放地址
+        play_urls = []
+        
+        # 从 vodPlayUrl 提取
+        for m in re.finditer(r"vodPlayUrl\s*=\s*['\"](.*?)['\"]", html):
+            raw = m.group(1).replace('\\/', '/')
+            if '$' in raw:
+                parts = raw.split('$', 1)
+                name = parts[0].strip()
+                url_play = parts[1] if len(parts) > 1 else raw
+                if url_play and '.m3u8' in url_play:
+                    play_urls.append({"name": name or "正片", "url": url_play})
+            elif '.m3u8' in raw:
+                play_urls.append({"name": "正片", "url": raw})
+        
+        # 从选集列表提取
+        if not play_urls:
+            ep_pattern = r'<a[^>]+href="(/watch/\d+_\d+\.html)"[^>]*>.*?第(\d+)集'
+            for href, ep_num in re.findall(ep_pattern, html):
+                play_urls.append({
+                    "name": f"第{ep_num}集",
+                    "url": self.fix_url(href)
+                })
+        
+        if not play_urls:
+            play_urls.append({"name": "正片", "url": url})
+        
+        play_url_str = "#".join([f"{item['name']}${item['url']}" for item in play_urls])
+        
+        # 备注
+        remark = "已完结"
+        r = re.search(r'<div[^>]*class="[^"]*video-duration[^"]*"[^>]*>(.*?)</div>', html)
+        if r:
+            remark = r.group(1).strip()
+        
         vod = {
-            "vod_id": id_val,
-            "vod_name": self.clean_name(title),
-            "vod_remarks": f"更新至{len(play_list)}集" if len(play_list) > 1 else "全一集",
+            "vod_id": url,
+            "vod_name": title,
+            "vod_pic": pic,
             "vod_play_from": "包子专线",
-            "vod_play_url": "#".join(play_list) if play_list else f"正片${target}"
+            "vod_play_url": play_url_str,
+            "vod_content": remark,
+            "vod_remarks": remark
         }
+        
         return {"list": [vod]}
 
-    def searchContent(self, key, quick, pg="1"):
-        api_url = f"{self.siteUrl}/api/videos/search?q={quote(key)}&page=1&limit=20"
-        v_list = []
-        try:
-            r = self.session.get(api_url, headers=self.header, timeout=10, verify=False)
-            data = r.json()
-            videos = data.get("data", {}).get("videos", [])
-            for v in videos:
-                vid = str(v.get("vod_id", ""))
-                v_list.append({
-                    "vod_id": f"/video/{vid}.html" if vid else "",
-                    "vod_name": self.clean_name(v.get("vod_name", "短剧")),
-                    "vod_pic": v.get("vod_pic", ""),
-                    "vod_remarks": v.get("vod_remarks", "")
-                })
-        except: pass
-        if not v_list: v_list = self.get_list(f"{self.siteUrl}/search/{quote(key)}.html")
-        return {"list": v_list}
+    def searchContent(self, key, quick=False, pg=1):
+        """
+        搜索功能 - 使用API: /api/videos/search
+        """
+        p = int(pg) if pg else 1
+        encoded = quote(key)
+        url = f"{self.site_url}/api/videos/search?q={encoded}&page={p}&limit=20"
+        
+        data = self._fetch(url, is_json=True)
+        if not data or data.get('code') != 200:
+            return {"list": []}
+        
+        videos = data.get('data', {}).get('videos', [])
+        result = []
+        
+        for v in videos:
+            vid = str(v.get('vod_id', ''))
+            if not vid:
+                continue
+            
+            # 构造视频URL
+            vod_url = f"/video/{vid}.html"
+            
+            # 提取播放地址（如果有）
+            play_url = v.get('vod_play_url', '')
+            
+            result.append({
+                "vod_id": vod_url,
+                "vod_name": v.get('vod_name', '短剧'),
+                "vod_pic": self.fix_url(v.get('vod_pic', '')),
+                "vod_remarks": v.get('vod_remarks', '已完结')
+            })
+        
+        return {"list": result}
 
-    def playerContent(self, flag, id, vipFlags):
-        if ".m3u8" in id: return {"parse": 0, "url": id, "header": self.header}
-        res = self.session.get(id, headers=self.header, timeout=10, verify=False)
-        m = re.search(r'url:[\'"](.*?\.m3u8.*?)[\'"]', res.text)
-        u = m.group(1).replace("\/", "/") if m else id
-        return {"parse": 0, "url": u, "header": self.header}
+    def playerContent(self, flag, id, vipFlags=[]):
+        return {"parse": 0, "playUrl": id}
 
-    def get_list(self, url):
-        try:
-            r = self.session.get(url, headers=self.header, timeout=10, verify=False)
-            soup = BeautifulSoup(r.text, "html.parser")
-            v_list = []
-            for item in soup.select(".video-card, .video-grid a, .module-item"):
-                a = item if item.name == 'a' else item.select_one('a')
-                img = item.select_one("img")
-                if not a or not img: continue
-                href = a.get("href", "")
-                if "/video/" not in href and "/watch/" not in href: continue
-                rem = ""
-                rem_node = item.select_one(".video-duration, .module-item-note, .remarks, .label")
-                if rem_node: rem = rem_node.get_text().strip()
-                v_list.append({
-                    "vod_id": href,
-                    "vod_name": self.clean_name(img.get("alt", "短剧")),
-                    "vod_pic": img.get("src") if img.get("src", "").startswith("http") else self.siteUrl + img.get("src", ""),
-                    "vod_remarks": rem
-                })
-            return v_list
-        except: return []
-
-    def clean_name(self, name):
-        if not name: return ""
-        return re.sub(r"\(.*?\)|（.*?）|【.*?】|\[.*?\]|全集|高清|正片", "", str(name)).strip()
+    def destroy(self):
+        pass
