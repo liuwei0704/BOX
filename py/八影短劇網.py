@@ -27,17 +27,14 @@ class Spider(Spider):
     def destroy(self):
         pass
 
-    # ------------------------- 網站配置 -------------------------
     host = 'https://8movie.com'
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 11; SM-G9910) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Accept-Language': 'zh-TW,zh;q=0.9,en;q=0.8',
-        'Referer': 'https://8movie.com',
-        'X-Requested-With': 'XMLHttpRequest'
+        'Referer': 'https://8movie.com/'
     }
 
-    # ------------------------- 分類列表（硬編碼保證首頁顯示）-------------------------
     CATEGORIES = [
         {'type_name': '穿越古代', 'type_id': '/movies/1'},
         {'type_name': '都市情愛', 'type_id': '/movies/4'},
@@ -57,7 +54,6 @@ class Spider(Spider):
         return url
 
     def _extract_video_basic(self, item):
-        """從列表項提取影片信息"""
         try:
             link_elem = item('a')
             if not link_elem:
@@ -92,7 +88,6 @@ class Spider(Spider):
                 return pq('')
 
     def _get_video_list(self, data):
-        """提取影片列表（用於分類頁和搜索頁）"""
         videos = []
         items = data('.pagemore .col-4.col-lg-2, .row .col-4, .col-4.p-2')
         for item in items.items():
@@ -103,7 +98,6 @@ class Spider(Spider):
         return videos
 
     def homeContent(self, filter):
-        """首頁：分類 + 推薦"""
         classes = []
         for cat in self.CATEGORIES:
             classes.append({
@@ -121,7 +115,6 @@ class Spider(Spider):
         return {'class': classes, 'list': recommend}
 
     def categoryContent(self, tid, pg, filter, extend):
-        """分類頁 - 支援滾動加載分頁"""
         try:
             if pg == '1':
                 url = tid.rstrip('/')
@@ -172,7 +165,6 @@ class Spider(Spider):
             }
 
     def detailContent(self, ids):
-        """詳情頁 - 完整提取影片資訊和分集列表"""
         try:
             vid = ids[0] if isinstance(ids, list) else ids
             data = self.getpq(self.fetch(vid, headers=self.headers).text)
@@ -238,101 +230,15 @@ class Spider(Spider):
             return {'list': []}
 
     def playerContent(self, flag, id, vipFlags):
-        """
-        播放頁 - 直接提取直鏈地址（parse:0）
-        使用正則 + 多種選擇器，確保提取成功
-        """
-        try:
-            play_url = self._normalize_url(id)
-            
-            resp = self.fetch(play_url, headers=self.headers)
-            html_content = resp.text
-            
-            # ============ 方法1：正則提取 video 標籤的 src ============
-            # 匹配 <video ... src="//xxx.mp4" ...>
-            video_pattern = r'<video[^>]*src=["\']([^"\']+)["\'][^>]*>'
-            match = re.search(video_pattern, html_content, re.I | re.S)
-            
-            if match:
-                video_src = match.group(1)
-                if video_src:
-                    real_url = self._normalize_url(video_src)
-                    return {
-                        'parse': 0,
-                        'playUrl': '',
-                        'url': real_url,
-                        'header': self.headers
-                    }
-            
-            # ============ 方法2：pyquery 提取 video 標籤 ============
-            data = self.getpq(html_content)
-            video_src = data('video.ndsp-video').attr('src') or \
-                       data('video').attr('src') or \
-                       data('video source').attr('src') or \
-                       data('source').attr('src')
-            
-            if video_src:
-                real_url = self._normalize_url(video_src)
-                return {
-                    'parse': 0,
-                    'playUrl': '',
-                    'url': real_url,
-                    'header': self.headers
-                }
-            
-            # ============ 方法3：從 JavaScript 變量提取 ============
-            # 匹配類似 uu = "//img5.8movie.com/..." 或 encodedSrc 等
-            js_patterns = [
-                r'uu\s*=\s*["\']([^"\']+)["\']',
-                r'encodedSrc["\']?\s*:\s*["\']([^"\']+)["\']',
-                r'source["\']?\s*:\s*["\']([^"\']+)["\']',
-            ]
-            
-            for pattern in js_patterns:
-                match = re.search(pattern, html_content, re.I)
-                if match:
-                    src = match.group(1)
-                    if src and ('http' in src or '//' in src):
-                        real_url = self._normalize_url(src)
-                        return {
-                            'parse': 0,
-                            'playUrl': '',
-                            'url': real_url,
-                            'header': self.headers
-                        }
-            
-            # ============ 方法4：iframe 提取 ============
-            iframe_pattern = r'<iframe[^>]*src=["\']([^"\']+)["\'][^>]*>'
-            match = re.search(iframe_pattern, html_content, re.I | re.S)
-            if match:
-                iframe_src = match.group(1)
-                if iframe_src:
-                    real_url = self._normalize_url(iframe_src)
-                    return {
-                        'parse': 1,
-                        'playUrl': '',
-                        'url': real_url,
-                        'header': self.headers
-                    }
-            
-            # ============ 回退：返回播放頁 URL ============
-            return {
-                'parse': 1,
-                'playUrl': '',
-                'url': play_url,
-                'header': self.headers
-            }
-            
-        except Exception as e:
-            return {
-                'parse': 1,
-                'playUrl': '',
-                'url': id,
-                'header': self.headers
-            }
+        # 參考包子短劇：直接把播放頁 URL 傳給 TVBox，讓它自己解析
+        # 這樣 TVBox 會從頁面中提取 video 標籤的 src 進行播放
+        return {
+            'parse': 1,
+            'playUrl': '',
+            'url': id
+        }
 
     def searchContent(self, key, quick, pg="1"):
-        """搜索功能 - 支援分頁"""
         try:
             time.sleep(1)
             
