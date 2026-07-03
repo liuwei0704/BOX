@@ -98,7 +98,6 @@ class Spider(Spider):
         for item in items.items():
             video = self._extract_video_basic(item)
             if video:
-                # 去重
                 if not any(v['vod_id'] == video['vod_id'] for v in videos):
                     videos.append(video)
         return videos
@@ -124,13 +123,11 @@ class Spider(Spider):
     def categoryContent(self, tid, pg, filter, extend):
         """分類頁 - 支援滾動加載分頁"""
         try:
-            # 第1頁：直接訪問分類URL
             if pg == '1':
                 url = tid.rstrip('/')
                 data = self.getpq(self.fetch(url, headers=self.headers).text)
                 videos = self._get_video_list(data)
                 
-                # 獲取總批數
                 total_batches = 20
                 loadmore = data('.loadmore')
                 if loadmore:
@@ -149,15 +146,12 @@ class Spider(Spider):
                     'total': 30 * total_batches
                 }
             
-            # ============= 第2頁及以後：使用真正的加載接口 =============
-            # 接口規則：當前頁面URL + "/" + 批次號 + ".html?" + 隨機數
             page = int(pg)
             base_url = tid.rstrip('/')
             load_url = f"{base_url}/{page}.html?{random.random()}"
             
             resp = self.fetch(load_url, headers=self.headers)
-            html_content = resp.text
-            data = self.getpq(html_content)
+            data = self.getpq(resp.text)
             videos = self._get_video_list(data)
             
             return {
@@ -178,22 +172,16 @@ class Spider(Spider):
             }
 
     def detailContent(self, ids):
-        """
-        詳情頁 - 完整提取影片資訊和分集列表！
-        從你給的HTML可以看到完整的110集
-        """
+        """詳情頁 - 完整提取影片資訊和分集列表"""
         try:
             vid = ids[0] if isinstance(ids, list) else ids
             data = self.getpq(self.fetch(vid, headers=self.headers).text)
 
-            # ============ 1. 從 meta 標籤提取完整資訊 ============
-            # 影片名稱
             vod_name = data('meta[name="name"]').attr('content') or \
                       data('h1').text().strip() or \
                       data('title').text().strip()
             vod_name = re.sub(r'[-_|]?八影短劇網.*$', '', vod_name).strip()
             
-            # 封面圖片
             vod_pic = data('meta[name="pic"]').attr('content') or ''
             if vod_pic:
                 vod_pic = self._normalize_url(vod_pic)
@@ -204,26 +192,18 @@ class Spider(Spider):
                         vod_pic = self._normalize_url(img)
                         break
             
-            # 演員/作者
             vod_actor = data('meta[name="author"]').attr('content') or ''
-            
-            # 分類
             vod_type = data('meta[name="cat"]').attr('content') or ''
-            
-            # 年份
             vod_year = data('meta[name="date"]').attr('content') or ''
             if vod_year:
                 vod_year = vod_year.split('-')[0]
             
-            # 總集數
             vod_remarks = data('meta[name="count"]').attr('content') or ''
             if vod_remarks:
                 vod_remarks = f"{vod_remarks}集"
             
-            # 簡介（HTML中沒有，留空）
             vod_content = ''
             
-            # ============ 2. 提取完整分集列表 ============
             episodes = []
             episode_items = data('#episodes li a')
             
@@ -233,11 +213,9 @@ class Spider(Spider):
                 if ep_url and ep_name:
                     episodes.append(f"{ep_name}${ep_url}")
             
-            # 如果沒有分集，使用默認播放
             if not episodes:
                 episodes = [f"播放${vid}"]
             
-            # ============ 3. 組裝返回數據 ============
             vod = {
                 'vod_id': vid,
                 'vod_name': vod_name or '未知片名',
@@ -261,17 +239,35 @@ class Spider(Spider):
 
     def playerContent(self, flag, id, vipFlags):
         """
-        播放頁 - 解析真實視頻地址
-        格式: /play/10993/1
+        播放頁 - 直接提取直鏈地址（parse:0）
+        使用正則 + 多種選擇器，確保提取成功
         """
         try:
-            # 直接訪問播放頁
             play_url = self._normalize_url(id)
             
-            data = self.getpq(self.fetch(play_url, headers=self.headers).text)
+            resp = self.fetch(play_url, headers=self.headers)
+            html_content = resp.text
             
-            # ============ 1. 提取 video 標籤 ============
-            video_src = data('video').attr('src') or \
+            # ============ 方法1：正則提取 video 標籤的 src ============
+            # 匹配 <video ... src="//xxx.mp4" ...>
+            video_pattern = r'<video[^>]*src=["\']([^"\']+)["\'][^>]*>'
+            match = re.search(video_pattern, html_content, re.I | re.S)
+            
+            if match:
+                video_src = match.group(1)
+                if video_src:
+                    real_url = self._normalize_url(video_src)
+                    return {
+                        'parse': 0,
+                        'playUrl': '',
+                        'url': real_url,
+                        'header': self.headers
+                    }
+            
+            # ============ 方法2：pyquery 提取 video 標籤 ============
+            data = self.getpq(html_content)
+            video_src = data('video.ndsp-video').attr('src') or \
+                       data('video').attr('src') or \
                        data('video source').attr('src') or \
                        data('source').attr('src')
             
@@ -279,45 +275,50 @@ class Spider(Spider):
                 real_url = self._normalize_url(video_src)
                 return {
                     'parse': 0,
+                    'playUrl': '',
                     'url': real_url,
                     'header': self.headers
                 }
             
-            # ============ 2. 提取 iframe ============
-            iframe_src = data('iframe').attr('src')
-            if iframe_src:
-                real_url = self._normalize_url(iframe_src)
-                return {
-                    'parse': 1,
-                    'url': real_url,
-                    'header': self.headers
-                }
-            
-            # ============ 3. 從 script 中提取視頻地址 ============
-            scripts = data('script').text()
-            
-            # 嘗試匹配常見的視頻地址模式
-            patterns = [
-                r'["\'](https?://[^"\']+\.(?:mp4|m3u8|flv|mkv|avi))["\']',
-                r'url["\']?\s*:\s*["\']([^"\']+)["\']',
-                r'src["\']?\s*:\s*["\']([^"\']+)["\']',
-                r'video[_-]url["\']?\s*:\s*["\']([^"\']+)["\']',
+            # ============ 方法3：從 JavaScript 變量提取 ============
+            # 匹配類似 uu = "//img5.8movie.com/..." 或 encodedSrc 等
+            js_patterns = [
+                r'uu\s*=\s*["\']([^"\']+)["\']',
+                r'encodedSrc["\']?\s*:\s*["\']([^"\']+)["\']',
+                r'source["\']?\s*:\s*["\']([^"\']+)["\']',
             ]
             
-            for pattern in patterns:
-                matches = re.findall(pattern, scripts, re.I)
-                for match in matches:
-                    if match and 'http' in match:
-                        real_url = self._normalize_url(match)
+            for pattern in js_patterns:
+                match = re.search(pattern, html_content, re.I)
+                if match:
+                    src = match.group(1)
+                    if src and ('http' in src or '//' in src):
+                        real_url = self._normalize_url(src)
                         return {
                             'parse': 0,
+                            'playUrl': '',
                             'url': real_url,
                             'header': self.headers
                         }
             
-            # ============ 4. 回退 ============
+            # ============ 方法4：iframe 提取 ============
+            iframe_pattern = r'<iframe[^>]*src=["\']([^"\']+)["\'][^>]*>'
+            match = re.search(iframe_pattern, html_content, re.I | re.S)
+            if match:
+                iframe_src = match.group(1)
+                if iframe_src:
+                    real_url = self._normalize_url(iframe_src)
+                    return {
+                        'parse': 1,
+                        'playUrl': '',
+                        'url': real_url,
+                        'header': self.headers
+                    }
+            
+            # ============ 回退：返回播放頁 URL ============
             return {
                 'parse': 1,
+                'playUrl': '',
                 'url': play_url,
                 'header': self.headers
             }
@@ -325,29 +326,24 @@ class Spider(Spider):
         except Exception as e:
             return {
                 'parse': 1,
+                'playUrl': '',
                 'url': id,
                 'header': self.headers
             }
 
     def searchContent(self, key, quick, pg="1"):
-        """
-        搜索功能 - 支援分頁，加入延遲避免被封
-        """
+        """搜索功能 - 支援分頁"""
         try:
-            # 加入延遲，避免搜尋太頻繁
             time.sleep(1)
             
-            # 第1頁
             if pg == '1':
                 encoded = urllib.parse.quote(key)
                 url = f"{self.host}/search/?key={encoded}"
                 data = self.getpq(self.fetch(url, headers=self.headers).text)
                 
-                # 檢查是否被封
                 if 'alert' in data.text() and '請間隔10秒後再搜尋' in data.text():
                     print("搜尋太頻繁，等待10秒...")
                     time.sleep(10)
-                    # 重試一次
                     data = self.getpq(self.fetch(url, headers=self.headers).text)
                 
                 results = self._get_video_list(data)
@@ -359,7 +355,6 @@ class Spider(Spider):
                     'total': 600
                 }
             
-            # 第2頁及以後
             page = int(pg)
             encoded_key = urllib.parse.quote(key)
             load_url = f"{self.host}/data/search.aspx?key={encoded_key}&page={page}"
