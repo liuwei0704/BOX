@@ -219,6 +219,6 @@ class Spider:
         # 备用: 从video标签提取
         video_match = re.search(r'<video[^>]*src="([^"]+)"', html)
         if video_match:
-            return {"parse": 0, "playUrl": self.fix_url(video_match.group(1))}
+            return {"parse": 0, "Url": self.fix_url(video_match.group(1))}
         
-        return {"parse": 0, "playUrl": ""}
+        return {"parse": 0, "Url": ""}
