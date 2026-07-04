@@ -50,12 +50,10 @@ class Spider(Spider):
             return None
 
     def homeContent(self, filter):
-        """返回分類列表 + 首頁推薦影片 + 篩選器"""
         result = {
             "class": [{"type_id": k, "type_name": v} for k, v in self.type_map.items()],
             "list": [],
             "filters": {
-                # 短劇分類的篩選器
                 "KCCCCCCK": [
                     {
                         "key": "剧情",
@@ -139,11 +137,9 @@ class Spider(Spider):
             }
         }
         
-        # 抓取首頁獲取推薦影片
         res = self.fetch(self.site_url)
         if res:
             html = res.text
-            # 從 sm-swiper 中提取推薦影片
             slides = re.findall(
                 r'<div class="swiper-slide">.*?<div class="pic">.*?<a href="(/voddetail/[^"]+)".*?<img[^>]+alt="([^"]+)".*?</div>.*?<div class="ins">.*?<p>(.*?)</p>',
                 html, re.S
@@ -167,23 +163,37 @@ class Spider(Spider):
         return result
 
     def categoryContent(self, tid, pg, filter, extend):
-        """
-        獲取分類列表，支持篩選
-        extend 格式: {"剧情": "都市", "年份": "2026", "排序": "time"}
-        """
         pg = int(pg) if str(pg).isdigit() else 1
         
-        # 提取篩選參數
         class_val = extend.get('剧情', '') if extend else ''
         year_val = extend.get('年份', '') if extend else ''
         sort_val = extend.get('排序', '') if extend else ''
         
-        # 構造 URL
-        # 格式: /vodshow/{tid}--{排序}---{劇情}-----{頁碼}---{年份}.html
+        # 根据您提供的URL格式修正
+        # 格式: /vodshow/KCCCCCCK--------1---.html (无筛选)
+        # 格式: /vodshow/KCCCCCCK--hits-赘婿--------2026.html (有排序)
         if sort_val:
-            url_path = f"/vodshow/{tid}--{sort_val}---{class_val}-----{pg}---{year_val}.html"
+            # 有排序
+            if class_val and year_val:
+                url_path = f"/vodshow/{tid}--{sort_val}-{class_val}--------{year_val}.html"
+            elif class_val and not year_val:
+                url_path = f"/vodshow/{tid}--{sort_val}-{class_val}--------.html"
+            elif not class_val and year_val:
+                url_path = f"/vodshow/{tid}--{sort_val}--------{year_val}.html"
+            else:
+                # 只有排序
+                url_path = f"/vodshow/{tid}--{sort_val}---------.html"
         else:
-            url_path = f"/vodshow/{tid}---{class_val}-----{pg}---{year_val}.html"
+            # 无排序 - 保留 pg 参数
+            if class_val and year_val:
+                url_path = f"/vodshow/{tid}---{class_val}-----{pg}---{year_val}.html"
+            elif class_val and not year_val:
+                url_path = f"/vodshow/{tid}---{class_val}-----{pg}---.html"
+            elif not class_val and year_val:
+                url_path = f"/vodshow/{tid}--------{pg}---{year_val}.html"
+            else:
+                # 无任何筛选
+                url_path = f"/vodshow/{tid}--------{pg}---.html"
         
         url = self.site_url + url_path
         res = self.fetch(url)
@@ -192,7 +202,6 @@ class Spider(Spider):
         
         if res:
             html = res.text
-            # 匹配影片列表
             blocks = re.findall(r'<a href="(/voddetail/[^"]+)".*?<img[^>]+data-original="([^"]+)".*?alt="([^"]+)".*?<div class="module-item-note">(.*?)</div>', html, re.S)
             
             for v_url, v_pic, v_name, v_remk in blocks:
@@ -203,7 +212,6 @@ class Spider(Spider):
                     "vod_remarks": v_remk.strip()
                 })
             
-            # 如果上面的匹配沒抓到，用更寬鬆的方式
             if not video_list:
                 blocks2 = re.findall(r'(<a[^>]+href="/voddetail/[^"]+"[^>]*>.*?</a>)', html, re.S)
                 for block in blocks2:
@@ -220,7 +228,6 @@ class Spider(Spider):
                             "vod_remarks": v_remk.group(1).strip() if v_remk else ""
                         })
             
-            # 解析總頁數
             page_links = re.findall(r'<a[^>]+href="[^"]*---(\d+)---[^"]*"[^>]*>', html)
             if page_links:
                 max_page = max([int(x) for x in page_links])
