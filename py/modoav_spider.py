@@ -391,9 +391,9 @@ class Spider:
                                 if m3u8_match3:
                                     play_url = m3u8_match3.group(0)
             else:
-                return {"parse": 0, "playUrl": id}
+                return {"parse": 0, "url": id}
         
         if not play_url:
-            return {"parse": 0, "playUrl": id}
+            return {"parse": 0, "url": id}
         
-        return {"parse": 0, "playUrl": play_url}
+        return {"parse": 0, "url": play_url}
