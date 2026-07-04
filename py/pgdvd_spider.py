@@ -204,7 +204,7 @@ class Spider:
     def playerContent(self, flag, id, vipFlags=[]):
         html = self.fetch(id)
         if not html:
-            return {"parse": 0, "playUrl": ""}
+            return {"parse": 0, "Url": ""}
         
         # 从 player_aaaa 提取播放直链
         player_match = re.search(r'var\s+player_aaaa\s*=\s*({[^;]+})', html)
@@ -212,7 +212,7 @@ class Spider:
             try:
                 data = json.loads(player_match.group(1))
                 if data.get('url'):
-                    return {"parse": 0, "playUrl": data['url']}
+                    return {"parse": 0, "Url": data['url']}
             except:
                 pass
         
