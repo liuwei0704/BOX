@@ -134,7 +134,7 @@ class Spider:
             page = int(pg) if pg else 1
             limit = 15
             offset = (page - 1) * limit
-            url = f"{self.base_url}/api/video/lists?limit={limit}&offset={offset}&keyword={urllib.parse.quote(key)}"
+            url = f"{self.base_url}/api/video/lists?limit={limit}&offset={offset}&keytext={urllib.parse.quote(key)}"
             data = self._fetch(url)
             if data:
                 for item in data.get('rows', []):
