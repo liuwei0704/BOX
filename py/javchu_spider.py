@@ -185,13 +185,15 @@ class Spider:
 
             if not result['class']:
                 result['class'] = [
+                    {'type_id': '全部', 'type_name': '全部'},
                     {'type_id': '日本AV', 'type_name': '日本AV'},
                     {'type_id': '中文字幕', 'type_name': '中文字幕'},
                     {'type_id': '素人業餘', 'type_name': '素人業餘'},
                     {'type_id': '高清無碼', 'type_name': '高清無碼'},
                     {'type_id': 'AI解碼', 'type_name': 'AI解碼'},
                     {'type_id': '國產AV', 'type_name': '國產AV'},
-                    {'type_id': '國產素人', 'type_name': '國產素人'}
+                    {'type_id': '國產素人', 'type_name': '國產素人'},
+                    {'type_id': 'H動漫', 'type_name': 'H動漫'},
                 ]
 
             result['list'] = self._extract_videos(html)[:20]
