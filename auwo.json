@@ -62,7 +62,7 @@
 {"key":"FeiqLive","name":"🏆飞球|体育","type":3,"api":"csp_FeiqLiveAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"BbkqLive","name":"🏆88|体育","type":3,"api":"csp_BbkqLiveAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"https://www.88kanqiu.app,https://www.88kanqiu.la,https://www.88kanqiu.one,https://www.88kanqiu.ooo,https://www.88kanqiu.pw"},
 {"key":"KafLive","name":"🏆咖啡|体育","type":3,"api":"csp_KafLiveAmns","searchable":0,"quickSearch":0,"changeable":0},
-{"key":"BiliHeji","name":"🎉Bili|合集","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"home":"1","json":"https://nos.netease.com/youdata-netease/public-utilUpload-k6DvN2PqNEVLhPeiigkmji.gz","cookie":""},"style":{"type":"rect","ratio":1.433}},
+{"key":"BiliHeji","name":"🎉Bili|合集","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"home":"1","json":"https://file.icve.com.cn/file_doc/299/797/4AFC77E563EDEDB37F18BA6458610E16.aowu","cookie":""},"style":{"type":"rect","ratio":1.433}},
 
 {"key":"八戒影视[APP]","name":"☄️八戒影视[APP]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/app/八戒影视.py"},
 {"key":"新浪资源[APP]","name":"☄️新浪资源[APP]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/app/新浪资源.py","changeable":0},
