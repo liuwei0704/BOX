@@ -193,7 +193,7 @@ class Spider:
                     {'type_id': 'AI解碼', 'type_name': 'AI解碼'},
                     {'type_id': '國產AV', 'type_name': '國產AV'},
                     {'type_id': '國產素人', 'type_name': '國產素人'},
-                    {'type_id': 'H動漫', 'type_name': 'H動漫'},
+                    {'type_id': 'H動漫', 'type_name': 'H動漫'}
                 ]
 
             result['list'] = self._extract_videos(html)[:20]
