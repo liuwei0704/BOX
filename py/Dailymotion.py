@@ -16,22 +16,17 @@ class Spider(Spider):
 
     def homeContent(self, filter):
         cate_list = [
-            {"type_name": "短劇: narumi4001 ", "type_id": "user/narumi4001"},
-            {"type_name": "短劇: douyinduanju ", "type_id": "user/douyinduanju"},
+            {"type_name": "短劇: 一期一会 ", "type_id": "user/narumi4001"},
+            {"type_name": "短劇: 七月短剧天下 ", "type_id": "user/dm_9ea4e8672798025a29d1d2812d"},
             {"type_name": "短劇: DailyCDrama ", "type_id": "user/DailyCDrama"},
-            {"type_name": "短劇: ckhow9393-528 ", "type_id": "user/ckhow9393-528"},
             {"type_name": "短劇: zenostar ", "type_id": "user/zenostar"},
-            {"type_name": "短劇: huinan520-349", "type_id": "user/huinan520-349"},
-            {"type_name": "短劇: stupiddm250", "type_id": "user/stupiddm250"},
-            {"type_name": "短劇: daiqixuan520", "type_id": "user/daiqixuan520"},
+            {"type_name": "短劇: 短剧全合集", "type_id": "user/huinan520-349"},
+            {"type_name": "短劇: sstt", "type_id": "user/stupiddm250"},
             {"type_name": "短劇: drkr004", "type_id": "user/drkr004"},
             {"type_name": "短劇: yi.tong292", "type_id": "user/yi.tong292"},
-            {"type_name": "短劇: kchow125 ", "type_id": "user/kchow125"},
-            {"type_name": "短劇: Cabian", "type_id": "user/cabian"},
-            {"type_name": "新聞", "type_id": "tag/news"},
-            {"type_name": "體育", "type_id": "tag/sport"},
-            {"type_name": "娛樂", "type_id": "tag/lifestyle"},
-            {"type_name": "音樂", "type_id": "tag/music"}
+            {"type_name": "短劇: xin xin ", "type_id": "user/kchow125"},
+            {"type_name": "短劇: HIGEGE ", "type_id": "user/HIGEGE"},
+            {"type_name": "短劇: 愛看短劇 ", "type_id": "user/91dj"}
         ]
         return {"class": cate_list}
 
@@ -85,3 +80,6 @@ class Spider(Spider):
                     return {"parse": 0, "playUrl": m3u8, "header": {"User-Agent": self.headers["User-Agent"]}}
         except: pass
         return {"parse": 0, "playUrl": "", "header": ""}
+
+    def destroy(self) -> None:
+        pass
