@@ -13,6 +13,7 @@
 {"key":"MISSAVT","name":"MISSAVT┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/MISSAVT.py","searchable":0,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"mt777","name":"含羞草┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/mt777.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"11nai","name":"11奶┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/11nai.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
+{"key":"rersp","name":"rersp┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/rersp.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"modoav_spider","name":"魔都AV┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/modoav_spider.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"pgdvd_spider","name":"苹果DVD┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/pgdvd_spider.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
 {"key":"bosstv_spider","name":"BOSSAV┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/bosstv_spider.py","searchable":1,"quickSearch":0,"filterable":0,"changeable":0},
