@@ -43,11 +43,10 @@ class Spider:
             {"type_id": "126", "type_name": "国产传媒"},
             {"type_id": "127", "type_name": "日本有码"},
             {"type_id": "128", "type_name": "日本无码"},
-            {"type_id": "129", "type_name": "欧美性爱"},
-            {"type_id": "130", "type_name": "动漫"},
-            {"type_id": "131", "type_name": "网曝黑料"},
-            {"type_id": "132", "type_name": "明星换脸"},
-            {"type_id": "133", "type_name": "网红头条"},
+            {"type_id": "130", "type_name": "強姦亂倫"},
+            {"type_id": "131", "type_name": "制服誘惑"},
+            {"type_id": "132", "type_name": "國產主播"},
+            {"type_id": "133", "type_name": "激情動漫"},
         ]
         return self._classes
 
