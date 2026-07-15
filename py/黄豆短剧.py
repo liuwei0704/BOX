@@ -27,32 +27,25 @@ class Spider(Spider):
         self.exp = 0
         self._home_cache = None
         self._home_cache_time = 0
+        self._sections_cache = None
+        self._sections_cache_time = 0
         self._detail_cache = {}
         self._m3u8_cache = {}
         self.classes = [
-            {'type_id': 'all', 'type_name': '全部'},
-            {'type_id': 'recommend', 'type_name': '推荐'},
-            {'type_id': '都市', 'type_name': '都市'},
-            {'type_id': '古装', 'type_name': '古装'},
-            {'type_id': '悬疑', 'type_name': '悬疑'},
-            {'type_id': '逆袭', 'type_name': '逆袭'},
-            {'type_id': '穿越', 'type_name': '穿越'},
-            {'type_id': '奇幻', 'type_name': '奇幻'},
-            {'type_id': '甜宠', 'type_name': '甜宠'},
-            {'type_id': '玄幻', 'type_name': '玄幻'},
-            {'type_id': '大女主', 'type_name': '大女主'},
-            {'type_id': '复仇', 'type_name': '复仇'},
-            {'type_id': '科幻', 'type_name': '科幻'},
-            {'type_id': 'AI漫剧', 'type_name': 'AI漫剧'},
-            {'type_id': '规则怪谈', 'type_name': '规则怪谈'},
-            {'type_id': '异能', 'type_name': '异能'},
-            {'type_id': '恐怖', 'type_name': '恐怖'},
-            {'type_id': '动漫同人', 'type_name': '动漫同人'},
-            {'type_id': '漫改', 'type_name': '漫改'},
-            {'type_id': '国漫', 'type_name': '国漫'},
-            {'type_id': '大神原创', 'type_name': '大神原创'},
-            {'type_id': '魔改短剧', 'type_name': '魔改短剧'},
-            {'type_id': '精品', 'type_name': '精品'},
+            {'type_id': '16', 'type_name': '最新'},
+            {'type_id': '1', 'type_name': '推荐'},
+            {'type_id': '18', 'type_name': '大神原创'},
+            {'type_id': '19', 'type_name': '擦边'},
+            {'type_id': '10', 'type_name': 'AI漫剧'},
+            {'type_id': '17', 'type_name': '国漫'},
+            {'type_id': '14', 'type_name': '同人'},
+            {'type_id': '15', 'type_name': '漫改'},
+            {'type_id': '4', 'type_name': '规则怪谈'},
+            {'type_id': '2', 'type_name': '都市'},
+            {'type_id': '3', 'type_name': '古装'},
+            {'type_id': '13', 'type_name': '恐怖'},
+            {'type_id': '11', 'type_name': '穿越'},
+            {'type_id': '12', 'type_name': '异能'},
         ]
         tag_vals = [{'n': '全部', 'v': ''}] + [{'n': c['type_name'], 'v': c['type_id']} for c in self.classes if c['type_id'] not in ['all','recommend']]
         self.filters = {'all': [
@@ -101,27 +94,70 @@ class Spider(Spider):
         try:
             if isinstance(tid, dict):
                 tid = tid.get('id') or tid.get('name') or ''
-            tid = urllib.parse.unquote(str(tid or 'all'))
+            tid = urllib.parse.unquote(str(tid or '16'))
             if tid.startswith('search:'):
                 return self._page('/search', {'kw': tid[7:], 'page': page, 'size': 24}, page)
             if tid.startswith('tag:'):
                 return self._tag_page(tid[4:], page)
-            elif tid == 'all':
-                tag = ext.get('genre') or ''
-            elif tid == 'recommend':
+            
+            # 特殊分类：推荐 和 最新 使用 sections 数据
+            if tid == '1' or tid == 'recommend':
                 data = self._home() or {}
-                return self._result(self._vod_list((data.get('feature') or []) + (data.get('guess') or [])), page)
-            else:
-                tag = tid
-            params = {'page': page, 'size': 24}
-            if tag:
-                params['kw'] = tag
+                merged = (data.get('feature') or []) + (data.get('guess') or [])
+                start = (page - 1) * 24
+                end = start + 24
+                page_items = merged[start:end] if merged else []
+                total = len(merged)
+                pagecount = (total // 24) + (1 if total % 24 > 0 else 1) if total > 0 else 1
+                return {'list': self._vod_list(page_items), 'page': page, 'pagecount': pagecount, 'limit': 24, 'total': total}
+            
+            if tid == '16' or tid == 'all':
+                sections = self._get_sections()
+                matched_dramas = []
+                for section in sections:
+                    if section.get('l2Id') == 16:
+                        matched_dramas = section.get('dramas', [])
+                        break
+                if not matched_dramas:
+                    for section in sections:
+                        matched_dramas.extend(section.get('dramas', []))
+                start = (page - 1) * 24
+                end = start + 24
+                page_items = matched_dramas[start:end] if matched_dramas else []
+                total = len(matched_dramas)
+                pagecount = (total // 24) + (1 if total % 24 > 0 else 1) if total > 0 else 1
+                return {'list': self._vod_list(page_items), 'page': page, 'pagecount': pagecount, 'limit': 24, 'total': total}
+            
+            # 普通分类：使用 /api/dramas 分页接口
+            l2_to_l3 = {
+                '18': '25',  # 大神原创
+                '19': '26',  # 擦边
+                '10': '17',  # AI漫剧
+                '17': '24',  # 国漫
+                '14': '22',  # 同人
+                '15': '23',  # 漫改
+                '4': '5',    # 规则怪谈
+                '2': '3',    # 都市
+                '3': '4',    # 古装
+                '13': '21',  # 恐怖
+                '11': '19',  # 穿越
+                '12': '20',  # 异能
+            }
+            l3_id = l2_to_l3.get(str(tid))
+            if not l3_id:
+                return {'list': [], 'page': page, 'pagecount': 1, 'limit': 24, 'total': 0}
+            
+            params = {'l3Id': l3_id, 'sort': '最新', 'page': page, 'size': 24}
             if ext.get('order'):
                 params['sort'] = ext.get('order')
-            return self._page('/dramas', params, page)
+            data = self._api_get('/dramas', params) or {}
+            arr = data.get('list') if isinstance(data, dict) else data
+            total = self._int(data.get('total') if isinstance(data, dict) else 9999, 9999)
+            pagecount = (total // 24) + (1 if total % 24 > 0 else 1) if total > 0 else 1
+            return {'list': self._vod_list(arr or []), 'page': page, 'pagecount': pagecount, 'limit': 24, 'total': total}
         except Exception as e:
             self._log('分类失败 tid=%s pg=%s err=%s' % (tid, page, e))
-            return self._result([], page)
+            return {'list': [], 'page': page, 'pagecount': 1, 'limit': 24, 'total': 0}
 
     def searchContent(self, key, quick=False, pg='1'):
         page = self._int(pg, 1)
@@ -174,7 +210,6 @@ class Spider(Spider):
             raw = self._unb64(str(id))
             info = json.loads(raw) if raw.startswith('{') else {'url': id}
             url = info.get('url') or id
-            # 原站 m3u8 内使用 custom://key，EXO 无法识别；改走本地代理重写 key URI
             if '.m3u8' in url:
                 url = self.getProxyUrl() + '&mode=m3u8&url=' + urllib.parse.quote(url)
             header = {'User-Agent': self.ua, 'Referer': self.host + '/', 'Origin': self.host}
@@ -212,6 +247,7 @@ class Spider(Spider):
         except Exception as e:
             self._log('本地代理失败: %s' % e)
             return [500, 'text/plain', str(e).encode('utf-8')]
+
     def _home(self):
         if self._home_cache and time.time() - self._home_cache_time < 180:
             return self._home_cache
@@ -220,12 +256,20 @@ class Spider(Spider):
         self._home_cache_time = time.time()
         return data
 
+    def _get_sections(self):
+        if self._sections_cache and time.time() - self._sections_cache_time < 180:
+            return self._sections_cache
+        data = self._api_get('/channel/home') or {}
+        sections = data.get('sections') or []
+        self._sections_cache = sections
+        self._sections_cache_time = time.time()
+        return sections
+
     def _tag_page(self, tag, page):
         tag = str(tag or '').strip()
         if not tag:
             return self._result([], page)
         arr = []
-        # 站点没有独立标签接口，富文本点击用搜索 + 列表扫描兜底，确保点击不空。
         for path, params in [
             ('/search', {'kw': tag, 'page': page, 'size': 24}),
             ('/dramas', {'kw': tag, 'page': page, 'size': 24}),
@@ -237,7 +281,6 @@ class Spider(Spider):
                     arr.append(it)
             if arr:
                 return self._result(self._vod_list(arr), page)
-        # 标签搜索为空时，从全量最新列表抽样过滤，避免详情富文本点击空白。
         for p in range(1, 4):
             data = self._api_get('/dramas', {'sort': '最新', 'page': p, 'size': 24}) or {}
             for it in (data.get('list') if isinstance(data, dict) else data) or []:
@@ -269,7 +312,6 @@ class Spider(Spider):
                 out.append(line)
         return [200, 'application/vnd.apple.mpegurl', ('\n'.join(out) + '\n').encode('utf-8')]
 
-
     def _api_get(self, path, params=None):
         self._ensure_session()
         url = self.api + path
@@ -290,7 +332,6 @@ class Spider(Spider):
             return
         if AES is None:
             raise Exception('缺少 Crypto.Cipher.AES')
-        # P-256 参数
         p = int('ffffffff00000001000000000000000000000000ffffffffffffffffffffffff', 16)
         a = int('ffffffff00000001000000000000000000000000fffffffffffffffffffffffc', 16)
         b = int('5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b', 16)
@@ -319,7 +360,6 @@ class Spider(Spider):
             iv = base64.b64decode(obj.get('iv'))
             raw = base64.b64decode(obj.get('data'))
             plain = AES.new(self.k, AES.MODE_GCM, nonce=iv).decrypt(raw[:-16])
-            # PyCryptodome 上面未校验 tag；若环境支持可 decrypt_and_verify
             try:
                 plain = AES.new(self.k, AES.MODE_GCM, nonce=iv).decrypt_and_verify(raw[:-16], raw[-16:])
             except Exception:
@@ -433,7 +473,6 @@ class Spider(Spider):
         try: self.log('[黄豆短剧] ' + str(msg))
         except Exception: pass
 
-    # ---- P-256 / HKDF / SPKI，无 cryptography 依赖 ----
     def _inv(self, x, p):
         return pow(x, p-2, p)
 
@@ -459,14 +498,12 @@ class Spider(Spider):
 
     def _hkdf(self, ikm, info):
         prk = hashlib.pbkdf2_hmac('sha256', ikm, b'', 1, dklen=32)
-        # 上面不是标准 HKDF-Extract(salt空)，按 HMAC 实现一次
         import hmac
         prk = hmac.new(bytes(32), ikm, hashlib.sha256).digest()
         t = hmac.new(prk, info + bytes([1]), hashlib.sha256).digest()
         return t[:32]
 
     def _spki(self, x, y):
-        # DER SubjectPublicKeyInfo: ecPublicKey + prime256v1 + uncompressed point
         point = bytes([4]) + x.to_bytes(32,'big') + y.to_bytes(32,'big')
         head = bytes.fromhex('3059301306072a8648ce3d020106082a8648ce3d030107034200')
         return head + point
