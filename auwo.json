@@ -17,7 +17,7 @@
 {"key":"八影短劇網","name":"🍀八影短劇網┃PY","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py/八影短劇網.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
 
 {"key":"AowuDmMw","name":"🐱喵物|动漫","type":3,"api":"csp_AowuDmAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"db8b57143fce50cabe524135fd3fb26e4af09034942cb186addd2322edf17ab6c9b7862764598039301c43cf706efcd55499494d72c680001c30550747b3dc5994760e3d6e17208e5ed771b2b4162f65e72b3e530fdd9622474e1c5f8aecda41dcd17901c7ddc61193a63fd8aaa1a96dc8673f93a8116755fd04bb1baaa93215334aaa1327972f2dd7292eb3d593e60cad0b9a3dde2a1158640cfc93dac5af45ddd8f971e3be0ccb5c776752b9b92a7f67dc89375d7ad442bddb0c661554a03c420029010a932d2dd8e65d6dc5"},
-{"key":"DMxifan","name":"🐱稀饭|动漫","type":3,"api":"csp_DMxifanAmns","searchable":1,"quickSearch":1,"changeable":0},
+{"key":"DMhhz","name":"🐱花海|动漫","type":3,"api":"csp_DMhhzAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"MjHggg","name":"🎬嗷嗚|漫剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"comic_series"},
 {"key":"DjHggg","name":"🎬嗷嗚|短剧","type":3,"api":"csp_HgggAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"short_play"},
 {"key":"HHkk","name":"🎬豪堪|短剧","type":3,"api":"csp_HHkkAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
