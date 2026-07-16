@@ -73,7 +73,6 @@ class Spider(BaseSpider):
                             if vid and is_free is not None:
                                 pay_map["/media/" + vid] = is_free
                                 pay_map["/play/" + vid] = is_free
-                                # 如果指定了target_id，直接返回该视频的状态
                                 if target_id and vid == target_id:
                                     return not is_free
         except:
@@ -84,10 +83,8 @@ class Spider(BaseSpider):
         """解析视频列表，付费视频在备注中显示角标"""
         videos = []
         
-        # 从 __NUXT_DATA__ 提取付费状态
         pay_map = self._parse_pay_status_from_nuxt(html)
         
-        # 从 HTML 中检测付费标签
         pattern = r'<a[^>]+href="(/(?:play|media)/[^"]+)"[^>]*>'
         for match in re.finditer(pattern, html):
             href = match.group(1)
@@ -100,7 +97,6 @@ class Spider(BaseSpider):
             block_end = min(len(html), match.end() + 1000)
             block = html[block_start:block_end]
             
-            # 提取标题
             title = ""
             alt_match = re.search(r'alt="([^"]+)"', block)
             if alt_match:
@@ -112,7 +108,6 @@ class Spider(BaseSpider):
             if not title:
                 title = href.split("/")[-1]
             
-            # 提取图片
             pic = ""
             img_patterns = [
                 r'<img[^>]+src="([^"]+)"',
@@ -126,19 +121,13 @@ class Spider(BaseSpider):
                     if pic and not pic.startswith("data:"):
                         break
             
-            # 判断是否为付费视频
             is_pay = False
-            
-            # 从 JSON 数据中检查
             if href in pay_map:
                 is_pay = not pay_map[href]
-            
-            # 从 HTML 标签中检查（兜底）
             if not is_pay:
                 if '付费会员' in block or 'lock-badge' in block or '登录查看' in block:
                     is_pay = True
             
-            # 设置备注角标
             remark = "🔒 VIP付费" if is_pay else "免费"
             
             if title:
@@ -149,7 +138,6 @@ class Spider(BaseSpider):
                     "vod_remarks": remark
                 })
         
-        # 去重
         seen = set()
         result = []
         for v in videos:
@@ -159,7 +147,6 @@ class Spider(BaseSpider):
         return result
 
     def homeVideoContent(self):
-        """首页视频推荐，TVBox加载必需"""
         html = self._fetch(self.host)
         videos = self._parse_videos(html)
         return {"list": videos[:40]}
@@ -190,6 +177,41 @@ class Spider(BaseSpider):
         videos = self._parse_videos(html)
         return {"list": videos, "page": pg, "pagecount": 100, "limit": 20, "total": len(videos)}
 
+    def _is_photo_set(self, html, vid):
+        """检测是否为写真套图"""
+        # 检查分类或标签
+        if '/photo-sets' in vid:
+            return True
+        # 检查页面中是否有套图特征
+        if '写真套图' in html or '套图' in html:
+            return True
+        # 检查是否有图片列表
+        if re.search(r'<img[^>]+data-original="[^"]+"', html):
+            return True
+        return False
+
+    def _extract_images(self, html):
+        """从页面提取所有图片URL"""
+        images = []
+        # 查找图片URL
+        patterns = [
+            r'<img[^>]+src="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
+            r'<img[^>]+data-src="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
+            r'<img[^>]+data-original="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
+            r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"',
+        ]
+        seen = set()
+        for pattern in patterns:
+            for match in re.finditer(pattern, html, re.I):
+                url = match.group(1)
+                # 过滤掉图标、logo等
+                if 'logo' in url.lower() or 'icon' in url.lower():
+                    continue
+                if url and url not in seen and not url.startswith('data:'):
+                    seen.add(url)
+                    images.append(self._fix_url(url))
+        return images
+
     def detailContent(self, ids):
         result = []
         if isinstance(ids, str):
@@ -205,7 +227,10 @@ class Spider(BaseSpider):
             play_url = ""
             remark = ""
             
-            # 从 __NUXT_DATA__ 提取当前视频的付费状态
+            # 判断是否为写真套图
+            is_photo_set = self._is_photo_set(html, vid)
+            
+            # 从 __NUXT_DATA__ 提取付费状态
             current_id = vid.split("/")[-1]
             is_pay = False
             try:
@@ -276,14 +301,30 @@ class Spider(BaseSpider):
                 desc_match = re.search(r'<meta[^>]+name="description"[^>]+content="([^"]+)"', html)
                 if desc_match:
                     desc = desc_match.group(1)
-            if not play_url:
-                m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
-                if m3u8_match:
-                    play_url = m3u8_match.group(0)
             
-            # 设置角标
+            # 如果是套图，提取所有图片
+            if is_photo_set:
+                images = self._extract_images(html)
+                # 如果没有提取到图片，使用封面图
+                if not images and pic:
+                    images = [pic]
+                if images:
+                    # 使用 pics:// 协议返回图片列表
+                    play_url = "pics://" + "&&".join(images)
+                    play_from = "写真套图"
+                else:
+                    play_from = "PornCloud"
+                    play_url = "播放$" + vid
+            else:
+                play_from = "PornCloud"
+                # 提取视频播放地址
+                if not play_url:
+                    m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
+                    if m3u8_match:
+                        play_url = m3u8_match.group(0)
+                play_url = play_url if play_url else vid
+            
             remark = "🔒 VIP付费" if is_pay else "免费"
-            
             display_title = title or vid.split("/")[-1]
             
             result.append({
@@ -292,8 +333,8 @@ class Spider(BaseSpider):
                 "vod_pic": self._fix_url(pic),
                 "vod_content": desc or "",
                 "vod_remarks": remark,
-                "vod_play_from": "PornCloud",
-                "vod_play_url": "播放$" + play_url if play_url else "播放$" + vid
+                "vod_play_from": play_from,
+                "vod_play_url": "播放$" + play_url
             })
         return {"list": result}
 
@@ -312,7 +353,18 @@ class Spider(BaseSpider):
         return {"list": videos, "page": pg, "pagecount": pagecount, "limit": 20, "total": total}
 
     def playerContent(self, flag, id, vipFlags=None):
-        """播放地址解析 - 优先直链，降级嗅探"""
+        """播放地址解析 - 支持视频和套图"""
+        # 处理套图 pics:// 协议
+        if id.startswith("pics://"):
+            return {
+                "parse": 0,
+                "url": id,
+                "header": {
+                    "User-Agent": self.ua,
+                    "Referer": self.host + "/"
+                }
+            }
+        
         if id.startswith("http"):
             return {
                 "parse": 0,
@@ -329,6 +381,19 @@ class Spider(BaseSpider):
         html = self._fetch(play_page_url)
         play_url = ""
         
+        # 检测是否为套图
+        if self._is_photo_set(html, vid):
+            images = self._extract_images(html)
+            if images:
+                return {
+                    "parse": 0,
+                    "url": "pics://" + "&&".join(images),
+                    "header": {
+                        "User-Agent": self.ua,
+                        "Referer": self.host + "/"
+                    }
+                }
+        
         # 从 JSON-LD 提取
         ld_pattern = r'<script type="application/ld\+json">([^<]+)</script>'
         for match in re.finditer(ld_pattern, html):
@@ -340,7 +405,6 @@ class Spider(BaseSpider):
             except:
                 pass
         
-        # 从 HTML 中提取 m3u8 链接
         if not play_url:
             m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
             if m3u8_match:
