@@ -22,6 +22,19 @@ class Spider(BaseSpider):
         ]
         self.filters = {c["type_id"]: [] for c in self.classes}
         self.ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        self.type_map = {
+            "photo-sets": "photo_set",
+            "jav": "video",
+            "global": "video",
+            "domestic": "video",
+            "domestic-spy": "video",
+            "influencer": "video",
+            "onlyfans": "video",
+            "black-stockings": "video",
+            "coser": "video",
+            "private-video": "video",
+            "one-to-one": "video",
+        }
 
     def init(self, extend):
         pass
@@ -41,8 +54,26 @@ class Spider(BaseSpider):
         if not url.startswith("http"): return self.host + "/" + url
         return url
 
-    def _parse_pay_status_from_nuxt(self, html, target_id=None):
-        """从 __NUXT_DATA__ 中提取视频的付费状态"""
+    def _extract_images(self, html):
+        images = []
+        patterns = [
+            r'<img[^>]+src="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
+            r'<img[^>]+data-src="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
+            r'<img[^>]+data-original="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
+            r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"',
+        ]
+        seen = set()
+        for pattern in patterns:
+            for match in re.finditer(pattern, html, re.I):
+                url = match.group(1)
+                if 'logo' in url.lower() or 'icon' in url.lower():
+                    continue
+                if url and url not in seen and not url.startswith('data:'):
+                    seen.add(url)
+                    images.append(self._fix_url(url))
+        return images
+
+    def _parse_pay_status(self, html, target_id=None):
         pay_map = {}
         try:
             nuxt_match = re.search(r'<script[^>]+id="__NUXT_DATA__"[^>]*>([^<]+)</script>', html)
@@ -79,11 +110,9 @@ class Spider(BaseSpider):
             pass
         return pay_map
 
-    def _parse_videos(self, html):
-        """解析视频列表，付费视频在备注中显示角标"""
+    def _parse_videos(self, html, content_type="video"):
         videos = []
-        
-        pay_map = self._parse_pay_status_from_nuxt(html)
+        pay_map = self._parse_pay_status(html)
         
         pattern = r'<a[^>]+href="(/(?:play|media)/[^"]+)"[^>]*>'
         for match in re.finditer(pattern, html):
@@ -131,8 +160,9 @@ class Spider(BaseSpider):
             remark = "🔒 VIP付费" if is_pay else "免费"
             
             if title:
+                vod_id_with_type = f"{content_type}@@{href}"
                 videos.append({
-                    "vod_id": href,
+                    "vod_id": vod_id_with_type,
                     "vod_name": title.strip(),
                     "vod_pic": self._fix_url(pic),
                     "vod_remarks": remark
@@ -148,12 +178,12 @@ class Spider(BaseSpider):
 
     def homeVideoContent(self):
         html = self._fetch(self.host)
-        videos = self._parse_videos(html)
+        videos = self._parse_videos(html, "video")
         return {"list": videos[:40]}
 
     def homeContent(self, filter=False):
         html = self._fetch(self.host)
-        videos = self._parse_videos(html)
+        videos = self._parse_videos(html, "video")
         return {"class": self.classes, "filters": self.filters, "list": videos[:40]}
 
     def categoryContent(self, tid, pg, filter=False, extend={}):
@@ -174,64 +204,33 @@ class Spider(BaseSpider):
         path = url_map.get(tid, "/media")
         url = self.host + path + "?page=" + str(pg)
         html = self._fetch(url)
-        videos = self._parse_videos(html)
+        content_type = self.type_map.get(tid, "video")
+        videos = self._parse_videos(html, content_type)
         return {"list": videos, "page": pg, "pagecount": 100, "limit": 20, "total": len(videos)}
-
-    def _is_photo_set(self, html, vid):
-        """检测是否为写真套图"""
-        # 检查分类或标签
-        if '/photo-sets' in vid:
-            return True
-        # 检查页面中是否有套图特征
-        if '写真套图' in html or '套图' in html:
-            return True
-        # 检查是否有图片列表
-        if re.search(r'<img[^>]+data-original="[^"]+"', html):
-            return True
-        return False
-
-    def _extract_images(self, html):
-        """从页面提取所有图片URL"""
-        images = []
-        # 查找图片URL
-        patterns = [
-            r'<img[^>]+src="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
-            r'<img[^>]+data-src="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
-            r'<img[^>]+data-original="([^"]+\.(?:jpg|jpeg|png|gif|webp)[^"]*)"',
-            r'<meta[^>]+property="og:image"[^>]+content="([^"]+)"',
-        ]
-        seen = set()
-        for pattern in patterns:
-            for match in re.finditer(pattern, html, re.I):
-                url = match.group(1)
-                # 过滤掉图标、logo等
-                if 'logo' in url.lower() or 'icon' in url.lower():
-                    continue
-                if url and url not in seen and not url.startswith('data:'):
-                    seen.add(url)
-                    images.append(self._fix_url(url))
-        return images
 
     def detailContent(self, ids):
         result = []
         if isinstance(ids, str):
             ids = [ids]
-        for vid in ids:
+        for vid_with_type in ids:
+            if '@@' in vid_with_type:
+                content_type, vid = vid_with_type.split('@@', 1)
+            else:
+                content_type = "video"
+                vid = vid_with_type
+            
             if not vid.startswith("/"):
                 vid = "/" + vid
+            
             url = self._fix_url(vid)
             html = self._fetch(url)
             title = ""
             desc = ""
             pic = ""
             play_url = ""
-            remark = ""
             
-            # 判断是否为写真套图
-            is_photo_set = self._is_photo_set(html, vid)
-            
-            # 从 __NUXT_DATA__ 提取付费状态
             current_id = vid.split("/")[-1]
+            
             is_pay = False
             try:
                 nuxt_match = re.search(r'<script[^>]+id="__NUXT_DATA__"[^>]*>([^<]+)</script>', html)
@@ -261,7 +260,6 @@ class Spider(BaseSpider):
             except:
                 pass
             
-            # 从 JSON-LD 提取
             ld_pattern = r'<script type="application/ld\+json">([^<]+)</script>'
             for match in re.finditer(ld_pattern, html):
                 try:
@@ -280,7 +278,6 @@ class Spider(BaseSpider):
                 except:
                     pass
             
-            # 从 OG 标签提取
             if not play_url:
                 og_match = re.search(r'<meta[^>]+property="og:video"[^>]+content="([^"]+)"', html)
                 if og_match:
@@ -302,30 +299,55 @@ class Spider(BaseSpider):
                 if desc_match:
                     desc = desc_match.group(1)
             
-            # 如果是套图，提取所有图片
+            # ====== 判断是否为写真套图 ======
+            is_photo_set = False
+            
+            if content_type == "photo_set":
+                is_photo_set = True
+            elif '/photo-sets' in vid:
+                is_photo_set = True
+            elif not play_url:
+                # 从页面内容判断
+                if re.search(r'套图|写真|图集|图片|图库', html):
+                    img_urls = re.findall(r'<img[^>]+src="([^"]+\.(?:jpg|jpeg|png|webp)[^"]*)"', html, re.I)
+                    large_images = []
+                    for u in img_urls:
+                        if 'cover' not in u.lower() and 'logo' not in u.lower() and 'icon' not in u.lower():
+                            large_images.append(u)
+                    if len(large_images) >= 5:
+                        is_photo_set = True
+            
             if is_photo_set:
                 images = self._extract_images(html)
-                # 如果没有提取到图片，使用封面图
                 if not images and pic:
                     images = [pic]
                 if images:
-                    # 使用 pics:// 协议返回图片列表
-                    play_url = "pics://" + "&&".join(images)
-                    play_from = "写真套图"
-                else:
-                    play_from = "PornCloud"
-                    play_url = "播放$" + vid
-            else:
-                play_from = "PornCloud"
-                # 提取视频播放地址
-                if not play_url:
-                    m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
-                    if m3u8_match:
-                        play_url = m3u8_match.group(0)
-                play_url = play_url if play_url else vid
+                    play_url = "全集$pics@@" + "&&".join(images)
+                    remark = "🔒 VIP付费" if is_pay else "免费"
+                    result.append({
+                        "vod_id": vid,
+                        "vod_name": title or vid.split("/")[-1],
+                        "vod_pic": self._fix_url(pic),
+                        "vod_content": desc or "",
+                        "vod_remarks": remark,
+                        "vod_play_from": "写真套图",
+                        "vod_play_url": play_url
+                    })
+                    continue
+            
+            # ====== 视频处理 ======
+            if not play_url:
+                m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
+                if m3u8_match:
+                    play_url = m3u8_match.group(0)
             
             remark = "🔒 VIP付费" if is_pay else "免费"
             display_title = title or vid.split("/")[-1]
+            
+            if play_url:
+                play_url = "播放$" + play_url
+            else:
+                play_url = "播放$sniff@@" + vid
             
             result.append({
                 "vod_id": vid,
@@ -333,8 +355,8 @@ class Spider(BaseSpider):
                 "vod_pic": self._fix_url(pic),
                 "vod_content": desc or "",
                 "vod_remarks": remark,
-                "vod_play_from": play_from,
-                "vod_play_url": "播放$" + play_url
+                "vod_play_from": "PornCloud",
+                "vod_play_url": play_url
             })
         return {"list": result}
 
@@ -344,7 +366,7 @@ class Spider(BaseSpider):
         if pg > 1:
             search_url += "?page=" + str(pg)
         html = self._fetch(search_url)
-        videos = self._parse_videos(html)
+        videos = self._parse_videos(html, "video")
         total = len(videos)
         pagecount = 1
         page_match = re.search(r'pagecount["\']?\s*[:=]\s*(\d+)', html)
@@ -353,12 +375,23 @@ class Spider(BaseSpider):
         return {"list": videos, "page": pg, "pagecount": pagecount, "limit": 20, "total": total}
 
     def playerContent(self, flag, id, vipFlags=None):
-        """播放地址解析 - 支持视频和套图"""
-        # 处理套图 pics:// 协议
-        if id.startswith("pics://"):
+        if id.startswith("pics@@"):
             return {
                 "parse": 0,
-                "url": id,
+                "url": "pics://" + id.replace("pics@@", "", 1),
+                "header": {
+                    "User-Agent": self.ua,
+                    "Referer": self.host + "/"
+                }
+            }
+        
+        if id.startswith("sniff@@"):
+            url = id.replace("sniff@@", "", 1)
+            if not url.startswith("http"):
+                url = self.host + url
+            return {
+                "parse": 1,
+                "url": url,
                 "header": {
                     "User-Agent": self.ua,
                     "Referer": self.host + "/"
@@ -377,24 +410,9 @@ class Spider(BaseSpider):
         
         vid = id.split("/")[-1]
         play_page_url = self.host + "/play/" + vid
-        
         html = self._fetch(play_page_url)
         play_url = ""
         
-        # 检测是否为套图
-        if self._is_photo_set(html, vid):
-            images = self._extract_images(html)
-            if images:
-                return {
-                    "parse": 0,
-                    "url": "pics://" + "&&".join(images),
-                    "header": {
-                        "User-Agent": self.ua,
-                        "Referer": self.host + "/"
-                    }
-                }
-        
-        # 从 JSON-LD 提取
         ld_pattern = r'<script type="application/ld\+json">([^<]+)</script>'
         for match in re.finditer(ld_pattern, html):
             try:
@@ -430,35 +448,68 @@ class Spider(BaseSpider):
         }
 
     def localProxy(self, params):
+        """
+        M3U8 代理 - 将相对路径转换为绝对路径
+        """
         if not params:
             return None
+        
         url = params.get("url") or params.get("src") or ""
         if not url or ".m3u8" not in url:
             return None
+        
         try:
-            req = Request(url, headers={"User-Agent": self.ua, "Referer": self.host + "/"})
+            # 请求原始 m3u8
+            req = Request(url, headers={
+                "User-Agent": self.ua,
+                "Referer": self.host + "/"
+            })
             with urlopen(req, timeout=15) as resp:
                 content = resp.read().decode('utf-8')
+            
+            # 基础 URL（用于补全相对路径）
             base_url = url.rsplit("/", 1)[0] + "/"
+            
             lines = content.split("\n")
             new_lines = []
+            
             for line in lines:
                 line = line.strip()
+                
+                # 处理 #EXT-X-MAP:URI
                 if line.startswith("#EXT-X-MAP:URI="):
                     match = re.search(r'URI="([^"]+)"', line)
                     if match:
-                        init_url = match.group(1)
-                        if not init_url.startswith("http"):
-                            init_url = base_url + init_url
-                        new_lines.append('#EXT-X-MAP:URI="' + init_url + '"')
+                        map_url = match.group(1)
+                        if not map_url.startswith("http"):
+                            map_url = base_url + map_url
+                        new_lines.append('#EXT-X-MAP:URI="' + map_url + '"')
                     else:
                         new_lines.append(line)
-                elif line and not line.startswith("#") and not line.startswith("http"):
-                    new_lines.append(base_url + line)
+                
+                # 处理 #EXT-X-DISCONTINUITY-SEQUENCE 等
+                elif line.startswith("#"):
+                    new_lines.append(line)
+                
+                # 处理分片文件（非注释行）
+                elif line and not line.startswith("#"):
+                    if not line.startswith("http"):
+                        line = base_url + line
+                    new_lines.append(line)
+                
                 else:
                     new_lines.append(line)
-            return [200, "application/vnd.apple.mpegurl", ("\n".join(new_lines) + "\n").encode("utf-8")]
+            
+            # 返回处理后的 m3u8
+            result_content = "\n".join(new_lines) + "\n"
+            return [
+                200,
+                "application/vnd.apple.mpegurl",
+                result_content.encode("utf-8")
+            ]
+            
         except Exception as e:
+            print("localProxy error:", e)
             return None
 
     def getDependence(self):
