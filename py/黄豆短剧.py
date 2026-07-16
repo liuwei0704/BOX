@@ -34,7 +34,6 @@ class Spider(Spider):
         self.classes = [
             {'type_id': '16', 'type_name': '最新'},
             {'type_id': '1', 'type_name': '推荐'},
-            {'type_id': '18', 'type_name': '大神原创'},
             {'type_id': '19', 'type_name': '擦边'},
             {'type_id': '10', 'type_name': 'AI漫剧'},
             {'type_id': '17', 'type_name': '国漫'},
