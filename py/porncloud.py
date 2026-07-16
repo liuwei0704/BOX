@@ -41,8 +41,53 @@ class Spider(BaseSpider):
         if not url.startswith("http"): return self.host + "/" + url
         return url
 
+    def _parse_pay_status_from_nuxt(self, html, target_id=None):
+        """从 __NUXT_DATA__ 中提取视频的付费状态"""
+        pay_map = {}
+        try:
+            nuxt_match = re.search(r'<script[^>]+id="__NUXT_DATA__"[^>]*>([^<]+)</script>', html)
+            if nuxt_match:
+                data_str = nuxt_match.group(1)
+                nuxt_data = json.loads(data_str)
+                def find_items(obj):
+                    if isinstance(obj, dict):
+                        if "items" in obj and isinstance(obj["items"], list):
+                            return obj["items"]
+                        for v in obj.values():
+                            result = find_items(v)
+                            if result:
+                                return result
+                    elif isinstance(obj, list):
+                        for item in obj:
+                            result = find_items(item)
+                            if result:
+                                return result
+                    return None
+                
+                items = find_items(nuxt_data)
+                if items and isinstance(items, list):
+                    for item in items:
+                        if isinstance(item, dict):
+                            vid = item.get("id")
+                            is_free = item.get("isFree")
+                            if vid and is_free is not None:
+                                pay_map["/media/" + vid] = is_free
+                                pay_map["/play/" + vid] = is_free
+                                # 如果指定了target_id，直接返回该视频的状态
+                                if target_id and vid == target_id:
+                                    return not is_free
+        except:
+            pass
+        return pay_map
+
     def _parse_videos(self, html):
+        """解析视频列表，付费视频在备注中显示角标"""
         videos = []
+        
+        # 从 __NUXT_DATA__ 提取付费状态
+        pay_map = self._parse_pay_status_from_nuxt(html)
+        
+        # 从 HTML 中检测付费标签
         pattern = r'<a[^>]+href="(/(?:play|media)/[^"]+)"[^>]*>'
         for match in re.finditer(pattern, html):
             href = match.group(1)
@@ -50,9 +95,12 @@ class Spider(BaseSpider):
                 continue
             if "/category/" in href or "/tag/" in href:
                 continue
-            block_start = max(0, match.start() - 800)
-            block_end = min(len(html), match.end() + 800)
+            
+            block_start = max(0, match.start() - 1000)
+            block_end = min(len(html), match.end() + 1000)
             block = html[block_start:block_end]
+            
+            # 提取标题
             title = ""
             alt_match = re.search(r'alt="([^"]+)"', block)
             if alt_match:
@@ -63,6 +111,8 @@ class Spider(BaseSpider):
                     title = text_match.group(1).strip()
             if not title:
                 title = href.split("/")[-1]
+            
+            # 提取图片
             pic = ""
             img_patterns = [
                 r'<img[^>]+src="([^"]+)"',
@@ -75,12 +125,31 @@ class Spider(BaseSpider):
                     pic = img_match.group(1).strip('"\'')
                     if pic and not pic.startswith("data:"):
                         break
+            
+            # 判断是否为付费视频
+            is_pay = False
+            
+            # 从 JSON 数据中检查
+            if href in pay_map:
+                is_pay = not pay_map[href]
+            
+            # 从 HTML 标签中检查（兜底）
+            if not is_pay:
+                if '付费会员' in block or 'lock-badge' in block or '登录查看' in block:
+                    is_pay = True
+            
+            # 设置备注角标
+            remark = "🔒 VIP付费" if is_pay else "免费"
+            
             if title:
                 videos.append({
                     "vod_id": href,
                     "vod_name": title.strip(),
-                    "vod_pic": self._fix_url(pic)
+                    "vod_pic": self._fix_url(pic),
+                    "vod_remarks": remark
                 })
+        
+        # 去重
         seen = set()
         result = []
         for v in videos:
@@ -88,6 +157,12 @@ class Spider(BaseSpider):
                 seen.add(v["vod_id"])
                 result.append(v)
         return result
+
+    def homeVideoContent(self):
+        """首页视频推荐，TVBox加载必需"""
+        html = self._fetch(self.host)
+        videos = self._parse_videos(html)
+        return {"list": videos[:40]}
 
     def homeContent(self, filter=False):
         html = self._fetch(self.host)
@@ -128,6 +203,40 @@ class Spider(BaseSpider):
             desc = ""
             pic = ""
             play_url = ""
+            remark = ""
+            
+            # 从 __NUXT_DATA__ 提取当前视频的付费状态
+            current_id = vid.split("/")[-1]
+            is_pay = False
+            try:
+                nuxt_match = re.search(r'<script[^>]+id="__NUXT_DATA__"[^>]*>([^<]+)</script>', html)
+                if nuxt_match:
+                    data_str = nuxt_match.group(1)
+                    nuxt_data = json.loads(data_str)
+                    def find_video(obj, target_id):
+                        if isinstance(obj, dict):
+                            if "id" in obj and str(obj.get("id")) == str(target_id):
+                                return obj
+                            for v in obj.values():
+                                result = find_video(v, target_id)
+                                if result:
+                                    return result
+                        elif isinstance(obj, list):
+                            for item in obj:
+                                result = find_video(item, target_id)
+                                if result:
+                                    return result
+                        return None
+                    
+                    video_data = find_video(nuxt_data, current_id)
+                    if video_data and isinstance(video_data, dict):
+                        is_free = video_data.get("isFree")
+                        if is_free is not None:
+                            is_pay = not is_free
+            except:
+                pass
+            
+            # 从 JSON-LD 提取
             ld_pattern = r'<script type="application/ld\+json">([^<]+)</script>'
             for match in re.finditer(ld_pattern, html):
                 try:
@@ -145,6 +254,8 @@ class Spider(BaseSpider):
                                 desc = data.get("description") or ""
                 except:
                     pass
+            
+            # 从 OG 标签提取
             if not play_url:
                 og_match = re.search(r'<meta[^>]+property="og:video"[^>]+content="([^"]+)"', html)
                 if og_match:
@@ -169,11 +280,18 @@ class Spider(BaseSpider):
                 m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
                 if m3u8_match:
                     play_url = m3u8_match.group(0)
+            
+            # 设置角标
+            remark = "🔒 VIP付费" if is_pay else "免费"
+            
+            display_title = title or vid.split("/")[-1]
+            
             result.append({
                 "vod_id": vid,
-                "vod_name": title or vid.split("/")[-1],
+                "vod_name": display_title,
                 "vod_pic": self._fix_url(pic),
                 "vod_content": desc or "",
+                "vod_remarks": remark,
                 "vod_play_from": "PornCloud",
                 "vod_play_url": "播放$" + play_url if play_url else "播放$" + vid
             })
@@ -188,37 +306,59 @@ class Spider(BaseSpider):
         videos = self._parse_videos(html)
         total = len(videos)
         pagecount = 1
-        # 从页面提取总页数
         page_match = re.search(r'pagecount["\']?\s*[:=]\s*(\d+)', html)
         if page_match:
             pagecount = int(page_match.group(1))
         return {"list": videos, "page": pg, "pagecount": pagecount, "limit": 20, "total": total}
 
     def playerContent(self, flag, id, vipFlags=None):
+        """播放地址解析 - 优先直链，降级嗅探"""
         if id.startswith("http"):
-            play_url = id
-        else:
-            vid = id.split("/")[-1]
-            html = self._fetch(self.host + "/play/" + vid)
-            ld_pattern = r'<script type="application/ld\+json">([^<]+)</script>'
-            play_url = ""
-            for match in re.finditer(ld_pattern, html):
-                try:
-                    data = json.loads(match.group(1))
-                    if isinstance(data, dict) and data.get("@type") == "VideoObject":
-                        play_url = data.get("contentUrl") or ""
-                        break
-                except:
-                    pass
-            if not play_url:
-                m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
-                if m3u8_match:
-                    play_url = m3u8_match.group(0)
-            if not play_url:
-                play_url = "https://resource.coloursoutofspace.com/full/" + vid + "/" + vid + "_1.m3u8"
+            return {
+                "parse": 0,
+                "url": id,
+                "header": {
+                    "User-Agent": self.ua,
+                    "Referer": self.host + "/"
+                }
+            }
+        
+        vid = id.split("/")[-1]
+        play_page_url = self.host + "/play/" + vid
+        
+        html = self._fetch(play_page_url)
+        play_url = ""
+        
+        # 从 JSON-LD 提取
+        ld_pattern = r'<script type="application/ld\+json">([^<]+)</script>'
+        for match in re.finditer(ld_pattern, html):
+            try:
+                data = json.loads(match.group(1))
+                if isinstance(data, dict) and data.get("@type") == "VideoObject":
+                    play_url = data.get("contentUrl") or ""
+                    break
+            except:
+                pass
+        
+        # 从 HTML 中提取 m3u8 链接
+        if not play_url:
+            m3u8_match = re.search(r'https?://[^\s"\']+\.m3u8[^\s"\']*', html)
+            if m3u8_match:
+                play_url = m3u8_match.group(0)
+        
+        if play_url:
+            return {
+                "parse": 0,
+                "url": play_url,
+                "header": {
+                    "User-Agent": self.ua,
+                    "Referer": self.host + "/"
+                }
+            }
+        
         return {
-            "parse": 0,
-            "url": play_url,
+            "parse": 1,
+            "url": play_page_url,
             "header": {
                 "User-Agent": self.ua,
                 "Referer": self.host + "/"
