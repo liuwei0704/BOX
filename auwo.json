@@ -212,7 +212,7 @@
 {"name":"彈窗攔截","hosts":[".*"],"regex":["popup","ad","banner"],"script":["document.querySelectorAll('.modal,.popup,.overlay').forEach(el=>el.style.display='none')","document.querySelectorAll('[class*=\"ad\"],[id*=\"ad\"]').forEach(el=>el.remove())"]},
 {"name":"短連結展開","hosts":["dwz.cn","url.cn","t.cn"],"regex":[".*"],"expand":{"follow_redirects":true,"max_depth":10,"timeout":15}},
 {"name":"HTTPS強制升級","hosts":[".*"],"regex":["http://"],"upgrade":"https"},
-{"name":"DNS預解析","hosts":["cdn*.com","video*.net"],"regex":[".*"],"prefetch":true,"dns_timeout":5000}
+{"name":"DNS預解析","hosts":["cdn*.com","video*.net"],"regex":[".*"],"prefetch":true,"dns_timeout":5000},
 
 //===廣告過濾規則（按優先級排序）===
 {"name":"廣告域名全面封鎖","hosts":["adservice.google.com","doubleclick.net","googlesyndication.com","googleadservices.com","adnxs.com","adsrvr.org","amazon-adsystem.com","scorecardresearch.com","ad.yieldmanager.com","ad.doubleclick.net","pubads.g.doubleclick.net","securepubads.g.doubleclick.net","partnerad.l.doubleclick.net","ad.mo.doubleclick.net","googleads.g.doubleclick.net","tpc.googlesyndication.com","pagead2.googlesyndication.com","adservice.google.com.hk","adservice.google.com.tw"],"regex":[".*"],"action":"block","priority":10},
