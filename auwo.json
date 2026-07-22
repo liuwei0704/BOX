@@ -24,7 +24,7 @@
 {"key": "短剧好看", "name": "🔆短剧好看[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧好看.py"},
 {"key": "红豆短劇", "name": "🔆红豆短劇[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/红豆短劇.py"},
 {"key": "花生短剧", "name": "🔆花生短剧[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/花生短剧.py"},
-{"key": "黄豆短剧", "name": "🔆黄豆短剧[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/黄豆短剧.py"},
+{"key": "黄豆短剧", "name": "🔆黄豆短剧[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/黄豆短剧APP.py"},
 {"key": "PTT短剧", "name": "🔆PTT短剧[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/PTT短剧.py"},
 {"key": "八影短劇網", "name": "🔆八影短劇網[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/八影短劇網.py"},
 {"key": "短劇影視屋", "name": "🔆短劇影視屋[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短劇影視屋.py"},
