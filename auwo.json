@@ -9,6 +9,7 @@
 {"key":"MyConfig","name":"⚙️配置|中心","type":3,"api":"csp_AAConfigAmns","searchable":0,"quickSearch":0,"changeable":0},
 
 {"key":"Dailymotion","name":"🪩Dailymotion[影視]","type":3,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/Dailymotion.py","searchable":1,"quickSearch":1,"filterable":1,"changeable":1},
+{"key": "剧屋", "name": "🔆剧屋[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/剧屋.py"},
 {"key": "短剧网", "name": "🔆短剧网[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧网.py"},
 {"key": "短劇粉", "name": "🔆短劇粉[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短劇粉.py"},
 {"key": "91短剧", "name": "🔆91短剧[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/91短剧.py"},
@@ -30,9 +31,6 @@
 {"key": "短劇影視屋", "name": "🔆短劇影視屋[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短劇影視屋.py"},
 {"key": "ur95短剧", "name": "🔆ur95短剧[短劇]", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/ur95短剧.py"},
 
-{"key":"FanShu","name":"🐱番薯|动漫","type":3,"api":"csp_FanShuAmns","searchable":1,"quickSearch":1,"changeable":0},
-{"key":"AowuDmMw","name":"🐱喵物|动漫","type":3,"api":"csp_AowuDmAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"db8b57143fce50cabe524135fd3fb26e4af09034942cb186addd2322edf17ab6c9b7862764598039301c43cf706efcd55499494d72c680001c30550747b3dc5994760e3d6e17208e5ed771b2b4162f65e72b3e530fdd9622474e1c5f8aecda41dcd17901c7ddc61193a63fd8aaa1a96dc8673f93a8116755fd04bb1baaa93215334aaa1327972f2dd7292eb3d593e60cad0b9a3dde2a1158640cfc93dac5af45ddd8f971e3be0ccb5c776752b9b92a7f67dc89375d7ad442bddb0c661554a03c420029010a932d2dd8e65d6dc5"},
-{"key":"DMhhz","name":"🐱花海|动漫","type":3,"api":"csp_DMhhzAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"MjHggg","name":"🎬嗷嗚|漫剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"comic_series"},
 {"key":"DjHggg","name":"🎬嗷嗚|短剧","type":3,"api":"csp_HgggAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"short_play"},
 {"key":"HHkk","name":"🎬豪堪|短剧","type":3,"api":"csp_HHkkAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
@@ -41,6 +39,9 @@
 {"key":"Wgdj","name":"🎬围观|短剧","type":3,"api":"csp_WgdjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"Qmdj","name":"🎬喵喵|短剧","type":3,"api":"csp_QmdjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"Xydj","name":"🎬星星|短剧","type":3,"api":"csp_XydjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
+{"key":"FanShu","name":"🐱番薯|动漫","type":3,"api":"csp_FanShuAmns","searchable":1,"quickSearch":1,"changeable":0},
+{"key":"AowuDmMw","name":"🐱喵物|动漫","type":3,"api":"csp_AowuDmAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"db8b57143fce50cabe524135fd3fb26e4af09034942cb186addd2322edf17ab6c9b7862764598039301c43cf706efcd55499494d72c680001c30550747b3dc5994760e3d6e17208e5ed771b2b4162f65e72b3e530fdd9622474e1c5f8aecda41dcd17901c7ddc61193a63fd8aaa1a96dc8673f93a8116755fd04bb1baaa93215334aaa1327972f2dd7292eb3d593e60cad0b9a3dde2a1158640cfc93dac5af45ddd8f971e3be0ccb5c776752b9b92a7f67dc89375d7ad442bddb0c661554a03c420029010a932d2dd8e65d6dc5"},
+{"key":"DMhhz","name":"🐱花海|动漫","type":3,"api":"csp_DMhhzAmns","searchable":1,"quickSearch":1,"changeable":0},
 
 {"key":"NewGrV2","name":"⭐夏天|秒播","type":3,"api":"csp_NewGrV2Amns","searchable":1,"quickSearch":1,"changeable":0,"ext":"e5f15714a2413f05151fea686450950ace809216b88f37b7b1fb4f1ce80eff9fab1b6be3fd1f9df9a5a915365aefecb314d297b5e1747337c20236c3637c2aeaebfce371e9053be3898bb20a9ef20bbf13173fb2ad38b4474346328a3a354451a1b5f96c490cc09840a195bc498f9e11499df11b3946e58e4c705a8457521ed34c879c458a9b27e487496c7a63a7ca8b34133bca4943b0019d982462cc22294e7c4ab447899b0e8bc667c7e635e8291fa544e8e28d8b16b8b702912f2d5ec561e1fb8667cc44bef7cae73f5022c94518cb7f0845d772d44944a88ff71d9a562a6204729a8f1b00c81ba195664482e756859f12048f73e986ad3bb6584935696dff959b0f82055f23d94f6a935103b574a98d54079a0be6647fcaca4db0d177ac3004eb51819a8e539646a141"},
 {"key":"Hxq","name":"⭐韩剧|秒播","type":3,"api":"csp_HxqAmns","searchable":1,"quickSearch":1,"changeable":0},
