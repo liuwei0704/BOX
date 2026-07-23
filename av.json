@@ -18,6 +18,7 @@
 {"key": "epo", "name": "epo", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/epo.py"},
 {"key": "18AV", "name": "18AV", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/18AV.py"},
 {"key": "18CM", "name": "18CM", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/18CM.py"},
+{"key": "51xtv", "name": "51xtv", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/51xtv.py"},
 {"key": "Motv", "name": "Motv", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/Motv.py"},
 {"key": "AVHub", "name": "AVHub", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/AVHub.py"},
 {"key": "AVZMZ", "name": "AVZMZ", "type": 3, "searchable": 1, "quickSearch": 1, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_18/AVZMZ.py"},
