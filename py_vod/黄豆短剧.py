@@ -1,508 +1,266 @@
-# coding: utf-8
-# 黄豆短剧 https://www.hdmgdj.com/
-# React SPA + /api AES-GCM(ECDH/HKDF) + 加密封面(.bng AES-CBC-CBC变体)
-from base.spider import Spider
-import json, re, time, os, base64, hashlib, random, urllib.parse, warnings
-try:
-    import urllib3
-    urllib3.disable_warnings()
-except Exception:
-    pass
+# -*- coding: utf-8 -*-
+import gzip
+import hashlib
+import hmac
+import json
+import os
+import time
+import uuid
+import requests
 
 try:
-    from Crypto.Cipher import AES
+    from base.spider import Spider as BaseSpider
 except Exception:
-    AES = None
+    class BaseSpider:
+        pass
 
-class Spider(Spider):
-    def getName(self):
-        return '黄豆短剧'
+class _AESCBC:
+    @staticmethod
+    def encrypt(data, key, iv):
+        try:
+            from Crypto.Cipher import AES
+            return AES.new(key, AES.MODE_CBC, iv).encrypt(_AESCBC.pad(data))
+        except Exception:
+            from cryptography.hazmat.backends import default_backend
+            from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+            enc = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend()).encryptor()
+            return enc.update(_AESCBC.pad(data)) + enc.finalize()
 
+    @staticmethod
+    def decrypt(data, key, iv):
+        try:
+            from Crypto.Cipher import AES
+            plain = AES.new(key, AES.MODE_CBC, iv).decrypt(data)
+        except Exception:
+            from cryptography.hazmat.backends import default_backend
+            from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+            dec = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend()).decryptor()
+            plain = dec.update(data) + dec.finalize()
+        return _AESCBC.unpad(plain)
+
+    @staticmethod
+    def pad(data):
+        n = 16 - len(data) % 16
+        return data + bytes([n]) * n
+
+    @staticmethod
+    def unpad(data):
+        n = data[-1] if data else 0
+        return data[:-n] if 1 <= n <= 16 else data
+
+class Spider(BaseSpider):
     def __init__(self):
-        self.host = 'https://www.hdmgdj.com'
-        self.api = self.host + '/api'
-        self.ua = 'Mozilla/5.0 (Linux; Android 13; Mobile) AppleWebKit/537.36 Chrome/126 Mobile Safari/537.36'
-        self.sid = ''
-        self.k = None
-        self.exp = 0
-        self._home_cache = None
-        self._home_cache_time = 0
-        self._sections_cache = None
-        self._sections_cache_time = 0
-        self._detail_cache = {}
-        self._m3u8_cache = {}
-        self.classes = [
-            {'type_id': '16', 'type_name': '最新'},
-            {'type_id': '1', 'type_name': '推荐'},
-            {'type_id': '19', 'type_name': '擦边'},
-            {'type_id': '10', 'type_name': 'AI漫剧'},
-            {'type_id': '17', 'type_name': '国漫'},
-            {'type_id': '14', 'type_name': '同人'},
-            {'type_id': '15', 'type_name': '漫改'},
-            {'type_id': '4', 'type_name': '规则怪谈'},
-            {'type_id': '2', 'type_name': '都市'},
-            {'type_id': '3', 'type_name': '古装'},
-            {'type_id': '13', 'type_name': '恐怖'},
-            {'type_id': '11', 'type_name': '穿越'},
-            {'type_id': '12', 'type_name': '异能'},
-        ]
-        tag_vals = [{'n': '全部', 'v': ''}] + [{'n': c['type_name'], 'v': c['type_id']} for c in self.classes if c['type_id'] not in ['all','recommend']]
-        self.filters = {'all': [
-            {'key': 'genre', 'name': '题材', 'value': tag_vals},
-            {'key': 'order', 'name': '排序', 'value': [{'n':'默认','v':''},{'n':'最新','v':'new'},{'n':'最热','v':'hot'}]}
-        ]}
-        for c in self.classes:
-            if c['type_id'] not in self.filters:
-                self.filters[c['type_id']] = [{'key':'order','name':'排序','value':[{'n':'默认','v':''},{'n':'最新','v':'new'},{'n':'最热','v':'hot'}]}]
+        self.host = "https://xqjzvcvt.top"
+        self.api = self.host + "/api"
+        self.name = "黄豆短剧"
+        self.platform_key = "7961beb44246e3012ce228d6b5ced05a"
+        self.version = "2.0.0"
+        self.device_type = "web"
+        self.session_id = uuid.uuid4().hex
+        self.device_id = self.session_id
+        self.token = ""
+        self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36", "Accept": "*/*", "Origin": self.host, "Referer": self.host + "/home", "Content-Type": "application/octet-stream"}
+        self.session = requests.Session()
+        self.session.headers.update(self.headers)
+        self.class_cache = None
+        self.filter_cache = {}
 
-    def init(self, extend):
-        pass
+    def init(self, extend=""):
+        if extend:
+            try:
+                cfg = json.loads(extend)
+                self.host = (cfg.get("site") or cfg.get("base_url") or self.host).rstrip("/")
+                self.api = self.host + "/api"
+                self.token = cfg.get("token", self.token)
+                self.headers["Origin"] = self.host
+                self.headers["Referer"] = self.host + "/home"
+                self.session.headers.update(self.headers)
+            except Exception:
+                None
 
-    def getDependence(self):
-        return []
-
-    def isVideoFormat(self, url):
-        return False
-
-    def manualVideoCheck(self):
-        return False
-
-    def destroy(self):
-        pass
+    def getName(self):
+        return self.name
 
     def homeContent(self, filter):
-        return {'class': self.classes, 'filters': self.filters}
-
-    def getHomeContent(self, filter=False):
-        return self.homeContent(filter)
-
-    def homeVideoContent(self):
-        try:
-            data = self._home() or {}
-            arr = []
-            for k in ['feature', 'guess', 'latest', 'hot']:
-                arr += data.get(k) or []
-            return {'list': self._vod_list(arr[:30])}
-        except Exception as e:
-            self._log('首页推荐失败: %s' % e)
-            return {'list': []}
+        data = self._api("/drama/list", {"page": "1", "page_size": "18"})
+        classes = self._classes()
+        return {"class": classes, "filters": self._filters(classes), "list": [self._vod(x) for x in self._list(data)], "parse": 0, "jx": 0}
 
     def categoryContent(self, tid, pg, filter, extend):
-        page = self._int(pg, 1)
-        ext = self._extend(extend)
-        try:
-            if isinstance(tid, dict):
-                tid = tid.get('id') or tid.get('name') or ''
-            tid = urllib.parse.unquote(str(tid or '16'))
-            if tid.startswith('search:'):
-                return self._page('/search', {'kw': tid[7:], 'page': page, 'size': 24}, page)
-            if tid.startswith('tag:'):
-                return self._tag_page(tid[4:], page)
-            
-            # 特殊分类：推荐 和 最新 使用 sections 数据
-            if tid == '1' or tid == 'recommend':
-                data = self._home() or {}
-                merged = (data.get('feature') or []) + (data.get('guess') or [])
-                start = (page - 1) * 24
-                end = start + 24
-                page_items = merged[start:end] if merged else []
-                total = len(merged)
-                pagecount = (total // 24) + (1 if total % 24 > 0 else 1) if total > 0 else 1
-                return {'list': self._vod_list(page_items), 'page': page, 'pagecount': pagecount, 'limit': 24, 'total': total}
-            
-            if tid == '16' or tid == 'all':
-                sections = self._get_sections()
-                matched_dramas = []
-                for section in sections:
-                    if section.get('l2Id') == 16:
-                        matched_dramas = section.get('dramas', [])
-                        break
-                if not matched_dramas:
-                    for section in sections:
-                        matched_dramas.extend(section.get('dramas', []))
-                start = (page - 1) * 24
-                end = start + 24
-                page_items = matched_dramas[start:end] if matched_dramas else []
-                total = len(matched_dramas)
-                pagecount = (total // 24) + (1 if total % 24 > 0 else 1) if total > 0 else 1
-                return {'list': self._vod_list(page_items), 'page': page, 'pagecount': pagecount, 'limit': 24, 'total': total}
-            
-            # 普通分类：使用 /api/dramas 分页接口
-            l2_to_l3 = {
-                '18': '25',  # 大神原创
-                '19': '26',  # 擦边
-                '10': '17',  # AI漫剧
-                '17': '24',  # 国漫
-                '14': '22',  # 同人
-                '15': '23',  # 漫改
-                '4': '5',    # 规则怪谈
-                '2': '3',    # 都市
-                '3': '4',    # 古装
-                '13': '21',  # 恐怖
-                '11': '19',  # 穿越
-                '12': '20',  # 异能
-            }
-            l3_id = l2_to_l3.get(str(tid))
-            if not l3_id:
-                return {'list': [], 'page': page, 'pagecount': 1, 'limit': 24, 'total': 0}
-            
-            params = {'l3Id': l3_id, 'sort': '最新', 'page': page, 'size': 24}
-            if ext.get('order'):
-                params['sort'] = ext.get('order')
-            data = self._api_get('/dramas', params) or {}
-            arr = data.get('list') if isinstance(data, dict) else data
-            total = self._int(data.get('total') if isinstance(data, dict) else 9999, 9999)
-            pagecount = (total // 24) + (1 if total % 24 > 0 else 1) if total > 0 else 1
-            return {'list': self._vod_list(arr or []), 'page': page, 'pagecount': pagecount, 'limit': 24, 'total': total}
-        except Exception as e:
-            self._log('分类失败 tid=%s pg=%s err=%s' % (tid, page, e))
-            return {'list': [], 'page': page, 'pagecount': 1, 'limit': 24, 'total': 0}
-
-    def searchContent(self, key, quick=False, pg='1'):
-        page = self._int(pg, 1)
-        try:
-            return {'list': self._vod_list((self._api_get('/search', {'kw': key, 'page': page, 'size': 30}) or {}).get('list') or [])}
-        except Exception as e:
-            self._log('搜索失败: %s' % e)
-            return {'list': []}
+        extend = extend or {}
+        if tid == "yuandou":
+            data = self._api("/drama/navBlock", {"code": "yuandou", "tab": "recommend", "page": str(pg)})
+            items = self._nav_items(data)
+        else:
+            req = {"page": str(pg), "page_size": "18"}
+            if tid and tid not in ("all", "recommend"):
+                tabs = self._nav_filter(tid)
+                idx = self._int(extend.get("sub"), 0)
+                sub = tabs[idx] if tabs and 0 <= idx < len(tabs) else {}
+                flt = sub.get("filter", {}) if isinstance(sub, dict) else {}
+                req["cat_id"] = flt.get("cat_id", "")
+                if flt.get("tag_id"):
+                    req["tag_id"] = flt.get("tag_id", "")
+                req["order"] = flt.get("order", "") or extend.get("order", "")
+            elif extend.get("order"):
+                req["order"] = extend.get("order")
+            if extend.get("update_status"):
+                req["update_status"] = extend.get("update_status")
+            data = self._api("/drama/list", req)
+            items = self._list(data)
+        return {"page": int(pg), "pagecount": int(pg) if len(items) < 18 else int(pg) + 1, "limit": 18, "total": 99999, "list": [self._vod(x) for x in items], "parse": 0, "jx": 0}
 
     def detailContent(self, ids):
-        try:
-            vid = ids[0] if isinstance(ids, list) else ids
-            data = self._api_get('/dramas/%s' % vid) or {}
-            vod = self._vod(data)
-            vod.update({
-                'vod_id': str(data.get('id') or vid),
-                'vod_name': data.get('t') or data.get('title') or '',
-                'vod_pic': self._pic(data.get('cover') or ''),
-                'type_name': ' '.join(data.get('tags') or []) or data.get('sub') or '',
-                'vod_year': '',
-                'vod_area': '',
-                'vod_remarks': data.get('serial') or (('%s集' % data.get('eps')) if data.get('eps') else ''),
-                'vod_actor': '',
-                'vod_director': '',
-                'vod_content': self._content(data),
-            })
-            eps = data.get('episodes') or []
-            play = []
-            for ep in eps:
-                try:
-                    epno = ep.get('ep') or ep.get('index') or len(play)+1
-                    name = ep.get('title') or ('第%s集' % epno)
-                    url = ep.get('playUrl') or ep.get('url') or ''
-                    if not url:
-                        continue
-                    pid = self._b64(json.dumps({'dramaId': str(vid), 'ep': epno, 'url': url}, ensure_ascii=False, separators=(',', ':')))
-                    play.append('%s$%s' % (name, pid))
-                except Exception:
-                    continue
-            if play:
-                vod['vod_play_from'] = '黄豆直链'
-                vod['vod_play_url'] = '#'.join(play)
-            return {'list': [vod]}
-        except Exception as e:
-            self._log('详情失败: %s' % e)
-            return {'list': []}
+        vid = str(ids[0]).replace("rp_", "")
+        obj = self._api("/drama/detail", {"id": vid})
+        data = obj.get("data", obj) if isinstance(obj, dict) else {}
+        if not isinstance(data, dict):
+            return {"list": []}
+        data = self._unlock(data)
+        vod_id = self._sid(data.get("id") or data.get("drama_id") or vid)
+        name = data.get("name") or data.get("title") or data.get("t") or vod_id
+        eps = data.get("episodes") if isinstance(data.get("episodes"), list) else []
+        count = self._int(data.get("episode_count") or data.get("free_episodes"), len(eps) or 1)
+        play = []
+        if eps:
+            for i, ep in enumerate(eps, 1):
+                seq = ep.get("seq") or ep.get("episode") or ep.get("ep") or i
+                play.append("%s$%s|%s" % (ep.get("name") or ep.get("title") or "第%s集" % seq, vod_id, seq))
+        else:
+            play = ["第%s集$%s|%s" % (i, vod_id, i) for i in range(1, count + 1)]
+        vod = {"vod_id": vod_id, "vod_name": name, "vod_pic": self._pic(data), "type_name": data.get("category") or data.get("type") or "", "vod_year": "", "vod_area": "", "vod_remarks": data.get("update_label") or "全%s集" % count, "vod_actor": "", "vod_director": "", "vod_content": data.get("description") or data.get("summary") or name, "vod_play_from": self.name, "vod_play_url": "#".join(play)}
+        return {"list": [vod], "parse": 0, "jx": 0}
+
+    def searchContent(self, key, quick, pg="1"):
+        data = self._api("/drama/list", {"page": str(pg), "page_size": "18", "keywords": str(key)})
+        items = self._list(data)
+        return {"page": int(pg), "pagecount": int(pg) if len(items) < 18 else int(pg) + 1, "limit": 18, "total": 99999, "list": [self._vod(x) for x in items], "parse": 0, "jx": 0}
 
     def playerContent(self, flag, id, vipFlags):
+        vid, seq = self._split(id)
+        obj = self._api("/drama/play", {"id": vid, "seq": str(seq)}, True)
+        data = obj.get("data", {}) if isinstance(obj, dict) else {}
+        url = data.get("m3u8") or data.get("url") or self._hls(vid, seq)
+        return {"parse": 0, "playUrl": "", "url": url, "jx": 0, "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/home", "Origin": self.host}}
+
+    def _api(self, path, data=None, silent=False):
+        path = "/" + path.lstrip("/")
+        rid = str(uuid.uuid4())
+        key = self._key(rid)
+        iv = os.urandom(16)
+        raw = json.dumps({"token": self.token or "", "deviceId": self.device_id, "data": data or {}}, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        body = iv + _AESCBC.encrypt(gzip.compress(raw), key, iv)
+        ts = int(time.time())
+        sign = hashlib.sha256(("Dart|%s|%s|%s|%s" % (self.session_id, rid, ts, path)).encode("utf-8")).hexdigest() + "-" + str(ts)
+        h = dict(self.headers)
+        h.update({"version": self.version, "deviceType": self.device_type, "time": str(ts), "sign": sign, "requestId": rid, "sessionId": self.session_id, "deviceBrand": "", "deviceModel": "", "systemName": "", "systemVersion": ""})
         try:
-            raw = self._unb64(str(id))
-            info = json.loads(raw) if raw.startswith('{') else {'url': id}
-            url = info.get('url') or id
-            if '.m3u8' in url:
-                url = self.getProxyUrl() + '&mode=m3u8&url=' + urllib.parse.quote(url)
-            header = {'User-Agent': self.ua, 'Referer': self.host + '/', 'Origin': self.host}
-            return {'parse': 0, 'playUrl': '', 'url': url, 'header': header}
-        except Exception as e:
-            self._log('播放失败: %s' % e)
-            return {'parse': 1, 'url': id}
-
-    def localProxy(self, param):
-        try:
-            mode = ''
-            url = ''
-            if isinstance(param, dict):
-                mode = str(param.get('mode') or '')
-                url = param.get('url') or param.get('src') or ''
-                hval = param.get('hash') or ''
-                ver = param.get('version') or 'v1'
-            elif isinstance(param, list) and param:
-                url = param[0]; hval = ''; ver = 'v1'
-            else:
-                hval = ''; ver = 'v1'
-            url = urllib.parse.unquote(str(url or ''))
-            if mode == 'key':
-                key = hashlib.md5(('xnaichanping' + str(hval).lower() + str(ver)).encode()).digest()
-                return [200, 'application/octet-stream', key]
-            if not url:
-                return [404, 'text/plain', b'']
-            if mode == 'm3u8' or '.m3u8' in url:
-                return self._proxy_m3u8(url)
-            data = self._fetch_bytes(url)
-            if '.bng' in url or self._magic(data) == 'bin':
-                data = self._decrypt_bng(data, url)
-            mime = self._mime(data)
-            return [200, mime, data]
-        except Exception as e:
-            self._log('本地代理失败: %s' % e)
-            return [500, 'text/plain', str(e).encode('utf-8')]
-
-    def _home(self):
-        if self._home_cache and time.time() - self._home_cache_time < 180:
-            return self._home_cache
-        data = self._api_get('/home') or {}
-        self._home_cache = data
-        self._home_cache_time = time.time()
-        return data
-
-    def _get_sections(self):
-        if self._sections_cache and time.time() - self._sections_cache_time < 180:
-            return self._sections_cache
-        data = self._api_get('/channel/home') or {}
-        sections = data.get('sections') or []
-        self._sections_cache = sections
-        self._sections_cache_time = time.time()
-        return sections
-
-    def _tag_page(self, tag, page):
-        tag = str(tag or '').strip()
-        if not tag:
-            return self._result([], page)
-        arr = []
-        for path, params in [
-            ('/search', {'kw': tag, 'page': page, 'size': 24}),
-            ('/dramas', {'kw': tag, 'page': page, 'size': 24}),
-        ]:
-            data = self._api_get(path, params) or {}
-            items = data.get('list') if isinstance(data, dict) else data
-            for it in items or []:
-                if tag in (it.get('tags') or []) or tag in (it.get('sub') or '') or tag in (it.get('t') or ''):
-                    arr.append(it)
-            if arr:
-                return self._result(self._vod_list(arr), page)
-        for p in range(1, 4):
-            data = self._api_get('/dramas', {'sort': '最新', 'page': p, 'size': 24}) or {}
-            for it in (data.get('list') if isinstance(data, dict) else data) or []:
-                if tag in (it.get('tags') or []) or tag in (it.get('sub') or ''):
-                    arr.append(it)
-            if len(arr) >= 24:
-                break
-        return self._result(self._vod_list(arr), page)
-
-    def _proxy_m3u8(self, url):
-        text = self.fetch(url, headers={'User-Agent': self.ua, 'Referer': self.host + '/', 'Origin': self.host}, timeout=15, verify=False).text
-        h = ''
-        m = re.search(r'/hls/([0-9a-fA-F]{64})/', url)
-        if m:
-            h = m.group(1).lower()
-        ver = 'v1'
-        mv = re.search(r'[?&]version=([^&#]+)', url)
-        if mv:
-            ver = urllib.parse.unquote(mv.group(1))
-        key_url = self.getProxyUrl() + '&mode=key&hash=' + h + '&version=' + urllib.parse.quote(ver)
-        text = re.sub(r'URI="custom://key\?version=[^"]*"', 'URI="%s"' % key_url, text)
-        base = url.rsplit('/', 1)[0] + '/'
-        out = []
-        for line in text.splitlines():
-            s = line.strip()
-            if s and not s.startswith('#') and not re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*://', s):
-                out.append(urllib.parse.urljoin(base, s))
-            else:
-                out.append(line)
-        return [200, 'application/vnd.apple.mpegurl', ('\n'.join(out) + '\n').encode('utf-8')]
-
-    def _api_get(self, path, params=None):
-        self._ensure_session()
-        url = self.api + path
-        p = {'platform': 'mobile'}
-        if params: p.update(params)
-        headers = self._headers()
-        headers['X-Sid'] = self.sid
-        r = self.fetch(url, params=p, headers=headers, timeout=15, verify=False)
-        data = r.json()
-        data = self._dec_payload(data)
-        if isinstance(data, dict) and data.get('code') == 0:
-            return data.get('data')
-        self._log('API异常 %s -> %s' % (path, data))
-        return data.get('data') if isinstance(data, dict) else data
-
-    def _ensure_session(self):
-        if self.sid and self.k and self.exp > time.time():
-            return
-        if AES is None:
-            raise Exception('缺少 Crypto.Cipher.AES')
-        p = int('ffffffff00000001000000000000000000000000ffffffffffffffffffffffff', 16)
-        a = int('ffffffff00000001000000000000000000000000fffffffffffffffffffffffc', 16)
-        b = int('5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b', 16)
-        gx = int('6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296', 16)
-        gy = int('4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5', 16)
-        n = int('ffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551', 16)
-        sx = int('cfd1448eb340b7c5276e0fba9a69c63eda4e9a772314afc2ad007e667d56d94', 16)
-        sy = int('ddaf05723a69f6a7d68aa2e680071dca73241442debd9a63c1cc9401ba9b4752', 16)
-        d = random.SystemRandom().randrange(1, n-1)
-        qx, qy = self._ec_mul(d, gx, gy, p, a)
-        ssx, ssy = self._ec_mul(d, sx, sy, p, a)
-        shared = ssx.to_bytes(32, 'big')
-        self.k = self._hkdf(shared, b'app-data-h5')
-        client_pub = self._spki(qx, qy)
-        body = {'clientPub': base64.b64encode(client_pub).decode(), 'keyId': 'h5-2026-07', 'clientType': 'h5'}
-        url = self.api + '/handshake?platform=mobile'
-        r = self.post(url, headers=self._headers(), data=json.dumps(body), timeout=15)
-        j = r.json()
-        self.sid = ((j.get('data') or {}).get('sid') if isinstance(j, dict) else '') or ''
-        if not self.sid:
-            raise Exception('handshake failed: %s' % j)
-        self.exp = time.time() + 20 * 60
-
-    def _dec_payload(self, obj):
-        if isinstance(obj, dict) and 'iv' in obj and 'data' in obj:
-            iv = base64.b64decode(obj.get('iv'))
-            raw = base64.b64decode(obj.get('data'))
-            plain = AES.new(self.k, AES.MODE_GCM, nonce=iv).decrypt(raw[:-16])
-            try:
-                plain = AES.new(self.k, AES.MODE_GCM, nonce=iv).decrypt_and_verify(raw[:-16], raw[-16:])
-            except Exception:
-                pass
-            return json.loads(plain.decode('utf-8')).get('payload')
-        return obj
-
-    def _headers(self):
-        return {'User-Agent': self.ua, 'Accept': 'application/json, text/plain, */*', 'Content-Type': 'application/json', 'Origin': self.host, 'Referer': self.host + '/'}
-
-    def _page(self, path, params, page):
-        data = self._api_get(path, params) or {}
-        arr = data.get('list') if isinstance(data, dict) else data
-        return self._result(self._vod_list(arr or []), page, data if isinstance(data, dict) else {})
-
-    def _result(self, arr, page, data=None):
-        total = self._int((data or {}).get('total') or (data or {}).get('count') or 9999, 9999)
-        return {'list': arr, 'page': int(page), 'pagecount': max(int(page)+1, (total + 23)//24), 'limit': 24, 'total': total}
-
-    def _vod_list(self, arr):
-        res, seen = [], set()
-        for it in arr or []:
-            try:
-                v = self._vod(it)
-                if v['vod_id'] and v['vod_id'] not in seen:
-                    seen.add(v['vod_id']); res.append(v)
-            except Exception:
-                continue
-        return res
-
-    def _vod(self, it):
-        vid = str(it.get('id') or it.get('vod_id') or '')
-        return {'vod_id': vid, 'vod_name': it.get('t') or it.get('title') or it.get('name') or '', 'vod_pic': self._pic(it.get('cover') or it.get('pic') or ''), 'vod_remarks': it.get('serial') or it.get('sub') or (('%s集' % it.get('eps')) if it.get('eps') else '')}
-
-    def _content(self, data):
-        tags = data.get('tags') or []
-        links = []
-        for t in tags:
-            payload = json.dumps({'id': 'tag:' + str(t), 'name': str(t)}, ensure_ascii=False, separators=(',', ':'))
-            links.append('[a=cr:%s/]%s[/a]' % (payload, t))
-        parts = []
-        if data.get('summary'): parts.append(data.get('summary'))
-        if links: parts.append('标签：' + ' '.join(links))
-        if data.get('plays'): parts.append('播放：' + str(data.get('plays')))
-        if data.get('likes') is not None: parts.append('点赞：' + str(data.get('likes')))
-        return '\n'.join(parts)
-
-    def _pic(self, url):
-        url = str(url or '')
-        if not url: return ''
-        if '.bng' in url:
-            return self.getProxyUrl() + '&url=' + urllib.parse.quote(url)
-        return url
-
-    def _fetch_bytes(self, url):
-        r = self.fetch(url, headers={'User-Agent': self.ua, 'Referer': self.host + '/'}, timeout=20, verify=False)
-        return r.content
-
-    def _decrypt_bng(self, data, url):
-        if AES is None: return data
-        m = re.search(r'[0-9a-fA-F]{64}', url)
-        if not m: return data
-        ver = 'v1'
-        mv = re.search(r'[?&]version=([^&#]+)', url)
-        if mv: ver = urllib.parse.unquote(mv.group(1))
-        key = hashlib.md5(('xnaichanping' + m.group(0).lower() + ver).encode()).digest()
-        iv = bytes(16)
-        if len(data) % 16 != 0 or len(data) < 16: return data
-        last = data[-16:]
-        pad_block = bytes([x ^ 16 for x in last])
-        extra = AES.new(key, AES.MODE_CBC, iv).encrypt(pad_block)[:16]
-        dec = AES.new(key, AES.MODE_CBC, iv).decrypt(data + extra)
-        out = bytearray(len(dec))
-        out[:16] = dec[:16]
-        blocks = len(data) // 16
-        for i in range(1, blocks):
-            for j in range(16):
-                out[i*16+j] = dec[i*16+j] ^ data[(i-1)*16+j]
-        pad = out[len(data)-1]
-        return bytes(out[:len(data) - (pad if 0 < pad <= 16 else 0)])
-
-    def _mime(self, b):
-        if b.startswith(b'\xff\xd8\xff'): return 'image/jpeg'
-        if b.startswith(b'\x89PNG'): return 'image/png'
-        if b.startswith(b'GIF'): return 'image/gif'
-        if b[:4] == b'RIFF' and b[8:12] == b'WEBP': return 'image/webp'
-        return 'application/octet-stream'
-
-    def _magic(self, b):
-        return self._mime(b) if b else 'bin'
-
-    def _extend(self, e):
-        if isinstance(e, dict): return e
-        try: return json.loads(e) if e else {}
-        except Exception: return {}
-
-    def _int(self, v, d=0):
-        try: return int(v)
-        except Exception: return d
-
-    def _b64(self, s):
-        return base64.urlsafe_b64encode(s.encode()).decode().rstrip('=')
-
-    def _unb64(self, s):
-        try:
-            return base64.urlsafe_b64decode(s + '=' * ((4 - len(s) % 4) % 4)).decode()
+            r = self.session.post(self.api + path, data=body, headers=h, timeout=20, verify=False)
+            r.raise_for_status()
+            return self._decode(r.content, rid)
         except Exception:
-            return s
+            return {}
 
-    def _log(self, msg):
-        try: self.log('[黄豆短剧] ' + str(msg))
-        except Exception: pass
+    def _key(self, rid):
+        return hmac.new(self.platform_key.encode("utf-8"), bytes.fromhex(str(rid).replace("-", "")), hashlib.sha256).digest()
 
-    def _inv(self, x, p):
-        return pow(x, p-2, p)
+    def _decode(self, blob, rid):
+        if not blob or len(blob) < 32 or (len(blob) - 16) % 16 != 0:
+            try:
+                return json.loads(blob.decode("utf-8"))
+            except Exception:
+                return {}
+        plain = _AESCBC.decrypt(blob[16:], self._key(rid), blob[:16])
+        if plain[:2] == b"\x1f\x8b":
+            plain = gzip.decompress(plain)
+        return json.loads(plain.decode("utf-8"))
 
-    def _ec_add(self, P, Q, p, a):
-        if P is None: return Q
-        if Q is None: return P
-        x1,y1=P; x2,y2=Q
-        if x1 == x2 and (y1 + y2) % p == 0: return None
-        if P == Q:
-            lam = ((3*x1*x1 + a) * self._inv(2*y1 % p, p)) % p
-        else:
-            lam = ((y2-y1) * self._inv((x2-x1) % p, p)) % p
-        x3 = (lam*lam - x1 - x2) % p
-        y3 = (lam*(x1-x3) - y1) % p
-        return (x3,y3)
+    def _classes(self):
+        if self.class_cache:
+            return self.class_cache
+        arr = [{"type_id": "all", "type_name": "全部短剧"}]
+        data = self._api("/drama/navList", {})
+        for item in self._list(data.get("data", data) if isinstance(data, dict) else data):
+            tid = str(item.get("code") or item.get("id") or item.get("cat_id") or "")
+            name = item.get("name") or item.get("title") or tid
+            if tid and name:
+                arr.append({"type_id": tid, "type_name": name})
+        self.class_cache = arr
+        return arr
 
-    def _ec_mul(self, k, x, y, p, a):
-        R = None; P = (x,y)
-        while k:
-            if k & 1: R = self._ec_add(R, P, p, a)
-            P = self._ec_add(P, P, p, a); k >>= 1
-        return R
+    def _filters(self, classes):
+        common = [{"key": "order", "name": "排序", "value": [{"n": "默认", "v": ""}, {"n": "最新", "v": "new"}, {"n": "最热", "v": "hot"}]}, {"key": "update_status", "name": "状态", "value": [{"n": "全部", "v": ""}, {"n": "连载", "v": "0"}, {"n": "完结", "v": "1"}]}]
+        fs = {}
+        for c in classes:
+            tid = c["type_id"]
+            tabs = self._nav_filter(tid) if tid not in ("all", "yuandou") else []
+            fs[tid] = ([{"key": "sub", "name": "子分类", "value": [{"n": t.get("name", "默认"), "v": str(i)} for i, t in enumerate(tabs)]}] if tabs else []) + common
+        return fs
 
-    def _hkdf(self, ikm, info):
-        prk = hashlib.pbkdf2_hmac('sha256', ikm, b'', 1, dklen=32)
-        import hmac
-        prk = hmac.new(bytes(32), ikm, hashlib.sha256).digest()
-        t = hmac.new(prk, info + bytes([1]), hashlib.sha256).digest()
-        return t[:32]
+    def _nav_filter(self, code):
+        if code not in self.filter_cache:
+            data = self._api("/drama/navFilter", {"code": str(code)})
+            self.filter_cache[code] = self._list(data.get("data", data) if isinstance(data, dict) else data)
+        return self.filter_cache.get(code, [])
 
-    def _spki(self, x, y):
-        point = bytes([4]) + x.to_bytes(32,'big') + y.to_bytes(32,'big')
-        head = bytes.fromhex('3059301306072a8648ce3d020106082a8648ce3d030107034200')
-        return head + point
+    def _list(self, data):
+        if isinstance(data, list):
+            return data
+        if not isinstance(data, dict):
+            return []
+        if isinstance(data.get("list"), list):
+            return data["list"]
+        if isinstance(data.get("items"), list):
+            return data["items"]
+        if isinstance(data.get("data"), list):
+            return data["data"]
+        if isinstance(data.get("data"), dict):
+            return self._list(data["data"])
+        return []
+
+    def _nav_items(self, data):
+        blocks = self._list(data.get("data", data) if isinstance(data, dict) else data)
+        items = []
+        for b in blocks:
+            if isinstance(b, dict) and isinstance(b.get("items"), list):
+                items += b.get("items")
+            elif isinstance(b, dict) and (b.get("id") or b.get("drama_id")):
+                items.append(b)
+        return items
+
+    def _vod(self, item):
+        item = item or {}
+        vid = self._sid(item.get("id") or item.get("drama_id") or "")
+        remarks = item.get("update_label") or item.get("corner") or ("全%s集" % item.get("episode_count") if item.get("episode_count") else "")
+        return {"vod_id": vid, "vod_name": item.get("name") or item.get("title") or item.get("t") or vid, "vod_pic": self._pic(item), "vod_remarks": remarks}
+
+    def _pic(self, item):
+        return item.get("img_y") or item.get("img_x") or item.get("img") or item.get("cover") or item.get("pic") or ""
+
+    def _unlock(self, d):
+        eps = d.get("episodes")
+        if isinstance(eps, list):
+            for ep in eps:
+                if isinstance(ep, dict):
+                    ep["is_buy"] = True
+                    ep["type"] = "free"
+                    ep["price"] = 0
+                    ep["methods"] = []
+        d.update({"pay_type": "free", "money": 0, "episode_price": 0, "points_price": 0, "can_vip_watch": True, "is_buy_whole": True, "vip_episodes": [], "coin_episodes": [], "points_episodes": []})
+        return d
+
+    def _sid(self, x):
+        return str(x or "").replace("rp_", "")
+
+    def _split(self, x):
+        p = str(x).split("|", 1)
+        return self._sid(p[0]), p[1] if len(p) > 1 and p[1] else "1"
+
+    def _hls(self, vid, seq):
+        return "%s/api/drama/hls/%s/%s/play.m3u8?line=free" % (self.host, self._sid(vid), seq)
+
+    def _int(self, x, d=0):
+        try:
+            return int(x)
+        except Exception:
+            return d
