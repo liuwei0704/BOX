@@ -1,346 +1,247 @@
-# coding=utf-8
-# !/usr/bin/python
+# -*- coding: utf-8 -*-
+# 玩物社区 - 照搬朋友代码的图片解密方式
 
 import re
-import sys
 import base64
 import requests
 from bs4 import BeautifulSoup
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
-from base.spider import Spider
+from base.spider import Spider as BaseSpider
 
-sys.path.append('..')
 
-xurl = "https://9iio.zgdnbjh.com"
-
-headerx = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36'
-}
-
-class Spider(Spider):
-
+class Spider(BaseSpider):
     def getName(self):
-        return "Wanwuu"
+        return "玩物社区"
 
-    def init(self, extend):
-        pass
+    def getDependence(self):
+        return []
 
-    def isVideoFormat(self, url):
-        pass
+    def init(self, extend=""):
+        self.host = "https://thu.hejpugurn.cc"
+        self.headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Referer": self.host + "/",
+        }
+        self.classes = [
+            {"type_id": "/videos/zhibo-huifang/", "type_name": "直播回放"},
+            {"type_id": "/videos/guochan-sm/", "type_name": "国产sm"},
+            {"type_id": "/videos/rihan-sm/", "type_name": "日韩sm"},
+            {"type_id": "/videos/oumei-sm/", "type_name": "欧美sm"},
+            {"type_id": "/videos/dongman-sm/", "type_name": "动漫sm"},
+            {"type_id": "/videos/tiaojiao-av/", "type_name": "调教av"},
+            {"type_id": "/ai/all/", "type_name": "AI短剧-全部"},
+            {"type_id": "/ai/ai-duanju/", "type_name": "AI成人短剧"},
+            {"type_id": "/ai/ai-meinv/", "type_name": "AI美女"},
+            {"type_id": "/ai/ai-huanlian/", "type_name": "AI换脸"},
+            {"type_id": "/ai/ai-manju/", "type_name": "AI漫剧"},
+        ]
+        self.filters = {}
 
-    def manualVideoCheck(self):
-        pass
+    def decrypt_image(self, encrypted_bytes):
+        try:
+            key = b"f5d965df75336270"
+            iv = b"97b60394abc2fbe1"
+            cipher = AES.new(key, AES.MODE_CBC, iv)
+            decrypted = unpad(cipher.decrypt(encrypted_bytes), AES.block_size)
+            return decrypted
+        except:
+            return None
 
-    def extract_middle_text(self, text, start_str, end_str, pl, start_index1: str = '', end_index2: str = ''):
-        if pl == 3:
-            plx = []
-            while True:
-                start_index = text.find(start_str)
-                if start_index == -1:
-                    break
-                end_index = text.find(end_str, start_index + len(start_str))
-                if end_index == -1:
-                    break
-                middle_text = text[start_index + len(start_str):end_index]
-                plx.append(middle_text)
-                text = text.replace(start_str + middle_text + end_str, '')
-            if len(plx) > 0:
-                purl = ''
-                for i in range(len(plx)):
-                    matches = re.findall(start_index1, plx[i])
-                    output = ""
-                    for match in matches:
-                        match3 = re.search(r'(?:^|[^0-9])(\d+)(?:[^0-9]|$)', match[1])
-                        if match3:
-                            number = match3.group(1)
-                        else:
-                            number = 0
-                        if 'http' not in match[0]:
-                            output += f"#{match[1]}${number}{xurl}{match[0]}"
-                        else:
-                            output += f"#{match[1]}${number}{match[0]}"
-                    output = output[1:]
-                    purl = purl + output + "$$$"
-                purl = purl[:-3]
-                return purl
-            else:
-                return ""
-        else:
-            start_index = text.find(start_str)
-            if start_index == -1:
-                return ""
-            end_index = text.find(end_str, start_index + len(start_str))
-            if end_index == -1:
-                return ""
+    def process_encrypted_image(self, pic_url):
+        if not pic_url:
+            return ""
+        try:
+            resp = requests.get(pic_url, headers=self.headers, timeout=15)
+            if resp.status_code == 200 and len(resp.content) > 0:
+                decrypted = self.decrypt_image(resp.content)
+                if decrypted:
+                    b64 = base64.b64encode(decrypted).decode()
+                    return f"data:image/jpeg;base64,{b64}"
+        except:
+            pass
+        return ""
 
-        if pl == 0:
-            middle_text = text[start_index + len(start_str):end_index]
-            return middle_text.replace("\\", "")
-
-        if pl == 1:
-            middle_text = text[start_index + len(start_str):end_index]
-            matches = re.findall(start_index1, middle_text)
-            if matches:
-                jg = ' '.join(matches)
-                return jg
-
-        if pl == 2:
-            middle_text = text[start_index + len(start_str):end_index]
-            matches = re.findall(start_index1, middle_text)
-            if matches:
-                new_list = [f'{item}' for item in matches]
-                jg = '$$$'.join(new_list)
-                return jg
-
-    def get_category_list(self, doc):
-        soups = doc.find('ul', class_="text-nowrap")
-        vods = soups.find_all('li')
-        return vods
-
-    def extract_category_info(self, vod):
-        name = vod.text.strip()
-        id = vod.find('a')['href']
-        return {"type_id": id, "type_name": name}
-
-    def fetch_document(self):
-        detail = requests.get(url=xurl, headers=headerx)
-        detail.encoding = "utf-8"
-        res = detail.text
-        doc = BeautifulSoup(res, "lxml")
-        return doc
+    def fetch_html(self, url):
+        try:
+            resp = requests.get(url, headers=self.headers, timeout=15)
+            return resp.text if resp.status_code == 200 else ""
+        except:
+            return ""
 
     def homeContent(self, filter):
-        result = {"class": []}
-        doc = self.fetch_document()
-        vods = self.get_category_list(doc)
-        for vod in vods:
-            category_info = self.extract_category_info(vod)
-            result["class"].append(category_info)
-        return result
+        return {"class": self.classes, "filters": self.filters if filter else {}}
+
+    def getHomeContent(self, filter):
+        return self.homeContent(filter)
 
     def homeVideoContent(self):
-        pass
+        try:
+            data = self.categoryContent("/videos/guochan-sm/", 1, None, None)
+            return {"list": data.get("list", [])[:10]}
+        except:
+            return {"list": []}
 
-    def decrypt_image(self, encrypted_bytes: bytes, image_extension: str) -> bytes:
-        CONFIG = {
-            "key": "f5d965df75336270",
-            "iv": "97b60394abc2fbe1",
-            "mode": "CBC",
-            "padding": "PKCS7"
-        }
+    def categoryContent(self, tid, pg, filter, extend):
+        pg = int(pg) if pg else 1
+        url = f"{self.host}{tid}" if tid.endswith("/") else f"{self.host}{tid}/"
+        if pg > 1:
+            url = f"{url}page/{pg}/"
         
-        cipher = AES.new(
-            key=CONFIG["key"].encode("utf-8"),
-            mode=AES.MODE_CBC,
-            iv=CONFIG["iv"].encode("utf-8")
-        )
-        try:
-            decrypted_padded_bytes = cipher.decrypt(encrypted_bytes)
-        except ValueError:
-            return None
-        try:
-            final_image_bytes = unpad(decrypted_padded_bytes, AES.block_size)
-            return final_image_bytes
-        except ValueError:
-            return None
-        except Exception:
-            return None
-
-    def download_and_decrypt_image(self, url: str) -> tuple:
-        try:
-            response = requests.get(url, headers=headerx, timeout=30)
-            response.raise_for_status()
-            if response.content.startswith(b'data:'):
-                mime_end = response.content.find(b';')
-                mime_type = response.content[5:mime_end].decode('utf-8')
-                image_extension = mime_type.split('/')[-1]
-                comma_pos = response.content.find(b',')
-                if comma_pos == -1:
-                    return None, None
-                encrypted_raw_bytes = response.content[comma_pos + 1:]
-            else:
-                encrypted_raw_bytes = response.content
-                image_extension = url.split('.')[-1].lower()
-                
-            decrypted_image_bytes = self.decrypt_image(encrypted_raw_bytes, image_extension)
-            if decrypted_image_bytes:
-                return decrypted_image_bytes, image_extension
-            else:
-                return None, None
-        except requests.exceptions.RequestException:
-            return None, None
-
-    def convert_to_base64_image(self, image_bytes: bytes, image_extension: str) -> str:
-        if not image_bytes:
-            return None
-        base64_encoded = base64.b64encode(image_bytes).decode('utf-8')
+        html = self.fetch_html(url)
+        if not html:
+            return {"list": [], "page": pg, "pagecount": 1, "total": 0}
         
-        if image_extension == 'jpg':
-            mime_type = 'image/jpeg'
-        elif image_extension == 'svg':
-            mime_type = 'image/svg+xml'
-        else:
-            mime_type = f"image/{image_extension}"
-            
-        base64_image_url = f"data:{mime_type};base64,{base64_encoded}"
-        return base64_image_url
-
-    def process_encrypted_image(self, encrypted_image_url: str) -> str:
-        final_image_data, extension = self.download_and_decrypt_image(encrypted_image_url)
-        base64_image = self.convert_to_base64_image(final_image_data, extension)
-        return base64_image
-
-    def categoryContent(self, cid, pg, filter, ext):
-        result = {}
+        doc = BeautifulSoup(html, "lxml")
         videos = []
-        page = int(pg) if pg else 1
-        url = f'{xurl}{cid}/page/{str(page)}/'
-        doc = self.fetch_category_document(url)
+        
+        # 查找视频列表 - 按朋友代码的方式
         soups = doc.find_all('ul', class_="video-items")
+        if not soups:
+            soups = doc.find_all('div', class_=re.compile(r'video|item|card'))
+        
         for soup in soups:
-            vods = soup.find_all('li')
-            for vod in vods:
-                video = self.extract_video_info(vod)
-                videos.append(video)
-        result = {'list': videos}
-        result['page'] = pg
-        result['pagecount'] = 9999
-        result['limit'] = 90
-        result['total'] = 999999
-        return result
-
-    def fetch_category_document(self, url):
-        detail = requests.get(url=url, headers=headerx)
-        detail.encoding = "utf-8"
-        res = detail.text
-        doc = BeautifulSoup(res, "lxml")
-        return doc
-
-    def extract_video_info(self, vod):
-        name = vod.find('img')['alt']
-        ids = vod.find('a', class_="my-1")
-        id = ids['href']
-        pic = vod.find('img')['data-src']
-        pic = self.process_encrypted_image(pic)
-        remarks = vod.find('div', class_="truncate")
-        remark = remarks.text.strip() if remarks else ""
-        remark = remark.replace('\n', '')
-        video = {
-            "vod_id": id,
-            "vod_name": name,
-            "vod_pic": pic,
-            "vod_remarks": remark
+            items = soup.find_all('li') if soup.name == 'ul' else soup.find_all('div', class_=re.compile(r'item|card|video'))
+            for item in items:
+                # 提取图片
+                img = item.find('img')
+                if not img:
+                    continue
+                
+                pic_url = img.get('data-src') or img.get('src')
+                if not pic_url:
+                    continue
+                
+                # 解密图片
+                pic = self.process_encrypted_image(pic_url)
+                if not pic:
+                    pic = "https://via.placeholder.com/400x225?text=Video"
+                
+                # 提取标题
+                name = img.get('alt', '')
+                if not name:
+                    title_tag = item.find('a', class_=re.compile(r'title|name'))
+                    if title_tag:
+                        name = title_tag.text.strip()
+                
+                # 提取链接
+                link = item.find('a', href=True)
+                vod_id = link.get('href') if link else ""
+                
+                # 提取备注
+                remark = ""
+                remark_tag = item.find('div', class_=re.compile(r'truncate|remark|time|duration'))
+                if remark_tag:
+                    remark = remark_tag.text.strip()
+                
+                if vod_id and name:
+                    videos.append({
+                        "vod_id": vod_id,
+                        "vod_name": name,
+                        "vod_pic": pic,
+                        "vod_remarks": remark
+                    })
+        
+        return {
+            "list": videos,
+            "page": pg,
+            "pagecount": 9999,
+            "limit": 90,
+            "total": 999999
         }
-        return video
 
     def detailContent(self, ids):
-        did = ids[0]
-        result = {}
-        videos = []
-        did = self.process_video_id(did)
-        res = self.fetch_video_detail(did)
-        content = self.extract_video_content(res)
-        bofang = self.extract_embed_url(res)
-        videos.append({
-            "vod_id": did,
-            "vod_content": content,
-            "vod_play_from": "默认线路",
-            "vod_play_url": bofang
-        })
-        result['list'] = videos
-        return result
-
-    def process_video_id(self, did):
-        if 'http' not in did:
-            did = xurl + did
-        return did
-
-    def fetch_video_detail(self, did):
-        detail = requests.get(url=did, headers=headerx)
-        detail.encoding = "utf-8"
-        res = detail.text
-        return res
-
-    def extract_video_content(self, res):
-        content = self.extract_middle_text(res, '"description": "', '"', 0)
-        return content
-
-    def extract_embed_url(self, res):
-        bofang = self.extract_middle_text(res, '"embedUrl": "', '"', 0)
-        return bofang
+        if not ids:
+            return {"list": []}
+        
+        vid = ids[0]
+        if not vid.startswith("http"):
+            vid = self.host + vid
+        
+        html = self.fetch_html(vid)
+        if not html:
+            return {"list": []}
+        
+        doc = BeautifulSoup(html, "lxml")
+        
+        # 提取播放地址
+        play_url = ""
+        source = doc.find('source')
+        if source:
+            play_url = source.get('src', '')
+        
+        if not play_url:
+            # 尝试从 script 中提取
+            scripts = doc.find_all('script')
+            for script in scripts:
+                if script.string and 'embedUrl' in script.string:
+                    match = re.search(r'"embedUrl":\s*"([^"]+)"', script.string)
+                    if match:
+                        embed_url = match.group(1)
+                        embed_html = self.fetch_html(embed_url)
+                        if embed_html:
+                            embed_doc = BeautifulSoup(embed_html, "lxml")
+                            embed_source = embed_doc.find('source')
+                            if embed_source:
+                                play_url = embed_source.get('src', '')
+                                break
+        
+        return {"list": [{
+            "vod_id": vid,
+            "vod_name": "视频详情",
+            "vod_pic": "",
+            "vod_content": "",
+            "vod_play_from": "玩物",
+            "vod_play_url": f"播放${play_url}" if play_url else ""
+        }]}
 
     def playerContent(self, flag, id, vipFlags):
-        res = self.fetch_player_page(id)
-        url = self.extract_video_url(res)
-        result = {}
-        result["parse"] = 0
-        result["playUrl"] = ''
-        result["url"] = url
-        result["header"] = headerx
-        return result
+        if not id:
+            return {"parse": 0, "url": ""}
+        if id.startswith("http") and (".m3u8" in id or ".mp4" in id):
+            return {"parse": 0, "url": id, "header": self.headers}
+        return {"parse": 1, "url": id}
 
-    def fetch_player_page(self, id):
-        detail = requests.get(url=id, headers=headerx)
-        detail.encoding = "utf-8"
-        res = detail.text
-        return res
-
-    def extract_video_url(self, res):
-        url = self.extract_middle_text(res, '<source src="', '"', 0).replace('\\', '')
-        return url
-
-    def searchContentPage(self, key, quick, pg):
-        result = {}
+    def searchContent(self, key, quick, pg):
+        if not key:
+            return {"list": [], "page": 1, "pagecount": 1, "total": 0}
+        
+        pg = int(pg) if pg else 1
+        url = f"{self.host}/videos/search/{key}/"
+        if pg > 1:
+            url = f"{url}page/{pg}/"
+        
+        html = self.fetch_html(url)
+        if not html:
+            return {"list": [], "page": pg, "pagecount": 1, "total": 0}
+        
+        doc = BeautifulSoup(html, "lxml")
         videos = []
-        page = int(pg) if pg else 1
-        url = f'{xurl}/videos/search/{key}/page/{str(page)}/'
-        doc = self.fetch_search_document(url)
+        
         soups = doc.find_all('ul', class_="video-items")
         for soup in soups:
-            vods = soup.find_all('li')
-            for vod in vods:
-                video = self.extract_search_video_info(vod)
-                videos.append(video)
-        result['list'] = videos
-        result['page'] = pg
-        result['pagecount'] = 9999
-        result['limit'] = 90
-        result['total'] = 999999
-        return result
+            items = soup.find_all('li')
+            for item in items:
+                img = item.find('img')
+                if not img:
+                    continue
+                
+                pic_url = img.get('data-src') or img.get('src')
+                pic = self.process_encrypted_image(pic_url) if pic_url else ""
+                
+                name = img.get('alt', '')
+                link = item.find('a', href=True)
+                vod_id = link.get('href') if link else ""
+                
+                if vod_id and name:
+                    videos.append({
+                        "vod_id": vod_id,
+                        "vod_name": name,
+                        "vod_pic": pic,
+                        "vod_remarks": ""
+                    })
+        
+        return {"list": videos, "page": pg, "pagecount": 9999, "limit": 90, "total": 999999}
 
-    def fetch_search_document(self, url):
-        detail = requests.get(url=url, headers=headerx)
-        detail.encoding = "utf-8"
-        res = detail.text
-        doc = BeautifulSoup(res, "lxml")
-        return doc
-
-    def extract_search_video_info(self, vod):
-        name = vod.find('img')['alt']
-        ids = vod.find('a', class_="my-1")
-        id = ids['href']
-        pic = vod.find('img')['data-src']
-        pic = self.process_encrypted_image(pic)
-        remarks = vod.find('div', class_="truncate")
-        remark = remarks.text.strip() if remarks else ""
-        remark = remark.replace('\n', '')
-        video = {
-            "vod_id": id,
-            "vod_name": name,
-            "vod_pic": pic,
-            "vod_remarks": remark
-        }
-        return video
-
-    def searchContent(self, key, quick, pg="1"):
-        return self.searchContentPage(key, quick, '1')
-
-    def localProxy(self, params):
-        if params['type'] == "m3u8":
-            return self.proxyM3u8(params)
-        elif params['type'] == "media":
-            return self.proxyMedia(params)
-        elif params['type'] == "ts":
-            return self.proxyTs(params)
-        return None
+    def destroy(self):
+        pass
