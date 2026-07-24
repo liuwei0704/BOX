@@ -1,268 +1,346 @@
-# -*- coding: utf-8 -*-
-# 玩物社区 - 使用 getProxyUrl() 方式
+# coding=utf-8
+# !/usr/bin/python
 
-import json
 import re
-import urllib.parse
+import sys
+import base64
 import requests
-from base.spider import Spider as BaseSpider
+from bs4 import BeautifulSoup
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
+from base.spider import Spider
 
+sys.path.append('..')
 
-class Spider(BaseSpider):
+xurl = "https://9iio.zgdnbjh.com"
+
+headerx = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.87 Safari/537.36'
+}
+
+class Spider(Spider):
+
     def getName(self):
-        return "玩物社区"
+        return "Wanwuu"
 
-    def getDependence(self):
-        return []
+    def init(self, extend):
+        pass
 
-    def init(self, extend=""):
-        self.host = "https://thu.hejpugurn.cc"
-        self.default_pic = "https://via.placeholder.com/400x225?text=Video"
-        
-        self.classes = [
-            {"type_id": "zhibo-huifang", "type_name": "直播回放"},
-            {"type_id": "guochan-sm", "type_name": "国产sm"},
-            {"type_id": "rihan-sm", "type_name": "日韩sm"},
-            {"type_id": "oumei-sm", "type_name": "欧美sm"},
-            {"type_id": "dongman-sm", "type_name": "动漫sm"},
-            {"type_id": "tiaojiao-av", "type_name": "调教av"},
-            {"type_id": "ai-all", "type_name": "AI短剧-全部"},
-            {"type_id": "ai-duanju", "type_name": "AI成人短剧"},
-            {"type_id": "ai-meinv", "type_name": "AI美女"},
-            {"type_id": "ai-huanlian", "type_name": "AI换脸"},
-            {"type_id": "ai-manju", "type_name": "AI漫剧"},
-        ]
-        
-        self.filters = {}
-        self.headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            "Referer": self.host + "/",
-        }
-        self.session = requests.Session()
-        self.session.headers.update(self.headers)
+    def isVideoFormat(self, url):
+        pass
 
-    def _fix_url(self, url):
-        if not url:
-            return ""
-        if url.startswith("//"):
-            return "https:" + url
-        if url.startswith("/"):
-            return self.host + url
-        return url
+    def manualVideoCheck(self):
+        pass
 
-    def _pic(self, url):
-        """使用 getProxyUrl() 生成图片代理URL，参考好色先生.py"""
-        if not url:
-            return self.default_pic
-        # 如果已经是代理URL，直接返回
-        if url.startswith("proxy://") or "127.0.0.1:9978" in url:
-            return url
-        return self.getProxyUrl() + '&url=' + urllib.parse.quote(url)
+    def extract_middle_text(self, text, start_str, end_str, pl, start_index1: str = '', end_index2: str = ''):
+        if pl == 3:
+            plx = []
+            while True:
+                start_index = text.find(start_str)
+                if start_index == -1:
+                    break
+                end_index = text.find(end_str, start_index + len(start_str))
+                if end_index == -1:
+                    break
+                middle_text = text[start_index + len(start_str):end_index]
+                plx.append(middle_text)
+                text = text.replace(start_str + middle_text + end_str, '')
+            if len(plx) > 0:
+                purl = ''
+                for i in range(len(plx)):
+                    matches = re.findall(start_index1, plx[i])
+                    output = ""
+                    for match in matches:
+                        match3 = re.search(r'(?:^|[^0-9])(\d+)(?:[^0-9]|$)', match[1])
+                        if match3:
+                            number = match3.group(1)
+                        else:
+                            number = 0
+                        if 'http' not in match[0]:
+                            output += f"#{match[1]}${number}{xurl}{match[0]}"
+                        else:
+                            output += f"#{match[1]}${number}{match[0]}"
+                    output = output[1:]
+                    purl = purl + output + "$$$"
+                purl = purl[:-3]
+                return purl
+            else:
+                return ""
+        else:
+            start_index = text.find(start_str)
+            if start_index == -1:
+                return ""
+            end_index = text.find(end_str, start_index + len(start_str))
+            if end_index == -1:
+                return ""
 
-    def _fetch_html(self, url):
-        try:
-            resp = self.session.get(url, timeout=15)
-            return resp.text if resp.status_code == 200 else ""
-        except:
-            return ""
+        if pl == 0:
+            middle_text = text[start_index + len(start_str):end_index]
+            return middle_text.replace("\\", "")
 
-    def _extract_vid(self, url):
-        match = re.search(r'/vd-([a-zA-Z0-9]+)-', url)
-        return match.group(1) if match else ""
+        if pl == 1:
+            middle_text = text[start_index + len(start_str):end_index]
+            matches = re.findall(start_index1, middle_text)
+            if matches:
+                jg = ' '.join(matches)
+                return jg
 
-    def _extract_embed_id(self, embed_url):
-        if not embed_url:
-            return ""
-        match = re.search(r'[?&]id=([^&]+)', embed_url)
-        return match.group(1) if match else ""
+        if pl == 2:
+            middle_text = text[start_index + len(start_str):end_index]
+            matches = re.findall(start_index1, middle_text)
+            if matches:
+                new_list = [f'{item}' for item in matches]
+                jg = '$$$'.join(new_list)
+                return jg
 
-    def _extract_total_count(self, html):
-        match = re.search(r'"numberOfItems"\s*:\s*(\d+)', html)
-        return int(match.group(1)) if match else 0
+    def get_category_list(self, doc):
+        soups = doc.find('ul', class_="text-nowrap")
+        vods = soups.find_all('li')
+        return vods
 
-    def _extract_jsonld_items(self, html):
-        items = []
-        pattern = r'<script type="application/ld\+json">(.*?)</script>'
-        for match in re.findall(pattern, html, re.DOTALL):
-            try:
-                data = json.loads(match)
-                if data.get("@type") == "CollectionPage":
-                    main = data.get("mainEntity", {})
-                    if main.get("@type") == "ItemList":
-                        for entry in main.get("itemListElement", []):
-                            item = entry.get("item", {})
-                            if item.get("@type") == "VideoObject":
-                                url = item.get("url", "")
-                                vid = self._extract_vid(url)
-                                vod_name = item.get("name", "")
-                                
-                                thumb = item.get("thumbnailUrl", [])
-                                if isinstance(thumb, list) and thumb:
-                                    vod_pic = self._fix_url(thumb[0])
-                                elif isinstance(thumb, str):
-                                    vod_pic = self._fix_url(thumb)
-                                else:
-                                    vod_pic = ""
-                                
-                                # 使用 _pic 生成代理URL
-                                proxy_pic = self._pic(vod_pic) if vod_pic else self.default_pic
-                                
-                                duration = item.get("duration", "")
-                                if duration:
-                                    duration = duration.replace("PT", "").replace("H", ":").replace("M", ":").replace("S", "")
-                                
-                                embed_id = self._extract_embed_id(item.get("embedUrl", ""))
-                                
-                                items.append({
-                                    "vod_id": f"{vid}|$|{vod_name}|$|{proxy_pic}|$|{duration}|$|{embed_id}",
-                                    "vod_name": vod_name,
-                                    "vod_pic": proxy_pic,
-                                    "vod_remarks": duration
-                                })
-            except:
-                continue
-        return items
+    def extract_category_info(self, vod):
+        name = vod.text.strip()
+        id = vod.find('a')['href']
+        return {"type_id": id, "type_name": name}
+
+    def fetch_document(self):
+        detail = requests.get(url=xurl, headers=headerx)
+        detail.encoding = "utf-8"
+        res = detail.text
+        doc = BeautifulSoup(res, "lxml")
+        return doc
 
     def homeContent(self, filter):
-        return {"class": self.classes, "filters": self.filters if filter else {}}
-
-    def getHomeContent(self, filter):
-        return self.homeContent(filter)
+        result = {"class": []}
+        doc = self.fetch_document()
+        vods = self.get_category_list(doc)
+        for vod in vods:
+            category_info = self.extract_category_info(vod)
+            result["class"].append(category_info)
+        return result
 
     def homeVideoContent(self):
+        pass
+
+    def decrypt_image(self, encrypted_bytes: bytes, image_extension: str) -> bytes:
+        CONFIG = {
+            "key": "f5d965df75336270",
+            "iv": "97b60394abc2fbe1",
+            "mode": "CBC",
+            "padding": "PKCS7"
+        }
+        
+        cipher = AES.new(
+            key=CONFIG["key"].encode("utf-8"),
+            mode=AES.MODE_CBC,
+            iv=CONFIG["iv"].encode("utf-8")
+        )
         try:
-            data = self._fetch_category("guochan-sm", 1)
-            return {"list": data.get("list", [])[:10]}
-        except:
-            return {"list": []}
+            decrypted_padded_bytes = cipher.decrypt(encrypted_bytes)
+        except ValueError:
+            return None
+        try:
+            final_image_bytes = unpad(decrypted_padded_bytes, AES.block_size)
+            return final_image_bytes
+        except ValueError:
+            return None
+        except Exception:
+            return None
 
-    def categoryContent(self, tid, pg, filter, extend):
-        pg = int(pg) if pg else 1
-        if tid.startswith("ai-"):
-            return self._fetch_category_ai(tid, pg)
-        return self._fetch_category(tid, pg)
+    def download_and_decrypt_image(self, url: str) -> tuple:
+        try:
+            response = requests.get(url, headers=headerx, timeout=30)
+            response.raise_for_status()
+            if response.content.startswith(b'data:'):
+                mime_end = response.content.find(b';')
+                mime_type = response.content[5:mime_end].decode('utf-8')
+                image_extension = mime_type.split('/')[-1]
+                comma_pos = response.content.find(b',')
+                if comma_pos == -1:
+                    return None, None
+                encrypted_raw_bytes = response.content[comma_pos + 1:]
+            else:
+                encrypted_raw_bytes = response.content
+                image_extension = url.split('.')[-1].lower()
+                
+            decrypted_image_bytes = self.decrypt_image(encrypted_raw_bytes, image_extension)
+            if decrypted_image_bytes:
+                return decrypted_image_bytes, image_extension
+            else:
+                return None, None
+        except requests.exceptions.RequestException:
+            return None, None
 
-    def _fetch_category(self, slug, pg):
-        url = f"{self.host}/videos/{slug}/" if pg == 1 else f"{self.host}/videos/{slug}/page/{pg}/"
-        html = self._fetch_html(url)
-        if not html:
-            return {"list": [], "page": pg, "pagecount": 1, "total": 0}
-        items = self._extract_jsonld_items(html)
-        total = self._extract_total_count(html)
-        return {
-            "list": items,
-            "page": pg,
-            "pagecount": max(1, (total + 19) // 20) if total > 0 else 1,
-            "total": total if total > 0 else len(items)
+    def convert_to_base64_image(self, image_bytes: bytes, image_extension: str) -> str:
+        if not image_bytes:
+            return None
+        base64_encoded = base64.b64encode(image_bytes).decode('utf-8')
+        
+        if image_extension == 'jpg':
+            mime_type = 'image/jpeg'
+        elif image_extension == 'svg':
+            mime_type = 'image/svg+xml'
+        else:
+            mime_type = f"image/{image_extension}"
+            
+        base64_image_url = f"data:{mime_type};base64,{base64_encoded}"
+        return base64_image_url
+
+    def process_encrypted_image(self, encrypted_image_url: str) -> str:
+        final_image_data, extension = self.download_and_decrypt_image(encrypted_image_url)
+        base64_image = self.convert_to_base64_image(final_image_data, extension)
+        return base64_image
+
+    def categoryContent(self, cid, pg, filter, ext):
+        result = {}
+        videos = []
+        page = int(pg) if pg else 1
+        url = f'{xurl}{cid}/page/{str(page)}/'
+        doc = self.fetch_category_document(url)
+        soups = doc.find_all('ul', class_="video-items")
+        for soup in soups:
+            vods = soup.find_all('li')
+            for vod in vods:
+                video = self.extract_video_info(vod)
+                videos.append(video)
+        result = {'list': videos}
+        result['page'] = pg
+        result['pagecount'] = 9999
+        result['limit'] = 90
+        result['total'] = 999999
+        return result
+
+    def fetch_category_document(self, url):
+        detail = requests.get(url=url, headers=headerx)
+        detail.encoding = "utf-8"
+        res = detail.text
+        doc = BeautifulSoup(res, "lxml")
+        return doc
+
+    def extract_video_info(self, vod):
+        name = vod.find('img')['alt']
+        ids = vod.find('a', class_="my-1")
+        id = ids['href']
+        pic = vod.find('img')['data-src']
+        pic = self.process_encrypted_image(pic)
+        remarks = vod.find('div', class_="truncate")
+        remark = remarks.text.strip() if remarks else ""
+        remark = remark.replace('\n', '')
+        video = {
+            "vod_id": id,
+            "vod_name": name,
+            "vod_pic": pic,
+            "vod_remarks": remark
         }
-
-    def _fetch_category_ai(self, tid, pg):
-        url = f"{self.host}/ai/{tid}/" if pg == 1 else f"{self.host}/ai/{tid}/page/{pg}/"
-        html = self._fetch_html(url)
-        if not html:
-            return {"list": [], "page": pg, "pagecount": 1, "total": 0}
-        items = self._extract_jsonld_items(html)
-        total = self._extract_total_count(html)
-        return {
-            "list": items,
-            "page": pg,
-            "pagecount": max(1, (total + 19) // 20) if total > 0 else 1,
-            "total": total if total > 0 else len(items)
-        }
+        return video
 
     def detailContent(self, ids):
-        if not ids:
-            return {"list": []}
-        parts = ids[0].split('|$|')
-        vid = parts[0] if len(parts) > 0 else ""
-        vod_name = parts[1] if len(parts) > 1 else ""
-        vod_pic = parts[2] if len(parts) > 2 else self.default_pic
-        vod_remark = parts[3] if len(parts) > 3 else ""
-        embed_id = parts[4] if len(parts) > 4 else vid
-        
-        play_url = self._get_play_url(embed_id)
-        return {"list": [{
-            "vod_id": vid,
-            "vod_name": vod_name,
-            "vod_pic": vod_pic,
-            "vod_remarks": vod_remark,
-            "vod_content": vod_remark,
-            "vod_play_from": "玩物",
-            "vod_play_url": f"播放${play_url}" if play_url else ""
-        }]}
+        did = ids[0]
+        result = {}
+        videos = []
+        did = self.process_video_id(did)
+        res = self.fetch_video_detail(did)
+        content = self.extract_video_content(res)
+        bofang = self.extract_embed_url(res)
+        videos.append({
+            "vod_id": did,
+            "vod_content": content,
+            "vod_play_from": "默认线路",
+            "vod_play_url": bofang
+        })
+        result['list'] = videos
+        return result
 
-    def _get_play_url(self, embed_id):
-        if not embed_id:
-            return ""
-        html = self._fetch_html(f"{self.host}/videos/embed?id={embed_id}")
-        if not html:
-            return ""
-        match = re.search(r'<source[^>]*src="([^"]+\.m3u8[^"]*)"', html)
-        if match:
-            return match.group(1)
-        match = re.search(r'<video[^>]*>.*?<source[^>]*src="([^"]+)"', html, re.DOTALL)
-        return match.group(1) if match else ""
+    def process_video_id(self, did):
+        if 'http' not in did:
+            did = xurl + did
+        return did
+
+    def fetch_video_detail(self, did):
+        detail = requests.get(url=did, headers=headerx)
+        detail.encoding = "utf-8"
+        res = detail.text
+        return res
+
+    def extract_video_content(self, res):
+        content = self.extract_middle_text(res, '"description": "', '"', 0)
+        return content
+
+    def extract_embed_url(self, res):
+        bofang = self.extract_middle_text(res, '"embedUrl": "', '"', 0)
+        return bofang
 
     def playerContent(self, flag, id, vipFlags):
-        if not id:
-            return {"parse": 0, "url": ""}
-        if id.startswith("http") and (".m3u8" in id or ".mp4" in id):
-            return {"parse": 0, "url": id, "header": self.headers}
-        play_url = self._get_play_url(id)
-        if play_url:
-            return {"parse": 0, "url": play_url, "header": self.headers}
-        return {"parse": 1, "url": id}
+        res = self.fetch_player_page(id)
+        url = self.extract_video_url(res)
+        result = {}
+        result["parse"] = 0
+        result["playUrl"] = ''
+        result["url"] = url
+        result["header"] = headerx
+        return result
 
-    def searchContent(self, key, quick, pg):
-        if not key:
-            return {"list": [], "page": 1, "pagecount": 1, "total": 0}
-        pg = int(pg) if pg else 1
-        url = f"{self.host}/videos/search/{urllib.parse.quote(key)}" if pg == 1 else f"{self.host}/videos/search/{urllib.parse.quote(key)}/page/{pg}/"
-        html = self._fetch_html(url)
-        if not html:
-            return {"list": [], "page": pg, "pagecount": 1, "total": 0}
-        items = self._extract_jsonld_items(html)
-        total = self._extract_total_count(html)
-        return {
-            "list": items,
-            "page": pg,
-            "pagecount": max(1, (total + 19) // 20) if total > 0 else 1,
-            "total": total if total > 0 else len(items)
+    def fetch_player_page(self, id):
+        detail = requests.get(url=id, headers=headerx)
+        detail.encoding = "utf-8"
+        res = detail.text
+        return res
+
+    def extract_video_url(self, res):
+        url = self.extract_middle_text(res, '<source src="', '"', 0).replace('\\', '')
+        return url
+
+    def searchContentPage(self, key, quick, pg):
+        result = {}
+        videos = []
+        page = int(pg) if pg else 1
+        url = f'{xurl}/videos/search/{key}/page/{str(page)}/'
+        doc = self.fetch_search_document(url)
+        soups = doc.find_all('ul', class_="video-items")
+        for soup in soups:
+            vods = soup.find_all('li')
+            for vod in vods:
+                video = self.extract_search_video_info(vod)
+                videos.append(video)
+        result['list'] = videos
+        result['page'] = pg
+        result['pagecount'] = 9999
+        result['limit'] = 90
+        result['total'] = 999999
+        return result
+
+    def fetch_search_document(self, url):
+        detail = requests.get(url=url, headers=headerx)
+        detail.encoding = "utf-8"
+        res = detail.text
+        doc = BeautifulSoup(res, "lxml")
+        return doc
+
+    def extract_search_video_info(self, vod):
+        name = vod.find('img')['alt']
+        ids = vod.find('a', class_="my-1")
+        id = ids['href']
+        pic = vod.find('img')['data-src']
+        pic = self.process_encrypted_image(pic)
+        remarks = vod.find('div', class_="truncate")
+        remark = remarks.text.strip() if remarks else ""
+        remark = remark.replace('\n', '')
+        video = {
+            "vod_id": id,
+            "vod_name": name,
+            "vod_pic": pic,
+            "vod_remarks": remark
         }
+        return video
+
+    def searchContent(self, key, quick, pg="1"):
+        return self.searchContentPage(key, quick, '1')
 
     def localProxy(self, params):
-        """本地代理 - 处理图片请求"""
-        try:
-            url = params.get('url', '')
-            if not url:
-                return [404, 'text/plain', b'']
-            
-            # 请求图片
-            headers = {
-                "User-Agent": self.headers.get("User-Agent", "Mozilla/5.0"),
-                "Referer": self.host + "/",
-            }
-            resp = self.session.get(url, headers=headers, timeout=15)
-            
-            if resp.status_code == 200 and len(resp.content) > 0:
-                content = resp.content
-                # 判断图片类型
-                if content.startswith(b'\xff\xd8'):
-                    mime = "image/jpeg"
-                elif content.startswith(b'\x89PNG'):
-                    mime = "image/png"
-                elif content.startswith(b'GIF8'):
-                    mime = "image/gif"
-                else:
-                    mime = "image/jpeg"
-                return [200, mime, content]
-            else:
-                return [404, 'text/plain', b'Image not found']
-        except Exception as e:
-            return [500, 'text/plain', str(e).encode('utf-8')]
-
-    def destroy(self):
-        try:
-            self.session.close()
-        except:
-            pass
+        if params['type'] == "m3u8":
+            return self.proxyM3u8(params)
+        elif params['type'] == "media":
+            return self.proxyMedia(params)
+        elif params['type'] == "ts":
+            return self.proxyTs(params)
+        return None
