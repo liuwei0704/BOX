@@ -58,7 +58,7 @@ class Spider:
                     'vod_id': f"live_{user_id}",
                     'vod_name': title if title else nick,
                     'vod_pic': item.get('thumbUrl', 'https://tupian.li/images/2024/03/30/660769b1ba623.png'),
-                    'vod_remarks': f"👤 {viewer_count} {'🔞' if is_adult else '全年龄'}",
+                    'vod_remarks': f"💋 {viewer_count} {'🔞' if is_adult else '全年龄'}",
                     'vod_content': title,
                     'vod_actor': user_id,
                     '_isAdult': is_adult,
