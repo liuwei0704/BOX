@@ -1,5 +1,7 @@
-# -*- coding: utf-8 -*-
-# 玩物社区 - 照搬朋友代码的图片解密方式
+# coding=utf-8
+# 玩物社区 - TVBox爬虫源（最终稳定版）
+# 站点: https://9iio.zgdnbjh.com/
+# 特性: 图片AES解密 + data:image显示 + 详情页片名提取 + 播放直链提取
 
 import re
 import base64
@@ -18,7 +20,7 @@ class Spider(BaseSpider):
         return []
 
     def init(self, extend=""):
-        self.host = "https://thu.hejpugurn.cc"
+        self.host = "https://9iio.zgdnbjh.com"
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": self.host + "/",
@@ -95,7 +97,6 @@ class Spider(BaseSpider):
         doc = BeautifulSoup(html, "lxml")
         videos = []
         
-        # 查找视频列表 - 按朋友代码的方式
         soups = doc.find_all('ul', class_="video-items")
         if not soups:
             soups = doc.find_all('div', class_=re.compile(r'video|item|card'))
@@ -103,7 +104,6 @@ class Spider(BaseSpider):
         for soup in soups:
             items = soup.find_all('li') if soup.name == 'ul' else soup.find_all('div', class_=re.compile(r'item|card|video'))
             for item in items:
-                # 提取图片
                 img = item.find('img')
                 if not img:
                     continue
@@ -112,23 +112,19 @@ class Spider(BaseSpider):
                 if not pic_url:
                     continue
                 
-                # 解密图片
                 pic = self.process_encrypted_image(pic_url)
                 if not pic:
                     pic = "https://via.placeholder.com/400x225?text=Video"
                 
-                # 提取标题
                 name = img.get('alt', '')
                 if not name:
                     title_tag = item.find('a', class_=re.compile(r'title|name'))
                     if title_tag:
                         name = title_tag.text.strip()
                 
-                # 提取链接
                 link = item.find('a', href=True)
                 vod_id = link.get('href') if link else ""
                 
-                # 提取备注
                 remark = ""
                 remark_tag = item.find('div', class_=re.compile(r'truncate|remark|time|duration'))
                 if remark_tag:
@@ -164,33 +160,70 @@ class Spider(BaseSpider):
         
         doc = BeautifulSoup(html, "lxml")
         
-        # 提取播放地址
-        play_url = ""
-        source = doc.find('source')
-        if source:
-            play_url = source.get('src', '')
+        # 提取片名
+        name = ""
+        title_tag = doc.find('h1')
+        if title_tag:
+            name = title_tag.text.strip()
+        if not name:
+            og_title = doc.find('meta', property="og:title")
+            if og_title:
+                name = og_title.get('content', '').strip()
+        if not name:
+            name = "视频详情"
         
-        if not play_url:
-            # 尝试从 script 中提取
-            scripts = doc.find_all('script')
-            for script in scripts:
-                if script.string and 'embedUrl' in script.string:
-                    match = re.search(r'"embedUrl":\s*"([^"]+)"', script.string)
-                    if match:
-                        embed_url = match.group(1)
-                        embed_html = self.fetch_html(embed_url)
-                        if embed_html:
-                            embed_doc = BeautifulSoup(embed_html, "lxml")
-                            embed_source = embed_doc.find('source')
-                            if embed_source:
-                                play_url = embed_source.get('src', '')
-                                break
+        # 提取封面
+        pic = ""
+        og_image = doc.find('meta', property="og:image")
+        if og_image:
+            pic = og_image.get('content', '')
+        if not pic and 'thumbnailUrl' in html:
+            match = re.search(r'"thumbnailUrl"\s*:\s*\["([^"]+)"\]', html)
+            if match:
+                pic = self.process_encrypted_image(match.group(1))
+        if not pic:
+            pic = "https://via.placeholder.com/400x225?text=Video"
+        
+        # 提取描述
+        desc = ""
+        og_desc = doc.find('meta', property="og:description")
+        if og_desc:
+            desc = og_desc.get('content', '')
+        if not desc:
+            meta_desc = doc.find('meta', attrs={"name": "description"})
+            if meta_desc:
+                desc = meta_desc.get('content', '')
+        
+        # 提取播放地址 - 从 embed 页面提取
+        play_url = ""
+        embed_url = ""
+        script_match = re.search(r'"embedUrl":\s*"([^"]+)"', html)
+        if script_match:
+            embed_url = script_match.group(1)
+        else:
+            embed_meta = doc.find('meta', property="og:video")
+            if embed_meta:
+                embed_url = embed_meta.get('content', '')
+        
+        if embed_url:
+            if embed_url.startswith('/'):
+                embed_url = self.host + embed_url
+            embed_html = self.fetch_html(embed_url)
+            if embed_html:
+                embed_doc = BeautifulSoup(embed_html, "lxml")
+                embed_source = embed_doc.find('source')
+                if embed_source:
+                    play_url = embed_source.get('src', '')
+                if not play_url:
+                    video_tag = embed_doc.find('video')
+                    if video_tag:
+                        play_url = video_tag.get('src', '')
         
         return {"list": [{
             "vod_id": vid,
-            "vod_name": "视频详情",
-            "vod_pic": "",
-            "vod_content": "",
+            "vod_name": name,
+            "vod_pic": pic,
+            "vod_content": desc,
             "vod_play_from": "玩物",
             "vod_play_url": f"播放${play_url}" if play_url else ""
         }]}
