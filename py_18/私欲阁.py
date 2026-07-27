@@ -1,9 +1,11 @@
 # coding: utf-8
 # 私欲阁 - ninimen.sbs
+# 特性: m3u8 本地代理 + 广告分片过滤
 
 import re
 import json
 import urllib.parse
+from urllib.parse import urljoin, quote, unquote, urlparse
 
 try:
     from bs4 import BeautifulSoup
@@ -203,45 +205,54 @@ class Spider(BaseSpider):
         try:
             html = self.fetch(play_url, headers=self.headers).text
 
-            # 方式1: player_aaaa 变量 (encrypt=0 直链) - 参考18AV模式
-            # 用正则直接提取url字段，避免JSON解析转义问题
+            # 方式1: player_aaaa 变量 (encrypt=0 直链)
             m = re.search(r'player_aaaa\s*=\s*\{[^}]*"url"\s*:\s*"([^"]+)"', html)
             if m:
                 url = m.group(1).replace('\\/', '/')
                 if url and ('.m3u8' in url or '.mp4' in url):
-                    return {'parse': 0, 'url': url, 'header': self.headers}
+                    if '.m3u8' in url:
+                        return {'parse': 0, 'url': self._m3u8_proxy_url(url), 'header': {}}
+                    return {'parse': 0, 'url': url, 'header': {'User-Agent': self.headers['User-Agent']}}
 
             # 方式2: MacPlayer.PlayUrl
             m = re.search(r'MacPlayer\s*\.\s*PlayUrl\s*=\s*["\']([^"\']+)["\']', html)
             if m:
                 url = m.group(1)
                 if url and ('.m3u8' in url or '.mp4' in url):
-                    return {'parse': 0, 'url': url, 'header': self.headers}
+                    if '.m3u8' in url:
+                        return {'parse': 0, 'url': self._m3u8_proxy_url(url), 'header': {}}
+                    return {'parse': 0, 'url': url, 'header': {'User-Agent': self.headers['User-Agent']}}
 
             # 方式3: var now
             m = re.search(r'var\s+now\s*=\s*["\']([^"\']+)["\']', html)
             if m:
                 url = m.group(1)
                 if url and ('.m3u8' in url or '.mp4' in url):
-                    return {'parse': 0, 'url': url, 'header': self.headers}
+                    if '.m3u8' in url:
+                        return {'parse': 0, 'url': self._m3u8_proxy_url(url), 'header': {}}
+                    return {'parse': 0, 'url': url, 'header': {'User-Agent': self.headers['User-Agent']}}
 
             # 方式4: iframe 嵌套
             m = re.search(r'<iframe[^>]+src=["\']([^"\']+)["\']', html)
             if m:
                 iframe_url = m.group(1)
                 if 'm3u8' in iframe_url or 'mp4' in iframe_url:
-                    return {'parse': 0, 'url': iframe_url, 'header': self.headers}
+                    if '.m3u8' in iframe_url:
+                        return {'parse': 0, 'url': self._m3u8_proxy_url(iframe_url), 'header': {}}
+                    return {'parse': 0, 'url': iframe_url, 'header': {'User-Agent': self.headers['User-Agent']}}
                 if 'aojiexi' in iframe_url:
                     m2 = re.search(r'url=([^&]+)', iframe_url)
                     if m2:
                         real_url = urllib.parse.unquote(m2.group(1))
                         if real_url:
-                            return {'parse': 0, 'url': real_url, 'header': self.headers}
+                            if '.m3u8' in real_url:
+                                return {'parse': 0, 'url': self._m3u8_proxy_url(real_url), 'header': {}}
+                            return {'parse': 0, 'url': real_url, 'header': {'User-Agent': self.headers['User-Agent']}}
 
             # 方式5: 直接匹配 m3u8 链接
             m = re.search(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', html)
             if m:
-                return {'parse': 0, 'url': m.group(1), 'header': self.headers}
+                return {'parse': 0, 'url': self._m3u8_proxy_url(m.group(1)), 'header': {}}
 
         except Exception as e:
             pass
@@ -249,8 +260,95 @@ class Spider(BaseSpider):
         # 无法提取直链，降级嗅探
         return {'parse': 1, 'url': play_url, 'header': self.headers}
 
+    def _m3u8_proxy_url(self, url):
+        """生成 m3u8 代理地址"""
+        return self.getProxyUrl() + "&url=" + quote(str(url or ""), safe="")
+
     def localProxy(self, param):
-        return []
+        """m3u8 本地代理 + 广告分片过滤"""
+        target = unquote(str((param or {}).get("url", "") or ""))
+        if not re.match(r"^https?://", target, re.I):
+            return [400, "text/plain", b"invalid url"]
+        try:
+            res = self.fetch(target, headers={"User-Agent": self.headers["User-Agent"]}, timeout=15, verify=False)
+            if not res or getattr(res, "status_code", 0) != 200:
+                return [502, "text/plain", b"m3u8 fetch failed"]
+            raw = getattr(res, "content", b"") or b""
+            text = raw.decode("utf-8", errors="ignore")
+            if "#EXTM3U" not in text:
+                return [502, "text/plain", b"invalid m3u8"]
+            cleaned = self._clean_m3u8(text, target)
+            return [200, "application/vnd.apple.mpegurl", cleaned.encode("utf-8")]
+        except Exception as e:
+            self.log("m3u8广告过滤失败: " + str(e))
+            return [500, "text/plain", b"m3u8 proxy error"]
+
+    def _clean_m3u8(self, text, source_url):
+        """清洗 m3u8：过滤广告分片，保留正片"""
+        lines = [line.strip() for line in str(text or "").replace("\r", "").split("\n") if line.strip()]
+        if not lines:
+            return "#EXTM3U\n"
+
+        # 主清单：子清单补成绝对地址并代理
+        if any(line.startswith("#EXT-X-STREAM-INF") for line in lines):
+            out = []
+            for line in lines:
+                if line.startswith("#"):
+                    out.append(line)
+                else:
+                    child = urljoin(source_url, line)
+                    out.append(self._m3u8_proxy_url(child) if ".m3u8" in child.lower() else child)
+            return "\n".join(out) + "\n"
+
+        # 分片清单：提取正片资源目录
+        source_path = urlparse(source_url).path
+        source_parts = [p for p in source_path.split("/") if p]
+        content_root = "/" + "/".join(source_parts[:2]) + "/" if len(source_parts) >= 2 else ""
+        segments = []
+        pending = []
+        removed = 0
+        
+        for line in lines:
+            if line.startswith("#EXTINF"):
+                pending = [line]
+                continue
+            if pending and line.startswith("#"):
+                pending.append(line)
+                continue
+            if pending:
+                media = urljoin(source_url, line)
+                if content_root and content_root not in urlparse(media).path:
+                    removed += 1
+                else:
+                    segments.extend(pending)
+                    segments.append(media)
+                pending = []
+                continue
+            segments.append(self._rewrite_m3u8_tag(line, source_url))
+
+        # 清理无效标记
+        out = []
+        for line in segments:
+            line = self._rewrite_m3u8_tag(line, source_url)
+            if line == "#EXT-X-KEY:METHOD=NONE" or line == "#EXT-X-DISCONTINUITY":
+                if not out or out[-1] in ("#EXT-X-DISCONTINUITY", "#EXT-X-KEY:METHOD=NONE"):
+                    continue
+            out.append(line)
+        while len(out) > 1 and out[-2] in ("#EXT-X-DISCONTINUITY", "#EXT-X-KEY:METHOD=NONE"):
+            out.pop(-2)
+        if removed:
+            self.log("m3u8已过滤广告分片: %d" % removed)
+        return "\n".join(out) + "\n"
+
+    def _rewrite_m3u8_tag(self, line, source_url):
+        """重写 m3u8 标签中的 URI（补全绝对地址）"""
+        if line.startswith("#EXT-X-KEY") or line.startswith("#EXT-X-MAP"):
+            def repl(match):
+                return 'URI="' + urljoin(source_url, match.group(1)) + '"'
+            return re.sub(r'URI="([^"]+)"', repl, line)
+        if line and not line.startswith("#"):
+            return urljoin(source_url, line)
+        return line
 
     def isVideoFormat(self, url):
         return bool(re.search(r'\.(m3u8|mp4|ts)(\?|$)', url, re.I))
