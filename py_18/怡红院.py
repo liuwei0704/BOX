@@ -18,25 +18,19 @@ class Spider(BaseSpider):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": self.host + "/"
         }
+        # 只保留有视频数据的分类（经测试验证）
         self.classes = [
+            {"type_id": "1", "type_name": "国产乱伦"},
             {"type_id": "2", "type_name": "制服诱惑"},
             {"type_id": "3", "type_name": "中文字幕"},
             {"type_id": "4", "type_name": "蜜桃传媒"},
             {"type_id": "5", "type_name": "精东影业"},
-            {"type_id": "1", "type_name": "国产乱伦"},
-            {"type_id": "6", "type_name": "日韩专区"},
-            {"type_id": "7", "type_name": "国产高清"},
-            {"type_id": "8", "type_name": "欧美极品"},
-            {"type_id": "9", "type_name": "无码专区"},
-            {"type_id": "10", "type_name": "熟女素人"},
-            {"type_id": "11", "type_name": "精品动漫"},
-            {"type_id": "12", "type_name": "麻豆传媒"},
             {"type_id": "13", "type_name": "AV解说"},
             {"type_id": "14", "type_name": "91视频"},
-            {"type_id": "15", "type_name": "三级伦理"},
             {"type_id": "16", "type_name": "绿帽淫妻"}
         ]
-        self.filters = {c["type_id"]: [] for c in self.classes}
+        # 无筛选功能
+        self.filters = {}
 
     def getName(self):
         return "怡红院"
@@ -63,11 +57,18 @@ class Spider(BaseSpider):
 
     def categoryContent(self, tid, pg, filter, extend):
         pg = str(pg or "1")
-        real_tid = str(extend.get("type_id") if isinstance(extend, dict) else tid or "2")
+        real_tid = str(tid or "")
+        if not real_tid or real_tid == "0":
+            if isinstance(extend, dict):
+                real_tid = str(extend.get("type_id") or extend.get("tid") or "")
+        if not real_tid or real_tid == "0":
+            real_tid = "2"
+        
         if pg == "1":
-            path = f"/index.php/vod/type/id/{real_tid}.html"
+            path = f"/index.php/vod/show/id/{real_tid}.html"
         else:
-            path = f"/index.php/vod/type/id/{real_tid}.html?page={pg}"
+            path = f"/index.php/vod/show/id/{real_tid}.html?page={pg}"
+        
         html = self._get(path)
         items = self._parse_video_list(html)
         pagecount = self._parse_page_count(html)
@@ -80,7 +81,6 @@ class Spider(BaseSpider):
         }
 
     def detailContent(self, ids):
-        # 修复：从详情页获取标题（不是播放页）
         vid = str(ids[0]) if ids else ""
         detail_url = f"/index.php/vod/detail/id/{vid}.html"
         html = self._get(detail_url)
@@ -127,17 +127,14 @@ class Spider(BaseSpider):
             return {"list": []}
 
     def playerContent(self, flag, id, vipFlags):
-        """播放地址解析 + m3u8 代理"""
         try:
             play_id = str(id or "").strip()
             
-            # 已有媒体直链：m3u8 走代理过滤广告
             if play_id.startswith("http") and re.search(r"\.(m3u8|mp4)(\?|$)", play_id, re.I):
                 if re.search(r"\.m3u8(?:\?|$)", play_id, re.I):
                     return {"parse": 0, "url": self._m3u8_proxy_url(play_id), "header": {}}
                 return {"parse": 0, "url": play_id, "header": {"User-Agent": self.headers["User-Agent"]}}
             
-            # 提取视频ID
             m = re.search(r'/id/(\d+)', play_id)
             if m:
                 vid = m.group(1)
@@ -173,7 +170,6 @@ class Spider(BaseSpider):
         return self.getProxyUrl() + "&url=" + quote(str(url or ""), safe="")
 
     def localProxy(self, param):
-        """代理 m3u8 并过滤广告分片"""
         target = unquote(str((param or {}).get("url", "") or ""))
         if not re.match(r"^https?://", target, re.I):
             return [400, "text/plain", b"invalid url"]
@@ -197,12 +193,10 @@ class Spider(BaseSpider):
             return [500, "text/plain", b"m3u8 proxy error"]
 
     def _clean_m3u8(self, text, source_url):
-        """过滤广告分片，保留正片"""
         lines = [line.strip() for line in str(text or "").replace("\r", "").split("\n") if line.strip()]
         if not lines:
             return "#EXTM3U\n"
 
-        # 主清单：子清单补成绝对地址
         if any(line.startswith("#EXT-X-STREAM-INF") for line in lines):
             out = []
             for line in lines:
@@ -260,7 +254,6 @@ class Spider(BaseSpider):
         return line
 
     def _extract_player_url(self, html):
-        """提取 player_xxxx 变量中的播放地址"""
         if not html:
             return ""
         
