@@ -3,6 +3,7 @@
 AI视频 - TVBox/FongMi 爬虫源
 站点: https://en.shipinqd.com/
 播放策略: 使用 CDN 域名 gr32fe.sxwph.com 请求 m3u8
+图片: 使用 CDN 域名 gr32fe.sxwph.com
 作者: AI Assistant
 日期: 2026-07-31
 """
@@ -189,7 +190,6 @@ class Spider(BaseSpider):
         return {"list": items}
 
     def _get_default_sub_category(self, tid):
-        """获取大类的默认子分类"""
         if tid in self.filters and self.filters[tid]:
             for filter_item in self.filters[tid]:
                 if "value" in filter_item and filter_item["value"]:
@@ -213,7 +213,6 @@ class Spider(BaseSpider):
                 except:
                     pass
         else:
-            # 如果没有指定子分类，自动选择第一个子分类
             default_sub = self._get_default_sub_category(tid)
             if default_sub:
                 real_tid = default_sub
@@ -352,10 +351,14 @@ class Spider(BaseSpider):
                 remark = match[4] if len(match) > 4 else ""
 
                 if href and vid and title:
+                    if pic and pic.startswith("http"):
+                        img_url = pic.replace("en.shipinqd.com", "gr32fe.sxwph.com")
+                    else:
+                        img_url = self.cdn_host + pic if pic else ""
                     items.append({
                         "vod_id": vid,
                         "vod_name": title[:50],
-                        "vod_pic": pic if pic.startswith("http") else self.host + pic,
+                        "vod_pic": img_url,
                         "vod_remarks": remark,
                     })
 
@@ -389,18 +392,20 @@ class Spider(BaseSpider):
         if archive_data:
             poster = archive_data.get("posterImg", "")
             if poster:
-                return poster
+                return poster.replace("en.shipinqd.com", "gr32fe.sxwph.com")
         match = re.search(r'<meta[^>]*property="og:image"[^>]*content="([^"]+)"', html)
         if match:
             pic = match.group(1)
             if pic.startswith("/"):
-                pic = self.host + pic
-            return pic
+                return self.cdn_host + pic
+            return pic.replace("en.shipinqd.com", "gr32fe.sxwph.com")
         match = re.search(r'<img[^>]*data-src="([^"]+)"[^>]*class="[^"]*cover[^"]*"', html)
         if match:
             pic = match.group(1)
             if "/system/" not in pic:
-                return pic if pic.startswith("http") else self.host + pic
+                if pic.startswith("http"):
+                    return pic.replace("en.shipinqd.com", "gr32fe.sxwph.com")
+                return self.cdn_host + pic
         return ""
 
     def _extract_desc(self, html):
