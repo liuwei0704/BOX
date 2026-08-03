@@ -1,12 +1,12 @@
 {
-  "spider": "./jar/d1d673d8f351367f6bcb0ae1022d4039.png;md5;8f46829eb8a16c0e96ae285df6a3340a",
+  "spider": "./jar/20260803200354-098475bd93.png;md5;1903b74bd16bee2258ed1ba164ebc483",
   "logo": "./img/EC508FBD046D33EC4832BB76B63B6C94.gif",
   "danmaku": "http://127.0.0.1:2525/danmu?name={name}&epid={episode}",
   "wallpaper": "http://127.0.0.1:9978/proxy?do=AowuWapper&mode=2"
 ,
   "sites": [
     {"key": "Douban", "name": "🔥豆瓣推荐", "type": 3, "api": "csp_DoubanAmns", "indexs": 1, "searchable": 0, "quickSearch": 0, "changeable": 0, "ext": "https://file.icve.com.cn/file_doc/803/892/C8FDF0894D61FA21A937E21135CB9125.aowu"},
-    {"key": "Y360", "name": "更新日期:20260801", "type": 3, "api": "csp_Y360Amns", "searchable": 0, "quickSearch": 0, "changeable": 0, "ext": "https://file.icve.com.cn/file_doc/121/281/1E74668FD5125AA70977BC98A1B297A1.aowu"},
+    {"key": "Y360", "name": "更新日期:20260803", "type": 3, "api": "csp_Y360Amns", "searchable": 0, "quickSearch": 0, "changeable": 0, "ext": "https://file.icve.com.cn/file_doc/121/281/1E74668FD5125AA70977BC98A1B297A1.aowu"},
     {"key": "Hgdh", "name": "🔥短剧推荐", "type": 3, "api": "csp_HgdhAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "ext": "https://nos.netease.com/ysf/dac0101040005285380ee886e6e6c660.aowu", "genre": "shortdrama"},
     {"key": "MyConfig", "name": "⚙️配置|中心", "type": 3, "api": "csp_AAConfigAmns", "searchable": 0, "quickSearch": 0, "changeable": 0},
     {"key": "woWogg", "name": "💥玩偶|4K", "type": 3, "api": "csp_WoggAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "ext": {"sites": ["http://www.wogg.lol", "https://wogg.xxooo.cf", "https://woggpan.888484.xyz", "https://www.wogg.net", "http://woggpan.xxooo.cf", "https://www.wogg.one", "https://www.wogg.live"], "filters": "https://file.icve.com.cn/file_doc/749/902/BB6E1B79DF03CD16DDAC84F2FF266BD4.aowu"}},
@@ -53,7 +53,7 @@
     {"key": "Wgdj", "name": "🎬围观|短剧", "type": 3, "api": "csp_WgdjAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "genre": "shortdrama"},
     {"key": "Qmdj", "name": "🎬喵喵|短剧", "type": 3, "api": "csp_QmdjAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "genre": "shortdrama"},
     {"key": "Xydj", "name": "🎬星星|短剧", "type": 3, "api": "csp_XydjAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "genre": "shortdrama"},
-    {"key": "Woshinidie", "name": "🧩橘汁|快速", "type": 3, "api": "csp_Woshinidie", "searchable": 1, "quickSearch": 1, "changeable": 0, "ext": {"host": "", "version": "3.0.2.2", "abid": "8192", "pkg": "com.lxf.snzlcgtzxyx", "md5": "47E0EE8D8CD90BA26C736719B9537A13", "sha1": "BBFCC851740D2059445327D40013115C6B8A0366", "keys": "11GK2we32144LO&hilUITB)FMd1khdaF,OC1A06E197EF10CF3F6058CA7A803B5E", "site": "./txt/app_1.txt", "pub": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCr8SzZhjYy+rsya1K09t8d2K50pWFoBkgUqMpKOiW+3IEVKd4eTdvg9RSOjQ82kypL6R9BnsmrS1V8s4PVDwjQbUtYhTPPC9Hz16qY7rpD6m0d2vr09/UpWQ5uOy9PR0QTrsioveZ+DIe9jc3C+zBCu/kZSY/R8stwJoiitki3gwIDAQAB"}, "jar": "./img/E6C166A7F2222B95D16551FD2EACFC4E.png;md5;e6c166a7f2222b95d16551fd2eacfc4e"},
+    {"key": "Woshinidie", "name": "🧩橘汁|快速", "type": 3, "api": "csp_Woshinidie", "searchable": 1, "quickSearch": 1, "changeable": 0, "ext": {"host": "", "version": "3.0.2.2", "abid": "8192", "pkg": "com.lxf.snzlcgtzxyx", "md5": "47E0EE8D8CD90BA26C736719B9537A13", "sha1": "BBFCC851740D2059445327D40013115C6B8A0366", "keys": "11GK2we32144LO&hilUITB)FMd1khdaF,OC1A06E197EF10CF3F6058CA7A803B5E", "site": "./txt/app.txt", "pub": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCr8SzZhjYy+rsya1K09t8d2K50pWFoBkgUqMpKOiW+3IEVKd4eTdvg9RSOjQ82kypL6R9BnsmrS1V8s4PVDwjQbUtYhTPPC9Hz16qY7rpD6m0d2vr09/UpWQ5uOy9PR0QTrsioveZ+DIe9jc3C+zBCu/kZSY/R8stwJoiitki3gwIDAQAB"}, "jar": "./img/E6C166A7F2222B95D16551FD2EACFC4E.png;md5;e6c166a7f2222b95d16551fd2eacfc4e"},
     {"key": "JinPai", "name": "🧩金牌|快速", "type": 3, "api": "csp_JinPaiAmns", "searchable": 1, "quickSearch": 1, "changeable": 0},
     {"key": "JPian", "name": "🧩荐片|快速", "type": 3, "api": "csp_JPianAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "ext": "https://nos.netease.com/youdata-netease/public-utilUpload-ky1PAyMa8zMhSwSbYeoej9.gz"},
     {"key": "Rbys", "name": "🧩热播|快速", "type": 3, "api": "csp_RbysAmns", "searchable": 1, "quickSearch": 1, "changeable": 0, "ext": "http://v.rbotv.cn"},
@@ -88,14 +88,13 @@
     {"key": "Myali", "name": "📁阿狸|我的", "type": 3, "api": "csp_MyaliAmns", "searchable": 0, "quickSearch": 0, "changeable": 0},
     {"key": "My115", "name": "📁115|我的", "type": 3, "api": "csp_My115Amns", "searchable": 0, "quickSearch": 0, "changeable": 0},
     {"key": "My123", "name": "📁123|我的", "type": 3, "api": "csp_My123Amns", "searchable": 0, "quickSearch": 0, "changeable": 0},
-    {"key": "Diyre", "name": "📁DIY|我的", "type": 3, "api": "csp_DiyreAmns", "searchable": 0, "quickSearch": 0, "changeable": 0},
     {"key": "PSfish", "name": "🔍fish|盘搜", "type": 3, "api": "csp_PSfishAmns", "searchable": 1, "quickSearch": 1, "changeable": 0},
     {"key": "PSdju", "name": "🔍短剧|盘搜", "type": 3, "api": "csp_PSdjuAmns", "searchable": 1, "quickSearch": 1, "changeable": 0},
     {"key": "push_agent", "name": "🛴推送|播放", "type": 3, "api": "csp_PushAmns", "searchable": 0, "quickSearch": 0, "changeable": 0}
   ]
 ,
   "lives": [
-    {"name": "综合直播", "type": 0, "playerType": 2, "url": "./txt/interface_1.txt", "ua": "bingcha/1.1 (mianfeifenxiang) "},
+    {"name": "综合直播", "type": 0, "playerType": 2, "url": "./txt/interface.txt", "ua": "bingcha/1.1 (mianfeifenxiang) "},
     {"key": "KafLive", "name": "咖啡体育", "type": 3, "api": "csp_KafLiveAmns", "playerType": 2},
     {"name": "Kimentanm", "type": 0, "url": "./live/iptv.m3u", "playerType": 2},
     {"name": "虎牙一起看", "type": 0, "url": "./live/huyayqk.m3u", "playerType": 2, "timeout": 10, "ua": "okHttp/Mod-1.5.0.0"},
