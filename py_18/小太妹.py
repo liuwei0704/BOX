@@ -22,7 +22,6 @@ class Spider(BaseSpider):
             {"type_id": "45", "type_name": "人妻熟女"},
             {"type_id": "21", "type_name": "素人自拍"},
             {"type_id": "35", "type_name": "可爱学生"},
-            {"type_id": "37", "type_name": "91探花"},
             {"type_id": "42", "type_name": "网曝门"},
             {"type_id": "43", "type_name": "传媒出品"},
             {"type_id": "44", "type_name": "女同性恋"},
@@ -34,7 +33,6 @@ class Spider(BaseSpider):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Referer": self.host + "/"
         }
-
     def getName(self):
         return "小太妹"
 
@@ -141,7 +139,14 @@ class Spider(BaseSpider):
         if not player_data:
             return {"list": []}
 
+        # 解码 Unicode 转义字符
         vod_name = player_data.get("vod_data", {}).get("vod_name", "视频")
+        if vod_name:
+            try:
+                vod_name = vod_name.encode('utf-8').decode('unicode_escape')
+            except:
+                pass
+
         vod_pic = ""
         play_url_raw = player_data.get("url", "")
         play_from = player_data.get("from", "播放")
@@ -192,7 +197,6 @@ class Spider(BaseSpider):
         }
 
         return {"list": [vod]}
-
     def searchContent(self, key, quick, pg="1"):
         if not key:
             return {"list": [], "page": 1}
@@ -410,6 +414,7 @@ class Spider(BaseSpider):
         return match.group(1) if match else None
 
     def _extract_player_data(self, html):
+        """从页面源码提取 player_aaaa 数据"""
         pattern = r'var\s+player_aaaa\s*=\s*({[\s\S]+?});'
         match = re.search(pattern, html)
         if not match:
@@ -417,11 +422,27 @@ class Spider(BaseSpider):
 
         try:
             return json.loads(match.group(1))
-        except Exception:
-            url_match = re.search(r'"url"\s*:\s*"([^"]+)"', match.group(1))
+        except Exception as e:
+            self.log(f"json parse error: {str(e)}")
+            # 尝试手动提取关键字段
+            text = match.group(1)
+            result = {}
+            
+            # 提取 url
+            url_match = re.search(r'"url"\s*:\s*"([^"]+)"', text)
             if url_match:
-                return {"url": url_match.group(1)}
-            return None
-
+                result["url"] = url_match.group(1)
+            
+            # 提取 vod_name
+            name_match = re.search(r'"vod_name"\s*:\s*"([^"]+)"', text)
+            if name_match:
+                result["vod_data"] = {"vod_name": name_match.group(1)}
+            
+            # 提取 from
+            from_match = re.search(r'"from"\s*:\s*"([^"]+)"', text)
+            if from_match:
+                result["from"] = from_match.group(1)
+            
+            return result if result else None
     def destroy(self):
         pass
