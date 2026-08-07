@@ -21,21 +21,33 @@ NAV_FILTERS = {
         ('恐怖故事', {'cat_id': '327401', 'tag_id': '500002', 'order': 'new'})],
     'erciyuan': [
         ('里番动漫', {'cat_id': '817201', 'order': 'new'}),
+        ('日漫', {'cat_id': '1050906', 'order': 'new'}),
         ('原神', {'cat_id': '900010', 'order': 'new'}),
         ('动画同人', {'cat_id': '481301', 'order': 'new'}),
         ('游戏同人', {'cat_id': '900002', 'order': 'new'}),
         ('鬼畜混剪', {'cat_id': '900004', 'order': 'new'}),
         ('国漫女神', {'cat_id': '451201', 'order': 'new'})],
     'caibian': [
-        ('推荐', {'cat_id': '246505', 'order': 'hot'}),
         ('最新', {'cat_id': '246505', 'order': 'new'}),
+        ('推荐', {'cat_id': '246505', 'order': 'hot'}),
         ('全部', {'cat_id': '246505'})],
     'zhenren': [
         ('现代都市', {'cat_id': '817202', 'order': 'new'}),
         ('古装国风', {'cat_id': '900006', 'order': 'new'}),
+        ('校园职场', {'cat_id': '1039301', 'order': 'new'}),
+        ('民国', {'cat_id': '1050901', 'order': 'new'}),
+        ('重生穿越', {'cat_id': '900007', 'order': 'new'}),
         ('系统异能', {'cat_id': '900008', 'order': 'new'}),
-        ('重生穿越', {'cat_id': '900007', 'order': 'new'})],
-    'mod': [('最新', {'cat_id': '900011', 'order': 'new'})]
+        ('荒岛', {'cat_id': '1050903', 'order': 'new'})],
+    'mod': [('最新', {'cat_id': '900011', 'order': 'new'})],
+    'zongyi': [
+        ('最新', {'cat_id': '1050905', 'order': 'new'}),
+        ('推荐', {'cat_id': '1050905', 'order': 'hot'})],
+    'heiliao': [
+        ('最新', {'cat_id': '900012', 'order': 'new'}),
+        ('推荐', {'cat_id': '900012', 'order': 'hot'})],
+    'chuanmei': [
+        ('糖心vlog', {'cat_id': '1050904', 'order': 'new'})]
 }
 
 CLASSES = [
@@ -46,6 +58,9 @@ CLASSES = [
     {'type_id': 'caibian', 'type_name': '擦边短剧'},
     {'type_id': 'zhenren', 'type_name': '真人短剧'},
     {'type_id': 'mod', 'type_name': '魔改短剧'},
+    {'type_id': 'zongyi', 'type_name': '综艺'},
+    {'type_id': 'heiliao', 'type_name': '黑料'},
+    {'type_id': 'chuanmei', 'type_name': '国产传媒'},
     {'type_id': 'rank', 'type_name': '排行榜'},
     {'type_id': 'topic', 'type_name': '专题'}
 ]
