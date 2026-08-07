@@ -16,7 +16,7 @@ PAGE_SIZE = 18
 NAV_FILTERS = {
     'yuandou': [('推荐', {})],
     'aiman': [
-        ('漫剧精选', {'cat_id': '327401', 'tag_id': '500003', 'order': 'new'}),
+        ('漫剧精选', {'cat_id': '1050902', 'order': 'new'}),
         ('恐怖怪谈', {'cat_id': '327401', 'tag_id': '500001', 'order': 'new'}),
         ('恐怖故事', {'cat_id': '327401', 'tag_id': '500002', 'order': 'new'})],
     'erciyuan': [
@@ -204,10 +204,14 @@ class Spider:
         page = max(1, int(pg or 1))
         try:
             tid = self._route(tid) or 'all'
-            if isinstance(extend, str):
-                try: ext = json.loads(extend) if extend else {}
-                except Exception: ext = {}
-            else: ext = extend if isinstance(extend, dict) else {}
+            ext = {}
+            if extend:
+                if isinstance(extend, str):
+                    try: ext = json.loads(extend) if extend else {}
+                    except Exception: ext = {}
+                elif isinstance(extend, dict):
+                    ext = extend
+
             if tid == 'rank':
                 videos = [self._vod(x) for x in self._items(self.api.rank(page)) if self._id(x)]
                 return self._page(page, videos, len(videos) or PAGE_SIZE)
@@ -226,8 +230,10 @@ class Spider:
                 return {'page': page, 'pagecount': max(1, (total + 23) // 24),
                     'limit': len(videos), 'total': total, 'list': videos}
             if tid in NAV_FILTERS:
-                params = self._unpack(ext.get('tab') or '', 'f_') or dict(NAV_FILTERS[tid][0][1])
-            else: params = {}
+                tab_value = ext.get('tab') if isinstance(ext, dict) else None
+                params = self._unpack(tab_value or '', 'f_') or dict(NAV_FILTERS[tid][0][1])
+            else:
+                params = {}
             videos = [self._vod(x) for x in self._items(self.api.drama_list(page, **params)) if self._id(x)]
             return self._page(page, videos)
         except Exception as e:
