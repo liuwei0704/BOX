@@ -317,6 +317,41 @@ class Spider:
             print('[黄豆短剧][搜索异常]', e)
             return {'page': page, 'pagecount': 1, 'limit': 0, 'total': 0, 'list': []}
 
+    def recommendContent(self, ids, pg):
+        """相关推荐 - 基于当前视频ID获取同分类推荐"""
+        try:
+            drama_id = str(ids[0] if isinstance(ids, (list, tuple)) else ids)
+            drama_id = drama_id.replace('rp_', '').strip()
+            if not drama_id:
+                return {'list': []}
+            
+            detail_data = self._data(self.api.detail(drama_id))
+            category = detail_data.get('category', '')
+            
+            page = max(1, int(pg or 1))
+            params = {'page': page, 'page_size': str(PAGE_SIZE)}
+            
+            if category:
+                params['keywords'] = str(category)
+            else:
+                params['order'] = 'hot'
+            
+            resp = self.api.drama_list(**params)
+            items = self._items(resp)
+            
+            videos = []
+            for x in items:
+                vid = self._id(x)
+                if vid and vid != drama_id and vid != 'rp_' + drama_id:
+                    videos.append(self._vod(x))
+                    if len(videos) >= 18:
+                        break
+            
+            return {'list': videos}
+        except Exception as e:
+            print('[黄豆短剧][推荐异常]', e)
+            return {'list': []}
+
     def playerContent(self, flag, id, vipFlags=None):
         header = {'User-Agent': 'Dart/3.7 (dart:io)'}
         try:
