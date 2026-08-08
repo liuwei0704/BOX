@@ -18,7 +18,6 @@ class Spider(BaseSpider):
             "Accept": "application/json, text/plain, */*",
             "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
             "Referer": self.host + "/",
-            "X-Requested-With": "XMLHttpRequest"
         }
         self.classes = [
             {"type_id": "recommend", "type_name": "为你推荐"},
@@ -161,62 +160,77 @@ class Spider(BaseSpider):
         return {"list": items, "page": page, "pagecount": 1, "limit": 20, "total": len(items)}
 
     def detailContent(self, ids):
-        vid = str(ids[0]) if ids else ""
+        # 兼容多种传入格式：字符串、列表、元组、整数
+        if isinstance(ids, (list, tuple)):
+            vid = str(ids[0]) if ids else ""
+        else:
+            vid = str(ids)
         if not vid:
             return {"list": []}
-        if vid.startswith("lsj/"):
-            url = f"{self.host}/play/{vid}-1"
-        elif vid.startswith("lsj_"):
-            url = f"{self.host}/play/lsj/{vid.replace('lsj_', '')}-1"
-        else:
-            url = f"{self.host}/play/lsj/{vid}-1"
-        html = self._fetch_html(url)
-        if not html:
-            return {"list": []}
-        title_match = re.search(r'<title>(.*?)</title>', html)
-        title = title_match.group(1).replace("第1集在线观看 - 心动短剧", "").strip() if title_match else ""
-        cover_match = re.search(r'<meta[^>]*property="og:image"[^>]*content="([^"]+)"', html)
-        cover = cover_match.group(1) if cover_match else ""
-        ep_count_match = re.search(r'共\s*(\d+)\s*集', html)
-        ep_count = ep_count_match.group(1) if ep_count_match else "0"
-        video_urls = []
-        next_data_match = re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL)
-        if next_data_match:
-            try:
-                data = json.loads(next_data_match.group(1))
-                props = data.get("props", {}).get("pageProps", data.get("pageProps", {}))
-                if "allEpisodes" in props:
-                    for ep in props["allEpisodes"]:
-                        if "video_url" in ep:
-                            video_urls.append(ep["video_url"])
-                elif "episode" in props and "video_url" in props["episode"]:
-                    video_urls.append(props["episode"]["video_url"])
-            except:
-                pass
-        if not video_urls:
-            video_urls = re.findall(r'"video_url"\s*:\s*"([^"]+)"', html)
-        if not video_urls:
-            video_urls = re.findall(r'(/api/playback/hls\?[^"\'<>]+)', html)
-        if not video_urls:
-            return {"list": []}
-        seen = set()
-        unique_urls = []
-        for u in video_urls:
-            if u not in seen:
-                seen.add(u)
-                unique_urls.append(u)
+        
+        # 如果是数字ID，先通过API获取真实sourceId和剧集信息
+        source_id = vid
+        title = ""
+        cover = ""
+        total_episodes = 0
+        
+        if vid.isdigit():
+            api_url = f"{self.api_host}/api/dramas/{vid}"
+            data = self._fetch_json(api_url)
+            if data:
+                source_id = data.get("lsj_id", vid)
+                title = data.get("title", "")
+                cover = data.get("cover", "")
+                total_episodes = data.get("total_episodes", 0)
+        
+        # 尝试从剧集列表API获取总集数
+        if total_episodes == 0:
+            list_url = f"{self.api_host}/api/dramas?offset=0&limit=100"
+            list_data = self._fetch_json(list_url)
+            if list_data and list_data.get("items"):
+                for item in list_data["items"]:
+                    if str(item.get("id")) == vid or item.get("lsj_id") == source_id:
+                        total_episodes = item.get("episodeCount", 0)
+                        if not title:
+                            title = item.get("title", "")
+                        if not cover:
+                            cover = item.get("cover", "")
+                        break
+        
+        # 如果总集数为0，默认设为1
+        if total_episodes == 0:
+            total_episodes = 1
+        
+        # 获取第一集的播放地址token，然后为每集生成不同的地址
+        # 先从第一集获取播放地址
+        first_play_url = f"{self.host}/play/lsj/{source_id}-1"
+        first_html = self._fetch_html(first_play_url)
+        first_token = None
+        if first_html:
+            # 尝试从HTML中提取播放地址token
+            token_match = re.search(r'/api/playback/hls\?s=([^"\'&\s<>]+)', first_html)
+            if token_match:
+                first_token = token_match.group(1)
+        
+        # 构建播放列表 - 使用播放页面URL（让TVBox去解析）
+        # 或者使用token+episode参数
         play_parts = []
-        for i, vurl in enumerate(unique_urls):
-            ep_num = i + 1
-            ep_title = f"第{ep_num}集"
-            if vurl.startswith("/"):
-                vurl = self.host + vurl
-            play_parts.append(f"{ep_title}${vurl}")
+        for i in range(1, total_episodes + 1):
+            ep_title = f"第{i}集"
+            # 方案1：使用播放页面URL
+            play_url = f"{self.host}/play/lsj/{source_id}-{i}"
+            play_parts.append(f"{ep_title}${play_url}")
+        
+        if not play_parts:
+            # 至少返回第一集
+            play_url = f"{self.host}/play/lsj/{source_id}-1"
+            play_parts.append(f"第1集${play_url}")
+        
         vod = {
             "vod_id": vid,
-            "vod_name": title or "视频",
-            "vod_pic": cover,
-            "vod_remarks": f"{ep_count}集" if ep_count else "",
+            "vod_name": title or "心动短剧",
+            "vod_pic": cover or "",
+            "vod_remarks": f"{total_episodes}集" if total_episodes else "",
             "vod_actor": "",
             "vod_director": "",
             "vod_content": "",
@@ -224,7 +238,6 @@ class Spider(BaseSpider):
             "vod_play_url": "#".join(play_parts) if play_parts else ""
         }
         return {"list": [vod]}
-
     def searchContent(self, key, quick, pg="1"):
         if not key:
             return {"list": [], "page": 1}
@@ -236,45 +249,61 @@ class Spider(BaseSpider):
         return {"list": items, "page": 1}
 
     def playerContent(self, flag, id, vipFlags):
+        import time
         if not id:
-            return {"parse": 1, "url": "", "header": {}}
+            return {"parse": 0, "url": "", "header": {}}
         if id.startswith("/"):
             id = self.host + id
         
-        # 尝试从URL中提取集数信息
-        import re
-        episode = 1
-        # 检查URL中是否有集数信息
-        ep_match = re.search(r'-(\\d+)(?=&|$|#)', id)
-        if ep_match:
-            episode = int(ep_match.group(1))
+        # 如果id是播放页面URL，需要提取真正的播放地址
+        if "/play/lsj/" in id:
+            # 从播放页面提取token
+            html = self._fetch_html(id)
+            if html:
+                token_match = re.search(r'/api/playback/hls\?s=([^"\'&\s<>]+)', html)
+                if token_match:
+                    token = token_match.group(1)
+                    play_url = f"{self.api_host}/api/playback/hls?s={token}&_t={int(time.time()*1000)}"
+                    # 提取集数用于Referer
+                    episode = 1
+                    match = re.search(r'-(\d+)', id)
+                    if match:
+                        episode = int(match.group(1))
+                    referer = id
+                    headers = {
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                        "Referer": referer,
+                        "Accept": "*/*",
+                        "Accept-Encoding": "gzip, deflate, br",
+                        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+                        "Origin": self.host,
+                        "Connection": "keep-alive",
+                        "Sec-Fetch-Dest": "empty",
+                        "Sec-Fetch-Mode": "cors",
+                        "Sec-Fetch-Site": "same-origin",
+                        "Cache-Control": "no-cache, no-store, must-revalidate",
+                        "Pragma": "no-cache",
+                        "Expires": "0",
+                        "X-Episode": str(episode)
+                    }
+                    return {"parse": 0, "url": play_url, "header": headers}
         
-        # 从detailContent传入的id中提取drama_id
-        # 如果id中包含drama_id参数
-        drama_match = re.search(r'drama_id=([^&]+)', id)
-        drama_id = drama_match.group(1) if drama_match else ''
-        
-        # 添加额外参数
-        if '?' in id:
-            id = id + f"&ep={episode}&episode={episode}"
-        else:
-            id = id + f"?ep={episode}&episode={episode}"
-        
-        # 如果有drama_id，也加上
-        if drama_id:
-            id = id + f"&drama_id={drama_id}"
-        
+        # 如果已经是播放地址，直接返回
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": self.host + "/",
             "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate, br",
             "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
             "Origin": self.host,
             "Connection": "keep-alive",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
             "Cache-Control": "no-cache, no-store, must-revalidate",
-            "Pragma": "no-cache"
+            "Pragma": "no-cache",
+            "Expires": "0"
         }
-        
         return {"parse": 0, "url": id, "header": headers}
     def localProxy(self, param):
         return [404, "text/plain", b""]
