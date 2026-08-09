@@ -1,4 +1,7 @@
 # coding=utf-8
+# 小宝影院 - TVBox FongMi 爬虫源
+# 站点: https://xiaoheimi.cc
+
 import sys
 import os
 import re
@@ -12,245 +15,229 @@ class Spider(Spider):
         return "小宝影院"
     
     def init(self, extend=""):
-        self.host = "https://xiaoxintv.cc"
-        print(f"Initialized with host: {self.host}")
+        self.host = "https://xiaoheimi.cc"
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+            'Referer': self.host + '/',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'Accept-Encoding': 'gzip, deflate',
+        }
+        print(f"[小宝影院] 初始化完成: {self.host}")
     
     def getDependence(self):
         return ["bs4"]
     
-    def header(self):
-        return {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-            'Referer': self.host,
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-        }
+    def destroy(self):
+        pass
     
-    def build_full_url(self, url):
-        """將相對路徑補全為完整URL"""
+    def header(self):
+        return self.headers.copy()
+    
+    def _fetch(self, url, headers=None):
+        """获取页面内容 - 与之前正常工作的版本一致"""
+        if headers is None:
+            headers = self.header()
+        
+        print(f"[小宝影院] _fetch 请求: {url}")
+        
+        # 使用基类 fetch
+        for attempt in range(3):
+            try:
+                print(f"[小宝影院] 尝试 fetch (第 {attempt+1} 次)")
+                rsp = self.fetch(url, headers=headers, timeout=15)
+                if rsp and hasattr(rsp, 'text') and rsp.text:
+                    print(f"[小宝影院] fetch 返回, 长度: {len(rsp.text)}")
+                    return rsp
+                if rsp and hasattr(rsp, 'content') and rsp.content:
+                    class Resp:
+                        def __init__(self, text, status):
+                            self.text = text
+                            self.status = status
+                    try:
+                        text = rsp.content.decode('utf-8', errors='ignore')
+                        print(f"[小宝影院] fetch content 返回, 长度: {len(text)}")
+                        return Resp(text, getattr(rsp, 'status', 200))
+                    except:
+                        pass
+            except Exception as e:
+                print(f"[小宝影院] fetch 异常: {e}")
+        
+        print(f"[小宝影院] fetch 失败")
+        return None
+    
+    def _build_full_url(self, url):
+        """将相对路径补全为完整URL"""
         if not url or not isinstance(url, str):
             return ''
-        
         url = url.strip()
-        
+        if not url or url in ['小宝影院', 'null', 'undefined', '', 'javascript:;']:
+            return ''
         if url.startswith('http://') or url.startswith('https://'):
             return url
-            
-        if not url or url in ['小宝影院', 'null', 'undefined', '']:
-            return ''
-        
         if url.startswith('//'):
             return 'https:' + url
         if url.startswith('/'):
             return self.host + url
         if url.startswith('./'):
             return self.host + url[1:]
-        
         return self.host + '/' + url
     
-    def homeContent(self, filter):
-        """返回分類列表和首頁推薦"""
-        result = {}
-        classes = [
-            {"type_id": "7", "type_name": "電影"},
-            {"type_id": "6", "type_name": "電視劇"},
-            {"type_id": "5", "type_name": "動漫"},
-            {"type_id": "3", "type_name": "綜藝"},
-            {"type_id": "21", "type_name": "紀錄片"},
-            {"type_id": "64", "type_name": "短劇"},
-        ]
-        result["class"] = classes
+    def _parse_video_item(self, item):
+        """解析单个视频项"""
+        link = item.find('a', class_='myui-vodlist__thumb')
+        if not link:
+            return None
         
-        videos = []
+        href = link.get('href', '')
+        if not href:
+            return None
+        
+        vod_id = self._build_full_url(href)
+        title = link.get('title', '') or link.get('alt', '')
+        if not title:
+            title_el = item.find('h4', class_='title')
+            if title_el:
+                title = title_el.get_text(strip=True)
+        
+        pic = link.get('data-original', '') or link.get('src', '')
+        pic = self._build_full_url(pic)
+        
+        remark = ''
+        remark_span = item.find('span', class_='pic-text')
+        if remark_span:
+            remark = remark_span.get_text(strip=True)
+        
+        return {
+            "vod_id": vod_id,
+            "vod_name": title,
+            "vod_pic": pic,
+            "vod_remarks": remark
+        }
+    
+    def homeContent(self, filter):
+        """返回分类列表和首页推荐"""
+        result = {
+            "class": [
+                {"type_id": "7", "type_name": "电影"},
+                {"type_id": "6", "type_name": "电视剧"},
+                {"type_id": "5", "type_name": "动漫"},
+                {"type_id": "3", "type_name": "综艺"},
+                {"type_id": "21", "type_name": "纪录片"},
+                {"type_id": "64", "type_name": "短剧"},
+            ],
+            "list": []
+        }
+        
         try:
-            rsp = self.fetch(self.host, headers=self.header())
+            rsp = self._fetch(self.host + '/')
+            if not rsp or not rsp.text:
+                print("[小宝影院] 首页获取失败")
+                return result
+            
             soup = BeautifulSoup(rsp.text, 'html.parser')
+            videos = []
+            seen = set()
             
-            # 提取輪播圖推薦
-            slide_items = soup.select('#home_slide .carousel-inner .item a')
-            for item in slide_items:
-                href = item.get('href', '')
-                if href:
-                    vod_id = self.build_full_url(href)
-                    title = item.get('title', '')
-                    img = item.find('img')
-                    if img:
-                        pic = img.get('src', '')
-                        if not pic or pic == '':
-                            pic = img.get('data-original', '')
-                        pic = self.build_full_url(pic)
-                    else:
-                        pic = ''
-                    
-                    videos.append({
-                        "vod_id": vod_id,
-                        "vod_name": title,
-                        "vod_pic": pic,
-                        "vod_remarks": "輪播推薦"
-                    })
-            
-            # 提取大片推薦區域
+            # 提取首页视频列表
             vod_items = soup.select('.myui-vodlist__box')
             for item in vod_items:
-                link = item.find('a', class_='myui-vodlist__thumb')
-                if link:
-                    href = link.get('href', '')
-                    if href:
-                        vod_id = self.build_full_url(href)
-                        title = link.get('title', '')
-                        pic = link.get('data-original', '')
-                        if not pic:
-                            pic = link.get('src', '')
-                        pic = self.build_full_url(pic)
-                        
-                        remark_span = item.find('span', class_='pic-text')
-                        remark = remark_span.text.strip() if remark_span else ''
-                        
-                        videos.append({
-                            "vod_id": vod_id,
-                            "vod_name": title,
-                            "vod_pic": pic,
-                            "vod_remarks": remark
-                        })
-            
-            seen = set()
-            unique_videos = []
-            for v in videos:
-                if v['vod_id'] not in seen and v['vod_name']:
-                    seen.add(v['vod_id'])
-                    unique_videos.append(v)
-                    if len(unique_videos) >= 20:
+                video = self._parse_video_item(item)
+                if video and video['vod_id'] and video['vod_id'] not in seen:
+                    seen.add(video['vod_id'])
+                    videos.append(video)
+                    if len(videos) >= 20:
                         break
             
-            result["list"] = unique_videos
+            result["list"] = videos
+            print(f"[小宝影院] 首页提取 {len(videos)} 个视频")
+            
         except Exception as e:
-            print(f"homeContent error: {e}")
-            result["list"] = []
+            print(f"[小宝影院] homeContent 错误: {e}")
         
         return result
     
     def homeVideoContent(self):
-        """返回首頁推薦視頻"""
         return self.homeContent(False)
     
     def categoryContent(self, tid, pg, filter, extend):
-        """返回分類頁內容"""
-        result = {}
+        """返回分类页内容"""
+        pg = int(pg) if pg else 1
+        result = {"list": [], "page": pg, "pagecount": 1, "limit": 0, "total": 0}
+        
         try:
             if pg == 1:
                 url = f"{self.host}/index.php/vod/type/id/{tid}.html"
             else:
                 url = f"{self.host}/index.php/vod/type/id/{tid}/page/{pg}.html"
             
-            if extend:
-                filter_url = f"{self.host}/index.php/vod/show"
-                params = []
-                params.append(f"id/{tid}")
-                
-                if extend.get('class') and extend['class'] != tid:
-                    params.append(f"class/{extend['class']}")
-                if extend.get('area'):
-                    params.append(f"area/{urllib.parse.quote(extend['area'])}")
-                if extend.get('year'):
-                    params.append(f"year/{extend['year']}")
-                if extend.get('lang'):
-                    params.append(f"lang/{urllib.parse.quote(extend['lang'])}")
-                if extend.get('by'):
-                    params.append(f"by/{extend['by']}")
-                
-                if pg == 1:
-                    url = f"{filter_url}/{'/'.join(params)}.html"
-                else:
-                    url = f"{filter_url}/page/{pg}/{'/'.join(params)}.html"
+            print(f"[小宝影院] 分类请求: {url}")
+            rsp = self._fetch(url)
+            if not rsp or not rsp.text:
+                print("[小宝影院] 分类页面获取失败")
+                return result
             
-            print(f"Fetching category: {url}")
-            rsp = self.fetch(url, headers=self.header())
             soup = BeautifulSoup(rsp.text, 'html.parser')
-            
             videos = []
+            seen = set()
+            
             vod_items = soup.select('.myui-vodlist__box')
             for item in vod_items:
-                link = item.find('a', class_='myui-vodlist__thumb')
-                if link:
-                    href = link.get('href', '')
-                    if href:
-                        vod_id = self.build_full_url(href)
-                        title = link.get('title', '')
-                        pic = link.get('data-original', '')
-                        if not pic:
-                            pic = link.get('src', '')
-                        pic = self.build_full_url(pic)
-                        
-                        remark_span = item.find('span', class_='pic-text')
-                        remark = remark_span.text.strip() if remark_span else ''
-                        
-                        videos.append({
-                            "vod_id": vod_id,
-                            "vod_name": title,
-                            "vod_pic": pic,
-                            "vod_remarks": remark
-                        })
+                video = self._parse_video_item(item)
+                if video and video['vod_id'] and video['vod_id'] not in seen:
+                    seen.add(video['vod_id'])
+                    videos.append(video)
             
             result["list"] = videos
+            result["limit"] = len(videos)
             
+            # 提取分页信息
             page_info = soup.find('ul', class_='myui-page')
             if page_info:
-                mobile_span = page_info.find('span', class_='visible-xs')
-                if mobile_span:
-                    page_text = mobile_span.text.strip()
-                    match = re.search(r'/(\d+)', page_text)
+                page_links = page_info.find_all('a')
+                max_page = 1
+                for link in page_links:
+                    href = link.get('href', '')
+                    match = re.search(r'/page/(\d+)', href)
                     if match:
-                        result["pagecount"] = int(match.group(1))
-                    else:
-                        result["pagecount"] = 1
-                else:
-                    page_links = page_info.find_all('a')
-                    max_page = 1
-                    for link in page_links:
-                        href = link.get('href', '')
-                        match = re.search(r'(?:/page/|page/)(\d+)', href)
-                        if match:
-                            page_num = int(match.group(1))
-                            if page_num > max_page:
-                                max_page = page_num
-                    
-                    if max_page > 1:
-                        result["pagecount"] = max_page
-                    else:
-                        result["pagecount"] = 1
+                        pg_num = int(match.group(1))
+                        if pg_num > max_page:
+                            max_page = pg_num
+                result["pagecount"] = max_page if max_page > 1 else 1
             else:
                 result["pagecount"] = 1
             
-            if result.get("pagecount", 0) < 1:
-                result["pagecount"] = 1
-            
-            result["page"] = pg
-            result["limit"] = len(videos)
             result["total"] = result["pagecount"] * 20
+            print(f"[小宝影院] 分类提取 {len(videos)} 个视频, 共 {result['pagecount']} 页")
             
         except Exception as e:
-            print(f"categoryContent error: {e}")
-            result["list"] = []
-            result["pagecount"] = 1
-            result["page"] = pg
-            result["limit"] = 0
-            result["total"] = 0
+            print(f"[小宝影院] categoryContent 错误: {e}")
         
         return result
     
     def detailContent(self, ids):
-        """返回詳情頁內容"""
-        result = {}
+        """返回详情页内容"""
+        result = {"list": []}
+        
         try:
             if isinstance(ids, list):
                 vid = ids[0]
             else:
                 vid = ids
             
-            vid = self.build_full_url(vid)
+            if vid.startswith('http'):
+                match = re.search(r'/id/(\d+)', vid)
+                if match:
+                    vid = match.group(1)
             
-            print(f"Fetching detail: {vid}")
-            rsp = self.fetch(vid, headers=self.header())
+            url = f"{self.host}/index.php/vod/detail/id/{vid}.html"
+            print(f"[小宝影院] 详情请求: {url}")
+            
+            rsp = self._fetch(url)
+            if not rsp or not rsp.text:
+                print("[小宝影院] 详情页获取失败")
+                return result
+            
             soup = BeautifulSoup(rsp.text, 'html.parser')
             
             vod = {
@@ -267,67 +254,52 @@ class Spider(Spider):
                 "vod_play_url": ""
             }
             
-            # 提取標題
+            # 标题
             title_tag = soup.find('h1', class_='title')
             if title_tag:
-                vod["vod_name"] = title_tag.text.strip()
+                vod["vod_name"] = title_tag.get_text(strip=True)
+            else:
+                og_title = soup.find('meta', property='og:title')
+                if og_title:
+                    vod["vod_name"] = og_title.get('content', '')
             
-            # 提取封面
+            # 封面
             thumb_div = soup.find('div', class_='myui-content__thumb')
             if thumb_div:
                 img = thumb_div.find('img')
                 if img:
-                    pic = img.get('data-original', '')
-                    if not pic:
-                        pic = img.get('src', '')
-                    vod["vod_pic"] = self.build_full_url(pic)
+                    pic = img.get('data-original', '') or img.get('src', '')
+                    vod["vod_pic"] = self._build_full_url(pic)
             
-            # 提取分類、地區、年份
-            data_ps = soup.find_all('p', class_='data')
-            for p in data_ps:
-                text = p.text
-                if '分類：' in text:
-                    area_link = p.find('a')
-                    if area_link:
-                        vod["type_name"] = area_link.text
-                elif '地區：' in text:
-                    area_link = p.find('a')
-                    if area_link:
-                        vod["vod_area"] = area_link.text
-                elif '年份：' in text:
-                    year_link = p.find('a')
-                    if year_link:
-                        vod["vod_year"] = year_link.text
-                elif '更新：' in text:
-                    update_text = p.find('span', class_='text-red')
-                    if update_text:
-                        vod["vod_remarks"] = update_text.text.strip()
-            
-            # 提取主演
+            # 详细信息
             for p in soup.find_all('p', class_='data'):
-                if '主演：' in p.text:
-                    actors = []
-                    for a in p.find_all('a'):
-                        actors.append(a.text.strip())
+                text = p.get_text(strip=True)
+                if '分类：' in text or '類型：' in text:
+                    link = p.find('a')
+                    if link:
+                        vod["type_name"] = link.get_text(strip=True)
+                elif '地区：' in text or '地區：' in text:
+                    link = p.find('a')
+                    if link:
+                        vod["vod_area"] = link.get_text(strip=True)
+                elif '年份：' in text:
+                    link = p.find('a')
+                    if link:
+                        vod["vod_year"] = link.get_text(strip=True)
+                elif '更新：' in text:
+                    span = p.find('span', class_='text-red')
+                    if span:
+                        vod["vod_remarks"] = span.get_text(strip=True)
+                elif '主演：' in text:
+                    actors = [a.get_text(strip=True) for a in p.find_all('a')]
                     if actors:
                         vod["vod_actor"] = ','.join(actors)
-                    else:
-                        vod["vod_actor"] = ''
-                    break
-            
-            # 提取導演
-            for p in soup.find_all('p', class_='data'):
-                if '導演：' in p.text:
-                    directors = []
-                    for a in p.find_all('a'):
-                        directors.append(a.text.strip())
+                elif '导演：' in text or '導演：' in text:
+                    directors = [a.get_text(strip=True) for a in p.find_all('a')]
                     if directors:
                         vod["vod_director"] = ','.join(directors)
-                    else:
-                        vod["vod_director"] = ''
-                    break
             
-            # 提取簡介
+            # 简介
             desc_div = soup.find('div', class_='text-collapse')
             if desc_div:
                 content_span = desc_div.find('span', class_='data')
@@ -336,17 +308,17 @@ class Spider(Spider):
                 else:
                     sketch = desc_div.find('span', class_='sketch')
                     if sketch:
-                        vod["vod_content"] = sketch.text.strip()
-                    else:
-                        vod["vod_content"] = desc_div.get_text(strip=True)
+                        vod["vod_content"] = sketch.get_text(strip=True)
             
-            # 提取播放地址
+            # 播放地址
             play_froms = []
             play_urls = []
             
             tab_links = soup.select('.myui-panel__head .nav-tabs li a')
             for tab in tab_links:
-                play_froms.append(tab.text.strip())
+                name = tab.get_text(strip=True)
+                if name:
+                    play_froms.append(name)
             
             if not play_froms:
                 play_froms = ["小宝影院"]
@@ -355,20 +327,17 @@ class Spider(Spider):
             for i, pane in enumerate(tab_panes):
                 if i >= len(play_froms):
                     break
-                
                 episodes = []
                 playlist = pane.find('ul', class_='myui-content__list')
                 if playlist:
-                    links = playlist.find_all('a', href=True)
-                    for link in links:
+                    for link in playlist.find_all('a', href=True):
                         href = link.get('href', '')
                         if href and href != 'javascript:;':
-                            episode_name = link.text.strip()
-                            if episode_name:
-                                play_url = self.build_full_url(href)
-                                if play_url and play_url != '小宝影院':
-                                    episodes.append(f"{episode_name}${play_url}")
-                
+                            ep_name = link.get_text(strip=True)
+                            if ep_name:
+                                ep_url = self._build_full_url(href)
+                                if ep_url:
+                                    episodes.append(f"{ep_name}${ep_url}")
                 if episodes:
                     play_urls.append('#'.join(episodes))
             
@@ -376,261 +345,256 @@ class Spider(Spider):
                 playlist_ul = soup.find('ul', class_='myui-content__list')
                 if playlist_ul:
                     episodes = []
-                    links = playlist_ul.find_all('a', href=True)
-                    for link in links:
+                    for link in playlist_ul.find_all('a', href=True):
                         href = link.get('href', '')
                         if href and href != 'javascript:;':
-                            episode_name = link.text.strip()
-                            if episode_name:
-                                play_url = self.build_full_url(href)
-                                if play_url and play_url != '小宝影院':
-                                    episodes.append(f"{episode_name}${play_url}")
+                            ep_name = link.get_text(strip=True)
+                            if ep_name:
+                                ep_url = self._build_full_url(href)
+                                if ep_url:
+                                    episodes.append(f"{ep_name}${ep_url}")
                     if episodes:
                         play_urls.append('#'.join(episodes))
                         play_froms = ["小宝影院"]
-            
-            if not play_urls:
-                play_btn = soup.find('a', class_='btn btn-warm', href=True)
-                if play_btn:
-                    href = play_btn.get('href', '')
-                    if href and href != 'javascript:;':
-                        play_url = self.build_full_url(href)
-                        if play_url and play_url != '小宝影院':
-                            episodes = [f"播放${play_url}"]
-                            play_urls.append('#'.join(episodes))
-                            play_froms = ["小宝影院"]
             
             vod["vod_play_from"] = '$$$'.join(play_froms)
             vod["vod_play_url"] = '$$$'.join(play_urls)
             
             result["list"] = [vod]
+            print(f"[小宝影院] 详情提取成功: {vod['vod_name']}")
             
         except Exception as e:
-            print(f"detailContent error: {e}")
-            result["list"] = []
+            print(f"[小宝影院] detailContent 错误: {e}")
         
         return result
     
-    # ==================== 搜索方法 - 優化圖片提取 ====================
-    
     def searchContent(self, key, quick, pg=1):
-        """搜索內容 - 優化圖片提取"""
-        print("="*50)
-        print("【搜索】searchContent 被調用")
-        print(f"搜索關鍵字: {key}")
-        print(f"quick: {quick}")
-        print(f"頁碼: {pg}")
-        print("="*50)
+        """搜索内容"""
+        pg = int(pg) if pg else 1
+        result = {"list": [], "pagecount": 1, "page": pg, "limit": 0, "total": 0}
         
-        result = {}
-        videos = []
         try:
-            # 構建搜索URL
+            encoded_key = urllib.parse.quote(key)
             if pg == 1:
-                search_url = f"{self.host}/index.php/vod/search.html?wd={urllib.parse.quote(key)}"
+                search_url = f"{self.host}/index.php/vod/search.html?wd={encoded_key}"
             else:
-                search_url = f"{self.host}/index.php/vod/search/page/{pg}/wd/{urllib.parse.quote(key)}.html"
+                search_url = f"{self.host}/index.php/vod/search/page/{pg}/wd/{encoded_key}.html"
             
-            print(f"搜索URL: {search_url}")
+            print(f"[小宝影院] 搜索: {key}, URL: {search_url}")
             
-            rsp = self.fetch(search_url, headers=self.header())
-            print(f"響應狀態碼: {rsp.status if hasattr(rsp, 'status') else 'unknown'}")
+            rsp = self._fetch(search_url)
+            if not rsp or not rsp.text:
+                print("[小宝影院] 搜索页面获取失败")
+                return result
             
             soup = BeautifulSoup(rsp.text, 'html.parser')
+            videos = []
+            seen = set()
             
-            # 根據HTML結構，搜索結果在 id="searchList" 的 ul 中
             search_list = soup.find('ul', id='searchList')
             if search_list:
-                print("找到 searchList")
-                search_items = search_list.find_all('li', class_='clearfix')
-                print(f"找到 {len(search_items)} 個搜索結果")
-                
-                for item in search_items:
-                    # 提取標題和鏈接
+                items = search_list.find_all('li', class_='clearfix')
+                for item in items:
                     title_tag = item.find('h4', class_='title')
                     if not title_tag:
                         continue
-                        
                     link_tag = title_tag.find('a')
                     if not link_tag:
                         continue
-                    
                     href = link_tag.get('href', '')
                     if not href:
                         continue
+                    vod_id = self._build_full_url(href)
+                    title = link_tag.get_text(strip=True)
                     
-                    vod_id = self.build_full_url(href)
-                    title = link_tag.text.strip()
-                    
-                    # ===== 優化圖片提取 =====
                     pic = ''
                     thumb_div = item.find('div', class_='thumb')
                     if thumb_div:
-                        # 方法1: 找 img 標籤
                         img = thumb_div.find('img')
                         if img:
-                            # 優先使用 data-original (懶加載)
-                            pic = img.get('data-original', '')
-                            if not pic:
-                                pic = img.get('src', '')
-                            print(f"找到圖片: {pic[:50]}...")
-                        
-                        # 方法2: 如果沒找到圖片，檢查 a 標籤的 style 屬性
-                        if not pic:
-                            a_tag = thumb_div.find('a')
-                            if a_tag:
-                                style = a_tag.get('style', '')
-                                if 'background-image' in style:
-                                    match = re.search(r'url\([\'"]?(.*?)[\'"]?\)', style)
-                                    if match:
-                                        pic = match.group(1)
-                                        print(f"從 style 找到圖片: {pic[:50]}...")
-                    
-                    # 方法3: 如果還是沒找到，嘗試直接從 a 標籤獲取
+                            pic = img.get('data-original', '') or img.get('src', '')
                     if not pic:
                         a_tag = item.find('a', class_='myui-vodlist__thumb')
                         if a_tag:
-                            pic = a_tag.get('data-original', '')
-                            if not pic:
-                                pic = a_tag.get('src', '')
+                            pic = a_tag.get('data-original', '') or a_tag.get('src', '')
+                    pic = self._build_full_url(pic)
                     
-                    # 補全圖片URL
-                    if pic:
-                        pic = self.build_full_url(pic)
-                    
-                    # 提取備註信息
                     remark = ''
                     pic_text = item.find('span', class_='pic-text')
                     if pic_text:
-                        remark = pic_text.text.strip()
+                        remark = pic_text.get_text(strip=True)
                     
-                    videos.append({
-                        "vod_id": vod_id,
-                        "vod_name": title,
-                        "vod_pic": pic,
-                        "vod_remarks": remark
-                    })
-                    
-                    print(f"添加視頻: {title}, 圖片: {bool(pic)}")
+                    if vod_id and vod_id not in seen and title:
+                        seen.add(vod_id)
+                        videos.append({
+                            "vod_id": vod_id,
+                            "vod_name": title,
+                            "vod_pic": pic,
+                            "vod_remarks": remark
+                        })
             
-            # 如果上面的選擇器沒找到，嘗試備用選擇器
             if not videos:
-                print("未找到 searchList，嘗試備用選擇器")
-                alt_items = soup.select('.myui-vodlist__media li.clearfix')
-                for item in alt_items:
-                    link = item.find('a', class_='myui-vodlist__thumb')
-                    if link:
-                        href = link.get('href', '')
-                        if href:
-                            vod_id = self.build_full_url(href)
-                            title = link.get('title', '')
-                            
-                            # 提取圖片
-                            pic = link.get('data-original', '')
-                            if not pic:
-                                pic = link.get('src', '')
-                            pic = self.build_full_url(pic)
-                            
-                            remark_span = item.find('span', class_='pic-text')
-                            remark = remark_span.text.strip() if remark_span else ''
-                            
-                            videos.append({
-                                "vod_id": vod_id,
-                                "vod_name": title,
-                                "vod_pic": pic,
-                                "vod_remarks": remark
-                            })
+                vod_items = soup.select('.myui-vodlist__box')
+                for item in vod_items:
+                    video = self._parse_video_item(item)
+                    if video and video['vod_id'] and video['vod_id'] not in seen:
+                        seen.add(video['vod_id'])
+                        videos.append(video)
             
             result["list"] = videos
-            print(f"總共提取到 {len(videos)} 個視頻")
-            print(f"有圖片的視頻數: {len([v for v in videos if v['vod_pic']])}")
+            result["limit"] = len(videos)
             
-            # 提取總頁數
             page_info = soup.find('ul', class_='myui-page')
             if page_info:
                 mobile_span = page_info.find('span', class_='visible-xs')
                 if mobile_span:
-                    page_text = mobile_span.text.strip()
+                    page_text = mobile_span.get_text(strip=True)
                     match = re.search(r'/(\d+)', page_text)
                     if match:
                         result["pagecount"] = int(match.group(1))
-                        print(f"總頁數: {result['pagecount']}")
-                    else:
-                        result["pagecount"] = 1
                 else:
-                    result["pagecount"] = 1
+                    page_links = page_info.find_all('a')
+                    max_page = 1
+                    for link in page_links:
+                        href = link.get('href', '')
+                        match = re.search(r'/page/(\d+)', href)
+                        if match:
+                            pg_num = int(match.group(1))
+                            if pg_num > max_page:
+                                max_page = pg_num
+                    result["pagecount"] = max_page if max_page > 1 else 1
             else:
                 result["pagecount"] = 1
             
-            result["page"] = pg
-            result["limit"] = len(videos)
-            result["total"] = result["pagecount"] * len(videos) if len(videos) > 0 else 0
+            result["total"] = result["pagecount"] * len(videos) if videos else 0
+            print(f"[小宝影院] 搜索到 {len(videos)} 个结果, 共 {result['pagecount']} 页")
             
         except Exception as e:
-            print(f"搜索錯誤: {e}")
-            import traceback
-            traceback.print_exc()
-            result["list"] = []
+            print(f"[小宝影院] searchContent 错误: {e}")
         
         return result
-    
-    # ==================== 備用搜索方法 ====================
-    
-    def search(self, key):
-        """備用搜索方法"""
-        print("【備用搜索】search 被調用")
-        return self.searchContent(key, False, 1)
-    
-    def find(self, key):
-        """備用搜索方法"""
-        print("【備用搜索】find 被調用")
-        return self.searchContent(key, False, 1)
-    
-    def query(self, key):
-        """備用搜索方法"""
-        print("【備用搜索】query 被調用")
-        return self.searchContent(key, False, 1)
     
     def playerContent(self, ids, flag, ext):
-        """返回播放器內容 - 使用嗅探模式"""
-        result = {}
+        """返回播放地址 - header 直接返回 dict"""
+        result = {"parse": 0, "playUrl": "", "url": "", "header": {}}
+        
+        # 直接构建 dict，不序列化
+        clean_headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+            'Referer': self.host + '/',
+            'Origin': self.host,
+        }
+        
         try:
             play_url = ids
-            print(f"播放請求 - ID: {play_url}, Flag: {flag}")
+            print(f"[小宝影院] 播放请求 - ID: {play_url}, Flag: {flag}")
             
-            if play_url == "小宝影院" and flag and flag != "小宝影院":
-                play_url = flag
-                print(f"使用 flag 作為 URL: {play_url}")
+            # 如果 ids 是线路名称，从 flag 获取真实URL
+            if play_url in ["小宝影院", "小宝影院1", "小宝影院2"]:
+                if flag and flag.startswith('http'):
+                    play_url = flag
+                    print(f"[小宝影院] 从 flag 获取URL: {play_url}")
+                else:
+                    print(f"[小宝影院] 无效的线路名称: {play_url}")
+                    return result
             
-            if not play_url or play_url == "小宝影院":
-                print("警告: 無效的播放URL")
-                return {}
+            if not play_url or not play_url.startswith('http'):
+                print(f"[小宝影院] 无效的播放URL: {play_url}")
+                return result
             
-            result["parse"] = 1
-            result["playUrl"] = ""
+            # 如果是直链视频格式
+            if re.search(r'\.(m3u8|mp4|flv)(\?|$)', play_url, re.I):
+                result['parse'] = 0
+                result['url'] = play_url
+                result['header'] = clean_headers
+                return result
+            
+            # 获取播放页面
+            rsp = self._fetch(play_url)
+            if not rsp or not rsp.text:
+                print("[小宝影院] 播放页面获取失败")
+                result["url"] = play_url
+                result["header"] = clean_headers
+                return result
+            
+            html = rsp.text
+            
+            # 提取 player_aaaa 中的 url
+            match = re.search(r'var\s+player_aaaa\s*=\s*\{[^}]*"url"\s*:\s*"([^"]+)"', html)
+            if not match:
+                match = re.search(r"var\s+player_aaaa\s*=\s*\{[^}]*'url'\s*:\s*'([^']+)'", html)
+            if match:
+                purl = match.group(1)
+                purl = purl.replace('\\/', '/')
+                print(f"[小宝影院] 从 player_aaaa 提取: {purl[:100]}...")
+                
+                result['parse'] = 0
+                result['url'] = purl
+                result['header'] = clean_headers
+                return result
+            
+            # 从 iframe 提取
+            iframe_match = re.search(r'<iframe[^>]+src="([^"]+)"', html)
+            if iframe_match:
+                iframe_url = iframe_match.group(1)
+                if iframe_url.startswith('/'):
+                    iframe_url = self.host + iframe_url
+                print(f"[小宝影院] 从 iframe 提取: {iframe_url}")
+                return self.playerContent(iframe_url, flag, ext)
+            
+            # 直接搜索 m3u8
+            m3u8_match = re.search(r'(https?://[^\s"\']+\.m3u8[^\s"\']*)', html)
+            if m3u8_match:
+                purl = m3u8_match.group(1)
+                print(f"[小宝影院] 从 HTML 提取 m3u8: {purl[:100]}...")
+                result['parse'] = 0
+                result['url'] = purl
+                result['header'] = clean_headers
+                return result
+            
+            print("[小宝影院] 未找到播放地址，使用默认")
             result["url"] = play_url
-            result["header"] = json.dumps(self.header())
-            
-            print(f"返回 parse=1 的 URL: {play_url[:50]}...")
+            result["header"] = clean_headers
             
         except Exception as e:
-            print(f"playerContent 錯誤: {e}")
-            result["parse"] = 1
-            result["playUrl"] = ""
+            print(f"[小宝影院] playerContent 错误: {e}")
             result["url"] = ids if ids and ids != "小宝影院" else ""
-            result["header"] = json.dumps(self.header())
+            result["header"] = clean_headers
         
         return result
-    
     def isVideoFormat(self, url):
         if not url or not isinstance(url, str):
             return False
         video_exts = ['.mp4', '.m3u8', '.flv', '.avi', '.mkv', '.wmv', '.mov']
-        url_lower = url.lower()
-        for ext in video_exts:
-            if ext in url_lower:
-                return True
-        return False
+        return any(ext in url.lower() for ext in video_exts)
     
-    def localProxy(self, param):
+    def localProxy(self, params):
         return None
+
+
+def getSpider():
+    return Spider()
+
+def getHomeContent():
+    return Spider().homeContent(False)
+
+def getHomeVideoContent():
+    return Spider().homeVideoContent()
+
+def getCategoryContent(tid, pg=1, filter=False, extend=None):
+    return Spider().categoryContent(tid, pg, filter, extend)
+
+def getDetailContent(ids):
+    return Spider().detailContent(ids)
+
+def getSearchContent(key, quick=False, pg=1):
+    return Spider().searchContent(key, quick, pg)
+
+def getPlayerContent(flag, id, vipFlags=None):
+    return Spider().playerContent(id, flag, vipFlags)
+
+def getDependence():
+    return Spider().getDependence()
+
+def destroy():
+    return Spider().destroy()
