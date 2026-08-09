@@ -2,16 +2,12 @@
 # 剧屋 - https://m.juwu.tv
 # 站点类型: 苹果CMS HTML站
 # 分类: 短剧(1)、电影(2)
-# 播放: 直接从video标签提取m3u8直链，parse=0
+# 播放: 通过API获取m3u8直链，parse=0
 # 无筛选功能
 
 import re
 import json
-import urllib.request
-import urllib.parse
-import gzip
-import zlib
-from urllib.parse import urljoin, urlparse, quote
+from urllib.parse import urljoin, quote, urlparse
 
 from base.spider import Spider as BaseSpider
 
@@ -32,6 +28,7 @@ class Spider(BaseSpider):
             "User-Agent": self.ua,
             "Referer": self.site_url + "/"
         }
+
     def getName(self):
         return "剧屋"
 
@@ -40,15 +37,6 @@ class Spider(BaseSpider):
 
     def init(self, extend=""):
         self.extend = extend or ""
-
-    def homeContent(self, filter=False):
-        return {"class": self.classes, "filters": self.filters if filter else {}}
-
-    def getHomeContent(self, filter=False):
-        return self.homeContent(filter)
-
-    def homeVideoContent(self):
-        return self.categoryContent("1", "1", False, {})
 
     def _fetch(self, url):
         """使用 self.fetch() 获取页面内容"""
@@ -74,6 +62,7 @@ class Spider(BaseSpider):
         except Exception as e:
             pass
         return ""
+
     def _parse_extend(self, extend):
         if not extend:
             return {}
@@ -92,6 +81,15 @@ class Spider(BaseSpider):
                             result[key.strip()] = val.strip()
                 return result
         return {}
+
+    def homeContent(self, filter=False):
+        return {"class": self.classes, "filters": self.filters if filter else {}}
+
+    def getHomeContent(self, filter=False):
+        return self.homeContent(filter)
+
+    def homeVideoContent(self):
+        return self.categoryContent("1", "1", False, {})
 
     def categoryContent(self, tid, pg="1", filter=False, extend=None):
         page = str(pg or "1")
@@ -161,6 +159,7 @@ class Spider(BaseSpider):
 
         lines = {}
         
+        # 解析线路tab
         line_pattern = r'<div class="module-tab-item tab-item[^"]*" data-sid="(\d+)"[^>]*>.*?<span>([^<]*)</span>'
         line_matches = re.findall(line_pattern, html)
         
@@ -179,14 +178,15 @@ class Spider(BaseSpider):
             if pane_match:
                 content_html = pane_match.group(1)
                 ep_pattern = rf'<a[^>]*href="(/vod-play/\d+-{sid}-\d+/)"[^>]*><span>([^<]*)</span>'
-                ep_matches = re.findall(ep_pattern.format(sid=sid), content_html)
+                ep_matches = re.findall(ep_pattern, content_html)
                 if ep_matches:
                     ep_urls = []
                     for ep_href, ep_name in ep_matches:
                         ep_urls.append(f"{ep_name}${ep_href}")
                     if ep_urls:
-                        lines[sid] = {"name": line_name, "urls": "$$$".join(ep_urls)}
+                        lines[sid] = {"name": line_name, "urls": "#".join(ep_urls)}
 
+        # 备用解析
         if not lines:
             all_ep_pattern = r'<a[^>]*href="(/vod-play/\d+-\d+-\d+/)"[^>]*><span>([^<]*)</span>'
             all_ep_matches = re.findall(all_ep_pattern, html)
@@ -200,20 +200,27 @@ class Spider(BaseSpider):
                             groups[sid] = []
                         groups[sid].append(f"{ep_name}${ep_href}")
                 for sid, eps in groups.items():
-                    lines[sid] = {"name": f"线路{sid}", "urls": "$$$".join(eps)}
+                    name_map = {"1": "线路 hh", "2": "线路 md", "3": "线路 bf"}
+                    lines[sid] = {"name": name_map.get(sid, f"线路{sid}"), "urls": "#".join(eps)}
 
-        # 线路排序: sid=2优先, sid=3其次, sid=1最后
+        # 线路排序: md优先, bf其次, hh最后
+        # 顺序: 2(md) -> 3(bf) -> 1(hh)
         priority_order = ["2", "3", "1"]
-        sorted_lines = []
+        sorted_line_ids = []
         for sid in priority_order:
             if sid in lines:
-                sorted_lines.append(lines[sid])
-                del lines[sid]
-        for sid in sorted(lines.keys(), key=lambda x: int(x) if x.isdigit() else 999):
-            sorted_lines.append(lines[sid])
-
-        play_from_list = [line["name"] for line in sorted_lines]
-        play_url_list = [line["urls"] for line in sorted_lines]
+                sorted_line_ids.append(sid)
+        # 补充其他线路
+        for sid in lines.keys():
+            if sid not in sorted_line_ids:
+                sorted_line_ids.append(sid)
+        
+        play_from_list = []
+        play_url_list = []
+        for sid in sorted_line_ids:
+            line_data = lines[sid]
+            play_from_list.append(line_data["name"])
+            play_url_list.append(line_data["urls"])
 
         vod_play_from = "$$$".join(play_from_list) if play_from_list else ""
         vod_play_url = "$$$".join(play_url_list) if play_url_list else ""
@@ -228,7 +235,6 @@ class Spider(BaseSpider):
             "vod_play_url": vod_play_url,
         }
         return {"list": [vod]}
-
     def searchContent(self, key, quick=False, pg="1"):
         if not key or len(key.strip()) < 1:
             return {"list": []}
@@ -270,27 +276,23 @@ class Spider(BaseSpider):
         if id.startswith("http://") or id.startswith("https://"):
             return {"parse": 0, "url": id, "header": self.headers}
 
-        # 解析播放ID格式: /vod-play/55326-2-1/ 或 vod-play/55326-2-1/
-        # 提取 vodId, line, episode
+        # 解析播放ID格式: /vod-play/55326-2-1/
         vod_id = None
         line = 1
         episode = 1
 
-        # 匹配 /vod-play/数字-数字-数字/
         match = re.search(r'/vod-play/(\d+)-(\d+)-(\d+)/', id)
         if match:
             vod_id = match.group(1)
             line = int(match.group(2))
             episode = int(match.group(3))
         else:
-            # 尝试直接匹配数字
             match = re.search(r'(\d+)-(\d+)-(\d+)', id)
             if match:
                 vod_id = match.group(1)
                 line = int(match.group(2))
                 episode = int(match.group(3))
             else:
-                # 尝试匹配纯数字ID
                 match = re.search(r'(\d+)', id)
                 if match:
                     vod_id = match.group(1)
@@ -298,38 +300,97 @@ class Spider(BaseSpider):
                     episode = 1
 
         if not vod_id:
-            # 无法解析，降级嗅探
             play_url = f"{self.site_url}/vod-play/{id}/"
             return {"parse": 1, "url": play_url, "header": self.headers}
 
         # 调用播放API获取直链
         api_url = f"https://play.juwu.tv/api/v1/player/{vod_id}/{line}"
+        api_headers = {
+            "User-Agent": self.ua,
+            "Referer": f"https://play.juwu.tv/player/{vod_id}/{line}/1"
+        }
         try:
-            resp = self.fetch(api_url, headers=self.headers, timeout=15)
+            resp = self.fetch(api_url, headers=api_headers, timeout=15)
             if resp and hasattr(resp, 'json'):
                 data = resp.json()
                 if data.get('code') == 200 and data.get('data'):
                     videos = data.get('data', [])
-                    # 根据集数索引获取对应的视频数据
                     idx = episode - 1
                     if idx >= 0 and idx < len(videos):
                         video_data = videos[idx]
                         content_url = video_data.get('content', '')
-                        if content_url and (content_url.startswith('http')):
-                            # 检查是否为m3u8
-                            if '.m3u8' in content_url.lower():
-                                return {"parse": 0, "url": content_url, "header": self.headers}
-                            else:
-                                return {"parse": 0, "url": content_url, "header": self.headers}
+                        if content_url and content_url.startswith('http'):
+                            # 直接返回直链，不走代理
+                            return {"parse": 0, "url": content_url, "header": self.headers}
         except Exception as e:
             pass
 
-        # 降级：返回播放页让壳嗅探
         play_url = f"{self.site_url}/vod-play/{vod_id}-{line}-{episode}/"
         return {"parse": 1, "url": play_url, "header": self.headers}
     def getProxyUrl(self):
-        return ""
-
+        return "http://127.0.0.1:9978/proxy?do=local&url="
+    def localProxy(self, params):
+        """m3u8本地代理 - 过滤广告分片"""
+        try:
+            # 获取URL
+            if isinstance(params, dict):
+                url = params.get('url', '')
+            else:
+                url = str(params)
+            
+            if not url or not url.startswith('http'):
+                return [400, "text/plain", b"invalid url"]
+            
+            # 请求m3u8
+            resp = self.fetch(url, headers=self.headers, timeout=15)
+            if not resp:
+                return [502, "text/plain", b"fetch failed"]
+            
+            # 获取内容
+            if hasattr(resp, 'text'):
+                raw = resp.text
+            elif hasattr(resp, 'content'):
+                try:
+                    raw = resp.content.decode('utf-8', errors='ignore')
+                except:
+                    raw = str(resp.content)
+            else:
+                raw = str(resp)
+            
+            if not raw or '#EXTM3U' not in raw:
+                return [200, "application/vnd.apple.mpegurl", raw.encode('utf-8') if raw else b'']
+            
+            # 过滤广告分片
+            lines = raw.replace('\r', '').split('\n')
+            filtered = []
+            skip = False
+            
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                
+                # 检测广告分片路径
+                if '/adjump/' in line or 'adjump' in line.lower():
+                    skip = True
+                    continue
+                
+                # 如果正在跳过，遇到EXTINF则停止跳过
+                if skip and line.startswith('#EXTINF'):
+                    skip = False
+                    continue
+                
+                if skip:
+                    continue
+                
+                filtered.append(line)
+            
+            cleaned = '\n'.join(filtered)
+            return [200, "application/vnd.apple.mpegurl", cleaned.encode('utf-8')]
+            
+        except Exception as e:
+            error_msg = f"proxy error: {str(e)}".encode('utf-8')
+            return [500, "text/plain", error_msg]
     def destroy(self):
         pass
 
