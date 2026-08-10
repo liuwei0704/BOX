@@ -123,8 +123,7 @@ class Spider(Spider):
                 {"type_id": "6", "type_name": "电视剧"},
                 {"type_id": "5", "type_name": "动漫"},
                 {"type_id": "3", "type_name": "综艺"},
-                {"type_id": "21", "type_name": "纪录片"},
-                {"type_id": "64", "type_name": "短剧"},
+                {"type_id": "21", "type_name": "纪录片"}
             ],
             "list": []
         }
