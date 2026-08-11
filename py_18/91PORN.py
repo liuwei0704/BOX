@@ -927,9 +927,12 @@ class Spider(BaseSpider):
             'Referer': self.site_referer,
             'Origin': self.site_referer.rstrip('/'),
         }
-
     def _video_header(self):
-        return {'User-Agent': 'Mozilla/5.0'}
+        return {
+            'User-Agent': 'Mozilla/5.0',
+            'Referer': self.site_referer,
+        }
+
 
     def _m3u8_play_url(self, source):
         """官方 H5 播放：/api/app/vid/h5/m3u8/{sourceURL}?token=&c=CDN"""
