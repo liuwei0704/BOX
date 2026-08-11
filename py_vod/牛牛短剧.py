@@ -185,19 +185,25 @@ class Spider(BaseSpider):
 
     def _parse_video_list(self, html):
         items = []
-        # 使用更简洁的解析方式 - 通过 BeautifulSoup 或简化的正则
-        # 方案：使用正则提取 li.section-content__item 中的信息
+        # 使用更简洁的解析方式
         li_pattern = r'<li[^>]*class="[^"]*section-content__item[^"]*"[^>]*>.*?<a[^>]*href="/video/(\d+)/"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>.*?<span[^>]*class="eye"[^>]*>(.*?)</span>'
         matches = re.findall(li_pattern, html, re.DOTALL)
 
+        # 备用域名：如果 wefs3.sxwph.com 无法访问，使用 CloudFront
+        fallback_cdn = "https://d2k58elwv8me3x.cloudfront.net"
+
         if not matches:
-            # 降级方案：更宽松的匹配
             li_pattern2 = r'<a[^>]*href="/video/(\d+)/"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>'
             matches2 = re.findall(li_pattern2, html, re.DOTALL)
             for match in matches2:
                 if len(match) >= 3:
                     vid = match[0]
                     pic = match[1]
+                    # 替换域名
+                    if "wefs3.sxwph.com" in pic:
+                        pic = pic.replace("wefs3.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
+                    elif "sdsdsd.sxwph.com" in pic:
+                        pic = pic.replace("sdsdsd.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
                     title = re.sub(r'<[^>]+>', '', match[2].strip())
                     if vid and title:
                         items.append({
@@ -211,6 +217,11 @@ class Spider(BaseSpider):
                 if len(match) >= 4:
                     vid = match[0]
                     pic = match[1]
+                    # 替换域名
+                    if "wefs3.sxwph.com" in pic:
+                        pic = pic.replace("wefs3.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
+                    elif "sdsdsd.sxwph.com" in pic:
+                        pic = pic.replace("sdsdsd.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
                     title = re.sub(r'<[^>]+>', '', match[2].strip())
                     remark = match[3].strip() if len(match) > 3 else ""
                     if vid and title:
