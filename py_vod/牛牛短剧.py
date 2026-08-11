@@ -185,29 +185,43 @@ class Spider(BaseSpider):
 
     def _parse_video_list(self, html):
         items = []
-        card_pattern = r'<li[^>]*class="[^"]*section-content__item[^"]*(?!module-two)"[^>]*>.*?<a[^>]*href="(/video/(\d+)/)"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>.*?<span[^>]*class="eye"[^>]*>(.*?)</span>'
-        matches = re.findall(card_pattern, html, re.DOTALL)
+        # 使用更简洁的解析方式 - 通过 BeautifulSoup 或简化的正则
+        # 方案：使用正则提取 li.section-content__item 中的信息
+        li_pattern = r'<li[^>]*class="[^"]*section-content__item[^"]*"[^>]*>.*?<a[^>]*href="/video/(\d+)/"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>.*?<span[^>]*class="eye"[^>]*>(.*?)</span>'
+        matches = re.findall(li_pattern, html, re.DOTALL)
 
         if not matches:
-            card_pattern2 = r'<a[^>]*href="(/video/(\d+)/)"[^>]*>.*?data-src="([^"]+)".*?text-truncate[^>]*>(.*?)</h3>'
-            matches = re.findall(card_pattern2, html, re.DOTALL)
+            # 降级方案：更宽松的匹配
+            li_pattern2 = r'<a[^>]*href="/video/(\d+)/"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>'
+            matches2 = re.findall(li_pattern2, html, re.DOTALL)
+            for match in matches2:
+                if len(match) >= 3:
+                    vid = match[0]
+                    pic = match[1]
+                    title = re.sub(r'<[^>]+>', '', match[2].strip())
+                    if vid and title:
+                        items.append({
+                            "vod_id": vid,
+                            "vod_name": title,
+                            "vod_pic": pic if pic.startswith("http") else self.host + pic,
+                            "vod_remarks": "",
+                        })
+        else:
+            for match in matches:
+                if len(match) >= 4:
+                    vid = match[0]
+                    pic = match[1]
+                    title = re.sub(r'<[^>]+>', '', match[2].strip())
+                    remark = match[3].strip() if len(match) > 3 else ""
+                    if vid and title:
+                        items.append({
+                            "vod_id": vid,
+                            "vod_name": title,
+                            "vod_pic": pic if pic.startswith("http") else self.host + pic,
+                            "vod_remarks": remark,
+                        })
 
-        for match in matches:
-            if len(match) >= 4:
-                href = match[0]
-                vid = match[1]
-                pic = match[2]
-                title = re.sub(r'<[^>]+>', '', match[3].strip())
-                remark = match[4] if len(match) > 4 else ""
-
-                if href and vid and title:
-                    items.append({
-                        "vod_id": vid,
-                        "vod_name": title,
-                        "vod_pic": pic if pic.startswith("http") else self.host + pic,
-                        "vod_remarks": remark,
-                    })
-
+        # 去重
         seen = set()
         unique_items = []
         for item in items:
@@ -217,7 +231,6 @@ class Spider(BaseSpider):
                 unique_items.append(item)
 
         return unique_items[:50]
-
     def _parse_page_count(self, html):
         pages = re.findall(r'<a[^>]*href="[^"]*/(\d+)/"[^>]*>\d+</a>', html)
         if pages:
