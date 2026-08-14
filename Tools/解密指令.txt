@@ -1,0 +1,26 @@
+[TC:sh_exec, command=cd /storage/emulated/0 && python3 /storage/emulated/0/AiHelper/workspace/輔助/接口解密.py --url "http://www.英格里希嗷呜.top/tv" --output /storage/emulated/0/VodPlus/LocalFiles/本地包/ --name "auwo" --concurrent 3 --no-backend && python3 -c "
+import json
+path='/storage/emulated/0/VodPlus/LocalFiles/本地包/auwo/index.json'
+data=json.load(open(path,'r',encoding='utf-8'))
+sites_lines = [json.dumps(item, ensure_ascii=False, separators=(',',':')) for item in data['sites']]
+lives_lines = [json.dumps(item, ensure_ascii=False, separators=(',',':')) for item in data['lives']]
+parses_lines = [json.dumps(item, ensure_ascii=False, separators=(',',':')) for item in data['parses']]
+rules_lines = [json.dumps(item, ensure_ascii=False, separators=(',',':')) for item in data['rules']]
+result = '{\n'
+result += '\"spider\": ' + json.dumps(data['spider']) + ',\n'
+result += '\"logo\": ' + json.dumps(data['logo']) + ',\n'
+result += '\"wallpaper\": ' + json.dumps(data['wallpaper']) + ',\n'
+result += '\"danmaku\": ' + json.dumps(data['danmaku']) + ',\n'
+result += '\"sites\": [\n' + ',\n'.join(sites_lines) + '\n],\n'
+result += '\"lives\": [\n' + ',\n'.join(lives_lines) + '\n],\n'
+result += '\"parses\": [\n' + ',\n'.join(parses_lines) + '\n],\n'
+result += '\"doh\": ' + json.dumps(data['doh'], separators=(',',':')) + ',\n'
+result += '\"ads\": ' + json.dumps(data['ads'], separators=(',',':')) + ',\n'
+result += '\"ijk\": ' + json.dumps(data['ijk'], separators=(',',':')) + ',\n'
+result += '\"proxy\": ' + json.dumps(data['proxy'], separators=(',',':')) + ',\n'
+result += '\"rules\": [\n' + ',\n'.join(rules_lines) + '\n]\n'
+result += '}'
+open(path,'w',encoding='utf-8').write(result)
+print('ok')
+"]
+[/TC:sh_exec]
