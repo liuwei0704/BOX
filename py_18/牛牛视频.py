@@ -2,13 +2,13 @@
 """
 牛牛视频 - TVBox/FongMi 爬虫源
 站点: https://niuniuf.com/
-播放策略: 使用 CDN 域名 gr32fe.sxwph.com 请求 m3u8
+播放策略: 使用 CDN 域名 d32bg2g0w9aqg4.cloudfront.net 请求 m3u8
 作者: AI Assistant
 日期: 2026-07-24
 """
 import re
 import json
-from urllib.parse import quote, urljoin
+from urllib.parse import quote
 
 from base.spider import Spider as BaseSpider
 
@@ -16,7 +16,7 @@ from base.spider import Spider as BaseSpider
 class Spider(BaseSpider):
     def __init__(self):
         self.host = "https://niuniuf.com"
-        self.cdn_host = "https://gr32fe.sxwph.com"  # CDN 域名
+        self.cdn_host = "https://d32bg2g0w9aqg4.cloudfront.net"
         self.headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": "https://niuniuf.com/",
@@ -24,7 +24,8 @@ class Spider(BaseSpider):
             "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
         }
         self.cookies = {}
-        
+        self.cookie_str = ""
+        # 分类列表 - 只保留短剧相关分类
         self.classes = [
             {"type_id": "cate5", "type_name": "擦边短剧"},
             {"type_id": "cate18", "type_name": "原创乱伦"},
@@ -136,6 +137,7 @@ class Spider(BaseSpider):
         return {"list": items}
 
     def categoryContent(self, tid, pg, filter=False, extend=""):
+        # 支持直接传入 cateX 或数字
         if not tid.startswith("cate"):
             tid = "cate" + str(tid)
         pg = str(pg) if pg else "1"
@@ -212,10 +214,9 @@ class Spider(BaseSpider):
         }
 
     def playerContent(self, flag, vid, vipFlags):
-        """
-        播放地址解析 - 使用 CDN 域名请求 m3u8
-        """
-        # 构建带完整 headers 的播放头，包含 Cookie
+        # 确保 vid 是字符串
+        vid = str(vid) if vid is not None else ""
+        
         cookie_str = "; ".join([f"{k}={v}" for k, v in self.cookies.items()])
         play_headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -229,16 +230,10 @@ class Spider(BaseSpider):
         if cookie_str:
             play_headers["Cookie"] = cookie_str
 
-        # 如果传入的是m3u8/mp4直链，直接返回
         if vid and (vid.endswith(".m3u8") or vid.endswith(".mp4")):
-            if "niuniuf.com" in vid or "sxwph.com" in vid:
-                vid = vid.replace("niuniuf.com", "d2k58elwv8me3x.cloudfront.net")
-                vid = vid.replace("gr32fe.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
-                vid = vid.replace("wefs3.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
-                vid = vid.replace("sdsdsd.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
+            vid = self._fix_cdn_url(vid)
             return {"parse": 0, "url": vid, "header": play_headers}
 
-        # 如果是完整的播放页URL，提取视频ID
         if vid and vid.startswith("http"):
             match = re.search(r'/video/(\d+)/', vid)
             if match:
@@ -246,36 +241,56 @@ class Spider(BaseSpider):
             else:
                 return {"parse": 1, "url": vid, "header": play_headers}
 
-        # 获取详情页HTML，提取 rawPath
         detail_url = self.host + "/video/" + str(vid) + "/"
         html = self._fetch_html(detail_url)
         if html:
             archive_data = self._extract_archive_player(html)
             if archive_data:
                 raw_path = archive_data.get("rawPath", "")
+                cdn_line = archive_data.get("cdnLine", self.cdn_host)
                 if raw_path:
                     if raw_path.startswith("/"):
-                        m3u8_url = "https://d2k58elwv8me3x.cloudfront.net" + raw_path
+                        m3u8_url = cdn_line.rstrip("/") + raw_path
                     else:
-                        m3u8_url = raw_path.replace("niuniuf.com", "d2k58elwv8me3x.cloudfront.net")
-                        m3u8_url = m3u8_url.replace("gr32fe.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
-                        m3u8_url = m3u8_url.replace("wefs3.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
-                        m3u8_url = m3u8_url.replace("sdsdsd.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
+                        m3u8_url = cdn_line.rstrip("/") + "/" + raw_path.lstrip("/")
+                    m3u8_url = self._fix_cdn_url(m3u8_url)
                     if cookie_str:
                         play_headers["Cookie"] = cookie_str
                     return {"parse": 0, "url": m3u8_url, "header": play_headers}
 
-        # 降级：使用 parse:1 嗅探
         return {"parse": 1, "url": detail_url, "header": play_headers}
+
+    def recommendContent(self, ids, pg=1):
+        return {"list": []}
+
     def localProxy(self, params):
         return [404, "text/plain", "Not Found", {}]
+
+    def destroy(self):
+        pass
+
+    def _fix_cdn_url(self, url):
+        replacements = [
+            ("niuniuf.com", "d32bg2g0w9aqg4.cloudfront.net"),
+            ("gr32fe.sxwph.com", "d32bg2g0w9aqg4.cloudfront.net"),
+            ("wefs3.sxwph.com", "d32bg2g0w9aqg4.cloudfront.net"),
+            ("sdsdsd.sxwph.com", "d32bg2g0w9aqg4.cloudfront.net"),
+            ("d2k58elwv8me3x.cloudfront.net", "d32bg2g0w9aqg4.cloudfront.net"),
+        ]
+        for old, new in replacements:
+            if old in url:
+                url = url.replace(old, new)
+        return url
 
     def _fetch_html(self, url):
         try:
             resp = self.fetch(url, headers=self.headers, timeout=15)
             if resp and hasattr(resp, "text"):
-                if hasattr(resp, "cookies"):
-                    self.cookies.update(resp.cookies)
+                try:
+                    if hasattr(resp, "cookies"):
+                        self.cookies.update(resp.cookies)
+                except Exception:
+                    pass
                 return resp.text
             return None
         except Exception as e:
@@ -284,9 +299,15 @@ class Spider(BaseSpider):
 
     def _parse_video_list(self, html):
         items = []
-        # 使用更简洁的解析方式
         li_pattern = r'<li[^>]*class="[^"]*section-content__item[^"]*"[^>]*>.*?<a[^>]*href="/video/(\d+)/"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>.*?<span[^>]*class="eye"[^>]*>(.*?)</span>'
         matches = re.findall(li_pattern, html, re.DOTALL)
+
+        def fix_pic_url(pic):
+            if "wefs3.sxwph.com" in pic:
+                pic = pic.replace("wefs3.sxwph.com", "d32bg2g0w9aqg4.cloudfront.net")
+            elif "sdsdsd.sxwph.com" in pic:
+                pic = pic.replace("sdsdsd.sxwph.com", "d32bg2g0w9aqg4.cloudfront.net")
+            return pic
 
         if not matches:
             li_pattern2 = r'<a[^>]*href="/video/(\d+)/"[^>]*>.*?<img[^>]*data-src="([^"]+)"[^>]*>.*?<h3[^>]*>(.*?)</h3>'
@@ -294,12 +315,7 @@ class Spider(BaseSpider):
             for match in matches2:
                 if len(match) >= 3:
                     vid = match[0]
-                    pic = match[1]
-                    # 替换域名：wefs3.sxwph.com -> d2k58elwv8me3x.cloudfront.net
-                    if "wefs3.sxwph.com" in pic:
-                        pic = pic.replace("wefs3.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
-                    elif "sdsdsd.sxwph.com" in pic:
-                        pic = pic.replace("sdsdsd.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
+                    pic = fix_pic_url(match[1])
                     title = re.sub(r'<[^>]+>', '', match[2].strip())
                     if vid and title:
                         items.append({
@@ -312,12 +328,7 @@ class Spider(BaseSpider):
             for match in matches:
                 if len(match) >= 4:
                     vid = match[0]
-                    pic = match[1]
-                    # 替换域名：wefs3.sxwph.com -> d2k58elwv8me3x.cloudfront.net
-                    if "wefs3.sxwph.com" in pic:
-                        pic = pic.replace("wefs3.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
-                    elif "sdsdsd.sxwph.com" in pic:
-                        pic = pic.replace("sdsdsd.sxwph.com", "d2k58elwv8me3x.cloudfront.net")
+                    pic = fix_pic_url(match[1])
                     title = re.sub(r'<[^>]+>', '', match[2].strip())
                     remark = match[3].strip() if len(match) > 3 else ""
                     if vid and title:
@@ -328,7 +339,6 @@ class Spider(BaseSpider):
                             "vod_remarks": remark,
                         })
 
-        # 去重
         seen = set()
         unique_items = []
         for item in items:
@@ -338,6 +348,7 @@ class Spider(BaseSpider):
                 unique_items.append(item)
 
         return unique_items[:50]
+
     def _parse_page_count(self, html):
         pages = re.findall(r'<a[^>]*href="[^"]*/(\d+)/"[^>]*>\d+</a>', html)
         if pages:
@@ -379,10 +390,6 @@ class Spider(BaseSpider):
         return ""
 
     def _extract_archive_player(self, html):
-        """
-        从页面中提取 __ARCHIVE_PLAYER__ JSON 对象
-        使用栈匹配处理嵌套的 {} 和 []
-        """
         start_pattern = r'__ARCHIVE_PLAYER__\s*=\s*(\{)'
         match = re.search(start_pattern, html)
         if not match:
