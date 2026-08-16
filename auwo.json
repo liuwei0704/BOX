@@ -75,7 +75,7 @@
 {"key":"FeiqLive","name":"🏆飞球┃体育","type":3,"api":"csp_FeiqLiveAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"BbkqLive","name":"🏆88┃体育","type":3,"api":"csp_BbkqLiveAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"BbkqLive"},
 {"key":"KafLive","name":"🏆咖啡┃体育","type":3,"api":"csp_KafLiveAmns","searchable":0,"quickSearch":0,"changeable":0},
-{"key":"BiliHeji","name":"🎉合集┃Bili","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"BiliHeji","style":{"type":"rect","ratio":1.433}},
+{"key":"BiliHeji","name":"🎉合集┃Bili","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"home":"1","json":"https://file.icve.com.cn/file_doc/299/797/4AFC77E563EDEDB37F18BA6458610E16.aowu","cookie":""},"style":{"type":"rect","ratio":1.433}},
 
 {"key": "4K影视", "name": "❇️4K影视[影視]", "type": 3, "searchable": 0, "quickSearch": 0, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/4K影视.py"},
 {"key": "123酷播", "name": "❇️123酷播[影視]", "type": 3, "searchable": 0, "quickSearch": 0, "changeable": 0, "api": "https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/123酷播.py"},
