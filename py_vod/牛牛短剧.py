@@ -27,10 +27,7 @@ class Spider(BaseSpider):
         self.cookie_str = ""
         # 分类列表 - 只保留短剧相关分类
         self.classes = [
-            {"type_id": "cate5", "type_name": "🔥擦边短剧"},
-            {"type_id": "cate17", "type_name": "乱伦之爱"},
-            {"type_id": "cate29", "type_name": "一手原创"},
-            {"type_id": "cate37", "type_name": "独家热播"},
+            {"type_id": "cate5", "type_name": "🔥擦边短剧"}
         ]
         self.filters = {}
 
