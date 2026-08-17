@@ -135,11 +135,11 @@
 {"name":"JackTV","url":"https://php.946985.filegear-sg.me/jackTV.m3u","header":{"User-Agent":"Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/91.0.4472.124Safari/537.36"}},
 {"name":"綜合TV","type":0,"url":"https://github.com/lalifeier/IPTV/raw/refs/heads/main/m3u/IPTV.m3u","playerType":2,"ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
 {"name":"虎牙","type":0,"url":"https://sub.ottiptv.cc/huyayqk.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
-{"name":"抖音","type":0,"url":"https://gh-proxy.org/https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/douyin_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
-{"name":"斗鱼","type":0,"url":"https://gh-proxy.org/https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/douyu_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
-{"name":"B站","type":0,"url":"https://gh-proxy.org/https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/bilibili_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
-{"name":"快手","type":0,"url":"https://gh-proxy.org/https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/kuaishou_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
-{"name":"YY","type":0,"url":"https://gh-proxy.org/https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/yy_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"}
+{"name":"抖音","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/douyin_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"斗鱼","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/douyu_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"B站","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/bilibili_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"快手","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/kuaishou_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"YY","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/yy_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"}
 ],
 "parses": [
 {"name": "聚合1", "type": 3, "url": "Demo"},
