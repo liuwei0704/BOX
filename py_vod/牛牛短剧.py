@@ -55,7 +55,6 @@ class Spider(BaseSpider):
         return {"list": items}
 
     def categoryContent(self, tid, pg, filter=False, extend=""):
-        # 支持直接传入 cateX 或数字
         if not tid.startswith("cate"):
             tid = "cate" + str(tid)
         pg = str(pg) if pg else "1"
@@ -132,9 +131,8 @@ class Spider(BaseSpider):
         }
 
     def playerContent(self, flag, vid, vipFlags):
-        # 确保 vid 是字符串
         vid = str(vid) if vid is not None else ""
-        
+
         cookie_str = "; ".join([f"{k}={v}" for k, v in self.cookies.items()])
         play_headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -277,7 +275,7 @@ class Spider(BaseSpider):
         match = re.search(r'<meta[^>]*property="og:title"[^>]*content="([^"]+)"', html)
         if match:
             return match.group(1).strip()
-        match = re.search(r'<h1[^>]*>(.*?)</h1>', html)
+        match = re.search(r'<meta[^>]*property="og:title"[^>]*content="([^"]+)"', html)
         if match:
             return re.sub(r'<[^>]+>', '', match.group(1)).strip()
         return ""
@@ -308,7 +306,7 @@ class Spider(BaseSpider):
         return ""
 
     def _extract_archive_player(self, html):
-        start_pattern = r'__ARCHIVE_PLAYER__\s*=\s*(\{)'
+        start_pattern = r'(?:window\.)?__ARCHIVE_PLAYER__\s*=\s*(\{)'
         match = re.search(start_pattern, html)
         if not match:
             return None
