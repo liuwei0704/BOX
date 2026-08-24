@@ -58,13 +58,24 @@ class Spider:
             {"type_id": "v1/里番", "type_name": "里番"},
         ]
         self.filters = {}
+
+    def _pic(self, url):
+        """图片处理：将 webp 转为 jpg，通过 weserv.nl 代理"""
+        if not url:
+            return ""
+        url = url.strip()
+        if url.startswith("//"):
+            url = "https:" + url
+        if "images.weserv.nl" in url:
+            return url
+        if url.endswith(".webp") or "webp" in url.lower():
+            # 使用 weserv.nl 将 webp 转换为 jpg
+            return "https://images.weserv.nl/?url=" + url + "&output=jpg"
+        return url
+
     def fetch(self, url, headers=None, timeout=15):
         try:
             headers = headers or self.headers
-            # 如果是图片请求，添加 Referer 头
-            if url.endswith(('.webp', '.jpg', '.png', '.jpeg')):
-                headers = headers.copy()
-                headers['Referer'] = self.host + '/'
             import urllib3
             urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             resp = requests.get(url, headers=headers, timeout=timeout, verify=False)
@@ -72,6 +83,7 @@ class Spider:
         except Exception as e:
             print('fetch error:', e)
             return None
+
     def get_html(self, url, headers=None):
         resp = self.fetch(url, headers)
         if resp and resp.status_code == 200:
@@ -93,8 +105,8 @@ class Spider:
     def _make_proxy_url(self, pic_url):
         if not pic_url:
             return ''
-        # 直接返回原始URL，不经过任何代理
-        return pic_url
+        return self._pic(pic_url)
+
     def _extract_vod_id(self, url):
         if not url:
             return ''
@@ -160,6 +172,7 @@ class Spider:
                 'vod_remarks': remark
             }
         return None
+
     def _parse_creator_card(self, card):
         a = card.find('a', href=True)
         if not a:
@@ -300,11 +313,16 @@ class Spider:
         if desc_el:
             desc = desc_el.text.strip()[:500]
         play_url = ''
-        video_tag = doc.find('video')
-        if video_tag:
-            src = video_tag.get('src', '')
-            if src:
-                play_url = self.fix_url(src)
+        # 从 JSON-LD 提取 contentUrl
+        script_match = re.search(r'"contentUrl"\s*:\s*"([^"]+)"', html)
+        if script_match:
+            play_url = self.fix_url(script_match.group(1))
+        if not play_url:
+            video_tag = doc.find('video')
+            if video_tag:
+                src = video_tag.get('src', '')
+                if src:
+                    play_url = self.fix_url(src)
         if not play_url:
             iframe = doc.find('iframe')
             if iframe:
@@ -403,34 +421,28 @@ class Spider:
         headers = {
             'User-Agent': self.headers['User-Agent'],
             'Referer': self.host + '/',
-            'Cookie': 'gv_age_verified=1;',
+            'Cookie': self.headers.get('Cookie', ''),
         }
-        # 如果 id 是播放页URL，尝试提取直链
         if id.startswith('http') and ('video/' in id or '/video?' in id):
             html = self.get_html(id)
             if html:
-                # 从 JSON-LD 提取 contentUrl
                 m = re.search(r'"contentUrl"\s*:\s*"([^"]+)"', html)
                 if m:
                     url = self.fix_url(m.group(1))
                     if url.endswith('.mp4') or url.endswith('.m3u8'):
                         return {'parse': 0, 'url': url, 'header': headers}
-                # 从 video 标签提取
                 m = re.search(r'videoSrc\s*[:=]\s*["\']([^"\']+)["\']', html)
                 if m:
                     url = self.fix_url(m.group(1))
                     if url.endswith('.mp4') or url.endswith('.m3u8'):
                         return {'parse': 0, 'url': url, 'header': headers}
-                # 从 video 标签 src 提取
                 m = re.search(r'<video[^>]*src=["\']([^"\']+)["\']', html)
                 if m:
                     url = self.fix_url(m.group(1))
                     if url.endswith('.mp4') or url.endswith('.m3u8'):
                         return {'parse': 0, 'url': url, 'header': headers}
-        # 如果已经是直链
         if id.startswith('http') and (id.endswith('.mp4') or id.endswith('.m3u8')):
             return {'parse': 0, 'url': id, 'header': headers}
-        # 如果是视频ID，构造播放页URL提取直链
         if not id.startswith('http'):
             url = self.host + '/video/' + id + '/'
             html = self.get_html(url)
@@ -446,6 +458,7 @@ class Spider:
                     if play_url.endswith('.mp4') or play_url.endswith('.m3u8'):
                         return {'parse': 0, 'url': play_url, 'header': headers}
         return {'parse': 1, 'url': id, 'header': headers}
+
     def localProxy(self, params):
         type_ = params.get('type', '')
         url = params.get('url', '')
