@@ -14,6 +14,7 @@ class Spider(BaseSpider):
             "Referer": self.host + "/"
         }
         self.classes = [
+            {"type_id": "23", "type_name": "短剧"},
             {"type_id": "2", "type_name": "连续剧"},
             {"type_id": "1", "type_name": "电影"},
             {"type_id": "4", "type_name": "动漫"},
