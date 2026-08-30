@@ -38,7 +38,7 @@
 {"key":"Qmdj","name":"🎬喵喵 | 短剧","type":3,"api":"csp_QmdjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"Xydj","name":"🎬星星 | 短剧","type":3,"api":"csp_XydjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"DMcyc","name":"🐱囧途 | 动漫","type":3,"api":"csp_DMcycAmns","searchable":1,"quickSearch":1,"changeable":0},
-{"key":"DMhhz","name":"🐱花海 | 动漫","type":3,"api":"csp_DMhhzAmns","searchable":1,"quickSearch":1,"changeable":0},
+{"key":"DMox","name":"🐱牛来 | 动漫","type":3,"api":"csp_DMoxAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"DMfans","name":"🐱番薯 | 动漫","type":3,"api":"csp_DMfansAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"DMqingk","name":"🐱青云 | 动漫","type":3,"api":"csp_DMqingkAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"DMmodu","name":"🐱魔都 | 动漫","type":3,"api":"csp_DMmoduAmns","searchable":1,"quickSearch":1,"changeable":0},
