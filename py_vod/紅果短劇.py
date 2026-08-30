@@ -1687,6 +1687,7 @@ class Spider(Spider):
             cached = self._EPISODE_CACHE.get(cache_key)
         if cached is not None and self._is_empty(expected_title):
             return cached
+
         # 当 vid 为空但 series_id 有值时, 尝试用 SERIES_CACHE 中的 vid
         if self._is_empty(vid) and not self._is_empty(series_id):
             with self._SERIES_CACHE_LOCK:
@@ -1695,12 +1696,14 @@ class Spider(Spider):
                 cached_vid = str(series_obj.get("vid", ""))
                 if self.is_vid(cached_vid):
                     vid = cached_vid
+
         if self._is_empty(series_id):
             if not self._is_empty(vid):
                 result.append(vid)
             with self._EPISODE_CACHE_LOCK:
                 self._EPISODE_CACHE[cache_key] = result
             return result
+
         try:
             req = {"series_id": series_id, "video": vid or "", "content_type": 1}
             resp = self._signed_post(self.DETAIL_PATH, req)
@@ -1711,6 +1714,7 @@ class Spider(Spider):
                 video_data = data.get("video_data") if isinstance(data, dict) else None
                 video_list = video_data.get("video_list") if isinstance(video_data, dict) else None
                 actual_title = str(video_data.get("series_title", "")).strip() if isinstance(video_data, dict) else ""
+
                 if isinstance(detail, dict) and actual_title:
                     detail["_title_mismatch"] = not self._is_empty(expected_title) and not self._same_title(actual_title, expected_title)
                     detail["_actual_title"] = actual_title
@@ -1725,6 +1729,7 @@ class Spider(Spider):
                     actual_episode_cnt = int(video_data.get("episode_cnt", 0) or 0)
                     if actual_episode_cnt > 0:
                         detail["episode_cnt"] = actual_episode_cnt
+
                 episode_right_text = str(video_data.get("episode_right_text", "")).strip() if isinstance(video_data, dict) else ""
                 if episode_right_text:
                     if isinstance(detail, dict):
@@ -1733,21 +1738,13 @@ class Spider(Spider):
                         series_obj = self._SERIES_CACHE.get(str(series_id))
                         if isinstance(series_obj, dict):
                             series_obj["episode_right_text"] = episode_right_text
-                # 详情接口已验证剧名一致后，缓存完整元数据，避免下次只命中列表缓存。
-                if isinstance(detail, dict) and actual_title and not detail.get("_title_mismatch"):
-                    with self._SERIES_CACHE_LOCK:
-                        self._SERIES_CACHE[str(series_id)] = detail
-                        if len(self._SERIES_CACHE) > self.SERIES_CACHE_MAX:
-                            keys = list(self._SERIES_CACHE.keys())
-                            for cache_key in keys[:400]:
-                                self._SERIES_CACHE.pop(cache_key, None)
+
                 if isinstance(video_list, list):
                     meta_list = []
                     vids = []
                     for i, item in enumerate(video_list):
                         if not isinstance(item, dict):
                             continue
-                        # 实际 API 字段: vid (不是 video_id/video)
                         v = item.get("vid", "")
                         if not v:
                             v = item.get("video_id", "")
@@ -1756,7 +1753,6 @@ class Spider(Spider):
                         v = str(v)
                         if not self.is_vid(v):
                             continue
-                        # 实际 API 排序字段: vid_index (从 1 开始)
                         sort_val = int(item.get("vid_index", 0) or 0)
                         if sort_val <= 0:
                             sort_val = i + 1
@@ -1765,17 +1761,25 @@ class Spider(Spider):
                     meta_list.sort(key=lambda x: x[0] if x[0] > 0 else 1000000)
                     for meta in meta_list:
                         result.append(vids[meta[1]])
+                    # 如果获取到了剧集列表，缓存到SERIES_CACHE
+                    if result and isinstance(detail, dict):
+                        detail["_has_episodes"] = True
+                        detail["_episode_vids"] = result
                     if not result and isinstance(detail, dict):
                         detail["_detail_failed"] = True
                 elif isinstance(detail, dict):
                     detail["_detail_failed"] = True
             elif isinstance(detail, dict):
                 detail["_detail_failed"] = True
-        except Exception:
+        except Exception as e:
+            print("echo-GuoGuo _episode_vids 异常: %s" % e)
             if isinstance(detail, dict):
                 detail["_detail_failed"] = True
+
+        # 兜底：如果 result 为空，但 vid 有效，使用 vid
         if not result and self.is_vid(vid):
             result.append(vid)
+
         # 控制缓存大小
         with self._EPISODE_CACHE_LOCK:
             if len(self._EPISODE_CACHE) > 64:
@@ -1783,6 +1787,7 @@ class Spider(Spider):
                 for k in keys:
                     self._EPISODE_CACHE.pop(k, None)
             self._EPISODE_CACHE[cache_key] = result
+
         return result
 
     @classmethod
@@ -3409,9 +3414,11 @@ class Spider(Spider):
             if id_part.isdigit() and title_part.strip():
                 series_id = id_part
                 expected_title = title_part.strip()
+
         detail = self._find_detail(series_id, expected_title)
         if detail is None:
             return {"msg": "未找到该短剧", "list": []}
+
         detail_sid = str(detail.get("series_id", ""))
         title = str(detail.get("title", ""))
         cover = str(detail.get("cover", ""))
@@ -3420,49 +3427,38 @@ class Spider(Spider):
         episode_cnt = int(detail.get("episode_cnt", 0) or 0)
         if episode_cnt <= 0:
             episode_cnt = 1
+
+        # 获取剧集列表
         episode_names = []
         episode_vids = self._episode_vids(detail_sid, vid, detail, expected_title)
-        if not detail.get("_title_mismatch"):
-            title = str(detail.get("title", ""))
-            cover = str(detail.get("cover", ""))
-            desc = str(detail.get("video_desc", ""))
-            vid = str(detail.get("vid", ""))
-            episode_cnt = int(detail.get("episode_cnt", 0) or 0)
-            if episode_cnt <= 0:
-                episode_cnt = 1
-        if (detail.get("_title_mismatch") or detail.get("_detail_failed")) and not self._is_empty(expected_title):
-            replacement = self._search_exact_video(expected_title)
-            if replacement is None:
-                return {"msg": "未找到该短剧", "list": []}
-            detail = replacement
-            detail_sid = str(detail.get("series_id", ""))
-            title = str(detail.get("title", ""))
-            cover = str(detail.get("cover", ""))
-            desc = str(detail.get("video_desc", ""))
-            vid = str(detail.get("vid", ""))
-            episode_cnt = int(detail.get("episode_cnt", 0) or 0)
-            if episode_cnt <= 0:
-                episode_cnt = 1
-            episode_vids = self._episode_vids(detail_sid, vid, detail, expected_title)
-        if episode_vids:
-            self._remember_next_episodes(episode_vids)
-            # TVBox 标准: vod_play_url = 集名$地址#集名$地址#...
-            for i in range(len(episode_vids)):
-                episode_names.append(f"第{i+1}集${episode_vids[i]}")
+
+        # 如果 _episode_vids 返回了剧集列表，使用它
+        if episode_vids and len(episode_vids) > 0:
+            # 更新 episode_cnt 为实际剧集数
+            episode_cnt = max(episode_cnt, len(episode_vids))
+            for i, ep_vid in enumerate(episode_vids):
+                episode_names.append(f"第{i+1}集${ep_vid}")
         elif self.is_vid(vid):
+            # 兜底：使用单个 vid
             episode_names.append(f"第1集${vid}")
         else:
-            max_ep = episode_cnt
+            # 最后兜底：生成占位集数
+            max_ep = max(episode_cnt, 1)
             for i in range(1, max_ep + 1):
                 episode_names.append(f"第{i}集${detail_sid}#{vid}#{i}")
-        total_eps = max(episode_cnt, len(episode_names))
-        note = f"全{total_eps}集"
+
+        # 如果没有剧集名称，生成默认
+        if not episode_names:
+            episode_names.append(f"第1集${vid or detail_sid}")
+
+        note = f"全{len(episode_names)}集"
         episode_right_text = str(detail.get("episode_right_text", "")).strip()
         director = ""
         if episode_right_text.startswith("更新至"):
             director = episode_right_text
         elif episode_right_text.startswith("全"):
             director = "已完结_" + episode_right_text
+
         vod = {
             "vod_id": detail_sid + "_" + title if title else detail_sid,
             "vod_name": title,
@@ -3475,11 +3471,13 @@ class Spider(Spider):
             vod["vod_director"] = director
         if "score" in detail:
             vod["vod_year"] = str(detail.get("score", "")) + "分"
+
+        # 构建多线路播放（多个清晰度）
         play_from = "$$$".join(self.FALLBACK_FLAGS)
-        # TVBox 标准格式: # 分隔同一线路的剧集, $ 分隔集名/地址
         play_url_list = ["#".join(episode_names) for _ in self.FALLBACK_FLAGS]
         vod["vod_play_from"] = play_from
         vod["vod_play_url"] = "$$$".join(play_url_list)
+
         return {"list": [vod]}
 
     def searchContent(self, key, quick, pg="1"):
@@ -3502,22 +3500,26 @@ class Spider(Spider):
         rule_str = rule_str.strip()
         vid = None
         next_vid = ""
+
         # TVBox 从 vod_play_url 取播放参数, 格式: "集名$地址"
         # 其中 "地址" 可能是:
         #   1) 纯 vid (e.g. "第1集$7553497007294270489")
         #   2) seriesId#vid#index (e.g. "第1集$seriesId#vid#1")
-        # 提取 "$" 之后的地址部分
+        #   3) 直接是 vid (e.g. "7553497007294270489")
         if "$" in rule_str:
             dollar_idx = rule_str.find("$")
             addr = rule_str[dollar_idx + 1:].strip()
         else:
             addr = rule_str
+
+        if not addr:
+            return {"msg": "播放地址为空"}
+
+        # 解析地址格式
         if "#" in addr:
-            # 格式: seriesId#vid#index
+            # 格式: seriesId#vid#index 或 seriesId#vid
             parts = addr.split("#", -1)
-            if len(parts) < 2:
-                return {"msg": "播放参数格式错误"}
-            series_id_param = parts[0].strip()
+            series_id_param = parts[0].strip() if len(parts) > 0 else ""
             vid_param = parts[1].strip() if len(parts) > 1 else ""
             ep_index = 1
             if len(parts) > 2:
@@ -3525,15 +3527,19 @@ class Spider(Spider):
                     ep_index = max(1, int(parts[2].strip()))
                 except Exception:
                     ep_index = 1
+
+            # 尝试获取剧集列表
             episode_vids = self._episode_vids(series_id_param, vid_param)
-            if episode_vids:
-                idx = min(ep_index, len(episode_vids)) - 1
+            if episode_vids and len(episode_vids) > 0:
+                idx = min(ep_index - 1, len(episode_vids) - 1)
                 vid = episode_vids[idx]
                 if idx + 1 < len(episode_vids):
                     next_vid = episode_vids[idx + 1]
                 self._remember_next_episodes(episode_vids)
             elif self.is_vid(vid_param):
                 vid = vid_param
+            elif self.is_vid(series_id_param):
+                vid = series_id_param
         else:
             # 纯地址: 可能是 vid, 也可能是 seriesId (无 vid 时的兜底)
             if self.is_vid(addr):
@@ -3541,19 +3547,23 @@ class Spider(Spider):
             else:
                 # 当作 seriesId, 取 _episode_vids 第 1 个
                 eps = self._episode_vids(addr, "")
-                if eps:
+                if eps and len(eps) > 0:
                     vid = eps[0]
                 elif self.is_vid(addr):
                     vid = addr
+
         if not self.is_vid(vid):
-            return {"msg": "无效分集 id"}
+            return {"msg": "无效分集 id: %s" % str(vid)}
+
         if not self.is_vid(next_vid):
             next_vid = self._next_episode_vid(vid)
+
         quality_to_use = self.quality
         if not self._is_empty(flag):
             normalized = self._normalize_def(flag.strip())
             if not self._is_empty(normalized):
                 quality_to_use = normalized
+
         try:
             play_url = self._resolve_play(vid, quality_to_use, next_vid, play_generation)
             if self._is_empty(play_url):
@@ -3564,7 +3574,7 @@ class Spider(Spider):
                 "header": self._play_headers(),
             }
         except Exception as e:
-            return {"msg": f"播放失败：{e}"}
+            return {"msg": "播放失败：%s" % str(e)}
 
     # ============================================================
     # 纯 Python AES-CTR (回退)
