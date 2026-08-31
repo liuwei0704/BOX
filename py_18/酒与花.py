@@ -205,7 +205,7 @@ class Spider(BaseSpider):
         if not lines:
             return "#EXTM3U\n"
         
-        # 第1层：图片流伪装检测（分片为 .jpg/.png 等）
+        # 第1层：图片流伪装检测（检测分片扩展名）
         has_image_ext = False
         for line in lines:
             if line and not line.startswith("#"):
@@ -215,12 +215,10 @@ class Spider(BaseSpider):
                     break
         
         if has_image_ext:
-            # 还原扩展名，但保留KEY信息
             restored = text
             for ext in (".png", ".jpeg", ".jpg", ".webp"):
                 restored = restored.replace(ext, ".ts")
             self.log("检测到图片流伪装，已还原扩展名 -> .ts")
-            # 继续后续过滤
             text = restored
             lines = [l.strip() for l in str(text or "").replace("\r", "").split("\n") if l.strip()]
             if not lines:
@@ -237,14 +235,13 @@ class Spider(BaseSpider):
                     out.append(self._m3u8_proxy_url(child) if ".m3u8" in child.lower() else child)
             return "\n".join(out) + "\n"
         
-        # 第3层：正片目录锚点（优先KEY URI目录）
+        # 第3层：正片目录锚点（使用最后一个KEY URI目录）
         parsed = urllib.parse.urlparse(source_url)
         source_dir = posixpath.dirname(parsed.path)
         if not source_dir.endswith("/"):
             source_dir += "/"
         
         main_dir = source_dir
-        key_uri = None
         for line in lines:
             if line.startswith("#EXT-X-KEY") and "URI=" in line:
                 m = re.search(r'URI="([^"]+)"', line)
@@ -256,20 +253,19 @@ class Spider(BaseSpider):
                     key_dir = posixpath.dirname(key_path)
                     if key_dir and key_dir != "/":
                         main_dir = key_dir + "/"
-                        break
+        
+        self.log(f"正片锚点目录: {main_dir}")
         
         # 第4层：分片过滤
         segments = []
         pending = []
         removed = 0
         kept = 0
-        key_line = None
         
         for line in lines:
             # 保留KEY行
             if line.startswith("#EXT-X-KEY"):
-                key_line = self._rewrite_m3u8_tag(line, source_url)
-                segments.append(key_line)
+                segments.append(self._rewrite_m3u8_tag(line, source_url))
                 continue
             
             if line.startswith("#EXTINF"):
@@ -281,9 +277,7 @@ class Spider(BaseSpider):
             if pending:
                 media_url = urllib.parse.urljoin(source_url, line)
                 media_parsed = urllib.parse.urlparse(media_url)
-                # 判断是否正片：路径以main_dir开头 或 包含KEY目录
-                if media_parsed.path.startswith(main_dir) or main_dir in media_parsed.path:
-                    # 重写分片地址为绝对地址
+                if media_parsed.path.startswith(main_dir):
                     for p in pending:
                         if p.startswith("#EXTINF"):
                             segments.append(p)
