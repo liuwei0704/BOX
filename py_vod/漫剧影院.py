@@ -120,17 +120,18 @@ class Spider(BaseSpider):
                 "vod_year": data.get("year", ""),
                 "vod_lang": data.get("lang", "")
             }
-            # 构造播放线路
+            # 构造播放线路，携带 drama_id、ep_id 和 ep_num
             episodes = data.get("episodes", [])
             if episodes:
-                # 单线路：按集数排序
                 eps_sorted = sorted(episodes, key=lambda x: x.get("ep", 0))
                 play_urls = []
+                drama_id = data.get("id", vid)
                 for ep in eps_sorted:
                     ep_id = ep.get("id")
                     ep_num = ep.get("ep", 0)
                     if ep_id:
-                        play_urls.append(f"第{ep_num:02d}集${ep_id}")
+                        # 格式：drama_id_ep_id_ep_num，playerContent 拆分
+                        play_urls.append(f"第{ep_num:02d}集${drama_id}_{ep_id}_{ep_num}")
                 if play_urls:
                     vod["vod_play_from"] = "播放"
                     vod["vod_play_url"] = "#".join(play_urls)
@@ -167,38 +168,33 @@ class Spider(BaseSpider):
         if not id:
             return {"parse": 0, "url": "", "header": {}}
         try:
-            # id 是剧集 epId
-            # 解析 dramaId 和 epId（id 格式可能为 dramaId_epId 或纯 epId）
-            # 从 flag 中提取或从 id 推断
+            # id 格式：drama_id_ep_id_ep_num
+            # 从 detailContent 传入：{drama_id}_{ep_id}_{ep_num}
             parts = str(id).split("_")
-            if len(parts) == 2:
+            if len(parts) == 3:
+                drama_id, ep_id, ep_num = parts[0], parts[1], parts[2]
+            elif len(parts) == 2:
                 drama_id, ep_id = parts[0], parts[1]
+                ep_num = "1"  # 默认第1集
             else:
-                # 纯 epId，需要从详情获取 dramaId
                 ep_id = str(id)
-                # 尝试从缓存或延后获取，这里直接用 ep_id 请求 stream
-                # 但 stream 需要 drama 参数，尝试从 id 中提取
                 drama_id = ""
-                # 如果 flag 包含 dramaId
-                if flag and flag.isdigit():
-                    drama_id = flag
-                else:
-                    # 无法确定 dramaId，尝试用 0 或空
-                    drama_id = "0"
-            # 请求播放流
-            stream_url = f"{self.host}/api/stream?drama={drama_id}&ep=0&epId={ep_id}"
-            # 如果 drama_id 是 0，尝试直接用 ep_id 作为 drama_id
-            if drama_id == "0":
-                stream_url = f"{self.host}/api/stream?drama={ep_id}&ep=0&epId={ep_id}"
+                ep_num = "1"
+            # 构造请求，ep 参数使用实际集数
+            if drama_id:
+                stream_url = f"{self.host}/api/stream?drama={drama_id}&ep={ep_num}&epId={ep_id}"
+            else:
+                stream_url = f"{self.host}/api/stream?drama={ep_id}&ep={ep_num}&epId={ep_id}"
             res = self.fetch(stream_url, headers=self.headers)
             data = res.json() if res else {}
             stream = data.get("stream", "")
             if not stream:
+                self.log({"action": "playerContent", "id": id, "error": "stream empty"})
                 return {"parse": 0, "url": "", "header": {}}
             # 处理流地址
             if stream.startswith("/"):
                 stream = f"{self.host}{stream}"
-            # 如果是 m3u8，走代理清洗（但该站无广告，仅做绝对地址补全）
+            # 如果是 m3u8，走代理清洗
             if ".m3u8" in stream.lower():
                 return {
                     "parse": 0,
