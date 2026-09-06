@@ -1,11 +1,11 @@
 {
-"spider": "./jar/f7a737368ecfe7c8413a773614e60807.png;md5;08c0d2859e15f94294b697869f4ef899",
+"spider": "./jar/fa273578c0dc287266bd5dce5eae7082.png;md5;249047fab983b2fe5d716c2ea80a3c47",
 "logo": "./img/EC508FBD046D33EC4832BB76B63B6C94.gif",
 "wallpaper": "http://127.0.0.1:9978/proxy?do=AowuWapper&mode=2",
 "danmaku": "http://127.0.0.1:2525/danmu?name={name}&epid={episode}",
 "sites": [
 {"key":"Douban","name":"🔥豆瓣┃推荐","type":3,"api":"csp_DoubanAmns","indexs":1,"searchable":0,"quickSearch":0,"changeable":0,"ext":"Douban"},
-{"key":"Y360","name":"更新日期:【20260830】","type":3,"api":"csp_Y360Amns","searchable":0,"quickSearch":0,"changeable":0,"ext":"Y360"},
+{"key":"Y360","name":"更新日期:【20260906】","type":3,"api":"csp_Y360Amns","searchable":0,"quickSearch":0,"changeable":0,"ext":"Y360"},
 {"key":"Hgdh","name":"🔥短剧┃推荐","type":3,"api":"csp_HgdhAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Hgdh","genre":"shortdrama"},
 {"key":"MyConfig","name":"⚙️配置┃中心","type":3,"api":"csp_AAConfigAmns","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"MyAll","name":"📁资源┃中心","type":3,"api":"csp_MyAllAmns","searchable":0,"quickSearch":0,"changeable":0},
@@ -47,8 +47,7 @@
 {"key":"Bidys","name":"🔗哔嘀┃2K","type":3,"api":"csp_BidysAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Bidys"},
 {"key":"Czzy","name":"🔗厂长┃2K","type":3,"api":"csp_CzzyAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Czzy"},
 {"key":"Libvio","name":"🔗LBV┃2K","type":3,"api":"csp_LibvioAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Libvio"},
-{"key":"MjHggg","name":"🎬嗷嗚┃漫剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"MjHggg","genre":"shortdrama"},
-{"key":"DjHggg","name":"🎬嗷嗚┃短剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"DjHggg","genre":"shortdrama"},
+{"key":"DjHggg","name":"🎬嗷嗚┃短剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"genre":"shortdrama"},
 {"key":"HHkk","name":"🎬豪堪┃短剧","type":3,"api":"csp_HHkkAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"Hema","name":"🎬盒马┃短剧","type":3,"api":"csp_HemaAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
 {"key":"Bddj","name":"🎬拜拜┃短剧","type":3,"api":"csp_BddjAmns","searchable":1,"quickSearch":1,"changeable":0,"genre":"shortdrama"},
