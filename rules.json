@@ -6,7 +6,7 @@
   "rules": [
     {
       "id": "auto-ad-bd424fafe2369f56",
-      "durationMs": 108000,
+      "durationMs": 47000,
       "anchorOffsetMs": 0,
       "anchorDurationMs": 5000,
       "fingerprints": [
@@ -105,7 +105,7 @@
       ],
       "test": {
         "url": "https://2609.lbsl2026.com/20260906/bOJidNMa/index.m3u8",
-        "adStartMs": 36000
+        "adStartMs": 34200
       }
     }
   ]
