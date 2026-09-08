@@ -1,7 +1,7 @@
 {
   "format": "ad-audio-probe-rules",
   "schemaVersion": 1,
-  "revision": 7,
+  "revision": 8,
   "algorithm": "spectral-sequence-v1",
   "rules": [
     {
@@ -517,6 +517,110 @@
       "test": {
         "url": "https://v13.wsyzym3u8.com/202607/15/R3Brjnm0gx27/video/index.m3u8",
         "adStartMs": 342000
+      }
+    },
+    {
+      "id": "ad-bd424fafe2369f56",
+      "durationMs": 108000,
+      "anchorOffsetMs": 0,
+      "anchorDurationMs": 5000,
+      "fingerprints": [
+        {
+          "phaseMs": 0,
+          "hashes": [
+            "bdbdbdbd",
+            "42424242",
+            "4f4f4f4f",
+            "afafafaf",
+            "e2e2e2e2",
+            "36363636",
+            "9f9f9f9f",
+            "56565656",
+            "33333333",
+            "7a7a7a7a",
+            "cacacaca",
+            "4f4f4f4f",
+            "bfbfbfbf",
+            "47474747",
+            "35353535",
+            "c8c8c8c8",
+            "bdbdbdbd",
+            "bdbdbdbd"
+          ]
+        },
+        {
+          "phaseMs": 64,
+          "hashes": [
+            "bdbdbdbd",
+            "42424242",
+            "4f4f4f4f",
+            "afafafaf",
+            "e2e2e2e2",
+            "36363636",
+            "9f9f9f9f",
+            "56565656",
+            "33333333",
+            "7a7a7a7a",
+            "cacacaca",
+            "4f4f4f4f",
+            "bfbfbfbf",
+            "47474747",
+            "35353535",
+            "c8c8c8c8",
+            "bdbdbdbd",
+            "bdbdbdbd"
+          ]
+        },
+        {
+          "phaseMs": 128,
+          "hashes": [
+            "bdbdbdbd",
+            "42424242",
+            "4f4f4f4f",
+            "afafafaf",
+            "e2e2e2e2",
+            "36363636",
+            "9f9f9f9f",
+            "56565656",
+            "33333333",
+            "7a7a7a7a",
+            "cacacaca",
+            "4f4f4f4f",
+            "bfbfbfbf",
+            "47474747",
+            "35353535",
+            "c8c8c8c8",
+            "bdbdbdbd",
+            "bdbdbdbd"
+          ]
+        },
+        {
+          "phaseMs": 192,
+          "hashes": [
+            "bdbdbdbd",
+            "42424242",
+            "4f4f4f4f",
+            "afafafaf",
+            "e2e2e2e2",
+            "36363636",
+            "9f9f9f9f",
+            "56565656",
+            "33333333",
+            "7a7a7a7a",
+            "cacacaca",
+            "4f4f4f4f",
+            "bfbfbfbf",
+            "47474747",
+            "35353535",
+            "c8c8c8c8",
+            "bdbdbdbd",
+            "bdbdbdbd"
+          ]
+        }
+      ],
+      "test": {
+        "url": "https://2609.lbsl2026.com/20260906/bOJidNMa/index.m3u8",
+        "adStartMs": 36000
       }
     }
   ]
