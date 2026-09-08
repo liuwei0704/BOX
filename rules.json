@@ -1,7 +1,7 @@
 {
   "format": "ad-audio-probe-rules",
   "schemaVersion": 1,
-  "revision": 6,
+  "revision": 7,
   "algorithm": "spectral-sequence-v1",
   "rules": [
     {
@@ -29,7 +29,6 @@
             "6e6e6e6e",
             "e7e7e7e7",
             "3f3f3f3f",
-            "94949494",
             "94949494"
           ]
         },
@@ -52,7 +51,6 @@
             "6e6e6e6e",
             "e7e7e7e7",
             "3f3f3f3f",
-            "94949494",
             "94949494"
           ]
         },
@@ -75,7 +73,6 @@
             "6e6e6e6e",
             "e7e7e7e7",
             "3f3f3f3f",
-            "94949494",
             "94949494"
           ]
         },
@@ -98,7 +95,6 @@
             "6e6e6e6e",
             "e7e7e7e7",
             "3f3f3f3f",
-            "94949494",
             "94949494"
           ]
         }
