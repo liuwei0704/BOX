@@ -5,7 +5,7 @@
   "algorithm": "spectral-sequence-v1",
   "rules": [
     {
-      "id": "auto-ad-bd424fafe2369f56",
+      "id": "ad-bd424fafe2369f56-1",
       "durationMs": 47000,
       "anchorOffsetMs": 0,
       "anchorDurationMs": 5000,
