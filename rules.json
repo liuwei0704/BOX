@@ -1,7 +1,7 @@
 {
   "format": "ad-audio-probe-rules",
   "schemaVersion": 1,
-  "revision": 9,
+  "revision": 2,
   "algorithm": "spectral-sequence-v1",
   "rules": [
     {
