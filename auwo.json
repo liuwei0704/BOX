@@ -26,7 +26,6 @@
 {"key":"短剧巴士","name":"🔆短剧巴士 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧巴士.py"},
 {"key":"紅果短劇","name":"🔆紅果短劇 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/紅果短劇.py"},
 {"key":"红豆短劇","name":"🔆红豆短劇 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/红豆短劇.py"},
-{"key":"黄瓜短剧","name":"🔆黄瓜短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/黄瓜短剧.py"},
 {"key":"八影短劇網","name":"🔆八影短劇網 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/八影短劇網.py"},
 {"key":"短劇影視屋","name":"🔆短劇影視屋 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短劇影視屋.py"},
 {"key":"DjHggg","name":"🎬嗷嗚 | 短剧","type":3,"api":"csp_HgggAmns","searchable":0,"quickSearch":0,"changeable":0,"ext":"DjHggg","genre":"shortdrama"},
