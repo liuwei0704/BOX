@@ -1,4 +1,3 @@
-{
-  "domain": "http://juziapp.hzhcbkj.cn",
-  "enabled": true
-}
+{"domain": "http://103.36.167.27:18004", 
+"enabled": true, 
+"offlineUrl":"https://juzhi7777.app "}
