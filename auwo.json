@@ -58,7 +58,7 @@
 {"key":"Bidys","name":"🔗哔嘀 | 2K","type":3,"api":"csp_BidysAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Bidys"},
 {"key":"Czzy","name":"🔗厂长 | 2K","type":3,"api":"csp_CzzyAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Czzy"},
 {"key":"Libvio","name":"🔗LBV | 2K","type":3,"api":"csp_LibvioAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Libvio"},
-{"key":"Woshinidie","name":"🧩橘汁 | 快速","type":3,"api":"csp_Woshinidie","searchable":1,"quickSearch":1,"changeable":0,"ext":{"abid":"2205","version":"3.0.2.3","pkg":"com.mxj.wylcjbxyx","md5":"090DA8F91D3F60CC6CB250D86F06FE12","sha1":"3DADB42485B7F864E766479ADA6B1176D81D8D73","site":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/app.txt"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/Woshinidie.jar"},
+{"key":"Woshinidie","name":"🧩橘汁 | 快速","type":3,"api":"csp_Woshinidie","searchable":1,"quickSearch":1,"changeable":0,"ext":{"version":"3.0.2.3","pkg":"com.mxj.wylcjbxyx","md5":"090DA8F91D3F60CC6CB250D86F06FE12","sha1":"3DADB42485B7F864E766479ADA6B1176D81D8D73","site":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/app.txt"},"jar":"https://gitlab.com/lemon52030/BOX/-/raw/main/jar/Woshinidie.jar"},
 {"key":"JinPai","name":"🧩金牌 | 快速","type":3,"api":"csp_JinPaiAmns","searchable":1,"quickSearch":1,"changeable":0},
 {"key":"JPian","name":"🧩荐片 | 快速","type":3,"api":"csp_JPianAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"JPian"},
 {"key":"Rbys","name":"🧩热播 | 快速","type":3,"api":"csp_RbysAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Rbys"},
