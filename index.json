@@ -1,11 +1,11 @@
 {
-"spider": "./jar/00d57d76-d36a-4666-808a-9f53c4c133a3.png;md5;1b1fe32a75667040acdb5462f4ed822d",
+"spider": "./jar/96c38469-df36-433c-b400-74ed5e5a7d7a.png;md5;6b076a8a31e03cbfa5db73e079155629",
 "logo": "./img/EC508FBD046D33EC4832BB76B63B6C94.gif",
 "wallpaper": "http://127.0.0.1:9978/proxy?do=AowuWapper&mode=2",
 "danmaku": "http://127.0.0.1:2525/danmu?name={name}&epid={episode}",
 "sites": [
 {"key":"Douban","name":"🔥豆瓣┃推荐","type":3,"api":"csp_DoubanAmns","indexs":1,"searchable":0,"quickSearch":0,"changeable":0,"ext":"Douban"},
-{"key":"Y360","name":"更新日期:【20260911】","type":3,"api":"csp_Y360Amns","searchable":0,"quickSearch":0,"changeable":0,"ext":"Y360"},
+{"key":"Y360","name":"更新日期:【侏罗纪】","type":3,"api":"csp_Y360Amns","searchable":0,"quickSearch":0,"changeable":0,"ext":"Y360"},
 {"key":"Hgdh","name":"🔥短剧┃推荐","type":3,"api":"csp_HgdhAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"Hgdh","genre":"shortdrama"},
 {"key":"MyConfig","name":"⚙️配置┃中心","type":3,"api":"csp_AAConfigAmns","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"MyAll","name":"📁资源┃中心","type":3,"api":"csp_MyAllAmns","searchable":0,"quickSearch":0,"changeable":0},
