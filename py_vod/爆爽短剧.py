@@ -1,7 +1,7 @@
 # coding: utf-8
-# 站点：百众短剧 (https://www.szbzgl.com/)
-# 架构：MacCMS + conch 模板，标准 HTML 服务端渲染
-# 分类：1电影 2电视剧 3综艺 4动漫 5短剧（子类 6-31）
+# 站点：爆爽短剧 (https://www.bzhjz.com/)
+# 架构：MacCMS + mxone-2 模板，标准 HTML 服务端渲染
+# 分类：1电影 2电视剧 3综艺 4动漫 5短剧
 # 列表分页：/vodshow/{tid}--------{pg}---.html
 # 筛选：年份 /vodshow/{tid}-----------{year}.html ; 语言 /vodshow/{tid}----{lang}-------.html
 #       地区 /vodshow/{tid}-{area}---------.html ; 字母 /vodshow/{tid}-----{letter}------.html
@@ -9,8 +9,8 @@
 # 播放页：/play/{id}-{sid}-{nid}.html  player_aaaa.url = m3u8 直链（encrypt:0）
 # 搜索页：/vodsearch/{kw}-------------.html
 # 站点有 cookie 挑战：首页下发 server_session，带 cookie 才能访问内容页
-# 主域名：https://www.szbzgl.com/
-# 最后验证：2026-09-13
+# 主域名：https://www.bzhjz.com/
+# 最后验证：2026-09-14
 import json
 import re
 from urllib.parse import quote, urljoin
@@ -21,33 +21,19 @@ from base.spider import Spider as BaseSpider
 class Spider(BaseSpider):
     def __init__(self):
         self.extend = ""
-        self.host = "https://www.szbzgl.com"
+        self.host = "https://www.bzhjz.com"
         self._cookie = ""
         self._warmed = False
         self.classes = [
             {"type_id": "5", "type_name": "短剧"},
-            {"type_id": "2", "type_name": "电视剧"},
             {"type_id": "1", "type_name": "电影"},
+            {"type_id": "2", "type_name": "电视剧"},
             {"type_id": "3", "type_name": "综艺"},
             {"type_id": "4", "type_name": "动漫"},
             {"type_id": "28", "type_name": "古装短剧"},
             {"type_id": "29", "type_name": "穿越短剧"},
             {"type_id": "30", "type_name": "甜宠短剧"},
             {"type_id": "31", "type_name": "逆袭短剧"},
-            {"type_id": "13", "type_name": "国产剧"},
-            {"type_id": "14", "type_name": "港台剧"},
-            {"type_id": "15", "type_name": "日韩剧"},
-            {"type_id": "16", "type_name": "欧美剧"},
-            {"type_id": "6", "type_name": "动作片"},
-            {"type_id": "7", "type_name": "喜剧片"},
-            {"type_id": "8", "type_name": "爱情片"},
-            {"type_id": "9", "type_name": "科幻片"},
-            {"type_id": "10", "type_name": "恐怖片"},
-            {"type_id": "11", "type_name": "剧情片"},
-            {"type_id": "12", "type_name": "战争片"},
-            {"type_id": "18", "type_name": "大陆综艺"},
-            {"type_id": "23", "type_name": "国产动漫"},
-            {"type_id": "25", "type_name": "日韩动漫"},
         ]
         self.filters = {}
         self.headers = {
@@ -58,7 +44,7 @@ class Spider(BaseSpider):
         }
 
     def getName(self):
-        return "百众短剧"
+        return "爆爽短剧"
 
     def getDependence(self):
         return []
@@ -72,82 +58,132 @@ class Spider(BaseSpider):
     def getHomeContent(self, filter):
         return self.homeContent(filter)
 
-    def _warmup(self):
-        if getattr(self, "_warmed", False):
-            return
-        self._warmed = True
+    # ---------- 网络层（cookie 挑战双保险：手动带 Cookie + 沙盒 session） ----------
+    def _accumulate_cookie(self, r):
         try:
-            self.fetch(self.host + "/", headers=self.headers, timeout=15)
+            sc = None
+            if hasattr(r, "headers") and r.headers:
+                sc = r.headers.get("Set-Cookie") or r.headers.get("set-cookie")
+            if not sc:
+                return
+            parts = re.split(r",(?=[^;]+=)", sc)
+            existing = {}
+            if self._cookie:
+                for item in self._cookie.split(";"):
+                    item = item.strip()
+                    if "=" in item:
+                        k2, v2 = item.split("=", 1)
+                        existing[k2.strip()] = v2.strip()
+            for p in parts:
+                kv = p.split(";")[0].strip()
+                if "=" not in kv:
+                    continue
+                name = kv.split("=", 1)[0].strip()
+                existing[name] = kv.split("=", 1)[1].strip()
+            self._cookie = "; ".join("%s=%s" % (k, v) for k, v in existing.items())
+        except Exception:
+            pass
+
+    def _warmup(self):
+        try:
+            r = self.fetch(self.host + "/", headers=self.headers, timeout=15)
+            if r:
+                self._accumulate_cookie(r)
         except Exception:
             pass
 
     def _fetch_html(self, url):
-        # cookie 挑战：先请求首页预热，再请求目标；失败则重试
+        # cookie 挑战：手动提取并累积 Set-Cookie 双保险；挑战页重试
+        if not self._cookie:
+            self._warmup()
         for attempt in range(3):
-            if attempt > 0 or not getattr(self, "_warmed", False):
-                try:
-                    self.fetch(self.host + "/", headers=self.headers, timeout=15)
-                    self._warmed = True
-                except Exception:
-                    pass
+            h = dict(self.headers)
+            if self._cookie:
+                h["Cookie"] = self._cookie
             try:
-                r = self.fetch(url, headers=self.headers, timeout=15)
+                r = self.fetch(url, headers=h, timeout=15)
             except Exception as e:
                 self.log({"fetch": "fail", "url": url[:60], "error": type(e).__name__, "try": attempt})
+                self._warmup()
                 continue
             if not r:
                 continue
+            self._accumulate_cookie(r)
             text = r.text or ""
-            # 挑战页特征：极短（<800字节）且含跳转脚本
             is_challenge = len(text) < 800 and "window.location.href" in text
             if r.status_code == 200 and not is_challenge:
                 return text
+            self._warmup()
         return ""
+
+    # ---------- 解析 ----------
     def _parse_list(self, html):
         items = []
         if not html:
             return items
-        blocks = re.findall(r'<li class="hl-list-item[^"]*">(.*?)</li>', html, re.S)
+        # 按 <div class="module-item"> 切分，每块到下一个 module-item 或卡片尾部
+        parts = html.split('<div class="module-item">')
         seen = set()
-        for b in blocks:
-            m = re.search(r'<a class="hl-item-thumb[^"]*"[^>]*href="([^"]+)"[^>]*title="([^"]*)"', b)
-            if not m:
-                m = re.search(r'<a[^>]*href="(/vod/\d+\.html)"[^>]*title="([^"]*)"', b)
-            if not m:
-                continue
-            link = m.group(1)
-            title = m.group(2)
-            vm = re.search(r'/vod/(\d+)\.html', link)
-            if not vm:
-                continue
-            vid = vm.group(1)
+        for b in parts[1:]:
+            # 截断到卡片结束（module-item-text 之后）
+            te = b.find('module-item-text')
+            if te != -1:
+                b = b[:te + 200]
+            m = re.search(r'<a href="(/vod/(\d+)\.html)"[^>]*title="([^"]*)"', b)
+            if m:
+                link, vid, title = m.group(1), m.group(2), m.group(3)
+            else:
+                m2 = re.search(r'<a href="(/vod/(\d+)\.html)"', b)
+                if not m2:
+                    continue
+                link, vid, title = m2.group(1), m2.group(2), ""
             if vid in seen:
                 continue
             seen.add(vid)
+            if not title:
+                tm = re.search(r'title="([^"]*)"', b)
+                if tm:
+                    title = tm.group(1)
             pic = ""
-            pm = re.search(r'data-original="([^"]+)"', b)
+            pm = re.search(r'data-src="([^"]+)"', b)
             if pm:
                 pic = pm.group(1)
-            else:
-                pm2 = re.search(r'background-image:\s*url\(["\']?([^"\')\s]+)', b)
-                if pm2:
-                    pic = pm2.group(1)
             if pic and not pic.startswith("http"):
                 pic = urljoin(self.host + "/", pic)
             remark = ""
-            rm = re.search(r'<span class="[^"]*remarks[^"]*">([^<]*)</span>', b)
+            rm = re.search(r'<div class="module-item-text">([^<]*)</div>', b)
             if rm:
                 remark = rm.group(1).strip()
-            if not remark:
-                rm2 = re.search(r'<div class="hl-pic-text">\s*<span[^>]*>([^<]*)</span>', b)
-                if rm2:
-                    remark = rm2.group(1).strip()
-            items.append({
-                "vod_id": vid,
-                "vod_name": title.strip(),
-                "vod_pic": pic,
-                "vod_remarks": remark,
-            })
+            items.append({"vod_id": vid, "vod_name": title.strip(), "vod_pic": pic, "vod_remarks": remark})
+        return items
+    def _parse_search(self, html):
+        items = []
+        if not html:
+            return items
+        blocks = re.findall(r'<div class="module-search-item">(.*?)(?=<div class="module-search-item">|</div>\s*</div>\s*</div>\s*<div class="module-footer)', html, re.S)
+        seen = set()
+        for b in blocks:
+            m = re.search(r'<h3><a href="(/vod/(\d+)\.html)"[^>]*title="([^"]*)"', b)
+            if not m:
+                m = re.search(r'<a href="(/vod/(\d+)\.html)"[^>]*title="([^"]*)"', b)
+            if not m:
+                continue
+            vid = m.group(2)
+            if vid in seen:
+                continue
+            seen.add(vid)
+            title = m.group(3)
+            pic = ""
+            pm = re.search(r'data-src="([^"]+)"', b)
+            if pm:
+                pic = pm.group(1)
+            if pic and not pic.startswith("http"):
+                pic = urljoin(self.host + "/", pic)
+            remark = ""
+            rm = re.search(r'<a class="video-serial"[^>]*>([^<]*)</a>', b)
+            if rm:
+                remark = rm.group(1).strip()
+            items.append({"vod_id": vid, "vod_name": title.strip(), "vod_pic": pic, "vod_remarks": remark})
         return items
 
     def _get_pagecount(self, html, pg):
@@ -181,13 +217,9 @@ class Spider(BaseSpider):
     def _skeleton(self, vid, title="", pic="", remarks="解析中"):
         pid = str(vid).split("|$|")[0].replace("$", "|")
         return {"list": [{
-            "vod_id": vid,
-            "vod_name": title or "未知标题",
-            "vod_pic": pic or "",
-            "vod_remarks": remarks,
-            "vod_content": "",
-            "vod_play_from": "播放",
-            "vod_play_url": "播放$" + pid,
+            "vod_id": vid, "vod_name": title or "未知标题", "vod_pic": pic or "",
+            "vod_remarks": remarks, "vod_content": "",
+            "vod_play_from": "播放", "vod_play_url": "播放$" + pid,
         }]}
 
     def detailContent(self, ids):
@@ -207,7 +239,7 @@ class Spider(BaseSpider):
 
         try:
             name = old_name
-            nm = re.search(r'<h2 class="hl-dc-title[^"]*"[^>]*>(.*?)</h2>', html, re.S)
+            nm = re.search(r'<h1[^>]*>(.*?)</h1>', html, re.S)
             if nm:
                 name = re.sub(r"<[^>]+>", "", nm.group(1)).strip() or name
             if not name:
@@ -216,43 +248,44 @@ class Spider(BaseSpider):
                     name = re.split(r"[-_]", tm.group(1))[0].strip()
 
             pic = old_pic
-            pm = re.search(r'<span class="hl-item-thumb[^"]*"[^>]*data-original="([^"]+)"', html)
+            pm = re.search(r'<img[^>]*class="[^"]*lazy[^"]*"[^>]*data-src="([^"]+)"', html)
             if pm:
                 pic = pm.group(1)
             if pic and not pic.startswith("http"):
                 pic = urljoin(self.host + "/", pic)
 
             remark = old_remark
-            rmk = re.search(r'<em class="hl-text-muted">状态：</em><span[^>]*>([^<]*)</span>', html)
+            rmk = re.search(r'状态[：:]\s*</span>\s*<[^>]*>([^<]*)<', html)
             if rmk:
                 remark = rmk.group(1).strip()
 
             content = ""
-            cm = re.search(r'<span class="hl-content-text">(.*?)</span>', html, re.S)
+            cm = re.search(r'<div class="[^"]*module-info-introduction-content[^"]*"[^>]*>(.*?)</div>', html, re.S)
             if cm:
                 content = re.sub(r"<[^>]+>", "", cm.group(1)).strip()
 
             actor = ""
-            am = re.search(r'<em class="hl-text-muted">主演：</em>(.*?)</li>', html, re.S)
+            am = re.search(r'主演[：:]\s*</span>(.*?)</div>', html, re.S)
             if am:
                 actor = ",".join(re.findall(r'>([^<>/]+)</a>', am.group(1)))
 
             director = ""
-            dm = re.search(r'<em class="hl-text-muted">导演：</em>(.*?)</li>', html, re.S)
+            dm = re.search(r'导演[：:]\s*</span>(.*?)</div>', html, re.S)
             if dm:
                 director = ",".join(re.findall(r'>([^<>/]+)</a>', dm.group(1)))
 
+            # 线路：data-dropdown-value="线路N"；剧集容器 id="glist-{sid}"
             froms = []
             groups = []
-            tab_names = re.findall(r'<a class="hl-tabs-btn[^"]*"[^>]*alt="([^"]+)"', html)
-            if not tab_names:
-                tab_names = re.findall(r'alt="(线路\d+)"', html)
-            boxes = re.findall(r'<ul class="hl-plays-list[^"]*"[^>]*>(.*?)</ul>', html, re.S)
-            for idx, box in enumerate(boxes):
-                eps = re.findall(r'<a href="(/play/[^"]+)"[^>]*>(.*?)</a>', box, re.S)
+            line_names = re.findall(r'<div class="module-tab-item[^"]*"[^>]*data-dropdown-value="([^"]+)"', html)
+            glists = re.findall(r'<div[^>]*id="glist-(\d+)"[^>]*>(.*?)(?=<div[^>]*id="glist-\d+"|<div class="module-footer|</main>)', html, re.S)
+            for idx, (sid, box) in enumerate(glists):
+                eps = re.findall(r'<a href="(/play/[^"]+)"[^>]*>\s*<span>([^<]*)</span>', box, re.S)
+                if not eps:
+                    eps = re.findall(r'<a href="(/play/[^"]+)"[^>]*>(.*?)</a>', box, re.S)
                 if not eps:
                     continue
-                line_name = tab_names[idx] if idx < len(tab_names) else "线路%d" % (idx + 1)
+                line_name = line_names[idx] if idx < len(line_names) else "线路%d" % (idx + 1)
                 eps_list = []
                 for href, ep_name in eps:
                     ep = re.sub(r"<[^>]+>", "", ep_name).strip()
@@ -267,12 +300,8 @@ class Spider(BaseSpider):
                 return self._skeleton(raw, name, pic, remark)
 
             vod = {
-                "vod_id": raw,
-                "vod_name": name or "视频",
-                "vod_pic": pic,
-                "vod_remarks": remark,
-                "vod_actor": actor,
-                "vod_director": director,
+                "vod_id": raw, "vod_name": name or "视频", "vod_pic": pic,
+                "vod_remarks": remark, "vod_actor": actor, "vod_director": director,
                 "vod_content": content,
                 "vod_play_from": "$$$".join(froms),
                 "vod_play_url": "$$$".join(groups),
@@ -325,13 +354,7 @@ class Spider(BaseSpider):
         html = self._fetch_html(url)
         lst = self._parse_list(html)
         pagecount = self._get_pagecount(html, page) if html else int(page)
-        return {
-            "list": lst,
-            "page": int(page),
-            "pagecount": pagecount,
-            "limit": 20,
-            "total": pagecount * 20,
-        }
+        return {"list": lst, "page": int(page), "pagecount": pagecount, "limit": 20, "total": pagecount * 20}
 
     def searchContent(self, key, quick, pg="1"):
         page = str(pg or "1")
@@ -340,9 +363,12 @@ class Spider(BaseSpider):
         if page != "1":
             url = "%s/vodsearch/%s-------------%s.html" % (self.host, kw, page)
         html = self._fetch_html(url)
-        if html and ("没有找到" in html or "暂无数据" in html):
+        if html and ("没有找到" in html or "暂无数据" in html or "找不到" in html):
             return {"list": [], "page": int(page)}
-        return {"list": self._parse_list(html), "page": int(page)}
+        lst = self._parse_search(html)
+        if not lst:
+            lst = self._parse_list(html)
+        return {"list": lst, "page": int(page)}
 
     def recommendContent(self, ids, pg="1"):
         try:
@@ -353,7 +379,7 @@ class Spider(BaseSpider):
             html = self._fetch_html(self.host + "/vod/" + vod_id + ".html")
             if not html:
                 return {"list": []}
-            m = re.search(r'hl-rb-relvod.*?</div>\s*</div>\s*</div>', html, re.S)
+            m = re.search(r'相关影片.*?</div>\s*</div>\s*</div>', html, re.S)
             seg = m.group(0) if m else html
             return {"list": self._parse_list(seg)}
         except Exception:
@@ -366,8 +392,7 @@ class Spider(BaseSpider):
             if len(parts) == 2:
                 play_url = parts[1]
         if play_url.startswith(("http://", "https://")) and re.search(r"\.(m3u8|mp4|flv|m4s)(\?|$)", play_url, re.I):
-            return {"parse": 0, "url": play_url,
-                    "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
+            return {"parse": 0, "url": play_url, "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
         if play_url and not play_url.startswith("http"):
             play_url = urljoin(self.host + "/", play_url)
         if not play_url:
@@ -394,17 +419,14 @@ class Spider(BaseSpider):
                         data = json.loads(html[brace:end])
                         u = data.get("url", "")
                         if u:
-                            return {"parse": 0, "url": u,
-                                    "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
+                            return {"parse": 0, "url": u, "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
                     except Exception:
                         pass
             um = re.search(r'(https?://[^\s"\'<>\\]+\.(?:m3u8|mp4))', html)
             if um:
-                return {"parse": 0, "url": um.group(1),
-                        "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
+                return {"parse": 0, "url": um.group(1), "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
 
-        return {"parse": 1, "url": play_url,
-                "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
+        return {"parse": 1, "url": play_url, "header": {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}}
 
     def localProxy(self, param):
         return [404, "text/plain; charset=utf-8", "not implemented"]
