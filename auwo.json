@@ -20,6 +20,7 @@
 {"key":"新短剧网","name":"🔆新短剧网 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/新短剧网.py"},
 {"key":"星芽短剧","name":"🔆星芽短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/星芽短剧.py"},
 {"key":"河馬短劇","name":"🔆河馬短劇 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/河馬短劇.py"},
+{"key":"爆爽短剧","name":"🔆爆爽短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/爆爽短剧.py"},
 {"key":"百众短剧","name":"🔆百众短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/百众短剧.py"},
 {"key":"短剧在线","name":"🔆短剧在线 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧在线.py"},
 {"key":"短剧好看","name":"🔆短剧好看 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧好看.py"},
