@@ -15,8 +15,6 @@
 {"key":"新短剧网","name":"🔆新短剧网 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/新短剧网.py"},
 {"key":"星芽短剧","name":"🔆星芽短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/星芽短剧.py"},
 {"key":"河馬短劇","name":"🔆河馬短劇 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/河馬短劇.py"},
-{"key":"爆爽短剧","name":"🔆爆爽短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/爆爽短剧.py"},
-{"key":"百众短剧","name":"🔆百众短剧 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/百众短剧.py"},
 {"key":"短剧在线","name":"🔆短剧在线 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧在线.py"},
 {"key":"短剧好看","name":"🔆短剧好看 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧好看.py"},
 {"key":"短剧巴士","name":"🔆短剧巴士 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短剧巴士.py"},
@@ -25,6 +23,7 @@
 {"key":"八影短劇網","name":"🔆八影短劇網 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/八影短劇網.py"},
 {"key":"短劇影視屋","name":"🔆短劇影視屋 | 短劇","type":3,"searchable":1,"quickSearch":1,"changeable":1,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/短劇影視屋.py"},
 
+{"key":"Wv_youtube","name":"Ⓜ️Wv┃Youtube","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/Youtube.wv.js","searchable":0,"filterable":0,"switchable":0},
 {"key":"Wv_hongguo","name":"Ⓜ️Wv┃红果短剧","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/hongguo.wv.js","searchable":0,"filterable":0,"switchable":0},
 {"key":"Wv_momovod","name":"Ⓜ️Wv┃momovod","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/momovod.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_998pian","name":"Ⓜ️Wv┃999片","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/998pian.wv.js","searchable":1,"filterable":1,"switchable":1},
