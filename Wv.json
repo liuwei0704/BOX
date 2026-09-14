@@ -28,8 +28,6 @@
 {"key":"Wv_momovod","name":"Ⓜ️Wv┃momovod","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/momovod.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_998pian","name":"Ⓜ️Wv┃999片","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/998pian.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_duanjuzx","name":"Ⓜ️Wv┃短剧网","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/duanjuzx.wv.js","searchable":1,"filterable":1,"switchable":1},
-{"key":"Wv_jqqzx","name":"Ⓜ️Wv┃剧圈圈","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/剧圈圈.wv.js","searchable":1,"filterable":1,"switchable":1},
-{"key":"Wv_jddzx","name":"Ⓜ️Wv┃剧多多","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/剧多多.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_hanju","name":"Ⓜ️Wv┃新韩剧网","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/新韩剧网.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_ttys","name":"Ⓜ️Wv┃天天影院","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/天天影院.wv.js","searchable":1,"filterable":1,"switchable":1},
 {"key":"Wv_ddya","name":"Ⓜ️Wv┃低端影视","api":"csp_WvSpider","type":"3","ext":"https://gitlab.com/lemon52030/BOX/-/raw/main/Wv.js/低端影视.wv.js","searchable":1,"filterable":1,"switchable":1},
