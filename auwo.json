@@ -74,7 +74,6 @@
 {"key":"BbkqLive","name":"🏆88 | 体育","type":3,"api":"csp_BbkqLiveAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":"BbkqLive"},
 {"key":"KafLive","name":"🏆咖啡 | 体育","type":3,"api":"csp_KafLiveAmns","searchable":0,"quickSearch":0,"changeable":0},
 {"key":"BiliHeji","name":"🎉合集 | Bili","type":3,"api":"csp_BiliAmns","searchable":1,"quickSearch":1,"changeable":0,"ext":{"home":"1","json":"https://file.icve.com.cn/file_doc/299/797/4AFC77E563EDEDB37F18BA6458610E16.aowu","cookie":""},"style":{"type":"rect","ratio":1.433}},
-{"key":"片库","name":"🍀片库 | 影視","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js_vod/片库.js"},
 {"key":"片库网","name":"🍀片库网 | 影視","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js_vod/片库网.js"},
 {"key":"八影短剧","name":"🍀八影短剧 | 影視","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js_vod/八影短剧.js"},
 {"key":"官源聚合","name":"🍀官源聚合 | 影視","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/js_vod/官源聚合.js"},
