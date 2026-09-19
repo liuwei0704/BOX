@@ -126,6 +126,7 @@
 {"key":"农民影视","name":"❇️农民影视 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/农民影视.py"},
 {"key":"初见影视","name":"❇️初见影视 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/初见影视.py"},
 {"key":"努努影院","name":"❇️努努影院 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/努努影院.py"},
+{"key":"华人影院","name":"❇️华人影院 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/华人影院.py"},
 {"key":"可可影视","name":"❇️可可影视 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/可可影视.py"},
 {"key":"君念影院","name":"❇️君念影院 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/君念影院.py"},
 {"key":"多多影视","name":"❇️多多影视 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/多多影视.py"},
@@ -184,11 +185,13 @@
 {"name":"4GTV²","url":"https://ha.msbot.dpdns.org/4gtv_api.php"},
 {"name":"JackTV","url":"https://php.946985.filegear-sg.me/jackTV.m3u","header":{"User-Agent":"Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/91.0.4472.124Safari/537.36"}},
 {"name":"綜合TV","type":0,"url":"https://github.com/lalifeier/IPTV/raw/refs/heads/main/m3u/IPTV.m3u","playerType":2,"ua":"okhttp/5.3.2","epg":"http://epg.112114.xyz/?ch={name}&date={date}","logo":"https://epg.112114.xyz/logo/{name}.png"},
-{"name":"虎牙","type":0,"url":"https://sub.ottiptv.cc/huyayqk.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"虎牙","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/huya_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"抖音","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/douyin_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"斗鱼","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/douyu_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"B站","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/bilibili_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"快手","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/kuaishou_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"咪咕","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/migu_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
+{"name":"Twitch","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/twitch_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"},
 {"name":"YY","type":0,"url":"https://raw.githubusercontent.com/pan8664716/MultiLive/main/output/yy_live.m3u","playerType":2,"timeout":10,"ua":"okHttp/Mod-1.5.0.0"}
 ],
 "parses": [
