@@ -101,6 +101,7 @@
 {"key":"KTV183","name":"❇️KTV183 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/KTV183.py"},
 {"key":"ZIP0影视","name":"❇️ZIP0影视 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/ZIP0影视.py"},
 {"key":"剧下饭4K","name":"❇️剧下饭4K | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/剧下饭4K.py"},
+{"key":"剧兔","name":"❇️剧兔 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/剧兔.py"},
 {"key":"剧OK","name":"❇️剧OK | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/剧OK.py"},
 {"key":"大马猴","name":"❇️大马猴 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/大马猴.py"},
 {"key":"好剧屋","name":"❇️好剧屋 | 影視","type":3,"searchable":0,"quickSearch":0,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_vod/好剧屋.py"},
