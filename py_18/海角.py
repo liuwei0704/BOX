@@ -1,6 +1,3 @@
-"""
-@header({searchable: 1, filterable: 1, quickSearch: 1, title: '海角社区', lang: 'hipy'})
-"""
 # -*- coding: utf-8 -*-
 import base64
 import json
@@ -541,15 +538,30 @@ class Spider(Spider):
             pictures = [url for url in pictures if url]
             return {'parse': 0, 'jx': 0, 'playUrl': '',
                     'url': 'pics://' + '&&'.join(pictures), 'header': {}}
-        if value.startswith(('http://', 'https://')):
-            return {'parse': 0, 'jx': 0, 'url': value, 'header': {'User-Agent': self.UA}}
         parts = value.split('|', 3)
-        if len(parts) == 4 and parts[2] == 'preview':
+        if value.startswith(('http://', 'https://')):
+            # 壳端可能把预览直链当普通地址传入；站内视频 CDN 一律不裸出，
+            # 否则 EXO 直连 CDN 会拿到不可解析内容（3001/3002）。
+            if '/hjstore/' not in value:
+                return {'parse': 0, 'jx': 0, 'url': value, 'header': {'User-Agent': self.UA}}
+            preview = value
+        elif len(parts) == 4 and parts[2] == 'preview':
             preview = self._fix_url(parts[3])
+        else:
+            preview = ''
+        if preview:
             if not preview:
                 return {'parse': 0, 'jx': 0, 'url': '', 'msg': '匿名预览地址为空'}
-            # 当前壳端 ts10 无法播放；统一切到已完成清单、KEY、分片验证的 ts5。
-            preview = re.sub(r'://ts(?:\d+)?\.', '://ts5.', preview, count=1, flags=re.I)
+            # 先构造 ts5 候选并探测 ts5 本身；握手失败时回退原始 ts10 地址。
+            candidate = re.sub(r'://ts(?:\d+)?\.', '://ts5.', preview, count=1, flags=re.I)
+            try:
+                host = re.match(r'https?://[^/]+', candidate, re.I).group(0)
+                probe = self.session.get(host + '/favicon.ico', headers={'User-Agent': self.UA},
+                                         timeout=(4, 6), verify=False, allow_redirects=False)
+                reachable = probe.status_code < 500
+            except Exception:
+                reachable = False
+            preview = candidate if reachable else preview
             proxy = self.getProxyUrl()
             if proxy:
                 preview = proxy + '&type=preview_m3u8&url=' + quote(preview, safe='')
@@ -575,10 +587,48 @@ class Spider(Spider):
         return {'parse': 0, 'jx': 0, 'url': self._fix_url(media),
                 'header': {'User-Agent': self.UA}}
 
+    def _proxy_url(self, raw_url):
+        try:
+            return self.getProxyUrl() + '&type=media&url=' + quote(str(raw_url), safe='')
+        except Exception:
+            return raw_url
+
     def localProxy(self, params):
         params = params or {}
         proxy_type = str(params.get('type') or '').strip()
         source = unquote(str(params.get('url') or '')).strip()
+        if proxy_type == 'media':
+            # KEY/TS 分片由壳端 EXO 经本地代理转发，绕开壳端直连 CDN 失败的问题。
+            try:
+                response = self.session.get(source, headers={'User-Agent': self.UA},
+                                            timeout=25, verify=False)
+                # CDN 对 TS 返回 text/vnd.trolltech.linguist 等错误 MIME，会触发 EXO 3001；
+                # 按资源类型强制返回正确 MIME。
+                lower = source.lower()
+                filename = lower.rsplit('/', 1)[-1].split('?')[0]
+                content = response.content
+                mime = response.headers.get('Content-Type', 'application/octet-stream')
+                if filename.endswith('.ts'):
+                    mime = 'video/mp2t'
+                elif filename.endswith('.key'):
+                    # .key 是 XOR 混淆的：真实KEY = enc ^ 种子前16字节；
+                    # 种子 = 同目录 .jpg（base64 文本），由清单重写时附在 &seed= 上。
+                    mime = 'application/octet-stream'
+                    seed = unquote(str(params.get('seed') or '')).strip()
+                    if seed:
+                        try:
+                            sresp = self.session.get(seed, headers={'User-Agent': self.UA},
+                                                     timeout=15, verify=False)
+                            blob = base64.b64decode(sresp.text.strip())
+                            content = bytes(a ^ b for a, b in zip(content, blob[:16]))
+                        except Exception as e:
+                            try: self.log('海角KEY解密失败: %s' % e)
+                            except Exception: pass
+                return [response.status_code, mime, content]
+            except Exception as e:
+                try: self.log('海角媒体转发失败: %s | %s' % (source[:150], e))
+                except Exception: pass
+                return [502, 'text/plain', b'Media fetch failed']
         if proxy_type != 'preview_m3u8':
             return self._proxy_image(source)
         if not source.startswith(('http://', 'https://')):
@@ -607,14 +657,27 @@ class Spider(Spider):
                         source, text = full_url, full_resp.text
                         base = full_url.rsplit('/', 1)[0] + '/'
 
+            # 种子文件：与最终清单同目录，清单名去掉 _preview 后换 .jpg。
+            # 例如 531642_i_preview.m3u8 -> 531642_i_preview.jpg（与网页端一致）。
+            manifest_name = source.rsplit('/', 1)[-1].split('?')[0]
+            seed_name = re.sub(r'\.m3u8$', '.jpg', manifest_name, flags=re.I)
+            seed_url = base + seed_name
+
             def rewrite_uri(match):
-                return 'URI="' + urljoin(base, match.group(1)) + '"'
+                target = urljoin(base, match.group(1))
+                proxied = self._proxy_url(target)
+                if '.key' in target.lower().rsplit('/', 1)[-1]:
+                    proxied += '&seed=' + quote(seed_url, safe='')
+                return 'URI="' + proxied + '"'
 
             text = re.sub(r'URI="([^"]+)"', rewrite_uri, text, flags=re.I)
             lines = []
             for line in text.splitlines():
                 value = line.strip()
-                lines.append(urljoin(base, value) if value and not value.startswith('#') else line)
+                if value and not value.startswith('#'):
+                    lines.append(self._proxy_url(urljoin(base, value)))
+                else:
+                    lines.append(line)
             body = ('\n'.join(lines) + '\n').encode('utf-8')
             return [200, 'application/vnd.apple.mpegurl', body]
         except Exception as e:
