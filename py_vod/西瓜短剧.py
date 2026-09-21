@@ -1,19 +1,41 @@
 # -*- coding: utf-8 -*-
-import requests
+# 站点: 西瓜短剧 (m.xgshort.com)
+# 架构: SPA + JSON API
+# 反爬: Cloudflare —— 用 curl_cffi 模拟 TLS 指纹过盾, requests 兜底
+# 关键接口:
+#   /api/home/categories                分类
+#   /api/home/gethomemodules?channeid=1 首页模块
+#   /api/list/getfiltersdata            分类列表+翻页
+#   /api/list/fuzzysearch               搜索
+#   /api/video/episodes                 详情+多集数
+#   /api/video/url/query                取播放直链
 import time
-import re
+import json
+import requests
+
+try:
+    from curl_cffi import requests as _creq
+    _HAS_CFFI = True
+except Exception:
+    _HAS_CFFI = False
+
 
 class Spider:
     def __init__(self):
         self.baseurl = "https://m.xgshort.com"
-        self.session = requests.Session()
+        if _HAS_CFFI:
+            self.session = _creq.Session(impersonate="chrome120")
+        else:
+            self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1",
             "Accept": "application/json, text/plain, */*",
             "Accept-Language": "zh-CN,zh;q=0.9",
-            "Accept-Encoding": "gzip, deflate",
             "Referer": self.baseurl + "/movie",
             "Origin": self.baseurl,
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
         })
         self.token = None
         self.token_expire = 0
@@ -56,15 +78,14 @@ class Spider:
         try:
             cfg = extend
             if isinstance(extend, str):
-                import json as _json
-                cfg = _json.loads(extend)
-            if isinstance(cfg, dict):
-                if cfg.get("baseurl"):
-                    self.baseurl = cfg["baseurl"]
+                cfg = json.loads(extend)
+            if isinstance(cfg, dict) and cfg.get("baseurl"):
+                self.baseurl = cfg["baseurl"]
         except:
             pass
         self._ensure_token()
 
+    # ---------- 鉴权 ----------
     def _ensure_token(self):
         now = time.time()
         if self.token and now < self.token_expire:
@@ -72,21 +93,26 @@ class Spider:
         return self._guest_login()
 
     def _guest_login(self):
-        for i in range(10):
+        for _ in range(5):
             try:
-                self.session.get(self.baseurl + "/movie", timeout=10)
+                # 先访问 movie 页建立 CF 会话 + 拿 guest cookie
+                try:
+                    self.session.get(self.baseurl + "/movie", timeout=12)
+                except:
+                    pass
                 time.sleep(0.3)
                 r = self.session.post(
                     self.baseurl + "/api/auth/guest-login",
                     json={"guestToken": ""},
-                    timeout=10,
+                    timeout=12,
                 )
-                if r.status_code == 200:
+                if r.status_code in (200, 201):
                     data = r.json()
-                    token = data.get("access_token", "")
+                    token = data.get("access_token", "") or (data.get("data") or {}).get("access_token", "")
                     if token:
                         self.token = token
-                        self.token_expire = time.time() + data.get("expires_in", 604800) - 300
+                        exp = data.get("expires_in") or (data.get("data") or {}).get("expires_in") or 604800
+                        self.token_expire = time.time() + int(exp) - 300
                         self.session.headers["Authorization"] = "Bearer " + token
                         return True
             except:
@@ -94,6 +120,7 @@ class Spider:
             time.sleep(1)
         return False
 
+    # ---------- 基础请求 ----------
     def _get(self, path, params=None, need_token=False):
         if need_token:
             self._ensure_token()
@@ -102,7 +129,7 @@ class Spider:
                 r = self.session.get(self.baseurl + path, params=params, timeout=15)
                 if r.status_code == 200:
                     return r.json()
-                if r.status_code == 401 and need_token:
+                if r.status_code in (401, 403) and need_token:
                     self.token = None
                     self._ensure_token()
                     continue
@@ -118,7 +145,7 @@ class Spider:
                 r = self.session.post(self.baseurl + path, json=data, timeout=15)
                 if r.status_code in (200, 201):
                     return r.json()
-                if r.status_code == 401 and need_token:
+                if r.status_code in (401, 403) and need_token:
                     self.token = None
                     self._ensure_token()
                     continue
@@ -130,104 +157,122 @@ class Spider:
         if self.categories:
             return self.categories
         data = self._get("/api/home/categories")
-        if data and isinstance(data, list):
+        if isinstance(data, list):
             self.categories = data
+        elif isinstance(data, dict):
+            self.categories = data.get("data", []) or []
         return self.categories
 
-    def _parse_vod(self, item, category_name=""):
-        title = item.get("seriesTitle", item.get("title", ""))
+    # ---------- 列表项解析 ----------
+    def _parse_vod(self, item):
+        title = item.get("title", item.get("seriesTitle", ""))
         if self.is_minor(title):
             return None
-        vod_id = item.get("seriesShortId", item.get("shortId", ""))
+        vod_id = item.get("shortId", item.get("seriesShortId", ""))
         if not vod_id:
             return None
-        cover = item.get("seriesCoverUrl", item.get("coverUrl", ""))
-        desc = item.get("seriesDescription", item.get("description", ""))
-        remarks = item.get("updateStatus", "")
-        if item.get("isSerial"):
-            remarks = remarks or "连载"
-        else:
-            remarks = remarks or "全一集"
-        score = item.get("seriesScore", item.get("score", 0))
+        remarks = item.get("upStatus", item.get("updateStatus", "")) or ""
+        score = item.get("score", item.get("seriesScore", ""))
         if score:
             remarks = str(score) + "分 " + remarks
         return {
             "vod_id": str(vod_id),
             "vod_name": self.desensitize(title),
-            "vod_pic": cover,
+            "vod_pic": item.get("coverUrl", item.get("seriesCoverUrl", "")),
             "vod_remarks": self.desensitize(remarks),
-            "vod_content": self.desensitize(desc),
-            "vod_actor": self.desensitize(item.get("seriesStarring", item.get("seriesActor", ""))),
+            "vod_content": self.desensitize(item.get("description", "")),
+            "vod_actor": self.desensitize(item.get("author", item.get("actor", ""))),
             "vod_year": "",
             "vod_area": "",
             "vod_director": "",
         }
 
+    # ---------- 首页 ----------
     def homeContent(self, filter=True):
         cats = self._load_categories()
         class_list = []
         filters = {}
         for c in cats:
-            if c.get("isEnabled", True):
-                cid = str(c.get("id", ""))
-                cname = self.desensitize(c.get("name", ""))
-                if self.is_minor(cname):
-                    continue
-                class_list.append({"type_id": cid, "type_name": cname})
-                filters[cid] = []
+            if not c.get("isEnabled", True):
+                continue
+            cid = str(c.get("id", ""))
+            cname = self.desensitize(c.get("name", ""))
+            if not cid or self.is_minor(cname):
+                continue
+            class_list.append({"type_id": cid, "type_name": cname})
+            filters[cid] = []
         video_list = []
         data = self._get("/api/home/gethomemodules", params={"channeid": 1})
-        if data and isinstance(data, dict):
-            modules = data.get("data", {}).get("list", [])
-            for mod in modules:
-                if mod.get("type") == 3:
-                    for item in mod.get("list", []):
-                        vod = self._parse_vod(item)
-                        if vod:
-                            video_list.append(vod)
-                elif mod.get("type") == 0:
-                    for b in mod.get("banners", []):
-                        item = dict(b)
-                        item["seriesShortId"] = b.get("shortId", "")
-                        vod = self._parse_vod(item)
-                        if vod:
-                            video_list.append(vod)
+        modules = []
+        if isinstance(data, dict):
+            modules = (data.get("data") or {}).get("list", []) or []
+        for mod in modules:
+            mtype = mod.get("type")
+            if mtype == 3:
+                for item in mod.get("list", []) or []:
+                    vod = self._parse_vod(item)
+                    if vod:
+                        video_list.append(vod)
+            elif mtype == 0:
+                for b in mod.get("banners", []) or []:
+                    if b.get("isAd"):
+                        continue
+                    item = dict(b)
+                    item.setdefault("shortId", b.get("shortId", ""))
+                    vod = self._parse_vod(item)
+                    if vod:
+                        video_list.append(vod)
         return {"class": class_list, "filters": filters, "list": video_list}
 
     def homeVideoContent(self):
-        data = self._get("/api/home/gethomemodules", params={"channeid": 1})
-        video_list = []
-        if data and isinstance(data, dict):
-            modules = data.get("data", {}).get("list", [])
-            for mod in modules:
-                if mod.get("type") == 3:
-                    for item in mod.get("list", []):
-                        vod = self._parse_vod(item)
-                        if vod:
-                            video_list.append(vod)
-        return {"page": 1, "pagecount": 1, "limit": 20, "total": len(video_list), "list": video_list}
+        return {"list": self.homeContent().get("list", [])}
 
+    # ---------- 分类(真实翻页) ----------
     def categoryContent(self, tid, pg, filter, extend):
-        video_list = []
         try:
-            chid = int(tid)
+            page = int(pg) if pg else 1
         except:
-            chid = tid
-        data = self._get("/api/home/gethomemodules", params={"channeid": chid})
+            page = 1
+        if page < 1:
+            page = 1
+        ids = "0,0,0,0,0,0,0"
+        if isinstance(extend, dict):
+            vals = []
+            for i in range(7):
+                vals.append(str(extend.get("f%d" % i, extend.get(str(i), "0")) or "0"))
+            ids = ",".join(vals)
+        data = self._get("/api/list/getfiltersdata", params={
+            "channeid": str(tid),
+            "ids": ids,
+            "page": page,
+            "size": 20,
+        })
+        video_list = []
         total = 0
-        if data and isinstance(data, dict):
-            modules = data.get("data", {}).get("list", [])
-            for mod in modules:
-                if mod.get("type") == 3:
-                    items = mod.get("list", [])
-                    total = len(items)
-                    for item in items:
-                        vod = self._parse_vod(item)
-                        if vod:
-                            video_list.append(vod)
-        pagecount = 1 if total > 0 else 0
-        return {"page": pg, "pagecount": pagecount, "limit": 20, "total": total, "list": video_list}
+        has_more = False
+        if isinstance(data, dict):
+            d = data.get("data") or {}
+            total = d.get("total", 0) or 0
+            has_more = bool(d.get("hasMore"))
+            for item in d.get("list", []) or []:
+                vod = self._parse_vod(item)
+                if vod:
+                    video_list.append(vod)
+        if has_more:
+            pagecount = page + 1
+        elif video_list:
+            pagecount = page
+        else:
+            pagecount = 0
+        return {
+            "page": page,
+            "pagecount": pagecount,
+            "limit": 20,
+            "total": total,
+            "list": video_list,
+        }
 
+    # ---------- 详情(多线路+多集数) ----------
     def detailContent(self, ids):
         if not ids:
             return {"list": []}
@@ -237,101 +282,111 @@ class Spider:
         for vod_id in ids:
             vid = str(vod_id)
             data = self._get("/api/video/episodes", params={"seriesShortId": vid, "size": 500}, need_token=True)
-            episodes = []
-            vod_name = ""
-            vod_pic = ""
-            vod_content = ""
-            vod_remarks = ""
-            vod_actor = ""
-            if data and isinstance(data, dict):
-                eps = data.get("data", {}).get("list", [])
-                if isinstance(eps, list):
-                    for ep in eps:
-                        ep_title = ep.get("episodeTitle", str(ep.get("episodeNumber", "")))
-                        if self.is_minor(ep_title):
-                            continue
-                        ep_key = ep.get("episodeAccessKey", "")
-                        if not ep_key:
-                            continue
-                        episodes.append((ep_title, ep_key))
-                        if not vod_name:
-                            vod_name = ep.get("seriesTitle", "")
-                            vod_pic = ""
-                            vod_actor = ep.get("seriesActor", "")
-            if not vod_name:
-                rec = self._get("/api/video/recommend")
-                if rec and isinstance(rec, dict):
-                    for item in rec.get("data", {}).get("list", []):
-                        if str(item.get("seriesShortId", "")) == vid:
-                            vod_name = item.get("seriesTitle", "")
-                            vod_pic = item.get("seriesCoverUrl", "")
-                            vod_content = item.get("seriesDescription", "")
-                            vod_remarks = item.get("updateStatus", "")
-                            vod_actor = item.get("seriesStarring", "")
-                            break
+            if not (isinstance(data, dict) and data.get("data")):
+                continue
+            d = data["data"]
+            si = d.get("seriesInfo") or {}
+            eps = d.get("list") or []
+            vod_name = si.get("title", "")
             if self.is_minor(vod_name):
                 continue
-            play_from = "全集"
-            play_urls = []
-            for ep_title, ep_key in episodes:
-                play_urls.append(self.desensitize(ep_title) + "$" + ep_key)
+            from collections import OrderedDict
+            lines = OrderedDict()
+            for ep in eps:
+                ep_num = ep.get("episodeNumber", 0)
+                ep_title = ep.get("episodeTitle") or ep.get("title") or ("第%s集" % ep_num)
+                if self.is_minor(ep_title):
+                    continue
+                ek = ep.get("episodeAccessKey", "")
+                if not ek:
+                    continue
+                urls = ep.get("urls") or []
+                quality = urls[0].get("quality", "") if urls else ""
+                line_name = ("%s线路" % quality) if quality else "默认线路"
+                lines.setdefault(line_name, []).append((ep_num, ep_title, ek))
+            if not lines:
+                continue
+            play_from_list = []
+            play_url_list = []
+            for line_name, items in lines.items():
+                try:
+                    items.sort(key=lambda x: int(x[0]))
+                except:
+                    pass
+                segs = ["%s$%s" % (self.desensitize(t), k) for _, t, k in items]
+                play_from_list.append(line_name)
+                play_url_list.append("#".join(segs))
             vod = {
                 "vod_id": vid,
                 "vod_name": self.desensitize(vod_name),
-                "vod_pic": vod_pic,
-                "vod_remarks": self.desensitize(vod_remarks),
-                "vod_content": self.desensitize(vod_content),
-                "vod_actor": self.desensitize(vod_actor),
-                "vod_director": "",
+                "vod_pic": si.get("coverUrl", ""),
+                "vod_remarks": self.desensitize(si.get("updateStatus", "")),
+                "vod_content": self.desensitize(si.get("description", "")),
+                "vod_actor": self.desensitize(si.get("starring", si.get("actor", ""))),
+                "vod_director": self.desensitize(si.get("director", "")),
                 "vod_year": "",
-                "vod_area": "",
-                "vod_play_from": play_from,
-                "vod_play_url": "$$$".join(play_urls) if play_urls else "",
+                "vod_area": self.desensitize(si.get("channeName", "")),
+                "vod_play_from": "$$$".join(play_from_list),
+                "vod_play_url": "$$$".join(play_url_list),
             }
             result_list.append(vod)
         return {"list": result_list}
 
-    def searchContent(self, key, quick):
+    # ---------- 搜索 ----------
+    def searchContent(self, key, quick, pg="1"):
+        try:
+            page = int(pg) if pg else 1
+        except:
+            page = 1
         video_list = []
-        data = self._get("/api/list/fuzzysearch", params={"keyword": key, "page": 1, "size": 20})
-        if data and isinstance(data, dict):
-            items = data.get("data", {}).get("list", [])
-            if isinstance(items, list):
-                for item in items:
-                    title = item.get("seriesTitle", item.get("title", ""))
-                    if self.is_minor(title):
-                        continue
-                    sid = item.get("seriesShortId", item.get("shortId", ""))
-                    if not sid:
-                        continue
-                    video_list.append({
-                        "vod_id": str(sid),
-                        "vod_name": self.desensitize(title),
-                        "vod_pic": item.get("seriesCoverUrl", item.get("coverUrl", "")),
-                        "vod_remarks": self.desensitize(item.get("updateStatus", "")),
-                        "vod_content": "",
-                        "vod_actor": "",
-                    })
-        return {"page": 1, "pagecount": 1, "limit": 20, "total": len(video_list), "list": video_list}
+        data = self._get("/api/list/fuzzysearch", params={"keyword": key, "page": page, "size": 20})
+        total = 0
+        has_more = False
+        if isinstance(data, dict):
+            d = data.get("data") or {}
+            total = d.get("total", 0) or 0
+            has_more = bool(d.get("hasMore"))
+            for item in d.get("list", []) or []:
+                vod = self._parse_vod(item)
+                if vod:
+                    video_list.append(vod)
+        if has_more:
+            pagecount = page + 1
+        elif video_list:
+            pagecount = page
+        else:
+            pagecount = 0
+        return {
+            "page": page,
+            "pagecount": pagecount,
+            "limit": 20,
+            "total": total,
+            "list": video_list,
+        }
 
+    # ---------- 播放 ----------
     def playerContent(self, flag, id, vipFlags):
         ep_key = str(id)
+        play_url = ""
         data = self._post(
-            "/api/video/episode-url/query",
+            "/api/video/url/query",
             {"type": "episode", "accessKey": ep_key},
             need_token=True,
         )
-        play_url = ""
-        if data and isinstance(data, dict):
-            urls = data.get("data", {}).get("urls", [])
+        if isinstance(data, dict):
+            urls = (data.get("data") or {}).get("urls") or []
             if isinstance(urls, list) and urls:
-                play_url = urls[0].get("cdnUrl", "")
+                u = urls[0]
+                play_url = u.get("cdnUrl") or u.get("ossUrl") or ""
         fmt = "application/x-mpegURL" if ".m3u8" in play_url else "video/mp4"
         return {
             "parse": 0,
             "jx": 0,
             "url": play_url,
-            "header": {"User-Agent": self.session.headers["User-Agent"], "Referer": self.baseurl + "/"},
+            "header": {
+                "User-Agent": self.session.headers["User-Agent"],
+                "Referer": self.baseurl + "/",
+            },
             "format": fmt,
         }
 
