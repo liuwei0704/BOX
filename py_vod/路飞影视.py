@@ -4,7 +4,14 @@
 # 播放：详情/播放页明文 m3u8 直链，encrypt=0，parse:0 直接播放。
 import re
 import sys
-from urllib.parse import quote, unquote, urljoin
+from urllib.parse import quote, unquote, urljoin, urlsplit
+
+# 第三方视频 CDN 证书常自签/过期，关闭校验并压制告警
+try:
+    import urllib3
+    urllib3.disable_warnings()
+except Exception:
+    pass
 
 try:
     from base.spider import Spider as BaseSpider
@@ -12,6 +19,18 @@ except Exception:  # 本地沙盒自测兜底
     class BaseSpider(object):
         def log(self, *a, **k):
             pass
+
+
+class _R(object):
+    """本地代理用的轻量响应对象，兼容 res.status_code / res.content / res.headers.get / res.text"""
+    def __init__(self, status_code, content, ctype):
+        self.status_code = int(status_code or 200)
+        self.content = content or b""
+        self.headers = {"Content-Type": ctype or ""}
+
+    @property
+    def text(self):
+        return self.content.decode("utf-8", "ignore")
 
 
 class Spider(BaseSpider):
@@ -39,6 +58,8 @@ class Spider(BaseSpider):
                            "Chrome/120.0.0.0 Mobile Safari/537.36"),
             "Referer": self.HOST + "/",
         }
+        # DoH 解析缓存：host -> [ip,...]，绕过运营商 DNS 污染时复用
+        self._doh_cache = {}
 
     # ---------------- 基础方法 ----------------
     def getName(self):
@@ -75,6 +96,172 @@ class Spider(BaseSpider):
         except Exception as e:
             self.log("lufys _get error: %s %s" % (url, e))
             return ""
+
+    # ---------------- DoH 抗 DNS 污染下载栈 ----------------
+    # 背景：运营商对本站视频 CDN 域名做 DNS 污染，把分片解析到返回 404 的
+    # 边缘节点，导致“取链 200 / 拉流 404、换网或 VPN 即恢复”。设备端播放器
+    # 与 self.fetch 都吃同一份被污染的 DNS，故播放走 localProxy 把抓取搬到
+    # 爬虫侧，并以 DoH 解析真实 IP + 正确 SNI 直连绕过污染。
+    def _doh_resolve(self, host, timeout=8):
+        # 用 DNS-over-HTTPS 解析真实 IP，绕过运营商 DNS 污染；按 host 缓存。
+        if not host:
+            return []
+        cached = self._doh_cache.get(host)
+        if cached:
+            return cached
+        import json as _json
+        import ssl
+        import urllib.request
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        ua = self.headers["User-Agent"]
+        for base in (
+            "https://1.1.1.1/dns-query",
+            "https://8.8.8.8/resolve",
+            "https://dns.google/resolve",
+            "https://cloudflare-dns.com/dns-query",
+        ):
+            try:
+                u = "%s?name=%s&type=A" % (base, host)
+                req = urllib.request.Request(
+                    u, headers={"accept": "application/dns-json", "User-Agent": ua})
+                r = urllib.request.urlopen(req, timeout=timeout, context=ctx)
+                d = _json.loads(r.read().decode("utf-8", "ignore"))
+                ips = [a["data"] for a in d.get("Answer", []) if a.get("type") == 1]
+                if ips:
+                    self._doh_cache[host] = ips
+                    return ips
+            except Exception:
+                continue
+        return []
+
+    def _dl_doh(self, url, timeout=20):
+        # 经 DoH 解析真实 IP，以“正确 SNI + 真实 Host 头”直连该 IP，绕过运营商
+        # 把 CDN 域名污染到 404 边缘节点的问题；非 2xx 自动换下一个 IP。
+        import ssl
+        import socket
+        import http.client
+        u = urlsplit(url)
+        host = u.hostname
+        if not host:
+            return None
+        port = u.port or (443 if u.scheme == "https" else 80)
+        path = u.path + (("?" + u.query) if u.query else "")
+        if not path:
+            path = "/"
+        ips = self._doh_resolve(host)
+        if not ips:
+            return None
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        hosthdr = host if port in (80, 443) else "%s:%d" % (host, port)
+        hdrs = {
+            "User-Agent": self.headers["User-Agent"],
+            "Referer": self.host + "/",
+            "Accept": "*/*",
+            "Connection": "close",
+        }
+        best = None
+        for ip in ips:
+            conn = None
+            try:
+                raw = socket.create_connection((ip, port), timeout=timeout)
+                if u.scheme == "https":
+                    sock = ctx.wrap_socket(raw, server_hostname=host)  # SNI=真实域名
+                else:
+                    sock = raw
+                conn = http.client.HTTPConnection(ip, port, timeout=timeout)
+                conn.sock = sock
+                conn.putrequest("GET", path, skip_host=True, skip_accept_encoding=True)
+                conn.putheader("Host", hosthdr)
+                for k, v in hdrs.items():
+                    conn.putheader(k, v)
+                conn.endheaders()
+                resp = conn.getresponse()
+                body = resp.read()
+                ct = resp.getheader("Content-Type", "") or ""
+                r = _R(resp.status, body, ct)
+                try:
+                    conn.close()
+                except Exception:
+                    pass
+                if 200 <= resp.status < 400:
+                    return r
+                best = r  # 记录非 2xx，继续尝试其它边缘 IP
+            except Exception:
+                try:
+                    if conn:
+                        conn.close()
+                except Exception:
+                    pass
+                continue
+        return best
+
+    def _dl(self, url, timeout=20):
+        # 本地代理下载：1) 常规 urllib + 关 TLS 校验 → 2) 非 2xx/异常(典型污染 404)
+        # 走 DoH 真实 IP 直连 → 3) 回退 base.fetch 多签名兼容。
+        hdr = {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}
+        direct = None
+        try:
+            import ssl
+            import urllib.request
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            req = urllib.request.Request(url, headers=hdr)
+            resp = urllib.request.urlopen(req, timeout=timeout, context=ctx)
+            data = resp.read()
+            try:
+                code = resp.status
+            except Exception:
+                code = resp.getcode() or 200
+            ctype = ""
+            try:
+                ctype = resp.headers.get("Content-Type", "") or ""
+            except Exception:
+                pass
+            direct = _R(code, data, ctype)
+            if 200 <= direct.status_code < 400:
+                return direct
+            self.log("dl direct status=%s, try DoH: %s" % (direct.status_code, url))
+        except Exception as e:
+            self.log("dl urllib fail %s : %s" % (url, e))
+        try:
+            doh = self._dl_doh(url, timeout=timeout)
+            if doh is not None and 200 <= doh.status_code < 400:
+                self.log("dl DoH ok status=%s: %s" % (doh.status_code, url))
+                return doh
+        except Exception as e:
+            self.log("dl DoH fail %s : %s" % (url, e))
+        attempts = (
+            {"headers": hdr, "timeout": timeout, "verify": False},
+            {"headers": hdr, "verify": False},
+            {"headers": hdr, "timeout": timeout},
+            {"headers": hdr},
+        )
+        for kw in attempts:
+            try:
+                r = self.fetch(url, **kw)
+                if r is not None:
+                    return r
+            except TypeError:
+                continue
+            except Exception:
+                break
+        return direct
+
+    def _proxy_url(self, url):
+        # 把任意资源（m3u8/分片/key）转为本地代理端点，TLS/DNS 由代理端接管
+        try:
+            base = self.getProxyUrl()
+        except Exception:
+            base = ""
+        if not base:
+            return url
+        sep = "&" if "?" in base else "?"
+        return "%s%surl=%s" % (base, sep, quote(url, safe=""))
 
     # ---------------- 首页 ----------------
     def homeContent(self, filter):
@@ -207,8 +394,7 @@ class Spider(BaseSpider):
         pid = self._norm_ids(id)
         # 已是直链
         if pid.lower().endswith((".m3u8", ".mp4")):
-            return {"parse": 0, "url": pid,
-                    "header": {"User-Agent": self.headers["User-Agent"]}}
+            return self._wrap_play(pid)
         # 拉取播放页解析 player_aaaa.url
         html = self._get("%s/watch-play/%s" % (self.host, pid))
         real = ""
@@ -220,35 +406,92 @@ class Spider(BaseSpider):
         if not real:
             return {"parse": 1, "url": "%s/watch-play/%s" % (self.host, pid),
                     "header": self.headers}
-        return {"parse": 0, "url": real,
-                "header": {"User-Agent": self.headers["User-Agent"]}}
+        return self._wrap_play(real)
 
-    # ---------------- m3u8 本地代理（可选广告过滤） ----------------
+    def _wrap_play(self, url):
+        # m3u8 走本地代理（DoH 抗污染 + 分片改写回代理），mp4 直链回传。
+        header = {"User-Agent": self.headers["User-Agent"], "Referer": self.host + "/"}
+        if ".m3u8" in url.lower():
+            return {"parse": 0, "url": self._proxy_url(url), "header": header}
+        return {"parse": 0, "url": url, "header": header}
+
+    # ---------------- m3u8 本地代理（DoH 抗污染 + 分片回代理） ----------------
+    @staticmethod
+    def _is_master(text):
+        return "#EXT-X-STREAM-INF" in text
+
+    def _pick_variant(self, text, base):
+        best_url, best_bw = "", -1
+        lines = text.replace("\r", "").split("\n")
+        for i, ln in enumerate(lines):
+            if ln.startswith("#EXT-X-STREAM-INF"):
+                bm = re.search(r"BANDWIDTH=(\d+)", ln)
+                bw = int(bm.group(1)) if bm else 0
+                for j in range(i + 1, len(lines)):
+                    nxt = lines[j].strip()
+                    if not nxt or nxt.startswith("#"):
+                        continue
+                    if bw >= best_bw:
+                        best_bw, best_url = bw, urljoin(base, nxt)
+                    break
+        return best_url
+
     def localProxy(self, param):
         target = unquote(str((param or {}).get("url", "") or ""))
         if not re.match(r"^https?://", target, re.I):
             return [400, "text/plain", b"invalid url"]
+
+        res = self._dl(target)
+        if res is None:
+            self.log("lufys localProxy 502 (dl None): %s" % target)
+            return [502, "text/plain", b"bad gateway"]
+        raw = getattr(res, "content", b"") or b""
+        status = getattr(res, "status_code", 200) or 200
+        ctype = ""
         try:
-            r = self.fetch(target, headers={"User-Agent": self.headers["User-Agent"]})
-            if not r or getattr(r, "status_code", 0) != 200:
-                return [502, "text/plain", b"m3u8 fetch failed"]
-            text = getattr(r, "text", "") or ""
-            if "#EXTM3U" not in text:
-                return [502, "text/plain", b"invalid m3u8"]
-            out = []
-            for line in text.replace("\r", "").split("\n"):
-                if line and not line.startswith("#"):
-                    out.append(urljoin(target, line))
-                elif line.startswith("#EXT-X-KEY") or line.startswith("#EXT-X-MAP"):
-                    out.append(re.sub(r'URI="([^"]+)"',
-                                      lambda mm: 'URI="%s"' % urljoin(target, mm.group(1)),
-                                      line))
-                else:
-                    out.append(line)
-            return [200, "application/vnd.apple.mpegurl", "\n".join(out).encode("utf-8")]
-        except Exception as e:
-            self.log("lufys localProxy error: %s" % e)
-            return [500, "text/plain", b"proxy error"]
+            ctype = res.headers.get("Content-Type", "") or ""
+        except Exception:
+            pass
+
+        head = raw[:512].decode("utf-8", "ignore")
+        path_only = target.split("?", 1)[0].lower()
+        is_m3u8 = ("#EXTM3U" in head) or path_only.endswith(".m3u8") or ("mpegurl" in ctype.lower())
+        if not is_m3u8:
+            # 分片 / key / 其它二进制：原样透传
+            return [status, ctype or "application/octet-stream", raw]
+
+        text = raw.decode("utf-8", "ignore")
+        # 服务端跟随 master -> media，最多 3 层，避免播放器侧多级代理往返
+        cur, depth = target, 0
+        while self._is_master(text) and depth < 3:
+            var = self._pick_variant(text, cur)
+            if not var:
+                break
+            r2 = self._dl(var)
+            if r2 is None:
+                self.log("lufys localProxy master follow fail: %s" % var)
+                break
+            cur = var
+            text = (getattr(r2, "content", b"") or b"").decode("utf-8", "ignore")
+            depth += 1
+
+        # media playlist：segment/KEY/MAP 一律改写回本地代理
+        out = []
+        for line in text.replace("\r", "").split("\n"):
+            s = line.strip()
+            if not s:
+                out.append(s)
+                continue
+            if s.startswith("#"):
+                if ("URI=" in s) and (s.startswith("#EXT-X-KEY") or s.startswith("#EXT-X-MAP")):
+                    def repl(mo):
+                        return 'URI="' + self._proxy_url(urljoin(cur, mo.group(1))) + '"'
+                    s = re.sub(r'URI="([^"]+)"', repl, s)
+                out.append(s)
+            else:
+                out.append(self._proxy_url(urljoin(cur, s)))
+        self.log("lufys localProxy m3u8 ok depth=%d lines=%d src=%s" % (depth, len(out), cur))
+        return [200, "application/vnd.apple.mpegurl", "\n".join(out).encode("utf-8")]
 
     # ---------------- 卡片解析（分类/首页/搜索通用） ----------------
     def _parse_cards(self, html):
