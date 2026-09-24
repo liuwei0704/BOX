@@ -14,7 +14,6 @@
 {"key":"夜社短剧","name":"夜社短剧1","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_ai/夜社短剧.py"},
 {"key":"狂飙短剧","name":"狂飙短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_ai/狂飙短剧.py"},
 {"key":"糯米短剧","name":"糯米短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_ai/糯米短剧.py"},
-{"key":"紅果短劇","name":"紅果短劇","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/紅果短劇.py"},
 {"key":"青桔短剧","name":"青桔短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/青桔短剧.py"},
 {"key":"黃豆短劇","name":"黃豆短劇","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/黃豆短劇.py"},
 {"key":"黄果漫剧","name":"黄果漫剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/黄果漫剧.py"},
