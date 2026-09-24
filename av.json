@@ -11,7 +11,7 @@
 {"key":"色播聚合","name":"色播聚合","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_live/色播聚合.py"},
 {"key":"2048成人短剧","name":"2048成人短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/2048成人短剧.py"},
 {"key":"夜色","name":"夜色","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/夜色.py"},
-{"key":"夜社短剧","name":"夜社短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/夜社短剧.py"},
+{"key":"夜社短剧","name":"夜社短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_ai/夜社短剧.py"},
 {"key":"狂飙短剧","name":"狂飙短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/狂飙短剧.py"},
 {"key":"糯米短剧","name":"糯米短剧","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/糯米短剧.py"},
 {"key":"紅果短劇","name":"紅果短劇","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"https://gitlab.com/lemon52030/BOX/-/raw/main/py_ai/紅果短劇.py"},
