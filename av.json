@@ -3,7 +3,7 @@
 "wallpaper": "http://www.mpanso.com/小米/mpansou.ph",
 "logo": "https://cdn4.iconfinder.com/data/icons/project-status-stickers-with-white-border/84/omg-sticker-1024.png",
 "sites": [
-{"key":"Chaturbate","name":"Chaturbate00","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_live/Chaturbate.py"},
+{"key":"Chaturbate","name":"Chaturbate0","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_live/Chaturbate.py"},
 {"key":"DXLive","name":"DXLive","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_live/DXLive.py"},
 {"key":"Pandalive","name":"Pandalive","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_live/Pandalive.py"},
 {"key":"stripchat","name":"stripchat","type":3,"searchable":1,"quickSearch":1,"changeable":0,"api":"./py_live/stripchat.py"},
